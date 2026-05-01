@@ -36,9 +36,10 @@ namespace Content.Shared.Examine
             public readonly bool OpenAtOldTooltip;
 
             public readonly bool KnowTarget;
+            public readonly string? NameOverride; // Fire added - optional knowledge-based examine name override
 
             public ExamineInfoResponseMessage(NetEntity entityUid, int id, FormattedMessage message, List<Verb>? verbs=null,
-                bool centerAtCursor=true, bool openAtOldTooltip=true, bool knowTarget = true)
+                bool centerAtCursor=true, bool openAtOldTooltip=true, bool knowTarget = true, string? nameOverride = null) // Fire edit - allow overriding the displayed examine identity
             {
                 EntityUid = entityUid;
                 Id = id;
@@ -47,6 +48,7 @@ namespace Content.Shared.Examine
                 CenterAtCursor = centerAtCursor;
                 OpenAtOldTooltip = openAtOldTooltip;
                 KnowTarget = knowTarget;
+                NameOverride = nameOverride; // Fire added - preserve knowledge-based name override for the client tooltip
             }
         }
     }

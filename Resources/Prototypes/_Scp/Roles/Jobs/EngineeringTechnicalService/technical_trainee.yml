@@ -1,4 +1,4 @@
-﻿- type: job
+- type: job
   id: TechnicalTrainee
   name: job-name-technical-trainee
   description: job-description-technical-trainee
@@ -24,7 +24,14 @@
     - type: AccessLevel
       level: Two
     - type: ScpRepairableCanSeeExamineHints
-
+    - type: ScpKnowledge
+      knownKnowledge:
+      - ScpKnowledgeTermLightContainmentZone
+      - ScpKnowledgeLocationLightContainmentZone
+      - ScpKnowledgeTermHeavyContainmentZone
+      - ScpKnowledgeLocationHeavyContainmentZone
+      - ScpKnowledgeTermAdministrativeZone
+      - ScpKnowledgeTermExternalAdministrativeZone
 - type: startingGear
   id: TechnicalTraineeGear
   equipment:

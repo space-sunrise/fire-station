@@ -1,4 +1,4 @@
-﻿- type: job
+- type: job
   id: MedicalSpecialist
   name: job-name-medical-specialist
   description: job-description-medical-specialist
@@ -30,7 +30,14 @@
       - Exoremophobia
       # Врачи не пугаются трупов, у них не будет некрофобии
     - type: ShowScp096FaceDamageHud
-
+    - type: ScpKnowledge
+      knownKnowledge:
+      - ScpKnowledgeTermLightContainmentZone
+      - ScpKnowledgeLocationLightContainmentZone
+      - ScpKnowledgeTermHeavyContainmentZone
+      - ScpKnowledgeLocationHeavyContainmentZone
+      - ScpKnowledgeTermAdministrativeZone
+      - ScpKnowledgeTermExternalAdministrativeZone
 - type: startingGear
   id: MedicalSpecialistGear
   equipment:

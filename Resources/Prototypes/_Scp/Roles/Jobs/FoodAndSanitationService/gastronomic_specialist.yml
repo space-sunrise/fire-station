@@ -1,4 +1,4 @@
-﻿- type: job
+- type: job
   id: GastronomicSpecialist
   name: job-name-gastronomic-specialist
   description: job-description-gastronomic-specialist
@@ -19,7 +19,14 @@
       class: C
     - type: AccessLevel
       level: One
-
+    - type: ScpKnowledge
+      knownKnowledge:
+      - ScpKnowledgeTermLightContainmentZone
+      - ScpKnowledgeLocationLightContainmentZone
+      - ScpKnowledgeTermHeavyContainmentZone
+      - ScpKnowledgeLocationHeavyContainmentZone
+      - ScpKnowledgeTermAdministrativeZone
+      - ScpKnowledgeTermExternalAdministrativeZone
 - type: startingGear
   id: GastronomicSpecialistGear
   equipment:

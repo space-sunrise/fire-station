@@ -1,4 +1,4 @@
-﻿- type: job
+- type: job
   id: JuniorHeavyContainmentZoneOfficer
   name: job-name-junior-heavy-containment-zone-officer
   description: job-description-junior-heavy-containment-zone-officer
@@ -50,7 +50,26 @@
         Terror: 5
       baseJitterTime: 3
       fallOffChance: 0.02
-
+    - type: ScpKnowledge
+      knownKnowledge:
+      - ScpKnowledgeTermLightContainmentZone
+      - ScpKnowledgeLocationLightContainmentZone
+      - ScpKnowledgeTermHeavyContainmentZone
+      - ScpKnowledgeLocationHeavyContainmentZone
+      - ScpKnowledgeTermAdministrativeZone
+      - ScpKnowledgeTermExternalAdministrativeZone
+      - ScpKnowledgeTermSpecialContainmentProcedures
+      - ScpKnowledgeTermContainmentBreach
+      - ScpKnowledgeTermContainmentRestoration
+      - ScpKnowledgeEntityScp035
+      - ScpKnowledgeEntityScp049
+      - ScpKnowledgeEntityScp082
+      - ScpKnowledgeEntityScp096
+      - ScpKnowledgeEntityScp106
+      - ScpKnowledgeEntityScp173
+      - ScpKnowledgeEntityScp457
+      - ScpKnowledgeEntityScp939
+      - ScpKnowledgeEntityScp079
 - type: startingGear
   id: JuniorHeavyContainmentZoneOfficerGear
   equipment:

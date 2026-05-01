@@ -1,4 +1,4 @@
-﻿- type: job
+- type: job
   id: Psychotherapist
   name: job-name-psychotherapist
   description: job-description-psychotherapist
@@ -21,7 +21,14 @@
       class: C
     - type: AccessLevel
       level: Two
-
+    - type: ScpKnowledge
+      knownKnowledge:
+      - ScpKnowledgeTermLightContainmentZone
+      - ScpKnowledgeLocationLightContainmentZone
+      - ScpKnowledgeTermHeavyContainmentZone
+      - ScpKnowledgeLocationHeavyContainmentZone
+      - ScpKnowledgeTermAdministrativeZone
+      - ScpKnowledgeTermExternalAdministrativeZone
 - type: startingGear
   id: PsychotherapistGear
   equipment:

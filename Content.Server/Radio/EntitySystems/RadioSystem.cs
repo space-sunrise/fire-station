@@ -1,4 +1,5 @@
 using System.Globalization;
+using Content.Server._Scp.Knowledge; // Fire added - SCP knowledge-aware radio chat highlighting
 using Content.Server._Sunrise.Chat.Sanitization;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
@@ -35,6 +36,7 @@ public sealed class RadioSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly ScpKnowledgeSystem _knowledge = default!; // Fire added - personalize radio chat by listener knowledge
     [Dependency] private readonly AccessReaderSystem _accessReader = default!;
 
     // set used to prevent radio feedback loops.
@@ -71,7 +73,13 @@ public sealed class RadioSystem : EntitySystem
         // Sunrise-TTS-Start
         if (TryComp(uid, out ActorComponent? actor))
         {
-            _netMan.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
+            // Fire added start - personalize SCP knowledge highlights for direct radio receivers
+            var wrappedMessage = _knowledge.HighlightWrappedChatMessage(uid, args.Message, args.ChatMsg.Message.WrappedMessage, args.MessageSource);
+            var chatMessage = string.Equals(wrappedMessage, args.ChatMsg.Message.WrappedMessage, StringComparison.Ordinal)
+                ? args.ChatMsg
+                : ScpKnowledgeChatMessage.CloneWithWrappedMessage(args.ChatMsg, wrappedMessage);
+            _netMan.ServerSendMessage(chatMessage, actor.PlayerSession.Channel);
+            // Fire added end
             if (uid != args.MessageSource && HasComp<TTSComponent>(args.MessageSource))
             {
                 args.Receivers.Add(uid);

@@ -1,4 +1,4 @@
-﻿- type: job
+- type: job
   id: LeadTechnicalSpecialist
   name: job-name-lead-technical-specialist
   description: job-description-lead-technical-specialist
@@ -26,7 +26,14 @@
     - type: AccessLevel
       level: Three
     - type: ScpRepairableCanSeeExamineHints
-
+    - type: ScpKnowledge
+      knownKnowledge:
+      - ScpKnowledgeTermLightContainmentZone
+      - ScpKnowledgeLocationLightContainmentZone
+      - ScpKnowledgeTermHeavyContainmentZone
+      - ScpKnowledgeLocationHeavyContainmentZone
+      - ScpKnowledgeTermAdministrativeZone
+      - ScpKnowledgeTermExternalAdministrativeZone
 - type: startingGear
   id: LeadTechnicalSpecialistGear
   equipment:

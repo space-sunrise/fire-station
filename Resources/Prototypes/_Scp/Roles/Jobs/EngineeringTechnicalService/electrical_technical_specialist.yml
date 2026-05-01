@@ -1,4 +1,4 @@
-﻿- type: job
+- type: job
   id: ElectricalTechnicalSpecialist
   name: job-name-electrical-technical-specialist
   description: job-description-electrical-technical-specialist
@@ -26,7 +26,14 @@
     - type: AccessLevel
       level: Two
     - type: ScpRepairableCanSeeExamineHints
-
+    - type: ScpKnowledge
+      knownKnowledge:
+      - ScpKnowledgeTermLightContainmentZone
+      - ScpKnowledgeLocationLightContainmentZone
+      - ScpKnowledgeTermHeavyContainmentZone
+      - ScpKnowledgeLocationHeavyContainmentZone
+      - ScpKnowledgeTermAdministrativeZone
+      - ScpKnowledgeTermExternalAdministrativeZone
 - type: startingGear
   id: ElectricalTechnicalSpecialistGear
   equipment:

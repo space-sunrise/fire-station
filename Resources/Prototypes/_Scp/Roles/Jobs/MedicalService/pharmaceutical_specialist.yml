@@ -1,4 +1,4 @@
-﻿- type: job
+- type: job
   id: PharmaceuticalSpecialist
   name: job-name-pharmaceutical-specialist
   description: job-description-pharmaceutical-specialist
@@ -29,7 +29,14 @@
       phobias:
       - Exoremophobia
       # Врачи не пугаются трупов, у них не будет некрофобии
-
+    - type: ScpKnowledge
+      knownKnowledge:
+      - ScpKnowledgeTermLightContainmentZone
+      - ScpKnowledgeLocationLightContainmentZone
+      - ScpKnowledgeTermHeavyContainmentZone
+      - ScpKnowledgeLocationHeavyContainmentZone
+      - ScpKnowledgeTermAdministrativeZone
+      - ScpKnowledgeTermExternalAdministrativeZone
 - type: startingGear
   id: PharmaceuticalSpecialistGear
   equipment:

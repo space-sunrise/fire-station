@@ -1,4 +1,4 @@
-﻿- type: job
+- type: job
   id: BotanistPhytogeneticist
   name: job-name-botanist-phytogeneticist
   description: job-description-botanist-phytogeneticist
@@ -22,7 +22,14 @@
       class: C
     - type: AccessLevel
       level: One
-
+    - type: ScpKnowledge
+      knownKnowledge:
+      - ScpKnowledgeTermLightContainmentZone
+      - ScpKnowledgeLocationLightContainmentZone
+      - ScpKnowledgeTermHeavyContainmentZone
+      - ScpKnowledgeLocationHeavyContainmentZone
+      - ScpKnowledgeTermAdministrativeZone
+      - ScpKnowledgeTermExternalAdministrativeZone
 - type: startingGear
   id: BotanistPhytogeneticistGear
   equipment:

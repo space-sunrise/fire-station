@@ -18,7 +18,13 @@
       - ExternalAdministrativeZoneSecurityService
       includeJobName: true
       requiredGameRunLevel: InRound
-
+    - type: ScpKnowledge
+      knownKnowledge:
+      - ScpKnowledgeTermLightContainmentZone
+      - ScpKnowledgeLocationLightContainmentZone
+      - ScpKnowledgeLocationClassDContainmentZone
+      - ScpKnowledgeTermContainmentChamber
+      - ScpKnowledgeTermContainmentBreach
 - type: startingGear
   id: ClassDGear
   equipment:

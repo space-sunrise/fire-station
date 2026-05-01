@@ -8,6 +8,10 @@
 # SUNRISE EDIT
   - type: Interactions
 # SUNRISE EDIT
+  # Fire added start - default human knowledge state
+  - type: ScpKnowledge
+  - type: ScpKnowledgeAcquisition
+  # Fire added end
   - type: Hunger
   - type: Icon # It will not have an icon in the adminspawn menu without this. Body parts seem fine for whatever reason.
     sprite: _Sunrise/Mobs/Species/Human/Basic/parts.rsi

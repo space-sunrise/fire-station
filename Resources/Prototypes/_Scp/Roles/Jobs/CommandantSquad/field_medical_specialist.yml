@@ -1,4 +1,4 @@
-﻿- type: job
+- type: job
   id: FieldMedicalSpecialist
   name: job-name-field-medical-specialist
   description: job-description-field-medical-specialist
@@ -35,7 +35,26 @@
       phobias:
       - Exoremophobia
       # Врачи не пугаются трупов, у них не будет некрофобии
-
+    - type: ScpKnowledge
+      knownKnowledge:
+      - ScpKnowledgeTermLightContainmentZone
+      - ScpKnowledgeLocationLightContainmentZone
+      - ScpKnowledgeTermHeavyContainmentZone
+      - ScpKnowledgeLocationHeavyContainmentZone
+      - ScpKnowledgeTermAdministrativeZone
+      - ScpKnowledgeTermExternalAdministrativeZone
+      - ScpKnowledgeTermSpecialContainmentProcedures
+      - ScpKnowledgeTermContainmentBreach
+      - ScpKnowledgeTermContainmentRestoration
+      - ScpKnowledgeEntityScp035
+      - ScpKnowledgeEntityScp049
+      - ScpKnowledgeEntityScp082
+      - ScpKnowledgeEntityScp096
+      - ScpKnowledgeEntityScp106
+      - ScpKnowledgeEntityScp173
+      - ScpKnowledgeEntityScp457
+      - ScpKnowledgeEntityScp939
+      - ScpKnowledgeEntityScp079
 - type: startingGear
   id: FieldMedicalSpecialistGear
   equipment:

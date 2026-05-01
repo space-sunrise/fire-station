@@ -1,4 +1,4 @@
-﻿- type: job
+- type: job
   id: HeadOfMedicalSector
   name: job-name-head-of-medical-sector
   description: job-description-head-of-medical-sector
@@ -41,7 +41,53 @@
       - Exoremophobia
       # Врачи не пугаются трупов, у них не будет некрофобии
     - type: ShowScp096FaceDamageHud
-
+    - type: ScpKnowledge
+      knownKnowledge:
+      - ScpKnowledgeTermLightContainmentZone
+      - ScpKnowledgeLocationLightContainmentZone
+      - ScpKnowledgeTermHeavyContainmentZone
+      - ScpKnowledgeLocationHeavyContainmentZone
+      - ScpKnowledgeTermAdministrativeZone
+      - ScpKnowledgeTermExternalAdministrativeZone
+      - ScpKnowledgeEntityScp035
+      - ScpKnowledgeEntityScp049
+      - ScpKnowledgeEntityScp082
+      - ScpKnowledgeEntityScp096
+      - ScpKnowledgeEntityScp106
+      - ScpKnowledgeEntityScp131
+      - ScpKnowledgeEntityScp173
+      - ScpKnowledgeEntityScp247
+      - ScpKnowledgeEntityScp457
+      - ScpKnowledgeEntityScp939
+      - ScpKnowledgeEntityScp999
+      - ScpKnowledgeEntityScp079
+      - ScpKnowledgeEntityScp005
+      - ScpKnowledgeEntityScp012
+      - ScpKnowledgeEntityScp018
+      - ScpKnowledgeEntityScp101
+      - ScpKnowledgeEntityScp109
+      - ScpKnowledgeEntityScp124
+      - ScpKnowledgeEntityScp127
+      - ScpKnowledgeEntityScp2022
+      - ScpKnowledgeEntityScp207
+      - ScpKnowledgeEntityScp2398
+      - ScpKnowledgeEntityScp261
+      - ScpKnowledgeEntityScp268
+      - ScpKnowledgeEntityScp330
+      - ScpKnowledgeEntityScp427
+      - ScpKnowledgeEntityScp500
+      - ScpKnowledgeEntityScp714
+      - ScpKnowledgeLocationClassDContainmentZone
+      - ScpKnowledgeTermSpecialContainmentProcedures
+      - ScpKnowledgeTermContainmentBreach
+      - ScpKnowledgeTermContainmentRestoration
+      - ScpKnowledgeTermContainmentChamber
+      - ScpKnowledgeTermRegionalAdministration
+      - ScpKnowledgeTermChaosInsurgency
+      - ScpKnowledgeTermGlobalOccultCoalition
+      - ScpKnowledgeTermPersonalArtificialIntelligence
+      - ScpKnowledgeTermLegalCode
+      - ScpKnowledgeTermCodeOfEthics
 - type: startingGear
   id: HeadOfMedicalSectorGear
   equipment:

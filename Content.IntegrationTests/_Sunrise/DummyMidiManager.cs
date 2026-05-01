@@ -1,6 +1,5 @@
 #nullable enable
 // ReSharper disable once CheckNamespace
-#pragma warning disable IDE0130
 using System.Collections.Generic;
 using NFluidsynth;
 using Robust.Client.Audio.Midi;

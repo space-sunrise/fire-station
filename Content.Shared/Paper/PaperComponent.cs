@@ -13,6 +13,11 @@ public sealed partial class PaperComponent : Component
     [DataField("content"), AutoNetworkedField]
     public string Content { get; set; } = "";
 
+    // Fire added start - track paper authorship for SCP knowledge sources
+    [NonSerialized]
+    public List<PaperKnowledgeAuthorRange> KnowledgeAuthorRanges = [];
+    // Fire added end
+
     [DataField("contentSize")]
     public int ContentSize { get; set; } = 10000;
 
@@ -82,6 +87,21 @@ public sealed partial class PaperComponent : Component
         }
     }
 
+    // Fire added start - send paper knowledge highlight markup separately from the replicated paper state
+    [Serializable, NetSerializable]
+    public sealed class PaperKnowledgeHighlightMessage : BoundUserInterfaceMessage
+    {
+        public readonly string RawText;
+        public readonly string HighlightedText;
+
+        public PaperKnowledgeHighlightMessage(string rawText, string highlightedText)
+        {
+            RawText = rawText;
+            HighlightedText = highlightedText;
+        }
+    }
+    // Fire added end
+
     [Serializable, NetSerializable]
     public enum PaperUiKey
     {
@@ -108,4 +128,12 @@ public sealed partial class PaperComponent : Component
         Blank,
         Written
     }
+
+    // Fire added start - track authored paper ranges for SCP knowledge gating
+    [Serializable]
+    public readonly record struct PaperKnowledgeAuthorRange(int Start, int Length, EntityUid? Author)
+    {
+        public int End => Start + Length;
+    }
+    // Fire added end
 }

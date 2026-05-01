@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Numerics;
 using System.Threading;
+using Content.Client._Scp.Knowledge; // Fire added - client-side SCP knowledge examine prediction
 using Content.Client.Verbs;
 using Content.Shared.Examine;
 using Content.Shared.IdentityManagement;
@@ -31,6 +32,8 @@ namespace Content.Client.Examine
         [Dependency] private readonly IEyeManager _eyeManager = default!;
         [Dependency] private readonly VerbSystem _verbSystem = default!;
         [Dependency] private readonly SpriteSystem _sprite = default!;
+
+        [Dependency] private readonly ScpKnowledgeSystem _scpKnowledge = default!; // Fire added - predict knowledge-gated examine identity and hint buttons
 
         private List<Verb> _verbList = new();
 
@@ -158,7 +161,7 @@ namespace Content.Client.Examine
             // since there's probably one open already if it's coming in from the server.
             var entity = GetEntity(ev.EntityUid);
 
-            // Fire added start
+            // Fire added start - ignore stale examine replies for entities that disappeared before the server answered
             if (TerminatingOrDeleted(entity))
             {
                 CloseTooltip();
@@ -166,7 +169,8 @@ namespace Content.Client.Examine
             }
             // Fire added end
 
-            OpenTooltip(player.Value, entity, ev.CenterAtCursor, ev.OpenAtOldTooltip, ev.KnowTarget);
+            // Fire edit - apply server-provided knowledge-based name override to the tooltip title
+            OpenTooltip(player.Value, entity, ev.CenterAtCursor, ev.OpenAtOldTooltip, ev.KnowTarget, ev.NameOverride);
             UpdateTooltipInfo(player.Value, entity, ev.Message, ev.Verbs, getVerbs: false);
         }
 
@@ -181,7 +185,7 @@ namespace Content.Client.Examine
         ///     not fill it with information. This is done when the server sends examine info/verbs,
         ///     or immediately if it's entirely clientside.
         /// </summary>
-        public void OpenTooltip(EntityUid player, EntityUid target, bool centeredOnCursor=true, bool openAtOldTooltip=true, bool knowTarget = true)
+        public void OpenTooltip(EntityUid player, EntityUid target, bool centeredOnCursor=true, bool openAtOldTooltip=true, bool knowTarget = true, string? nameOverride = null) // Fire edit - allow knowledge systems to override the displayed examine name
         {
             // Close any examine tooltip that might already be opened
             // Before we do that, save its position. We'll prioritize opening any new popups there if
@@ -246,7 +250,8 @@ namespace Content.Client.Examine
 
             if (knowTarget)
             {
-                var itemName = FormattedMessage.EscapeText(Identity.Name(target, EntityManager, player));
+                // Fire edit - prefer knowledge-gated identity override when examine prediction/server response provides one
+                var itemName = FormattedMessage.EscapeText(nameOverride ?? Identity.Name(target, EntityManager, player));
                 var labelMessage = FormattedMessage.FromMarkupPermissive($"[bold]{itemName}[/bold]");
                 var label = new RichTextLabel();
                 label.SetMessage(labelMessage);
@@ -411,14 +416,38 @@ namespace Content.Client.Examine
                 return;
 
             FormattedMessage message;
+            var knowTarget = true;
+            string? nameOverride = null;
+            List<Verb>? predictedVerbs = null; // Fire added - predicted OOC knowledge hint buttons
 
-            OpenTooltip(playerEnt.Value, entity, centeredOnCursor, false);
+            // Fire added start - predict SCP knowledge-gated examine locally
+            if (_scpKnowledge.TryGetPredictedExamineData(entity, out var predictedKnowTarget, out var predictedNameOverride, out var predictedMessage))
+            {
+                knowTarget = predictedKnowTarget;
+                nameOverride = predictedNameOverride;
+                message = predictedMessage ?? GetExamineText(entity, playerEnt);
+            }
+            else
+            {
+                message = GetExamineText(entity, playerEnt);
+            }
+            // Fire added end
+
+            // Fire added start - predict SCP knowledge examine verbs locally
+            predictedVerbs = new List<Verb>();
+            _scpKnowledge.AddPredictedExamineVerbs(playerEnt.Value, entity, predictedVerbs);
+            if (predictedVerbs.Count == 0)
+                predictedVerbs = null;
+            // Fire added end
+
+            // Fire edit start - apply predicted SCP identity and hint-button overrides before the server reply arrives
+            OpenTooltip(playerEnt.Value, entity, centeredOnCursor, false, knowTarget, nameOverride);
 
             // Always update tooltip info from client first.
             // If we get it wrong, server will correct us later anyway.
             // This will usually be correct (barring server-only components, which generally only adds, not replaces text)
-            message = GetExamineText(entity, playerEnt);
-            UpdateTooltipInfo(playerEnt.Value, entity, message);
+            UpdateTooltipInfo(playerEnt.Value, entity, message, predictedVerbs);
+            // Fire edit end
 
             if (!IsClientSide(entity))
             {

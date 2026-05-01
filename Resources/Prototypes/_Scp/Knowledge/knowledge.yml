@@ -1,0 +1,588 @@
+- type: scpKnowledge
+  id: BaseScpKnowledge
+  abstract: true
+  requiredProgress: 2
+  listenProgress: 1
+  readProgress: 1
+  examineProgress: 1
+
+- type: scpKnowledge
+  id: BaseScpKnowledgeTerm
+  abstract: true
+  parent: BaseScpKnowledge
+  kind: Term
+  allowExamine: false
+
+- type: scpKnowledge
+  id: BaseScpKnowledgeLocation
+  abstract: true
+  parent: BaseScpKnowledgeTerm
+  kind: Location
+
+- type: scpKnowledge
+  id: BaseScpKnowledgeEntity
+  abstract: true
+  parent: BaseScpKnowledge
+  kind: Entity
+  hideIdentityUntilKnown: true
+  knownExamineVerbText: scp-knowledge-known-examine-verb
+
+- type: scpKnowledge
+  id: ScpKnowledgeTermHeavyContainmentZone
+  parent: BaseScpKnowledgeTerm
+  displayName: scp-knowledge-term-tzs-name
+  abbreviations:
+  - scp-knowledge-term-tzs-name
+  description: scp-knowledge-term-tzs-desc
+  recognitionPatterns:
+  - scp-knowledge-term-tzs-name
+  - scp-knowledge-term-tzs-full
+  - scp-knowledge-term-tzs-patterns
+
+- type: scpKnowledge
+  id: ScpKnowledgeTermLightContainmentZone
+  parent: BaseScpKnowledgeTerm
+  displayName: scp-knowledge-term-lzs-name
+  abbreviations:
+  - scp-knowledge-term-lzs-name
+  description: scp-knowledge-term-lzs-desc
+  recognitionPatterns:
+  - scp-knowledge-term-lzs-name
+  - scp-knowledge-term-lzs-full
+  - scp-knowledge-term-lzs-patterns
+
+- type: scpKnowledge
+  id: ScpKnowledgeTermExternalAdministrativeZone
+  parent: BaseScpKnowledgeTerm
+  displayName: scp-knowledge-term-vaz-name
+  abbreviations:
+  - scp-knowledge-term-vaz-name
+  description: scp-knowledge-term-vaz-desc
+  recognitionPatterns:
+  - scp-knowledge-term-vaz-name
+  - scp-knowledge-term-vaz-full
+  - scp-knowledge-term-vaz-patterns
+
+- type: scpKnowledge
+  id: ScpKnowledgeTermAdministrativeZone
+  parent: BaseScpKnowledgeTerm
+  displayName: scp-knowledge-term-az-name
+  abbreviations:
+  - scp-knowledge-term-az-name
+  description: scp-knowledge-term-az-desc
+  recognitionPatterns:
+  - scp-knowledge-term-az-name
+  - scp-knowledge-term-az-full
+  - scp-knowledge-term-az-patterns
+
+- type: scpKnowledge
+  id: ScpKnowledgeTermSpecialContainmentProcedures
+  parent: BaseScpKnowledgeTerm
+  displayName: scp-knowledge-term-ous-name
+  abbreviations:
+  - scp-knowledge-term-ous-name
+  description: scp-knowledge-term-ous-desc
+  recognitionPatterns:
+  - scp-knowledge-term-ous-name
+  - scp-knowledge-term-ous-full
+  - scp-knowledge-term-ous-patterns
+
+- type: scpKnowledge
+  id: ScpKnowledgeTermContainmentBreach
+  parent: BaseScpKnowledgeTerm
+  displayName: scp-knowledge-term-nus-name
+  abbreviations:
+  - scp-knowledge-term-nus-name
+  description: scp-knowledge-term-nus-desc
+  recognitionPatterns:
+  - scp-knowledge-term-nus-name
+  - scp-knowledge-term-nus-full
+  - scp-knowledge-term-nus-patterns
+
+- type: scpKnowledge
+  id: ScpKnowledgeTermContainmentRestoration
+  parent: BaseScpKnowledgeTerm
+  displayName: scp-knowledge-term-vus-name
+  abbreviations:
+  - scp-knowledge-term-vus-name
+  description: scp-knowledge-term-vus-desc
+  recognitionPatterns:
+  - scp-knowledge-term-vus-name
+  - scp-knowledge-term-vus-full
+  - scp-knowledge-term-vus-patterns
+
+- type: scpKnowledge
+  id: ScpKnowledgeTermContainmentChamber
+  parent: BaseScpKnowledgeTerm
+  displayName: scp-knowledge-term-ks-name
+  abbreviations:
+  - scp-knowledge-term-ks-name
+  description: scp-knowledge-term-ks-desc
+  recognitionPatterns:
+  - scp-knowledge-term-ks-name
+  - scp-knowledge-term-ks-full
+  - scp-knowledge-term-ks-patterns
+
+- type: scpKnowledge
+  id: ScpKnowledgeTermRegionalAdministration
+  parent: BaseScpKnowledgeTerm
+  displayName: scp-knowledge-term-ru-name
+  abbreviations:
+  - scp-knowledge-term-ru-name
+  description: scp-knowledge-term-ru-desc
+  recognitionPatterns:
+  - scp-knowledge-term-ru-name
+  - scp-knowledge-term-ru-full
+  - scp-knowledge-term-ru-patterns
+
+- type: scpKnowledge
+  id: ScpKnowledgeTermChaosInsurgency
+  parent: BaseScpKnowledgeTerm
+  displayName: scp-knowledge-term-ph-name
+  abbreviations:
+  - scp-knowledge-term-ph-name
+  description: scp-knowledge-term-ph-desc
+  recognitionPatterns:
+  - scp-knowledge-term-ph-name
+  - scp-knowledge-term-ph-full
+  - scp-knowledge-term-ph-patterns
+
+- type: scpKnowledge
+  id: ScpKnowledgeTermGlobalOccultCoalition
+  parent: BaseScpKnowledgeTerm
+  displayName: scp-knowledge-term-gok-name
+  abbreviations:
+  - scp-knowledge-term-gok-name
+  description: scp-knowledge-term-gok-desc
+  recognitionPatterns:
+  - scp-knowledge-term-gok-name
+  - scp-knowledge-term-gok-full
+  - scp-knowledge-term-gok-patterns
+
+- type: scpKnowledge
+  id: ScpKnowledgeTermPersonalArtificialIntelligence
+  parent: BaseScpKnowledgeTerm
+  displayName: scp-knowledge-term-pii-name
+  abbreviations:
+  - scp-knowledge-term-pii-name
+  description: scp-knowledge-term-pii-desc
+  recognitionPatterns:
+  - scp-knowledge-term-pii-name
+  - scp-knowledge-term-pii-full
+  - scp-knowledge-term-pii-patterns
+
+- type: scpKnowledge
+  id: ScpKnowledgeTermLegalCode
+  parent: BaseScpKnowledgeTerm
+  displayName: scp-knowledge-term-pk-name
+  abbreviations:
+  - scp-knowledge-term-pk-name
+  description: scp-knowledge-term-pk-desc
+  recognitionPatterns:
+  - scp-knowledge-term-pk-name
+  - scp-knowledge-term-pk-full
+  - scp-knowledge-term-pk-patterns
+
+- type: scpKnowledge
+  id: ScpKnowledgeTermCodeOfEthics
+  parent: BaseScpKnowledgeTerm
+  displayName: scp-knowledge-term-ke-name
+  abbreviations:
+  - scp-knowledge-term-ke-name
+  description: scp-knowledge-term-ke-desc
+  recognitionPatterns:
+  - scp-knowledge-term-ke-name
+  - scp-knowledge-term-ke-full
+  - scp-knowledge-term-ke-patterns
+
+- type: scpKnowledge
+  id: ScpKnowledgeLocationHeavyContainmentZone
+  parent: BaseScpKnowledgeLocation
+  displayName: scp-knowledge-location-tzs-name
+  abbreviations:
+  - scp-knowledge-term-tzs-name
+  description: scp-knowledge-location-tzs-desc
+  recognitionPatterns:
+  - scp-knowledge-term-tzs-name
+  - scp-knowledge-location-tzs-name
+  - scp-knowledge-location-tzs-patterns
+
+- type: scpKnowledge
+  id: ScpKnowledgeLocationLightContainmentZone
+  parent: BaseScpKnowledgeLocation
+  displayName: scp-knowledge-location-lzs-name
+  abbreviations:
+  - scp-knowledge-term-lzs-name
+  description: scp-knowledge-location-lzs-desc
+  recognitionPatterns:
+  - scp-knowledge-term-lzs-name
+  - scp-knowledge-location-lzs-name
+  - scp-knowledge-location-lzs-patterns
+
+- type: scpKnowledge
+  id: ScpKnowledgeLocationClassDContainmentZone
+  parent: BaseScpKnowledgeLocation
+  displayName: scp-knowledge-location-zsd-name
+  abbreviations:
+  - scp-knowledge-location-zsd-abbr
+  description: scp-knowledge-location-zsd-desc
+  recognitionPatterns:
+  - scp-knowledge-location-zsd-abbr
+  - scp-knowledge-location-zsd-name
+  - scp-knowledge-location-zsd-patterns
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp035
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp035-name
+  description: scp-knowledge-scp035-desc
+  recognitionPatterns:
+  - scp-knowledge-scp035-designation
+  - scp-knowledge-scp035-object
+  entityPrototypes:
+  - ClothingMaskScp035
+  - MobServant035
+  knownExamineText: scp-knowledge-scp035-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp049
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp049-name
+  description: scp-knowledge-scp049-desc
+  recognitionPatterns:
+  - scp-knowledge-scp049-designation
+  - scp-knowledge-scp049-object
+  entityPrototypes:
+  - Scp049
+  - Scp049AlternativeCanon
+  - Scp049AlternativeRobotic
+  - Scp049AlternativeOldFashioned
+  knownExamineText: scp-knowledge-scp049-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp082
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp082-name
+  description: scp-knowledge-scp082-desc
+  recognitionPatterns:
+  - scp-knowledge-scp082-designation
+  - scp-knowledge-scp082-object
+  entityPrototypes:
+  - Scp082
+  knownExamineText: scp-knowledge-scp082-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp096
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp096-name
+  description: scp-knowledge-scp096-desc
+  recognitionPatterns:
+  - scp-knowledge-scp096-designation
+  - scp-knowledge-scp096-object
+  entityPrototypes:
+  - Scp096
+  knownExamineText: scp-knowledge-scp096-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp106
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp106-name
+  description: scp-knowledge-scp106-desc
+  recognitionPatterns:
+  - scp-knowledge-scp106-designation
+  - scp-knowledge-scp106-object
+  entityPrototypes:
+  - Scp106
+  knownExamineText: scp-knowledge-scp106-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp131
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp131-name
+  description: scp-knowledge-scp131-desc
+  recognitionPatterns:
+  - scp-knowledge-scp131-designation
+  - scp-knowledge-scp131-object
+  entityPrototypes:
+  - Scp131A
+  - Scp131B
+  knownExamineText: scp-knowledge-scp131-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp173
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp173-name
+  description: scp-knowledge-scp173-desc
+  recognitionPatterns:
+  - scp-knowledge-scp173-designation
+  - scp-knowledge-scp173-object
+  - scp-knowledge-scp173-nickname
+  entityPrototypes:
+  - Scp173
+  knownExamineText: scp-knowledge-scp173-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp247
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp247-name
+  description: scp-knowledge-scp247-desc
+  recognitionPatterns:
+  - scp-knowledge-scp247-designation
+  - scp-knowledge-scp247-object
+  entityPrototypes:
+  - Scp247
+  knownExamineText: scp-knowledge-scp247-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp457
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp457-name
+  description: scp-knowledge-scp457-desc
+  recognitionPatterns:
+  - scp-knowledge-scp457-designation
+  - scp-knowledge-scp457-object
+  entityPrototypes:
+  - Scp457
+  knownExamineText: scp-knowledge-scp457-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp939
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp939-name
+  description: scp-knowledge-scp939-desc
+  recognitionPatterns:
+  - scp-knowledge-scp939-designation
+  - scp-knowledge-scp939-object
+  entityPrototypes:
+  - Scp939
+  knownExamineText: scp-knowledge-scp939-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp999
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp999-name
+  description: scp-knowledge-scp999-desc
+  recognitionPatterns:
+  - scp-knowledge-scp999-designation
+  - scp-knowledge-scp999-object
+  entityPrototypes:
+  - Scp999
+  knownExamineText: scp-knowledge-scp999-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp079
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp079-name
+  description: scp-knowledge-scp079-desc
+  recognitionPatterns:
+  - scp-knowledge-scp079-designation
+  - scp-knowledge-scp079-object
+  entityPrototypes:
+  - Scp079Held
+  - PlayerScp079Empty
+  - Scp079EnabledFace
+  - Scp079Brain
+  - Scp079Holo
+  - Scp079HoloLocal
+  knownExamineText: scp-knowledge-scp079-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp005
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp005-name
+  description: scp-knowledge-scp005-desc
+  recognitionPatterns:
+  - scp-knowledge-scp005-designation
+  - scp-knowledge-scp005-object
+  entityPrototypes:
+  - Scp005
+  knownExamineText: scp-knowledge-scp005-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp012
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp012-name
+  description: scp-knowledge-scp012-desc
+  recognitionPatterns:
+  - scp-knowledge-scp012-designation
+  - scp-knowledge-scp012-object
+  entityPrototypes:
+  - Scp012
+  knownExamineText: scp-knowledge-scp012-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp018
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp018-name
+  description: scp-knowledge-scp018-desc
+  recognitionPatterns:
+  - scp-knowledge-scp018-designation
+  - scp-knowledge-scp018-object
+  entityPrototypes:
+  - Scp018
+  knownExamineText: scp-knowledge-scp018-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp101
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp101-name
+  description: scp-knowledge-scp101-desc
+  recognitionPatterns:
+  - scp-knowledge-scp101-designation
+  - scp-knowledge-scp101-object
+  entityPrototypes:
+  - Scp101
+  knownExamineText: scp-knowledge-scp101-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp109
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp109-name
+  description: scp-knowledge-scp109-desc
+  recognitionPatterns:
+  - scp-knowledge-scp109-designation
+  - scp-knowledge-scp109-object
+  entityPrototypes:
+  - Scp109
+  knownExamineText: scp-knowledge-scp109-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp124
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp124-name
+  description: scp-knowledge-scp124-desc
+  recognitionPatterns:
+  - scp-knowledge-scp124-designation
+  - scp-knowledge-scp124-object
+  entityPrototypes:
+  - Scp124
+  - Scp124Soil
+  knownExamineText: scp-knowledge-scp124-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp127
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp127-name
+  description: scp-knowledge-scp127-desc
+  recognitionPatterns:
+  - scp-knowledge-scp127-designation
+  - scp-knowledge-scp127-object
+  entityPrototypes:
+  - Scp127
+  - Scp127Tooth
+  knownExamineText: scp-knowledge-scp127-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp2022
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp2022-name
+  description: scp-knowledge-scp2022-desc
+  recognitionPatterns:
+  - scp-knowledge-scp2022-designation
+  - scp-knowledge-scp2022-object
+  entityPrototypes:
+  - PillScp2022
+  - PillCanisterScp2022
+  knownExamineText: scp-knowledge-scp2022-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp207
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp207-name
+  description: scp-knowledge-scp207-desc
+  recognitionPatterns:
+  - scp-knowledge-scp207-designation
+  - scp-knowledge-scp207-object
+  entityPrototypes:
+  - Scp207Bottle
+  knownExamineText: scp-knowledge-scp207-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp2398
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp2398-name
+  description: scp-knowledge-scp2398-desc
+  recognitionPatterns:
+  - scp-knowledge-scp2398-designation
+  - scp-knowledge-scp2398-object
+  entityPrototypes:
+  - Scp2398
+  knownExamineText: scp-knowledge-scp2398-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp261
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp261-name
+  description: scp-knowledge-scp261-desc
+  recognitionPatterns:
+  - scp-knowledge-scp261-designation
+  - scp-knowledge-scp261-object
+  entityPrototypes:
+  - Scp261
+  knownExamineText: scp-knowledge-scp261-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp268
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp268-name
+  description: scp-knowledge-scp268-desc
+  recognitionPatterns:
+  - scp-knowledge-scp268-designation
+  - scp-knowledge-scp268-object
+  entityPrototypes:
+  - Scp268
+  knownExamineText: scp-knowledge-scp268-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp330
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp330-name
+  description: scp-knowledge-scp330-desc
+  recognitionPatterns:
+  - scp-knowledge-scp330-designation
+  - scp-knowledge-scp330-object
+  entityPrototypes:
+  - Scp330Bowl
+  - Scp330CandyBlue
+  - Scp330CandyRed
+  - Scp330CandyGreen
+  - Scp330CandyYellow
+  - Scp330CandyPink
+  knownExamineText: scp-knowledge-scp330-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp427
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp427-name
+  description: scp-knowledge-scp427-desc
+  recognitionPatterns:
+  - scp-knowledge-scp427-designation
+  - scp-knowledge-scp427-object
+  entityPrototypes:
+  - Scp427
+  knownExamineText: scp-knowledge-scp427-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp500
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp500-name
+  description: scp-knowledge-scp500-desc
+  recognitionPatterns:
+  - scp-knowledge-scp500-designation
+  - scp-knowledge-scp500-object
+  entityPrototypes:
+  - PillScp500
+  - PillCanisterScp500
+  knownExamineText: scp-knowledge-scp500-known
+
+- type: scpKnowledge
+  id: ScpKnowledgeEntityScp714
+  parent: BaseScpKnowledgeEntity
+  displayName: scp-knowledge-scp714-name
+  description: scp-knowledge-scp714-desc
+  recognitionPatterns:
+  - scp-knowledge-scp714-designation
+  - scp-knowledge-scp714-object
+  entityPrototypes:
+  - Scp714
+  knownExamineText: scp-knowledge-scp714-known

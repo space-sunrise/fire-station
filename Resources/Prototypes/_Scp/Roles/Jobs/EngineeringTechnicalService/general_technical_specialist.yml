@@ -1,4 +1,4 @@
-﻿- type: job
+- type: job
   id: GeneralTechnicalSpecialist
   name: job-name-general-technical-specialist
   description: job-description-general-technical-specialist
@@ -26,7 +26,14 @@
     - type: AccessLevel
       level: Two
     - type: ScpRepairableCanSeeExamineHints
-
+    - type: ScpKnowledge
+      knownKnowledge:
+      - ScpKnowledgeTermLightContainmentZone
+      - ScpKnowledgeLocationLightContainmentZone
+      - ScpKnowledgeTermHeavyContainmentZone
+      - ScpKnowledgeLocationHeavyContainmentZone
+      - ScpKnowledgeTermAdministrativeZone
+      - ScpKnowledgeTermExternalAdministrativeZone
 - type: startingGear
   id: GeneralTechnicalSpecialistGear
   equipment:

@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Numerics;
 using Content.Shared.Administration.Logs;
+using Content.Shared._Scp.Knowledge; // Fire added - paper read events for SCP knowledge sources
 using Content.Shared.UserInterface;
 using Content.Shared.Database;
 using Content.Shared.Examine;
@@ -80,6 +81,9 @@ public sealed class PaperSystem : EntitySystem
     {
         entity.Comp.Mode = PaperAction.Read;
         UpdateUserInterface(entity);
+        // Fire added start - notify SCP knowledge sources about paper reading
+        RaiseLocalEvent(new ScpKnowledgePaperReadEvent(entity.Owner, args.User, entity.Comp.Content));
+        // Fire added end
     }
 
     private void OnExamined(Entity<PaperComponent> entity, ref ExaminedEvent args)
@@ -192,11 +196,13 @@ public sealed class PaperSystem : EntitySystem
         if (ev.Cancelled)
             return;
 
-        if (args.Text.Length <= entity.Comp.ContentSize)
+        // Fire edit start - normalize text once and preserve authored content for knowledge-gated paper reading
+        var normalizedText = NormalizePaperContent(args.Text);
+        if (normalizedText.Length <= entity.Comp.ContentSize)
         {
-            SetContent(entity, args.Text);
+            SetContent(entity, normalizedText, args.Actor);
 
-            var paperStatus = string.IsNullOrWhiteSpace(args.Text) ? PaperStatus.Blank : PaperStatus.Written;
+            var paperStatus = string.IsNullOrWhiteSpace(normalizedText) ? PaperStatus.Blank : PaperStatus.Written;
 
             if (TryComp<AppearanceComponent>(entity, out var appearance))
                 _appearance.SetData(entity, PaperVisuals.Status, paperStatus, appearance);
@@ -206,10 +212,11 @@ public sealed class PaperSystem : EntitySystem
 
             _adminLogger.Add(LogType.Chat,
                 LogImpact.Low,
-                $"{ToPrettyString(args.Actor):player} has written on {ToPrettyString(entity):entity} the following text: {args.Text}");
+                $"{ToPrettyString(args.Actor):player} has written on {ToPrettyString(entity):entity} the following text: {normalizedText}");
 
             _audio.PlayPvs(entity.Comp.Sound, entity);
         }
+        // Fire edit end
 
         entity.Comp.Mode = PaperAction.Read;
         UpdateUserInterface(entity);
@@ -283,15 +290,19 @@ public sealed class PaperSystem : EntitySystem
         }
     }
 
-    public void SetContent(EntityUid entity, string content)
+    public void SetContent(EntityUid entity, string content, EntityUid? author = null) // Fire edit - allow callers to record paper authorship for knowledge gating
     {
         if (!TryComp<PaperComponent>(entity, out var paper))
             return;
-        SetContent((entity, paper), content);
+        SetContent((entity, paper), content, author);
     }
 
-    public void SetContent(Entity<PaperComponent> entity, string content)
+    public void SetContent(Entity<PaperComponent> entity, string content, EntityUid? author = null) // Fire edit - propagate paper authorship through shared content updates
     {
+        // Fire added start - normalize content before author-range tracking so stored offsets stay stable
+        content = NormalizePaperContent(content);
+        UpdateKnowledgeAuthorRanges(entity, content, author);
+        // Fire added end
         entity.Comp.Content = content;
         Dirty(entity);
         UpdateUserInterface(entity);
@@ -305,6 +316,201 @@ public sealed class PaperSystem : EntitySystem
 
         _appearance.SetData(entity, PaperVisuals.Status, status, appearance);
     }
+
+    // Fire added start - preserve paper authorship for SCP knowledge paper sources
+    private static void UpdateKnowledgeAuthorRanges(Entity<PaperComponent> entity, string newContent, EntityUid? author)
+    {
+        if (string.Equals(entity.Comp.Content, newContent, StringComparison.Ordinal))
+            return;
+
+        if (author == null)
+        {
+            ResetKnowledgeAuthorRanges(entity.Comp.KnowledgeAuthorRanges, newContent, null);
+            return;
+        }
+
+        var oldContent = entity.Comp.Content;
+        if (oldContent.Length == 0)
+        {
+            ResetKnowledgeAuthorRanges(entity.Comp.KnowledgeAuthorRanges, newContent, author);
+            return;
+        }
+
+        var oldAuthors = BuildKnowledgeAuthorMap(oldContent.Length, entity.Comp.KnowledgeAuthorRanges);
+        var newAuthors = new EntityUid?[newContent.Length];
+        Array.Fill(newAuthors, author);
+
+        CopyUnchangedKnowledgeAuthors(oldContent, newContent, oldAuthors, newAuthors);
+        WriteKnowledgeAuthorRanges(entity.Comp.KnowledgeAuthorRanges, newAuthors);
+    }
+
+    private static void ResetKnowledgeAuthorRanges(
+        List<PaperKnowledgeAuthorRange> ranges,
+        string content,
+        EntityUid? author)
+    {
+        ranges.Clear();
+
+        if (content.Length > 0)
+            ranges.Add(new PaperKnowledgeAuthorRange(0, content.Length, author));
+    }
+
+    private static EntityUid?[] BuildKnowledgeAuthorMap(int length, List<PaperKnowledgeAuthorRange> ranges)
+    {
+        var authors = new EntityUid?[length];
+        if (length == 0)
+            return authors;
+
+        for (var i = 0; i < ranges.Count; i++)
+        {
+            var range = ranges[i];
+            if (range.Length <= 0)
+                continue;
+
+            var start = Math.Clamp(range.Start, 0, length);
+            var end = Math.Clamp(range.End, start, length);
+            for (var index = start; index < end; index++)
+            {
+                authors[index] = range.Author;
+            }
+        }
+
+        return authors;
+    }
+
+    private static void CopyUnchangedKnowledgeAuthors(
+        string oldContent,
+        string newContent,
+        EntityUid?[] oldAuthors,
+        EntityUid?[] newAuthors)
+    {
+        var prefixLength = GetCommonPrefixLength(oldContent, newContent);
+        for (var i = 0; i < prefixLength; i++)
+        {
+            newAuthors[i] = oldAuthors[i];
+        }
+
+        var suffixLength = GetCommonSuffixLength(oldContent, newContent, prefixLength);
+        for (var i = 0; i < suffixLength; i++)
+        {
+            var oldIndex = oldContent.Length - suffixLength + i;
+            var newIndex = newContent.Length - suffixLength + i;
+            newAuthors[newIndex] = oldAuthors[oldIndex];
+        }
+
+        var oldMiddleStart = prefixLength;
+        var oldMiddleLength = oldContent.Length - prefixLength - suffixLength;
+        var newMiddleStart = prefixLength;
+        var newMiddleLength = newContent.Length - prefixLength - suffixLength;
+
+        if (oldMiddleLength <= 0 || newMiddleLength <= 0)
+            return;
+
+        const long maxExactDiffArea = 4_000_000;
+        if ((long) oldMiddleLength * newMiddleLength > maxExactDiffArea)
+            return;
+
+        var lcs = new int[oldMiddleLength + 1, newMiddleLength + 1];
+        for (var oldIndex = 1; oldIndex <= oldMiddleLength; oldIndex++)
+        {
+            var oldCharacter = oldContent[oldMiddleStart + oldIndex - 1];
+            for (var newIndex = 1; newIndex <= newMiddleLength; newIndex++)
+            {
+                if (oldCharacter == newContent[newMiddleStart + newIndex - 1])
+                {
+                    lcs[oldIndex, newIndex] = lcs[oldIndex - 1, newIndex - 1] + 1;
+                    continue;
+                }
+
+                lcs[oldIndex, newIndex] = Math.Max(lcs[oldIndex - 1, newIndex], lcs[oldIndex, newIndex - 1]);
+            }
+        }
+
+        var oldCursor = oldMiddleLength;
+        var newCursor = newMiddleLength;
+
+        while (oldCursor > 0 && newCursor > 0)
+        {
+            var oldIndex = oldMiddleStart + oldCursor - 1;
+            var newIndex = newMiddleStart + newCursor - 1;
+
+            if (oldContent[oldIndex] == newContent[newIndex])
+            {
+                newAuthors[newIndex] = oldAuthors[oldIndex];
+                oldCursor--;
+                newCursor--;
+                continue;
+            }
+
+            if (lcs[oldCursor - 1, newCursor] >= lcs[oldCursor, newCursor - 1])
+            {
+                oldCursor--;
+            }
+            else
+            {
+                newCursor--;
+            }
+        }
+    }
+
+    private static void WriteKnowledgeAuthorRanges(List<PaperKnowledgeAuthorRange> ranges, EntityUid?[] authors)
+    {
+        ranges.Clear();
+        if (authors.Length == 0)
+            return;
+
+        var currentAuthor = authors[0];
+        var currentStart = 0;
+
+        for (var i = 1; i < authors.Length; i++)
+        {
+            if (authors[i] == currentAuthor)
+                continue;
+
+            ranges.Add(new PaperKnowledgeAuthorRange(currentStart, i - currentStart, currentAuthor));
+            currentStart = i;
+            currentAuthor = authors[i];
+        }
+
+        ranges.Add(new PaperKnowledgeAuthorRange(currentStart, authors.Length - currentStart, currentAuthor));
+    }
+
+    private static string NormalizePaperContent(string content)
+    {
+        if (content.Length == 0)
+            return content;
+
+        return content.Replace("\r\n", "\n").Replace('\r', '\n');
+    }
+
+    private static int GetCommonPrefixLength(string left, string right)
+    {
+        var limit = Math.Min(left.Length, right.Length);
+        var index = 0;
+
+        while (index < limit && left[index] == right[index])
+        {
+            index++;
+        }
+
+        return index;
+    }
+
+    private static int GetCommonSuffixLength(string left, string right, int prefixLength)
+    {
+        var suffixLength = 0;
+        var suffixLimit = Math.Min(left.Length - prefixLength, right.Length - prefixLength);
+
+        while (suffixLength < suffixLimit &&
+               left[left.Length - suffixLength - 1] == right[right.Length - suffixLength - 1])
+        {
+            suffixLength++;
+        }
+
+        return suffixLength;
+    }
+
+    // Fire added end
 
     // Sunrise-Start
     public void SetImageContent(Entity<PaperComponent> entity, SpriteSpecifier content, Vector2? scale = null)

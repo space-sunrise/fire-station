@@ -13,6 +13,8 @@ public sealed class PaperBoundUserInterface : BoundUserInterface
     [ViewVariables]
     private PaperWindow? _window;
 
+    private PaperKnowledgeHighlightMessage? _highlightMessage; // Fire added - cache server-provided knowledge highlights between UI messages
+
     public PaperBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
     }
@@ -37,8 +39,34 @@ public sealed class PaperBoundUserInterface : BoundUserInterface
     protected override void UpdateState(BoundUserInterfaceState state)
     {
         base.UpdateState(state);
-        _window?.Populate((PaperBoundUserInterfaceState) state);
+
+        // Fire added start - reuse the server-provided highlighted paper text when it still matches the current state
+        var paperState = (PaperBoundUserInterfaceState) state;
+        string? highlightedText = null;
+
+        if (_highlightMessage != null && paperState.Text == _highlightMessage.RawText)
+            highlightedText = _highlightMessage.HighlightedText;
+        else
+            _highlightMessage = null;
+        // Fire added end
+
+        _window?.Populate(paperState, highlightedText); // Fire edit - pass highlighted paper text for knowledge hint rendering
     }
+
+    // Fire added start - receive out-of-band paper knowledge highlight updates without waiting for a full state resend
+    protected override void ReceiveMessage(BoundUserInterfaceMessage message)
+    {
+        base.ReceiveMessage(message);
+
+        if (message is not PaperKnowledgeHighlightMessage highlight)
+            return;
+
+        _highlightMessage = highlight;
+
+        if (State is PaperBoundUserInterfaceState state)
+            _window?.Populate(state, state.Text == highlight.RawText ? highlight.HighlightedText : null);
+    }
+    // Fire added end
 
     private void InputOnTextEntered(string text)
     {

@@ -1,4 +1,4 @@
-﻿- type: job
+- type: job
   id: HospitalIntern
   name: job-name-hospital-intern
   description: job-description-hospital-intern
@@ -24,7 +24,14 @@
     - type: AccessLevel
       level: Two
   # Интерн исключение из врачей, он пугается трупов, потому что слишком неопытен.
-
+    - type: ScpKnowledge
+      knownKnowledge:
+      - ScpKnowledgeTermLightContainmentZone
+      - ScpKnowledgeLocationLightContainmentZone
+      - ScpKnowledgeTermHeavyContainmentZone
+      - ScpKnowledgeLocationHeavyContainmentZone
+      - ScpKnowledgeTermAdministrativeZone
+      - ScpKnowledgeTermExternalAdministrativeZone
 - type: startingGear
   id: HospitalInternGear
   equipment:

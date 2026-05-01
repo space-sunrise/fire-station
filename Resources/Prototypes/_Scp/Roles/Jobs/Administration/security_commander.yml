@@ -1,4 +1,4 @@
-﻿- type: job
+- type: job
   id: SecurityCommander
   name: job-name-security-commander
   description: job-description-security-commander
@@ -72,7 +72,26 @@
         Terror: 350
       baseJitterTime: 2
       fallOffChance: 0.01
-
+    - type: ScpKnowledge
+      knownKnowledge:
+      - ScpKnowledgeTermLightContainmentZone
+      - ScpKnowledgeLocationLightContainmentZone
+      - ScpKnowledgeTermHeavyContainmentZone
+      - ScpKnowledgeLocationHeavyContainmentZone
+      - ScpKnowledgeTermAdministrativeZone
+      - ScpKnowledgeTermExternalAdministrativeZone
+      - ScpKnowledgeTermSpecialContainmentProcedures
+      - ScpKnowledgeTermContainmentBreach
+      - ScpKnowledgeTermContainmentRestoration
+      - ScpKnowledgeEntityScp035
+      - ScpKnowledgeEntityScp049
+      - ScpKnowledgeEntityScp082
+      - ScpKnowledgeEntityScp096
+      - ScpKnowledgeEntityScp106
+      - ScpKnowledgeEntityScp173
+      - ScpKnowledgeEntityScp457
+      - ScpKnowledgeEntityScp939
+      - ScpKnowledgeEntityScp079
 - type: startingGear
   id: SecurityCommanderGear
   equipment:
