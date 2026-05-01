@@ -10513,3 +10513,13 @@
   id: 436
   time: '2026-04-30T18:02:40.0000000+00:00'
   url: https://github.com/space-sunrise/project-fire/pull/976
+- author: Wardex
+  changes:
+  - message: "Scp173 \u0442\u0435\u043F\u0435\u0440\u044C \u0438\u0433\u043D\u043E\
+      \u0440\u0438\u0440\u0443\u0435\u0442 \u043B\u044E\u0431\u0443\u044E \u0437\u0430\
+      \u0449\u0438\u0442\u0443 \u043F\u0440\u0438 \u0441\u0432\u0435\u0440\u0442\u044B\
+      \u0432\u0430\u043D\u0438\u0438 \u0448\u0435\u0438."
+    type: Fix
+  id: 437
+  time: '2026-05-01T11:54:21.0000000+00:00'
+  url: https://github.com/space-sunrise/project-fire/pull/987
