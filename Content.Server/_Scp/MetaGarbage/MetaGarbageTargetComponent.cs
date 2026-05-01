@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using System.Text.Json;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
@@ -26,6 +27,13 @@ public sealed partial class MetaGarbageTargetComponent : Component
     /// </summary>
     [DataField]
     public Dictionary<ProtoId<ReagentPrototype>, float> ReagentSaveModifiers = new ();
+
+    /// <summary>
+    /// Increment this when the map layout changes significantly enough
+    /// that old garbage positions would be invalid. Mismatch skips spawn.
+    /// </summary>
+    [DataField]
+    public int MapVersion = 1;
 }
 
 /// <summary>
@@ -42,7 +50,8 @@ public readonly record struct StationMetaGarbageData(
     Dictionary<string, MetaGarbageSolutionProxy>? LiquidData,
     bool Replace = false,
     string? ContainerName = null,
-    LightBulbState? BulbState = null);
+    LightBulbState? BulbState = null,
+    Dictionary<string, JsonElement>? ExtraData = null);
 
 // Все что находится ниже существует потому, что блядская система реагентов такая блядская
 // Неким образом после рестарта раунда стандартные структуры содержащие информацию о реагентах теряют все знания об объеме жидкостей

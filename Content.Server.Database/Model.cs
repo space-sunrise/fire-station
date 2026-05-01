@@ -50,6 +50,10 @@ namespace Content.Server.Database
         public DbSet<MentorHelpTicket> MentorHelpTickets { get; set; } = default!;
         public DbSet<MentorHelpMessage> MentorHelpMessages { get; set; } = default!;
 
+        // Sunrise-Start
+        public DbSet<MetaGarbageEntry> MetaGarbage { get; set; } = null!;
+        // Sunrise-End
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Preference>()
@@ -1487,4 +1491,36 @@ namespace Content.Server.Database
         /// </summary>
         public bool IsStaffOnly { get; set; } = false;
     }
+
+    // Sunrise-Start
+    /// <summary>
+    /// Persists meta-garbage data between server restarts, keyed by map prototype.
+    /// </summary>
+    [Index(nameof(MapPrototype), IsUnique = true)]
+    [Table("meta_garbage")]
+    public sealed class MetaGarbageEntry
+    {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        /// <summary>
+        /// The map/station prototype ID this garbage belongs to.
+        /// </summary>
+        [Required, MaxLength(256)]
+        public string MapPrototype { get; set; } = string.Empty;
+
+        /// <summary>
+        /// JSON-serialized list of garbage data.
+        /// </summary>
+        [Required]
+        public string Data { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Map version at time of save. If mismatched on load, spawn is skipped.
+        /// </summary>
+        public int MapVersion { get; set; }
+
+        public DateTime SavedAt { get; set; }
+    }
+    // Sunrise-End
 }

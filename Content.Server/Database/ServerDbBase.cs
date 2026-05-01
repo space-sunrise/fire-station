@@ -2170,5 +2170,39 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
         {
 
         }
+        // Sunrise-Start
+        public async Task<MetaGarbageEntry?> GetMetaGarbageAsync(string mapPrototype, CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+            return await db.DbContext.MetaGarbage
+                .FirstOrDefaultAsync(e => e.MapPrototype == mapPrototype, cancel);
+        }
+
+        public async Task SaveMetaGarbageAsync(string mapPrototype, string data, int mapVersion, DateTime savedAt, CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+            var existing = await db.DbContext.MetaGarbage
+                .FirstOrDefaultAsync(e => e.MapPrototype == mapPrototype, cancel);
+
+            if (existing == null)
+            {
+                db.DbContext.MetaGarbage.Add(new MetaGarbageEntry
+                {
+                    MapPrototype = mapPrototype,
+                    Data = data,
+                    MapVersion = mapVersion,
+                    SavedAt = savedAt
+                });
+            }
+            else
+            {
+                existing.Data = data;
+                existing.MapVersion = mapVersion;
+                existing.SavedAt = savedAt;
+            }
+
+            await db.DbContext.SaveChangesAsync(cancel);
+        }
+        // Sunrise-End
     }
 }

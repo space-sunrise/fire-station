@@ -394,6 +394,21 @@ namespace Content.Server.Database
         Task<List<MentorHelpTicket>> GetClosedMentorHelpTicketsAsync();
 
         #endregion
+
+        #region MetaGarbage
+
+        /// <summary>
+        /// Gets persisted garbage data for a given map prototype.
+        /// Returns null if no data exists.
+        /// </summary>
+        Task<MetaGarbageEntry?> GetMetaGarbageAsync(string mapPrototype, CancellationToken cancel = default);
+
+        /// <summary>
+        /// Upserts garbage data for a given map prototype.
+        /// </summary>
+        Task SaveMetaGarbageAsync(string mapPrototype, string data, int mapVersion, DateTime savedAt, CancellationToken cancel = default);
+
+        #endregion
         // Sunrise-End
     }
 
@@ -1383,6 +1398,20 @@ namespace Content.Server.Database
                 return null;
             }
         }
+
+        // Sunrise-Start
+        public Task<MetaGarbageEntry?> GetMetaGarbageAsync(string mapPrototype, CancellationToken cancel = default)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetMetaGarbageAsync(mapPrototype, cancel));
+        }
+
+        public Task SaveMetaGarbageAsync(string mapPrototype, string data, int mapVersion, DateTime savedAt, CancellationToken cancel = default)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SaveMetaGarbageAsync(mapPrototype, data, mapVersion, savedAt, cancel));
+        }
+        // Sunrise-End
     }
 
     public sealed record PlayTimeUpdate(NetUserId User, string Tracker, TimeSpan Time);

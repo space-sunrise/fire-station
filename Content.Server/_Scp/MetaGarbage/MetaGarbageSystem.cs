@@ -1,5 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System.Text.Json;
+using System.Threading.Tasks;
 using Content.Server._Scp.Misc;
+using Content.Server.Database;
 using Content.Server.Light.EntitySystems;
 using Content.Server.Station.Events;
 using Content.Server.Station.Systems;
@@ -35,11 +39,13 @@ public sealed partial class MetaGarbageSystem : EntitySystem
     [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
     [Dependency] private readonly LightBulbSystem _bulb = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly IServerDbManager _db = default!;
 
     private static readonly HashSet<ProtoId<TagPrototype>> AllowedTags = [ "Trash", "MetaGarbageSavable" ];
     private static readonly HashSet<ProtoId<TagPrototype>> ForbiddenTags = [ "MetaGarbagePreventSaving" ];
     private static readonly ProtoId<TagPrototype> ReplaceTag = "MetaGarbageReplace";
     private static readonly ProtoId<TagPrototype> ContainerAllowedTag = "MetaGarbageCanBeSpawnedInContainer";
+    private static readonly string SaveDirectory = "data/meta_garbage";
 
     /// <summary>
     /// Сохраненный мусор, который будет передаваться из раунда в раунд.
@@ -67,15 +73,140 @@ public sealed partial class MetaGarbageSystem : EntitySystem
 
     private void OnMapInit(Entity<MetaGarbageTargetComponent> ent, ref StationPostInitEvent args)
     {
-        if (!_enableSpawningWithoutRule)
-            return;
-
-        TrySpawnGarbage((ent, ent.Comp, args.Station.Comp));
+        var stationComp = args.Station.Comp;
+        _ = LoadFromDbAndSpawn(ent, stationComp);
     }
 
     private void OnRoundEnded(RealRoundEndedMessage args)
     {
-        TrySaveGarbage();
+        if (!TrySaveGarbage())
+            return;
+
+        try
+        {
+            Directory.CreateDirectory(SaveDirectory);
+        }
+        catch (Exception e)
+        {
+            Log.Error($"[MetaGarbage] Failed to create save directory: {e}");
+            return;
+        }
+
+        // Iterate over stations that actually exist this round.
+        // Iterating CachedGarbage could include stale entries from previous rounds,
+        // and skipping CachedGarbage for empty stations would leave stale files on disk.
+        var query = EntityQueryEnumerator<MetaGarbageTargetComponent, StationDataComponent>();
+        while (query.MoveNext(out var uid, out var comp, out _))
+        {
+            var stationProto = Prototype(uid);
+            if (stationProto == null)
+                continue;
+
+            var dataList = CachedGarbage.GetValueOrDefault(stationProto) ?? [];
+            var json = MetaGarbageSerializer.Serialize(dataList);
+            var version = comp.MapVersion;
+            var savedAt = DateTime.UtcNow;
+
+            var payload = JsonSerializer.Serialize(new MetaGarbageFileSave
+            {
+                MapVersion = version,
+                SavedAt = savedAt,
+                Data = json
+            });
+
+            var path = Path.Combine(SaveDirectory, $"{stationProto.ID}.json");
+
+            try
+            {
+                File.WriteAllText(path, payload);
+                Log.Info($"[MetaGarbage] Saved {dataList.Count} items to file for {stationProto.ID}");
+            }
+            catch (Exception e)
+            {
+                Log.Error($"[MetaGarbage] Failed to write save file for {stationProto.ID}: {e}");
+            }
+
+            // Fire-and-forget DB backup with explicit fault logging
+            _ = _db.SaveMetaGarbageAsync(stationProto.ID, json, version, savedAt)
+                .ContinueWith(t => Log.Error($"[MetaGarbage] DB save failed for {stationProto.ID}: {t.Exception}"), TaskContinuationOptions.OnlyOnFaulted);
+        }
+    }
+
+    private async Task LoadFromDbAndSpawn(Entity<MetaGarbageTargetComponent> ent, StationDataComponent stationComp)
+    {
+        var proto = Prototype(ent);
+        if (proto == null)
+            return;
+
+        if (!CachedGarbage.ContainsKey(proto))
+        {
+            var loaded = await TryLoadFromFile(proto, ent.Comp.MapVersion)
+                         || await TryLoadFromDb(proto, ent.Comp.MapVersion);
+
+            if (!loaded)
+                Log.Debug($"[MetaGarbage] No valid saved data for {proto.ID}");
+        }
+
+        if (CachedGarbage.ContainsKey(proto))
+            TrySpawnGarbage((ent, ent.Comp, stationComp));
+    }
+
+    private async Task<bool> TryLoadFromFile(EntityPrototype proto, int currentMapVersion)
+    {
+        var filePath = Path.Combine(SaveDirectory, $"{proto.ID}.json");
+        if (!File.Exists(filePath))
+            return false;
+
+        try
+        {
+            var payload = JsonSerializer.Deserialize<MetaGarbageFileSave>(
+                await File.ReadAllTextAsync(filePath));
+
+            if (payload == null)
+                return false;
+
+            if (payload.MapVersion != currentMapVersion)
+            {
+                Log.Warning($"[MetaGarbage] Map version mismatch for {proto.ID} (file): " +
+                            $"saved={payload.MapVersion} current={currentMapVersion}. Trying DB fallback.");
+                return false;
+            }
+
+            CachedGarbage[proto] = MetaGarbageSerializer.Deserialize(payload.Data);
+            Log.Info($"[MetaGarbage] Loaded {CachedGarbage[proto].Count} items from file for {proto.ID}");
+            return true;
+        }
+        catch (Exception e)
+        {
+            Log.Error($"[MetaGarbage] Failed to load file for {proto.ID}: {e}. Trying DB fallback.");
+            return false;
+        }
+    }
+
+    private async Task<bool> TryLoadFromDb(EntityPrototype proto, int currentMapVersion)
+    {
+        try
+        {
+            var entry = await _db.GetMetaGarbageAsync(proto.ID);
+            if (entry == null)
+                return false;
+
+            if (entry.MapVersion != currentMapVersion)
+            {
+                Log.Warning($"[MetaGarbage] Map version mismatch for {proto.ID} (DB): " +
+                            $"saved={entry.MapVersion} current={currentMapVersion}. Skipping spawn.");
+                return false;
+            }
+
+            CachedGarbage[proto] = MetaGarbageSerializer.Deserialize(entry.Data);
+            Log.Info($"[MetaGarbage] Loaded {CachedGarbage[proto].Count} items from DB for {proto.ID}");
+            return true;
+        }
+        catch (Exception e)
+        {
+            Log.Error($"[MetaGarbage] Failed to load from DB for {proto.ID}: {e}");
+            return false;
+        }
     }
 
     /// <summary>
@@ -142,6 +273,12 @@ public sealed partial class MetaGarbageSystem : EntitySystem
             TrySetBulbState(item, data.BulbState);
             TryInsertIntoContainer(item, coords, data.ContainerName);
 
+            if (data.ExtraData != null)
+            {
+                var restoreEv = new MetaGarbageRestoreEvent(data.ExtraData);
+                RaiseLocalEvent(item, ref restoreEv);
+            }
+
             spawnedCount++;
             Log.Debug($"Spawned {data.Prototype}|{item} at {data.Position} on map {mapId}|{Name(ent)}");
         }
@@ -167,7 +304,9 @@ public sealed partial class MetaGarbageSystem : EntitySystem
             if (station != itemStation)
                 continue;
 
-            var proto = Prototype(uid);
+            // Use EntityPrototype from metadata instead of Prototype() to get the exact
+            // spawned prototype ID rather than a resolved parent prototype
+            var proto = MetaData(uid).EntityPrototype;
             if (proto == null)
                 continue;
 
@@ -259,7 +398,11 @@ public sealed partial class MetaGarbageSystem : EntitySystem
         var containerName = _container.TryGetOuterContainer(ent, ent.Comp, out var container) ? container.ID : null;
         LightBulbState? bulbState = TryComp<LightBulbComponent>(ent, out var bulb) ? bulb.State : null;
 
-        var data = new StationMetaGarbageData(targetProto, position, rotation, liquid, replace, containerName, bulbState);
+        var extraData = new Dictionary<string, JsonElement>();
+        var saveEv = new MetaGarbageSaveEvent(extraData);
+        RaiseLocalEvent(ent, ref saveEv);
+
+        var data = new StationMetaGarbageData(targetProto, position, rotation, liquid, replace, containerName, bulbState, extraData.Count > 0 ? extraData : null);
 
         // Добавляем в словарь данные.
         // Ключ - айди прототипа карты, чтобы разные карты имели разный набор мусора с прошлых смен
@@ -332,7 +475,7 @@ public sealed partial class MetaGarbageSystem : EntitySystem
         found = null;
         foreach (var ent in _lookup.GetEntitiesInRange(coords, AlreadySpawnedItemsSearchRadius))
         {
-            var prototype = Prototype(ent);
+            var prototype = MetaData(ent).EntityPrototype;
             if (prototype == null)
                 continue;
 
@@ -452,8 +595,8 @@ public sealed partial class MetaGarbageSystem : EntitySystem
     /// </summary>
     private bool IsSameItem(EntityUid uid, EntityUid other)
     {
-        var uidProto = Prototype(uid);
-        var otherProto = Prototype(other);
+        var uidProto = MetaData(uid).EntityPrototype;
+        var otherProto = MetaData(other).EntityPrototype;
 
         return uidProto == otherProto;
     }

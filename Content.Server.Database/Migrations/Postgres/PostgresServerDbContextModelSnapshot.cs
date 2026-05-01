@@ -892,6 +892,44 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.ToTable("mentor_help_tickets", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.MetaGarbageEntry", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("meta_garbage_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Data")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("data");
+
+                    b.Property<string>("MapPrototype")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("map_prototype");
+
+                    b.Property<int>("MapVersion")
+                        .HasColumnType("integer")
+                        .HasColumnName("map_version");
+
+                    b.Property<DateTime>("SavedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("saved_at");
+
+                    b.HasKey("Id")
+                        .HasName("PK_meta_garbage");
+
+                    b.HasIndex("MapPrototype")
+                        .IsUnique()
+                        .HasDatabaseName("IX_meta_garbage_map_prototype");
+
+                    b.ToTable("meta_garbage", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.PlayTime", b =>
                 {
                     b.Property<int>("Id")
