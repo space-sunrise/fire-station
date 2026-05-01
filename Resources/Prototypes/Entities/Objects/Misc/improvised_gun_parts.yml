@@ -23,17 +23,16 @@
   name: rifle stock
   description: A robust wooden stock, used in the creation of firearms. #Same as above
   components:
-  - type: Item
-    storedRotation: -90
-    size: Normal
-    # size: Normal
-  - type: Sprite
-    sprite: Objects/Misc/rifle_stock.rsi
-    state: icon
-  - type: Construction
-    graph: RifleStockGraph
-    node: riflestock
-  - type: Tag
-    tags:
-    - RifleStock
-    - Wooden
+    - type: Item
+      storedRotation: -90
+      # size: Normal
+    - type: Sprite
+      sprite: Objects/Misc/rifle_stock.rsi
+      state: icon
+    - type: Construction
+      graph: RifleStockGraph
+      node: riflestock
+    - type: Tag
+      tags:
+      - RifleStock
+      - Wooden
