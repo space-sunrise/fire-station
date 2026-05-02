@@ -1,14 +1,11 @@
 using Content.Shared.Mech;
 using Content.Shared.Mech.Components;
-using Content.Shared.Storage.Components;
 using Content.Shared.Weapons.Melee.Events;
-using Robust.Shared.Containers;
 
 namespace Content.Shared._Scp.Other.ScpPossibilities;
 
 public abstract partial class SharedScpPossibilitiesSystem : EntitySystem
 {
-    [Dependency] private readonly SharedContainerSystem _container = default!;
     public override void Initialize()
     {
         base.Initialize();

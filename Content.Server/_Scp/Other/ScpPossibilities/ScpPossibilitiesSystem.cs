@@ -7,7 +7,7 @@ using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Other.ScpPossibilities;
 
-public sealed class ScpPossibilitiesSystem : SharedScpPossibilitiesSystem
+public sealed partial class ScpPossibilitiesSystem : SharedScpPossibilitiesSystem
 {
     [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
@@ -25,14 +25,12 @@ public sealed class ScpPossibilitiesSystem : SharedScpPossibilitiesSystem
     {
         foreach (var target in args.HitEntities)
         {
-            if (!TryComp<EntityStorageComponent>(target, out _))
+            if (!HasComp<EntityStorageComponent>(target))
                 continue;
 
             if (_random.Prob(ent.Comp.OpenContainerChance))
-            {
                 if (_entityStorage.TryOpenStorage(ent, target, false, false))
                     continue;
-            }
 
             _popup.PopupEntity(Loc.GetString("scp-possibilities-open-container-failed"), target, ent, Shared.Popups.PopupType.Medium);
         }
