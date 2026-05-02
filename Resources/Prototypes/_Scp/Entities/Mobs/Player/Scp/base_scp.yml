@@ -165,6 +165,7 @@
   components:
   - type: FearSource
     phobiaType: Exoremophobia
+  - type: ScpPossibilities
   - type: WatchingTarget
   - type: ProximityReceiver
 

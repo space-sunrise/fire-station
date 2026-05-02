@@ -44,6 +44,7 @@
         - FullTileMask
         layer:
         - GlassLayer
+  - type: InteractionOutline
   - type: Airtight
     noAirWhenFullyAirBlocked: false
     airBlockedDirection:
@@ -88,6 +89,7 @@
         - FullTileMask
         layer:
         - GlassLayer
+  - type: InteractionOutline
   - type: Airtight
     noAirWhenFullyAirBlocked: false
     airBlockedDirection:
