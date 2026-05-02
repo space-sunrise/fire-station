@@ -56,7 +56,7 @@ public sealed class ScpDamageOnCollideSystem : EntitySystem
             if (!CheckParameter(ent, target, param, requireVelocity))
                 continue;
 
-            _damageable.TryChangeDamage(target, param.Damage, ignoreVariance: !param.UseVariance);
+            _damageable.TryChangeDamage(target, param.Damage, ignoreVariance: !param.UseVariance, ignoreResistances: param.IgnoreResistances);
 
             _audio.PlayPredicted(param.TargetSound, target, ent);
             _audio.PlayPredicted(param.EntitySound, ent, ent);

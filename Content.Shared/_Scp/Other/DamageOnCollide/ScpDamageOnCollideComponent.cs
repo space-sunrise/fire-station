@@ -39,4 +39,7 @@ public partial struct DamageOnCollideParameters()
 
     [DataField]
     public bool UseVariance = true;
+
+    [DataField]
+    public bool IgnoreResistances;
 }
