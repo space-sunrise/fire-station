@@ -146,7 +146,6 @@ public sealed class Scp933TapeSystem : EntitySystem
             return;
 
         EnsureComp<MutedComponent>(args.Equipee);
-        tapeMask.Comp.MutedByScp933 = true;
         Dirty(tapeMask);
     }
 
@@ -158,12 +157,7 @@ public sealed class Scp933TapeSystem : EntitySystem
         if (HasComp<Scp933FaceTornComponent>(args.Equipee))
             return;
 
-        if (tapeMask.Comp.MutedByScp933)
-        {
-            RemComp<MutedComponent>(args.Equipee);
-            tapeMask.Comp.MutedByScp933 = false;
-            Dirty(tapeMask);
-        }
+        RemComp<MutedComponent>(args.Equipee);
     }
 
     private void OnRipTapeDoAfter(Entity<HumanoidAppearanceComponent> target, ref Scp933RipTapeDoAfterEvent args)
@@ -455,7 +449,7 @@ public sealed class Scp933TapeSystem : EntitySystem
 
         if (emergencyMode || !_master.HasAnyScp933Host())
         {
-            _master.ConvertToMaster(target);
+            EnsureComp<Scp933MasterComponent>(target);
             _master.ApplyHostBuffs(target);
         }
         else

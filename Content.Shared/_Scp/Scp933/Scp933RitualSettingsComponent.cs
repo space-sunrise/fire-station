@@ -1,8 +1,7 @@
-using Content.Shared.Damage.Prototypes;
+using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Robust.Shared.GameStates;
-using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp933;
 
@@ -42,7 +41,19 @@ public sealed partial class Scp933RitualSettingsComponent : Component
     /// Урон ближнего боя для хоста.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public HostMeleeSettings MeleeSettings = new();
+    public DamageSpecifier MeleeDamage = new() { DamageDict = { ["Blunt"] = 25 } };
+
+    /// <summary>
+    /// Дальность атаки ближнего боя для хоста.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float MeleeRange = 1.5f;
+
+    /// <summary>
+    /// Угол атаки ближнего боя для хоста.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float MeleeAngle = 60;
 
     // === Visuals (migrated from Scp933VisualEffectsComponent) ===
 
@@ -85,32 +96,4 @@ public sealed partial class MobHealthThresholds
     /// </summary>
     [DataField]
     public FixedPoint2 Dead = 800;
-}
-
-[DataDefinition, Serializable]
-public sealed partial class HostMeleeSettings
-{
-    /// <summary>
-    /// Тип урона.
-    /// </summary>
-    [DataField]
-    public ProtoId<DamageTypePrototype> DamageType = "Blunt";
-
-    /// <summary>
-    /// Количество урона.
-    /// </summary>
-    [DataField]
-    public FixedPoint2 DamageAmount = 25;
-
-    /// <summary>
-    /// Дальность атаки.
-    /// </summary>
-    [DataField]
-    public float Range = 1.5f;
-
-    /// <summary>
-    /// Угол атаки.
-    /// </summary>
-    [DataField]
-    public float Angle = 60;
 }

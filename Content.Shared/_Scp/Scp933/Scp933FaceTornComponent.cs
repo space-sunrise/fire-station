@@ -16,11 +16,4 @@ public sealed partial class Scp933FaceTornComponent : Component
     [ViewVariables(VVAccess.ReadOnly)]
     public EntityUid? TornBy;
 
-    /// <summary>
-    /// SCP-933 добавил MutedComponent на эту жертву.
-    /// Используется для корректного снятия мута.
-    /// </summary>
-    [AutoNetworkedField]
-    [ViewVariables(VVAccess.ReadOnly)]
-    public bool MutedByScp933;
 }

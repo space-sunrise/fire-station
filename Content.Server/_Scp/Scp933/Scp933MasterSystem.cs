@@ -1,6 +1,5 @@
 using Content.Shared._Scp.Scp933;
 using Content.Shared._Scp.Fear.Components;
-using Content.Shared.Damage.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
@@ -52,8 +51,7 @@ public sealed class Scp933MasterSystem : SharedScp933MasterSystem
 
     private void OnFaceTornShutdown(Entity<Scp933FaceTornComponent> ent, ref ComponentShutdown args)
     {
-        if (ent.Comp.MutedByScp933)
-            RemComp<MutedComponent>(ent);
+        RemComp<MutedComponent>(ent);
 
         if (ent.Comp.TornBy is not { } bearer)
             return;
@@ -86,10 +84,7 @@ public sealed class Scp933MasterSystem : SharedScp933MasterSystem
         RemCompDeferred<FearComponent>(uid);
 
         if (ritualSettings.HealHostOnEmerge)
-        {
-            if (HasComp<DamageableComponent>(uid))
-                _damageable.SetAllDamage(uid, FixedPoint2.Zero);
-        }
+            _damageable.SetAllDamage(uid, FixedPoint2.Zero);
 
         if (!TryComp<MobThresholdsComponent>(uid, out var thresholds))
             return;
@@ -102,23 +97,11 @@ public sealed class Scp933MasterSystem : SharedScp933MasterSystem
 
         if (TryComp<MeleeWeaponComponent>(uid, out var melee))
         {
-            var damage = ritualSettings.MeleeSettings;
-            melee.Damage = new() { DamageDict = { [damage.DamageType.Id] = damage.DamageAmount } };
-            melee.Range = damage.Range;
-            melee.Angle = damage.Angle;
+            melee.Damage = ritualSettings.MeleeDamage;
+            melee.Range = ritualSettings.MeleeRange;
+            melee.Angle = ritualSettings.MeleeAngle;
             Dirty(uid, melee);
         }
-    }
-
-    /// <summary>
-    /// Выдать носителю ленты после инкубации.
-    /// </summary>
-    public void ConvertToMaster(EntityUid victim)
-    {
-        if (HasComp<Scp933MasterComponent>(victim))
-            return;
-
-        EnsureComp<Scp933MasterComponent>(victim);
     }
 
     /// <summary>
@@ -137,7 +120,6 @@ public sealed class Scp933MasterSystem : SharedScp933MasterSystem
 
         var torn = EnsureComp<Scp933FaceTornComponent>(victim);
         torn.TornBy = tapeBearer;
-        torn.MutedByScp933 = true;
         Dirty(victim, torn);
         EnsureComp<MutedComponent>(victim);
         TryComp<Scp933RitualSettingsComponent>(victim, out var victimRitual);
@@ -163,7 +145,6 @@ public sealed class Scp933MasterSystem : SharedScp933MasterSystem
         if (!ritualSettings.HealVictimsOnHostEmerge)
             return;
 
-        if (HasComp<DamageableComponent>(victim))
-            _damageable.SetAllDamage(victim, FixedPoint2.Zero);
+        _damageable.SetAllDamage(victim, FixedPoint2.Zero);
     }
 }
