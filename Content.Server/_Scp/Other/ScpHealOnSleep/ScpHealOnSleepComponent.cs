@@ -2,12 +2,11 @@ using Content.Shared.Actions.Components;
 using Content.Shared.Damage;
 using Content.Shared.Mobs;
 using Robust.Shared.Audio;
-using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._Scp.Other.ScpSleep;
+namespace Content.Server._Scp.Other.ScpSleep;
 
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent]
 public sealed partial class ScpHealOnSleepComponent : Component
 {
     [DataField]
