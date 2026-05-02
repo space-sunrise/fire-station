@@ -40,7 +40,7 @@
     protections:
       components:
       - Scp939Protection
-  - type: ScpSleep
+  - type: ScpHealOnSleep
     actionProto: Scp939Sleep
     hibernationHealingRate:
       types:
