@@ -40,7 +40,6 @@
   - type: RepeatingTrigger
     keyOut: basicSpawn
     delay: 180
-    targetUser: false
   - type: SpawnEntityTableOnTrigger
     keysIn: [ basicSpawn ]
     useMapCoords: true
