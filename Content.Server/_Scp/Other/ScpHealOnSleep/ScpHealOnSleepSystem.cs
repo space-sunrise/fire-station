@@ -11,7 +11,7 @@ using Robust.Server.GameObjects;
 
 namespace Content.Server._Scp.Other.ScpSleep;
 
-public sealed class ScpSleepSystem : EntitySystem
+public sealed class ScpHealOnSleepSystem : EntitySystem
 {
     [Dependency] private readonly ActionsSystem _actions = default!;
     [Dependency] private readonly SleepingSystem _sleeping = default!;
