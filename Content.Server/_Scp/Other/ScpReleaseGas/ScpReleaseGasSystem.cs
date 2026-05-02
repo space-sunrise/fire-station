@@ -1,6 +1,5 @@
 using Content.Server.Actions;
 using Content.Shared._Scp.Other.ScpReleaseGas;
-using Content.Shared._Scp.ScpMask;
 using Content.Shared.Trigger;
 
 namespace Content.Server._Scp.Other.ScpReleaseGas;
@@ -8,7 +7,6 @@ namespace Content.Server._Scp.Other.ScpReleaseGas;
 public sealed class ScpReleaseGasSystem : EntitySystem
 {
     [Dependency] private readonly ActionsSystem _actionsSystem = default!;
-    [Dependency] private readonly ScpMaskSystem _scpMask = default!;
 
     public override void Initialize()
     {
@@ -34,17 +32,6 @@ public sealed class ScpReleaseGasSystem : EntitySystem
 
     private void OnAttemptTriggerEvent(Entity<ScpReleaseGasComponent> ent, ref AttemptTriggerEvent args)
     {
-        if (args.Key == null)
-            return;
 
-        if (!ent.Comp.TriggerKeys.Contains(args.Key))
-            return;
-
-        if (_scpMask.TryGetScpMask(ent, out var scpMask))
-        {
-            _scpMask.TryCreatePopup(ent, scpMask);
-            args.Cancelled = true;
-            return;
-        }
     }
 }
