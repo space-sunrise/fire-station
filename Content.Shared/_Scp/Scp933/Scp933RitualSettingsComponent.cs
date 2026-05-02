@@ -1,17 +1,19 @@
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.FixedPoint;
+using Content.Shared.Humanoid;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp933;
 
 /// <summary>
-/// Настройки ритуала SCP-933.
-/// Все параметры ритуала в одном компоненте.
+/// Настройки ритуала SCP-933: хост, жертвы, визуал, бой.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class Scp933RitualSettingsComponent : Component
 {
+    // === Host ===
+
     /// <summary>
     /// Разрешить оживление при переходе в состояние хоста.
     /// </summary>
@@ -31,12 +33,6 @@ public sealed partial class Scp933RitualSettingsComponent : Component
     public bool HealVictimsOnHostEmerge = true;
 
     /// <summary>
-    /// Количество исцеления (фиксированное или процент от максимального).
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public FixedPoint2 HealAmount = FixedPoint2.Zero; // Zero = полное исцеление
-
-    /// <summary>
     /// Пороги здоровья для хоста.
     /// </summary>
     [DataField, AutoNetworkedField]
@@ -48,35 +44,25 @@ public sealed partial class Scp933RitualSettingsComponent : Component
     [DataField, AutoNetworkedField]
     public HostMeleeSettings MeleeSettings = new();
 
-    /// <summary>
-    /// Может ли хост иметь несколько жертв.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public bool AllowMultipleVictims = true;
+    // === Visuals (migrated from Scp933VisualEffectsComponent) ===
 
     /// <summary>
-    /// Максимальное количество жертв.
+    /// Скрывать ли глаза при наложении ленты.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public int MaxVictims = 10;
+    public bool HideEyes = true;
 
     /// <summary>
-    /// Может ли жертва стать хостом после смерти текущего.
+    /// Скрывать ли морду при наложении ленты.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public bool VictimsCanInheritHost = false;
+    public bool HideSnout = true;
 
     /// <summary>
-    /// Требуется ли лента на лице для поддержания статуса хоста.
+    /// Дополнительные слои для скрытия (настройка через YAML).
     /// </summary>
     [DataField, AutoNetworkedField]
-    public bool RequireTapeForHost = false;
-
-    /// <summary>
-    /// Что происходит при смерти хоста.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public HostDeathBehavior OnHostDeath = HostDeathBehavior.TransferToVictim;
+    public List<HumanoidVisualLayers>? AdditionalHiddenLayers;
 }
 
 [DataDefinition, Serializable]
@@ -127,27 +113,4 @@ public sealed partial class HostMeleeSettings
     /// </summary>
     [DataField]
     public float Angle = 60;
-}
-
-public enum HostDeathBehavior : byte
-{
-    /// <summary>
-    /// Все жертвы умирают.
-    /// </summary>
-    AllDie,
-
-    /// <summary>
-    /// Передать хоста первой жертве.
-    /// </summary>
-    TransferToVictim,
-
-    /// <summary>
-    /// Освободить всех жертв.
-    /// </summary>
-    ReleaseVictims,
-
-    /// <summary>
-    /// Ничего не происходит.
-    /// </summary>
-    Nothing,
 }

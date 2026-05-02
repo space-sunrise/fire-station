@@ -140,8 +140,8 @@ public sealed class Scp933MasterSystem : SharedScp933MasterSystem
         torn.MutedByScp933 = true;
         Dirty(victim, torn);
         EnsureComp<MutedComponent>(victim);
-        TryComp<Scp933VisualEffectsComponent>(victim, out var victimVisuals);
-        EraseFaceFor933(victim, victimVisuals);
+        TryComp<Scp933RitualSettingsComponent>(victim, out var victimRitual);
+        EraseFaceFor933(victim, victimRitual);
 
         masterComp.FaceTornVictims.Add(victim);
         Dirty(tapeBearer, masterComp);

@@ -1,7 +1,4 @@
-using System.Linq;
-using Content.Shared.DoAfter;
 using Content.Shared.Humanoid;
-using Robust.Shared.Serialization;
 
 namespace Content.Shared._Scp.Scp933;
 
@@ -15,7 +12,7 @@ public abstract class SharedScp933MasterSystem : EntitySystem
     /// <summary>
     /// Спрятать лицо гуманоида (SCP-933): носитель и жертвы после ритуала.
     /// </summary>
-    public void EraseFaceFor933(EntityUid uid, Scp933VisualEffectsComponent? visualComp = null)
+    public void EraseFaceFor933(EntityUid uid, Scp933RitualSettingsComponent? ritualComp = null)
     {
         if (!TryComp<Scp933PossibleTargetComponent>(uid, out var targetComp) || !targetComp.CanBeFaceTorn)
             return;
@@ -23,27 +20,26 @@ public abstract class SharedScp933MasterSystem : EntitySystem
         if (!TryComp<HumanoidAppearanceComponent>(uid, out var humanoidComp))
             return;
 
-        // Get visual effects from component or use defaults
-        if (visualComp == null)
-            TryComp<Scp933VisualEffectsComponent>(uid, out visualComp);
+        if (ritualComp == null)
+            TryComp<Scp933RitualSettingsComponent>(uid, out ritualComp);
 
         var humanoidEnt = new Entity<HumanoidAppearanceComponent?>(uid, humanoidComp);
-        var layers = GetFaceErasureLayers(visualComp);
+        var layers = GetFaceErasureLayers(ritualComp);
         HumanoidAppearance.SetLayersVisibility(humanoidEnt, layers, false);
     }
 
-    private static List<HumanoidVisualLayers> GetFaceErasureLayers(Scp933VisualEffectsComponent? visualComp)
+    private static List<HumanoidVisualLayers> GetFaceErasureLayers(Scp933RitualSettingsComponent? ritualComp)
     {
         var layers = new List<HumanoidVisualLayers>();
 
-        if (visualComp?.HideEyes == true)
+        if (ritualComp?.HideEyes == true)
             layers.Add(HumanoidVisualLayers.Eyes);
 
-        if (visualComp?.HideSnout == true)
+        if (ritualComp?.HideSnout == true)
             layers.Add(HumanoidVisualLayers.Snout);
 
-        if (visualComp?.AdditionalHiddenLayers != null)
-            layers.AddRange(visualComp.AdditionalHiddenLayers);
+        if (ritualComp?.AdditionalHiddenLayers != null)
+            layers.AddRange(ritualComp.AdditionalHiddenLayers);
 
         if (layers.Count == 0)
         {
@@ -68,31 +64,5 @@ public abstract class SharedScp933MasterSystem : EntitySystem
     protected virtual void TryHealVictim(EntityUid tapeBearer, EntityUid victim)
     {
         // Серверная реализация переопределит это
-    }
-}
-
-[Serializable, NetSerializable]
-public sealed partial class Scp933PeelTapeDoAfterEvent : SimpleDoAfterEvent
-{
-}
-
-[Serializable, NetSerializable]
-public sealed partial class Scp933ApplyTapeDoAfterEvent : SimpleDoAfterEvent
-{
-}
-
-[Serializable, NetSerializable]
-public sealed partial class Scp933RipTapeDoAfterEvent : DoAfterEvent
-{
-    public NetEntity ExpectedMask;
-    public bool EmergencyMode;
-
-    public override DoAfterEvent Clone()
-    {
-        return new Scp933RipTapeDoAfterEvent
-        {
-            ExpectedMask = ExpectedMask,
-            EmergencyMode = EmergencyMode,
-        };
     }
 }

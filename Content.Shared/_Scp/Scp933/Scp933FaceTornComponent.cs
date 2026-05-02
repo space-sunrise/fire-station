@@ -20,6 +20,7 @@ public sealed partial class Scp933FaceTornComponent : Component
     /// SCP-933 добавил MutedComponent на эту жертву.
     /// Используется для корректного снятия мута.
     /// </summary>
-    [DataField, AutoNetworkedField]
+    [AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadOnly)]
     public bool MutedByScp933;
 }

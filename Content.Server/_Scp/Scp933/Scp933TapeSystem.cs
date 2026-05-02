@@ -146,7 +146,6 @@ public sealed class Scp933TapeSystem : EntitySystem
             return;
 
         EnsureComp<MutedComponent>(args.Equipee);
-        EnsureComp<TapedFaceComponent>(args.Equipee);
         tapeMask.Comp.MutedByScp933 = true;
         Dirty(tapeMask);
     }
@@ -155,8 +154,6 @@ public sealed class Scp933TapeSystem : EntitySystem
     {
         if (!tapeMask.Comp.EquipSlots.Contains(args.Slot))
             return;
-
-        RemComp<TapedFaceComponent>(args.Equipee);
 
         if (HasComp<Scp933FaceTornComponent>(args.Equipee))
             return;

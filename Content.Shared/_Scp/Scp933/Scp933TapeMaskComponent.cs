@@ -60,14 +60,16 @@ public sealed partial class Scp933TapeMaskComponent : Component
     /// Одноразовый аварийный срыв без хоста.
     /// После первого успешного применения становится false.
     /// </summary>
-    [DataField, AutoNetworkedField]
+    [AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadOnly)]
     public bool EmergencyRipAvailable = true;
 
     /// <summary>
     /// SCP-933 добавил MutedComponent на этого владельца маски.
     /// Используется для корректного снятия мута при снятии маски.
     /// </summary>
-    [DataField, AutoNetworkedField]
+    [AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadOnly)]
     public bool MutedByScp933;
 
     /// <summary>
