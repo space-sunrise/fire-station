@@ -71,3 +71,21 @@
   alwaysShowInBanPanel: true
   setPreference: false
   applyTraits: false
+
+- type: job
+  id: Scp019
+  name: job-name-scp019
+  description: job-description-scp019
+  playTimeTracker: JobScp019
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 72000 # 20h
+  weight: 965
+  #icon: TODO
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp019MonsterSapient
+  alwaysShowInBanPanel: true
+  setPreference: false
+  applyTraits: false
