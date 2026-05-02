@@ -1,4 +1,3 @@
-
 using Content.Shared.Actions.Components;
 using Content.Shared.Damage;
 using Content.Shared.Mobs;
@@ -9,7 +8,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._Scp.Other.ScpSleep;
 
 [RegisterComponent, NetworkedComponent]
-public sealed partial class ScpSleepComponent : Component
+public sealed partial class ScpHealOnSleepComponent : Component
 {
     [DataField]
     public EntProtoId<ActionComponent> ActionProto = "ScpSleepAction";

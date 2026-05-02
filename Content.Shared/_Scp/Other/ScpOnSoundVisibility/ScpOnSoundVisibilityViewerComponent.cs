@@ -14,7 +14,7 @@ public sealed partial class ScpOnSoundVisibilityViewerComponent : Component
     public bool PoorEyesight;
 
     [DataField]
-    public float PoorEyesightTime = 10f; // Секунды
+    public TimeSpan PoorEyesightTime = TimeSpan.FromSeconds(10f);
 
     [ViewVariables, AutoNetworkedField]
     public TimeSpan? PoorEyesightTimeStart; // Когда начали плохо видеть
@@ -28,10 +28,7 @@ public sealed partial class ScpOnSoundVisibilityViewerComponent : Component
     [DataField]
     public EntityWhitelist Protections = new()
     {
-        Components = new[]
-        {
-            "ScpOnSoundVisibilityProtection"
-        }
+        Components = ["ScpOnSoundVisibilityProtection"]
     };
 
     [DataField]

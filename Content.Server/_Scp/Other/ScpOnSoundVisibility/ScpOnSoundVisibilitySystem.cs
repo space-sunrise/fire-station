@@ -69,7 +69,7 @@ public sealed partial class ScpOnSoundVisibilitySystem : EntitySystem
 
             var timeDifference = _timing.CurTime - viewerComp.PoorEyesightTimeStart.Value;
 
-            if (timeDifference > TimeSpan.FromSeconds(viewerComp.PoorEyesightTime))
+            if (timeDifference > viewerComp.PoorEyesightTime)
             {
                 viewerComp.PoorEyesight = false;
                 viewerComp.PoorEyesightTimeStart = null;

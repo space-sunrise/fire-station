@@ -1,6 +1,8 @@
+using Robust.Shared.GameStates;
+
 namespace Content.Shared._Scp.Other.ScpOnSoundVisibility;
 
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent]
 public sealed partial class ScpOnSoundVisibilityComponent : Component
 {
     public const float InitialVisibilityAcc = 0.001f;
@@ -16,7 +18,4 @@ public sealed partial class ScpOnSoundVisibilityComponent : Component
 
     [DataField]
     public float MaxValue = DefaultMaxValue;
-
-    [DataField]
-    public float SharePhraseRadius = 16f;
 }

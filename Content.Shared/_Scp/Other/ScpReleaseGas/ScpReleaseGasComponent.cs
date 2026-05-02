@@ -12,10 +12,7 @@ public sealed partial class ScpReleaseGasComponent : Component
     public EntProtoId<ActionComponent> ActionProto = "ScpSmokeAction";
 
     [DataField]
-    public EntProtoId SmokeProtoId = "Smoke";
-
-    [DataField]
-    public List<string> KeysOut = new() { "scpSmokeTrigger" };
+    public HashSet<string> TriggerKeys = ["scpSmokeTrigger"];
 
     [ViewVariables]
     public EntityUid? ActionEnt;

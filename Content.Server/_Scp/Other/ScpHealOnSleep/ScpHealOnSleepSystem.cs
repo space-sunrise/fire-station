@@ -13,45 +13,46 @@ namespace Content.Server._Scp.Other.ScpSleep;
 
 public sealed class ScpSleepSystem : EntitySystem
 {
-    [Dependency] private readonly ActionsSystem _actionsSystem = default!;
-    [Dependency] private readonly SleepingSystem _sleepingSystem = default!;
+    [Dependency] private readonly ActionsSystem _actions = default!;
+    [Dependency] private readonly SleepingSystem _sleeping = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
-    [Dependency] private readonly DamageableSystem _damageableSystem = default!;
-    [Dependency] private readonly AppearanceSystem _appearanceSystem = default!;
+    [Dependency] private readonly DamageableSystem _damageable = default!;
+    [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
+
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ScpSleepComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<ScpSleepComponent, ComponentShutdown>(OnShutdown);
+        SubscribeLocalEvent<ScpHealOnSleepComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<ScpHealOnSleepComponent, ComponentShutdown>(OnShutdown);
 
-        SubscribeLocalEvent<ScpSleepComponent, ScpSleepActionEvent>(OnSleepAction);
-        SubscribeLocalEvent<ScpSleepComponent, MobStateChangedEvent>(OnMobStateChanged);
-        SubscribeLocalEvent<ScpSleepComponent, SleepStateChangedEvent>(OnSleepChanged);
+        SubscribeLocalEvent<ScpHealOnSleepComponent, ScpSleepActionEvent>(OnSleepAction);
+        SubscribeLocalEvent<ScpHealOnSleepComponent, MobStateChangedEvent>(OnMobStateChanged);
+        SubscribeLocalEvent<ScpHealOnSleepComponent, SleepStateChangedEvent>(OnSleepChanged);
     }
 
-    private void OnMapInit(Entity<ScpSleepComponent> ent, ref MapInitEvent args)
+    private void OnMapInit(Entity<ScpHealOnSleepComponent> ent, ref MapInitEvent args)
     {
         if (!ent.Comp.AddAction)
             return;
 
-        var actionEnt = _actionsSystem.AddAction(ent, ent.Comp.ActionProto);
+        var actionEnt = _actions.AddAction(ent, ent.Comp.ActionProto);
         ent.Comp.ActionEnt = actionEnt;
     }
 
-    private void OnShutdown(Entity<ScpSleepComponent> ent, ref ComponentShutdown args)
+    private void OnShutdown(Entity<ScpHealOnSleepComponent> ent, ref ComponentShutdown args)
     {
-        _actionsSystem.RemoveAction(ent.Owner, ent.Comp.ActionEnt);
+        _actions.RemoveAction(ent.Owner, ent.Comp.ActionEnt);
         ent.Comp.ActionEnt = null;
     }
 
-    private void OnSleepAction(Entity<ScpSleepComponent> ent, ref ScpSleepActionEvent args)
+    private void OnSleepAction(Entity<ScpHealOnSleepComponent> ent, ref ScpSleepActionEvent args)
     {
         args.Handled = TrySleep(ent, ent.Comp.HibernationDuration);
     }
 
-    private void OnMobStateChanged(Entity<ScpSleepComponent> ent, ref MobStateChangedEvent args)
+    private void OnMobStateChanged(Entity<ScpHealOnSleepComponent> ent, ref MobStateChangedEvent args)
     {
         if (ent.Comp.HibernationStates == null)
             return;
@@ -68,7 +69,7 @@ public sealed class ScpSleepSystem : EntitySystem
         _audio.PlayPvs(ent.Comp.CritSound, ent);
     }
 
-    private void OnSleepChanged(Entity<ScpSleepComponent> ent, ref SleepStateChangedEvent args)
+    private void OnSleepChanged(Entity<ScpHealOnSleepComponent> ent, ref SleepStateChangedEvent args)
     {
         if (TryComp<BloodstreamComponent>(ent, out var bloodstreamComponent))
         {
@@ -80,15 +81,15 @@ public sealed class ScpSleepSystem : EntitySystem
             DirtyField(ent, bloodstreamComponent, nameof(BloodstreamComponent.BloodRefreshAmount));
         }
 
-        _appearanceSystem.SetData(ent, ScpSleepVisuals.Sleeping, args.FellAsleep);
+        _appearance.SetData(ent, ScpHealOnSleepVisuals.Sleeping, args.FellAsleep);
     }
 
-    public bool TrySleep(Entity<ScpSleepComponent> ent, TimeSpan hibernationDuration)
+    public bool TrySleep(Entity<ScpHealOnSleepComponent> ent, TimeSpan hibernationDuration)
     {
         if (HasComp<SleepingComponent>(ent))
             return false;
 
-        if (!_sleepingSystem.TrySleeping(ent.Owner))
+        if (!_sleeping.TrySleeping(ent.Owner))
             return false;
 
         if (!_statusEffects.TryAddStatusEffectDuration(ent, ent.Comp.StatusEffect, hibernationDuration))
@@ -101,13 +102,13 @@ public sealed class ScpSleepSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        var querySleeping = EntityQueryEnumerator<ScpSleepComponent, SleepingComponent>();
+        var querySleeping = EntityQueryEnumerator<ScpHealOnSleepComponent, SleepingComponent>();
         while (querySleeping.MoveNext(out var uid, out var scpSleepComponent, out _))
         {
             if (scpSleepComponent.HibernationHealingRate == null)
                 continue;
 
-            _damageableSystem.TryChangeDamage(uid, scpSleepComponent.HibernationHealingRate * frameTime);
+            _damageable.TryChangeDamage(uid, scpSleepComponent.HibernationHealingRate * frameTime);
         }
     }
 }

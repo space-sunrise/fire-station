@@ -26,7 +26,7 @@
           Dead: { state: dead }
           Critical: { state: dead }
           Alive: { state: alive }
-      enum.ScpSleepVisuals.Sleeping:
+      enum.ScpHealOnSleepVisuals.Sleeping:
         base:
           True: { state: asleep }
   - type: ActiveListener
@@ -100,7 +100,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      10: Critical # ДЕБАГ ЗНАЧЕНИЕ!!! Старое: "1000: Critical"
+      1000: Critical
   - type: Inventory
     templateId: scp939
   - type: ToggleableNightVision
@@ -144,7 +144,7 @@
       collection: DistanceKillScp939
     originWhitelist:
       components:
-      - ScpOnSoundVisibilityViewer
+      - Scp939
   - type: ScpExaminableDamage
     mode: MobToCritical
     generalMessages: ScpScp939Messages

@@ -1,8 +1,7 @@
 using Content.Server.Actions;
 using Content.Shared._Scp.Other.ScpReleaseGas;
-using Content.Shared._Scp.Other.Events;
 using Content.Shared._Scp.ScpMask;
-using Content.Shared.Trigger.Systems;
+using Content.Shared.Trigger;
 
 namespace Content.Server._Scp.Other.ScpReleaseGas;
 
@@ -10,7 +9,6 @@ public sealed class ScpReleaseGasSystem : EntitySystem
 {
     [Dependency] private readonly ActionsSystem _actionsSystem = default!;
     [Dependency] private readonly ScpMaskSystem _scpMask = default!;
-    [Dependency] private readonly TriggerSystem _trigger = default!;
 
     public override void Initialize()
     {
@@ -19,8 +17,7 @@ public sealed class ScpReleaseGasSystem : EntitySystem
         SubscribeLocalEvent<ScpReleaseGasComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<ScpReleaseGasComponent, ComponentShutdown>(OnShutdown);
 
-        SubscribeLocalEvent<ScpReleaseGasComponent, ScpReleaseGasActionAttemptEvent>(OnGasActionAttempt);
-        SubscribeLocalEvent<ScpReleaseGasComponent, ScpReleaseGasActionEvent>(OnGasAction);
+        SubscribeLocalEvent<ScpReleaseGasComponent, AttemptTriggerEvent>(OnAttemptTriggerEvent);
     }
 
     private void OnMapInit(Entity<ScpReleaseGasComponent> ent, ref MapInitEvent args)
@@ -35,27 +32,19 @@ public sealed class ScpReleaseGasSystem : EntitySystem
         ent.Comp.ActionEnt = null;
     }
 
-    private void OnGasActionAttempt(Entity<ScpReleaseGasComponent> ent, ref ScpReleaseGasActionAttemptEvent args)
+    private void OnAttemptTriggerEvent(Entity<ScpReleaseGasComponent> ent, ref AttemptTriggerEvent args)
     {
+        if (args.Key == null)
+            return;
+
+        if (!ent.Comp.TriggerKeys.Contains(args.Key))
+            return;
+
         if (_scpMask.TryGetScpMask(ent, out var scpMask))
         {
             _scpMask.TryCreatePopup(ent, scpMask);
-            args.Cancel();
+            args.Cancelled = true;
             return;
         }
-    }
-
-    private void OnGasAction(Entity<ScpReleaseGasComponent> ent, ref ScpReleaseGasActionEvent args)
-    {
-        var ev = new ScpReleaseGasActionAttemptEvent();
-        RaiseLocalEvent(ent, ref ev);
-
-        if (ev.Cancelled)
-            return;
-
-        foreach (var key in ent.Comp.KeysOut)
-            _trigger.Trigger(ent, args.Performer, key, false);
-
-        args.Handled = true;
     }
 }
