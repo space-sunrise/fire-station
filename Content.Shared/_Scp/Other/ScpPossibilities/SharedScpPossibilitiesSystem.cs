@@ -1,13 +1,14 @@
-
 using Content.Shared.Mech;
 using Content.Shared.Mech.Components;
+using Content.Shared.Storage.Components;
 using Content.Shared.Weapons.Melee.Events;
-using Robust.Shared.Timing;
+using Robust.Shared.Containers;
 
 namespace Content.Shared._Scp.Other.ScpPossibilities;
 
-public sealed class ScpPossibilitiesSystem : EntitySystem
+public abstract partial class SharedScpPossibilitiesSystem : EntitySystem
 {
+    [Dependency] private readonly SharedContainerSystem _container = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -15,14 +16,17 @@ public sealed class ScpPossibilitiesSystem : EntitySystem
         SubscribeLocalEvent<ScpPossibilitiesComponent, MeleeHitEvent>(OnMeleeHit);
     }
 
-    public void OnMeleeHit(Entity<ScpPossibilitiesComponent> ent, ref MeleeHitEvent args)
+    public virtual void OnMeleeHit(Entity<ScpPossibilitiesComponent> ent, ref MeleeHitEvent args)
     {
-        if (!ent.Comp.CanEjectPilotFromMech)
-            return;
-
         if (args.HitEntities.Count == 0)
             return;
 
+        if (ent.Comp.CanEjectPilotFromMech)
+            TryEjectFromMech(ref args);
+    }
+
+    public void TryEjectFromMech(ref MeleeHitEvent args)
+    {
         foreach (var target in args.HitEntities)
         {
             if (!TryComp<MechComponent>(target, out var mechComp))

@@ -37,6 +37,7 @@
   - type: Thirst
   - type: ScpPossibilities
     canEjectPilotFromMech: false
+    openContainer: false
   - type: Sprite
     noRot: true
     drawdepth: Mobs
