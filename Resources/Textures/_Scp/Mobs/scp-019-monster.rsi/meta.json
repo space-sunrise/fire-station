@@ -20,7 +20,7 @@
             "directions": 4
         },
 		{
-			"name": "dead"
+            "name": "dead"
 		}
     ]
 }

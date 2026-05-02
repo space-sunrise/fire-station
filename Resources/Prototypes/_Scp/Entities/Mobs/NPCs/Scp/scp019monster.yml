@@ -97,26 +97,6 @@
   parent: BaseMobScp019Monster
   id: Scp019MonsterBasic
   suffix: SCP-019 basic
-  components:
-    - type: Sprite
-      drawdepth: Mobs
-      sprite: _Scp/Mobs/scp-019-monster.rsi
-      layers:
-      - state: basic
-        map: [ "enum.DamageStateVisualLayers.Base" ]
-    - type: DamageStateVisuals
-      states:
-        Alive:
-          Base: basic
-        Dead:
-          Base: dead
-    - type: MovementSpeedModifier
-      baseWalkSpeed: 2
-      baseSprintSpeed: 3
-    - type: MobThresholds
-      thresholds:
-        0: Alive
-        75: Dead
 
 - type: entity
   parent: BaseMobScp019Monster
