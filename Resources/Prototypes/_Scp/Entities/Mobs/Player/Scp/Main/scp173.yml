@@ -47,6 +47,7 @@
       damage:
         types:
           Blunt: 200
+      ignoreResistances: true
       targetSound:
         collection: Scp173NeckSnap
       useVariance: false
@@ -59,6 +60,7 @@
       damage:
         types:
           Blunt: 100
+      ignoreResistances: true
       targetSound:
         path: /Audio/_Scp/Scp173/smash.ogg
         params:
