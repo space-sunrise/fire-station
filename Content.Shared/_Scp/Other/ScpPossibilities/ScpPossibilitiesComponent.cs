@@ -1,3 +1,4 @@
+using Content.Shared.Whitelist;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared._Scp.Other.ScpPossibilities;
@@ -10,6 +11,12 @@ public sealed partial class ScpPossibilitiesComponent : Component
 
     [DataField]
     public bool OpenContainer = true;
+
+    [DataField]
+    public EntityWhitelist? OpenContainerWhitelist;
+
+    [DataField]
+    public EntityWhitelist? OpenContainerBlacklist;
 
     [DataField]
     public float OpenContainerChance = 1;
