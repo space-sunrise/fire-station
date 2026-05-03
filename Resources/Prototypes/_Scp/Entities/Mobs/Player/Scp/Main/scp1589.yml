@@ -86,8 +86,6 @@
     speed: 2
     distance: 0.5
   - type: Devourer
-    foodPreference: All
-    shouldStoreDevoured: false
     devourTime: 10
     healRate: 30
     chemical: Omnizine
@@ -110,7 +108,7 @@
     voice: Dota2Pudge
   - type: TriggerOnVoice
     keyOut: StartPhrase
-    defaultKeyPhrase: impetum
+    defaultKeyPhrase: key-phrase-scp1589
     showVerbs: false
     showExamine: false
     isRecording: false
