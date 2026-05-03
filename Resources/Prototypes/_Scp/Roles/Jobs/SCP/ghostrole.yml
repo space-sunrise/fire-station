@@ -71,3 +71,21 @@
   alwaysShowInBanPanel: true
   setPreference: false
   applyTraits: false
+
+- type: job
+  id: Scp1589
+  name: job-name-scp1589
+  description: job-description-scp1589
+  playTimeTracker: JobScp1589
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 180000 # 50h
+  weight: 965
+  #icon: TODO
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp1589
+  alwaysShowInBanPanel: true
+  setPreference: false
+  applyTraits: false
