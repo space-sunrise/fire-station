@@ -1,0 +1,8 @@
+- type: cargoProduct
+  id: cargoScp2263
+  product: CrateScp226362
+  cost: 999999999
+  icon:
+    sprite: Markers/cross.rsi
+    state: red
+  group: contraband

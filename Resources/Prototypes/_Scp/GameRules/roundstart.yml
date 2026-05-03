@@ -129,6 +129,8 @@
       tableId: CargoGiftsTable
     - !type:NestedSelector
       tableId: CalmPestEventsTable
+    - !type:NestedSelector
+      tableId: ScpCargoDeliveryTable
 
 - type: entityTable
   id: ScpBasicChillGameRulesTable

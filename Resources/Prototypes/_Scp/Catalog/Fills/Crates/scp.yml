@@ -1,0 +1,9 @@
+- type: entity
+  id: CrateScp226362
+  parent: CrateAdministrationSecure
+  name: crate
+  description: Crate for scp.
+  components:
+  - type: StorageFill
+    contents:
+      - id: Scp226362
