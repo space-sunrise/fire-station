@@ -5,7 +5,7 @@
   icon:
     sprite: Markers/cross.rsi
     state: red
-  group: contraband
+  group: scp
 
 - type: cargoProduct
   id: cargoScp124
@@ -14,7 +14,7 @@
   icon:
     sprite: Markers/cross.rsi
     state: red
-  group: contraband
+  group: scp
 
 - type: cargoProduct
   id: cargoScp427
@@ -23,4 +23,4 @@
   icon:
     sprite: Markers/cross.rsi
     state: red
-  group: contraband
+  group: scp

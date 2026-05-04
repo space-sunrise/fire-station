@@ -20,6 +20,8 @@
   table: !type:GroupSelector
     children:
     - id: DeliveryScp2263
+    - id: DeliveryScp124
+    - id: DeliveryScp427
 
 - type: entity
   id: DeliveryScp2263
