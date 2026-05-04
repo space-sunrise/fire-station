@@ -1,9 +1,36 @@
 - type: entity
-  id: CrateScp226362
+  id: CrateScp2263
+  suffix: SCP-2263 crate
   parent: CrateAdministrationSecure
-  name: crate
-  description: Crate for scp.
   components:
-  - type: StorageFill
-    contents:
-      - id: Scp226362
+  - type: RadiationBlockingContainer
+    resistance: 3
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:GroupSelector
+        children:
+        - id: Scp226362
+        - id: Scp226360
+        - id: Scp226318
+
+- type: entity
+  id: CrateScp124
+  suffix: SCP-124 crate
+  parent: CrateAdministrationSecure
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: Scp124
+
+- type: entity
+  id: CrateScp427
+  suffix: SCP-427 crate
+  parent: CrateAdministrationSecure
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: Scp427

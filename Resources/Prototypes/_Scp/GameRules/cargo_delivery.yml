@@ -12,7 +12,7 @@
 #    startAudio: Fire edit
 #      path: /Audio/_Sunrise/Announcements/announce_dig.ogg
   - type: CargoGiftsRule
-    sender: cargo-gift-delivery-sender
+    sender: cargo-delivery-sender
     announce: cargo-delivery-event-announcement
 
 - type: entityTable
@@ -30,6 +30,32 @@
     duration: 120
     earliestStart: 20
   - type: CargoGiftsRule
-    description: cargo-gift-delivery-description-scp2263
+    description: cargo-delivery-description-scp2263
     gifts:
       cargoScp2263: 1
+
+- type: entity
+  id: DeliveryScp124
+  parent: CargoScpDeliveryBase
+  components:
+  - type: StationEvent
+    weight: 3
+    duration: 120
+    earliestStart: 20
+  - type: CargoGiftsRule
+    description: cargo-delivery-description-scp124
+    gifts:
+      cargoScp124: 1
+
+- type: entity
+  id: DeliveryScp427
+  parent: CargoScpDeliveryBase
+  components:
+  - type: StationEvent
+    weight: 3
+    duration: 120
+    earliestStart: 20
+  - type: CargoGiftsRule
+    description: cargo-delivery-description-scp427
+    gifts:
+      cargoScp427: 1

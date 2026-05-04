@@ -1,6 +1,24 @@
 - type: cargoProduct
   id: cargoScp2263
-  product: CrateScp226362
+  product: CrateScp2263
+  cost: 999999999
+  icon:
+    sprite: Markers/cross.rsi
+    state: red
+  group: contraband
+
+- type: cargoProduct
+  id: cargoScp124
+  product: CrateScp124
+  cost: 999999999
+  icon:
+    sprite: Markers/cross.rsi
+    state: red
+  group: contraband
+
+- type: cargoProduct
+  id: cargoScp427
+  product: CrateScp427
   cost: 999999999
   icon:
     sprite: Markers/cross.rsi
