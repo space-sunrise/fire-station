@@ -84,13 +84,28 @@
 
 - type: entity # Для спавнов
   id: Scp096PhotoDeveloped
-  parent: BaseScpMaterial
+  parent: 
+  - BaseScpMaterial
+  - ClothingMaskBase
   name: strange photo
   description: A small photograph depicting a humanoid creature of anomalously large stature with disproportionately long arms. You peer into its face... oh god...
   components:
   - type: Sprite
-    layers:
-    - state: scp096-photo
+    sprite: _Scp/Objects/Research/Scp096/Photo.rsi
+    state: scp096-photo
+  - type: Clothing
+    sprite: _Scp/Objects/Research/Scp096/Clothing.rsi
+    state: equipped-MASK
+    equipDelay: 3
+    unequipDelay: 3
+  - type: ScpMask
+    targetWhitelist:
+      components:
+      - Scp173
+    damageOriginWhitelist:
+      components:
+      - MobState
+    tearChanceOnDamage: 0.4
   - type: Scp096Photo
   - type: Destructible
     thresholds:
@@ -142,3 +157,6 @@
     tags:
       - Trash
       - MetaGarbagePreventSaving
+  - type: ClothingAddComponents
+    components:
+    - type: Scp096Photo
