@@ -8,11 +8,11 @@
   },
   "states": [
     {
-      "name": "scp-1589",
+      "name": "alive",
       "directions": 4
     },
     {
-      "name": "scp1589-dead"
+      "name": "dead"
     }
   ]
 }

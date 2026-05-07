@@ -17,14 +17,14 @@
     drawdepth: Mobs
     sprite: _Scp/Mobs/Scp/scp-1589.rsi
     layers:
-    - state: scp-1589
+    - state: alive
       map: [ "enum.DamageStateVisualLayers.Base" ]
   - type: DamageStateVisuals
     states:
       Alive:
-        Base: scp-1589
+        Base: alive
       Dead:
-        Base: scp1589-dead
+        Base: dead
   - type: Scp
     class: Euclid
   - type: NpcFactionMember
