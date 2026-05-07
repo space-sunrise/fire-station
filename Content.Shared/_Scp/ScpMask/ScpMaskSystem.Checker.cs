@@ -14,11 +14,10 @@ public sealed partial class ScpMaskSystem
         if (!ent.Comp.BlockTriggers)
             return;
 
-        if (TryGetScpMask(ent, out var scpMask))
-        {
-            TryCreatePopup(ent, scpMask);
-            args.Cancelled = true;
+        if (!TryGetScpMask(ent, out var scpMask))
             return;
-        }
+
+        TryCreatePopup(ent, scpMask);
+        args.Cancelled = true;
     }
 }

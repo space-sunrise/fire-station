@@ -15,6 +15,7 @@ public sealed class ScpTriggerOnActionSystem : EntitySystem
 
     private void OnAction(Entity<ScpTriggerOnActionListenerComponent> ent, ref ScpTriggerOnActionEvent args)
     {
-        _trigger.Trigger(ent, ent, args.KeyOut);
+        if (_trigger.Trigger(ent, ent, args.KeyOut))
+            args.Handled = true;
     }
 }
