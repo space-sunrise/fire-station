@@ -9,8 +9,6 @@
       max: 10
   - type: StationEvent
     startColor: "#18abf5"
-#    startAudio: Fire edit
-#      path: /Audio/_Sunrise/Announcements/announce_dig.ogg
   - type: CargoGiftsRule
     sender: cargo-delivery-sender
     announce: cargo-delivery-event-announcement
