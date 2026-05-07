@@ -1,17 +1,17 @@
 ﻿- type: entity
   parent: RememberPhraseAction
-  id: Scp939Mimic
+  id: Scp939MimicAction
   name: Voice Mimicry
   description: Allows SCP-939 to mimic voices to lure prey.
 
 - type: entity
   parent: ScpSmokeAction
-  id: Scp939Smoke
+  id: Scp939SmokeAction
   name: Amnestic Gas
   description: Releases a cloud of amnestic gas to disorient victims.
 
 - type: entity
   parent: ScpSleepAction
-  id: Scp939Sleep
+  id: Scp939SleepAction
   name: Regenerative Slumber
   description: Allows SCP-939 to enter a deep sleep for rapid healing.

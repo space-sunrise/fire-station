@@ -41,7 +41,7 @@
       components:
       - Scp939Protection
   - type: ScpHealOnSleep
-    actionProto: Scp939Sleep
+    actionProto: Scp939SleepAction
     hibernationHealingRate:
       types:
         Blunt: -20
@@ -60,9 +60,8 @@
     hibernationStates:
     - Critical
   - type: ScpRememberPhrase
-    actionProto: Scp939Mimic
-  - type: ScpReleaseGas
-    actionProto: Scp939Smoke
+    actionProto: Scp939MimicAction
+  - type: ScpTriggerOnActionListener
   - type: SmokeOnTrigger
     keysIn:
     - scpSmokeTrigger
@@ -72,6 +71,10 @@
           Quantity: 40
     spreadAmount: 10
     smokePrototype: АМН-С227Smoke
+  - type: ScpMaskChecker
+  - type: ActionGrant
+    actions:
+    - Scp939SmokeAction
   - type: MeleeWeapon
     altDisarm: false
     soundHit:

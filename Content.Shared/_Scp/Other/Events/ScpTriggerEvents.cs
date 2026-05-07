@@ -1,5 +1,9 @@
+using Content.Shared.Actions;
 
 namespace Content.Shared._Scp.Other.Events;
 
-[ByRefEvent]
-public sealed partial class ScpActionTriggerAttemptEvent : CancellableEntityEventArgs;
+public sealed partial class ScpTriggerOnActionEvent : InstantActionEvent
+{
+    [DataField]
+    public string? KeyOut;
+}

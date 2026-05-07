@@ -21,8 +21,9 @@
     icon:
       sprite: _Scp/Actions/scp-actions.rsi
       state: smaug
-  - type: ScpTriggerOnAction
-    keyOut: scpSmokeTrigger
+  - type: InstantAction
+    event: !type:ScpTriggerOnActionEvent
+      keyOut: scpSmokeTrigger
 
 - type: entity
   id: ScpSleepAction

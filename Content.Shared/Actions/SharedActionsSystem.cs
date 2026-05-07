@@ -1,6 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Content.Shared._Scp.Other.Events; // Fire edit
 using Content.Shared._Sunrise.Antags.Abductor;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions.Components;
@@ -298,14 +297,6 @@ public abstract partial class SharedActionsSystem : EntitySystem
                 $"{ToPrettyString(user):user} attempted to perform an action that they do not have: {name}.");
             return false;
         }
-
-        // Fire edit start
-        var checkEv = new ScpActionTriggerAttemptEvent();
-        RaiseLocalEvent(user, ref checkEv);
-
-        if (checkEv.Cancelled)
-            return true;
-        // Fire edit end
 
         if (GetAction(actionEnt) is not {} action)
             return false;

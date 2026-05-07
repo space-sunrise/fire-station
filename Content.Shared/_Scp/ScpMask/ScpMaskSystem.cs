@@ -43,6 +43,7 @@ public sealed partial class ScpMaskSystem : EntitySystem
 
         SubscribeLocalEvent<ScpComponent, DamageChangedEvent>(OnDamage);
 
+        InitializeChecker();
         InitializeEquipment();
         InitializeRestrictions();
     }
