@@ -10,4 +10,4 @@ sunrise-arrivals-shuttle-cc-sender = Central Command
 
 sunrise-arrivals-failsafe-teleport = The arrival shuttle has become stuck in transit. You have been teleported to the station. God bless Wiggers' cheat code.
 
-sunrise-arrivals-attendant-blocked = Apologies; the docking ports at Station "{ $station}" are blocked or occupied. We will have to wait briefly in a holding pattern.
+sunrise-arrivals-attendant-blocked = Apologies; the docking ports at Station "{ $station }" are blocked or occupied. We will have to wait briefly in a holding pattern.
