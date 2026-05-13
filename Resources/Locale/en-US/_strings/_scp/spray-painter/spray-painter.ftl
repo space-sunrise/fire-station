@@ -1,0 +1,29 @@
+spray-painter-tab-group-scpairlockstandard = Standard
+spray-painter-tab-group-scpairlockglass = Glass
+
+spray-painter-style-scpairlockstandard-lifesupport = Life Support
+spray-painter-style-scpairlockstandard-basic = Basic
+spray-painter-style-scpairlockstandard-logistics = Logistics
+spray-painter-style-scpairlockstandard-laboratory = Laboratory
+spray-painter-style-scpairlockstandard-administration = Administration
+spray-painter-style-scpairlockstandard-engineering = Engineering
+spray-painter-style-scpairlockstandard-freezer = Freezer
+spray-painter-style-scpairlockstandard-hydroponics = Hydroponics
+spray-painter-style-scpairlockstandard-maintenance = Maintenance
+spray-painter-style-scpairlockstandard-medical = Medical
+spray-painter-style-scpairlockstandard-science = Science
+spray-painter-style-scpairlockstandard-security = Security
+spray-painter-style-scpairlockstandard-virology = Virology
+
+spray-painter-style-scpairlockglass-lifesupport = Life Support
+spray-painter-style-scpairlockglass-basic = Basic
+spray-painter-style-scpairlockglass-logistics = Logistics
+spray-painter-style-scpairlockglass-laboratory = Laboratory
+spray-painter-style-scpairlockglass-administration = Administration
+spray-painter-style-scpairlockglass-engineering = Engineering
+spray-painter-style-scpairlockglass-hydroponics = Hydroponics
+spray-painter-style-scpairlockglass-maintenance = Maintenance
+spray-painter-style-scpairlockglass-medical = Medical
+spray-painter-style-scpairlockglass-science = Science
+spray-painter-style-scpairlockglass-security = Security
+spray-painter-style-scpairlockglass-virology = Virology
