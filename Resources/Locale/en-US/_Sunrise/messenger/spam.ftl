@@ -1,16 +1,16 @@
 # Casino
-messenger-spam-casino-sender-1 = МегаСтавка — ставь или проиграешь!
-messenger-spam-casino-sender-2 = Онлайн казино МегаСтавка — 256 лет на рынке полулегальных азартных игр
-messenger-spam-casino-sender-3 = Сэкси дилеры в лучшем онлайн казино
-messenger-spam-casino-sender-4 = Все остальные онлайн казино — кидалы. Мы не такие.
+messenger-spam-casino-sender-1 = MegaCash - Bet or lose!
+messenger-spam-casino-sender-2 = MegaCash Online Casino – 256 Years in the Semi-Legal Gambling Market
+messenger-spam-casino-sender-3 = Only the best fake dealers at the best online casino.
+messenger-spam-casino-sender-4 = All other online casinos are scams. We're totally different from that.
 
-messenger-spam-casino-message-1 = Думаете жать одну кнопку на автомате это занятие для умственно неполноценных? Докажите что это не так сыграв у нас!
-messenger-spam-casino-message-2 = В нашем казино нет никаких «подкруток» или прочих нечестных приёмов. Вам просто не везёт!
-messenger-spam-casino-message-3 = Проиграли всю зарплату в друго казино? Проиграйте ещё одну у нас! В этот раз точно повезёт!
-messenger-spam-casino-message-4 = Зачем работать на корпорации, когда можно спустить свою жизнь чуть более приятным способом?
-messenger-spam-casino-message-5 = Игровая зависимость этом миф! Они просто не могут оторваться от 450 увлекательных игр в нашем казино!
-messenger-spam-casino-message-6 = Отделения МегаСтавки есть везде — от Элизиума до Аурума! Да, может даже на вашей станции!
-messenger-spam-casino-message-7 = В Онлайн Казино МегаСтавка мы не чешем колоду, гарантируем честную раздачу и наши колоды заряжены не в киосках как у конкурентов!
+messenger-spam-casino-message-1 = Do you think pressing a single button on a slot machine is a job for the stupid? Prove it's not by playing with us!
+messenger-spam-casino-message-2 = Our casino isn't "rigged." You're just unlucky!
+messenger-spam-casino-message-3 = Lost your entire paycheck at a casino? Lose another one with us! This time, you're sure to get lucky!
+messenger-spam-casino-message-4 = Why work for corporations when you can piss your life away in a slightly more pleasant way?
+messenger-spam-casino-message-5 = Gaming addiction is a myth! They simply can't tear themselves away from the 450 exciting games in our casino!
+messenger-spam-casino-message-6 = MegaCash branches are everywhere — from Elysium to Aurum! Yes, perhaps even in your town!
+messenger-spam-casino-message-7 = At MegaCash Online Casino, we don't stack the deck; we guarantee a fair deal — and unlike our competitors, our decks aren't bought from back-alley kiosks!
 
 # Dating
 messenger-spam-dating-sender-1 = СладкаяЦыпа
