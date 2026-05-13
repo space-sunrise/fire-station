@@ -10,8 +10,8 @@ namespace Content.Shared.Localizations
         [Dependency] private readonly ILocalizationManager _loc = default!;
 
         // If you want to change your codebase's language, do it here.
-        private const string Culture = "ru-RU"; // Russian-Localization
-        private const string FallbackCulture = "en-US"; // Russian-Localization
+        private const string Culture = "en-US"; // Russian-Localization
+        private const string FallbackCulture = "ru-RU"; // Russian-Localization
 
         /// <summary>
         /// Custom format strings used for parsing and displaying minutes:seconds timespans.
