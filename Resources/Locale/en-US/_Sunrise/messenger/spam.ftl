@@ -182,27 +182,27 @@ messenger-spam-pets-message-5 = "The Mousetrap" Shop! Mice, rats—big and small
 messenger-spam-pets-message-6 = A huge selection of pets, delicious pet food, flea and lice treatments, and accessories for our furry friends!
 
 # Weapons
-messenger-spam-weapons-sender-1 = Оружие для всей семьи
-messenger-spam-weapons-sender-2 = Стволы по дешёвке
-messenger-spam-weapons-sender-3 = ПУШКИ ПУШКИ ПУШКИ
-messenger-spam-weapons-sender-4 = Большие пушки для больших парней
-messenger-spam-weapons-sender-5 = Мануфактура «У Бобби»
+messenger-spam-weapons-sender-1 = Weapons for the Whole Family
+messenger-spam-weapons-sender-2 = Cheap Guns
+messenger-spam-weapons-sender-3 = GUNS GUNS GUNS
+messenger-spam-weapons-sender-4 = Big Guns for Big Guys
+messenger-spam-weapons-sender-5 = Bobby's Manufacturing
 
-messenger-spam-weapons-message-1 = Самый большой выбор огнестрела в секторе. От дамских пистолетов до снайперской винтовки! Для совершения покупки требуется лицензия на владение оружием.
-messenger-spam-weapons-message-2 = Лучшее от Синдиката. Пистолет %УДАЛЕНО%, усыпляющая %УДАЛЕНО%, пробивающая стены %УДАЛЕНО% и даже легендарный %УДАЛЕНО% меч. Агентам скидки, сотрудникам НТ бесплатн…9э%8%?3Р1… ВНИМАНИЕ! Перехвачено враждебное сообщение. Не обращайте внимания. Возвращайтесь к работе. Слава Nanotrasen!
-messenger-spam-weapons-message-3 = Нужно что-то особое? Как насчёт магнума что сделает дыру в стене из пластали? Пневматический зонтик-ружьё? Надувной клоун со взрывчаткой внутри? Если вы об этом подумали, у нас это есть.
-messenger-spam-weapons-message-4 = Давай к делу. Тебе нужно оружие? Меня зовут Борис и у меня для тебя есть пушки. Не спрашивай откуда, просто покупай.
-messenger-spam-weapons-message-5 = Гранаты. Дымовые шашки. Тротил. Бомбы. Снаряды. Мины. С4. Ракеты. Биологическое оружие. Ядерные боеголовки. Распродажа! Успей, пока не урвали! Никаких лицензий, только бабки!
+messenger-spam-weapons-message-1 = The largest selection of firearms in the sector. From ladies' pistols to sniper rifles! A weapons license is required to make a purchase.
+messenger-spam-weapons-message-2 = The best from the Chaos Insurgency. The %REDACTED% pistol, the tranquilizing %REDACTED%, the wall-piercing %REDACTED%, and even the legendary %REDACTED% sword. Discounts for agents; free for Foundation employees... 9e%8%?3R1... ATTENTION! Hostile message intercepted. Disregard. Return to work.
+messenger-spam-weapons-message-3 = Need something special? How about a magnum that punches a hole through a reinforced wall? A pneumatic umbrella-gun? An inflatable clown packed with explosives? If you can think of it, we've got it.
+messenger-spam-weapons-message-4 = Let's get down to business. Need a weapon? My name is Boris, and I've got guns for you. Don't ask where they came from — just buy.
+messenger-spam-weapons-message-5 = Grenades. Smoke bombs. TNT. Bombs. Shells. Mines. C4. Rockets. Biological weapons. Nuclear warheads. Clearance sale! Get it before it's gone! No licenses required — just cash! Customers liable to be executed if attempting to pay via credit card.
 
 # Error
 messenger-spam-error-sender-1 = ОШ;Б…;кА
 messenger-spam-error-sender-2 = 25-j*%...o1q
-messenger-spam-error-sender-3 = СБОЙ СИСТЕМЫ СООБЩЕНИЙ
-messenger-spam-error-sender-4 = ОШИБКА
+messenger-spam-error-sender-3 = MESSAGING SYSTEM FAILURE
+messenger-spam-error-sender-4 = ERROR
 
-messenger-spam-error-message-1 = …от этого корабля, блядь. Ты кто такой, сука? Не пиши сюда больше блядь, я тебя найд…
-messenger-spam-error-message-2 = …имание, агент. Дальше будут перечислены ваши цели. Никто не должен уйти живым. Первую цель зов…
-messenger-spam-error-message-3 = …ася, хватить, блядь! Водки он напился, идиот. У НАС ЗАВТРА НА ТРАНС СОЛНЕЧНУЮ ФЕДЕРАЦИЮ НАЛЁТ, КАКАЯ ВОДКА! Сука, офицер СССП ещё называе…
-messenger-spam-error-message-4 = …ы меня не любишь? Потому что я скрелл?! …извини, я сорвалась. Я вся на нервах из-за работы… Прилетай ко мне, я соску…
-messenger-spam-error-message-5 = …еальные стулья! У нас лучшие стулья в секторе! С обивкой и без, с кожей и с инкрустированным ураном! Есть даже передвижные стулья с педалями! Кроме тог…
-messenger-spam-error-message-6 = …а сковороду тем временем налейте еще немного масла и выложите тертую свеклу. Обжарьте пару минут и добавьте уксус. Тушите еще минут 5, а после выложите томатную пасту. Томите на медленном огне еще 5-7 минут. Зате…
+messenger-spam-error-message-1 = …away from this ship, dammit. Who the hell are you, bitch? Don't you ever message here again, dammit; I'll f…
+messenger-spam-error-message-2 = …ttention, Agent. Your targets are listed below. No one is to leave alive. The first target is nam…
+messenger-spam-error-message-3 = …Vasya, cut it out, dammit! Drunk on vodka — what an idiot. WE HAVE A RAID ON THE FOUNDATION TOMORROW; WHAT THE HELL IS THIS VODKA NONSENSE?! You bastard — and you call yourself a Chaos Insurgent…
+messenger-spam-error-message-4 = …don't you love me? Is it because I'm an Insurgent?! …I'm sorry, I snapped. I'm just completely on edge because of work… Come visit me, I've miss…
+messenger-spam-error-message-5 = …eal chairs! We have the best chairs in the city! Upholstered and bare, leather-bound and uranium-inlaid! We even have mobile chairs with pedals! What's mor…
+messenger-spam-error-message-6 = …nwhile, pour a little more oil into the frying pan and add the grated beets. Sauté for a couple of minutes, then add the vinegar. Simmer for another 5 minutes, then stir in the tomato paste. Let it stew over low heat for another 5–7 minutes. Afte…
