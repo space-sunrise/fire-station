@@ -1,6 +1,4 @@
 stamp-component-stamped-name-director = { job-name-director }
-stamp-component-stamped-name-regional-administration = Regional Administration
-stamp-component-stamped-name-ethics-committee = { job-name-ethics-committee-representative }
 stamp-component-stamped-name-mental-control-officer = { job-name-mental-control-officer }
 stamp-component-stamped-name-chief-technical-specialist = { job-name-chief-technical-specialist }
 stamp-component-stamped-name-head-of-medical-sector = { job-name-head-of-medical-sector }
@@ -11,3 +9,9 @@ stamp-component-stamped-name-special-purpose-squad-leader = { job-name-heavy-con
 stamp-component-stamped-name-senior-logistics-officer = { job-name-senior-logistics-officer }
 stamp-component-stamped-name-scientific-service-director = { job-name-scientific-service-director }
 stamp-component-stamped-name-tribunal-officer = { job-name-tribunal-officer }
+stamp-component-stamped-name-administrator = Administrator
+stamp-component-stamped-name-overseer-council = Overseer Council
+stamp-component-stamped-name-ethics-committee = Ethics Committee
+stamp-component-stamped-name-lesser-council = Council O4
+stamp-component-stamped-name-regional-command = Regional Command
+stamp-component-stamped-name-o4-command = O4 Headquarters
