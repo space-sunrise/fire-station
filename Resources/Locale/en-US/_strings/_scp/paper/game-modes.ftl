@@ -44,3 +44,24 @@ paper-thaumiel-mode-info =
     ​[bullet] The situation is unstable, control is carried out under the "Top Secret" classification.
     
     ​[italic]Special Note:[/italic] Most operations are carried out under limited access conditions. Personnel who do not have the required level of access are strictly prohibited from interfering.
+paper-meta-garbage-successful-info =
+    [bold]SANITATION COMMISSION REPORT[/bold]
+    
+    Based on the results of an unscheduled inspection, the following has been established:
+    [bullet] Household waste (paper cups, food scraps, packaging materials) was discovered within the complex grounds. 
+    [bullet] Pools of industrial fluids and uncleaned residue were observed within the facility's interior spaces. 
+    [bullet] Lighting: Several light fixtures are broken, and glass shards have not been removed. 
+    [bullet] The standard of sanitary maintenance is deemed unsatisfactory. 
+    
+    [italic]Reason:[/italic] The Foundation's resource team was fully occupied with the containment and cleanup of Incident ██-███; consequently, routine cleaning was not performed. 
+    
+    [italic]Directive:[/italic] Current personnel are ordered to rectify the aforementioned violations with immediate priority.
+paper-meta-garbage-failed-info =
+    [bold]SANITATION COMMISSION REPORT[/bold]
+    
+    Inspection of the premises is complete. No deficiencies were noted:
+    [bullet] Floors are dry; no traces of contamination were detected. 
+    [bullet] Lighting systems are fully functional. 
+    [bullet] No household refuse or waste materials were identified. 
+    
+    [italic]Conclusion:[/italic] The sanitary condition of the complex is deemed satisfactory; no intervention is required.
