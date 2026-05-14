@@ -1,1 +1,1 @@
-pacificator-window-title = Генератор пацифизма
+pacificator-window-title = Pacifism Generator
