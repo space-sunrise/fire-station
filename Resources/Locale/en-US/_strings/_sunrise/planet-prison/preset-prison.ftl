@@ -1,12 +1,12 @@
-planet-prison-not-enough-players = Недостаточно игроков для создания планетарной тюрьмы, необходимо больше { $minimumPlayers } игроков.
-planet-prison-select-map = Случайным образом для тюрьмы была выбрана карта: { $stationName }
-planet-prison-select-biome = Случайным образом для тюрьмы был выбран биом: { $biomeName }
-planet-prisoner-round-end-name = заключённый
-planet-prisoner-role-greeting = Вы заключённый - ваша задача сбежать как можно дальше от комплекса тюрьмы.
-planet-prison-round-end = Из тюрьмы сбежало { $count } заключённых.
+planet-prison-not-enough-players = Not enough players to create a planetary prison; { $minimumPlayers } more players are required.
+planet-prison-select-map = A map was randomly selected for the prison: { $stationName }
+planet-prison-select-biome = A biome was randomly selected for the prison: { $biomeName }
+planet-prisoner-round-end-name = Prisoner
+planet-prisoner-role-greeting = You are a prisoner—your goal is to escape as far away from the prison complex as possible.
+planet-prison-round-end = { $count } prisoners escaped from the prison.
 planet-prison-round-end-result =
     { $count ->
-        [one] Из тюрьмы сбежал лишь один заключённый.
-        [few] Из тюрьмы сбежало { $count } заключённых.
-       *[other] Из тюрьмы сбежали { $count } заключённых.
+        [one] Only one prisoner escaped from the prison. 
+        [few] { $count } prisoners escaped from the prison. 
+        *[other] { $count } prisoners escaped from the prison. 
     }
