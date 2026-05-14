@@ -1,3 +1,8 @@
+plant-analyzer-program-name = BotaTech
+
+ent-PlantAnalyzerCartridge = BotaTech Cartridge
+    .desc = A program providing plant analysis tools for botanists.
+
 photo-cartridge-photos-count = Photos: {$count}/{$max}
 photo-cartridge-limit-reached = Photo limit reached
 photo-cartridge-photo-not-found = Photo not found
@@ -12,3 +17,5 @@ photo-cartridge-overlay-button = 👁 Overlay
 photo-cartridge-back-button = Back
 photo-cartridge-delete-button = Delete
 photo-cartridge-flash-label = Flash
+photo-cartridge-upload-disabled = Photo uploading disabled by server.
+photo-cartridge-capture-disabled = Photo capturing disabled by server.
