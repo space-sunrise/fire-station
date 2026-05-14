@@ -1,3 +1,3 @@
-ui-escape-donate = Донат
-ui-escape-forum = Форум
-ui-escape-replays = Реплеи
+ui-escape-donate = Donate
+ui-escape-forum = Forum
+ui-escape-replays = Replays
