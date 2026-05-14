@@ -1,6 +1,6 @@
-laying-comp-lay-success-self = Вы ложитесь.
-laying-comp-lay-success-other = { THE($entity) } ложится.
-laying-comp-lay-fail-self = Вы не можете лечь прямо сейчас.
-laying-comp-stand-success-self = Вы встаёте.
-laying-comp-stand-success-other = { THE($entity) } встаёт.
-laying-comp-stand-fail-self = Вы не можете встать прямо сейчас.
+laying-comp-lay-success-self = You lie down.
+laying-comp-lay-success-other = { THE($entity) } lies down.
+laying-comp-lay-fail-self = You cannot lie down right now.
+laying-comp-stand-success-self = You stand up.
+laying-comp-stand-success-other = { THE($entity) } stands up.
+laying-comp-stand-fail-self = You cannot stand up right now.
