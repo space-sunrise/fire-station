@@ -1,2 +1,2 @@
-soil-plant-success = { $user } высыпает { $name } на пол
-soil-plant-failed = Я не думаю что это хорошее место
+soil-plant-success = { $user } pours { $name } onto the floor.
+soil-plant-failed = I don't think this is a good place.
