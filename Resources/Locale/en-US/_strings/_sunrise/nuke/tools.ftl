@@ -1,2 +1,2 @@
-tool-quality-fine-screwing-name = Отвёртку с ультратонким наконечником
-tool-quality-fine-screwing-tool-name = Отвёртку с ультратонким наконечником
+tool-quality-fine-screwing-name = Screwdriver with ultra-fine tip
+tool-quality-fine-screwing-tool-name = Screwdriver with ultra-fine tip
