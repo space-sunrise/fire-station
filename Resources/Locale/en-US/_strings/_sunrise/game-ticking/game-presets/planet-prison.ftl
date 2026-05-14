@@ -1,1 +1,1 @@
-roles-antag-planet-prisoner-name = Заключённый
+roles-antag-planet-prisoner-name = Prisoner
