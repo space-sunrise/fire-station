@@ -1,5 +1,6 @@
-flavor-complex-fourteen-loko-soda-plus = как бунт в тюрьме
-flavor-complex-nastoyka-romashki = как ромашка
-flavor-complex-sawdust = как 24-х часовая рабочая смена
+flavor-complex-fourteen-loko-soda-plus = like a prison riot
+flavor-complex-nastoyka-romashki = like chamomile
+flavor-complex-sawdust = like a 24-hour work shift
+flavor-complex-butter-scotch = creamy and magical
 
 flavor-complex-tha-slop = like processed sludge
