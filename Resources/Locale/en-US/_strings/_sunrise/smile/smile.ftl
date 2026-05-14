@@ -1,1 +1,1 @@
-smile-affection-popup = { $slime } затягивает в обнимашки { $target }
+smile-affection-popup = { $slime } pulls { $target } into a hug.
