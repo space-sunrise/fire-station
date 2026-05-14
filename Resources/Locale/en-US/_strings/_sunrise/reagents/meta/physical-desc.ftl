@@ -1,0 +1,12 @@
+reagent-physical-desc-nutricryokomp = Soy-based and slightly effervescent
+reagent-physical-desc-aphrodisiac = A shimmering, ruby-red liquid that glows softly in the light
+reagent-physical-desc-honkpower = Trembling
+reagent-physical-desc-strong-smell = Strongly aromatic
+reagent-physical-desc-grcoffee = A brown liquid, slightly viscous.
+reagent-physical-desc-abductor = Abducted
+reagent-physical-desc-h-32 = Smelling strongly of radioactive burns
+reagent-physical-desc-antidon = Pure
+reagent-physical-desc-brutedon = Healing
+reagent-physical-desc-celliminol = Smelling strongly of blood
+reagent-physical-desc-blessing = The Blessing of Bacchus
+reagent-physical-desc-pulverizedlantern = Pulverized lantern
