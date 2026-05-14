@@ -1,15 +1,15 @@
-reagent-name-honkpower = honk power
-reagent-desc-honkpower = hohohonk
+reagent-name-honkpower = Honk power
+reagent-desc-honkpower = Hohohonk
 reagent-flavor-honkpower = Like the laughter of the Honkmother.
 
-reagent-name-nastoyka-romashki = chamomile tincture
+reagent-name-nastoyka-romashki = Chamomile Tincture
 reagent-desc-nastoyka-romashki = Chamomile petals steeped in alcohol.
 
-reagent-name-celliminol = celliminol
+reagent-name-celliminol = Celliminol
 reagent-desc-celliminol = A cryogenic chemical agent. A potent compound developed by the Foundation. Effective on both the living and the dead.
 
-reagent-name-grcoffee = ground coffee
+reagent-name-grcoffee = Ground Coffee
 reagent-desc-grcoffee = Ground coffee beans.
 
-reagent-name-inc = ink
+reagent-name-inc = Ink
 reagent-desc-inc = Ink
