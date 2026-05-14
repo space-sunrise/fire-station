@@ -1,14 +1,14 @@
-robot-charge-alert-name = Заряд батареи
-robot-charge-alert-desc = Показатель заряда вашей батареи, если он опустятся до нуля вы будете замедлены.
-robot-charge-low-percent = У вас осталось { $percent }% заряда батареи.
+robot-charge-alert-name = Battery Charge
+robot-charge-alert-desc = Your battery charge level. if it drops to zero, your movement will be slowed.
+robot-charge-low-percent = You have { $percent }% battery charge remaining.
 robot-dead-message =
-    Юнит { CAPITALIZE($Entity) } был отключён от сети.
-    Местоположение последнего сигнала - X: { $x }, Y: { $y }
-robot-drain-charge-full = Батарея уже полностью заряжена.
-robot-drain-charge-empty = { CAPITALIZE(THE($battery)) } не имеет достаточного заряда для зарядки.
-robot-drain-charge-success = Вы заряжаете свою батарею энергией из { $battery }!
-robot-drain-name = Зарядить батарею от ЛКП.
-robot-drain-desc = Вы можете зарядить свою батарею от любого ЛКП.
-species-name-synth = КПБ
-reagent-name-motor-oil = Моторное масло
-reagent-desc-motor-oil = Ну масло как масло ёпт.
+    Unit { CAPITALIZE($Entity) } has gone offline. 
+    Last signal location: X: { $x }, Y: { $y }
+robot-drain-charge-full = Battery is already fully charged.
+robot-drain-charge-empty = { CAPITALIZE(THE($battery)) } is drained!
+robot-drain-charge-success = You are recharging your battery using power from { $battery }!
+robot-drain-name = Charge Battery from Power Cell
+robot-drain-desc = You can recharge your battery using any Power Cell.
+species-name-synth = Synth
+reagent-name-motor-oil = Motor Oil
+reagent-desc-motor-oil = Well, it's oil — what did you expect?
