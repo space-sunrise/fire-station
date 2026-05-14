@@ -1,1 +1,1 @@
-loadout-sponsor-only = Доступно только спонсорам.
+loadout-sponsor-only = Available only to sponsors.
