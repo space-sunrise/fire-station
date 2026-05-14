@@ -1,4 +1,4 @@
-artifact-trigger-hint-health-analyzer = Сканирование
+artifact-trigger-hint-health-analyzer = Scanning
 artifact-effect-hint-data-deleted = ██████████ █████
 
 # Artifact Effect Descriptions
