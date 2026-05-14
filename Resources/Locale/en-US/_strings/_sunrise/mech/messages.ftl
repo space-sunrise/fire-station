@@ -1,0 +1,10 @@
+mech-message-hello = Pilot detected. Activating all systems.
+mech-message-goodbye = Pilot has exited the chassis. Entering standby mode.
+mech-message-enable-light = Activating lighting.
+mech-message-disable-light = Deactivating lighting.
+mech-message-alert_50 = Moderate chassis damage detected. Diagnostics recommended.
+mech-message-alert-25 = Severe chassis damage detected. Repairs recommended.
+mech-message-alert-5 = Critical chassis damage detected. Pilot evacuation recommended.
+mech-message-insert-equipment = Module installation detected. Initializing.
+mech-message-remove-equipment = Module removal detected. De-initializing.
+mech-message-cycle-equipment = Switching active module.
