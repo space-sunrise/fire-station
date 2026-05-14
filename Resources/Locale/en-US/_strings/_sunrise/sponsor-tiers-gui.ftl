@@ -1,0 +1,37 @@
+sponsors-tiers-gui-title = Sponsorship Tiers
+sponsor-tiers-gui-yes = Yes
+sponsor-tiers-gui-no = No
+sponsor-tiers-gui-entry-info = Information
+sponsor-tiers-gui-tier = Tier:
+sponsor-tiers-gui-extra-slots = Extra Character Slots:
+sponsor-tiers-gui-ooc-color = OOC Color:
+sponsor-tiers-gui-priority-join = Priority Join:
+sponsor-tiers-gui-allowed-respawn = New Life:
+sponsor-tiers-gui-allowed-flavor = Character Description:
+sponsor-tiers-gui-size-flavor = Character Description Limit:
+sponsor-tiers-gui-allowed-species = Exclusive Species
+sponsor-tiers-gui-allowed-species-description = Grants you access to these species.
+sponsor-tiers-gui-priority-antags = Antagonist Priority
+sponsor-tiers-gui-priority-antags-description = You will be prioritized for these antagonist roles at the start of the round.
+sponsor-tiers-gui-open-antags = Antagonist Unlocks
+sponsor-tiers-gui-open-antags-description = Allows you to bypass playtime requirements for these antagonist roles.
+sponsor-tiers-gui-priority-roles = Role Priority
+sponsor-tiers-gui-priority-roles-description = You will be prioritized for these roles at the start of the round.
+sponsor-tiers-gui-open-roles = Role Unlocks
+sponsor-tiers-gui-open-roles-description = Allows you to bypass playtime requirements for these roles.
+sponsor-tiers-gui-allowed-markings = Customization
+sponsor-tiers-gui-allowed-markings-description = Grants access to these character customization options.
+sponsor-tiers-gui-bypass-roles = Role Bypass
+sponsor-tiers-gui-bypass-roles-description = Allows you to join as these roles, bypassing the standard limits.
+sponsor-tiers-gui-ghost-themes = Ghost Skins
+sponsor-tiers-gui-ghost-themes-description = As a ghost, you can change your appearance to one of these options.
+sponsor-tiers-gui-priority-ghost-roles = Priority Ghost Roles
+sponsor-tiers-gui-priority-ghost-roles-description = You will receive priority for these specific ghost roles during the role lottery.
+sponsor-tiers-gui-open-ghost-roles = Unlocked Ghost Roles
+sponsor-tiers-gui-open-ghost-roles-description = Allows you to bypass playtime requirements for these specific ghost roles.
+sponsor-tiers-gui-allowed-loadouts = Exclusive Loadouts
+sponsor-tiers-gui-allowed-loadouts-description = Grants access to the specified items in your loadout.
+sponsor-tiers-gui-tts-voices = Exclusive Voices
+sponsor-tiers-gui-tts-voices-description =
+    Unlocks the ability to use these specific voices for your characters. 
+    You can click on any voice to hear how it sounds.
