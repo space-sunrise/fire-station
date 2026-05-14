@@ -1,1 +1,1 @@
-marking-SwineEars = Уши Троттина
+marking-SwineEars = Trottin's ears
