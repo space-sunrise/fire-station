@@ -1,1 +1,1 @@
-role-timer-discord = Для игры на данной роли вам необходимо [color=yellow]получить роль в дискорде[/color].
+role-timer-discord = To play this role, you must [color=yellow]obtain the role on Discord[/color].
