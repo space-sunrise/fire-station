@@ -1,3 +1,3 @@
 # Rules
 
-ui-rules-header-sunrise = Sunrise server rules
+ui-rules-header-sunrise = Fire Station server rules
