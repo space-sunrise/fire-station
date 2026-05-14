@@ -1,3 +1,6 @@
-energygun-examine-fire-mode = The firemode is set to {$mode}
+energygun-examine-fire-mode = Fire mode set to { $mode }
 energy-gun-lethal = lethal
-energy-gun-disable = disabler
+energy-gun-disable = disabling
+energy-gun-special = special
+energy-gun-shotgun-spread = wide Laser Spread
+energy-gun-shotgun-spread-narrow = narrow Laser Spread
