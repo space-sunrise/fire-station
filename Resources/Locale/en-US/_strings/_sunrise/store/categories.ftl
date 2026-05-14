@@ -26,6 +26,9 @@ shop-disease-category-evolution = Evolution
 shop-disease-category-infection = Infection
 # Uplink
 store-category-objectives = Objectives
+store-category-mechs = Mechs
+store-category-shuttle = Shuttle
+store-category-cybernetics = Cybernetics
 # ntUplink
 store-category-ntautogun = AutoGun
 store-category-ntlasers = Lasers
@@ -38,3 +41,5 @@ store-category-ntmechs = Mechs
 store-category-ntexplosive = Explosive
 store-category-ntammo = Ammo
 store-category-ntequipment = Equipment Экипировка
+# PirateUplink
+store-category-exchanger = Exchange
