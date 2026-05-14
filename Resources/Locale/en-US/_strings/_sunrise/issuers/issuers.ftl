@@ -1,2 +1,2 @@
-syndicate = Синдикат
-EvilTwinCorp = Корпорация Злого Двойника
+Syndicate = The Syndicate
+EvilTwinCorp = Evil Twin Corporation
