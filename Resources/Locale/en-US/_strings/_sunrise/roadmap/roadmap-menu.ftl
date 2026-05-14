@@ -1,6 +1,7 @@
-ui-roadmap = Планы
-ui-roadmap-header = ПЛАН РАЗРАБОТКИ
-ui-roadmap-state-planned = ПЛАНИРУЕТСЯ
-ui-roadmap-state-in-progress = В ПРОЦЕССЕ
-ui-roadmap-state-partial = ЧАСТИЧНО ГОТОВО
-ui-roadmap-state-complete = ГОТОВО
+ui-roadmap = Roadmap
+ui-roadmap-header = DEVELOPMENT ROADMAP
+ui-roadmap-state-planned = PLANNED
+ui-roadmap-state-in-progress = IN PROGRESS
+ui-roadmap-state-partial = PARTIALLY COMPLETE
+ui-roadmap-state-complete = COMPLETE
+ui-roadmap-click-for-details = Click for details
