@@ -1,56 +1,57 @@
-statsentry-character = Персонаж:
-statsentry-dmg = Получил урона: { $name }\n
-statsentry-heal = Получил лечения: { $name }\n
-statsentry-inf-dmg = Нанёс урона: { $name }\n
-statsentry-inf-heal = Вылечил урона: { $name }\n
-statsentry-slp-cnt = Подскользнулся { $name } раз\n
-statsentry-crm-cnt = Кремирован { $name } раз\n
-statsentry-dre-cnt = Емагнул { $name } дверей\n
-statsentry-elctr-cnt = Шокирован { $name } раз\n
-statsentry-cuff-cnt = Закован { $name } раз\n
-statsentry-absrbpudd-cnt = Убрано { $name } луж\n
-statsentry-spnt-tk = Потрачено { $name } ТК\n
-statsentry-dead-cnt = Погиб { $name } раз\n
-statsentry-hmn-kill-cnt = Убил { $name } гуманоидов\n
-statsentry-mouse-kill-cnt = Убито мышей { $name }\n
-statsentry-cuff-time = Был в наручниках [color=yellow]{ $name }[/color]\n
-statsentry-space-time = Был в космосе [color=yellow]{ $name }[/color]\n
-statsentry-sleep-time = Проспал [color=yellow]{ $name }[/color]\n
-statsentry-int-cc = Трогал карту капитана: { $name }
-statsentry-species-entry-name = В комплексе были представители таких рас:
-statsentry-species-entry = [bold][color=white]{ $name }[/color][/bold] в количестве [color=white]{ $count }[/color].
-statsentry-mst-pop-species = Самой распространённой расой стал [color=white]{ $name }[/color].
-statsentry-bank-balance = Под конец смены баланс карго составил [color=white]{ $balance }[/color] кредитов.
-statsentry-firth-murder = Первая жертва комплекса - [color=white]{ $name }[/color]{ $username }.
-statsentry-firth-murder-time = Время смерти - [color=yellow]{ $time }[/color].
-statsentry-firth-murder-killer = Убийца - [color=white]{ $name }[/color]{ $username }.
-statsentry-firth-murder-killer-none = Смерть наступила при неизвестных обстоятельствах.
-statsentry-total-slipped = Игроки в этой смене поскользнулись [color=white]{ $count }[/color] раз.
-statsentry-most-slipped = Больше всех раз поскользнулся [color=white]{ $name }[/color]{ $username } - [color=white]{ $count }[/color].
-statsentry-total-creampied = Всего кремировано игроков: { $total }.
-statsentry-most-dead = Больше всего раз умирал [color=white]{ $name }[/color]{ $username }, а именно [color=white]{ $count }[/color] раз.
-statsentry-total-door-emaged = Шлюзы были емагнуты [color=white]{ $count }[/color] раз.
-statsentry-most-door-emaged-character = Больше всего шлюзов емагнул - [color=white]{ $name }[/color]{ $username } - [color=white]{ $count }[/color] раз.
-statsentry-joint-created = Было скручено [color=white]{ $count }[/color] косяков.
-statsentry-total-killed-mice = Было убито [color=white]{ $count }[/color] мышей.
-statsentry-most-kills-mice-character = { $name }[/color]{ $username } устроил геноцид, убив [color=white]{ $count }[/color] мышей.
-statsentry-hamster-killer = Убийцей гамлета был [color=white]{ $name }[/color]{ $username }.
-statsentry-total-cuffed-count = Игроки были закованы [color=white]{ $count }[/color] раз.
-statsentry-player-with-longest-cuffed-time = Больше всего времени в наручниках провёл [color=white]{ $name }[/color]{ $username } - [color=yellow]{ $time }[/color].
-statsentry-total-sleep-time = Общее время сна игроков составило [color=yellow]{ $time }[/color].
-statsentry-player-with-longest-sleep-time = Главной соней комплекса оказался [color=white]{ $name }[/color]{ $username }.
-statsentry-player-with-longest-sleep-time-time = Он спал на протяжении [color=yellow]{ $time }[/color].
-statsentry-player-with-longest-space-time = Больше всего времени в космосе провёл [color=white]{ $name }[/color]{ $username } - [color=yellow]{ $time }[/color].
-statsentry-clown-cuffed = Клоун [color=white]{ $name }[/color]{ $username } был закован всего спустя [color=yellow]{ $time }[/color].
-statsentry-total-heal = Всего игроками было излечено [color=white]{ $count }[/color] урона.
-statsentry-player-with-most-infected-heal = Больше всего урона игрокам вылечил [color=white]{ $name }[/color]{ $username } - [color=white]{ $count }[/color].
-statsentry-total-damage = Всего игроками было получено [color=white]{ $count }[/color] урона.
-statsentry-player-with-most-infected-damage = Больше всего урона нанёс [color=white]{ $name }[/color]{ $username } - [color=white]{ $count }[/color].
-statsentry-player-with-min-spent-tk = Меньше всего телекристалов потратил [color=white]{ $name }[/color]{ $username } - [color=white]{ $count }[/color]ТК.
-statsentry-player-with-max-hum-kills = Настоящим маньяком в этой смене был [color=white]{ $name }[/color]{ $username }.
-statsentry-player-with-max-hum-kills-count = Он убил [color=white]{ $count }[/color] гуманоидов.
-statsentry-player-with-max-damage = Больше всего урона получил [color=white]{ $name }[/color]{ $username } - [color=white]{ $count }[/color]. Вот бедняга.
-statsentry-total-absorbed-puddle = Игроками было убрано [color=white]{ $count }[/color] луж.
-statsentry-player-with-most-puddle-absorb = Больше всего луж было убрано благодаря [color=white]{ $name }[/color]{ $username } - [color=white]{ $count }[/color].
-statsentry-total-captain-card-interacted = Карта капитана побывала у [color=white]{ $count }[/color] игроков.
-statsentry-total-electrocuted-count = Игроки были шокированы [color=white]{ $count }[/color] раз.
+statsentry-character = Character:
+statsentry-dmg = Damage Taken: { $name }\n
+statsentry-heal = Healing Received: { $name }\n
+statsentry-inf-dmg = Damage Dealt: { $name }\n
+statsentry-inf-heal = Healing Dealt: { $name }\n
+statsentry-slp-cnt = Slipped { $name } times\n
+statsentry-crm-cnt = Cremated { $name } times\n
+statsentry-dre-cnt = Emagged { $name } doors\n
+statsentry-elctr-cnt = Shocked { $name } times\n
+statsentry-cuff-cnt = Handcuffed { $name } times\n
+statsentry-absrbpudd-cnt = Puddles Cleaned: { $name }\n
+statsentry-spnt-tk = TK Spent: { $name }\n
+statsentry-dead-cnt = Died { $name } times\n
+statsentry-hmn-kill-cnt = Humanoids Killed: { $name }\n
+statsentry-mouse-kill-cnt = Mice Killed: { $name }\n
+statsentry-cuff-time = Time Handcuffed: [color=yellow]{ $name }[/color]\n
+statsentry-space-time = Time in Space: [color=yellow]{ $name }[/color]\n
+statsentry-sleep-time = Time Asleep: [color=yellow]{ $name }[/color]\n
+statsentry-int-cc = Touched Captain's Card: { $name }
+statsentry-species-entry-name = The following species were present on the station:
+statsentry-species-entry = [bold][color=white]{ $name }[/color][/bold] — [color=white]{ $count }[/color] individuals.
+statsentry-mst-pop-species = The most common species was [color=white]{ $name }[/color].
+statsentry-bank-balance-total = Total Station Balance: [color=white]{ $balance }[/color] credits.
+statsentry-bank-balance-account = Account [color=white]{ $account }[/color] Balance: [color=white]{ $balance }[/color] credits.
+statsentry-firth-murder = The Station's First Victim: [color=white]{ $name }[/color]{ $username }.
+statsentry-firth-murder-time = Time of Death: [color=yellow]{ $time }[/color].
+statsentry-firth-murder-killer = The Killer: [color=white]{ $name }[/color]{ $username }.
+statsentry-firth-murder-killer-none = Death occurred under unknown circumstances.
+statsentry-total-slipped = Players slipped [color=white]{ $count }[/color] times this shift.
+statsentry-most-slipped = Slipped the most times: [color=white]{ $name }[/color]{ $username } — [color=white]{ $count }[/color].
+statsentry-total-creampied = Total players cremated: { $total }.
+statsentry-most-dead = Died the most times: [color=white]{ $name }[/color]{ $username } — [color=white]{ $count }[/color] times.
+statsentry-total-door-emaged = Airlocks were EMAGged [color=white]{ $count }[/color] times.
+statsentry-most-door-emaged-character = EMAGged the most airlocks: [color=white]{ $name }[/color]{ $username } — [color=white]{ $count }[/color] times.
+statsentry-joint-created = [color=white]{ $count }[/color] joints were rolled.
+statsentry-total-killed-mice = [color=white]{ $count }[/color] mice were killed.
+statsentry-most-kills-mice-character = { $name }[/color]{ $username } committed genocide, killing [color=white]{ $count }[/color] mice.
+statsentry-hamster-killer = The hamster killer was [color=white]{ $name }[/color]{ $username }.
+statsentry-total-cuffed-count = Players were handcuffed [color=white]{ $count }[/color] times.
+statsentry-player-with-longest-cuffed-time = [color=white]{ $name }[/color]{ $username } spent the most time in handcuffs — [color=yellow]{ $time }[/color].
+statsentry-total-sleep-time = The total sleep time of all players amounted to [color=yellow]{ $time }[/color].
+statsentry-player-with-longest-sleep-time = The station's biggest sleeper turned out to be [color=white]{ $name }[/color]{ $username }.
+statsentry-player-with-longest-sleep-time-time = They slept for [color=yellow]{ $time }[/color].
+statsentry-player-with-longest-space-time = [color=white]{ $name }[/color]{ $username } spent the most time in space — [color=yellow]{ $time }[/color].
+statsentry-clown-cuffed = The Clown [color=white]{ $name }[/color]{ $username } was handcuffed after just [color=yellow]{ $time }[/color].
+statsentry-total-heal = Players healed a total of [color=white]{ $count }[/color] damage.
+statsentry-player-with-most-infected-heal = [color=white]{ $name }[/color]{ $username } healed the most damage on other players — [color=white]{ $count }[/color].
+statsentry-total-damage = Players sustained a total of [color=white]{ $count }[/color] damage.
+statsentry-player-with-most-infected-damage = The player who dealt the most damage was [color=white]{ $name }[/color]{ $username} — [color=white]{ $count }[/color].
+statsentry-player-with-min-spent-tk = The player who spent the fewest Telecrystals was [color=white]{ $name }[/color]{ $username} — [color=white]{ $count }[/color] TK.
+statsentry-player-with-max-hum-kills = The true maniac of this shift was [color=white]{ $name }[/color]{ $username}.
+statsentry-player-with-max-hum-kills-count = He killed [color=white]{ $count }[/color] humanoids.
+statsentry-player-with-max-damage = The player who took the most damage was [color=white]{ $name }[/color]{ $username} — [color=white]{ $count }[/color]. Poor guy.
+statsentry-total-absorbed-puddle = Players cleaned up [color=white]{ $count }[/color] puddles.
+statsentry-player-with-most-puddle-absorb = The most puddles were cleaned up thanks to [color=white]{ $name }[/color].
+statsentry-total-captain-card-interacted = The Captain's Card was handled by [color=white]{ $count }[/color] players.
+statsentry-total-electrocuted-count = Players were shocked [color=white]{ $count }[/color] times.
