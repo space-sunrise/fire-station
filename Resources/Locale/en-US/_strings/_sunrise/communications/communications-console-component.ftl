@@ -1,1 +1,12 @@
-comms-console-announcement-title-prison = Космическая тюрьма
+comms-console-announcement-title-prison = Space Prison
+comms-console-menu-relay-button = Enable
+comms-console-menu-relay-button-tooltip = Enable or disable voice broadcasting to the speakers.
+comms-console-menu-relay-stop = Disable
+comms-console-menu-relay-cooldown = Cooldown: { $time }.
+comms-console-menu-announcement-header = Announcements
+comms-console-menu-relay-header = Broadcasting
+comms-console-menu-relay-time-left = Time Remaining: { $time }
+comms-console-menu-emergency-header = Evacuation
+comms-console-menu-alert-level-header = Threat Level
+comms-console-relay-started = Broadcasting via comms console started.
+comms-console-relay-stopped = Broadcasting via comms console stopped.
