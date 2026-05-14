@@ -1,1 +1,1 @@
-razor-window-title = Изменить причёску
+razor-window-title = Change Hairstyle
