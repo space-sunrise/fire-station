@@ -1,3 +1,13 @@
 lathe-category-surgery = Surgery
 lathe-category-cyberlimbs = Limbs
+lathe-category-reports = Reports
+lathe-category-statements = Statements
+lathe-category-inquiries-and-appeals = Inquiries and Appeals
+lathe-category-complaints = Complaints
+lathe-category-permissions = Permissions
+lathe-category-orders-and-instructions = Orders and Directives
+lathe-category-orders = Orders
+lathe-category-evidence = Evidence
+lathe-category-conclusions-and-decisions = Conclusions and Decisions
+lathe-category-error = Error
 lathe-category-implants = Implants
