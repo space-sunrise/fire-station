@@ -11,6 +11,8 @@
   - type: Item
     sprite: _Scp/Objects/Scp/scp-012.rsi
     size: Small
+  - type: StealTarget
+    stealGroup: Scp
   - type: Scp012
     whitelist:
       components:

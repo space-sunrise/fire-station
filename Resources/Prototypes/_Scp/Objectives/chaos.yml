@@ -1,0 +1,40 @@
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseChaosRaidObjective
+  components:
+  - type: Objective
+    issuer: objective-issuer-chaos
+  - type: RoleRequirement
+    roles:
+    - ChaosRaiderRole
+
+- type: entity
+  abstract: true
+  parent: [BaseChaosRaidObjective, BaseStealObjective]
+  id: BaseChaosRaidStealObjective
+  components:
+  - type: StealCondition
+    verifyMapExistence: false
+    descriptionText: objective-condition-chaos-raid-description
+    checkStealAreas: true
+
+- type: entity
+  abstract: true
+  parent: [BaseChaosRaidObjective, BaseChaosRaidStealObjective]
+  id: BaseChaosRaidStealCollectionObjective
+  components:
+  - type: StealCondition
+    verifyMapExistence: true
+    descriptionText: objective-condition-collection-chaos-raid-description
+
+- type: entity
+  parent: BaseChaosRaidStealCollectionObjective
+  id: ScpsStealObjective
+  components:
+  - type: StealCondition
+    minCollectionSize: 4
+    maxCollectionSize: 6
+    stealGroup: Scp
+  - type: Objective
+    difficulty: 1.5

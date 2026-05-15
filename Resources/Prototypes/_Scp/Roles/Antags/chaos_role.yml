@@ -1,4 +1,61 @@
-﻿#дефиб ПХ медика
+﻿#region ANTAGS
+
+- type: antag
+  id: ChaosRaiderLeader
+  name: roles-antag-chaos-raider-leader-name
+  antagonist: true
+  setPreference: true
+  playTimeTracker: AntagChaosRaiderLeader
+  objective: roles-antag-chaos-raider-leader-objective
+  #requirements:
+  #- !type:OverallPlaytimeRequirement
+  #  time: 5h
+  #- !type:DepartmentTimeRequirement
+  #  department: Security
+  #  time: 5h
+  # should be changed to nukie playtime when thats tracked (wyci)
+  #guides: [ NuclearOperatives ]
+  #previewIcon:
+  #  sprite: /Textures/_Sunrise/Interface/Misc/antag_preview.rsi
+  #  state: nuke_commander
+
+- type: antag
+  id: ChaosRaiderMedic
+  name: roles-antag-chaos-raider-medic-name
+  antagonist: true
+  setPreference: true
+  playTimeTracker: AntagChaosRaiderMedic
+  objective: roles-antag-chaos-raider-medic-objective
+  #requirements:
+  #- !type:OverallPlaytimeRequirement
+  #  time: 5h
+  #- !type:RoleTimeRequirement
+  #  role: JobChemist
+  #  time: 3h
+  #guides: [ NuclearOperatives ]
+  #previewIcon:
+  #  sprite: /Textures/_Sunrise/Interface/Misc/antag_preview.rsi
+  #  state: nuke_medic
+
+- type: antag
+  id: ChaosRaiderFighter
+  name: roles-antag-chaos-raider-fighter-name
+  antagonist: true
+  setPreference: true
+  playTimeTracker: AntagChaosRaiderFighter
+  objective: roles-antag-nuclear-operative-objective
+  #requirements:
+  #- !type:OverallPlaytimeRequirement
+  #  time: 5h
+  #guides: [ NuclearOperatives ]
+  #previewIcon:
+  #  sprite: /Textures/_Sunrise/Interface/Misc/antag_preview.rsi
+  #  state: nuke_operative
+
+#regionend
+
+
+#дефиб ПХ медика
 - type: entity
   parent: [DefibrillatorSyndicate, BaseChaosContraband]
   id: DefibrillatorChaos

@@ -11,6 +11,8 @@
     sprite: _Scp/Objects/Scp/scp-427.rsi
   - type: Clothing
     sprite: _Scp/Objects/Scp/scp-427.rsi
+  - type: StealTarget
+    stealGroup: Scp
   - type: Scp
     class: Safe
   - type: Item

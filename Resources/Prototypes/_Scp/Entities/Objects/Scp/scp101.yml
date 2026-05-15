@@ -1,6 +1,6 @@
 ﻿- type: entity
   id: Scp101
-  parent: 
+  parent:
   - BaseItemScp
   - ClothingBeltStorageWaistbag
   - BaseBagOpenClose
@@ -16,6 +16,8 @@
     - state: open
       map: ["openLayer"]
   - type: Appearance
+  - type: StealTarget
+    stealGroup: Scp
   - type: Scp
     class: Euclid
   - type: Item

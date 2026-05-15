@@ -79,6 +79,8 @@
     - state: bowl
     - state: candy_layer0
       map: [ "enum.StorageContainerVisualLayers.Fill" ]
+  - type: StealTarget
+    stealGroup: Scp
   - type: Scp
     class: Safe
   - type: Scp330Bowl

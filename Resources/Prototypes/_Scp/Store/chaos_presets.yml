@@ -1,0 +1,7 @@
+- type: entity
+  id: StorePresetScpChaosUplinkLeader
+  abstract: true
+
+- type: entity
+  id: StorePresetScpChaosUplink
+  abstract: true

@@ -34,6 +34,8 @@
   - type: Sprite
     sprite: _Scp/Objects/Scp/scp-2022.rsi
     state: canister
+  - type: StealTarget
+    stealGroup: Scp
   - type: Item
     size: Small
   - type: Storage

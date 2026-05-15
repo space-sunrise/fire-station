@@ -11,6 +11,8 @@
         reagents:
         - ReagentId: Scp207Reagent
           Quantity: 100
+  - type: StealTarget
+    stealGroup: Scp
   - type: Scp
     class: Safe
   - type: Item

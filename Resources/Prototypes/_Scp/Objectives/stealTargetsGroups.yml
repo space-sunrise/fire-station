@@ -1,0 +1,9 @@
+
+
+
+- type: stealTargetGroup
+  id: Scp
+  name: steal-target-groups-scps
+  sprite:
+    sprite: _Scp/Objects/Scp/scp-005.rsi
+    state: icon

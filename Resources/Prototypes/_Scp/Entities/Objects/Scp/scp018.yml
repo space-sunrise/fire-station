@@ -10,6 +10,8 @@
     state: icon
   - type: Scp
     class: Euclid
+  - type: StealTarget
+    stealGroup: Scp
   - type: Item
     size: Normal
   - type: Tag
@@ -46,7 +48,7 @@
         density: 0
         mask:
           - BulletImpassable
-        restitution: 1.02 # чтбы разгонялся но не начинал лететь слишком быстро  
+        restitution: 1.02 # чтбы разгонялся но не начинал лететь слишком быстро
   - type: XenoArtifact
     triggerWeights: Scp018Triggers
   - type: Destructible

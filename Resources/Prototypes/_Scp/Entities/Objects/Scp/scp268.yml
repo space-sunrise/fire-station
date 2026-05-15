@@ -11,6 +11,8 @@
   - type: Clothing
     sprite: _Scp/Objects/Scp/scp-268.rsi
     equipDelay: 4 # типо баланс
+  - type: StealTarget
+    stealGroup: Scp
   - type: Scp
     class: Euclid
   - type: Item
