@@ -1,8 +1,8 @@
 - type: species
   id: Reptilian
   name: species-name-reptilian
-  roundStart: false # Fire edit
-  stationRecordsHidden: true # Fire added
+  roundStart: true # Fire edit
+  stationRecordsHidden: false # Fire added
   prototype: MobReptilian
   bodyTypes:
   - ReptilianNormal
