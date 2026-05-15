@@ -11,7 +11,7 @@
 
 **SCP: Project Fire is the first project in Space Station 14 that brought the SCP Foundation theme to the station environment.** The project was first launched back in 2023. The current 2.0 relaunch has completely shifted the landscape, expanding SCP mechanics tenfold. <br>
 
-With many new objects, research mechanics, new dimensions, roles, and maps, SCP: Project Fire is a unique project with no equals.
+With many new objects, research mechanics, new dimensions, roles, and maps, SCP: Project Fire is a unique project with no equals. Except this one technically but we just forked them.
 
 🌐 **Read this in other languages:**
 
@@ -30,10 +30,10 @@ With many new objects, research mechanics, new dimensions, roles, and maps, SCP:
 ╰ 🕯️ Gloom, tension, steel walls — we have put real effort into the horror vibe;
 
 >🔗 Playable objects implemented: SCP-106, SCP-939, SCP-173, SCP-049, SCP-096, SCP-999! <br>
->🛡️ Completely new lore-friendly roles. Assistants remain on the space station! <br>
+>🛡️ Completely new lore-friendly roles. No more Passengers! <br>
 >🗺️ Uses custom maps of SCP facilities on a planet, no space! <br>
 >🔊 Unique audio effect system for immersion into the facility's atmosphere. We have echo! <br>
->🩸 No vulpkakin or felinid species; only humans work in the facility! <br>
+>🩸 No vulpkakin or felinid species; only humans, mothpeople, and lizardfolk in the facility!<br>
 >👁️ Blinking system, just like in SCP:CB! <br>
 >🎧 Over 100 ambient tracks replacing the standard ones! <br>
 
