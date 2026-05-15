@@ -45,11 +45,11 @@
     - MothWingsWitchwing
     - MothWingsUnderwing
   interactionMessages:
-  - "%user нежно гладит пальчиками крылышки %target"
-  - "%user трепетно касается крыльев %target"
-  - "%user ласково поглаживает крылышки %target"
-  - "%user бережно ласкает крылья %target"
-  - "%user аккуратно гладит крылья %target"
+  - "%user gently strokes %target's wings with their fingertips."
+  - "%user tenderly touches %target's wings."
+  - "%user affectionately strokes %target's wings."
+  - "%user carefully caresses %target's wings."
+  - "%user gently strokes %target's wings."
   interactionSounds:
   - FriendlyStroke
   cooldown: 3
@@ -101,9 +101,9 @@
     - MothWingsWitchwing
     - MothWingsUnderwing
   interactionMessages:
-  - "%user нежно чешет крылышки %target, массируя их у основания"
-  - "%user ласково почесывает %target за крылышками"
-  - "%user нежно перебирает перышки %target"
+  - "%user gently scratches %target's wings, massaging them at the base."
+  - "%user affectionately scratches %target behind the wings."
+  - "%user gently preens %target's feathers."
   interactionSounds:
   - FriendlyStroke
   cooldown: 3
@@ -159,9 +159,9 @@
     - MothWingsWitchwing
     - MothWingsUnderwing
   interactionMessages:
-  - "%user резко дёргает за крылья %target"
-  - "%user грубо дёргает за крылья %target"
-  - "%user неожиданно дёргает за крылья %target"
+  - "%user sharply yanks %target's wings."
+  - "%user roughly yanks %target's wings."
+  - "%user unexpectedly yanks %target's wings."
   cooldown: 3
 
 - type: interaction
@@ -206,9 +206,9 @@
     - MothWingsWitchwing
     - MothWingsUnderwing
   interactionMessages:
-  - "%user нежно обнимает %target своими крыльями"
-  - "%user укутывает %target в свои крылья"
-  - "%user ласково прижимает к себе %target, укрывая крыльями"
+  - "%user gently embraces %target with their wings."
+  - "%user wraps %target in their wings."
+  - "%user affectionately holds %target close, sheltering them with their wings."
   interactionSounds:
   - FriendlyStroke
   cooldown: 5
@@ -255,8 +255,8 @@
     - MothWingsWitchwing
     - MothWingsUnderwing
   interactionMessages:
-  - "%user заботливо укрывает %target своими крыльями"
-  - "%user прячет %target под своими крылышками"
+  - "%user gently covers %target with their wings."
+  - "%user hides %target under their little wings."
   interactionSounds:
   - FriendlyStroke
   cooldown: 5
@@ -303,8 +303,8 @@
     - MothWingsWitchwing
     - MothWingsUnderwing
   interactionMessages:
-  - "%user ласково трется своими крылышками о %target"
-  - "%user нежно приглаживает %target своими крыльями"
+  - "%user affectionately rubs their wings against %target."
+  - "%user gently smooths %target with their wings."
   interactionSounds:
   - FriendlyStroke
   cooldown: 5
