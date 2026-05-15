@@ -208,10 +208,9 @@
     - ComputerGunneryCircuitboard
     - WeaponEnergyGun
     - WeaponMiniEnergyGun
-    - WeaponEnergyGunPistol
     - WeaponIonCarbine
-    - WeaponGunLaserCarbineAutomatic
     - MagazineBatteryLr30
+    - WeaponSunriseLaserPistol
     - FlareGunSecurityUpgrade
 # Sunrise-TODO: Нужен ребаланс с учетом типов боеприпасов
 #    - BaseMagazinePistolCaselessRifleExtended
