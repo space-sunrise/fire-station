@@ -1,3 +1,4 @@
+using Content.Shared._Sunrise.Random;
 using Content.Shared.Mech;
 using Content.Shared.Mech.Components;
 using Content.Shared.Popups;
@@ -5,13 +6,12 @@ using Content.Shared.Storage.Components;
 using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Whitelist;
-using Robust.Shared.Random;
 
 namespace Content.Shared._Scp.Other.ScpPossibilities;
 
 public sealed class SharedScpPossibilitiesSystem : EntitySystem
 {
-    [Dependency] IRobustRandom _random = default!;
+    [Dependency] RandomPredictedSystem _random = default!;
     [Dependency] EntityWhitelistSystem _whitelist = default!;
     [Dependency] SharedPopupSystem _popup = default!;
     [Dependency] SharedEntityStorageSystem _entityStorage = default!;
@@ -59,11 +59,11 @@ public sealed class SharedScpPossibilitiesSystem : EntitySystem
             if (!_whitelist.CheckBoth(target, ent.Comp.OpenContainerBlacklist, ent.Comp.OpenContainerWhitelist))
                 continue;
 
-            if (_random.Prob(ent.Comp.OpenContainerChance))
-                if (_entityStorage.TryOpenStorage(ent, target, false, false))
-                    continue;
+            if (_random.ProbForEntity(ent, ent.Comp.OpenContainerChance) &&
+                _entityStorage.TryOpenStorage(ent, target, false, false))
+                continue;
 
-            _popup.PopupClient(Loc.GetString("scp-possibilities-open-container-failed"), target, ent, PopupType.Medium);
+            _popup.PopupPredicted(Loc.GetString("scp-possibilities-open-container-failed"), target, ent, PopupType.Medium);
         }
     }
 }
