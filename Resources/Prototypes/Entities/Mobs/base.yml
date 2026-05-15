@@ -109,6 +109,7 @@
   - type: MovementSpeedModifier
   - type: LagCompensation
   - type: ScpOnSoundVisibility # Fire edit
+  - type: CanBeCarried # Sunrise-Edit
 
 - type: entity
   save: false

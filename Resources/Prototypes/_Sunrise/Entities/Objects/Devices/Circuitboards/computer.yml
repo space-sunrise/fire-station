@@ -264,3 +264,17 @@
   components:
   - type: ComputerBoard
     prototype: ScpComputerPlayerConsole # Fire edit
+
+- type: entity
+  parent: BaseComputerCircuitboard
+  id: SunriseCriminalRecordsComputerCircuitboard
+  components:
+  - type: ComputerBoard
+    prototype: SunriseComputerCriminalRecords
+
+- type: entity
+  parent: BaseComputerCircuitboard
+  id: ComputerPrisonerManagementCircuitboard
+  components:
+  - type: ComputerBoard
+    prototype: ComputerPrisonerManagement
