@@ -1,0 +1,102 @@
+- type: docTemplateCategory
+  id: Administration
+  name: copy-machine-component-Administration
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: Nanotrasen
+  order: 10
+
+- type: docTemplateCategory
+  id: RegionalAdministration
+  name: copy-machine-component-RegionalAdministration
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: Nanotrasen
+  order: 20
+
+- type: docTemplateCategory
+  id: CommandantSquad
+  name: copy-machine-component-CommandantSquad
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: Warden
+  order: 30
+
+- type: docTemplateCategory
+  id: SpecialPurposeSquad
+  name: copy-machine-component-SpecialPurposeSquad
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: SecurityOfficer
+  order: 40
+
+- type: docTemplateCategory
+  id: ScientificService
+  name: copy-machine-component-ScientificService
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: Scientist
+  order: 50
+
+- type: docTemplateCategory
+  id: MedicalService
+  name: copy-machine-component-MedicalService
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: MedicalDoctor
+  order: 60
+
+- type: docTemplateCategory
+  id: EngineeringTechnicalService
+  name: copy-machine-component-EngineeringTechnicalService
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: StationEngineer
+  order: 70
+
+- type: docTemplateCategory
+  id: Logistics
+  name: copy-machine-component-Logistics
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: CargoTechnician
+  order: 80
+
+- type: docTemplateCategory
+  id: FoodAndSanitationService
+  name: copy-machine-component-FoodAndSanitationService
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: ServiceWorker
+  order: 90
+
+- type: docTemplateCategory
+  id: ScpGeneral
+  name: copy-machine-component-ScpGeneral
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: Passenger
+  order: 100
+
+- type: docTemplateCategory
+  id: ClassD
+  name: copy-machine-component-ClassD
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: Prisoner
+  order: 110
+
+- type: docTemplateCategoryGroup
+  id: CopyMachineScpCategories
+  categories:
+  - Administration
+  - RegionalAdministration
+  - CommandantSquad
+  - SpecialPurposeSquad
+  - ScientificService
+  - MedicalService
+  - EngineeringTechnicalService
+  - Logistics
+  - FoodAndSanitationService
+  - ScpGeneral
+  - ClassD
