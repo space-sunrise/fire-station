@@ -4,8 +4,8 @@
   icon: FriendlyHandshakeIcon # TODO новый спрайт
   category: Neck
   interactionMessages:
-  - "%user нежно трётся мордочкой о шею %target"
-  - "%user мягко касается мордочкой шеи %target, создавая приятное ощущение"
+  - "%user gently rubs their muzzle against %target's neck."
+  - "%user softly touches %target's neck with their muzzle, creating a pleasant sensation."
   appearConditions:
   - !type:HasTargetCondition
     allowSelfTargeting: false
