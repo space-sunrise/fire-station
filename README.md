@@ -15,8 +15,8 @@ With many new objects, research mechanics, new dimensions, roles, and maps, SCP:
 
 🌐 **Read this in other languages:**
 
-- 🇺🇸 [English](README.en.md)
-- 🇷🇺 [Русский](README.md)
+- 🇺🇸 [English](README.md) < THIS IS THE ONE YOU'RE ON RIGHT NOW.
+- 🇷🇺 [Русский](README_RU.md)
 
 ---
 
