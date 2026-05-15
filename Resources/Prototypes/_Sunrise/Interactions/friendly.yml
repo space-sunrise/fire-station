@@ -7,7 +7,7 @@
   - !type:HasTargetCondition
     allowSelfTargeting: false
   interactionMessages:
-  - "%user жмёт руку %target"
+  - "%user shakes %target's hand."
   interactionSounds:
   - FriendlyHandshakeSound
   cooldown: 3
@@ -21,7 +21,7 @@
   - !type:HasTargetCondition
     allowSelfTargeting: false
   interactionMessages:
-  - "%user хлопает по плечу %target"
+  - "%user pats %target on the shoulder."
   interactionSounds:
   - FriendlyPatShoulderSound
   cooldown: 3
@@ -35,9 +35,9 @@
   - !type:HasTargetCondition
     allowSelfTargeting: false
   interactionMessages:
-  - "%user обнимает %target"
-  - "%user крепко обнимает %target"
-  - "%user прижимает к себе %target"
+  - "%user hugs %target."
+  - "%user hugs %target tightly."
+  - "%user pulls %target close."
   interactionSounds:
   - FriendlyStroke
   cooldown: 3
@@ -56,9 +56,9 @@
     categories: [ "рот" ]
     requireExposed: true
   interactionMessages:
-  - "%user обхюнивает %target"
-  - "%user приближает свой нос, обнюхивая %target"
-  - "%user нюхает %target"
+  - "%user sniffs %target."
+  - "%user brings their nose close, sniffing %target."
+  - "%user smells %target."
   interactionSounds:
   - FriendlySniff1
   - FriendlySniff2
@@ -73,7 +73,7 @@
   - !type:HasTargetCondition
     allowSelfTargeting: false
   interactionMessages:
-  - "%user даёт пять %target"
+  - "%user high-fives %target."
   interactionSounds:
   - FriendlyFive1
   - FriendlyFive2
@@ -89,7 +89,7 @@
   - !type:HasTargetCondition
     allowSelfTargeting: false
   interactionMessages:
-  - "%user гладит %target по голове"
+  - "%user strokes %target's head."
   interactionSounds:
   - FriendlyStroke
   cooldown: 3
@@ -103,9 +103,9 @@
   - !type:HasTargetCondition
     allowSelfTargeting: false
   interactionMessages:
-  - "%user массирует плечи %target"
-  - "%user делает массаж плечей %target"
-  - "%user разминает плечи %target"
+  - "%user massages %target's shoulders."
+  - "%user gives %target a shoulder massage."
+  - "%user kneads %target's shoulders."
   cooldown: 3
 
 - type: interaction
@@ -122,9 +122,9 @@
     categories: [ "щёки"]
     requireExposed: true
   interactionMessages:
-  - "%user по-кошачьи трется щекой об лицо %target"
-  - "%user как котик трется головой об %target"
-  - "%user мурлыкая, трется ушками об %target"
+  - "%user rubs their cheek against %target's face like a cat."
+  - "%user rubs their head against %target like a kitty."
+  - "%user, purring, rubs their ears against %target."
   interactionSounds:
   - FacePatsSound
   cooldown: 3
@@ -151,8 +151,8 @@
     checkInitiator: true
     layer: Tail
   interactionMessages:
-  - "%user нежно гладит хвостиком голову %target"
-  - "%user ласково гладит хвостиком по спине %target"
+  - "%user gently strokes %target's head with their tail."
+  - "%user affectionately strokes %target's back with their tail."
   cooldown: 3
 
 - type: interaction
@@ -172,9 +172,9 @@
     checkInitiator: false
     layer: Tail
   interactionMessages:
-  - "%user резко дергает за хвост %target"
-  - "%user грубо дергает за хвост %target"
-  - "%user неожиданно дергает хвост %target"
+  - "%user gives %target's tail a sharp tug."
+  - "%user gives %target's tail a rough tug."
+  - "%user gives %target's tail an unexpected tug."
   cooldown: 3
 
 - type: interaction
@@ -186,10 +186,10 @@
   - !type:HasTargetCondition
     allowSelfTargeting: false
   interactionMessages:
-  - "%user резко бьет ладонью по щеке %target"
-  - "%user сильно шлепает %target по лицу ладонью"
-  - "%user с громким хлопком ударяет %target по щеке ладонью"
-  - "%user дает ладонью звонкую пощечину %target"
+  - "%user sharply strikes %target on the cheek with their palm."
+  - "%user forcefully slaps %target across the face with their palm."
+  - "%user strikes %target on the cheek with a loud smack of their palm."
+  - "%user delivers a resounding slap to %target's cheek."
   interactionSounds:
   - FriendlySlap1
   - FriendlySlap2
@@ -209,10 +209,10 @@
   - !type:HasTargetCondition
     allowSelfTargeting: false
   interactionMessages:
-  - "%user резко бьет ладонью по затылку %target"
-  - "%user сильно шлепает %target по затылку своей ладонью"
-  - "%user с громким хлопком ударяет %target по затылку своей ладонью"
-  - "%user дает ладонью смачный подзатыльник %target"
+  - "%user sharply strikes %target on the back of the head with their palm."
+  - "%user gives %target a hard smack on the back of the head with their palm."
+  - "%user strikes %target on the back of the head with a loud smack of their palm."
+  - "%user delivers a satisfying thwack to the back of %target's head with their palm."
   interactionSounds:
   - FriendlySlap1
   - FriendlySlap2
@@ -232,7 +232,7 @@
   - !type:HasTargetCondition
     allowSelfTargeting: false
   interactionMessages:
-  - "%user прикасается пальцем к носу %target, буп!"
+  - "%user touches %target's nose with a finger—boop!"
   cooldown: 3
 
 - type: interaction
@@ -244,7 +244,7 @@
   - !type:HasTargetCondition
     allowSelfTargeting: false
   interactionMessages:
-  - "%user трогает пальцем спину %target"
+  - "%user pokes %target in the back with a finger."
   cooldown: 3
 
 - type: interaction
@@ -255,9 +255,9 @@
   appearConditions:
   - !type:SelfOnlyCondition
   interactionMessages:
-  - "%user принимает крутую позу"
-  - "%user встает в крутую позу"
-  - "%user позирует играя мускулами"
+  - "%user strikes a cool pose."
+  - "%user assumes a cool pose."
+  - "%user poses, flexing their muscles."
   #- "%user делает jojo reference" Fire edit
   interactionSounds:
   - FriendlyXZ
@@ -272,9 +272,9 @@
   - !type:HasTargetCondition
     allowSelfTargeting: false
   interactionMessages:
-  - "%user массирует спину %target"
-  - "%user делает массаж спины %target"
-  - "%user разминает спину %target"
+  - "%user massages %target's back."
+  - "%user gives %target a back massage."
+  - "%user kneads %target's back."
   cooldown: 3
 
 - type: interaction
@@ -294,10 +294,10 @@
     checkInitiator: true
     layer: Tail
   interactionMessages:
-  - "%user нежно сплетается хвостами с %target"
-  - "%user аккуратно сплетает свой хвост с хвостом %target"
-  - "%user обволакивает хвост %target своим хвостом"
-  - "%user играется своим хвостом с хвостом %target"
+  - "%user gently intertwines tails with %target."
+  - "%user carefully intertwines their tail with %target's tail."
+  - "%user wraps their tail around %target's tail."
+  - "%user playfully tangles their tail with %target's tail."
   cooldown: 3
 
 - type: interaction
@@ -313,8 +313,8 @@
     checkInitiator: true
     allowedSpecies: [Felinid]
   interactionMessages:
-  - "%user нежно мурчит на ушко %target"
-  - "%user поднося свою голову ближе к %target, начинает мурчать на ушко"
+  - "%user gently purrs into %target's ear."
+  - "%user brings their head closer to %target and begins to purr into their ear."
   interactionSounds:
   - FelinidPurrs
   cooldown: 3
@@ -332,7 +332,7 @@
     categories: [ "рот" ]
     requireExposed: true
   interactionMessages:
-  - "%user открывает рот и высовывает язык на всю длину"
+  - "%user opens their mouth and sticks their tongue out to its full length."
   cooldown: 3
 
 - type: interaction
@@ -343,7 +343,7 @@
   appearConditions:
   - !type:SelfOnlyCondition
   interactionMessages:
-  - "%user отжимается от пола"
+  - "%user does push-ups."
   interactionSounds:
   - FriendlySalute
   cooldown: 1
@@ -356,7 +356,7 @@
   appearConditions:
   - !type:SelfOnlyCondition
   interactionMessages:
-  - "%user корчит рожу"
+  - "%user makes a face."
   cooldown: 3
 
 - type: interaction
@@ -367,8 +367,8 @@
   appearConditions:
   - !type:SelfOnlyCondition
   interactionMessages:
-  - "%user показывает фак"
-  - "%user элегантно показывает фак"
+  - "%user flips the bird."
+  - "%user elegantly flips the bird."
   interactionSounds:
   - FriendlySalute
   cooldown: 3
@@ -382,9 +382,9 @@
   - !type:HasTargetCondition
     allowSelfTargeting: false
   interactionMessages:
-  - "%user слетается своим пальцем с пальцем %target"
-  - "%user нежно берёт палец %target и сплетает со своим"
-  - "%user аккуратно сплетает пальцы с %target"
+  - "%user touches fingers with %target."
+  - "%user gently takes %target's finger and intertwines it with their own."
+  - "%user carefully intertwines fingers with %target."
   cooldown: 3
 
 - type: interaction
@@ -396,7 +396,7 @@
   - !type:HasTargetCondition
     allowSelfTargeting: false
   interactionMessages:
-  - "%user бьёт пальцем по носу %target"
+  - "%user taps %target on the nose."
   cooldown: 3
 
 - type: interaction
@@ -408,10 +408,10 @@
   - !type:HasTargetCondition
     allowSelfTargeting: false
   interactionMessages:
-  - "%user натягивает средний палец, после со всей силы дает по лбу %target"
-  - "%user натягивает указательный палец, после со всей силы дает по лбу %target"
-  - "%user натягивает средний палец, удерживая его большим пальцем, после бьёт по лбу %target"
-  - "%user натягивает указательный палец, удерживая его большим пальцем, после бьёт по лбу %target"
+  - "%user pulls back their middle finger, then flicks %target on the forehead with full force."
+  - "%user pulls back their index finger, then flicks %target on the forehead with full force."
+  - "%user pulls back their middle finger, holding it with their thumb, then flicks %target on the forehead."
+  - "%user pulls back their index finger, holding it with their thumb, then flicks %target on the forehead."
   interactionSounds:
   - FriendlySlap1
   - FriendlySlap2
