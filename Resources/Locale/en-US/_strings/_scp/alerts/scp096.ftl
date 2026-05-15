@@ -5,10 +5,10 @@ alert-desc-scp096-face-base =
 alert-desc-scp096-face-damage =
     { alert-desc-scp096-face-base }
     Let my flesh bleed dust — so long as not a single drop of their memory remains.
-    alert-desc-scp096-face-idle =
+alert-desc-scp096-face-idle =
     { alert-desc-scp096-face-base }
     Within this silence lies a universe of torment. They breathe, they laugh... while I smolder in a stifled scream, waiting for a spark.
-    alert-desc-scp096-face-rage =
+alert-desc-scp096-face-rage =
     { alert-desc-scp096-face-base }
     I AM THE BURSTING ABSCESS OF THE UNIVERSE! 
     [color=red]LET THEIR SOULS BECOME KINDLING FOR THE ETERNAL PYRE OF MY HATRED![/color]
