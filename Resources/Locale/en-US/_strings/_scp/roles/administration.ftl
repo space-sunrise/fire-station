@@ -13,4 +13,5 @@ job-description-head-of-medical-sector = The chief physician of the complex, who
 job-name-senior-logistics-officer = Senior Logistics Officer
 job-description-senior-logistics-officer = The chief logistician, responsible for supplying the complex with certain materials, sending valuable cargo to the MPA. The seventh most important person in the complex. CLASS C
 job-supervisors-regional-administration = regional administration
+job-supervisors-O5-command = 05 Council
 job-supervisors-director = Complex Director
