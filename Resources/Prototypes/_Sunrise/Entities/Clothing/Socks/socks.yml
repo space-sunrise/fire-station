@@ -15,7 +15,7 @@
   parent: ClothingSocksBaseButcherable
   id: ClothingKneeWhite
   name: white socks
-  description: White knee are simple white knee-length socks.
+  description: Simple white knee-length socks.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/knee.rsi
@@ -40,8 +40,8 @@
 - type: entity
   parent: ClothingSocksBaseButcherable
   id: ClothingKneeAsblastusa
-  name: /"Assblastusa/" logo socks
-  description: /"Assblastusa/" logo socks - knee-length socks featuring the /"Assblastusa/" logo.
+  name: unique logo socks
+  description: Unique logo socks - knee-length socks featuring a unique logo.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/knee.rsi
@@ -67,7 +67,7 @@
   parent: ClothingSocksBaseButcherable
   id: ClothingKneeBlack
   name: black socks
-  description: Black knee are simple white knee-length socks.
+  description: Simple black knee-length socks.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/knee.rsi
@@ -132,7 +132,7 @@
   parent: ClothingSocksBaseButcherable
   id: ClothingKneeThin
   name: thin socks
-  description: Thin socks are thin knee-length socks.
+  description: Thin knee-length socks.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/knee.rsi
@@ -236,7 +236,7 @@
   parent: ClothingSocksBaseButcherable
   id: ClothingStockingsBlue
   name: blue stockings
-  description: Blue stockings - elegant stockings for women, and maybe even men?
+  description: Elegant blue and white striped stockings.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/stockings.rsi
@@ -248,8 +248,8 @@
 - type: entity
   parent: ClothingSocksBaseButcherable
   id: ClothingStockingsCyan
-  name: blue-green stockings
-  description: Blue-green stockings - elegant stockings for women, and maybe even men?
+  name: cyan stockings
+  description: Elegant cyan and white striped stockings.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/stockings.rsi
@@ -261,8 +261,8 @@
 - type: entity
   parent: ClothingSocksBaseButcherable
   id: ClothingStockingsDpink
-  name: dark-pink stockings
-  description: Dark-pink stockings - elegant stockings for women, and maybe even men?
+  name: magenta stockings
+  description: Elegant magenta and white striped stockings.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/stockings.rsi
@@ -275,7 +275,7 @@
   parent: ClothingSocksBaseButcherable
   id: ClothingStockingsGreen
   name: green stockings
-  description: Green stockings - elegant stockings for women, and maybe even men?
+  description: Elegant green and white striped stockings.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/stockings.rsi
@@ -287,8 +287,8 @@
 - type: entity
   parent: ClothingSocksBaseButcherable
   id: ClothingStockingslpink
-  name: light-pink stockings
-  description: Light-pink stockings - elegant stockings for women, and maybe even men?
+  name: pink stockings
+  description: Elegant pink and white striped stockings.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/stockings.rsi
@@ -301,7 +301,7 @@
   parent: ClothingSocksBaseButcherable
   id: ClothingStockingsOrange
   name: orange stockings
-  description: Orange stockings - elegant stockings for women, and maybe even men?
+  description: Elegant orange and white striped stockings.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/stockings.rsi
@@ -314,7 +314,7 @@
   parent: ClothingSocksBaseButcherable
   id: ClothingStockingsPurple
   name: purple stockings
-  description: Purple stockings - elegant stockings for women, and maybe even men?
+  description: Elegant purple and white striped stockings.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/stockings.rsi
@@ -327,7 +327,7 @@
   parent: ClothingSocksBaseButcherable
   id: ClothingThighWhite
   name: white thigh-high stockings
-  description: White thigh-high stockings - elegant white thigh-high stockings for women, and maybe even men?
+  description: Elegant white stockings.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/thigh.rsi
@@ -340,7 +340,7 @@
   parent: ClothingSocksBaseButcherable
   id: ClothingThighAce
   name: thigh-high stockings with a visor
-  description: Thigh-high stockings with a visor - elegant thigh-high stockings with an added visor at the top, for women, and maybe even men?
+  description: Thigh-high stockings in asexual colors.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/thigh.rsi
@@ -352,8 +352,8 @@
 - type: entity
   parent: ClothingSocksBaseButcherable
   id: ClothingThighAsblastusa
-  name: thigh-high stockings with the /"Assblastusa/" logo
-  description: Thigh-high stockings with the "Assblastusa" logo - elegant thigh-high stockings with an added /"Assblastusa/" logo at the top, for women, and maybe even men?
+  name: unique thigh-high stockings
+  description: Thigh-high stockings with a unqiue logo.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/thigh.rsi
@@ -366,7 +366,7 @@
   parent: ClothingSocksBaseButcherable
   id: ClothingThighBee
   name: thigh-high stockings with a bee image
-  description: Thigh-high stockings with a bee image - elegant thigh-high stockings with an added a bee image at the top, for women, and maybe even men?
+  description: Thigh-high stockings with a bee image.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/thigh.rsi
@@ -379,7 +379,7 @@
   parent: ClothingSocksBaseButcherable
   id: ClothingThighBlack
   name: black thigh-high stockings
-  description: Black thigh-high stockings - elegant black thigh-high stockings for women, and maybe even men?
+  description: Black thigh-high stockings.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/thigh.rsi
@@ -391,8 +391,8 @@
 - type: entity
   parent: ClothingSocksBaseButcherable
   id: ClothingThighCommie
-  name: thigh-high stockings with commie symbols
-  description: thigh-high stockings with commie symbols - elegant thigh-high stockings with an added a commie symbols at the top, for women, and maybe even men?
+  name: communist thigh-highs
+  description: Thigh-high stockings with commie symbols.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/thigh.rsi
@@ -404,8 +404,8 @@
 - type: entity
   parent: ClothingSocksBaseButcherable
   id: ClothingThighFishnet
-  name: thigh-high stockings with a mesh pattern
-  description: thigh-high stockings with a mesh pattern - elegant thigh-high stockings with a mesh pattern, for women, and maybe even men?
+  name: mesh thigh-high stockings
+  description: Thigh-high stockings with a mesh pattern.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/thigh.rsi
@@ -418,7 +418,7 @@
   parent: ClothingSocksBaseButcherable
   id: ClothingThighRainbow
   name: rainbow thigh-high stockings
-  description: Rainbow thigh-high stockings - elegant rainbow thigh-high stockings for women, and maybe even men?
+  description: Rainbow thigh-high stockings.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/thigh.rsi
@@ -431,7 +431,7 @@
   parent: ClothingSocksBaseButcherable
   id: ClothingThighStriped
   name: thigh-high striped stockings
-  description: thigh-high striped stockings - elegant  thigh-high striped stockings for women, and maybe even men?
+  description: Thigh-high striped stockings.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/thigh.rsi
@@ -444,7 +444,7 @@
   parent: ClothingSocksBaseButcherable
   id: ClothingThighThin
   name: thigh-high thin stockings
-  description: thigh-high thin stockings - elegant  thigh-high thin stockings for women, and maybe even men?
+  description: Thin thigh-high stockings.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/thigh.rsi
@@ -456,8 +456,8 @@
 - type: entity
   parent: ClothingSocksBaseButcherable
   id: ClothingThighTrans
-  name: thigh-high stockings with a transflag
-  description: thigh-high stockings with a transflag - elegant  thigh-high stockings with an added the transgender pride flag  at the top, for women, and maybe even men?
+  name: transgender thigh-high stockings
+  description: Thigh-high stockings in a transgender flag color scheme. The stockings themselves are not transgender. Sorry to disappoint.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/thigh.rsi
@@ -469,8 +469,8 @@
 - type: entity
   parent: ClothingSocksBaseButcherable
   id: ClothingThighUk
-  name: thigh-high stockings with the british flag
-  description: thigh-high stockings with a transflag - elegant  thigh-high stockings with the British flag at the top, for women, and maybe even men?
+  name: British thigh-high stockings
+  description: thigh-high stockings with a British flag.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/thigh.rsi
@@ -482,8 +482,8 @@
 - type: entity
   parent: ClothingSocksBaseButcherable
   id: ClothingThighChristmas
-  name: thigh-high Christmas stockings
-  description: thigh-high stockings made for Christmas time
+  name: Christmas thigh-high stockings
+  description: thigh-high stockings made for Christmas time.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/stockings_chrismas.rsi
@@ -520,7 +520,7 @@
   parent: ClothingSocksBaseButcherable
   id: ClothingStockingsGarter
   name: garter stockings
-  description: With garters.
+  description: Stockings, now with garters.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Socks/stockings_garter.rsi
@@ -532,7 +532,7 @@
   parent: [ClothingShoesBase, BaseMinorContraband]
   id: ClothingUnderSocksMurder
   name: murder socks
-  description: It's time to MURDER, sisters!!11!
+  description: Evil!
   components:
     - type: Sprite
       sprite: _Sunrise/Clothing/Socks/murder_stockings.rsi
