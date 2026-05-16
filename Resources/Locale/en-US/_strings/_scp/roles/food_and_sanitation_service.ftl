@@ -1,4 +1,4 @@
-job-name-gastronomic-specialist = Head Chef
+job-name-gastronomic-specialist = Culinary Specialist
 job-description-gastronomic-specialist = The complex's head chef. Makes food, 90% chance it'll taste like shit. CLASS C
 job-name-botanist-phytogeneticist = Botanist-Phytogeneticist
 job-description-botanist-phytogeneticist = A botanist whose job is to cultivate interesting recreational and edible products, along with getting ingredients for the Chef. CLASS C
