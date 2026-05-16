@@ -1,57 +1,57 @@
 ﻿<Document>
 
-  # Система страха
+  # Fear System
 
-  [bold]Система страха - глобальная механика, влияющая на взаимодействие игроков с SCP и игроков с последствиями нарушений условий содержания SCP.[/bold]
+  [bold]The Fear System is a global mechanic that influences player interaction with SCPs, as well as player interaction with the consequences of SCP containment breaches.[/bold]
 
-  [bold]Страх это механика, созданная в угоду иммерсивности. Это обратная связь между действиями персонажа и игроком, позволяющая передать эмоции персонажа на плоский экран монитора игрока[/bold]
+  [bold]Fear is a game mechanic designed to enhance immersion. It serves as a form of feedback between the character's actions and the player, allowing the character's emotions to be conveyed to the player.[/bold]
 
-  ## Как это работает?
+  ## How does it work?
 
-  У всех персонажей есть свои страхи. Стандартный ужастиков каждого сотрудника фонда это:
-  - [bold]Экзоревмофобия[/bold] - Страх внешнего потока реальности, инородного хода событий. Выражается в боязни SCP объектов
-  - [bold]Некрофобия[/bold] - Боязнь трупов, мертвых тел и другого, связанного с мертвыми.
+  All characters have their own fears. The standard phobias for every Foundation employee are:
+  - [bold]Exoremophobia[/bold] — The fear of external reality streams and alien courses of events. It manifests as a fear of SCPs.
+  - [bold]Necrophobia[/bold] — The fear of corpses, dead bodies, and anything else associated with the dead.
 
-  Эти страхи влияют на то, что будет бояться персонаж. Посмотреть текущие страхи можно в окне персонажа, там, где цели антагонистов.
+  These fears influence what the character will be afraid of. You can view the current fears in the character window, in the section where the antagonists' goals are listed.
 
-  А еще у всех персонажей есть несколько уровней страха
+  Furthermore, all the characters have several levels of fear.
 
-  - Никакой. Ты спокоен
-  - Тревожность. Что-то не так..
-  - Страх. Вы реально чего-то испугались
-  - Неконтролируемый ужас. ЧТО-ТО слишком РЕАЛЬНО, чтобы вы могли смириться с этим. Это кошмар.
+  - None: You are calm.
+  - Anxiety: Something is wrong.
+  - Fear: You are frightened of something.
+  - Uncontrollable Terror: SOMETHING is too REAL for you to come to terms with. It is a nightmare. This amount of fear is only accessible through mind-altering anomalous effects, such as those offered by SCP-035 or SCP-012.
 
-  [bold]Персонажи могут испугаться, увидев источника страха или подойдя близко[/bold].
-  Конечно, не без исключений. Некоторый персонал комплекса привык к наблюдению за "страшными" объектами, отчего их это не волнует.
+  [bold]Characters may become frightened upon sighting a source of fear or approaching it.[/bold]
+  Of course, there are exceptions. Certain facility personnel have grown accustomed to observing "frightening" objects, and as a result, such encounters do not faze them.
 
-  Например, ученые готовы к тому, что их и SCP объекты будет разделять стекло. Отчего им комфортно смотреть на них через стекло.
+  For instance, researchers are prepared for the fact that they will be separated from SCPs by a glass barrier; consequently, they feel comfortable observing them through the glass.
 
-  Медики посещают морги с самого начала обучения, так что вид мертвых тел их не пугает.
+  Medical staff have been visiting morgues since the very beginning of their training, so the sight of dead bodies does not frighten them.
 
-  А охрана специально подготовлена к возможному столкновению с SCP объектами, отчего тверже держат оружие при стрельбе "на взводе".
+  Security personnel, meanwhile, are specifically trained to handle potential encounters with SCP objects. As a result, they maintain a firmer grip on their weapons and remain "on high alert" when engaging targets.
 
-  ## Как это выражается в игре?
+  ## How does this manifest in the game?
 
-  Каждый уровень страха, кроме никакого, накладывает на вашего персонажа негативные эффекты. Настроение понижается, стрелять становится сложнее, вас трясет, зрение становится затуманенным.
+  Every level of fear — with the exception of "none" — imposes negative effects on your character. Your mood drops, aiming becomes more difficult, you begin to tremble, and your vision grows blurred.
 
-  Все это является базовыми негативными модификаторы, их сила зависит от уровня страха.
+  These are all basic negative modifiers, and their intensity depends on your current fear level.
 
-  Справиться с ними можно несколькими способами, но самый очевидный - избежать источника страха. Страх - это сигнал вашего мозга, что ЭТО стоит избегать ради собственной безопасности. Слушайте свои чувства.
+  You can cope with them in several ways, but the most obvious is to simply avoid the source of the fear. Fear is your brain's signal that *this* is something to be avoided for the sake of your own safety. Listen to your instincts.
 
-  Но если вам придется пройти через это, [bold]попробуйте выпить.[/bold] Алкоголь притупляет эффекты страха.
+  However, if you find yourself forced to face it, [bold]try having a drink.[/bold] Alcohol dulls the effects of fear.
 
-  А еще можете [bold]закрыть глаза.[/bold] Если вы не увидите ЕГО, то и бояться не стоит. Правда?
+  You can also [bold]close your eyes.[/bold] If you can't see *it*, then there's nothing to be afraid of. Right?
 
-  ## А где тут SCP объекты?
+  ## So, Where Are the SCP Objects?
 
-  Помимо того, что разные SCP объекты, очевидно, по-разному страшные, некоторые из них могут использовать ваш страх в своих целях.
+  Beyond the fact that various SCP objects are, naturally, frightening in different ways, some of them can actually weaponize your fear for their own ends.
 
-  О садистических наклонностях SCP-106 всем давно известно, поэтому для вас не будет новостью, что он [bold]охотится за страхами[/bold].
-  Поэтому ни за что не попадайтесь ему, ведь иначе вы попадете в его [bold]ужасное карманное измерение[/bold], где предыдущие проблемы покажутся **ничем**
+  SCP-106’s sadistic tendencies are common knowledge by now, so it will come as no surprise to you that he [bold]hunts for fear[/bold].
+  Therefore, whatever you do, do not let him catch you — for if you do, you will be dragged into his [bold]horrific pocket dimension[/bold], where all your previous troubles will seem like **nothing** at all.
 
-  ## Черты персонажа
+  ## Character Traits
 
-  Вместе со страхом добавлены новые черты персонажа, которые добавляют различные небольшие механики, связанные со страхом.
-  Попробуйте их, это может быть весело.
+  Along with the Fear system, new character traits have been added that introduce various minor mechanics related to fear.
+  Give them a try — it might be fun.
 
 </Document>
