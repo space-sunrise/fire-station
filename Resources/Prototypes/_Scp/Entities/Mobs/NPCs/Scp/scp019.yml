@@ -11,10 +11,6 @@
     - type: Body
       prototype: Animal
     - type: Climbing
-    - type: Reactive
-      groups:
-        Flammable: [Touch]
-        Extinguish: [Touch]
     - type: Damageable
       damageContainer: Biological
       damageModifierSet: FleshMob
@@ -41,7 +37,6 @@
           Base: basic
         Dead:
           Base: dead
-    - type: MovementAlwaysTouching
     - type: MovementSpeedModifier
       baseWalkSpeed: 2
       baseSprintSpeed: 3
@@ -104,8 +99,6 @@
   suffix: SCP-019 fast
   components:
     - type: Sprite
-      drawdepth: Mobs
-      sprite: _Scp/Mobs/scp-019-monster.rsi
       layers:
       - state: fast
         map: [ "enum.DamageStateVisualLayers.Base" ]
@@ -129,8 +122,6 @@
   suffix: SCP-019 sapient
   components:
     - type: Sprite
-      drawdepth: Mobs
-      sprite: _Scp/Mobs/scp-019-monster.rsi
       layers:
       - state: sapient
         map: [ "enum.DamageStateVisualLayers.Base" ]
