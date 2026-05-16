@@ -28,7 +28,7 @@
   id: ClassDBotanistGear
   equipment:
     head: ClothingHeadBandBotany
-    jumpsuit: ClothingUniformClassD
+    jumpsuit: ClothingUniformClassDBasic
     outerClothing: ClothingOuterApronBotanist
     belt: ClothingBeltPlantFilled
     gloves: ClothingHandsGlovesLeather

@@ -1,7 +1,7 @@
 - type: loadout
   id: ScpLoadoutClothingUniformClassD
   equipment:
-    jumpsuit: ClothingUniformClassD
+    jumpsuit: ClothingUniformClassDBasic
 
 - type: loadout
   id: ScpLoadoutClothingShoesClassD
