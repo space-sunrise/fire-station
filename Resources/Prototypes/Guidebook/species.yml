@@ -21,27 +21,27 @@
 - type: guideEntry
   id: Human
   name: species-name-human
-  text: "/ServerInfo/Guidebook/_Sunrise/Mobs/Human.xml"  # Sunrise-Edit
+  text: "/ServerInfo/Guidebook/Mobs/Human.xml"  # Sunrise-Edit
 
 - type: guideEntry
   id: Moth
   name: species-name-moth
-  text: "/ServerInfo/Guidebook/_Sunrise/Mobs/Moth.xml"  # Sunrise-Edit
+  text: "/ServerInfo/Guidebook/Mobs/Moth.xml"  # Sunrise-Edit
 
 - type: guideEntry
   id: Reptilian
   name: species-name-reptilian
-  text: "/ServerInfo/Guidebook/_Sunrise/Mobs/Reptilian.xml"  # Sunrise-Edit
+  text: "/ServerInfo/Guidebook/Mobs/Reptilian.xml"  # Sunrise-Edit
 
 - type: guideEntry
   id: SlimePerson
   name: species-name-slime
-  text: "/ServerInfo/Guidebook/_Sunrise/Mobs/SlimePerson.xml"  # Sunrise-Edit
+  text: "/ServerInfo/Guidebook/Mobs/SlimePerson.xml"  # Sunrise-Edit
 
 - type: guideEntry
   id: Vulpkanin
   name: species-name-vulpkanin
-  text: "/ServerInfo/Guidebook/_Sunrise/Mobs/Vulpkanin.xml"  # Sunrise-Edit
+  text: "/ServerInfo/Guidebook/Mobs/Vulpkanin.xml"  # Sunrise-Edit
 
 - type: guideEntry
   id: Tajaran
