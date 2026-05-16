@@ -1,68 +1,68 @@
 ﻿<Document>
-  # Как сбежать?
+  # How to Escape?
 
-  Здесь будет рассмотрено, как можно нарушить условия содержания, если вам выпала роль SCP-096.
+  This section covers how to breach containment if you have been assigned the role of SCP-096.
 
-  [textlink="Общая информация о скромнике" link="Scp096About"]
+  [textlink="General Information about The Shy Guy" link="Scp096About"]
 
-  [textlink="Подробнее о методах сдерживания скромника за персонал комплекса" link="Scp096Containment"]
+  [textlink="Detailed Guide to Containing The Shy Guy (for Facility Personnel)" link="Scp096Containment"]
 
-  ## Основной способ
+  ## The Primary Method
 
-  Данный способ заключается в использовании способности [bold]"Содрать кожу с лица"[/bold], доступную вам со старта.
+  This method involves utilizing the [bold]"Face Rip"[/bold] ability, which is available to you right from the start.
 
-  [textlink="Подробнее про способности" link="Scp096Abilities"]
+  [textlink="More Details on Abilities" link="Scp096Abilities"]
 
-  Каждое использование способности наносит урон вашему лицу. Использование способности 5 раз подряд переведет вас в "Состояние содранного лица".
-  [bold]В этом состоянии вы сможете:[/bold]
-  - Открывать любые шлюзы и гермоворота
-  - Атаковать любой персонал
-  - Свободно перемещаться по комплексу
+  Each use of this ability inflicts damage to your face. Using the ability 5 times consecutively will transition you into the "Torn Face State."
+  [bold]In this state, you will be able to:[/bold]
+  - Open any airlocks and blast gates
+  - Attack any personnel
+  - Move freely throughout the facility
 
-  Учтите, что в этом состоянии вы не можете перейти в состояние "Ярости", если кто-то увидит ваше лицо!
+  Keep in mind that while in this state, you cannot enter "Rage" mode if anyone sees your face!
 
-  [textlink="Подробнее про состояния" link="Scp096States"]
+  [textlink="More on States" link="Scp096States"]
 
-  ## Дополнительный способ
+  ## Additional Method
 
-  Вы обладаете способностью "Издать жалостный крик", которая наносит огромный урон всем структурам в вашей области видимости. Используйте эту способность, чтобы повреждать стены камеры содержания.
+  You possess the ability "Emit a Wailing Cry," which deals massive damage to all structures within your line of sight. Use this ability to damage the walls of your containment cell.
 
-  Многократное использование способности будет наносить урон стенам, что в конечном итоге приведет к их поломке и вашему освобождению. Стены вашей камеры содержания очень прочны и хорошо сопротивляются урону вашей способности. Но обычные, даже самые прочные стены комплекса, упадут гораздо быстрее.
+  Repeated use of this ability will damage the walls, eventually leading to their structural failure and your escape. The walls of your containment cell are extremely durable and highly resistant to the damage inflicted by your ability. However, standard walls—even the most reinforced ones within the facility—will crumble much faster.
 
-  Учтите, что способность может работать только в пределах камеры содержания. А персонал комплекса может отремонтировать даже сломанные стены.
+  Bear in mind that the ability functions only within the confines of the containment chamber. Furthermore, the facility staff is capable of repairing even damaged walls.
 
-  ## Альтернативный способ
+  ## An Alternative Method
 
-  Кто-то из персонала может увидеть ваше лицо на одной из фотографий. Таким образом он станет вашей целью для зверского убийства.
+  A member of the staff might spot your face in one of the photographs. Should this occur, they will become your target for a brutal execution.
 
-  Вы начнете переходить в состояние "Ярости" и пулей вылетите из своей камеры содержания.
-  Убив все цели, вы окажитесь где-то в глубине комплекса, что позволит вам посветить своим лицом перед другими сотрудниками Фонда.
+  You will enter a state of "Rage" and burst out of your containment cell like a bullet.
+  Once you have eliminated all your targets, you will find yourself deep within the facility—an opportunity to reveal your face to other Foundation personnel.
 
-  ## Как определить степень поврежденности лица?
+  ## How to Assess the Extent of Facial Damage?
 
-  Как скромник, вы обладаете большей информацией о вашем лице. Поэтому и способов у вас больше
+  As Shy Guy, you possess a greater awareness of your own face; consequently, you have access to more methods for assessing its condition.
 
-  - Наведитесь на ваше лицо справа, в панели статус-эффектов.
+  - Hover your cursor over the image of your face located on the right side, within the status effects panel.
 
-  По внешнему виду лица можно понять ваше текущее состояние или степень поврежденности лица.
-  Наведение мышки позволит услышать комментарии вашего внутреннего "голоса", касательно ситуации.
+  The appearance of your face reflects your current condition or the extent of your facial injuries.
+  Hovering your mouse cursor over it allows you to hear commentary from your inner "voice" regarding the situation.
 
-  - Посмотрите на иконку справа-сверху вашего персонажа
+  - Look at the icon located in the top-right corner of your character's display.
 
-  Чем больше крови на иконке - тем больше степень поврежденности лица
+  The more blood visible on the icon, the more severe your facial injuries are.
 
-  - Осмотрите себя
+  - Examine yourself.
 
-  Вы, как и другие люди, можете осмотреть себя и прочитать визуальное описание оставленных вами ран.
+  Like other individuals, you can examine yourself to read a visual description of the wounds you have sustained.
 
-  ## Как сопротивляться поимке?
+  ## How to Resist Capture?
 
-  Покинув свою камеру содержания, персонал начнет принимать усилия по вашей поимке. Ваша задача - сопротивляться.
+  Once you have escaped your containment cell, the facility staff will begin efforts to recapture you. Your objective is to resist.
 
-  Если вы можете атаковать их - атакуйте, но помните, что вы слабы против вооруженной нелетальными средствами толпы.
-  Сдерживающие технологии Фонда достаточно развиты, чтобы ослабить вас на некоторое время, выбив из сил.
+  If you are able to attack them, do so. Remember that you are vulnerable to a crowd armed with non-lethal weaponry.
+  The Foundation's containment technologies are sufficiently advanced to temporarily incapacitate you, leaving you drained of energy.
 
-  В это время сотрудники могут надеть сдерживающую экипировку, которая ослабит вас и запретит использование способностей.
+  During this window, personnel may deploy containment gear that will further weaken you and suppress your abilities.
 
-  [bold]Следите за своим уровнем выносливости, оно решает ключевую роль в вашей поимке.[/bold]
+  [bold]Monitor your stamina level closely, as it plays a critical role in your capture.[/bold]
 </Document>
