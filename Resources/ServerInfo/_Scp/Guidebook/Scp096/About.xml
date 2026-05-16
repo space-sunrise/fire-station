@@ -1,33 +1,33 @@
 ﻿<Document>
-  # SCP-096 "Скромник"
+  # SCP-096 "The Shy Guy"
 
-  Данное руководство расскажет о том, чем является объект в рамках игры и ее механик. Здесь НЕ будет затронута "лорная" часть объекта.
+  This guide explains what the object is in the context of the game and its mechanics. It does NOT cover the object's "lore" aspects.
 
-  Данная страница является сборником ссылок на другие, более подробные руководства по объекту, и краткое описание раздела.
+  This page serves as a compilation of links to other, more detailed guides regarding the object, as well as a brief overview of the section.
 
-  ## Начало раунда
+  ## Round Start
 
-  В стартовой точке, начале раунда или после появления, SCP-096 находится в своей камере содержания.
-  Камера содержания представляет собой сдерживающую меру, препятствующую вреду персоналу комплекса.
+  At the starting point — at the beginning of the round or immediately after spawning — SCP-096 is located within its containment chamber.
+  The containment chamber acts as a containment measure designed to prevent harm to facility personnel.
 
-  Пока объект находится в ней - он практически не представляет угрозы.
+  As long as the object remains inside, it poses virtually no threat.
 
-  - Задача персонала комплекса: сдерживать объект внутри камеры содержания.
-  - Задача SCP-096: Покинуть камеру содержания.
+  - Facility Personnel Objective: Contain the object within the containment chamber.
+  - SCP-096 Objective: Escape the containment chamber.
 
-  [textlink="Подробнее о сдерживании здесь" link="Scp096Containment"]
+  [textlink="Learn more about containment here." link="Scp096Containment"]
 
-  [textlink="Подробнее о методах здесь." link="Scp096ContainmentBreach"]
+  [textlink="Learn more about methods to escape here." link="Scp096ContainmentBreach"]
 
-  ## Состояния
+  ## States
 
-  Состояния определяют набор механик и задают поведение объекта. В течение раунда объект будет переходить в разные состояния, в зависимости от действий окружающих или действий самого скромника.
+  States define a set of mechanics and determine the object's behavior. During a round, the object will transition into different states depending on the actions of those around it or 096's own actions.
 
-  [textlink="Подробнее про состояния здесь" link="Scp096States"]
+  [textlink="Learn more about states here." link="Scp096States"]
 
-  ## Способности
+  ## Abilities
 
-  Скромник обладает двумя уникальными способностями, одна из которых является ключевой механикой, позволяющей сбежать из камеры содержания.
+  The Shy One has two unique abilities, one of which is a key mechanic that allows them to escape from the containment chamber.
 
-  [textlink="Подробнее про способности здесь" link="Scp096Abilities"]
+  [textlink="Learn more about abilities here." link="Scp096Abilities"]
 </Document>
