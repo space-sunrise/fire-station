@@ -5,23 +5,22 @@
     <GuideEntityEmbed Entity="MobXenoDummy" Caption=""/>
   </Box>
 
-  Гуманоидные ксеноморфы устойчивы к перепадам давления и обладают кислотной кровью.
-  Их безоружные атаки значительно сильнее обычных.
+  Manifesting from SCP-████, an anomalous movie ticket, Xenomorphs are humanoid alien creatures that the Foundation have given employment opportunities to, in order to placate them while further study is enacted. They possess acidic blood.
 
   <Box>
     <GuideReagentEmbed Reagent="FluorosulfuricAcidHumanoidXeno"/>
   </Box>
 
-  Они получают [color=#ffa500]на 5% больше колющего урона[/color],
-  [color=#ffa500]не получают урона от холода[/color],
-  [color=#ffa500]на 20% больше урона от жара[/color],
-  [color=#ffa500]на 25% больше урона от электричества[/color].
+  They recieve [color=#ffa500]5% more Piercing damage[/color],
+  [color=#ffa500]an immunity to Cold damage and temperature[/color],
+  [color=#ffa500]20% more Heat damage[/color],
+  [color=#ffa500]25% more Shock damage[/color].
 
-  Они быстрее испытывают голод и хотят чаще есть.
-  Удушья у ксеноморфов не имеется.
-  Не могут надевать ряд предметов: твёрдые шлема, скафандры, ботинки кроме обмоток, магнитных сапог и ботинок ниндзя.
-  Способны видеть в темноте благодаря эхолокации.
-  Кровь является сильным ядом.
-  Лапы неуязвимы к осколкам стекла.
+  They experience hunger more quickly, needing to eat more often.
+  While Xenomorphs are immune to ashpyxiation, that [color=reddoes not mean they are immune to the adverse effects of gases such as plasma![/color]
+  They are unable to equip certain items: Space helmets, space suits, and boots — with the exceptions of leg wraps, magboots, and ninja shoes.
+  They are capable of seeing in the dark, thanks to their advanced echolocation.
+  Their blood acts as a potent acid.
+  Their paws are impervious to glass shards, meaning Xenomorphs that walk over shards won't trip nor take damage.
 
 </Document>
