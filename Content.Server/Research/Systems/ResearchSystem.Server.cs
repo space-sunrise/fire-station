@@ -65,6 +65,7 @@ public sealed partial class ResearchSystem
         if (!CanRun(uid))
             return;
 
+        // Fire-Edit Start
         var pointsPerSeconds = GetPointsPerSecond(uid, component);
 
         foreach (var (pointType, value) in pointsPerSeconds)
@@ -72,8 +73,8 @@ public sealed partial class ResearchSystem
             pointsPerSeconds[pointType] += value * time;
         }
 
-
         ModifyServerPoints(uid, pointsPerSeconds, false, component);
+        // Fire-Edit End
     }
 
     /// <summary>
