@@ -74,9 +74,9 @@ public sealed partial class InteractionsUIWindow : DefaultWindow
 
         _spriteSystem = _entityManager.System<SpriteSystem>();
 
-        MainTabContainer.SetTabTitle(0, "Интеракции");
-        MainTabContainer.SetTabTitle(1, "Кастом");
-        MainTabContainer.SetTabTitle(2, "Настройки");
+        MainTabContainer.SetTabTitle(0, "Interactions");
+        MainTabContainer.SetTabTitle(1, "Custom");
+        MainTabContainer.SetTabTitle(2, "Settings");
 
         SearchInput.OnTextChanged += OnSearchTextChanged;
 
@@ -336,7 +336,7 @@ public sealed partial class InteractionsUIWindow : DefaultWindow
                 })
                 .ToList();
 
-            var favoritesCollapsible = CreateCategoryCollapsible("⭐ Избранные", sortedFavorites);
+            var favoritesCollapsible = CreateCategoryCollapsible("⭐ Favorites", sortedFavorites);
             CategoriesContainer.AddChild(favoritesCollapsible);
         }
 
@@ -344,7 +344,7 @@ public sealed partial class InteractionsUIWindow : DefaultWindow
         {
             var noResultsLabel = new Label
             {
-                Text = "Ничего не найдено",
+                Text = "No Results",
                 HorizontalAlignment = HAlignment.Center,
                 VerticalAlignment = VAlignment.Center,
                 FontColorOverride = TextMuted,
@@ -749,7 +749,7 @@ public sealed partial class InteractionsUIWindow : DefaultWindow
 
             var message = customInteraction.InteractionMessages.Count > 0
                 ? _random.Pick(customInteraction.InteractionMessages)
-                : "взаимодействует с";
+                : "interacts with";
 
             string? soundId = null;
             if (customInteraction.SoundIds.Count > 0)
@@ -913,8 +913,8 @@ public sealed partial class InteractionsUIWindow : DefaultWindow
             var emptyLabel = new Label
             {
                 Text = string.IsNullOrEmpty(_customSearchText)
-                    ? "У вас нет сохраненных взаимодействий"
-                    : "Ничего не найдено",
+                    ? "You have no saved interactions."
+                    : "No Results",
                 HorizontalAlignment = HAlignment.Center,
                 VerticalAlignment = VAlignment.Center,
                 FontColorOverride = TextMuted,
@@ -967,7 +967,7 @@ public sealed partial class InteractionsUIWindow : DefaultWindow
 
         var editButton = new Button
         {
-            Text = "Редактировать",
+            Text = "Edit",
             StyleClasses = { StyleClass.ButtonSquare },
             Margin = new Thickness(0, 0, 4, 0)
         };
@@ -981,7 +981,7 @@ public sealed partial class InteractionsUIWindow : DefaultWindow
 
         var deleteButton = new Button
         {
-            Text = "Удалить",
+            Text = "Delete",
             StyleClasses = { StyleClass.ButtonSquare },
         };
 
@@ -1014,7 +1014,7 @@ public sealed partial class InteractionsUIWindow : DefaultWindow
 
         var categoryLabel = new Label
         {
-            Text = $"Категория: {GetCategoryName(interaction.CategoryId)}",
+            Text = $"Category: {GetCategoryName(interaction.CategoryId)}",
             FontColorOverride = new Color(208, 166, 92)
         };
 
@@ -1032,7 +1032,7 @@ public sealed partial class InteractionsUIWindow : DefaultWindow
     private string GetCategoryName(string categoryId)
     {
         if (string.IsNullOrEmpty(categoryId))
-            return "Не указана";
+            return "Not Specified";
 
         if (_prototypeManager.TryIndex<InteractionCategoryPrototype>(categoryId, out var category))
             return Loc.GetString(category.Name);
@@ -1078,7 +1078,7 @@ public sealed partial class InteractionsUIWindow : DefaultWindow
     {
         var confirmDialog = new DefaultWindow
         {
-            Title = "Подтверждение",
+            Title = "Confirmation",
             MinSize = new Vector2(280, 140)
         };
 
@@ -1102,7 +1102,7 @@ public sealed partial class InteractionsUIWindow : DefaultWindow
 
         var questionLabel = new Label
         {
-            Text = $"Удалить '{interaction.Name}'?",
+            Text = $"Delete '{interaction.Name}'?",
             HorizontalExpand = true,
             HorizontalAlignment = HAlignment.Center,
             Margin = new Thickness(0, 0, 0, 12),
@@ -1120,7 +1120,7 @@ public sealed partial class InteractionsUIWindow : DefaultWindow
 
         var cancelButton = new Button
         {
-            Text = "Отмена",
+            Text = "Cancel",
             StyleClasses = { StyleClass.ButtonSquare },
             Margin = new Thickness(0, 0, 4, 0)
         };
@@ -1134,7 +1134,7 @@ public sealed partial class InteractionsUIWindow : DefaultWindow
 
         var confirmButton = new Button
         {
-            Text = "Удалить",
+            Text = "Delete",
             StyleClasses = { StyleClass.ButtonSquare },
         };
 
