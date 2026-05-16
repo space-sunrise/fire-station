@@ -1,7 +1,7 @@
 - type: entity
   parent: ClothingBraStorageBase
   id: ClothingBraNekoWhite
-  name: women's bra "Neko" white
+  name: women's white neko bra
   description: White bra featuring cat ears and tail.
   components:
   - type: Sprite
@@ -14,7 +14,7 @@
 - type: entity
   parent: ClothingBraStorageBase
   id: ClothingBraNekoBlack
-  name: women's bra "Neko" black
+  name: women's black neko bra
   description: Black bra featuring cat ears and tail.
   components:
   - type: Sprite
@@ -27,7 +27,7 @@
 - type: entity
   parent: ClothingBraStorageBase
   id: ClothingBraAssblastusa
-  name: women's bra "Assblastusa"
+  name: women's unique bra
   description: A bra with a unique space inspired design.
   components:
   - type: Sprite
@@ -66,7 +66,7 @@
 - type: entity
   parent: ClothingBraStorageBase
   id: ClothingBraCommie
-  name: women's bra "Commie"
+  name: women's communistic bra
   description: A bra with a communist inspired design.
   components:
   - type: Sprite
@@ -79,8 +79,8 @@
 - type: entity
   parent: ClothingBraStorageBase
   id: ClothingBraKinky
-  name: women's sexy bra
-  description: A sexy bra for special occasions.
+  name: women's odd bra
+  description: A bra with an odd design.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Bra/bra.rsi
@@ -131,7 +131,7 @@
 - type: entity
   parent: ClothingBraStorageBase
   id: ClothingBraUk
-  name: women's bra "Great Britain"
+  name: women's British bra
   description: A bra with a design symbolizing Great Britain.
   components:
   - type: Sprite
@@ -157,7 +157,7 @@
 - type: entity
   parent: ClothingBraStorageBase
   id: ClothingBraChristmas
-  name: women's christmas bra
+  name: women's Christmas bra
   description: A bra with a design symbolizing Christmas.
   components:
   - type: Sprite
@@ -170,7 +170,7 @@
 - type: entity
   parent: ClothingBraStorageBase
   id: ClothingBraAdjutant
-  name: women's bra "Adjutant"
+  name: women's adjutant bra
   description: A bra in adjutant colors.
   components:
   - type: Sprite
@@ -183,7 +183,7 @@
 - type: entity
   parent: ClothingBraStorageBase
   id: ClothingBraCMO
-  name: women's bra "CMO"
+  name: women's medical bra
   description: A bra in chief medical officer colors.
   components:
   - type: Sprite
@@ -196,7 +196,7 @@
 - type: entity
   parent: ClothingBraStorageBase
   id: ClothingBraCaptain
-  name: women's bra "Captain"
+  name: women's Captain bra
   description: A bra in captain colors.
   components:
   - type: Sprite
@@ -209,7 +209,7 @@
 - type: entity
   parent: ClothingBraStorageBase
   id: ClothingBraCaptainBlack
-  name: women's black bra "Captain"
+  name: women's black Captain bra
   description: A black bra for the captain.
   components:
   - type: Sprite
@@ -224,7 +224,7 @@
 - type: entity
   parent: ClothingBraStorageBase
   id: ClothingBraCaptainWhite
-  name: women's white bra "Captain"
+  name: women's white Captain bra
   description: A white bra for the captain.
   components:
   - type: Sprite
@@ -239,7 +239,7 @@
 - type: entity
   parent: ClothingBraStorageBase
   id: ClothingBraHeadOfPersonnel
-  name: women's bra "Head of Personnel"
+  name: women's Head of Personnel bra
   description: A bra in head of personnel colors.
   components:
   - type: Sprite
@@ -265,7 +265,7 @@
 - type: entity
   parent: ClothingBraStorageBase
   id: ClothingBraQuartermaster
-  name: women's bra "Quartermaster"
+  name: women's Quartermaster bra
   description: A bra in quartermaster colors.
   components:
   - type: Sprite
@@ -278,7 +278,7 @@
 - type: entity
   parent: ClothingBraStorageBase
   id: ClothingBraResearchDirector
-  name: women's bra "Research Director"
+  name: women's Director bra
   description: A bra in research director colors.
   components:
   - type: Sprite
@@ -291,7 +291,7 @@
 - type: entity
   parent: ClothingBraStorageBase
   id: ClothingBraBlueshield
-  name: women's bra "Blueshield"
+  name: women's Blueshield bra
   description: A bra in blueshield colors.
   components:
   - type: Sprite
@@ -304,7 +304,7 @@
 - type: entity
   parent: ClothingBraStorageBase
   id: ClothingBraChiefEngineer
-  name: women's bra "Chief Engineer"
+  name: women's Chief Engineer Bra
   description: A bra in chief engineer colors.
   components:
   - type: Sprite
