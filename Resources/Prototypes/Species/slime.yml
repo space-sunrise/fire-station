@@ -1,8 +1,8 @@
 - type: species
   id: SlimePerson
   name: species-name-slime
-  roundStart: false # Fire edit
-  stationRecordsHidden: true # Fire added
+  roundStart: true # Fire edit
+  stationRecordsHidden: false # Fire added
   prototype: MobSlimePerson
   bodyTypes:
   - SlimeNormal
