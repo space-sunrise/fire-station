@@ -3,8 +3,8 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsManAssblastusa
-  name: men's /"Assblastusa/" underpants
-  description: /"Assblastusa/" uniquely designed underpants for men.
+  name: men's unique underpants
+  description: Uniquely designed underpants for men.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Pants/Man/pants.rsi
@@ -16,8 +16,8 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsManBoxers
-  name: man's boxers
-  description: Comfortable boxers for mens.
+  name: men's boxers
+  description: Comfortable boxers for men.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Pants/Man/pants.rsi
@@ -42,8 +42,8 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsManCommie
-  name: man's /"Commie/" underpants
-  description: communist-designed underpants for men.
+  name: man's communistic underpants
+  description: Communist-designed underpants for men.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Pants/Man/pants.rsi
@@ -55,8 +55,8 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsManHearts
-  name: man's underpants with hearts
-  description: heart pattern underpants for mens.
+  name: men's underpants with hearts
+  description: Heart pattern underpants for men.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Pants/Man/pants.rsi
@@ -68,8 +68,8 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsManKinky
-  name: man's underpants /"Kinky/"
-  description: underpants with a provocative design for mens.
+  name: man's odd underpants"
+  description: Men's underpants with an odd design.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Pants/Man/pants.rsi
@@ -108,7 +108,7 @@
   parent: ClothingPantsStorageBase
   id: ClothingPantsManStripe
   name: men's striped underpants
-  description: underpants with a striped design for men.
+  description: Underpants with a striped design for men.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Pants/Man/pants.rsi
@@ -120,7 +120,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsManUk
-  name: men's underpants with the British flag
+  name: men's British underpants
   description: UK flag underpants for men.
   components:
   - type: Sprite
@@ -133,7 +133,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsManChristmas
-  name: men's underpants Christmas 
+  name: men's Christmas underpants 
   description: Christmas underpants for men.
   components:
   - type: Sprite
@@ -149,7 +149,7 @@
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanNekoWhite
   name: women's white kitty underpants
-  description: white panties with a picture of SEALs on them for women.
+  description: White panties with a picture of seals on them for women.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Pants/Woman/pants.rsi
@@ -162,7 +162,7 @@
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanNekoBlack
   name: women's black kitty underpants
-  description: black panties with a picture of SEALs on them for women.
+  description: Black panties with a picture of seals on them for women.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Pants/Woman/pants.rsi
@@ -174,8 +174,8 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanAssblastusa
-  name: women's /"Assblastusa/" underpants
-  description: /"Assblastusa/" uniquely designed underpants for womens.
+  name: women's unique underpants
+  description: Uniquely designed underpants for women.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Pants/Woman/pants.rsi
@@ -188,7 +188,7 @@
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanBikini
   name: women's bikini
-  description: bikini briefs for womens.
+  description: Bikini briefs for women.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Pants/Woman/pants.rsi
@@ -201,7 +201,7 @@
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanBralette
   name: women's bralettes
-  description: Bra-underpants for womens.
+  description: Bra-underpants for women.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Pants/Woman/pants.rsi
@@ -213,8 +213,8 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanCommie
-  name: women's /"Commie/" underpants
-  description: communist-designed underpants for womens.
+  name: women's communistic underpants
+  description: Communist-designed underpants for womens.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Pants/Woman/pants.rsi
@@ -226,8 +226,8 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanKinky
-  name: women's /"Kinky/" underpants
-  description: underpants with a provocative design for womens.
+  name: women's odd underpants
+  description: Underpants with an odd design for women.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Pants/Woman/pants.rsi
@@ -240,7 +240,7 @@
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanLace
   name: women's lace underpants
-  description: lace pattern underpants for womens.
+  description: Lace pattern underpants for women.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Pants/Woman/pants.rsi
@@ -253,7 +253,7 @@
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanSport
   name: women's sports underpants
-  description: Comfortable and practical sports shorts for womens.
+  description: Comfortable and practical sports shorts for women.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Pants/Woman/pants.rsi
@@ -266,7 +266,7 @@
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanThong
   name: women's thong underpants
-  description: Thong panties for womens.
+  description: Thong panties for women.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Pants/Woman/pants.rsi
@@ -278,7 +278,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanUk
-  name: women's underpants with the British flag
+  name: women's British underpants
   description: UK flag underpants for women.
   components:
   - type: Sprite
@@ -305,7 +305,7 @@
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanStrapless
   name: women's strapless underpants
-  description: strapless underpants for women.
+  description: Strapless underpants for women.
   components:
   - type: Sprite
     sprite: _Sunrise/Clothing/Pants/Woman/pants.rsi
@@ -317,7 +317,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanAdjutant
-  name: women's thong "Adjutant"
+  name: women's adjutant thong
   description: A thong in adjutant colors.
   components:
   - type: Sprite
@@ -330,7 +330,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanCMO
-  name: women's thong "CMO"
+  name: women's medical thong
   description: A thong in chief medical officer colors.
   components:
   - type: Sprite
@@ -343,7 +343,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanCaptain
-  name: women's thong "Captain"
+  name: women's Captain thong
   description: A thong in captain colors.
   components:
   - type: Sprite
@@ -356,7 +356,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanCaptainBlack
-  name: women's black thong "Captain"
+  name: women's black Captain thong
   description: A black thong for the captain.
   components:
   - type: Sprite
@@ -371,7 +371,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanCaptainWhite
-  name: women's white thong "Captain"
+  name: women's white Captain thong
   description: A white thong for the captain.
   components:
   - type: Sprite
@@ -386,7 +386,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanHeadOfPersonnel
-  name: women's thong "Head of Personnel"
+  name: women's Head of Personnel thong
   description: A thong in head of personnel colors.
   components:
   - type: Sprite
@@ -399,7 +399,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanHeadOfSecurity
-  name: women's thong "Head of Security"
+  name: women's Head of Security thong
   description: A thong in head of security colors.
   components:
   - type: Sprite
@@ -412,7 +412,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanQuartermaster
-  name: women's thong "Quartermaster"
+  name: women's Quartermaster thong
   description: A thong in quartermaster colors.
   components:
   - type: Sprite
@@ -425,7 +425,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanResearchDirector
-  name: women's thong "Research Director"
+  name: women's Director thong
   description: A thong in research director colors.
   components:
   - type: Sprite
@@ -438,7 +438,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanBlueshield
-  name: women's thong "Blueshield"
+  name: women's Blueshield thong
   description: A thong in blueshield colors.
   components:
   - type: Sprite
@@ -451,7 +451,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsWomanChiefEngineer
-  name: women's thong "Chief Engineer"
+  name: women's Chief Engineer thong
   description: A thong in chief engineer colors.
   components:
   - type: Sprite
@@ -503,7 +503,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsManAdjutant
-  name: boxers "Adjutant"
+  name: Adjutant boxers
   description: Boxers in adjutant colors.
   components:
   - type: Sprite
@@ -516,7 +516,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsManCMO
-  name: boxers "CMO"
+  name: medical boxers
   description: Boxers in chief medical officer colors.
   components:
   - type: Sprite
@@ -529,7 +529,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsManCaptain
-  name: boxers "Captain"
+  name: Captain boxers
   description: Boxers in captain colors.
   components:
   - type: Sprite
@@ -542,7 +542,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsManCaptainBlack
-  name: black boxers "Captain"
+  name: black Captain boxers
   description: Black boxers for the captain.
   components:
   - type: Sprite
@@ -557,7 +557,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsManCaptainWhite
-  name: white boxers "Captain"
+  name: white Captain boxers
   description: White boxers for the captain.
   components:
   - type: Sprite
@@ -572,7 +572,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsManHeadOfPersonnel
-  name: boxers "Head of Personnel"
+  name: Head of Personnel boxers
   description: Boxers in head of personnel colors.
   components:
   - type: Sprite
@@ -585,7 +585,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsManHeadOfSecurity
-  name: boxers "Head of Security"
+  name: Head of Security boxers
   description: Boxers in head of security colors.
   components:
   - type: Sprite
@@ -598,7 +598,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsManQuartermaster
-  name: boxers "Quartermaster"
+  name: Quartermaster boxers
   description: Boxers in quartermaster colors.
   components:
   - type: Sprite
@@ -611,7 +611,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsManResearchDirector
-  name: boxers "Research Director"
+  name: Director boxers
   description: Boxers in research director colors.
   components:
   - type: Sprite
@@ -624,7 +624,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsManBlueshield
-  name: boxers "Blueshield"
+  name: Blueshield boxers
   description: Boxers in blueshield colors.
   components:
   - type: Sprite
@@ -637,7 +637,7 @@
 - type: entity
   parent: ClothingPantsStorageBase
   id: ClothingPantsManChiefEngineer
-  name: boxers "Chief Engineer"
+  name: Chief Engineer boxers
   description: Boxers in chief engineer colors.
   components:
   - type: Sprite
