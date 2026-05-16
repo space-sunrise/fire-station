@@ -1,68 +1,68 @@
 ﻿<Document>
-  # Состояния
+  # States
 
-  Скромник обладает несколькими уникальными состояниями, определяющими его возможности и механики.
+  Shy Guy has several unique states that determine its capabilities and mechanics.
 
-  Будучи скромником, вы можете определить ваше состояние с помощью репрезентации вашего лица на панели статус-эффектов, справа. Наведя на него мышку, можно увидеть более подробное описание и комментарии вашего внутреннего "голоса" касательно всей ситуации.
+  As Shy Guy, you can identify your state by the face representation in the status effects panel on the right. Hovering your mouse over it reveals a more detailed description and comments from your inner "voice" regarding the entire situation.
 
-  Персоналу комплекса можно определить состояние по звуку, который издает скромник. Некоторые состояния имеют отличимые уникальные действия или внешний вид.
+  Facility staff can identify your state by the sound the Shy One makes. Some states have distinctive, unique actions or appearances.
 
-  [textlink="Общая информация о скромнике" link="Scp096About"]
+  [textlink="General Information about the Shy One" link="Scp096About"]
 
-  ## Обычное
+  ## Normal
 
-  В данном состоянии скромник медлителен, не может атаковать. Это стандартное состояние, в котором находится объект после появления в раунде.
+  In this state, the Shy Guy is slow-moving and unable to attack. This is the standard state in which the entity appears at the start of a round.
 
-  Чтобы перейти в другое состояние ему требуется [bold]содрать кожу со своего лица[/bold] или дождаться, пока [bold]кто-то увидит его лицо[/bold] вживую или на фотографии.
+  To transition to a different state, he must [bold]tear the skin from his face[/bold] or wait until [bold]someone sees his face[/bold] — either in person or in a photograph.
 
-  Определить данное состояние можно по звуку плача или медлительной скорости передвижения.
+  This state can be identified by the sound of weeping or by his slow movement speed.
 
-  ## Пред-яростное
+  ## Pre-Rage
 
-  В данном состоянии скромник не может передвигаться, трясется и издает громкий звук.
-  Состояние длится 40 секунд, после чего скромник автоматически переходит в состояние Ярости.
+  In this state, the Shy Guy is unable to move; he shakes uncontrollably and emits a loud vocalization.
+  This state lasts for 40 seconds, after which the Shy Guy automatically transitions into the Rage state.
 
-  [bold]Скромник переходит в состояние после того, как кто-то увидел его лицо. Это можно сделать:[/bold]
-  - Вживую, когда вы и скромник смотрите друг-другу в лица.
-  - На фотографии. Достаточно осмотреть ее
+  [bold]The Shy Guy enters a specific state after someone has seen his face. This can occur:[/bold]
+  - In person, when you and the Shy Guy are looking directly into each other's faces.
+  - Via a photograph; simply viewing it is sufficient.
 
-  Определить состояние можно по громкому звуку и тряске объекта.
+  This state can be identified by a loud sound and the object's violent shaking.
 
-  ## Ярость
+  ## Rage
 
-  Перейдя в данное состояние, объект будет выискивать посмотревших на его лицо, чтобы зверски убить свою цель.
+  Upon entering this state, the object will actively hunt down those who viewed its face in order to brutally kill its targets.
 
-  [bold]Скромник перейдет в следующее состояние, когда [/bold]
-  - Убьет все свои цели или они перестанут существовать
-  - Спустя около 4 минут после начала этого состояния
+  [bold]The Shy Guy will transition to the next state when:[/bold]
+  - It has killed all of its targets, or they cease to exist.
+  - Approximately 4 minutes have elapsed since the onset of this state.
 
-  Определить состояние можно по громкому реву, доносящемуся от скромника, высокой скорости и целенаправленному передвижению по комплексу
+  This state can be identified by a loud roar emanating from the Shy Guy, high movement speed, and purposeful movement throughout the facility.
 
-  ## Сон/Сидя
+  ## Sleep / Sitting
 
-  В данном состоянии скромник не может передвигаться и находится в уязвимом положении.
-  Он может попасть в него следующими способами
-  - Выйдя из состояния ярости. Спустя время он сможет проснуться
-  - Использовав способность "Присесть". Он может быстро встать обратно
-  - Потратив всю выносливость(стан). Спустя некоторое время он снова встанет.
+  In this state, the Shy Guy is unable to move and remains in a vulnerable position.
+  He may enter this state in the following ways:
+  - By exiting his "Rage" state. After a period of time, he will be able to wake up.
+  - By using the "Crouch" ability. He can quickly stand back up.
+  - By completely depleting his stamina (stunned). After a short delay, he will stand up again.
 
-  В данном состоянии скромник быстрее плачет, выделяя больше слезной жидкости. Также его можно таскать.
+  In this state, the Shy Guy cries more intensely, shedding a greater volume of tears. He can also be dragged.
 
-  Определить состояние можно по уникальному внешнему виду, когда объект "сидит" и издает звук плача.
+  This state can be identified by his unique visual appearance—specifically, when the entity is "sitting" and emitting the sound of weeping.
 
-  ## Состояние содранного лица
+  ## Flayed Face State
 
-  Уникальное состояние, происходящее, когда объект сдирает всю кожу со своего лица, теряя все очертания.
+  A unique state that occurs when the entity tears all the skin from its face, losing all facial definition.
 
-  [textlink="Подробнее про способности" link="Scp096Abilities"]
+  [textlink="Learn more about abilities" link="Scp096Abilities"]
 
-  В данном состоянии он может свободно атаковать персонал комплекс, открывать закрытые шлюзы и гермоворота, а также чуть быстрее перемещаться.
+  In this state, he can freely attack facility personnel, open closed airlocks and containment doors, and move slightly faster.
 
-  Пока лицо не будет восстановлено, зрительный контакт с его лицом не приведет к переходу в состояние ярости. Даже при взгляде на фотографию.
+  Until his face is restored, eye contact with his face will not trigger a rage state. Even looking at a photograph will not.
 
-  Чтобы выйти из этого состояния, требуется восстановить лицо. Это автоматически произойдет спустя 15 минут после входа в состояние. Этот процесс можно ускорить, вылечив лицо вручную с помощью пластырей.
+  To exit this state, his face must be restored. This will occur automatically 15 minutes after entering the state. This process can be accelerated by manually healing his face with plasters.
 
-  [textlink="Подробнее про восстановление условий содержания" link="Scp096Containment"]
+  [textlink="Learn more about restoring containment" link="Scp096Containment"]
 
-  Определить состояние можно по уникальному "шумному" звуку исходящему от объекта и свободному передвижению по комплексу.
+  Its state can be identified by a unique, "noisy" sound emanating from the object, as well as by its unrestricted movement throughout the complex.
 </Document>
