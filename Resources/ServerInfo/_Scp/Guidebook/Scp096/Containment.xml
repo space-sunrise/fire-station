@@ -1,66 +1,67 @@
 ﻿<Document>
-  # Содержание SCP-096
+  # Containment of SCP-096
 
-  По умолчанию SCP-096 появляется в своей камере содержания, которая ограничивает его зону передвижения и не дает выйти за ее пределы.
-  Камера содержания является сдерживающей мерой, которая делает содержание объекта безопасным.
+  By default, SCP-096 appears in its containment chamber, which restricts its movement and prevents it from leaving.
+  The containment chamber serves as a deterrent, making containment safe.
 
-  [textlink="Общая информация о скромнике" link="Scp096About"]
+  [textlink="General Information about Shy Guy" link="Scp096About"]
 
-  [textlink="Подробнее о методах побега, будучи скромником" link="Scp096ContainmentBreach"]
+  [textlink="More about escape methods as Shy Guy" link="Scp096ContainmentBreach"]
 
-  ## Что нужно делать?
+  ## What should you do?
 
-  Основной способ нарушения условий содержания для объекта - использование способности "Содрать кожу с лица". Она позволяет повредить лицо объекта, нанеся урон.
+  The object's primary method of breaching containment is by using its "Face Rip" ability. This allows it to damage the face, causing injury.
 
-  [textlink="Подробнее про способности" link="Scp096Abilities"]
+  [textlink="More on Abilities" link="Scp096Abilities"]
 
-  Учтите, что использовать способность можно только спустя 15 минут после начала раунда, так как в это время действует механика "Безопасного времени", ограничивающая активность SCP объектов и дающая персоналу время на начальную подготовку к раунду.
+  Please note that this ability can only be used 15 minutes after the start of the round, as the "Safe Time" mechanic is active during this period; this limits the activity of SCP objects and grants personnel time to complete their initial preparations for the round.
 
-  Сдирание кожи с лица 5 раз позволит раскрошить лицо в мясо, что переведет скромника в состояние "Содранной кожи на лице". В этом состоянии он сможет выйти из камеры содержания и атаковать персонал.
+  Tearing the skin from its face 5 times will allow the "Shy Guy" to pulverize its face into bloody pulp, transitioning it into the "Flayed Face" state. In this state, it is able to exit its containment chamber and attack personnel.
 
-  [textlink="Подробнее про состояния" link="Scp096States"]
+  [textlink="More on States" link="Scp096States"]
 
-  Задача персонала - не дать скромнику раскрошить свое лицо. Для этого требуется время от времени восстанавливать лицо объекта, используя медицинские пластыри.
+  The personnel's objective is to prevent the Shy Guy from pulverizing its face, and generally preventing escape. To achieve this, they must periodically restore the object's face using medical plasters.
 
-  ## Как определить степень повреждения лица?
+  ## How to Determine the Severity of Facial Damage?
 
-  Персоналу важно вовремя провести процедуру восстановления лица скромника, поэтому грамотное определение состояние - ключевой фактор в этом вопросе.
+  It is crucial for personnel to perform facial restoration procedures on the "Shy Guy" in a timely manner; therefore, an accurate assessment of his condition is a key factor in this process.
 
-  Квалифицированный персонал, вроде научного и части медицинского, может сходу оценить степень тяжести травм у объекта. Эту степень отображает видимая им иконка, справа сверху над объектом.
+  Qualified personnel — specifically scientific staff and certain medical personnel — can immediately assess the severity of the subject's injuries. This severity level is indicated by a visible icon displayed in the top-right corner above the subject.
 
-  Чем больше крови на лице иконки - тем больше поврежденность лица.
+  The more blood visible on the icon's face, the greater the extent of the facial damage.
 
-  Альтернативным способом получения информации является осмотр скромника используя Shift+Click. В меню будет предоставлено визуальное описание состояния объекта, что может помочь оценить обстановку.
+  An alternative method for obtaining this information is to inspect Shy Guy using Shift + Click. The resulting menu will provide a textual description of the subject's condition, which can assist in assessing the situation.
 
-  Квалифицированный персонал, вроде научного, может оценить, насколько критичны данные повреждения и немедленно выдать оценку.
-  Информация о важности восстановления лица в данный момент будет написана ниже, если сотрудник обладает достаточной квалификацией.
+  Qualified personnel — specifically scientific staff — are capable of assessing the criticality of such damage and providing an immediate evaluation.
+  Information regarding the urgency of restoring the containment unit will be provided below, provided the staff member possesses the requisite qualifications.
 
-  ## Ремонт камеры содержания
+  ## Containment Chamber Repairs
 
-  Объект обладает способностью создавать мощный аномальный резонанс, наносящий колоссальный урон всем структурам вокруг с помощью звуковой волны. К счастью, камера содержания объекта спроектирована по образу "Безэховых камер", частично подавляя разрушающую способность.
+  Shy Guy possesses the ability to generate a powerful anomalous resonance, inflicting colossal structural damage to its immediate surroundings via a sonic wave. Fortunately, the Object's containment chamber is designed based on the principles of an "anechoic chamber," thereby partially suppressing this destructive capability.
 
-  Но камера содержания не вечная! Постоянное воздействие сверхмощных звуковых волн вызывает деформацию и повреждение стен камеры содержания.
+  However, the containment chamber is not indestructible! Constant exposure to high-intensity sound waves causes deformation and structural damage to the chamber walls.
 
-  Для предотвращения нарушения условий содержания требуется проводить ремонтные работы каждые 20-25 минут, вызывая квалифицированный технический персонал с материалами и инструментами.
-  ## Что делать, если объект сбежал?
+  To prevent a containment breach, repair work must be performed every 20–25 minutes, requiring the deployment of qualified technical personnel equipped with the necessary materials and tools.
+   
+  ## What to Do If the Subject Escapes?
 
-  На вооружении фонда имеются высокотехнологичные разработки в виде "Мешка на голову" и "Маски", которые можно надеть на объект.
-  Пока объект их носит, он не может атаковать и сопротивляться транспортировке.
+  The Foundation's arsenal includes high-tech containment devices in the form of a "Head Bag" and a "Mask," which can be applied to a subject.
+  While the subject is wearing these devices, they are unable to attack or resist transport.
 
-  Объект может разорвать сдерживающую экипировку спустя некоторое время после ее надевания. Чем лучше экипировка, тем сложнее ее разорвать.
+  The subject may tear through the containment gear after a certain period of time has elapsed since its application. The higher the quality of the gear, the more difficult it is to breach.
 
-  Если объект уничтожил свое лицо, то хорошим решением будет использовать нелетальное вооружение для усмирения объекта перед надеванием сдерживающей экипировки.
-  Учтите, что потребуется большая сила, чтобы усмирить объект. Одного вооруженного тайзером сотрудника не хватит!
+  If the subject has destroyed their face, a prudent course of action is to employ non-lethal weaponry to subdue the subject prior to applying the containment gear.
+  Note that significant force will be required to subdue the subject; a single officer armed with a taser will not suffice!
 
-  ## Фотографии
+  ## Photographs
 
-  Иногда случайность может стать решающим фактором. В игре существует случайный ивент, создающий по всему комплексу и в инвентарях игроков копии фотографии SCP-096.
+  Sometimes, chance can be the decisive factor. The game features a random event that generates copies of the SCP-096 photograph throughout the facility and within players' inventories.
 
-  Посмотревшие на фотографию станут целями скромника, переведя его в другое состояние.
+  Anyone who views the photograph by inspecting it becomes a target of Shy Guy, thereby triggering a change in its state.
 
-  Фотографии могут играть и на руку персоналу. Так, если посадить цель скромника в его камеру содержания, а затем вовремя ее закрыть, можно восстановить Особые Условия Содержания с незначительными потерями.
+  However, these photographs can also work to the staff's advantage. For instance, if a target of The Shy Guy is successfully confined within its containment chamber — and the chamber is sealed in time — the Special Containment Procedures can be re-established with minimal casualties.
 
-  Фотографию также можно создать, использовав лабораторный фотоаппарат на скромнике.
+  A photograph can also be generated manually by using a laboratory camera on Shy Guy.
 
-  [textlink="Подробнее про уникальные взаимодействия" link="ScpResearchAdvanced"]
+  [textlink="More details on unique interactions" link="ScpResearchAdvanced"]
 </Document>
