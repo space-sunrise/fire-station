@@ -19,6 +19,7 @@
 - type: entity
   parent: KeyCardMtfBase
   id: KeyCardMtfHDLeader
+  name: Nu-7 Leader keycard
   components:
   - type: Sprite
     state: mtf_commander
@@ -28,6 +29,7 @@
 - type: entity
   parent: KeyCardMtfBase
   id: KeyCardMtfHDSpecialist
+  name: Nu-7 Specialist keycard
   components:
   - type: PresetIdCard
     job: HDSpecialist
@@ -35,6 +37,7 @@
 - type: entity
   parent: KeyCardMtfBase
   id: KeyCardMtfHDCadet
+  name: Nu-7 Cadet keycard
   components:
   - type: PresetIdCard
     job: HDCadet
@@ -42,6 +45,7 @@
 - type: entity
   parent: KeyCardMtfBase
   id:  KeyCardMtfLLHLeader
+  name: Omega-1 Leader keycard
   components:
   - type: Sprite
     state: mtf_commander
@@ -51,6 +55,7 @@
 - type: entity
   parent: KeyCardMtfBase
   id: KeyCardMtfLLHSpecialist
+  name: Omega-1 Specialist keycard
   components:
   - type: PresetIdCard
     job: LLHSpecialist
@@ -58,6 +63,7 @@
 - type: entity
   parent: KeyCardMtfBase
   id: KeyCardMtfMHLeader
+  name: Beta-7 Leader keycard
   components:
   - type: Sprite
     state: mtf_commander
@@ -67,6 +73,7 @@
 - type: entity
   parent: KeyCardMtfBase
   id: KeyCardMtfMHSpecialist
+  name: Beta-7 Specialist keycard
   components:
   - type: PresetIdCard
     job: MHSpecialist
@@ -74,6 +81,7 @@
 - type: entity
   parent: KeyCardMtfBase
   id: KeyCardMtfMHCadet
+  name: Beta-7 Cadet keycard
   components:
   - type: PresetIdCard
     job: MHCadet
@@ -81,6 +89,7 @@
 - type: entity
   parent: KeyCardMtfBase
   id: KeyCardMtfNTFLeader
+  name: Epsilon-11 Leader keycard
   components:
   - type: Sprite
     state: mtf_commander
@@ -90,6 +99,7 @@
 - type: entity
   parent: KeyCardMtfBase
   id: KeyCardMtfNTFSpecialist
+  name: Epsilon-11 Specialist keycard
   components:
   - type: PresetIdCard
     job: NTFSpecialist
@@ -97,6 +107,7 @@
 - type: entity
   parent: KeyCardMtfBase
   id: KeyCardMtfNTFCadet
+  name: Epsilon-11 Cadet keycard
   components:
   - type: PresetIdCard
     job: NTFCadet
@@ -104,6 +115,7 @@
 - type: entity
   parent: KeyCardMtfBase
   id: KeyCardMtfRRHLeader
+  name: Alpha-1 Leader keycard
   components:
   - type: Sprite
     state: mtf_commander
@@ -113,6 +125,7 @@
 - type: entity
   parent: KeyCardMtfBase
   id: KeyCardMtfRRHSpecialist
+  name: Alpha-1 Specialist keycard
   components:
   - type: PresetIdCard
     job: RRHSpecialist
