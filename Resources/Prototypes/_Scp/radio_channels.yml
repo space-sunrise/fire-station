@@ -96,6 +96,6 @@
 - type: radioChannel
   id: InternalSecurity
   name: chat-radio-internal-security
-  keycode: 'n'
+  keycode: 'z'
   frequency: 2334
   color: "#8e4747"
