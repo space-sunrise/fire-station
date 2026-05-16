@@ -81,7 +81,7 @@ public sealed partial class CustomInteractionEditor : DefaultWindow
             Cooldown = 5.0f
         };
 
-        Title = isNewInteraction ? "Создание взаимодействия" : "Редактирование взаимодействия";
+        Title = isNewInteraction ? "Creating Interaction" : "Editing Interaction";
 
         InitializeUI();
         InitializeEvents();
@@ -149,7 +149,7 @@ public sealed partial class CustomInteractionEditor : DefaultWindow
 
         CategoryOption.Clear();
         int categoryId = 0;
-        CategoryOption.AddItem("Выберите категорию");
+        CategoryOption.AddItem("Select a Category");
         _categoryIds[categoryId] = string.Empty;
 
         categoryId++;
@@ -168,7 +168,7 @@ public sealed partial class CustomInteractionEditor : DefaultWindow
 
         IconOption.Clear();
         int iconId = 0;
-        IconOption.AddItem("Нет");
+        IconOption.AddItem("No");
         _iconIds[iconId] = string.Empty;
 
         iconId++;
@@ -187,7 +187,7 @@ public sealed partial class CustomInteractionEditor : DefaultWindow
 
         EffectOption.Clear();
         int effectId = 0;
-        EffectOption.AddItem("Нет");
+        EffectOption.AddItem("No");
         _effectIds[effectId] = string.Empty;
 
         effectId++;
@@ -206,7 +206,7 @@ public sealed partial class CustomInteractionEditor : DefaultWindow
 
         SoundOption.Clear();
         int soundId = 0;
-        SoundOption.AddItem("Выберите звук");
+        SoundOption.AddItem("Select a Sound");
         _soundIds[soundId] = string.Empty;
 
         soundId++;
@@ -307,7 +307,7 @@ public sealed partial class CustomInteractionEditor : DefaultWindow
 
         if (message.Length > MaxMessageLength)
         {
-            ShowError($"Сообщение слишком длинное (макс. {MaxMessageLength} символов)");
+            ShowError($"The message is too long. (max. {MaxMessageLength} characters)");
             return;
         }
 
@@ -343,31 +343,31 @@ public sealed partial class CustomInteractionEditor : DefaultWindow
     {
         if (string.IsNullOrEmpty(NameInput.Text.Trim()))
         {
-            ShowError("Имя взаимодействия не может быть пустым");
+            ShowError("The interaction name cannot be empty.");
             return;
         }
 
         if (_interaction.Name.Length > MaxNameLength)
         {
-            ShowError($"Имя слишком длинное (макс. {MaxNameLength} символов)");
+            ShowError($"The name is too long. (max. {MaxNameLength} сharacters)");
             return;
         }
 
         if (_interaction.Description.Length > MaxDescriptionLength)
         {
-            ShowError($"Описание слишком длинное (макс. {MaxDescriptionLength} символов)");
+            ShowError($"The description is too long. (max. {MaxDescriptionLength} сharacters)");
             return;
         }
 
         if (_interaction.InteractionMessages.Count == 0)
         {
-            ShowError("Добавьте хотя бы одно сообщение взаимодействия");
+            ShowError("Add at least one interaction message.");
             return;
         }
 
         if (!_categoryIds.TryGetValue(CategoryOption.SelectedId, out var categoryId) || string.IsNullOrEmpty(categoryId))
         {
-            ShowError("Выберите категорию");
+            ShowError("Select a category.");
             return;
         }
 
