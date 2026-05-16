@@ -1,5 +1,5 @@
 <Document>
-  # Humanoid Xenomorphs
+  # Humanoid Xenomorph
 
   <Box>
     <GuideEntityEmbed Entity="MobXenoDummy" Caption=""/>
