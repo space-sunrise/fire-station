@@ -1,31 +1,31 @@
 ﻿<Document>
 
-  # Исследования
+  # Research
 
-  [bold]В отличии от космической станции исследования в Фонде SCP строятся в основном на SCP объектах.[/bold]
-  Здесь для исследования всех технологий требуются [color=#8b0000]очки исследования SCP[/color], которые можно получить за раскрытие узлов SCP по системе артефактов из космической станции или путем уникальных взаимодействий
+  [bold]Unlike typical Space Station science, research within the SCP Foundation is based primarily on SCP objects.[/bold]
+  Here, researching all technologies requires [color=#8b0000]SCP Research Points[/color], which can be obtained by unlocking SCP nodes — utilizing a system similar to the artifact system — or through unique interactions.
 
-  ## Путь через систему-артефактов
+  ## The Artifact System Process
 
-  Для начала требуется, чтобы SCP объект находится в радиусе 10 тайлов от платформы анализа. Ему совершенно не требуется находится прямо на ней, как обычным артефактам
-  Это работает только на [color=#2B662B]живых SCP[/color], например SCP-173 и т.п.
+  To begin, the SCP object must be located within a radius of 10 tiles from the Analysis Platform. Unlike standard artifacts, it is not strictly necessary for the object to be positioned directly *on* the platform.
+  This functionality applies exclusively to [color=#2B662B]living SCPs[/color]—such as SCP-173, etc.
 
-  Как только вы вызовите эффект [color=#8b0000] очки исследования SCP моментально поступят на сервер[/color]. Извлекать их через консоль не требуется
+  As soon as the effect is triggered, [color=#8b0000]the corresponding SCP Research Points will be instantly credited to the server[/color]. There is no need to manually extract them via the console.
 
-  Дальнейшие исследования происходят стандартным образом за исключением того, что эффект от триггера будет скрыт.
+  Subsequent research proceeds in the standard manner, with the sole exception that the visual effect of the trigger will remain hidden.
 
-  [italic]Мы дополнили стандартный список эффектов, поэтому вы сможете обнаружить совершенно новые эффекты, которые могут проявлять объекты. И некоторые из них невероятно безумные[/italic]
+  [italic]We have expanded the standard list of effects, so you will be able to discover entirely new effects that objects can manifest. Some of them are incredibly wild.[/italic]
 
-  ## Путь через уникальные взаимодействия
+  ## A Path Through Unique Interactions
 
-  Некоторые SCP имеют свои собственные уникальные взаимодействия, но работают они все по одной схеме
+  Some SCPs feature their own unique interactions, yet they all operate according to a single underlying mechanism:
 
-  - Игрок взаимодействует с SCP c помощью требумого инструмента
-  - Спустя какое-то время ожидания игрок получает [bold]исследовательский материал[/bold]
-  - SCP уходит на кулдаун, зависящий от сделанного взаимодействия. Дальнейшие взаимодействия невозможны, пока он не пройдет. Даже если это другие взаимодействия
+  - The player interacts with the SCP using the required tool.
+  - After a brief waiting period, the player receives [bold]research material[/bold].
+  - The SCP enters a cooldown phase, the duration of which depends on the specific interaction performed. Further interactions are impossible until this cooldown expires—even if they involve different types of interactions.
 
-  Полученный [bold]исследовательский материал[/bold] можно изучить как обычный артефакт. Каждый его узел дает намного [color=#8b0000]больше очков исследования SCP[/color], чем узлы SCP-предметов.
+  The resulting [bold]research material[/bold] can be studied like a regular artifact. Each node provides significantly [color=#8b0000]more SCP research points[/color] than SCP item nodes.
 
-  [textlink="Список уникальных взаимодействий для каждого SCP можно найти здесь" link="ScpResearchAdvanced"]
+  [textlink="A list of unique interactions for each SCP can be found here" link="ScpResearchAdvanced"]
 
 </Document>
