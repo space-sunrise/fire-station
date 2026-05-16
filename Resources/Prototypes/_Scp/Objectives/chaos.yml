@@ -30,7 +30,7 @@
 
 - type: entity
   parent: BaseChaosRaidStealCollectionObjective
-  id: ScpsStealObjective
+  id: ScpsStealCollectionObjective
   components:
   - type: StealCondition
     minCollectionSize: 4

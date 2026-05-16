@@ -2,9 +2,9 @@
 - type: weightedRandom
   id: ChaosRaidObjectiveGroups
   weights:
-    ChaosRaidObjectiveGroupSteal: 1
+    ChaosRaidObjectiveGroupStealCollection: 1
 
 - type: weightedRandom
-  id: ChaosRaidObjectiveGroupSteal
+  id: ChaosRaidObjectiveGroupStealCollection
   weights:
-    ScpsStealObjective: 1
+    ScpsStealCollectionObjective: 1
