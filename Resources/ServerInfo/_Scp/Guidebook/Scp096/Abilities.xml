@@ -1,44 +1,44 @@
 ﻿<Document>
-  # Способности SCP-096
+  # SCP-096's Abilities
 
-  Здесь будут описаны доступные объекту активируемые способности и уникальные механики, связанные с ним.
+  This section describes the activated abilities available to SCP-096 and the unique mechanics associated with it.
 
-  [textlink="Общая информация о скромнике" link="Scp096About"]
+  [textlink="General Information about Shy Guy" link="Scp096About"]
 
-  ## Способность "Издать жалостный крик"
+  ## Ability: "Emit a Pitiful Scream"
 
-  Активация данной способности создает мощный аномальный резонанс, разрушающий окружающие структуры звуковой волной.
-  Данная способность работает только внутри камеры содержания. Используйте ее, чтобы разрушать камеру содержания.
+  Activating this ability creates a powerful anomalous resonance, destroying surrounding structures with a sonic wave.
+  This ability only functions inside the containment chamber's sound-proof walls. Use it to breach the containment chamber.
 
-  [textlink="Подробнее о методах побега" link="Scp096ContainmentBreach"]
+  [textlink="More about Escape Methods" link="Scp096ContainmentBreach"]
 
-  ## Способность "Содрать кожу с лица"
+  ## Ability: "Face Rip"
 
-  Активация данной способности наносит урон вашему лицу, разбрызгивая повсюду вашу кровь.
-  Использование способности 5 раз подряд нанесет лицу критический урон, переведя вас в "Состояние содранного лица"
+  Activating this ability deals damage to your face, spraying blood everywhere.
+  Using this ability 5 times in a row will deal critical damage to your face, putting you into the "Flayed Face State."
 
-  [textlink="Подробнее про состояния" link="Scp096States"]
+  [textlink="Learn more about states" link="Scp096States"]
 
-  [bold]Для активации данной способности требуется стоять на месте и не двигаться в течение пары секунд, пока полоска прогресса над вашей головой не закончится.[/bold]
+  [bold]To activate this ability, you must stand still for a couple of seconds until the progress bar above your head runs out.[/bold]
 
-  Способность имеет долгий откат!
+  This ability has a long cooldown, so make sure you do it right!
 
-  ## Способность "Присесть"
+  ## "Sitting" Ability
 
-  Активация данной способности переводит вас в состояния "Сидя". Объект меняет внешний вид и теряет возможность двигаться.
-  В данном состоянии скромник чаще выделяет слезную жидкость.
+  Activating this ability puts you into the "Sitting" state. The subject changes appearance and becomes unable to move.
+  In this state, the shy one secretes tears more frequently.
 
-  В целом, состояние не имеет практического смысла. Вы можете использовать его в любое время.
+  In general, this status carries no practical significance; you may utilize it at any time.
 
-  ## Механика безопасного времени
+  ## Safe Time Mechanics
 
-  В течение первых 15ти минут с начала раунда вы не сможете использовать вашу способность "Содрать кожу с лица".
+  For the first 15 minutes of the round, you are unable to use your "Face Rip" ability.
 
-  Эта механика ограничивает SCP объекты в начале раунда, давая персоналу время на стартовую подготовку к смене.
+  This mechanic restricts SCP entities during the early stages of the round, granting the facility staff time to complete their initial preparations for the shift.
 
-  ## Механика зрения
+  ## Vision Mechanics
 
-  В игре присутствует уникальная система, которая проверяет видимость каждого персонажа другим персонажем.
+  The game features a unique system that determines whether one character is visible to another.
 
-  [bold]Если вы и другой человек посмотрите друг другу в лицо, это переведет вас в состояние "Пред-ярости", а после в состояние "Ярости"[/bold]. Увидевший вас человек станет вашей законной целью, которую вы сможете с легкостью устранить.
+  [bold]If you and another individual make direct eye contact, you will enter a "Pre-Rage" state, followed shortly thereafter by a "Rage" state.[/bold] The person who spotted you will become a valid target — one that you can then eliminate with ease. You will gain the ability to demolish blast doors, windoors, and all types of airlocks. Your tunnel vision will make it so the only living thing you can see is your target.
 </Document>
