@@ -1,6 +1,8 @@
 ﻿- type: entity
   parent: Pill
   id: PillScp2022
+  name: pill
+  description: Pop them like candy.
   suffix: SCP-2022
   components:
   - type: Sprite
