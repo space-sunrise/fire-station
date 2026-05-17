@@ -2,8 +2,8 @@
   id: Scp012
   parent: BaseItemScp
   suffix: SCP-012
-  name: ???
-  description: A musical manuscript titled “On Mount Golgotha.” It appears to be unfinished.
+  name: old music sheet
+  description: A musical manuscript titled “On Mount Golgotha.” It appears to be unfinished, with yellowing paper and the notes being inked with... blood?
   components:
   - type: Sprite
     sprite: _Scp/Objects/Scp/scp-012.rsi
