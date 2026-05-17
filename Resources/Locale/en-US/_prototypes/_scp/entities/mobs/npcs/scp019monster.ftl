@@ -1,0 +1,1 @@
+ent-BaseMobScp019Monster = ???
