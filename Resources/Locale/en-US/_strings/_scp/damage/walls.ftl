@@ -1,13 +1,83 @@
-scp-wall-wood-damaged-1 = The planks look intact, with almost no visible wear.
-scp-wall-wood-damaged-2 = Light scratches and a few splinters have appeared on the surface.
-scp-wall-wood-damaged-3 = Cracks run along the grain, and the wood has started to split in places.
-scp-wall-wood-damaged-4 = Several planks are badly cracked, and deep fractures are visible across the wall.
-scp-wall-wood-damaged-5 = The wood has separated along the joints, and some planks are warped and barely holding together.
-scp-wall-wood-damaged-6 = The wall is close to collapse: the planks are split apart and the fasteners are failing.
+﻿scp-wall-metal-damaged-1 = Стена выглядит целой.
+scp-wall-metal-damaged-2 = На металле заметны мелкие царапины.
+scp-wall-metal-damaged-3 = Видны вмятины и отдельные сколы покрытия.
+scp-wall-metal-damaged-4 = Металл ощутимо деформирован, можно заметить трещины в структуре.
+scp-wall-metal-damaged-5 = Стена покрыта глубокими разломами и сильными деформациями.
+scp-wall-metal-damaged-6 = Конструкция на пределе — металл трещит и вот-вот рухнет!
 
-scp-wall-wood-damaged-engineering-1 = Structure nominal. Planks and fasteners are intact, and load-bearing capacity is unchanged.
-scp-wall-wood-damaged-engineering-2 = Superficial scratches and minor chipping detected. Damage remains within acceptable limits.
-scp-wall-wood-damaged-engineering-3 = Grain cracking and localized delamination detected. Cosmetic repairs are recommended.
-scp-wall-wood-damaged-engineering-4 = Multiple elements are visibly cracked, and several joints have weakened. Repairs are required.
-scp-wall-wood-damaged-engineering-5 = Load-bearing planks are partially split and the joints are separating. Urgent reinforcement or section replacement is required.
-scp-wall-wood-damaged-engineering-6 = Critical condition. Structural rigidity has been lost and collapse may occur at any moment.
+scp-wall-concrete-damaged-1 = Повреждений нет: поверхность ровная, следов износа не заметно.
+scp-wall-concrete-damaged-2 = Имеется несколько мелких сколов и неровностей на поверхности.
+scp-wall-concrete-damaged-3 = Отмечаются небольшие трещины, местами бетон крошится и осыпается.
+scp-wall-concrete-damaged-4 = Видны крупные трещины, участки покрытия частично разрушены.
+scp-wall-concrete-damaged-5 = Глубокие разломы проходят по всей поверхности, бетон значительно осыпается.
+scp-wall-concrete-damaged-6 = Стена покрыта множеством глубоких разломов и крошащихся участков — конструкция едва держится.
+
+scp-wall-reinforced-hard-containment-damaged-1 = Стена выглядит целой. Повреждений нет.
+scp-wall-reinforced-hard-containment-damaged-2 = На металле заметны мелкие царапины и локальные точки ржавчины.
+scp-wall-reinforced-hard-containment-damaged-3 = Видны вмятины и отдельные сколы покрытия. Некоторые крепления деформированы.
+scp-wall-reinforced-hard-containment-damaged-4 = Металл ощутимо деформирован, можно заметить трещины вдоль швов. Некоторые крепления сорваны.
+scp-wall-reinforced-hard-containment-damaged-5 = Многочисленные дыры, значительная часть металла отсутствует, часть креплений уничтожено.
+scp-wall-reinforced-hard-containment-damaged-6 = Конструкция почти разрушена: панель частично разрушена, почти все крепления утрачены.
+
+scp-wall-brick-damaged-1 = Повреждений нет: кладка ровная, швы целые.
+scp-wall-brick-damaged-2 = Есть несколько мелких сколов на отдельных кирпичах.
+scp-wall-brick-damaged-3 = Заметны небольшие трещины в кладке и осыпание раствора.
+scp-wall-brick-damaged-4 = Несколько кирпичей повреждены, видны крупные трещины и выбитые участки.
+scp-wall-brick-damaged-5 = Кирпичи частично разрушены, кладка сильно осыпается, швы повреждены.
+scp-wall-brick-damaged-6 = Стена почти разрушена: множество раскрошенных кирпичей, крупные разломы, конструкция держится с трудом.
+
+scp-wall-wood-damaged-1 = Доски выглядят целыми, следов износа почти не заметно.
+scp-wall-wood-damaged-2 = На поверхности появились мелкие царапины и отдельные щепки.
+scp-wall-wood-damaged-3 = Видны трещины по волокнам, местами древесина начала расслаиваться.
+scp-wall-wood-damaged-4 = Несколько досок заметно расколоты, в стене появились глубокие трещины.
+scp-wall-wood-damaged-5 = Древесина сильно разошлась по швам, часть досок деформирована и держится с трудом.
+scp-wall-wood-damaged-6 = Стена почти развалилась: доски растрескались, крепления не держат нагрузку.
+
+scp-wall-scp096-containment-damaged-1 = Стена выглядит нетронутой, звукопоглощающее покрытие аккуратно выровнено.
+scp-wall-scp096-containment-damaged-2 = На стене появились тонкие продольные искажения, будто поверхность была сжата звуковой волной.
+scp-wall-scp096-containment-damaged-3 = Продольные деформации усиливаются, покрытие местами смято и утратило форму.
+scp-wall-scp096-containment-damaged-4 = Стена покрыта глубокими продольными бороздами, слои акустической изоляции разорваны.
+scp-wall-scp096-containment-damaged-5 = Волнообразные разломы проходят по всей поверхности, структура стены заметно искажена.
+scp-wall-scp096-containment-damaged-6 = Стена изуродована мощными продольными повреждениями, словно её «продавили» непрерывной звуковой волной.
+
+scp-wall-metal-damaged-engineering-1 = Конструкция в норме. Целостность и несущая способность соответствуют проектным значениям. Обслуживание не требуется.
+scp-wall-metal-damaged-engineering-2 = Видны поверхностные царапины защитного покрытия. Повреждения в пределах нормы.
+scp-wall-metal-damaged-engineering-3 = Можно заметить локальные вмятины и сколы покрытия. Необходимо провести косметические ремонтные работы.
+scp-wall-metal-damaged-engineering-4 = Заметны значительные деформации и поверхностные трещины в металле. Требуется провести ремонт.
+scp-wall-metal-damaged-engineering-5 = Имеются глубокие разломы и пластические деформации. Конструкция потеряла расчетную жесткость. Необходим немедленный ремонт с возможной заменой сегментов.
+scp-wall-metal-damaged-engineering-6 = Критическое состояние. Несущие элементы деформированы до предела. Требуется немедленно провести аварийные работы.
+
+scp-wall-concrete-damaged-engineering-1 = Конструкция в норме. Бетон монолитный, трещин и разрушений нет.
+scp-wall-concrete-damaged-engineering-2 = Видны незначительные сколы поверхности. Не влияет на несущую способность. Повреждения в пределах нормы.
+scp-wall-concrete-damaged-engineering-3 = Можно заметить мелкие трещины и осыпание поверхности. Необходимо провести косметические ремонтные работы.
+scp-wall-concrete-damaged-engineering-4 = Заметны крупные трещины в бетоне. Снижена структурная целостность. Требуется провести ремонт.
+scp-wall-concrete-damaged-engineering-5 = Имеются глубокие разломы, значительное разрушение конструкции. Требуется немедленное усиление и ремонт секций.
+scp-wall-concrete-damaged-engineering-6 = Критическое состояние. Конструкция неустойчива и трещит по швам. Требуется немедленно провести аварийные работы.
+
+scp-wall-reinforced-hard-containment-damaged-engineering-1 = Конструкция в норме. Целостность и несущая способность соответствуют проектным значениям. Обслуживание не требуется.
+scp-wall-reinforced-hard-containment-damaged-engineering-2 = Видны поверхностные царапины защитного покрытия. Повреждения в пределах нормы.
+scp-wall-reinforced-hard-containment-damaged-engineering-3 = Можно заметить локальные вмятины и сколы покрытия. Необходимо провести косметические ремонтные работы.
+scp-wall-reinforced-hard-containment-damaged-engineering-4 = Заметны значительные деформации и поверхностные трещины в металле. Требуется провести ремонт.
+scp-wall-reinforced-hard-containment-damaged-engineering-5 = Имеются глубокие разломы и пластические деформации. Конструкция потеряла расчетную жесткость. Необходим немедленный ремонт с возможной заменой сегментов.
+scp-wall-reinforced-hard-containment-damaged-engineering-6 = Критическое состояние. Несущие элементы деформированы до предела. Требуется немедленно провести аварийные работы.
+
+scp-wall-brick-damaged-engineering-1 = Кладка в норме. Швы и кирпичи без повреждений.
+scp-wall-brick-damaged-engineering-2 = Видны единичные сколы кирпича. Целостность кладки не нарушена. Повреждения в пределах нормы.
+scp-wall-brick-damaged-engineering-3 = Можно заметить трещины в швах и выкрашивание раствора. Необходимо провести косметические ремонтные работы.
+scp-wall-brick-damaged-engineering-4 = Заметны множественные повреждения кирпичей и кладки. Конструкция ослаблена. Требуется провести ремонт.
+scp-wall-brick-damaged-engineering-5 = Имеются глубокие разломы в кладке, значительное разрушение. Конструкция утратила устойчивость. Требуется срочное усиление и ремонт.
+scp-wall-brick-damaged-engineering-6 = Критическое состояние. Кладка частично обрушена, конструкция нестабильна. Требуется немедленно провести аварийные работы.
+
+scp-wall-wood-damaged-engineering-1 = Конструкция в норме. Доски и крепления целы, несущая способность не снижена.
+scp-wall-wood-damaged-engineering-2 = Имеются поверхностные царапины и незначительные сколы. Повреждения в пределах нормы.
+scp-wall-wood-damaged-engineering-3 = Обнаружены трещины по волокнам и локальное расслоение древесины. Нужен косметический ремонт.
+scp-wall-wood-damaged-engineering-4 = Несколько элементов заметно растрескались, часть соединений ослаблена. Требуется провести ремонт.
+scp-wall-wood-damaged-engineering-5 = Несущие доски частично расколоты, соединения расходятся. Необходим срочный ремонт с усилением или заменой секций.
+scp-wall-wood-damaged-engineering-6 = Критическое состояние. Конструкция утратила жесткость и может обрушиться в любой момент.
+
+scp-wall-scp096-containment-damaged-engineering-1 = Повреждений нет. Все акустические слои функционируют в расчётных пределах.
+scp-wall-scp096-containment-damaged-engineering-2 = Начальная деформация внешнего слоя от аномального акустического давления. Повреждения в пределах нормы.
+scp-wall-scp096-containment-damaged-engineering-3 = Частичное разрушение звукопоглощающих модулей. Необходимо провести косметические ремонтные работы.
+scp-wall-scp096-containment-damaged-engineering-4 = Сильное нарушение акустической структуры. Требуется провести ремонт.
+scp-wall-scp096-containment-damaged-engineering-5 = Почти полная утрата звукопоглощающих свойств в сегменте. Срочный ремонт обязателен.
+scp-wall-scp096-containment-damaged-engineering-6 = Конструкция не справляется с акустической нагрузкой. Требуются немедленные аварийные меры.
