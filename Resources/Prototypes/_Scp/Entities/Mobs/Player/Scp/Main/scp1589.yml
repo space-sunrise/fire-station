@@ -2,7 +2,7 @@
   id: Scp1589
   name: ???
   suffix: SCP-1589
-  description: 
+  description:
   parent: 
   - BaseScpFriendly
   - BaseMob
