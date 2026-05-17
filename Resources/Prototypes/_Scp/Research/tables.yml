@@ -53,6 +53,13 @@
       weight: 2
 
 - type: entityTable
+  id: ScpEffectMonsterSpawn019
+  table: !type:GroupSelector
+    children:
+    - id: ScpEffectMonsterSpawn019
+      weight: 1
+
+- type: entityTable
   id: ScpArtifactEffectsScp939Table
   table: !type:GroupSelector
     children:
@@ -117,13 +124,6 @@
   table: !type:GroupSelector
     children:
     - id: ScpEffectIgnite
-      weight: 1
-
-- type: entityTable
-  id: ScpEffectMonsterSpawn019
-  table: !type:GroupSelector
-    children:
-    - id: ScpEffectMonsterSpawn019
       weight: 1
 
 - type: entityTable
