@@ -24,7 +24,7 @@ public sealed class SharedScpPossibilitiesSystem : EntitySystem
 
     private void OnMeleeHit(Entity<ScpPossibilitiesComponent> ent, ref MeleeHitEvent args)
     {
-        if (args.HitEntities.Count == 0 !args.IsHit)
+        if (args.HitEntities.Count == 0 || !args.IsHit)
             return;
 
         if (ent.Comp.CanEjectPilotFromMech)
