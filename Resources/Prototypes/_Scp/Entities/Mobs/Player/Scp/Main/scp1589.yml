@@ -141,3 +141,19 @@
     vignetteShaderStrength:
       min: 0
       max: 200
+  - type: ComplexInteraction
+  - type: Hands
+    hands:
+      main:
+        location: Middle
+        blacklist:
+          components:
+          - MeleeWeapon
+          - Gun
+        whitelist:
+          components:
+          - Clothing
+    sortedHands:
+    - main
+    activeHandId: main
+  - type: Stripping
