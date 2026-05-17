@@ -1,0 +1,26 @@
+# SCP-933 - Duct Tape System
+
+# SCP-933-01: The Duct Tape Item
+- type: entity
+  parent: BaseItem
+  id: Scp933DuctTape
+  suffix: SCP-933-01
+  name: duct tape
+  description: A roll of silver duct tape. Sticky and versatile.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scp/scp-933.rsi
+    state: tape
+  - type: Item
+    size: Small
+    heldPrefix: equipped
+  - type: DuctTape
+  - type: MeleeWeapon
+    range: 1.5
+    damage:
+      types:
+        Blunt: 5
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+

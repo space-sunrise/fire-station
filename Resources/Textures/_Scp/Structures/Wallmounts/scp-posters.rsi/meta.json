@@ -34,8 +34,7 @@
         { "name": "scp999" },
         { "name": "scp612" },
         { "name": "scp939" },
-		{ "name": "scp1508" },
-		{ "name": "scp2022" },
-		{ "name": "scp2295" }
+		{ "name": "scp2022"},
+        { "name": "scp933" }
     ]
 }
