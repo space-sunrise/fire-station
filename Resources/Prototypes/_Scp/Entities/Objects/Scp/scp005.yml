@@ -1,6 +1,8 @@
 ﻿- type: entity
   id: Scp005
   parent: BaseItemScp
+  name: old key
+  description: An old, almost ornate key.
   suffix: SCP-005
   components:
   - type: Sprite
