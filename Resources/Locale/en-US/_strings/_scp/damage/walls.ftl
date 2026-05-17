@@ -2,7 +2,7 @@
 scp-wall-metal-damaged-2 = There's some scratches here and there on the metal.
 scp-wall-metal-damaged-3 = There are some dents and the paint is a little chipped.
 scp-wall-metal-damaged-4 = The metal's visibly deformed and cracked.
-scp-wall-metal-damaged-5 = The wall is covered with deep fissues and severe deformations. It doesn't look very sturdy now.
+scp-wall-metal-damaged-5 = The wall is covered with deep fissures and severe deformations. It doesn't look very sturdy now.
 scp-wall-metal-damaged-6 = The wall is at its' limit—the metal is groaning and about to collapse!
 
 scp-wall-concrete-damaged-1 = There is no damage; the surface is even, and no signs of wear are visible.
