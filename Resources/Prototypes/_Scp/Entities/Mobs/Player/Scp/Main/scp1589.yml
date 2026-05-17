@@ -78,7 +78,7 @@
       collection: Punch
     damage:
       types:
-        Blunt: 60
+        Blunt: 40
         Structural: 60
     attackRate: 0.5
     range: 2
@@ -86,9 +86,12 @@
     speed: 2
     distance: 0.5
   - type: Devourer
-    devourTime: 10
+    devourTime: 15
     healRate: 30
     chemical: Omnizine
+    foodPreferenceWhitelist:
+      components:
+      - MobState
   - type: Bloodstream
     bloodRefreshAmount: 5
     bloodReferenceSolution:

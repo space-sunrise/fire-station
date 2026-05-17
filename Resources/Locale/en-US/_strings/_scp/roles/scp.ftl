@@ -12,3 +12,6 @@ job-name-scp999 = SCP-999 "The Tickle Monster"
 job-description-scp999 = A friendly, gelatinous entity that causes boundless joy and laughter. Able to relieve stress and cure depression.
 job-name-scp173 = SCP-173 "The Sculpture"
 job-description-scp173 = A sculpture that kills when visual contact is broken. Fast, silent, and deadly if you blink.
+
+job-name-scp1589 = SCP-1589 «Roman Anthropophagus»
+job-description-scp1589 = An obedient and calm giant who carries out any orders.
