@@ -10523,3 +10523,22 @@
   id: 437
   time: '2026-05-01T11:54:21.0000000+00:00'
   url: https://github.com/space-sunrise/project-fire/pull/987
+- author: NotSoWizard
+  changes:
+  - message: "\u0412\u0435\u0440\u043D\u0443\u043B\u0438 BR-64 \u041C\u041E\u0413\u0443\
+      \ \u0432 \u043A\u043E\u0440\u043E\u0431\u043A\u0438!"
+    type: Fix
+  id: 438
+  time: '2026-05-15T19:23:06.0000000+00:00'
+  url: https://github.com/space-sunrise/project-fire/pull/994
+- author: vasya
+  changes:
+  - message: "\u0422\u0435\u043F\u0435\u0440\u044C SCP-2295 \u043C\u043E\u0436\u0435\
+      \u0442 \u0431\u0440\u0430\u0442\u044C \u0442\u0430\u0431\u043B\u0435\u0442\u043D\
+      \u0438\u0446\u044B \u0438 \u0445\u0438\u0440\u0443\u0440\u0433\u0438\u0447\u0435\
+      \u0441\u043A\u0438\u0435 \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\
+      \u0442\u044B"
+    type: Tweak
+  id: 439
+  time: '2026-05-17T13:36:33.0000000+00:00'
+  url: https://github.com/space-sunrise/project-fire/pull/1000
