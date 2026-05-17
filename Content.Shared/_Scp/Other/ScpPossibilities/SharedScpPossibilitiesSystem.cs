@@ -11,10 +11,10 @@ namespace Content.Shared._Scp.Other.ScpPossibilities;
 
 public sealed class SharedScpPossibilitiesSystem : EntitySystem
 {
-    [Dependency] RandomPredictedSystem _random = default!;
-    [Dependency] EntityWhitelistSystem _whitelist = default!;
-    [Dependency] SharedPopupSystem _popup = default!;
-    [Dependency] SharedEntityStorageSystem _entityStorage = default!;
+    [Dependency] private readonly RandomPredictedSystem _random = default!;
+    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly SharedEntityStorageSystem _entityStorage = default!;
     public override void Initialize()
     {
         base.Initialize();
