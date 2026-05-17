@@ -1,5 +1,7 @@
 execution-verb-name = Execute
 execution-verb-message = Use your weapon to execute someone.
+suicide-verb-name = Suicide
+suicide-verb-message = Use your weapon to end it all.
 
 # All the below localisation strings have access to the following variables
 # attacker (the person committing the execution)
@@ -28,3 +30,8 @@ suicide-popup-gun-initial-internal = You place the barrel of the { $weapon } in 
 suicide-popup-gun-initial-external = { $attacker } places the barrel of the { $weapon } in their mouth.
 suicide-popup-gun-complete-internal = You shoot yourself in the head!
 suicide-popup-gun-complete-external = { $attacker } shoots themselves in the head!
+
+suicide-popup-melee-initial-internal = You ready {THE($weapon)} against your throat.
+suicide-popup-melee-initial-external = { CAPITALIZE(THE($attacker)) } readies {POSS-ADJ($attacker)} {$weapon} against their throat.
+suicide-popup-melee-complete-internal = You slit your own throat!
+suicide-popup-melee-complete-external = { CAPITALIZE(THE($attacker)) } slits their own throat!
