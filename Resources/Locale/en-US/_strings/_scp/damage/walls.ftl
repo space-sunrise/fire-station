@@ -1,23 +1,23 @@
-﻿scp-wall-metal-damaged-1 = Стена выглядит целой.
-scp-wall-metal-damaged-2 = На металле заметны мелкие царапины.
-scp-wall-metal-damaged-3 = Видны вмятины и отдельные сколы покрытия.
-scp-wall-metal-damaged-4 = Металл ощутимо деформирован, можно заметить трещины в структуре.
-scp-wall-metal-damaged-5 = Стена покрыта глубокими разломами и сильными деформациями.
-scp-wall-metal-damaged-6 = Конструкция на пределе — металл трещит и вот-вот рухнет!
+﻿scp-wall-metal-damaged-1 = The wall looks intact.
+scp-wall-metal-damaged-2 = There's some scratches here and there on the metal.
+scp-wall-metal-damaged-3 = There are some dents and the paint is a little chipped.
+scp-wall-metal-damaged-4 = The metal's visibly deformed and cracked.
+scp-wall-metal-damaged-5 = The wall is covered with deep fissues and severe deformations. It doesn't look very sturdy now.
+scp-wall-metal-damaged-6 = The wall is at its' limit—the metal is groaning and about to collapse!
 
-scp-wall-concrete-damaged-1 = Повреждений нет: поверхность ровная, следов износа не заметно.
-scp-wall-concrete-damaged-2 = Имеется несколько мелких сколов и неровностей на поверхности.
-scp-wall-concrete-damaged-3 = Отмечаются небольшие трещины, местами бетон крошится и осыпается.
-scp-wall-concrete-damaged-4 = Видны крупные трещины, участки покрытия частично разрушены.
-scp-wall-concrete-damaged-5 = Глубокие разломы проходят по всей поверхности, бетон значительно осыпается.
-scp-wall-concrete-damaged-6 = Стена покрыта множеством глубоких разломов и крошащихся участков — конструкция едва держится.
+scp-wall-concrete-damaged-1 = There is no damage; the surface is even, and no signs of wear are visible.
+scp-wall-concrete-damaged-2 = There are several minor chips and surface irregularities.
+scp-wall-concrete-damaged-3 = Minor cracks are visible; in places, the concrete is crumbling and flaking away.
+scp-wall-concrete-damaged-4 = Large cracks are visible, and sections of the coating are partially damaged.
+scp-wall-concrete-damaged-5 = Deep cracks run across the entire surface, and the concrete is crumbling significantly.
+scp-wall-concrete-damaged-6 = The wall is covered with a multitude of deep fissures and crumbling patches—the structure is barely holding together!
 
-scp-wall-reinforced-hard-containment-damaged-1 = Стена выглядит целой. Повреждений нет.
-scp-wall-reinforced-hard-containment-damaged-2 = На металле заметны мелкие царапины и локальные точки ржавчины.
-scp-wall-reinforced-hard-containment-damaged-3 = Видны вмятины и отдельные сколы покрытия. Некоторые крепления деформированы.
-scp-wall-reinforced-hard-containment-damaged-4 = Металл ощутимо деформирован, можно заметить трещины вдоль швов. Некоторые крепления сорваны.
-scp-wall-reinforced-hard-containment-damaged-5 = Многочисленные дыры, значительная часть металла отсутствует, часть креплений уничтожено.
-scp-wall-reinforced-hard-containment-damaged-6 = Конструкция почти разрушена: панель частично разрушена, почти все крепления утрачены.
+scp-wall-reinforced-hard-containment-damaged-1 = The wall looks intact. There's no visible damage.
+scp-wall-reinforced-hard-containment-damaged-2 = Fine scratches and localized rust spots are visible on the metal.
+scp-wall-reinforced-hard-containment-damaged-3 = Dents and isolated chips in the coating are visible. Some mounts are deformed.
+scp-wall-reinforced-hard-containment-damaged-4 = The metal is visibly deformed; cracks can be observed along the seams. Some fasteners have been torn loose.
+scp-wall-reinforced-hard-containment-damaged-5 = Numerous holes; a significant portion of the metal is missing, and some of the mountings have been destroyed.
+scp-wall-reinforced-hard-containment-damaged-6 = The structure is almost destroyed: the panel is partially ruined, and nearly all the fasteners are missing!
 
 scp-wall-brick-damaged-1 = Повреждений нет: кладка ровная, швы целые.
 scp-wall-brick-damaged-2 = Есть несколько мелких сколов на отдельных кирпичах.
