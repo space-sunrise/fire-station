@@ -2,9 +2,9 @@
 
 # 🔥 SCP: Project Trench - SS14 + SCP 🔥
 
-![GitHub commit activity](https://img.shields.io/github/commit-activity/y/space-sunrise/fire-station)
-![GitHub Issues](https://img.shields.io/github/issues/space-sunrise/fire-station)
-![GitHub Pull Requests](https://img.shields.io/github/issues-pr-closed/space-sunrise/fire-station)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/y/bruhmogus/project-trench)
+![GitHub Issues](https://img.shields.io/github/issues/bruhmogus/project-trench)
+![GitHub Pull Requests](https://img.shields.io/github/issues-pr-closed/bruhmogus/project-trench)
 </div>
 
 ---
