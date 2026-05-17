@@ -1,6 +1,6 @@
 <div class="header" align="center">
 
-# 🔥 SCP: Project Fire - SS14 + SCP 🔥
+# 🔥 SCP: Project Trench - SS14 + SCP 🔥
 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/space-sunrise/fire-station)
 ![GitHub Issues](https://img.shields.io/github/issues/space-sunrise/fire-station)
@@ -33,7 +33,6 @@ With many new objects, research mechanics, new dimensions, roles, and maps, SCP:
 >🛡️ Completely new lore-friendly roles. No more Passengers! <br>
 >🗺️ Uses custom maps of SCP facilities on a planet, no space! <br>
 >🔊 Unique audio effect system for immersion into the facility's atmosphere. We have echo! <br>
->🩸 No vulpkakin or felinid species; only humans, mothpeople, and lizardfolk in the facility!<br>
 >👁️ Blinking system, just like in SCP:CB! <br>
 >🎧 Over 100 ambient tracks replacing the standard ones! <br>
 
@@ -48,7 +47,13 @@ For additional help familiarizing yourself with the project, join our Discord: <
 
 ## ♻ Running a local server ♻
 
-Follow [this guide](https://github.com/space-sunrise/fire-station/discussions/345) and you will be set.
+Use an application such as Github Desktop or Visual Studio to clone the repository (DO NOT USE THE ZIP FILE STRAIGHT FROM GITHUB!) and run "dotnet build Content.Packaging --configuration Release" and "dotnet run --project Content.Packaging server --hybrid-acz --platform win-x64" in the cloned folder once it's done. Run run_server.bat after to launch the server. Connect through the SS14 Launcher.
+
+Q: I'm on Linux!
+A: That's... not a question... But replace the "win-x64" with "linux-x64"
+
+Q: My game keeps crashing from debug asserts!
+A: Still not a question. You likely ran one of the two commands wrong. Try recloning and trying the commands again, in the correct order.
 
 ## 📄 Documentation 📄
 
