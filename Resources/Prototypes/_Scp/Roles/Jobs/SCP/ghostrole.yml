@@ -35,24 +35,6 @@
   alwaysShowInBanPanel: true
   setPreference: false
   applyTraits: false
-
-- type: job
-  id: Scp2295
-  name: job-name-scp2295
-  description: job-description-scp2295
-  playTimeTracker: JobScp2295
-  requirements:
-  - !type:OverallPlaytimeRequirement
-    time: 18000 # 5h
-  weight: 967
-  #icon: TODO
-  joinNotifyCrew: false
-  overrideConsoleVisibility: false
-  canBeAntag: false
-  jobEntity: Scp2295
-  alwaysShowInBanPanel: true
-  setPreference: false
-  applyTraits: false
   
 - type: job
   id: Scp1508
@@ -73,6 +55,26 @@
   applyTraits: false
 
 - type: job
+  id: Scp2295
+  name: job-name-scp2295
+  description: job-description-scp2295
+  playTimeTracker: JobScp2295
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 18000 # 5h
+  weight: 967
+  #icon: TODO
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp2295
+  alwaysShowInBanPanel: true
+  setPreference: false
+  applyTraits: false
+
+# Евклид
+
+- type: job
   id: Scp1589
   name: job-name-scp1589
   description: job-description-scp1589
@@ -86,6 +88,26 @@
   overrideConsoleVisibility: false
   canBeAntag: false
   jobEntity: Scp1589
+  alwaysShowInBanPanel: true
+  setPreference: false
+  applyTraits: false
+
+# Кетер
+
+- type: job
+  id: Scp0192
+  name: job-name-scp0192
+  description: job-description-scp0192
+  playTimeTracker: JobScp0192
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 72000 # 20h
+  weight: 965
+  #icon: TODO
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp019MonsterSapient
   alwaysShowInBanPanel: true
   setPreference: false
   applyTraits: false
