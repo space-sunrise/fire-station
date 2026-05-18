@@ -1,6 +1,6 @@
 <div class="header" align="center">
 
-# 🔥 SCP: Project Fire - SS14 + SCP 🔥
+# 🔥 SCP: Project Trench - SS14 + SCP 🔥
 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/space-sunrise/fire-station)
 ![GitHub Issues](https://img.shields.io/github/issues/space-sunrise/fire-station)
@@ -9,9 +9,9 @@
 
 ---
 
-**SCP: Project Fire - первый проект в Space Station 14, перенесший тематику Фонда SCP в рамки станции.** Первый запуск проекта состоялся в далеком 2023ем году. А текущий перезапуск 2.0 перевернул положение дел, расширив механики SCP в десятки раз. <br>
+**SCP: Project trench - первый проект в Space Station 14, перенесший тематику Фонда SCP в рамки станции.** Первый запуск проекта состоялся в далеком 2023ем году. А текущий перезапуск 2.0 перевернул положение дел, расширив механики SCP в десятки раз. <br>
 
-Множество новых объектов, механики исследования, новые измерения, роли и карты. SCP: Project Fire уникальный проект, аналогов которому не существует.
+Множество новых объектов, механики исследования, новые измерения, роли и карты. SCP: Project Fire уникальный проект, аналогов которому не существует. Мы только что сделали их форк.
 
 🌐 **Read this in other languages:**
 
