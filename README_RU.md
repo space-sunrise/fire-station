@@ -16,7 +16,7 @@
 🌐 **Read this in other languages:**
 
 - 🇺🇸 [English](README.en.md)
-- 🇷🇺 [Русский](README.md)
+- 🇷🇺 [Русский](README.md) < ЭТО ТА, НА КОТОРОЙ ВЫ НАХОДИТЕСЬ ПРЯМО СЕЙЧАС
 
 ---
 
