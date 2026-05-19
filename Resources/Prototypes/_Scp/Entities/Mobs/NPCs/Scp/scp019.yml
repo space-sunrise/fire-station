@@ -1,0 +1,151 @@
+﻿- type: entity
+  parent:
+  - BaseSimpleMob
+  - MobAtmosExposed
+  - MobCombat
+  - MobBloodstream
+  id: BaseMobScp019Monster
+  name: ???
+  abstract: true
+  components:
+    - type: Body
+      prototype: Animal
+    - type: Climbing
+    - type: Damageable
+      damageContainer: Biological
+      damageModifierSet: FleshMob
+    - type: HTN
+      rootTask:
+        task: SimpleHostileCompound
+    - type: NpcFactionMember
+      factions:
+        - SCPs
+    - type: Tag
+      tags:
+        - DoorBumpOpener
+        - CannotSuicide
+        - FootstepSound
+    - type: Sprite
+      drawdepth: Mobs
+      sprite: _Scp/Mobs/scp-019-monster.rsi
+      layers:
+      - state: basic
+        map: [ "enum.DamageStateVisualLayers.Base" ]
+    - type: DamageStateVisuals
+      states:
+        Alive:
+          Base: basic
+        Dead:
+          Base: dead
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 2
+      baseSprintSpeed: 3
+    - type: MobState
+      allowedStates:
+        - Alive
+        - Dead
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        75: Dead
+    - type: Appearance
+    - type: Butcherable
+      spawned:
+        - id: FoodMeat
+          amount: 1
+    - type: CombatMode
+    - type: MeleeWeapon
+      hidden: true
+      soundHit:
+        path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+      angle: 0
+      animation: WeaponArcClaw
+      damage:
+        types:
+          Slash: 3
+          Structural: 15
+    - type: ReplacementAccent
+      accent: genericAggressive
+    - type: Scp
+      class: Keter
+    - type: FearSource
+      uponSeenState: None
+      uponComeCloser: Anxiety
+      grainShaderStrength:
+        min: 0
+        max: 300
+      vignetteShaderStrength:
+        min: 0
+        max: 100
+    - type: PassiveDamage
+      allowedStates:
+      - Alive
+      - Dead
+      damageCap: 0
+      damage:
+        types:
+          Cellular: 0.1
+    - type: Speech
+      speechSounds: Lizard
+
+- type: entity
+  parent: BaseMobScp019Monster
+  id: Scp019MonsterBasic
+  suffix: SCP-019 basic
+
+- type: entity
+  parent: BaseMobScp019Monster
+  id: Scp019MonsterFast
+  suffix: SCP-019 fast
+  components:
+    - type: Sprite
+      layers:
+      - state: fast
+        map: [ "enum.DamageStateVisualLayers.Base" ]
+    - type: DamageStateVisuals
+      states:
+        Alive:
+          Base: fast
+        Dead:
+          Base: dead
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 4
+      baseSprintSpeed: 5
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        50: Dead
+
+- type: entity
+  parent: BaseMobScp019Monster
+  id: Scp019MonsterSapient
+  suffix: SCP-019 sapient
+  components:
+    - type: Sprite
+      layers:
+      - state: sapient
+        map: [ "enum.DamageStateVisualLayers.Base" ]
+    - type: DamageStateVisuals
+      states:
+        Alive:
+          Base: sapient
+        Dead:
+          Base: dead
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 3
+      baseSprintSpeed: 4
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        60: Dead
+    - type: GhostRole
+      makeSentient: true
+      name: ghost-role-information-scp019-name
+      description: ghost-role-information-scp019-description
+      raffle:
+        settings: short
+      job: Scp0192
+    - type: GhostTakeoverAvailable
+    - type: GuideHelp
+      guides:
+      - ScpFear

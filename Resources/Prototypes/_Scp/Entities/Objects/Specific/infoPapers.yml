@@ -1,0 +1,92 @@
+- type: entity
+  parent: Paper
+  abstract: true
+  id: BaseDocumentInfo
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Paper
+    content: info-paper-scp-035-content
+    stampState: paper_stamp-hos
+    stampedBy:
+    - stampedColor: '#cc0000'
+      stampedName: stamp-component-stamped-name-regional-command
+
+- type: entity
+  name: paper
+  parent: BaseDocumentInfo
+  id: DocumentInfoScp035
+  components:
+  - type: Paper
+    content: info-paper-scp-035-content
+
+- type: entity
+  name: paper
+  parent: BaseDocumentInfo
+  id: DocumentInfoScp049
+  components:
+  - type: Paper
+    content: info-paper-scp-049-content
+
+- type: entity
+  name: paper
+  parent: BaseDocumentInfo
+  id: DocumentInfoScp079
+  components:
+  - type: Paper
+    content: info-paper-scp-079-content
+
+- type: entity
+  name: paper
+  parent: BaseDocumentInfo
+  id: DocumentInfoScp082
+  components:
+  - type: Paper
+    content: info-paper-scp-082-content
+
+- type: entity
+  name: paper
+  parent: BaseDocumentInfo
+  id: DocumentInfoScp096
+  components:
+  - type: Paper
+    content: info-paper-scp-096-content
+
+- type: entity
+  name: paper
+  parent: BaseDocumentInfo
+  id: DocumentInfoScp106
+  components:
+  - type: Paper
+    content: info-paper-scp-106-content
+
+- type: entity
+  name: paper
+  parent: BaseDocumentInfo
+  id: DocumentInfoScp173
+  components:
+  - type: Paper
+    content: info-paper-scp-173-content
+
+- type: entity
+  name: paper
+  parent: BaseDocumentInfo
+  id: DocumentInfoScp247
+  components:
+  - type: Paper
+    content: info-paper-scp-247-content
+
+- type: entity
+  name: paper
+  parent: BaseDocumentInfo
+  id: DocumentInfoScp457
+  components:
+  - type: Paper
+    content: info-paper-scp-457-content
+
+- type: entity
+  name: paper
+  parent: BaseDocumentInfo
+  id: DocumentInfoScp939
+  components:
+  - type: Paper
+    content: info-paper-scp-939-content

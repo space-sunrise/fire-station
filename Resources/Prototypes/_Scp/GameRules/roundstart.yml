@@ -16,6 +16,8 @@
     itemBlacklist:
       components:
       - Scp035Mask
+      tags:
+      - Scp019Vase
 
 - type: entity
   id: ScpModeSafe
@@ -32,6 +34,9 @@
       Keter:
         min: 0
         max: 0
+    itemBlacklist:
+      tags:
+      - Scp019Vase
 
 - type: entity
   id: ScpModeEuclid
@@ -48,6 +53,9 @@
       Keter:
         min: 1
         max: 1
+    itemBlacklist:
+      tags:
+      - Scp019Vase
 
 - type: entity
   id: ScpModeKeter

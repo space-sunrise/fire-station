@@ -378,6 +378,9 @@ namespace Content.Server.GameTicking
                 return;
 
             _startingRound = true;
+            // Sunrise added start - roundstart rule conditions depend on round duration from the real start point.
+            RoundStartTimeSpan = _gameTiming.CurTime;
+            // Sunrise added end
 
             if (RoundId == 0)
                 IncrementRoundNumber();
@@ -464,7 +467,9 @@ namespace Content.Server.GameTicking
             _roundStartDateTime = DateTime.UtcNow;
             RunLevel = GameRunLevel.InRound;
 
-            RoundStartTimeSpan = _gameTiming.CurTime;
+            // Sunrise edit start - moved above StartGamePresetRules to avoid incorrect RoundDurationCondition during roundstart.
+            // RoundStartTimeSpan = _gameTiming.CurTime;
+            // Sunrise edit end
             SendStatusToAll();
             ReqWindowAttentionAll();
             UpdateLateJoinStatus();

@@ -6,6 +6,7 @@
   description: A seemingly ordinary red ball made of dense rubber. It seems to bounce slightly higher than it should.
   components:
   - type: Sprite
+    scale: 0.4, 0.4
     sprite: _Scp/Objects/Scp/scp-018.rsi
     state: icon
   - type: Scp
