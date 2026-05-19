@@ -71,6 +71,7 @@
   - type: Stripping
   - type: ScpPossibilities
     canEjectPilotFromMech: false
+    openContainer: false
   - type: UserInterface
     interfaces:
       enum.StrippingUiKey.Key:
