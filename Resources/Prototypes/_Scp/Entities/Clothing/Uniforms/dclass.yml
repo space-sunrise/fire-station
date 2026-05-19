@@ -18,6 +18,8 @@
     - Recyclable
     - WhitelistChameleon
     - PrisonUniform
+  - type: SuitSensor
+    randomMode: false
 
 - type: entity
   parent: ClothingUniformClassDBasic
