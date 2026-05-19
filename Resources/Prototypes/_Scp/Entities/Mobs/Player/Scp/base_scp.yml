@@ -166,6 +166,10 @@
   - type: FearSource
     phobiaType: Exoremophobia
   - type: ScpPossibilities
+    openContainerChance: 0.5
+    openContainerBlacklist:
+      components:
+      - ScpCage
   - type: WatchingTarget
   - type: ProximityReceiver
 
