@@ -10,8 +10,6 @@
     state: icon
   - type: Item
     size: Tiny
-  - type: StealTarget
-    stealGroup: Scp
   - type: Clothing
     quickEquip: true
     slots:

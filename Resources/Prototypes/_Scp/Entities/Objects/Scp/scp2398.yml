@@ -5,8 +5,6 @@
   id: Scp2398
   suffix: SCP-2398
   components:
-  - type: StealTarget
-    stealGroup: Scp
   - type: Scp
     class: Safe
   - type: Scp2398

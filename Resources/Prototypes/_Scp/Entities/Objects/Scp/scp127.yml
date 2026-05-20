@@ -15,8 +15,6 @@
     slots:
     - Back
     - suitStorage
-  - type: StealTarget
-    stealGroup: Scp
   - type: Item
     size: Large
     sprite: _Scp/Objects/Scp/scp-127/tiny.rsi

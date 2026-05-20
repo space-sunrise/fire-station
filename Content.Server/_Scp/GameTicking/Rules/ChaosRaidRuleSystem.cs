@@ -1,5 +1,6 @@
 using Content.Server._Scp.GameTicking.Rules.Components;
 using Content.Server.Antag;
+using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Roles;
 using Content.Server.Station.Components;
@@ -52,8 +53,34 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
         component.TargetComplex = eligible[0];
     }
 
+    protected override void AppendRoundEndText(EntityUid uid,
+        ChaosRaidRuleComponent component,
+        GameRuleComponent gameRule,
+        ref RoundEndTextAppendEvent args)
+    {
+        var winText = Loc.GetString($"chaos-raid-{component.WinType.ToString().ToLower()}");
+        args.AddLine(winText);
+
+        foreach (var cond in component.WinConditions)
+        {
+            var text = Loc.GetString($"chaos-raid-cond-{cond.ToString().ToLower()}");
+            args.AddLine(text);
+        }
+
+        args.AddLine(Loc.GetString("chaos-raid-list-start"));
+
+        var antags = _antag.GetAntagIdentifiers(uid);
+
+        foreach (var (_, sessionData, name) in antags)
+        {
+            args.AddLine(Loc.GetString("chaos-raid-list-name-user", ("name", name), ("user", sessionData.UserName)));
+        }
+        args.AddLine("");
+    }
+
     private void OnMapInit(Entity<MobChaosRaiderComponent> ent, ref MapInitEvent args)
     {
+
         RemCompDeferred<FearComponent>(ent); // ПОВСТАНЦЫ БЕЗ СТРАХА!
     }
 
@@ -92,7 +119,7 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
         RemCompDeferred<MobChaosRaiderComponent>(ent);
     }
 
-    public void CheckRoundShouldEnd()
+    private void CheckRoundShouldEnd()
     {
 
     }

@@ -26,8 +26,6 @@
   - type: Sprite
     sprite: _Scp/Objects/Scp/scp-500.rsi
     state: canister
-  - type: StealTarget
-    stealGroup: Scp
   - type: Storage
     grid:
     - 0,0,4,9

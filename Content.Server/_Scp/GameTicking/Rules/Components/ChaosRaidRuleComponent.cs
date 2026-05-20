@@ -18,5 +18,29 @@ public sealed partial class ChaosRaidRuleComponent : Component
     public ProtoId<NpcFactionPrototype> Faction = "Chaos";
 
     [DataField]
+    public ChaosWinType WinType = ChaosWinType.Neutral;
+
+    [DataField]
+    public List<ChaosWinCondition> WinConditions = new();
+
+    [DataField]
     public SoundSpecifier GreetSoundNotification = new SoundPathSpecifier("/Audio/_Scp/Themes/The_Chaos_Insurgency_Theme.ogg");
+}
+
+public enum ChaosWinType : byte
+{
+    ChaosMajor,
+    ChaosMinor,
+    Neutral,
+    CrewMinor,
+    CrewMajor
+}
+
+public enum ChaosWinCondition : byte
+{
+
+    ChaosRaidersCompleteAllObjectives,
+    ChaosRaidersCompleteHalfObjectives,
+    CrewKillHalfChaosRaiders,
+    CrewKillAllChaosRaiders
 }

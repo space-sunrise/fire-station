@@ -1,9 +1,13 @@
-
-
-
 - type: stealTargetGroup
   id: Scp
   name: steal-target-groups-scps
   sprite:
-    sprite: _Scp/Objects/Scp/scp-005.rsi
+    sprite: _Scp/Objects/Scp/scp-005.rsi # TODO: Заменить на анимационный спрайт всех объектов SCP
     state: icon
+
+- type: stealTargetGroup
+  id: ScpInfoPapers
+  name: steal-target-groups-info-papers
+  sprite:
+    sprite: Objects/Misc/bureaucracy.rsi
+    state: paper

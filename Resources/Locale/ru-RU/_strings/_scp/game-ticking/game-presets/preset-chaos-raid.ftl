@@ -1,0 +1,19 @@
+chaos-raider-welcome =
+    Вы - Повстанец Хаоса. Ваша задача - выполнить цели организации на объекте { $station }. Ваше руководство снабдило вас всем необходимым для выполнения данной задачи.
+    Операция "{ $name }" началась!
+chaos-raider-briefing = Ваши задачи очень просты. Зашли и вышли.
+
+chaos-raid-chaosmajor = [color=blackgreen]Разгромная победа Повстанцев Хаоса![/color]
+chaos-raid-chaosminor = [color=blackgreen]Победа Повстанцев Хаоса![/color]
+chaos-raid-neutral = [color=yellow]Нейтральный исход[/color]
+chaos-raid-crewminor = [color=green]Победа сотрудников учреждения![/color]
+chaos-raid-crewmajor = [color=green]Разгромная победа сотрудников учреждения![/color]
+
+chaos-raid-cond-chaosraiderscompleteallobjectives = Повстанцы Хаоса выполнили все свои цели!
+chaos-raid-cond-chaosraiderscompletehalfobjectives = Повстанцы Хаоса выполнили часть своих целей!
+chaos-raid-cond-crewkillhalfchaosraiders = Сотрудники учреждения убили часть Повстанцев Хаоса!
+chaos-raid-cond-crewkillallchaosraiders = Сотрудники учреждения убили всех Повстанцев Хаоса!
+
+chaos-raid-list-start = В ролях Повстанцев Хаоса были:
+chaos-raid-list-name = - [color=white]{$name}[/color]
+chaos-raid-name-user = [color=white]{$name}[/color] ([color=gray]{$user}[/color])

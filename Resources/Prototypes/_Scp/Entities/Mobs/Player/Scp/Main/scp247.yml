@@ -17,6 +17,7 @@
     - state: scp-247
       map: [ "enum.DamageStateVisualLayers.Base" ]
   - type: Scp
+    name: Scp 247
     class: Euclid
   - type: Fixtures
     fixtures:

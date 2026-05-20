@@ -71,7 +71,7 @@
   - FreeScpRule
 
 - type: gamePreset
-  id: ChaosRaid
+  id: ScpChaosRaid
   alias:
   - chaosRaid
   name: scp-titile-chaos-raid

@@ -28,13 +28,79 @@
     verifyMapExistence: true
     descriptionText: objective-condition-collection-chaos-raid-description
 
+# region Collections
+
 - type: entity
   parent: BaseChaosRaidStealCollectionObjective
   id: ScpsStealCollectionObjective
   components:
   - type: StealCondition
     minCollectionSize: 4
-    maxCollectionSize: 6
+    maxCollectionSize: 8
     stealGroup: Scp
   - type: Objective
     difficulty: 1.5
+
+- type: entity
+  parent: BaseChaosRaidStealCollectionObjective
+  id: InfoPapersStealCollectionObjective
+  components:
+  - type: StealCondition
+    minCollectionSize: 5
+    maxCollectionSize: 10
+    stealGroup: ScpInfoPapers
+  - type: Objective
+    difficulty: 1.5
+
+# region Kill
+
+- type: entity
+  parent: [BaseChaosRaidObjective, BaseKillObjective]
+  id: KillRandomAdministrationPersonelObjective
+  description: We must ensure that the target is eliminated once and for all. Good luck, Soldier!
+  components:
+  - type: Objective
+    difficulty: 3.0
+    unique: false
+  - type: TargetObjective
+    title: objective-condition-kill-maroon-chaos-raid-title
+  - type: PickRandomPerson
+    filters:
+    - !type:BodyMindFilter
+      whitelist:
+        components:
+        - CommandStaff
+    - !type:TargetObjectiveMindFilter
+      blacklist:
+        components:
+        - KillPersonCondition
+  - type: KillPersonCondition
+    requireDead: true
+    requireMaroon: true
+
+# region Destroy
+
+- type: entity
+  parent: BaseChaosRaidObjective
+  id: ChaosRaiderDestroyScpObjective
+  components:
+  - type: Objective
+    difficulty: 3.0
+    icon:
+      sprite: _Scp/Objects/Misc/scp_cage.rsi
+      state: base
+  - type: DestroyScpCondition
+
+# region State
+
+- type: entity
+  parent: [BaseChaosRaidObjective, BaseSurviveObjective]
+  id: ChaosRaiderSurviveObjective
+  name: Survive
+  description: Soldier, you don't want to run away from the battlefield, do you?
+  components:
+  - type: Objective
+    difficulty: 2.0
+    icon:
+      sprite: _Scp/Clothing/Head/Helmets/chaos.rsi
+      state: icon

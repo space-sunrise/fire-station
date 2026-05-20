@@ -17,6 +17,7 @@
       shader: unshaded
       map: [ "enum.DamageStateVisualLayers.Base" ]
   - type: Scp
+    name: Scp 457
     class: Euclid
   - type: FearSource
     uponSeenState: None

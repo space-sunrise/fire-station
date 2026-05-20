@@ -10,8 +10,6 @@
   - type: Sprite
     sprite: _Scp/Objects/Scp/scp-261.rsi
     state: icon
-  - type: StealTarget
-    stealGroup: Scp
   - type: ContainerContainer
     containers:
       storagebase: !type:Container

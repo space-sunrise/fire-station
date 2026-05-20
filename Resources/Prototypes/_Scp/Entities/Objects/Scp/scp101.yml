@@ -16,8 +16,6 @@
     - state: open
       map: ["openLayer"]
   - type: Appearance
-  - type: StealTarget
-    stealGroup: Scp
   - type: Scp
     class: Euclid
   - type: Item
