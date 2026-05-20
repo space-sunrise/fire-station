@@ -26,6 +26,9 @@
   - type: Access
     tags:
     - Service
+    - ClassDCanteen # повар и ботаник класс д
+    - ClassDJanitor
+    - Safe # чтобы мог выходить из своей кс
   - type: Scp
     class: Safe
   - type: Muted
@@ -90,7 +93,12 @@
         whitelist:
           components:
           - Edible
+          - Instrument
+          - Seed
           tags:
+          - BotanyHoe
+          - BoxCardboard
+          - Payload # плюшевые игрушки
           - Mop
           - MopBasic
           - WetFloorSign
@@ -98,6 +106,7 @@
           - TrashBag
           - Bucket
           - Flashlight
+          - KitchenKnife
     sortedHands:
     - main
     activeHandId: main

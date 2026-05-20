@@ -1,6 +1,24 @@
 ﻿# Безопасный
 
 - type: job
+  id: Scp0192
+  name: job-name-scp0192
+  description: job-description-scp0192
+  playTimeTracker: JobScp0192
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 72000 # 20h
+  weight: 965
+  #icon: TODO
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp019MonsterSapient
+  alwaysShowInBanPanel: true
+  setPreference: false
+  applyTraits: false
+
+- type: job
   id: Scp131A
   name: job-name-scp131
   description: job-description-scp131

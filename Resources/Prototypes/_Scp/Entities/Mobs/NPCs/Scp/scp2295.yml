@@ -90,8 +90,10 @@
         whitelist:
           components:
           - Healing
+          - SurgeryTool
           tags:
           - Medkit
+          - PillCanister
     sortedHands:
     - main
     activeHandId: main

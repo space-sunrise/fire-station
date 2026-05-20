@@ -278,7 +278,7 @@
   components:
   - type: Storage
     grid:
-    - 0,0,6,2
+    - 0,0,5,1
     - 0,3,3,6
   - type: StorageFill
     contents:
