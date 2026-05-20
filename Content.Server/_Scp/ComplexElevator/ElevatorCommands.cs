@@ -1,5 +1,4 @@
-using System.Linq;
-using Content.Server._Scp.ComplexElevator;
+using Content.Shared._Scp.ComplexElevator;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
 using Robust.Shared.GameObjects;
@@ -82,6 +81,7 @@ public sealed class ElevatorManageFloorsCommand : IConsoleCommand
             return;
         }
         elevator.Comp.Floors.Add(floorToAdd);
+        _entManager.Dirty(elevator);
         shell.WriteLine(Loc.GetString("elevator-manage-floors-added", ("floorName", floorToAdd), ("elevatorId", elevatorId), ("floors", string.Join(", ", elevator.Comp.Floors))));
     }
 
@@ -104,6 +104,7 @@ public sealed class ElevatorManageFloorsCommand : IConsoleCommand
             return;
         }
         elevator.Comp.Floors.Remove(floorToRemove);
+        _entManager.Dirty(elevator);
         shell.WriteLine(Loc.GetString("elevator-manage-floors-removed", ("floorName", floorToRemove), ("elevatorId", elevatorId), ("floors", string.Join(", ", elevator.Comp.Floors))));
     }
 
@@ -137,6 +138,7 @@ public sealed class ElevatorManageFloorsCommand : IConsoleCommand
             return;
         floors.RemoveAt(currentIndex);
         floors.Insert(newIndex, floorToMove);
+        _entManager.Dirty(elevator);
         shell.WriteLine(Loc.GetString("elevator-manage-floors-moved", ("floorName", floorToMove), ("newIndex", newIndex), ("floors", string.Join(", ", floors))));
     }
 

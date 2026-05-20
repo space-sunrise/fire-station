@@ -1,47 +1,189 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
-using Content.Shared.Timing;
+using Content.Server.Atmos.EntitySystems;
+using Content.Server.Doors.Systems;
+using Content.Shared._Scp.ComplexElevator;
+using Robust.Shared.GameObjects;
+using Content.Shared.Buckle.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
-using Robust.Shared.Physics.Components;
+using Content.Shared.Movement.Pulling.Components;
+using Content.Shared.Movement.Pulling.Systems;
+using Content.Shared.Timing;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
-using Robust.Shared.Maths;
+using Robust.Shared.Map.Components;
+using Robust.Shared.Physics.Components;
 using Robust.Shared.Timing;
-using Content.Server.Doors.Systems;
 
 namespace Content.Server._Scp.ComplexElevator;
 
-public sealed class ComplexElevatorSystem : EntitySystem
+public sealed partial class ComplexElevatorSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly DoorSystem _doorSystem = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly PointLightSystem _pointLight = default!;
-
+    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
+    [Dependency] private readonly AtmosphereSystem _atmos = default!;
+    [Dependency] private readonly PullingSystem _pulling = default!;
+    [Dependency] private readonly IComponentFactory _componentFactory = default!;
     private static readonly Color ElevatorButtonGreen = Color.FromHex("#00FF00");
     private static readonly Color ElevatorButtonYellow = Color.FromHex("#FFFF00");
     private static readonly Color ElevatorButtonRed = Color.FromHex("#FF0000");
+
+    private readonly Dictionary<string, EntityUid> _elevatorIndex = new();
+    private readonly Dictionary<string, EntityUid> _pointIndex = new();
 
     public override void Initialize()
     {
         base.Initialize();
 
+        SubscribeLocalEvent<ComplexElevatorComponent, ComponentStartup>(OnElevatorStartup);
+        SubscribeLocalEvent<ComplexElevatorComponent, ComponentShutdown>(OnElevatorShutdown);
+        SubscribeLocalEvent<ElevatorPointComponent, ComponentStartup>(OnPointStartup);
+        SubscribeLocalEvent<ElevatorPointComponent, ComponentShutdown>(OnPointShutdown);
+
         SubscribeLocalEvent<ElevatorButtonComponent, InteractHandEvent>(OnButtonInteract);
         SubscribeLocalEvent<ElevatorButtonComponent, ActivateInWorldEvent>(OnButtonActivate);
+
+        InitializeDebug();
+    }
+
+    private void OnElevatorStartup(EntityUid uid, ComplexElevatorComponent comp, ComponentStartup args)
+    {
+        if (!string.IsNullOrEmpty(comp.ElevatorId))
+            _elevatorIndex[comp.ElevatorId] = uid;
+    }
+
+    private void OnElevatorShutdown(EntityUid uid, ComplexElevatorComponent comp, ComponentShutdown args)
+    {
+        if (!string.IsNullOrEmpty(comp.ElevatorId) && _elevatorIndex.TryGetValue(comp.ElevatorId, out var existing) && existing == uid)
+            _elevatorIndex.Remove(comp.ElevatorId);
+    }
+
+    private void OnPointStartup(EntityUid uid, ElevatorPointComponent comp, ComponentStartup args)
+    {
+        if (!string.IsNullOrEmpty(comp.FloorId))
+            _pointIndex[comp.FloorId] = uid;
+    }
+
+    private void OnPointShutdown(EntityUid uid, ElevatorPointComponent comp, ComponentShutdown args)
+    {
+        if (!string.IsNullOrEmpty(comp.FloorId) && _pointIndex.TryGetValue(comp.FloorId, out var existing) && existing == uid)
+            _pointIndex.Remove(comp.FloorId);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var query = EntityQueryEnumerator<ElevatorMovingComponent, ComplexElevatorComponent>();
+        var toRemove = new List<EntityUid>();
+
+        while (query.MoveNext(out var uid, out var moving, out var elevator))
+        {
+            if (moving.MovementStartTime == null)
+            {
+                moving.MovementStartTime = _timing.CurTime;
+                Dirty(uid, moving);
+                continue;
+            }
+
+            var elapsed = _timing.CurTime - moving.MovementStartTime.Value;
+
+            if (moving.Phase == ElevatorMovementPhase.DoorClosing)
+            {
+                if (elapsed >= elevator.DoorCloseDelay)
+                {
+                    if (!CanCloseDoorsForFloor(elevator.ElevatorId, elevator.CurrentFloor))
+                    {
+                        toRemove.Add(uid);
+                        continue;
+                    }
+
+                    TryCloseDoorsForFloor(elevator.ElevatorId, elevator.CurrentFloor);
+
+                    moving.Phase = ElevatorMovementPhase.WaitingForSend;
+                    moving.MovementStartTime = _timing.CurTime;
+                    Dirty(uid, moving);
+                }
+            }
+            else if (moving.Phase == ElevatorMovementPhase.WaitingForSend)
+            {
+                if (elapsed >= elevator.SendDelay)
+                {
+                    if (elevator.UseIntermediateFloor)
+                    {
+                        ClearGasInTargetArea(uid, elevator.IntermediateFloorId);
+                        KillEntitiesInTargetArea((uid, elevator), elevator.IntermediateFloorId);
+                        elevator.CurrentFloor = elevator.IntermediateFloorId;
+                        Dirty(uid, elevator);
+
+                        TeleportToFloor(uid, elevator.IntermediateFloorId, elevator);
+
+                        _audio.PlayPvs(elevator.TravelSound, uid);
+
+                        moving.Phase = ElevatorMovementPhase.Travelling;
+                        moving.MovementStartTime = _timing.CurTime;
+                        Dirty(uid, moving);
+                    }
+                    else
+                    {
+                        ClearGasInTargetArea(uid, moving.TargetFloor);
+                        KillEntitiesInTargetArea((uid, elevator), moving.TargetFloor);
+                        elevator.CurrentFloor = moving.TargetFloor;
+                        Dirty(uid, elevator);
+
+                        TeleportToFloor(uid, moving.TargetFloor, elevator);
+
+                        OpenDoorsForFloor(elevator.ElevatorId, moving.TargetFloor);
+                        _audio.PlayPvs(elevator.ArrivalSound, uid);
+
+                        toRemove.Add(uid);
+                    }
+                }
+            }
+            else if (moving.Phase == ElevatorMovementPhase.Travelling)
+            {
+                if (elapsed >= elevator.IntermediateDelay)
+                {
+                    ClearGasInTargetArea(uid, moving.TargetFloor);
+                    KillEntitiesInTargetArea((uid, elevator), moving.TargetFloor);
+                    elevator.CurrentFloor = moving.TargetFloor;
+                    Dirty(uid, elevator);
+
+                    TeleportToFloor(uid, moving.TargetFloor, elevator);
+
+                    OpenDoorsForFloor(elevator.ElevatorId, moving.TargetFloor);
+                    _audio.PlayPvs(elevator.ArrivalSound, uid);
+
+                    toRemove.Add(uid);
+                }
+            }
+        }
+
+        foreach (var uid in toRemove)
+        {
+            RemComp<ElevatorMovingComponent>(uid);
+            if (TryComp<ComplexElevatorComponent>(uid, out var elevator))
+            {
+                UpdateButtonLights((uid, elevator));
+            }
+        }
     }
 
     private TimeSpan GetButtonUseDelay(Entity<ComplexElevatorComponent> elevator, ElevatorButtonComponent button)
     {
-        return elevator.Comp.SendDelay + elevator.Comp.IntermediateDelay + TimeSpan.FromSeconds(1);
+        return elevator.Comp.DoorCloseDelay + elevator.Comp.SendDelay + elevator.Comp.IntermediateDelay + TimeSpan.FromSeconds(1);
     }
 
     private void SetButtonDelay(EntityUid button, Entity<ComplexElevatorComponent> elevator)
@@ -52,95 +194,87 @@ public sealed class ComplexElevatorSystem : EntitySystem
         }
     }
 
-    private void StartMovement(Entity<ComplexElevatorComponent> ent, string targetFloor)
+    private void TeleportToFloor(EntityUid uid, string floorId, ComplexElevatorComponent elevatorComp)
     {
-        KillEntitiesInTargetArea(ent, ent.Comp.IntermediateFloorId);
-        ent.Comp.CurrentFloor = ent.Comp.IntermediateFloorId;
-        TeleportToFloor(ent, ent.Comp.IntermediateFloorId);
-
-        _audio.PlayPvs(ent.Comp.TravelSound, ent);
-        Timer.Spawn(ent.Comp.IntermediateDelay, () =>
+        if (!TryFindPoint(floorId, out var point))
         {
-            if (!Exists(ent))
-                return;
+            Log.Warning($"Could not find ElevatorPoint for floor {floorId} for elevator {elevatorComp.ElevatorId}");
+            return;
+        }
 
-            KillEntitiesInTargetArea(ent, targetFloor);
-            ent.Comp.CurrentFloor = targetFloor;
-            TeleportToFloor(ent, targetFloor);
-            OpenDoorsForFloor(ent.Comp.ElevatorId, targetFloor);
+        var pointTransform = Transform(point.Value.Owner);
+        var elevatorTransform = Transform(uid);
 
-            _audio.PlayPvs(ent.Comp.ArrivalSound, ent);
+        var aabb = _lookup.GetWorldAABB(uid, elevatorTransform);
+        var intersectingEntities = _lookup.GetEntitiesIntersecting(elevatorTransform.MapID, aabb, LookupFlags.Dynamic | LookupFlags.Sundries);
 
-            ent.Comp.IsMoving = false;
-            UpdateButtonLights(ent);
-        });
-    }
-
-    private void TeleportToFloor(EntityUid uid, string floorId)
-    {
-        var query = EntityQueryEnumerator<ElevatorPointComponent>();
-        while (query.MoveNext(out var pointUid, out var pointComp))
+        var entitiesToTeleport = new List<(EntityUid, Vector2)>();
+        foreach (var entUid in intersectingEntities)
         {
-            if (pointComp.FloorId != floorId)
+            if (entUid == uid || IsBlacklisted(entUid))
                 continue;
 
-            var pointTransform = Transform(pointUid);
-            var elevatorTransform = Transform(uid);
+            if (TryComp<BuckleComponent>(entUid, out var buckle) && buckle.Buckled)
+                continue;
 
-            var aabb = _lookup.GetWorldAABB(uid, elevatorTransform);
-            var intersectingEntities = _lookup.GetEntitiesIntersecting(elevatorTransform.MapID, aabb, LookupFlags.Dynamic | LookupFlags.Sensors);
+            var entTransform = Transform(entUid);
+            var relativePos = _transform.GetWorldPosition(entTransform) - _transform.GetWorldPosition(elevatorTransform);
+            entitiesToTeleport.Add((entUid, relativePos));
 
-            var entitiesToTeleport = new List<(EntityUid, Vector2)>();
-            foreach (var entUid in intersectingEntities)
+            if (TryComp<PullableComponent>(entUid, out var pullable) && pullable.BeingPulled)
             {
-                if (entUid == uid || HasComp<ElevatorDoorComponent>(entUid))
-                    continue;
-
-                var entTransform = Transform(entUid);
-                var relativePos = entTransform.LocalPosition - elevatorTransform.LocalPosition;
-                entitiesToTeleport.Add((entUid, relativePos));
+                _pulling.TryStopPull(entUid, pullable);
             }
-
-            _transform.SetCoordinates(uid, pointTransform.Coordinates);
-
-            var newElevatorTransform = Transform(uid);
-
-            foreach (var (entUid, relativePos) in entitiesToTeleport)
+            if (TryComp<PullerComponent>(entUid, out var puller) && puller.Pulling != null)
             {
-                var newCoordinates = new EntityCoordinates(newElevatorTransform.ParentUid, newElevatorTransform.LocalPosition + relativePos);
-                _transform.SetCoordinates(entUid, newCoordinates);
+                if (TryComp<PullableComponent>(puller.Pulling.Value, out var subjectPulling))
+                {
+                    _pulling.TryStopPull(puller.Pulling.Value, subjectPulling);
+                }
             }
-
-            break;
         }
+
+        var targetWorldPos = _transform.GetWorldPosition(pointTransform);
+        var destParent = pointTransform.GridUid ?? pointTransform.MapUid;
+
+        if (destParent == null)
+            return;
+
+        foreach (var (entUid, relativePos) in entitiesToTeleport)
+        {
+            var entWorldPos = targetWorldPos + relativePos;
+            var destCoords = new EntityCoordinates(destParent.Value, entWorldPos - _transform.GetWorldPosition(destParent.Value));
+            _transform.SetCoordinates(entUid, destCoords);
+        }
+
+        _transform.SetCoordinates(uid, pointTransform.Coordinates);
     }
 
     private void HandleButtonPress(Entity<ElevatorButtonComponent> button, Entity<ComplexElevatorComponent> elevator)
     {
-        if (elevator.Comp.IsMoving)
+        if (HasComp<ElevatorMovingComponent>(elevator))
             return;
+
+        switch (button.Comp.ButtonType)
         {
-            switch (button.Comp.ButtonType)
-            {
-                case ElevatorButtonType.CallButton:
-                    MoveToFloor(elevator, button.Comp.Floor);
-                    break;
-                case ElevatorButtonType.SendElevatorUp:
-                    MoveUp(elevator);
-                    break;
-                case ElevatorButtonType.SendElevatorDown:
-                    MoveDown(elevator);
-                    break;
-            }
-            SetButtonDelay(button, elevator);
+            case ElevatorButtonType.CallButton:
+                MoveToFloor(elevator, button.Comp.Floor);
+                break;
+            case ElevatorButtonType.SendElevatorUp:
+                MoveUp(elevator);
+                break;
+            case ElevatorButtonType.SendElevatorDown:
+                MoveDown(elevator);
+                break;
         }
+        SetButtonDelay(button, elevator);
     }
 
     private void OnButtonInteract(Entity<ElevatorButtonComponent> ent, ref InteractHandEvent args)
     {
         if (!TryFindElevator(ent.Comp.ElevatorId, out var elevator))
             return;
-            
+
         HandleButtonPress(ent, elevator.Value);
         args.Handled = true;
     }
@@ -156,53 +290,43 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
     private bool TryFindElevator(string elevatorId, [NotNullWhen(true)] out Entity<ComplexElevatorComponent>? ent)
     {
-        var query = EntityQueryEnumerator<ComplexElevatorComponent>();
-        while (query.MoveNext(out var uid, out var comp))
+        if (_elevatorIndex.TryGetValue(elevatorId, out var uid) && TryComp<ComplexElevatorComponent>(uid, out var comp))
         {
-            if (comp.ElevatorId == elevatorId)
-            {
-                ent = (uid, comp);
-                return true;
-            }
+            ent = (uid, comp);
+            return true;
         }
+
+        ent = null;
+        return false;
+    }
+
+    private bool TryFindPoint(string floorId, [NotNullWhen(true)] out Entity<ElevatorPointComponent>? ent)
+    {
+        if (_pointIndex.TryGetValue(floorId, out var uid) && TryComp<ElevatorPointComponent>(uid, out var comp))
+        {
+            ent = (uid, comp);
+            return true;
+        }
+
         ent = null;
         return false;
     }
 
     public void MoveToFloor(Entity<ComplexElevatorComponent> ent, string targetFloor)
     {
-        if (ent.Comp.IsMoving || !ent.Comp.Floors.Contains(targetFloor) || ent.Comp.CurrentFloor == targetFloor)
+        if (HasComp<ElevatorMovingComponent>(ent) || !ent.Comp.Floors.Contains(targetFloor) || ent.Comp.CurrentFloor == targetFloor)
             return;
 
         if (!CanCloseDoorsForFloor(ent.Comp.ElevatorId, ent.Comp.CurrentFloor))
             return;
 
-        ent.Comp.IsMoving = true;
+        var moving = EnsureComp<ElevatorMovingComponent>(ent);
+        moving.TargetFloor = targetFloor;
+        moving.MovementStartTime = _timing.CurTime;
+        moving.Phase = ElevatorMovementPhase.DoorClosing;
+        Dirty(ent, moving);
+
         UpdateButtonLights(ent);
-
-        Timer.Spawn(ent.Comp.SendDelay, () =>
-        {
-            if (!Exists(ent) || !ent.Comp.IsMoving)
-                return;
-
-            StartMovement(ent, targetFloor);
-        });
-
-        Timer.Spawn(ent.Comp.DoorCloseDelay, () =>
-        {
-            if (!Exists(ent) || !ent.Comp.IsMoving)
-                return;
-
-            if (!CanCloseDoorsForFloor(ent.Comp.ElevatorId, ent.Comp.CurrentFloor))
-            {
-                ent.Comp.IsMoving = false;
-                UpdateButtonLights(ent);
-            }
-            else
-            {
-                TryCloseDoorsForFloor(ent.Comp.ElevatorId, ent.Comp.CurrentFloor);
-            }
-        });
     }
 
     public void MoveUp(Entity<ComplexElevatorComponent> ent)
@@ -221,7 +345,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
     private string? GetNextFloor(Entity<ComplexElevatorComponent> ent, bool up)
     {
-        if (ent.Comp.IsMoving || ent.Comp.Floors.Count == 0)
+        if (HasComp<ElevatorMovingComponent>(ent) || ent.Comp.Floors.Count == 0)
             return null;
 
         var currentIndex = ent.Comp.Floors.IndexOf(ent.Comp.CurrentFloor);
@@ -317,34 +441,79 @@ public sealed class ComplexElevatorSystem : EntitySystem
         return false;
     }
 
+    private void ClearGasInTargetArea(EntityUid elevator, string floorId)
+    {
+        if (!TryFindPoint(floorId, out var point))
+            return;
+
+        var pointTransform = Transform(point.Value.Owner);
+        if (pointTransform.GridUid == null)
+            return;
+
+        if (!TryComp<MapGridComponent>(pointTransform.GridUid, out var grid))
+            return;
+
+        var aabb = _lookup.GetWorldAABB(elevator, pointTransform);
+        var invMatrix = _transform.GetInvWorldMatrix(pointTransform.GridUid.Value);
+        var localAabb = invMatrix.TransformBox(aabb);
+
+        var tileEnumerator = _mapSystem.GetLocalTilesEnumerator(pointTransform.GridUid.Value, grid, localAabb);
+        while (tileEnumerator.MoveNext(out var tileRef))
+        {
+            var gas = _atmos.GetTileMixture(pointTransform.GridUid, null, tileRef.GridIndices, excite: true);
+            if (gas != null)
+            {
+                gas.Clear();
+            }
+        }
+    }
+
     private void KillEntitiesInTargetArea(Entity<ComplexElevatorComponent> elevator, string floorId)
     {
-        var query = EntityQueryEnumerator<ElevatorPointComponent>();
-        while (query.MoveNext(out var pointUid, out var pointComp))
+        if (!elevator.Comp.CrushEntitiesOnArrival)
+            return;
+
+        if (!TryFindPoint(floorId, out var point))
+            return;
+
+        var pointTransform = Transform(point.Value.Owner);
+        var aabb = _lookup.GetWorldAABB(elevator.Owner, pointTransform);
+        var intersectingEntities = _lookup.GetEntitiesIntersecting(pointTransform.MapID, aabb, LookupFlags.Dynamic | LookupFlags.Sundries);
+
+        foreach (var entUid in intersectingEntities)
         {
-            if (pointComp.FloorId != floorId)
+            if (entUid == elevator.Owner || IsBlacklisted(entUid))
                 continue;
 
-            var pointTransform = Transform(pointUid);
-
-            var aabb = _lookup.GetWorldAABB(elevator.Owner, pointTransform);
-            var intersectingEntities = _lookup.GetEntitiesIntersecting(pointTransform.MapID, aabb, LookupFlags.Dynamic | LookupFlags.Sensors);
-
-            foreach (var entUid in intersectingEntities)
-            {
-                if (entUid == elevator.Owner)
-                    continue;
-
-                var damage = new DamageSpecifier();
-                damage.DamageDict["Blunt"] = 2000;
-                _damageable.TryChangeDamage(entUid, damage, true);
-            }
-            break;
+            var damage = new DamageSpecifier();
+            damage.DamageDict["Blunt"] = elevator.Comp.CrushDamage;
+            _damageable.TryChangeDamage(entUid, damage, true);
         }
+    }
+
+    private bool IsBlacklisted(EntityUid entity)
+    {
+        foreach (var comp in EntityManager.GetComponents(entity))
+        {
+            var compName = _componentFactory.GetRegistration(comp).Name;
+
+            if (compName == "ElevatorPoint" ||
+                compName == "ElevatorButton" ||
+                compName == "ElevatorDoor" ||
+                compName == "Marker" ||
+                compName.EndsWith("Spawner") ||
+                compName.Contains("SpawnPoint"))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void UpdateButtonLights(Entity<ComplexElevatorComponent> elevator)
     {
+        var isMoving = HasComp<ElevatorMovingComponent>(elevator);
         var query = EntityQueryEnumerator<ElevatorButtonComponent, PointLightComponent>();
         while (query.MoveNext(out var buttonUid, out var buttonComp, out var light))
         {
@@ -354,7 +523,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
             Color color = ElevatorButtonRed;
             if (buttonComp.ButtonType == ElevatorButtonType.CallButton)
             {
-                if (elevator.Comp.IsMoving)
+                if (isMoving)
                     color = ElevatorButtonYellow;
                 else if (buttonComp.Floor == elevator.Comp.CurrentFloor)
                     color = ElevatorButtonGreen;
@@ -366,5 +535,3 @@ public sealed class ComplexElevatorSystem : EntitySystem
         }
     }
 }
-
-
