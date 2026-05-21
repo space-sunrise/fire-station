@@ -1,4 +1,4 @@
-using Content.Shared._Scp.ComplexElevator;
+using Content.Server._Scp.ComplexElevator;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
 using Robust.Shared.GameObjects;

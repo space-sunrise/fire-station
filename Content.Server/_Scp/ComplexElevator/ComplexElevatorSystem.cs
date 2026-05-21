@@ -2,11 +2,12 @@ using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Doors.Systems;
-using Content.Shared._Scp.ComplexElevator;
-using Robust.Shared.GameObjects;
+using Content.Server.Spawners.Components;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
+using Content.Shared.Delivery;
+using Content.Shared.Ghost.Roles.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Movement.Pulling.Components;
@@ -15,9 +16,11 @@ using Content.Shared.Timing;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
+using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Scp.ComplexElevator;
@@ -35,13 +38,18 @@ public sealed partial class ComplexElevatorSystem : EntitySystem
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly AtmosphereSystem _atmos = default!;
     [Dependency] private readonly PullingSystem _pulling = default!;
-    [Dependency] private readonly IComponentFactory _componentFactory = default!;
     private static readonly Color ElevatorButtonGreen = Color.FromHex("#00FF00");
     private static readonly Color ElevatorButtonYellow = Color.FromHex("#FFFF00");
     private static readonly Color ElevatorButtonRed = Color.FromHex("#FF0000");
+    private const LookupFlags ElevatorPayloadLookupFlags = LookupFlags.Dynamic | LookupFlags.Static | LookupFlags.Sundries | LookupFlags.StaticSundries;
+    private const string SpawnerCategory = "Spawner";
 
     private readonly Dictionary<string, EntityUid> _elevatorIndex = new();
     private readonly Dictionary<string, EntityUid> _pointIndex = new();
+    private readonly HashSet<EntityUid> _payloadCandidates = new();
+    private readonly HashSet<EntityUid> _payloadRoots = new();
+    private readonly List<(EntityUid Entity, Vector2 Offset, bool WasAnchored)> _payloadMoves = new();
+    private readonly List<EntityUid> _movingToRemove = new();
 
     public override void Initialize()
     {
@@ -87,7 +95,7 @@ public sealed partial class ComplexElevatorSystem : EntitySystem
         base.Update(frameTime);
 
         var query = EntityQueryEnumerator<ElevatorMovingComponent, ComplexElevatorComponent>();
-        var toRemove = new List<EntityUid>();
+        _movingToRemove.Clear();
 
         while (query.MoveNext(out var uid, out var moving, out var elevator))
         {
@@ -106,7 +114,7 @@ public sealed partial class ComplexElevatorSystem : EntitySystem
                 {
                     if (!CanCloseDoorsForFloor(elevator.ElevatorId, elevator.CurrentFloor))
                     {
-                        toRemove.Add(uid);
+                        _movingToRemove.Add(uid);
                         continue;
                     }
 
@@ -148,7 +156,7 @@ public sealed partial class ComplexElevatorSystem : EntitySystem
                         OpenDoorsForFloor(elevator.ElevatorId, moving.TargetFloor);
                         _audio.PlayPvs(elevator.ArrivalSound, uid);
 
-                        toRemove.Add(uid);
+                        _movingToRemove.Add(uid);
                     }
                 }
             }
@@ -166,12 +174,12 @@ public sealed partial class ComplexElevatorSystem : EntitySystem
                     OpenDoorsForFloor(elevator.ElevatorId, moving.TargetFloor);
                     _audio.PlayPvs(elevator.ArrivalSound, uid);
 
-                    toRemove.Add(uid);
+                    _movingToRemove.Add(uid);
                 }
             }
         }
 
-        foreach (var uid in toRemove)
+        foreach (var uid in _movingToRemove)
         {
             RemComp<ElevatorMovingComponent>(uid);
             if (TryComp<ComplexElevatorComponent>(uid, out var elevator))
@@ -205,49 +213,125 @@ public sealed partial class ComplexElevatorSystem : EntitySystem
         var pointTransform = Transform(point.Value.Owner);
         var elevatorTransform = Transform(uid);
 
-        var aabb = _lookup.GetWorldAABB(uid, elevatorTransform);
-        var intersectingEntities = _lookup.GetEntitiesIntersecting(elevatorTransform.MapID, aabb, LookupFlags.Dynamic | LookupFlags.Sundries);
-
-        var entitiesToTeleport = new List<(EntityUid, Vector2)>();
-        foreach (var entUid in intersectingEntities)
-        {
-            if (entUid == uid || IsBlacklisted(entUid))
-                continue;
-
-            if (TryComp<BuckleComponent>(entUid, out var buckle) && buckle.Buckled)
-                continue;
-
-            var entTransform = Transform(entUid);
-            var relativePos = _transform.GetWorldPosition(entTransform) - _transform.GetWorldPosition(elevatorTransform);
-            entitiesToTeleport.Add((entUid, relativePos));
-
-            if (TryComp<PullableComponent>(entUid, out var pullable) && pullable.BeingPulled)
-            {
-                _pulling.TryStopPull(entUid, pullable);
-            }
-            if (TryComp<PullerComponent>(entUid, out var puller) && puller.Pulling != null)
-            {
-                if (TryComp<PullableComponent>(puller.Pulling.Value, out var subjectPulling))
-                {
-                    _pulling.TryStopPull(puller.Pulling.Value, subjectPulling);
-                }
-            }
-        }
-
+        BuildPayloadMoveList(uid, elevatorComp, elevatorTransform, pointTransform);
         var targetWorldPos = _transform.GetWorldPosition(pointTransform);
-        var destParent = pointTransform.GridUid ?? pointTransform.MapUid;
 
-        if (destParent == null)
-            return;
-
-        foreach (var (entUid, relativePos) in entitiesToTeleport)
+        foreach (var (entUid, offset, wasAnchored) in _payloadMoves)
         {
-            var entWorldPos = targetWorldPos + relativePos;
-            var destCoords = new EntityCoordinates(destParent.Value, entWorldPos - _transform.GetWorldPosition(destParent.Value));
-            _transform.SetCoordinates(entUid, destCoords);
+            var entTransform = Transform(entUid);
+
+            if (wasAnchored && entTransform.Anchored)
+                _transform.Unanchor(entUid, entTransform);
+
+            var targetCoordinates = _transform.ToCoordinates(new MapCoordinates(targetWorldPos + offset, pointTransform.MapID));
+            _transform.SetCoordinates(entUid, entTransform, targetCoordinates);
+            _transform.AttachToGridOrMap(entUid, entTransform);
+
+            if (wasAnchored && entTransform.GridUid != null)
+                _transform.AnchorEntity(entUid, entTransform);
         }
 
         _transform.SetCoordinates(uid, pointTransform.Coordinates);
+    }
+
+    private void BuildPayloadMoveList(EntityUid elevator, ComplexElevatorComponent elevatorComp, TransformComponent elevatorTransform, TransformComponent pointTransform)
+    {
+        _payloadCandidates.Clear();
+        _payloadRoots.Clear();
+        _payloadMoves.Clear();
+
+        var aabb = _lookup.GetWorldAABB(elevator, elevatorTransform);
+        var intersectingEntities = _lookup.GetEntitiesIntersecting(elevatorTransform.MapID, aabb, ElevatorPayloadLookupFlags);
+
+        foreach (var entUid in intersectingEntities)
+        {
+            if (!TryGetPayloadRoot(elevator, elevatorComp, entUid, out var root))
+                continue;
+            _payloadCandidates.Add(root);
+        }
+
+        foreach (var root in _payloadCandidates)
+        {
+            if (HasPayloadParent(root, _payloadCandidates))
+                continue;
+            _payloadRoots.Add(root);
+        }
+
+        var elevatorWorldPos = _transform.GetWorldPosition(elevatorTransform); // ← ADD THIS
+
+        foreach (var root in _payloadRoots)
+        {
+            var entTransform = Transform(root);
+            StopPulling(root);
+            if (TryComp<StrapComponent>(root, out var strap))
+            {
+                foreach (var buckled in strap.BuckledEntities)
+                {
+                    StopPulling(buckled);
+                }
+            }
+            var relativePos = _transform.GetWorldPosition(entTransform) - elevatorWorldPos;
+            _payloadMoves.Add((root, relativePos, entTransform.Anchored));
+        }
+    }
+
+    private bool TryGetPayloadRoot(EntityUid elevator, ComplexElevatorComponent elevatorComp, EntityUid entity, out EntityUid root)
+    {
+        root = entity;
+        if (entity == elevator || Deleted(entity) || IsBlacklisted(entity))
+            return false;
+
+        if (!elevatorComp.TeleportBuckled && TryComp<BuckleComponent>(entity, out var blockedBuckle) && blockedBuckle.Buckled)
+            return false;
+
+        if (TryComp<BuckleComponent>(entity, out var buckle) && buckle.BuckledTo is { } strap)
+        {
+            if (Deleted(strap) || IsBlacklisted(strap))
+                return false;
+
+            root = strap;
+        }
+
+        return root != elevator && !Deleted(root) && !IsBlacklisted(root) && HasComp<TransformComponent>(root);
+    }
+
+    private bool HasPayloadParent(EntityUid entity, HashSet<EntityUid> payload)
+    {
+        var transform = Transform(entity);
+
+        var parent = transform.ParentUid;
+        while (parent.IsValid())
+        {
+            if (payload.Contains(parent))
+                return true;
+
+            var parentTransform = Transform(parent);
+            if (parentTransform.ParentUid == parent)
+                return false;
+
+            parent = parentTransform.ParentUid;
+        }
+
+
+        return false;
+    }
+
+    private bool TransformcComp<T>(EntityUid entity, out object transform)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void StopPulling(EntityUid entity)
+    {
+        if (TryComp<PullableComponent>(entity, out var pullable) && pullable.BeingPulled)
+            _pulling.TryStopPull(entity, pullable);
+
+        if (TryComp<PullerComponent>(entity, out var puller) &&
+            puller.Pulling is { } pulled &&
+            TryComp<PullableComponent>(pulled, out var pulledPullable))
+        {
+            _pulling.TryStopPull(pulled, pulledPullable);
+        }
     }
 
     private void HandleButtonPress(Entity<ElevatorButtonComponent> button, Entity<ComplexElevatorComponent> elevator)
@@ -478,7 +562,7 @@ public sealed partial class ComplexElevatorSystem : EntitySystem
 
         var pointTransform = Transform(point.Value.Owner);
         var aabb = _lookup.GetWorldAABB(elevator.Owner, pointTransform);
-        var intersectingEntities = _lookup.GetEntitiesIntersecting(pointTransform.MapID, aabb, LookupFlags.Dynamic | LookupFlags.Sundries);
+        var intersectingEntities = _lookup.GetEntitiesIntersecting(pointTransform.MapID, aabb, ElevatorPayloadLookupFlags);
 
         foreach (var entUid in intersectingEntities)
         {
@@ -493,19 +577,34 @@ public sealed partial class ComplexElevatorSystem : EntitySystem
 
     private bool IsBlacklisted(EntityUid entity)
     {
-        foreach (var comp in EntityManager.GetComponents(entity))
+        if (HasComp<ComplexElevatorComponent>(entity) ||
+            HasComp<ElevatorPointComponent>(entity) ||
+            HasComp<ElevatorButtonComponent>(entity) ||
+            HasComp<ElevatorDoorComponent>(entity) ||
+            HasComp<SpawnPointComponent>(entity) ||
+            HasComp<ContainerSpawnPointComponent>(entity) ||
+            HasComp<ConditionalSpawnerComponent>(entity) ||
+            HasComp<TimedSpawnerComponent>(entity) ||
+            HasComp<RandomDecalSpawnerComponent>(entity) ||
+            HasComp<EntityTableSpawnerComponent>(entity) ||
+            HasComp<DeliverySpawnerComponent>(entity) ||
+            HasComp<GhostRoleMobSpawnerComponent>(entity))
         {
-            var compName = _componentFactory.GetRegistration(comp).Name;
+            return true;
+        }
 
-            if (compName == "ElevatorPoint" ||
-                compName == "ElevatorButton" ||
-                compName == "ElevatorDoor" ||
-                compName == "Marker" ||
-                compName.EndsWith("Spawner") ||
-                compName.Contains("SpawnPoint"))
-            {
+        return HasPrototypeCategory(Prototype(entity), SpawnerCategory);
+    }
+
+    private static bool HasPrototypeCategory(EntityPrototype? prototype, string category)
+    {
+        if (prototype == null)
+            return false;
+
+        foreach (var protoCategory in prototype.Categories)
+        {
+            if (protoCategory.ID == category)
                 return true;
-            }
         }
 
         return false;

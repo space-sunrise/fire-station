@@ -1,5 +1,4 @@
 using Content.Server.Administration.Managers;
-using Content.Shared._Scp.ComplexElevator;
 using Content.Shared.Database;
 using Content.Shared.Verbs;
 using Robust.Server.GameObjects;

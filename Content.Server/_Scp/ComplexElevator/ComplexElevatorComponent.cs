@@ -1,19 +1,17 @@
 using Robust.Shared.Audio;
-using Robust.Shared.GameStates;
-using Robust.Shared.Serialization;
 
-namespace Content.Shared._Scp.ComplexElevator;
+namespace Content.Server._Scp.ComplexElevator;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent]
 public sealed partial class ComplexElevatorComponent : Component
 {
     [DataField]
     public string ElevatorId = string.Empty;
 
-    [DataField, AutoNetworkedField]
+    [DataField]
     public string CurrentFloor = "IntermediateFloor";
 
-    [DataField, AutoNetworkedField]
+    [DataField]
     public List<string> Floors = new();
 
     [DataField]
@@ -36,7 +34,7 @@ public sealed partial class ComplexElevatorComponent : Component
 
     [DataField]
     public SoundSpecifier TravelSound = new SoundPathSpecifier("/Audio/_Scp/Machines/Elevator/Moving.ogg");
-    
+
     [DataField]
     public SoundSpecifier ArrivalSound = new SoundPathSpecifier("/Audio/_Scp/Machines/Elevator/Beep-elevator.ogg");
 
