@@ -463,3 +463,23 @@
           range: 4, 7
         children:
         - id: MobServant035
+
+# Scp 019
+
+- type: entity
+  id: ScpEffectMonsterSpawn019
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: XAEApplyComponents
+    applyIfAlreadyHave: true
+    refreshOnReactivate: true
+    components:
+    - type: EntityTableSpawner
+      deleteSpawnerAfterSpawn: false
+      table: !type:GroupSelector
+        children:
+        - id: Scp019MonsterBasic
+        - id: Scp019MonsterFast
+        - id: Scp019MonsterSapient

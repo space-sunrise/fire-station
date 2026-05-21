@@ -1,12 +1,12 @@
 ﻿- type: entity
   parent: [ ClothingUniformBase, ClothingUniformFoldableBase ]
-  id: ClothingUniformClassD
+  id: ClothingUniformClassDBasic
   suffix: SCP
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/Uniforms/uniformClassD.rsi
+    sprite: _Scp/Clothing/Uniforms/uniformClassD/basic.rsi
   - type: Clothing
-    sprite: _Scp/Clothing/Uniforms/uniformClassD.rsi
+    sprite: _Scp/Clothing/Uniforms/uniformClassD/basic.rsi
   - type: Access
   - type: IdCard
   - type: StationRecordKeyStorage
@@ -18,3 +18,23 @@
     - Recyclable
     - WhitelistChameleon
     - PrisonUniform
+  - type: SuitSensor
+    randomMode: false
+
+- type: entity
+  parent: ClothingUniformClassDBasic
+  id: ClothingUniformClassDLoyal
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Uniforms/uniformClassD/loyal.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Uniforms/uniformClassD/loyal.rsi
+
+- type: entity
+  parent: ClothingUniformClassDBasic
+  id: ClothingUniformClassDHostile
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Uniforms/uniformClassD/hostile.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Uniforms/uniformClassD/hostile.rsi

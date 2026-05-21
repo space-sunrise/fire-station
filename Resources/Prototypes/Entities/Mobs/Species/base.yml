@@ -237,6 +237,7 @@
     - DoorBumpOpener
     - AnomalyHost
   # Sunrise-Start
+  - type: Carrier
   - type: Paws
     screamInterval: 3
     thresholdDamage: 5

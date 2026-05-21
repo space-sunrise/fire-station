@@ -26,6 +26,7 @@
       - SunriseUplink # рыбаплинк
       - PillCanister
       - Pen
+      - Bottle
   - type: StorageFill
     contents:
     - id: BookScp049Diary
