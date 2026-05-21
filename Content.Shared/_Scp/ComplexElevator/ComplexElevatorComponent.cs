@@ -1,24 +1,26 @@
-using System.Collections.Generic;
 using Robust.Shared.Audio;
-using Robust.Shared.GameObjects;
-using Robust.Shared.Maths;
+using Robust.Shared.GameStates;
+using Robust.Shared.Serialization;
 
-namespace Content.Server._Scp.ComplexElevator;
+namespace Content.Shared._Scp.ComplexElevator;
 
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class ComplexElevatorComponent : Component
 {
     [DataField]
     public string ElevatorId = string.Empty;
 
-    [DataField]
+    [DataField, AutoNetworkedField]
     public string CurrentFloor = "IntermediateFloor";
 
-    [DataField]
+    [DataField, AutoNetworkedField]
     public List<string> Floors = new();
 
     [DataField]
     public string IntermediateFloorId = "IntermediateFloor";
+
+    [DataField]
+    public bool UseIntermediateFloor = true;
 
     [DataField]
     public TimeSpan SendDelay = TimeSpan.FromSeconds(1);
@@ -34,12 +36,22 @@ public sealed partial class ComplexElevatorComponent : Component
 
     [DataField]
     public SoundSpecifier TravelSound = new SoundPathSpecifier("/Audio/_Scp/Machines/Elevator/Moving.ogg");
-
+    
     [DataField]
     public SoundSpecifier ArrivalSound = new SoundPathSpecifier("/Audio/_Scp/Machines/Elevator/Beep-elevator.ogg");
 
     [DataField]
     public float DoorBlockCheckRange = 0.6f;
 
-    public bool IsMoving = false;
+    [DataField]
+    public bool TeleportBuckled = true;
+
+    [DataField]
+    public bool TeleportPulled = true;
+
+    [DataField]
+    public bool CrushEntitiesOnArrival = true;
+
+    [DataField]
+    public float CrushDamage = 2000f;
 }
