@@ -11,7 +11,6 @@ public sealed partial class ElevatorButtonComponent : Component
 
     [DataField]
     public string Floor = string.Empty;
-
 }
 
 public enum ElevatorButtonType

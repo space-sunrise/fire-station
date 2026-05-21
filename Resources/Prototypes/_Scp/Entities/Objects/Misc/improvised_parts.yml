@@ -8,3 +8,21 @@
   - type: Construction
     graph: ScpHiltWoodGraph
     node: hilt
+
+- type: entity
+  parent: BaseItem
+  id: ImprovisedModularReceiver
+  name: improvised modular receiver
+  description: "An improvised modular receiver, made from rusty scrap metal and parts. It can be used to craft various firearms, but is not as durable as a proper receiver."
+  components:
+    - type: Item
+      storedRotation: -90
+      # size: Normal
+    - type: Sprite
+      sprite: _Scp/Objects/Misc/improvised_modular_receiver.rsi
+      state: icon
+    - type: Tag
+      tags:
+      - ImprovisedModularReceiver
+      - ModularReceiver
+      - Metal

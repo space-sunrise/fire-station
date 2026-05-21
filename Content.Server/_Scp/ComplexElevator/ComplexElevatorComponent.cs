@@ -1,7 +1,4 @@
-using System.Collections.Generic;
 using Robust.Shared.Audio;
-using Robust.Shared.GameObjects;
-using Robust.Shared.Maths;
 
 namespace Content.Server._Scp.ComplexElevator;
 
@@ -19,6 +16,9 @@ public sealed partial class ComplexElevatorComponent : Component
 
     [DataField]
     public string IntermediateFloorId = "IntermediateFloor";
+
+    [DataField]
+    public bool UseIntermediateFloor = true;
 
     [DataField]
     public TimeSpan SendDelay = TimeSpan.FromSeconds(1);
@@ -41,5 +41,15 @@ public sealed partial class ComplexElevatorComponent : Component
     [DataField]
     public float DoorBlockCheckRange = 0.6f;
 
-    public bool IsMoving = false;
+    [DataField]
+    public bool TeleportBuckled = true;
+
+    [DataField]
+    public bool TeleportPulled = true;
+
+    [DataField]
+    public bool CrushEntitiesOnArrival = true;
+
+    [DataField]
+    public float CrushDamage = 2000f;
 }

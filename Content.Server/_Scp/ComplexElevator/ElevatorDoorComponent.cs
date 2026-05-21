@@ -4,8 +4,8 @@ namespace Content.Server._Scp.ComplexElevator;
 public sealed partial class ElevatorDoorComponent : Component
 {
     [DataField]
-    public string ElevatorId = "";
+    public string ElevatorId = string.Empty;
 
     [DataField]
-    public string Floor = "";
+    public string Floor = string.Empty;
 }
