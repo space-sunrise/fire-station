@@ -183,6 +183,20 @@
     - Scp1508
 
 - type: entity
+  name: SCP-1589 spawner
+  id: SpawnScp1589
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/Mobs/Scp/scp-1589.rsi
+      state: scp-1589
+  - type: ConditionalSpawner
+    prototypes:
+    - Scp1589
+
+- type: entity
   name: SCP-457 spawner
   id: SpawnScp457
   parent: MarkerBase

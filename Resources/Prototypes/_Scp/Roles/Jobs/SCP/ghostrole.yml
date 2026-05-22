@@ -1,24 +1,6 @@
 ﻿# Безопасный
 
 - type: job
-  id: Scp0192
-  name: job-name-scp0192
-  description: job-description-scp0192
-  playTimeTracker: JobScp0192
-  requirements:
-  - !type:OverallPlaytimeRequirement
-    time: 72000 # 20h
-  weight: 965
-  #icon: TODO
-  joinNotifyCrew: false
-  overrideConsoleVisibility: false
-  canBeAntag: false
-  jobEntity: Scp019MonsterSapient
-  alwaysShowInBanPanel: true
-  setPreference: false
-  applyTraits: false
-
-- type: job
   id: Scp131A
   name: job-name-scp131
   description: job-description-scp131
@@ -53,6 +35,24 @@
   alwaysShowInBanPanel: true
   setPreference: false
   applyTraits: false
+  
+- type: job
+  id: Scp1508
+  name: job-name-scp1508
+  description: job-description-scp1508
+  playTimeTracker: JobScp1508
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 36000 # 10h
+  weight: 966
+  #icon: TODO
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp1508
+  alwaysShowInBanPanel: true
+  setPreference: false
+  applyTraits: false
 
 - type: job
   id: Scp2295
@@ -71,21 +71,43 @@
   alwaysShowInBanPanel: true
   setPreference: false
   applyTraits: false
-  
+
+# Евклид
+
 - type: job
-  id: Scp1508
-  name: job-name-scp1508
-  description: job-description-scp1508
-  playTimeTracker: JobScp1508
+  id: Scp1589
+  name: job-name-scp1589
+  description: job-description-scp1589
+  playTimeTracker: JobScp1589
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 36000 # 10h
-  weight: 966
+    time: 180000 # 50h
+  weight: 965
   #icon: TODO
   joinNotifyCrew: false
   overrideConsoleVisibility: false
   canBeAntag: false
-  jobEntity: Scp1508
+  jobEntity: Scp1589
+  alwaysShowInBanPanel: true
+  setPreference: false
+  applyTraits: false
+
+# Кетер
+
+- type: job
+  id: Scp0192
+  name: job-name-scp0192
+  description: job-description-scp0192
+  playTimeTracker: JobScp0192
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 72000 # 20h
+  weight: 965
+  #icon: TODO
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp019MonsterSapient
   alwaysShowInBanPanel: true
   setPreference: false
   applyTraits: false

@@ -25,7 +25,7 @@
   id: ClassDJanitorGear
   equipment:
     head: ClothingHeadHatPurplesoft
-    jumpsuit: ClothingUniformClassD
+    jumpsuit: ClothingUniformClassDBasic
     gloves: ClothingHandsGlovesJanitor
     shoes: ClothingShoesGaloshes
     id: KeyCardClassDJanitor
