@@ -15,3 +15,13 @@
   category: construction-category-tools
   objectType: Item
   description: crafting-menu-text-WH
+
+- type: construction
+  name: crafting-menu-name-improvised-modular-receiver
+  id: ImprovisedModularReceiver
+  graph: ImprovisedModularReceiverGraph
+  startNode: start
+  targetNode: receiver
+  category: construction-category-misc
+  objectType: Item
+  description: crafting-menu-text-improvised-modular-receiver
