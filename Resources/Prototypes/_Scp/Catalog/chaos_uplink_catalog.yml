@@ -1,0 +1,114 @@
+
+# region Rifles
+
+- type: listing
+  id: ChaosUplinkWeaponSKM24
+  productEntity: WeaponRifleSKM24Green
+  name: chaos-shop-name-weaponskm24
+  description: chaos-shop-desc-weaponskm24
+  icon: { sprite: _Sunrise/Objects/Weapons/Guns/Rifles/skm24/Green/big.rsi, state: icon }
+  cost:
+    SupplyPoint: 5
+  categories:
+  - ChaosWeaponRifle
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosUplinkWeaponSKM28
+  productEntity: WeaponRifleSKM28
+  name: chaos-shop-name-weaponskm28
+  description: chaos-shop-desc-weaponskm28
+  icon: { sprite: _Sunrise/Objects/Weapons/Guns/Rifles/skm28/Base/big.rsi, state: icon }
+  cost:
+    SupplyPoint: 5
+  categories:
+  - ChaosWeaponRifle
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosUplinkWeaponMP7
+  productEntity: WeaponSubMachineGunMP7
+  name: chaos-shop-name-weaponmp7
+  description: chaos-shop-desc-weaponmp7
+  icon: { sprite: _Sunrise/Objects/Weapons/Guns/SMGs/mp7/big.rsi, state: icon }
+  cost:
+    SupplyPoint: 5
+  categories:
+  - ChaosWeaponRifle
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosUplinkWeaponAKMU
+  productEntity: WeaponRifleAKMU
+  name: chaos-shop-name-weaponakmu
+  description: chaos-shop-desc-weaponakmu
+  icon: { sprite: _Sunrise/Objects/Weapons/Guns/Rifles/ak74u.rsi, state: icon }
+  cost:
+    SupplyPoint: 5
+  categories:
+  - ChaosWeaponRifle
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosUplinkWeaponDragunov
+  productEntity: WeaponSniperDragunov
+  name: chaos-shop-name-weapondragunov
+  description: chaos-shop-desc-weapondragunov
+  icon: { sprite: _Sunrise/Objects/Weapons/Guns/Snipers/dragunov/big.rsi, state: icon }
+  cost:
+    SupplyPoint: 15
+  categories:
+  - ChaosWeaponRifle
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosUplinkWeaponTrenchgun4034Sawn
+  productEntity: WeaponShotgunTrenchgun4034Sawn
+  name: chaos-shop-name-weapontrenchgun4034sawn
+  description: chaos-shop-desc-weapontrenchgun4034sawn
+  icon: { sprite: _Sunrise/Objects/Weapons/Guns/Shotguns/trenchgun_l_4034_sawn/big.rsi, state: icon }
+  cost:
+    SupplyPoint: 15
+  categories:
+  - ChaosWeaponRifle
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosUplinkWeaponFamas
+  productEntity: WeaponRifleFamas
+  name: chaos-shop-name-weaponfamas
+  description: chaos-shop-desc-weaponfamas
+  icon: { sprite: _Sunrise/Objects/Weapons/Guns/Rifles/famas/big.rsi, state: icon }
+  cost:
+    SupplyPoint: 15
+  categories:
+  - ChaosWeaponRifle
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosUplinkWeaponMG342
+  productEntity: WeaponMachineGunMG42
+  name: chaos-shop-name-weaponmg342
+  description: chaos-shop-desc-weaponmg342
+  icon: { sprite: _Sunrise/Objects/Weapons/Guns/LMGs/mg42/big.rsi, state: icon }
+  cost:
+    SupplyPoint: 20
+  categories:
+  - ChaosWeaponRifle
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1

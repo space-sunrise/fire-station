@@ -1,7 +1,7 @@
 # PINPOINTER
 
 - type: entity
-  parent: PinpointerStationAlt
+  parent: [PinpointerStationAlt, BaseChaosContraband]
   name: chaos pinpointer
   description: A handheld tracking device that leads to the direction of any nearby station.
   id: ChaosPinpointer
@@ -20,13 +20,27 @@
   - type: Pinpointer
     component: BecomesStation
     targetName: the station
+    updateTargetName: true
 
+- type: entity
+  parent: [BaseItem, BaseChaosContraband]
+  name: chaos pin ball
+  description: kgkkfg
+  id: ChaosPinBall
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Specific/Chaos/chaos_pin_ball.rsi
+    state: icon
+  - type: Icon
+    sprite: _Scp/Objects/Specific/Chaos/chaos_pin_ball.rsi
+    state: icon
+  - type: PinpointerLinker
 
 # UPLINK
 
 - type: entity
   parent: [BaseItem, BaseChaosContraband]
-  id: BaseScpUplinkChaos
+  id: BaseUplinkChaos
   abstract: true
   components:
   - type: Sprite
@@ -54,21 +68,11 @@
     - 0,0,1,1
 
 - type: entity
-  parent: [ BaseScpUplinkChaos, StorePresetScpChaosUplinkLeader]
-  id: BaseUplinkChaosLeader
+  parent: [ BaseUplinkChaos, StorePresetScpChaosUplink]
+  id: UplinkChaos
   components:
   - type: Store
     balance:
       SupplyPoint: 20
     buySuccessSound:
-      path: /Audio/Effect/Arcade/newgame.ogg
-
-- type: entity
-  parent: [ BaseScpUplinkChaos, StorePresetScpChaosUplink]
-  id: BaseUplinkChaos
-  components:
-  - type: Store
-    balance:
-      SupplyPoint: 20
-    buySuccessSound:
-      path: /Audio/Effect/Arcade/newgame.ogg
+      path: /Audio/Effects/Arcade/newgame.ogg

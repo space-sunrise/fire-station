@@ -156,6 +156,7 @@
     ears: ClothingHeadsetAltChaos
     belt: ClothingBeltChaosFilled
     pocket1: ChaosAccessBreaker
+    pocket2: UplinkChaos
   inhand:
   - MedkitCombatFilled
 
@@ -174,8 +175,8 @@
     id: ChaosAccessBreakerUnlimited
     ears: ClothingHeadsetAltChaos
     belt: ClothingBeltChaosFilled
-    pocket1: CombatMedipen
-    pocket2: DefibrillatorChaos
+    pocket1: DefibrillatorChaos
+    pocket2: UplinkChaos
   inhand:
   - MedkitCombatFilled
 
@@ -195,5 +196,6 @@
     ears: ClothingHeadsetAltChaos
     belt: ClothingBeltChaosFilled
     pocket1: C4
+    pocket2: UplinkChaos
   inhand:
   - MedkitCombatFilled

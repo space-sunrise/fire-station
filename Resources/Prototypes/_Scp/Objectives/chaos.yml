@@ -30,6 +30,7 @@
 
 # region Steal
 
+# TODO: Сейчас если это добавить в ротацию целей, то имя сущности, которую нужно украсть будет "???", нужно исправить это.
 - type: entity
   parent: [BaseChaosRaidObjective, BaseChaosRaidStealObjective]
   id: ScpsStealObjective

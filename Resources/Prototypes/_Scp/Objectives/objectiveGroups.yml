@@ -2,14 +2,14 @@
 - type: weightedRandom
   id: ChaosRaidObjectiveGroups
   weights:
-    ChaosRaidObjectiveGroupSteal: 1
+    #ChaosRaidObjectiveGroupSteal: 1
     ChaosRaidObjectiveGroupStealCollection: 1
     ChaosRaidObjectiveGroupKill: 1
 
-- type: weightedRandom
-  id: ChaosRaidObjectiveGroupSteal
-  weights:
-    ScpsStealObjective: 1
+#- type: weightedRandom
+#  id: ChaosRaidObjectiveGroupSteal
+#  weights:
+#    ScpsStealObjective: 1
 
 - type: weightedRandom
   id: ChaosRaidObjectiveGroupStealCollection
