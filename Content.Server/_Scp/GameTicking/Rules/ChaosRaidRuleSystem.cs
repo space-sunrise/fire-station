@@ -2,12 +2,17 @@ using Content.Server._Scp.GameTicking.Rules.Components;
 using Content.Server.Antag;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
+using Content.Server.Mind;
+using Content.Server.Objectives;
+using Content.Server.Objectives.Components;
 using Content.Server.Roles;
+using Content.Server.RoundEnd;
 using Content.Server.Station.Components;
 using Content.Shared._Scp.Chaos;
 using Content.Shared._Scp.Fear.Components;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
 using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Zombies;
@@ -17,6 +22,9 @@ namespace Content.Server._Scp.GameTicking.Rules;
 public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
 {
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
+    [Dependency] private readonly ObjectivesSystem _objectives = default!;
+    [Dependency] private readonly MindSystem _mind = default!;
+    [Dependency] private readonly RoundEndSystem _roundEnd = default!;
     [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
 
     public override void Initialize()
@@ -58,6 +66,7 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
         GameRuleComponent gameRule,
         ref RoundEndTextAppendEvent args)
     {
+        CheckRoundShouldEnd((uid, component));
         var winText = Loc.GetString($"chaos-raid-{component.WinType.ToString().ToLower()}");
         args.AddLine(winText);
 
@@ -67,6 +76,9 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
             args.AddLine(text);
         }
 
+        args.AddLine(Loc.GetString("chaos-raid-list-completed-objectives-count",
+            ("objectivesCount", component.ObjectivesCount), ("completedCount", component.CompletedObjectivesCount)
+        ));
         args.AddLine(Loc.GetString("chaos-raid-list-start"));
 
         var antags = _antag.GetAntagIdentifiers(uid);
@@ -78,10 +90,18 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
         args.AddLine("");
     }
 
+    // TODO: Переделать эту систему, что бы она работала иначе, брав точки на шаттле, а не на всей карте.
     private void OnMapInit(Entity<MobChaosRaiderComponent> ent, ref MapInitEvent args)
     {
-
         RemCompDeferred<FearComponent>(ent); // ПОВСТАНЦЫ БЕЗ СТРАХА!
+
+        // Все StealArea-точки на этой карте (база повстанец хаоса) пренадлежат Повстанцам Хаоса
+        var query = EntityQueryEnumerator<StealAreaComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (Transform(ent).MapID == Transform(uid).MapID)
+                comp.Owners.Add(ent);
+        }
     }
 
     private void OnAfterAntagEntSelected(Entity<ChaosRaidRuleComponent> ent, ref AfterAntagEntitySelectedEvent args)
@@ -119,8 +139,110 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
         RemCompDeferred<MobChaosRaiderComponent>(ent);
     }
 
+    private void SetWinType(Entity<ChaosRaidRuleComponent> ent, ChaosWinType type, bool endRound = true)
+    {
+        ent.Comp.WinType = type;
+
+        if (endRound && (type == ChaosWinType.CrewMajor || type == ChaosWinType.ChaosMajor))
+            _roundEnd.EndRound();
+    }
+
     private void CheckRoundShouldEnd()
     {
+        var query = QueryActiveRules();
+        while (query.MoveNext(out var uid, out _, out var chaos, out _))
+        {
+            CheckRoundShouldEnd((uid, chaos));
+        }
+    }
 
+    private void CheckRoundShouldEnd(Entity<ChaosRaidRuleComponent> ent)
+    {
+        if (ent.Comp.WinType == ChaosWinType.CrewMajor || ent.Comp.WinType == ChaosWinType.ChaosMajor)
+            return;
+
+        CalculateProgress(ent.Comp, out var operativesAlives);
+
+        if (ent.Comp.CompletedObjectivesCount >= ent.Comp.ObjectivesCount &&
+            operativesAlives >= (ent.Comp.RoundstartRaidersCount / 2))
+        {
+            SetWinType(ent, ChaosWinType.ChaosMajor, false);
+            ent.Comp.WinConditions.Add(ChaosWinCondition.ChaosRaidersCompleteAllObjectives);
+        }
+
+        if (ent.Comp.WinType != ChaosWinType.ChaosMajor &&
+            ent.Comp.CompletedObjectivesCount >= (ent.Comp.ObjectivesCount / 2))
+            SetWinType(ent, ChaosWinType.ChaosMinor, false);
+
+        if (ent.Comp.WinType != ChaosWinType.ChaosMajor &&
+            operativesAlives < (ent.Comp.RoundstartRaidersCount / 2))
+            SetWinType(ent, ChaosWinType.CrewMinor, false);
+
+        if (operativesAlives <= 0)
+        {
+            ent.Comp.WinConditions.Add(ChaosWinCondition.CrewKillAllChaosRaiders);
+            if (ent.Comp.WinType != ChaosWinType.ChaosMajor)
+                SetWinType(ent, ChaosWinType.CrewMajor, false);
+        }
+
+        if (ent.Comp.RoundEndBehavior == RoundEndBehavior.Nothing)
+            return;
+
+        _roundEnd.DoRoundEndBehavior(ent.Comp.RoundEndBehavior,
+        ent.Comp.EvacShuttleTime,
+        ent.Comp.RoundEndTextSender,
+        ent.Comp.RoundEndTextShuttleCall,
+        ent.Comp.RoundEndTextAnnouncement);
+
+        ent.Comp.RoundEndBehavior = RoundEndBehavior.Nothing;
+    }
+
+    private void CalculateProgress(ChaosRaidRuleComponent ruleComp, out int operativesAlives)
+    {
+        operativesAlives = 0;
+        var objectives = new Dictionary<string, float>();
+        var completedObjectivesCount = 0;
+        var query = EntityQueryEnumerator<MobChaosRaiderComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (TryComp<MobStateComponent>(uid, out var stateComp) &&
+                stateComp.CurrentState == MobState.Alive)
+                operativesAlives++;
+
+            if (!_mind.TryGetMind(uid, out _, out var mind))
+                continue;
+
+            foreach (var objective in mind.Objectives)
+            {
+                var objectiveKey = GetObjectiveKey(objective);
+                var progress = _objectives.GetProgress(objective, (uid, mind)) ?? 0.15f;
+
+                objectives.TryAdd(objectiveKey, 0f);
+                objectives[objectiveKey] += progress;
+            }
+        }
+
+        foreach (var (key, progress) in objectives)
+        {
+            if (progress >= 0.999f)
+                completedObjectivesCount++;
+        }
+
+        ruleComp.ObjectivesCount = objectives.Count;
+        ruleComp.CompletedObjectivesCount = completedObjectivesCount;
+    }
+
+    private string GetObjectiveKey(EntityUid objective)
+    {
+        var protoId = Prototype(objective)?.ID ?? "Unknown";
+        if (TryComp<TargetObjectiveComponent>(objective, out var targetComp))
+            return targetComp.Target != null
+                ? $"{protoId}_kill_{targetComp.Target}"
+                : protoId;
+
+        if (TryComp<StealConditionComponent>(objective, out var stealComp))
+            return $"{protoId}_steal_{stealComp.StealGroup}";
+
+        return protoId;
     }
 }

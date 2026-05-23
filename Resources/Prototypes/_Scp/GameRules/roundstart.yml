@@ -116,13 +116,11 @@
   - type: AntagRandomObjectives
     sets:
     - groups: ChaosRaidObjectiveGroups
-      maxPicks: 4
+      maxPicks: 12
     maxDifficulty: 3
   - type: AntagObjectives
     objectives:
-    - ChaosRaiderDestroyScpObjective
     - KillRandomAdministrationPersonelObjective
-    - ChaosRaiderSurviveObjective
   - type: AntagSelection
     selectionTime: PrePlayerSpawn
     definitions:

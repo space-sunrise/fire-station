@@ -100,7 +100,7 @@
     damagePopupType: SmallFloating
     isStructure: true
   - type: StealTarget
-    stealGroup: Scp
+    stealGroup: ItemScp
 
 - type: entity # Базовый Entity для BaseScp и BaseScpFriendly
   abstract: true
@@ -109,6 +109,8 @@
   - MobFlammable
   id: BaseScpComponents
   components:
+  - type: StealTarget
+    stealGroup: Scp
   - type: Scp
     class: Neutralized
   - type: ScpRestriction

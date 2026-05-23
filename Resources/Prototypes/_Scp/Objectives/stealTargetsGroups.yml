@@ -2,7 +2,14 @@
   id: Scp
   name: steal-target-groups-scps
   sprite:
-    sprite: _Scp/Objects/Scp/scp-005.rsi # TODO: Заменить на анимационный спрайт всех объектов SCP
+    sprite: _Scp/Objects/Scp/scp-939.rsi # TODO: Заменить на анимационный спрайт всех объектов SCP
+    state: alive
+
+- type: stealTargetGroup
+  id: ItemScp
+  name: steal-target-groups-item-scps
+  sprite:
+    sprite: _Scp/Objects/Scp/scp-005.rsi # TODO: Заменить на анимационный спрайт всех карманных объектов SCP
     state: icon
 
 - type: stealTargetGroup
