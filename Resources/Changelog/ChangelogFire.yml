@@ -10580,3 +10580,26 @@
   id: 443
   time: '2026-05-18T16:39:33.0000000+00:00'
   url: https://github.com/space-sunrise/project-fire/pull/989
+- author: 666timur hacker god666
+  changes:
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u044B \u0443\u043D\u0438\
+      \u0444\u043E\u0440\u043C\u044B \u0442\u0440\u0451\u0445 \u043A\u0430\u0442\u0435\
+      \u0433\u043E\u0440\u0438\u0439 \u043A\u043B\u0430\u0441\u0441\u0430 \u0414"
+    type: Add
+  id: 444
+  time: '2026-05-20T19:43:01.0000000+00:00'
+  url: https://github.com/space-sunrise/project-fire/pull/996
+- author: papa parashuta
+  changes:
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D SCP-1589"
+    type: Add
+  id: 445
+  time: '2026-05-20T19:59:19.0000000+00:00'
+  url: https://github.com/space-sunrise/project-fire/pull/990
+- author: MrZero1984
+  changes:
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D \u0410\u041A-74\u041C"
+    type: Add
+  id: 446
+  time: '2026-05-21T11:20:31.0000000+00:00'
+  url: https://github.com/space-sunrise/project-fire/pull/1002

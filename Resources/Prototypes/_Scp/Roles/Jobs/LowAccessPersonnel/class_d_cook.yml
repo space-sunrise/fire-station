@@ -28,7 +28,7 @@
   id: ClassDCookGear
   equipment:
     head: ClothingHeadHatChef
-    jumpsuit: ClothingUniformClassD
+    jumpsuit: ClothingUniformClassDBasic
     outerClothing: ClothingOuterApronChef
     belt: ClothingBeltChefFilled
     gloves: ClothingHandsGlovesColorWhite

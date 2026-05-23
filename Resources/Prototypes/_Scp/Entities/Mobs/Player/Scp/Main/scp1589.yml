@@ -1,0 +1,159 @@
+﻿- type: entity
+  id: Scp1589
+  name: ???
+  suffix: SCP-1589
+  description:
+  parent: 
+  - BaseScpFriendly
+  - BaseMob
+  - MobCombat
+  - MobDamageable
+  - MobBloodstream
+  components:
+  - type: AutoGhostRole
+    disconnectDelay: 600
+    pollDuration: 900
+    transferDelay: 180
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Mobs/Scp/scp-1589.rsi
+    layers:
+    - state: alive
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive
+      Dead:
+        Base: dead
+  - type: Scp
+    class: Euclid
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1
+    baseSprintSpeed: 1.5
+  - type: MobState
+    allowedStates:
+      - Alive
+      - Dead
+  - type: GhostPanelAntagonistMarker
+    name: ghost-panel-antagonist-scp-minor-name
+    description: ghost-panel-antagonist-scp-minor-description
+    priority: 0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.4,0.25,0.4"
+        density: 500
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      2000: Dead
+  - type: GhostRole
+    makeSentient: true
+    name: ghost-role-information-scp1589-name
+    description: ghost-role-information-scp1589-description
+    raffle:
+      settings: short
+    job: Scp1589
+  - type: GhostTakeoverAvailable
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+  - type: ScpRestriction
+    canBePulled: false
+  - type: MeleeWeapon
+    hidden: true
+    altDisarm: false
+    animation: WeaponArcSmash
+    wideAnimation: WeaponArcSmash
+    soundHit:
+      collection: Punch
+    damage:
+      types:
+        Blunt: 40
+        Structural: 60
+    attackRate: 0.5
+    range: 2
+  - type: MeleeThrowOnHit
+    speed: 2
+    distance: 0.5
+  - type: Devourer
+    devourTime: 15
+    healRate: 30
+    chemical: Omnizine
+    foodPreferenceWhitelist:
+      components:
+      - MobState
+  - type: Bloodstream
+    bloodRefreshAmount: 5
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 5000
+  - type: Body
+    prototype: Animal
+  - type: BlurryVision
+    magnitude: 2
+    correctionPower: 1
+  - type: Pacified
+  - type: ReplacementAccent
+    accent: genericAggressive
+  - type: SlowAccent
+  - type: TTS
+    voice: Dota2Pudge
+  - type: TriggerOnVoice
+    keyOut: StartPhrase
+    defaultKeyPhrase: key-phrase-scp1589
+    showVerbs: false
+    showExamine: false
+    isRecording: false
+    listenRange: 6
+  - type: RemoveComponentsOnTrigger
+    keysIn: [ StartPhrase ]
+    components:
+    - type: Pacified
+  - type: JitterOnTrigger
+    keysIn: [ StartPhrase ]
+    time: 60
+  - type: TimerTrigger
+    keysIn: [ StartPhrase ]
+    keyOut: EndPhrase
+    delay: 60
+  - type: AddComponentsOnTrigger
+    keysIn: [ EndPhrase ]
+    components:
+    - type: Pacified
+  - type: FearSource
+    uponSeenState: Anxiety
+    uponComeCloser: Anxiety
+    grainShaderStrength:
+      min: 0
+      max: 400
+    vignetteShaderStrength:
+      min: 0
+      max: 200
+  - type: ComplexInteraction
+  - type: Hands
+    hands:
+      main:
+        location: Middle
+        blacklist:
+          components:
+          - MeleeWeapon
+          - Gun
+        whitelist:
+          components:
+          - Clothing
+    sortedHands:
+    - main
+    activeHandId: main
+  - type: Stripping
