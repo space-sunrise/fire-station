@@ -3,8 +3,8 @@ chaos-raider-welcome =
     Операция "{ $name }" началась!
 chaos-raider-briefing = Ваши задачи очень просты. Зашли и вышли.
 
-chaos-raid-chaosmajor = [color=blackgreen]Разгромная победа Повстанцев Хаоса![/color]
-chaos-raid-chaosminor = [color=blackgreen]Победа Повстанцев Хаоса![/color]
+chaos-raid-chaosmajor = [color=gray]Разгромная победа Повстанцев Хаоса![/color]
+chaos-raid-chaosminor = [color=gray]Победа Повстанцев Хаоса![/color]
 chaos-raid-neutral = [color=yellow]Повстанцы Хаоса не смогли нанести сотрудникам значительного ущерба.[/color]
 chaos-raid-crewminor = [color=green]Победа сотрудников учреждения![/color]
 chaos-raid-crewmajor = [color=green]Разгромная победа сотрудников учреждения![/color]

@@ -163,12 +163,12 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
 
         CalculateProgress(ent.Comp, out var operativesAlives);
 
-        if (ent.Comp.CompletedObjectivesCount >= ent.Comp.ObjectivesCount &&
-            operativesAlives >= (ent.Comp.RoundstartRaidersCount / 2))
-        {
-            SetWinType(ent, ChaosWinType.ChaosMajor, false);
+        if (ent.Comp.CompletedObjectivesCount >= ent.Comp.ObjectivesCount)
             ent.Comp.WinConditions.Add(ChaosWinCondition.ChaosRaidersCompleteAllObjectives);
-        }
+
+        if (ent.Comp.WinConditions.Contains(ChaosWinCondition.ChaosRaidersCompleteAllObjectives) &&
+            operativesAlives >= (ent.Comp.RoundstartRaidersCount / 2))
+            SetWinType(ent, ChaosWinType.ChaosMajor, false);
 
         if (ent.Comp.WinType != ChaosWinType.ChaosMajor &&
             ent.Comp.CompletedObjectivesCount >= (ent.Comp.ObjectivesCount / 2))
@@ -215,7 +215,7 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
             foreach (var objective in mind.Objectives)
             {
                 var objectiveKey = GetObjectiveKey(objective);
-                var progress = _objectives.GetProgress(objective, (uid, mind)) ?? 0.15f;
+                var progress = _objectives.GetProgress(objective, (uid, mind)) ?? 0f;
 
                 objectives.TryAdd(objectiveKey, 0f);
                 objectives[objectiveKey] += progress;
