@@ -1,0 +1,15 @@
+humanoid-profile-editor-body-type-label = Body Type:
+body-normal = Standard
+body-slim-f = Slim
+body-slim-m = Slim
+body-fat-f = Chubby
+body-fat-m = Chubby 
+body-giga-f = Muscular
+body-giga-m = Muscular
+body-distrofik-f = Emaciated
+body-distrofik-m = Emaciated
+body-curved-small-muzzle = Curved Legs (Small Snout)
+body-straight-small-muzzle = Straight Legs (Small Snout)
+body-curved-big-muzzle = Curved Legs (Large Snout)
+body-straight-big-muzzle = Straight Legs (Large Snout)
+body-curved = Curved Legs
