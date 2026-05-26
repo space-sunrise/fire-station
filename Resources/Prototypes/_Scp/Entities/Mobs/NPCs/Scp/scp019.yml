@@ -47,7 +47,7 @@
     - type: MobThresholds
       thresholds:
         0: Alive
-        75: Dead
+        80: Dead
     - type: Appearance
     - type: Butcherable
       spawned:
@@ -84,7 +84,7 @@
       damageCap: 0
       damage:
         types:
-          Cellular: 0.1
+          Cellular: 0.02
     - type: Speech
       speechSounds: Lizard
 
@@ -114,7 +114,7 @@
     - type: MobThresholds
       thresholds:
         0: Alive
-        50: Dead
+        70: Dead
 
 - type: entity
   parent: BaseMobScp019Monster
@@ -137,7 +137,7 @@
     - type: MobThresholds
       thresholds:
         0: Alive
-        60: Dead
+        85: Dead
     - type: GhostRole
       makeSentient: true
       name: ghost-role-information-scp019-name
