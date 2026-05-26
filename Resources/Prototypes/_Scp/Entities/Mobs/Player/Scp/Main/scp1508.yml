@@ -36,8 +36,8 @@
     factions:
     - SimpleNeutral
   - type: MovementSpeedModifier
-    baseWalkSpeed: 1
-    baseSprintSpeed: 2
+    baseWalkSpeed: 1.75
+    baseSprintSpeed: 2.75
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Scale
@@ -107,6 +107,7 @@
           - Bucket
           - Flashlight
           - KitchenKnife
+          - Pen
     sortedHands:
     - main
     activeHandId: main
@@ -115,5 +116,8 @@
   - type: ScpRestriction
     canBeDisarmed: true
     canBePulled: true
+    canPull: true
   - type: Inventory
     templateId: scp1508
+  - type: Puller
+    needsHands: true
