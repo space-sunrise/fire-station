@@ -1,0 +1,26 @@
+﻿- type: entity
+  id: Scp2908
+  name: PPSH-41
+  description: An old Soviet submachine gun with a distinctive wooden stock. Looks entirely ordinary for its era.
+  parent:
+  - BaseItemScp
+  - WeaponSubMachineGunPPSH
+  suffix: SCP-2908
+  components:
+  - type: Scp
+    class: Safe
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        whitelist:
+          components:
+            - BallisticAmmoProvider
+      gun_chamber:
+        whitelist:
+          components:
+            - CartridgeAmmo
+  - type: UseDelay
+    delay: 4
