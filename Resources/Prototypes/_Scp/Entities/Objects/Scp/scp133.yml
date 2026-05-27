@@ -1,0 +1,48 @@
+﻿- type: entity
+  parent: BaseItem
+  id: PaperScp133
+  name: paper
+  description: Paper.
+  suffix: SCP-133
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scp/scp-133.rsi
+    state: paper
+  - type: Sticky
+    whitelist:
+      tags:
+      - Wall
+      - Window
+      components:
+      - Airlock
+    stickDelay: 2
+    canUnstick: false
+    stickPopupStart: stick-popup-start-scp133
+    stickPopupSuccess: stick-popup-success-scp133
+  - type: TriggerOnStuck
+  - type: Scp133
+  - type: Scp
+    class: Safe
+
+- type: entity
+  parent: BaseStorageItem
+  id: PaperContainerScp133
+  name: container
+  description: Container.
+  suffix: SCP-133
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scp/scp-133.rsi
+    state: container
+  - type: Item
+    size: Normal
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,2,1
+  - type: StorageFill
+    contents:
+    - id: PaperScp133
+      amount: 3
+  - type: Scp
+    class: Safe
