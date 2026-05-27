@@ -179,20 +179,6 @@
   name: gun safe AK-74M
   suffix: Armory, AK-74M
   components:
-  - type: Sprite
-    sprite: _Scp/Structures/Storage/GunLocker/gunlocker/base.rsi
-    noRot: true
-    layers:
-    - state: locker
-      map: ["enum.StorageVisualLayers.Base"]
-    - state: gun-0
-      sprite: _Scp/Structures/Storage/GunLocker/gunlocker/g36.rsi
-      map: ["enum.StorageFillLayers.Fill"]
-    - state: locker_door
-      map: ["enum.StorageVisualLayers.Door"]
-    - state: locked
-      map: ["enum.LockVisualLayers.Lock"]
-      shader: unshaded
   - type: StorageFill
     contents:
       - id: WeaponRifleAK74
@@ -204,20 +190,6 @@
   name: gun safe M4A1
   suffix: Armory, M4A1
   components:
-  - type: Sprite
-    sprite: _Scp/Structures/Storage/GunLocker/gunlocker/base.rsi
-    noRot: true
-    layers:
-    - state: locker
-      map: ["enum.StorageVisualLayers.Base"]
-    - state: gun-0
-      sprite: _Scp/Structures/Storage/GunLocker/gunlocker/m16a4.rsi
-      map: ["enum.StorageFillLayers.Fill"]
-    - state: locker_door
-      map: ["enum.StorageVisualLayers.Door"]
-    - state: locked
-      map: ["enum.LockVisualLayers.Lock"]
-      shader: unshaded
   - type: StorageFill
     contents:
       - id: WeaponRifleM4A1
