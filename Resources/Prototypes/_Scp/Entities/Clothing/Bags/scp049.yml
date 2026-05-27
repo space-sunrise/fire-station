@@ -27,6 +27,7 @@
       - PillCanister
       - Pen
       - Bottle
+      - LimbScp0492
   - type: StorageFill
     contents:
     - id: BookScp049Diary
