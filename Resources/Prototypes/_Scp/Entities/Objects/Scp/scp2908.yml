@@ -15,12 +15,26 @@
   - type: ItemSlots
     slots:
       gun_magazine:
+        startingItem: MagazineScp2908
         whitelist:
-          components:
-            - BallisticAmmoProvider
+          tags:
+            - MagazineSMGPPSH
+            - MagazineScp2908
       gun_chamber:
         whitelist:
           components:
             - CartridgeAmmo
-  - type: UseDelay
-    delay: 4
+
+- type: entity
+  id: MagazineScp2908
+  name: PPSH magazine
+  suffix: SCP-2908
+  parent: MagazinePistolSubMachineGunPPSH
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      components:
+      - CartridgeAmmo
+  - type: Tag
+    tags:
+      - MagazineScp2908
