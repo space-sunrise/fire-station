@@ -3,7 +3,7 @@
 - type: entity
   parent: [PinpointerStationAlt, BaseChaosContraband]
   name: chaos pinpointer
-  description: A handheld tracking device that leads to the direction of any nearby station.
+  description: Universal pinpointer for special operations
   id: ChaosPinpointer
   suffix: Station
   components:
@@ -24,8 +24,8 @@
 
 - type: entity
   parent: [BaseItem, BaseChaosContraband]
-  name: chaos pin ball
-  description: kgkkfg
+  name: ball
+  description: A universal ball used to indicate the direction of the pinpointer.
   id: ChaosPinBall
   components:
   - type: Sprite
@@ -35,6 +35,16 @@
     sprite: _Scp/Objects/Specific/Chaos/chaos_pin_ball.rsi
     state: icon
   - type: PinpointerLinker
+  - type: EmbeddableProjectile
+    offset: 0.3,0.0
+    removalTime: 1.0
+  - type: ThrowingAngle
+    angle: 315
+  - type: LandAtCursor
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 0.5
 
 # UPLINK
 
@@ -70,6 +80,8 @@
 - type: entity
   parent: [ BaseUplinkChaos, StorePresetScpChaosUplink]
   id: UplinkChaos
+  name: Chaos Uplink
+  description: A special chaos uplink
   components:
   - type: Store
     balance:

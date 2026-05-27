@@ -250,7 +250,7 @@
   abstract: true
   components:
   - type: Store
-    name: store-preset-name-ChaosUplinkSKM24Weapon
+    name: store-preset-name-ChaosUplink
     categories:
     - ChaosWeaponRifle
     - ChaosWeaponPistol

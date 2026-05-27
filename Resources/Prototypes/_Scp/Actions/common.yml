@@ -1,12 +1,13 @@
-﻿- type: entity
+- type: entity
   id: ScpTearMask
-  categories: [ HideSpawnMenu ]
+  categories:
+    - HideSpawnMenu
   components:
-  - type: Action
-    useDelay: 1
-    checkCanInteract: false
-    icon:
-      sprite: _Scp/Clothing/Mask/scp-096.rsi
-      state: icon
-  - type: InstantAction
-    event: !type:ScpTearMaskEvent
+    - type: Action
+      icon:
+        sprite: _Scp/Clothing/Mask/scp-096.rsi
+        state: icon
+      useDelay: 1
+      checkCanInteract: false
+    - type: InstantAction
+      event: !type:ScpTearMaskEvent
