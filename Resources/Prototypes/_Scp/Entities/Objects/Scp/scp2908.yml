@@ -38,3 +38,5 @@
   - type: Tag
     tags:
       - MagazineScp2908
+  - type: Scp
+    class: Safe
