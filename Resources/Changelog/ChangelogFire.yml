@@ -10603,3 +10603,14 @@
   id: 446
   time: '2026-05-21T11:20:31.0000000+00:00'
   url: https://github.com/space-sunrise/project-fire/pull/1002
+- author: MrZero1984
+  changes:
+  - message: "\u0438\u0441\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u044B \u0440\u0435\
+      \u0437\u0438\u0441\u0442\u044B (\u0432\u0435\u0440\u043D\u0435\u0435 \u0438\u0445\
+      \ \u043E\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0438\u0435) \u0443 \u0448\
+      \u043B\u0435\u043C\u0430 \u043F\u043E\u0432\u0441\u0442\u0430\u043D\u0446\u0435\
+      \u0432 \u0445\u0430\u043E\u0441\u0430."
+    type: Fix
+  id: 447
+  time: '2026-05-24T09:22:13.0000000+00:00'
+  url: https://github.com/space-sunrise/project-fire/pull/1008
