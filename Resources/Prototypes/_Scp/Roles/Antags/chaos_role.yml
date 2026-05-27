@@ -7,17 +7,17 @@
   setPreference: true
   playTimeTracker: AntagChaosRaiderLeader
   objective: roles-antag-chaos-raider-leader-objective
-  #requirements:
-  #- !type:OverallPlaytimeRequirement
-  #  time: 5h
-  #- !type:DepartmentTimeRequirement
-  #  department: Security
-  #  time: 5h
-  # should be changed to nukie playtime when thats tracked (wyci)
-  #guides: [ NuclearOperatives ]
-  #previewIcon:
-  #  sprite: /Textures/_Sunrise/Interface/Misc/antag_preview.rsi
-  #  state: nuke_commander
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 15h
+  - !type:DepartmentTimeRequirement
+    department: ExternalAdministrativeZoneSecurityService
+    time: 10h
+  - !type:AgeRequirement
+    requiredAge: 25
+  - !type:AgeRequirement
+    requiredAge: 45
+    inverted: true
 
 - type: antag
   id: ChaosRaiderMedic
@@ -26,16 +26,17 @@
   setPreference: true
   playTimeTracker: AntagChaosRaiderMedic
   objective: roles-antag-chaos-raider-medic-objective
-  #requirements:
-  #- !type:OverallPlaytimeRequirement
-  #  time: 5h
-  #- !type:RoleTimeRequirement
-  #  role: JobChemist
-  #  time: 3h
-  #guides: [ NuclearOperatives ]
-  #previewIcon:
-  #  sprite: /Textures/_Sunrise/Interface/Misc/antag_preview.rsi
-  #  state: nuke_medic
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 15h
+  - !type:RoleTimeRequirement
+    role: MedicalService
+    time: 10h
+  - !type:AgeRequirement
+    requiredAge: 25
+  - !type:AgeRequirement
+    requiredAge: 45
+    inverted: true
 
 - type: antag
   id: ChaosRaiderFighter
@@ -43,14 +44,15 @@
   antagonist: true
   setPreference: true
   playTimeTracker: AntagChaosRaiderFighter
-  objective: roles-antag-nuclear-operative-objective
-  #requirements:
-  #- !type:OverallPlaytimeRequirement
-  #  time: 5h
-  #guides: [ NuclearOperatives ]
-  #previewIcon:
-  #  sprite: /Textures/_Sunrise/Interface/Misc/antag_preview.rsi
-  #  state: nuke_operative
+  objective: roles-antag-chaos-raider-fighter-objective
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 15h
+  - !type:AgeRequirement
+    requiredAge: 25
+  - !type:AgeRequirement
+    requiredAge: 45
+    inverted: true
 
 #regionend
 

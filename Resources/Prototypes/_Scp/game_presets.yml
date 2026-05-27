@@ -74,7 +74,7 @@
   id: ScpChaosRaid
   alias:
   - chaosRaid
-  name: scp-titile-chaos-raid
+  name: scp-title-chaos-raid
   showInVote: false
   hide: true
   description: scp-description-chaos-raid

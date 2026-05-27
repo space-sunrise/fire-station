@@ -18,6 +18,8 @@
     - sprite: Mobs/Aliens/paradox_clone.rsi
       state: preview
 
+# Chaos
+
 - type: entity
   categories: [ HideSpawnMenu, Spawner ]
   parent: BaseAntagSpawner

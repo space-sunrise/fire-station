@@ -20,7 +20,7 @@ public sealed partial class ScpComponent : Component
     /// <summary>
     /// Название SCP объекта
     /// </summary>
-    [DataField("name")]
+    [DataField]
     public string? ObjectName;
 
     /// <summary>
