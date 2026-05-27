@@ -1,4 +1,4 @@
-ent-PaperScp133 = circular waxed paper sheet
+ent-PaperScp133 = waxed paper sheet
     .desc = A small, perfectly round piece of slippery paper.
 
 ent-PaperContainerScp133 = gray box
