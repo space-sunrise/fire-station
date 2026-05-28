@@ -132,7 +132,7 @@
         - MachineMask
         layer:
         - MachineLayer
-        density: 190
+        density: 19000
   - type: Destructible
     thresholds:
     - trigger:
@@ -167,6 +167,7 @@
   - type: Wires
     layoutId: Vending
   - type: Anchorable
+    delay: 30
   - type: Electrified
     enabled: false
     usesApcPower: true
@@ -212,9 +213,10 @@
     name: vendor-salvage-ticket-machine
     categories:
     - SalvageEquipment
-    - SalvageMech
+    - TicketTools
     - SalvageWeapons
-    - SalvageConsumeables
+    - TicketConsumeables
+    - SalvageAmmo
     currencyWhitelist:
     - SalvageTicket
 
@@ -243,7 +245,8 @@
     name: vendor-mining-ticket-machine
     categories:
     - MiningEquipment
+    - TicketTools
     - MiningMech
-    - MiningConsumeables
+    - TicketConsumeables
     currencyWhitelist:
     - SalvageTicket
