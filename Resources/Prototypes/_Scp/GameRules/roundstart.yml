@@ -109,18 +109,15 @@
   parent: BaseChaosRaidRule
   components:
   - type: GameRule
-    minPlayers: 30
+    minPlayers: 25
   - type: LoadMapRule
     mapPath: /Maps/_Scp/Nonstation/ChaosPlanet.yml
   - type: ChaosRaidRule
   - type: AntagRandomObjectives
     sets:
     - groups: ChaosRaidObjectiveGroups
-      maxPicks: 12
+      maxPicks: 4
     maxDifficulty: 3
-  - type: AntagObjectives
-    objectives:
-    - KillRandomAdministrationPersonelObjective
   - type: AntagSelection
     selectionTime: PrePlayerSpawn
     definitions:
@@ -174,7 +171,7 @@
     - prefRoles: [ ChaosRaiderFighter ]
       fallbackRoles: [ ChaosRaiderLeader, ChaosRaiderMedic ]
       spawnerPrototype: SpawnPointChaosRaiderFighter
-      min: 3
+      min: 4
       max: 8
       playerRatio: 10
       startingGear: ChaosGear

@@ -46,9 +46,6 @@ public sealed partial class ChaosRaidRuleComponent : Component
 
     [DataField]
     public SoundSpecifier GreetSoundNotification = new SoundPathSpecifier("/Audio/_Scp/Themes/The_Chaos_Insurgency_Theme.ogg");
-
-    [ViewVariables]
-    public EntityUid? StealAreaEnt;
 }
 
 public enum ChaosWinType : byte

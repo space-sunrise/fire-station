@@ -78,7 +78,7 @@
   showInVote: false
   hide: true
   description: scp-description-chaos-raid
-  minPlayers: 20
+  minPlayers: 25
   rules:
   - ScpModeEuclid
   - SendDocumentEuclidMode
