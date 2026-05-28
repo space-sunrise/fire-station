@@ -1,0 +1,16 @@
+- type: entity
+  id: ScpRandomVendingDrinks
+  name: random vending machine spawner
+  suffix: Drinks
+  parent: RandomVendingDrinks
+  components:
+  - type: RandomSpawner
+    rarePrototypes:
+    - Scp261
+    rareChance: 0.03
+    prototypes:
+      - VendingMachineCoffee
+      - ScpVendingMachineColaBlack
+      - ScpVendingMachineColaRed
+      - ScpVendingMachineSmite
+      - ScpVendingMachineSoda

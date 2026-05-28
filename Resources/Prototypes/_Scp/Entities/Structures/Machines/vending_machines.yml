@@ -168,6 +168,8 @@
   components:
   - type: AccessReader
     access: [["Service"]]
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/dinnerware.rsi
 
 - type: entity
   parent: VendingMachineNutri
@@ -175,6 +177,8 @@
   components:
   - type: AccessReader
     access: [["Service"]]
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/nutri.rsi
 
 - type: entity
   parent: VendingMachineSeeds
@@ -182,6 +186,8 @@
   components:
   - type: AccessReader
     access: [["Service"]]
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/seeds.rsi
 
 - type: entity
   parent: VendingMachineHydrobe
@@ -189,6 +195,8 @@
   components:
   - type: AccessReader
     access: [["Service"]]
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/hydrobe.rsi
 
 - type: entity
   parent: VendingMachineLawDrobe
@@ -211,6 +219,8 @@
   components:
   - type: AccessReader
     access: [["Logistics"]]
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/cargodrobe.rsi
 
 - type: entity
   parent: VendingMachineChemDrobe
@@ -261,3 +271,101 @@
   components:
   - type: AccessReader
     access: [["Laboratory"]]
+
+- type: entity
+  parent: VendingMachineChang
+  id: ScpVendingMachineChang
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/changs.rsi
+
+- type: entity
+  parent: VendingMachineColaRed
+  id: ScpVendingMachineColaRed
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/cola-red.rsi
+
+- type: entity
+  parent: VendingMachineColaBlack
+  id: ScpVendingMachineColaBlack
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/cola-black.rsi
+
+- type: entity
+  parent: VendingMachineDiscount
+  id: ScpVendingMachineDiscount
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/discount.rsi
+
+- type: entity
+  parent: VendingMachineDonut
+  id: ScpVendingMachineDonut
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/donut.rsi
+
+- type: entity
+  parent: VendingMachineSmite
+  id: ScpVendingMachineSmite
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/smite.rsi
+
+- type: entity
+  parent: VendingMachineSnack
+  id: ScpVendingMachineSnack
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/snack.rsi
+
+- type: entity
+  parent: VendingMachineSnackBlue
+  id: ScpVendingMachineSnackBlue
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/snack-blue.rsi
+
+- type: entity
+  parent: VendingMachineSnackOrange
+  id: ScpVendingMachineSnackOrange
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/snack-orange.rsi
+
+- type: entity
+  parent: VendingMachineSnackTeal
+  id: ScpVendingMachineSnackTeal
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/snack-teal.rsi
+
+- type: entity
+  parent: VendingMachineSoda
+  id: ScpVendingMachineSoda
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/soda.rsi
+
+- type: entity
+  parent: VendingMachineSec
+  id: ScpVendingMachineSec
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/sec.rsi
+
+- type: entity
+  parent: VendingMachineClothing
+  id: ScpVendingMachineClothing
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/clothing.rsi
+
+- type: entity
+  parent: VendingMachineTheater
+  id: ScpVendingMachineTheater
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/theater.rsi

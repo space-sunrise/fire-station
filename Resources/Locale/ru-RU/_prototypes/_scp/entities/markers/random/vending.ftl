@@ -1,0 +1,12 @@
+ent-ScpRandomVending = { ent-RandomVending }
+    .suffix = { ent-RandomVending.suffix }
+    .desc = { ent-RandomVending.desc }
+ent-ScpRandomVendingClothing = { ent-RandomVendingClothing }
+    .suffix = { ent-RandomVendingClothing.suffix }
+    .desc = { ent-RandomVendingClothing.desc }
+ent-ScpRandomVendingDrinks = { ent-RandomVendingDrinks }
+    .suffix = { ent-RandomVendingDrinks.suffix }
+    .desc = { ent-RandomVendingDrinks.desc }
+ent-ScpRandomVendingSnacks = { ent-RandomVendingSnacks }
+    .suffix = { ent-RandomVendingSnacks.suffix }
+    .desc = { ent-RandomVendingSnacks.desc }
