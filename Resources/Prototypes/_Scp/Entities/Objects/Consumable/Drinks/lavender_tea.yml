@@ -2,7 +2,6 @@
   parent: DrinkGreenTeaGlass
   id: DrinkLavenderTeaGlass
   name: glass of lavender tea
-  suffix: SCP-049 lavender tea
   components:
   - type: SolutionContainerManager
     solutions:

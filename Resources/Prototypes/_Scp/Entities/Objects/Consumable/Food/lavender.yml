@@ -3,7 +3,6 @@
   parent: FoodPoppy
   id: FoodLavender
   description: A lovely purple flower with a charming, soothing scent.
-  suffix: SCP-049 lavender
   components:
   - type: FlavorProfile
     flavors:
