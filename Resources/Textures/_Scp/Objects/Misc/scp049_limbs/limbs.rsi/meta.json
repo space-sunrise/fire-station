@@ -24,6 +24,10 @@
       "directions": 4
     },
     {
+      "name": "lighting_rod_liver",
+      "directions": 4
+    },
+    {
       "name": "tube_lungs",
       "directions": 4
     }

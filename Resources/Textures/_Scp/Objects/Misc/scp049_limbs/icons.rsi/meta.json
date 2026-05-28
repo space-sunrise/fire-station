@@ -12,6 +12,18 @@
         },
         {
             "name": "icon_tube_arm"
+        },
+        {
+            "name": "icon_flash_eyes"
+        },
+        {
+            "name": "icon_spring_leg"
+        },
+        {
+            "name": "icon_lighting_rod_liver"
+        },
+        {
+            "name": "icon_tube_lungs"
 		}
     ]
 }
