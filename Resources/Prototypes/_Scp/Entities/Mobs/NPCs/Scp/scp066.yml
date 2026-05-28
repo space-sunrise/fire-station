@@ -1,0 +1,138 @@
+﻿- type: entity
+  id: Scp066Friendly
+  suffix: SCP-066 Friendly
+  parent: BaseScp066
+  components:
+  - type: Sprite
+    drawdepth: SmallMobs
+    sprite: _Scp/Mobs/Scp/scp-066.rsi
+    state: scp-066friendly
+  - type: Scp
+    class: Safe
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 3
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:TriggerBehavior { }
+  - type: EmitSoundRandomly
+    sound:
+      collection: Scp066IdleFriendly
+      params:
+        maxDistance: 6
+  - type: PolymorphOnTrigger
+    polymorph: Scp066Polymorph
+  - type: HTN
+    constantlyReplan: true
+    rootTask:
+      task: HugBotCompound
+    blackboard:
+      VisionRadius: !type:Single
+        7
+      AggroVisionRadius: !type:Single
+        5
+      FollowRange: !type:Single
+        5
+      MeleeRange: !type:Single
+        2
+  - type: NPCUseActionWhenTargetInRange
+    actions:
+    - actionId: Scp066SpawnCake
+      minRange: 0
+      maxRange: 3
+    - actionId: Scp066SpawnPlushieCat
+      minRange: 0
+      maxRange: 3
+    - actionId: Scp066SpawnDelightGlass
+      minRange: 0
+      maxRange: 3
+  - type: Tag
+    tags:
+    - Scp066Friendly
+
+- type: entity
+  id: Scp066Hostile
+  suffix: SCP-066 Hostile
+  parent:
+  - BaseScp066
+  - BaseScp
+  components:
+  - type: Sprite
+    drawdepth: SmallMobs
+    sprite: _Scp/Mobs/Scp/scp-066.rsi
+    state: scp-066hostile
+  - type: Scp
+    class: Euclid
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 4
+  - type: EmitSoundRandomly
+    sound:
+      collection: Scp066IdleHostile
+      params:
+        maxDistance: 6
+  - type: HTN
+    constantlyReplan: true
+    rootTask:
+      task: HugBotCompound
+    blackboard:
+      VisionRadius: !type:Single
+        10
+      AggroVisionRadius: !type:Single
+        7
+      FollowRange: !type:Single
+        7
+      MeleeRange: !type:Single
+        3
+  - type: NPCUseActionWhenTargetInRange
+    actions:
+    - actionId: Scp066OpenDoors
+      minRange: 0
+      maxRange: 15
+    - actionId: Scp066SpawnAngryBee
+      minRange: 0
+      maxRange: 6
+    - actionId: Scp066DisableLights
+      minRange: 0
+      maxRange: 10
+  - type: Tag
+    tags:
+    - Scp066Hostile
+    
+- type: entity
+  id: BaseScp066
+  categories: [ HideSpawnMenu ]
+  parent: BaseScpFriendly
+  name: ???
+  components:
+  - type: Muted
+  - type: ScpRestriction
+    canBePulled: true
+    canMobCollide: true
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Scale
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.3
+        density: 80
+        mask:
+        - MobMask
+        layer:
+        - SmallMobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral

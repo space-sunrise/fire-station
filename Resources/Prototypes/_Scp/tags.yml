@@ -90,6 +90,9 @@
 
 - type: Tag
   id: Scp173Shard
+  
+- type: Tag
+  id: Scp066Ribbon
 
 - type: Tag
   id: ReinforcedMaskScp096
@@ -105,3 +108,9 @@
 
 - type: Tag
   id: ClothingHeadAwareness
+
+- type: Tag
+  id: Scp066Friendly
+
+- type: Tag
+  id: Scp066Hostile

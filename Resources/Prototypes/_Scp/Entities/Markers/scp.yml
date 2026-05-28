@@ -139,6 +139,20 @@
   - type: ConditionalSpawner
     prototypes:
     - Scp131A
+    
+- type: entity
+  name: SCP-066 spawner
+  id: SpawnScp066
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/Mobs/Scp/scp-066.rsi
+      state: scp-066friendly
+  - type: ConditionalSpawner
+    prototypes:
+    - Scp066Friendly
 
 - type: entity
   name: SCP-131-B spawner

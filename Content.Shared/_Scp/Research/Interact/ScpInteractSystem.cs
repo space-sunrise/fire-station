@@ -1,4 +1,4 @@
-﻿using Content.Shared._Scp.Mobs.Components;
+﻿﻿using Content.Shared._Scp.Mobs.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;

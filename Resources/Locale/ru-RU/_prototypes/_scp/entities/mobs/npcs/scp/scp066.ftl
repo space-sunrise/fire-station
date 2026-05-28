@@ -1,0 +1,2 @@
+ent-Scp066Hostile = ???
+ent-Scp066Friendly = ???

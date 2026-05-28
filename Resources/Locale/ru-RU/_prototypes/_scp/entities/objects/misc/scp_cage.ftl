@@ -8,3 +8,6 @@ ent-CrateScpCage = Ангар «Пандора»
 ent-CrateScpCageScp173 = { ent-CrateScpCage }
     .desc = { ent-CrateScpCage.desc }
     .suffix = SCP-173
+ent-CrateScpCageScp066 = Ангар «Диатоника»
+    .desc = Запираемый контейнер для переноски хрупких SCP, сочетающий в себе удобство и максимальную сохранность объекта в процессе транспортировки.
+    .suffix = SCP-066

@@ -5,14 +5,14 @@
   components:
   - type: Sprite
     drawdepth: Overdoors
-    sprite: _Scp/Objects/Misc/scp_cage.rsi
+    sprite: _Scp/Objects/Misc/scp173_cage.rsi
     offset: 0, 0.5
     layers:
     - state: base
     - state: closed
       map: [ "enum.StorageVisualLayers.Door" ]
   - type: Icon
-    sprite: _Scp/Objects/Misc/scp_cage.rsi
+    sprite: _Scp/Objects/Misc/scp173_cage.rsi
     state: closed
   # Копипаста с CrateGeneric
   - type: Transform
@@ -31,10 +31,10 @@
         layer:
         - MachineLayer
   # Копипаста кончилась
-  - type: Deployable
-    requiredTools:
-    - Screwing
-    deployed: true
+#  - type: Deployable
+#    requiredTools:
+#    - Screwing
+#    deployed: true
   - type: Construction
     graph: Girder
     node: wall
@@ -137,5 +137,55 @@
     - Screwing
     deployed: false
     deployStates:
-      false: CrateScpCageFolded
+      false: CrateScpCageFolded173
       true: CrateScpCageScp173
+      
+- type: entity
+  parent: CrateScpCageFolded
+  id: CrateScpCageFolded173
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Deployable
+    requiredTools:
+    - Screwing
+    deployed: true
+    deployStates:
+      false: CrateScpCageFolded173
+      true: CrateScpCageScp173
+
+- type: entity
+  parent: CrateScpCage
+  id: CrateScpCageScp066
+  name: Scp066 cage
+  components:
+  - type: Sprite
+    drawdepth: Overdoors
+    sprite: _Scp/Objects/Misc/scp066_cage.rsi
+    layers:
+    - state: base
+    - state: closed
+      map: [ "enum.StorageVisualLayers.Door" ]
+  - type: Icon
+    sprite: _Scp/Objects/Misc/scp066_cage.rsi
+    state: closed
+  - type: EntityStorage
+    doAfterDelay: 3
+    air:
+      volume: 800
+    whitelist:
+      tags:
+      - Scp066Friendly
+      - Scp066Hostile
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: -0.4,-0.2,0.4,0.6
+        density: 75
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer

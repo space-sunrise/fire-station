@@ -1,4 +1,4 @@
-﻿using Content.Shared.DoAfter;
+﻿﻿using Content.Shared.DoAfter;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -58,4 +58,3 @@ public sealed partial class ScpSpawnInteractDoAfterEvent : BaseScpInteractDoAfte
 }
 
 #endregion
-

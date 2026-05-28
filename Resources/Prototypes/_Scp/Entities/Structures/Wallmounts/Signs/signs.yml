@@ -68,6 +68,15 @@
   components:
   - type: Sprite
     state: 049
+    
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp066
+  name: SCP-066 sign
+  description: Points in a direction you shouldn't go without a clear understanding of where it leads.
+  components:
+  - type: Sprite
+    state: 066
 
 - type: entity
   parent: BaseSignDirectionalScp

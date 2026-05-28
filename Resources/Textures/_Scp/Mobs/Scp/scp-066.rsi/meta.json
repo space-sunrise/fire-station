@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "license": "CC-BY-3.0",
+  "copyright": "timur",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "scp-066friendly",
+      "directions": 4
+    },
+    {
+      "name": "scp-066hostile",
+      "directions": 4
+    }
+  ]
+}
