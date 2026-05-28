@@ -6,17 +6,17 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: RepulseAttract
-    speed: 10
-    range: 5
+    speed: -20
+    range: 4
     whitelist:
       components:
       - Item
       - Animateable
   - type: Action
-    useDelay: 120
+    useDelay: 180
     icon:
-      sprite: Objects/Specific/Medical/medical.rsi
-      state: medicated-suture
+      sprite: Objects/Magic/magicactions.rsi
+      state: repulse
 
 
 - type: entity
@@ -27,14 +27,14 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: RepulseAttract
-    speed: -20
-    range: 4
+    speed: 10
+    range: 5
     whitelist:
       components:
       - Item
       - Animateable
   - type: Action
-    useDelay: 180
+    useDelay: 120
     icon:
-      sprite: Objects/Specific/Medical/medical.rsi
-      state: medicated-suture
+      sprite: Objects/Magic/magicactions.rsi
+      state: repulse
