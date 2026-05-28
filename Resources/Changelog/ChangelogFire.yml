@@ -10639,3 +10639,12 @@
   id: 449
   time: '2026-05-28T20:39:28.0000000+00:00'
   url: https://github.com/space-sunrise/project-fire/pull/1021
+- author: Fire Station Spriters
+  changes:
+  - message: "\u0421\u043F\u0440\u0430\u0439\u0442\u044B \u0431\u043E\u043B\u044C\u0448\
+      \u0435\u0439 \u0447\u0430\u0441\u0442\u0438 \u0430\u0432\u0442\u043E\u043C\u0430\
+      \u0442\u043E\u0432 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u044B"
+    type: Tweak
+  id: 450
+  time: '2026-05-28T21:02:29.0000000+00:00'
+  url: https://github.com/space-sunrise/project-fire/pull/1022
