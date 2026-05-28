@@ -97,7 +97,7 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
         RemCompDeferred<FearComponent>(ent); // ПОВСТАНЦЫ БЕЗ СТРАХА!
 
         var query = EntityQuery<StealAreaComponent, TransformComponent>();
-        if (query.Count() <= 0)
+        if (!query.Any())
             return;
 
         if (!_mind.TryGetMind(ent, out var mindId, out _))
