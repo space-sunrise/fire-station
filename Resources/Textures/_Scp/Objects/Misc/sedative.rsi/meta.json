@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "license": "CLA",
+  "copyright": "made by someone",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "canister"
+    },
+    {
+      "name": "pill"
+    }
+  ]
+}

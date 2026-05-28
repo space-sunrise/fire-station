@@ -42,6 +42,11 @@
   result: EyeDroplets
 
 - type: latheRecipe
+  id: SedativeCanister
+  parent: BaseASFRecipe
+  result: PillCanisterSedative
+
+- type: latheRecipe
   id: ClothingHeadBagScp096
   parent: BaseASFRecipe
   result: ClothingHeadBagScp096
