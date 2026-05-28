@@ -24,5 +24,7 @@ ent-WeaponARLSniper = laser sniper rifle "Enigma"
     .desc = High-precision laser sniper rifle created on the basis of anomalous technologies. A shot generates a concentrated beam of high power, capable of penetrating armor and vulnerable materials. Used only under strict control.
 ent-PillSedative = { ent-Pill }
     .desc = { ent-Pill.desc }
+    .suffix = SCP
 ent-PillCanisterSedative = ataraxia pill jar
     .desc = A sealed container holding a standard ration of psychochemical inverters for stabilization of personnel mental states.
+    .suffix = SCP
