@@ -9,10 +9,10 @@
   objective: roles-antag-chaos-raider-leader-objective
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 15h
-  - !type:DepartmentTimeRequirement
-    department: ExternalAdministrativeZoneSecurityService
     time: 10h
+  - !type:DepartmentTimeRequirement
+    department: JobExternalAdministrativeZoneOfficer
+    time: 5h
   - !type:AgeRequirement
     requiredAge: 25
   - !type:AgeRequirement
@@ -28,10 +28,10 @@
   objective: roles-antag-chaos-raider-medic-objective
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 15h
-  - !type:RoleTimeRequirement
-    role: MedicalService
     time: 10h
+  - !type:RoleTimeRequirement
+    role: JobMedicalSpecialist
+    time: 5h
   - !type:AgeRequirement
     requiredAge: 25
   - !type:AgeRequirement

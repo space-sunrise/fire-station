@@ -30,11 +30,12 @@ public abstract class SharedPinpointerSystem : EntitySystem
             return;
 
         // Fire edit start
-        if (HasComp<PinpointerLinkerComponent>(target))
+        if (HasComp<PinpointerLinkerComponent>(target) && component.IsActive)
         {
             component.Target = target;
             if (component.UpdateTargetName)
                 component.TargetName = Name(target);
+            args.Handled = true;
             return;
         }
         // Fire edit end

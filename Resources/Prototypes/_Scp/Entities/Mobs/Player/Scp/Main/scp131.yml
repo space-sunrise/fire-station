@@ -20,7 +20,6 @@
     - NECK
   - type: MultiHandedItem
   - type: Scp
-    name: Scp 131-A
     class: Safe
   - type: Muted
   - type: NpcFactionMember

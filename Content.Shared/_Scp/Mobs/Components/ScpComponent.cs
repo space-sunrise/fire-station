@@ -18,12 +18,6 @@ public sealed partial class ScpComponent : Component
     public TimeSpan? TimeLastInteracted;
 
     /// <summary>
-    /// Название SCP объекта
-    /// </summary>
-    [DataField]
-    public string? ObjectName;
-
-    /// <summary>
     /// Класс SCP объекта
     /// </summary>
     [DataField(required: true)]

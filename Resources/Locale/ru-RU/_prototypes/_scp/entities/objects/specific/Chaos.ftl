@@ -1,4 +1,4 @@
-ent-UplinkChaos = Терминал Повстанцев Хаоса
+ent-UplinkChaos = терминал Повстанцев Хаоса
     .desc = Используется силами Повстанцев Хаоса для выполнения специальных операций.
 ent-LeaderUplinkChaos = { ent-UplinkChaos }
     .desc = { ent-UplinkChaos.desc }

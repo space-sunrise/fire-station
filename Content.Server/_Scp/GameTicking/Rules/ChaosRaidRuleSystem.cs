@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Server._Scp.GameTicking.Rules.Components;
 using Content.Server.Antag;
 using Content.Server.GameTicking;
@@ -90,17 +91,23 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
         args.AddLine("");
     }
 
-    // TODO: Переделать эту систему, что бы она работала иначе, брав точки на шаттле, а не на всей карте.
+    // TODO: Переделать эту систему, что бы она работала иначе, брав точки отдельно на шаттле, а так же базе повстанцев хаоса, а не на всей карте.
     private void OnMapInit(Entity<MobChaosRaiderComponent> ent, ref MapInitEvent args)
     {
         RemCompDeferred<FearComponent>(ent); // ПОВСТАНЦЫ БЕЗ СТРАХА!
 
+        var query = EntityQuery<StealAreaComponent, TransformComponent>();
+        if (query.Count() <= 0)
+            return;
+
+        if (!_mind.TryGetMind(ent, out var mindId, out _))
+            return;
+
         // Все StealArea-точки на этой карте (база повстанец хаоса) пренадлежат Повстанцам Хаоса
-        var query = EntityQueryEnumerator<StealAreaComponent>();
-        while (query.MoveNext(out var uid, out var comp))
+        foreach (var (stealComp, xform) in query)
         {
-            if (Transform(ent).MapID == Transform(uid).MapID)
-                comp.Owners.Add(ent);
+            if (Transform(ent).MapID == xform.MapID)
+                stealComp.Owners.Add(mindId);
         }
     }
 
@@ -162,28 +169,34 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
             return;
 
         CalculateProgress(ent.Comp, out var operativesAlives);
+        var halfRaiders = Math.Max(1, (ent.Comp.RoundstartRaidersCount + 1) / 2);
+        var halfObjectives = Math.Max(1, (ent.Comp.ObjectivesCount + 1) / 2);
 
-        if (ent.Comp.CompletedObjectivesCount >= ent.Comp.ObjectivesCount)
+        if (ent.Comp.CompletedObjectivesCount >= ent.Comp.ObjectivesCount &&
+            !ent.Comp.WinConditions.Contains(ChaosWinCondition.ChaosRaidersCompleteAllObjectives))
             ent.Comp.WinConditions.Add(ChaosWinCondition.ChaosRaidersCompleteAllObjectives);
 
         if (ent.Comp.WinConditions.Contains(ChaosWinCondition.ChaosRaidersCompleteAllObjectives) &&
-            operativesAlives >= (ent.Comp.RoundstartRaidersCount / 2))
+            ent.Comp.RoundstartRaidersCount > 1 &&
+            operativesAlives >= halfRaiders)
             SetWinType(ent, ChaosWinType.ChaosMajor, false);
 
         if (ent.Comp.WinType != ChaosWinType.ChaosMajor &&
-            ent.Comp.CompletedObjectivesCount >= (ent.Comp.ObjectivesCount / 2))
+            ent.Comp.CompletedObjectivesCount >= halfObjectives)
             SetWinType(ent, ChaosWinType.ChaosMinor, false);
 
         if (ent.Comp.WinType != ChaosWinType.ChaosMajor &&
-            operativesAlives < (ent.Comp.RoundstartRaidersCount / 2))
+            operativesAlives < halfRaiders)
             SetWinType(ent, ChaosWinType.CrewMinor, false);
 
-        if (operativesAlives <= 0)
-        {
+        if (operativesAlives > 0)
+            return;
+
+        if (!ent.Comp.WinConditions.Contains(ChaosWinCondition.CrewKillAllChaosRaiders))
             ent.Comp.WinConditions.Add(ChaosWinCondition.CrewKillAllChaosRaiders);
-            if (ent.Comp.WinType != ChaosWinType.ChaosMajor)
-                SetWinType(ent, ChaosWinType.CrewMajor, false);
-        }
+
+        if (ent.Comp.WinType != ChaosWinType.ChaosMajor)
+            SetWinType(ent, ChaosWinType.CrewMajor, false);
 
         if (ent.Comp.RoundEndBehavior == RoundEndBehavior.Nothing)
             return;
