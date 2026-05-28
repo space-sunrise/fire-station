@@ -82,7 +82,7 @@
   id: ChaosUplinkWeaponMG342
   productEntity: WeaponMachineGunMG42
   cost:
-    SupplyPoint: 20
+    SupplyPoint: 25
   categories:
   - ChaosWeaponRifle
   conditions:
@@ -135,7 +135,7 @@
   - !type:ListingLimitedStockCondition
     stock: 1
 
-# Ammo
+# region Ammo
 
 - type: listing
   id: ChaosUplinkAmmoMagazine556
@@ -346,7 +346,7 @@
   - !type:ListingLimitedStockCondition
     stock: 3
 
-# Medkits
+# region Medkits
 
 - type: listing
   id: ChaosUplinkMedkitOxygen
@@ -414,7 +414,7 @@
   - !type:ListingLimitedStockCondition
     stock: 2
 
-# Other
+# region Other
 
 - type: listing
   id: ChaosUplinkOtherC4

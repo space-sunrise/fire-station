@@ -16,9 +16,9 @@
   id: ChaosRaidObjectiveGroupStealCollection
   weights:
     ItemScpsStealCollectionObjective: 1
-    InfoPapersStealCollectionObjective: 0.8
+    InfoPapersStealCollectionObjective: 1
 
 - type: weightedRandom
   id: ChaosRaidObjectiveGroupKill
   weights:
-    KillRandomAdministrationPersonelObjective: 0.8
+    KillRandomAdministrationPersonelObjective: 1

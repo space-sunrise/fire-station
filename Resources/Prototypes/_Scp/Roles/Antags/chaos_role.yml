@@ -9,10 +9,7 @@
   objective: roles-antag-chaos-raider-leader-objective
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 10h
-  - !type:DepartmentTimeRequirement
-    department: JobExternalAdministrativeZoneOfficer
-    time: 5h
+    time: 15h
   - !type:AgeRequirement
     requiredAge: 25
   - !type:AgeRequirement
@@ -47,7 +44,7 @@
   objective: roles-antag-chaos-raider-fighter-objective
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 15h
+    time: 10h
   - !type:AgeRequirement
     requiredAge: 25
   - !type:AgeRequirement
@@ -158,7 +155,7 @@
     ears: ClothingHeadsetAltChaos
     belt: ClothingBeltChaosFilled
     pocket1: ChaosAccessBreaker
-    pocket2: UplinkChaos
+    pocket2: LeaderUplinkChaos
   inhand:
   - MedkitCombatFilled
 

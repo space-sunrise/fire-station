@@ -74,7 +74,6 @@
 - type: entity
   parent: [BaseChaosRaidObjective, BaseKillObjective]
   id: KillRandomAdministrationPersonelObjective
-  description: We must ensure that the target is eliminated once and for all. Good luck, Soldier!
   components:
   - type: Objective
     difficulty: 3.0
