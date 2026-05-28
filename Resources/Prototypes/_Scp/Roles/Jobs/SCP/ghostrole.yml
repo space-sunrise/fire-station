@@ -92,6 +92,24 @@
   setPreference: false
   applyTraits: false
 
+- type: job
+  id: Scp128
+  name: job-name-scp128
+  description: job-description-scp128
+  playTimeTracker: JobScp128
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 360000 # 100h
+  weight: 965
+  #icon: TODO
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp128
+  alwaysShowInBanPanel: true
+  setPreference: false
+  applyTraits: false
+
 # Кетер
 
 - type: job

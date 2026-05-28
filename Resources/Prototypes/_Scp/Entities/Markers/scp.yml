@@ -197,6 +197,21 @@
     - Scp1589
 
 - type: entity
+  name: SCP-128 spawner
+  id: SpawnScp128
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/Mobs/Scp/scp-128.rsi
+      state: icon
+  - type: GhostRoleAntagSpawner
+  - type: ConditionalSpawner
+    prototypes:
+    - Scp128
+
+- type: entity
   name: SCP-457 spawner
   id: SpawnScp457
   parent: MarkerBase

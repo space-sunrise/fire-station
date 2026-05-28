@@ -82,6 +82,26 @@
   - type: DynamicRuleCost
     cost: 50
 
+- type: entity
+  parent: BaseGameRule
+  id: Scp128X
+  components:
+  - type: StationEvent
+    weight: 5
+    duration: null
+    earliestStart: 20
+    reoccurrenceDelay: 20
+    minimumPlayers: 15
+  - type: AntagRandomSpawn
+  - type: AntagSelection
+    definitions:
+    - spawnerPrototype: SpawnScp128
+      min: 1
+      max: 1
+      pickPlayer: false
+  - type: DynamicRuleCost
+    cost: 50
+
 - type: entityTable
   id: ScpVanillaEventsTable
   table: !type:AllSelector
@@ -106,3 +126,4 @@
     - id: Blackout
     - id: SpawnScp096Photo
     - id: AirlockManEater
+    - id: Scp128X

@@ -1,0 +1,85 @@
+﻿- type: entity
+  id: Scp128
+  name: ???
+  suffix: SCP-128
+  parent: BaseScpFriendly
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Mobs/Scp/scp-128.rsi
+    state: icon
+  - type: AutoGhostRole
+    disconnectDelay: 600
+    pollDuration: 900
+    transferDelay: 180
+  - type: Scp
+    class: Euclid
+  - type: Muted
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 5
+  - type: GhostPanelAntagonistMarker
+    name: ghost-panel-antagonist-scp-minor-name
+    description: ghost-panel-antagonist-scp-minor-description
+    priority: 0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.3
+        density: 999
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+  - type: GhostRole
+    makeSentient: true
+    name: ghost-role-information-scp128-name
+    description: ghost-role-information-scp128-description
+    raffle:
+      settings: short
+    job: Scp128
+  - type: GhostTakeoverAvailable
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+  - type: Pacified
+  - type: ComplexInteraction
+  - type: ScpRestriction
+    canBePulled: false
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Hands
+  - type: MovementIgnoreGravity
+  - type: Visibility
+    layer: 2
+  - type: FlashImmunity
+  - type: ActionGrant
+    actions:
+    - Scp128Inpulse
+    - Scp128Outpulse
+  - type: FootstepModifier
+  - type: EmitSoundRandomly
+    sound:
+      collection: VentClaw
+      params:
+        maxDistance: 6
+  - type: Reactive
+    groups:
+      Flammable: [ Touch ]
+      Extinguish: [ Touch ]
+    reactions:
+    - reagents: [ Water, SpaceCleaner ]
+      methods: [ Touch ]
+      effects:
+        - !type:HealthChange
+          damage:
+            types:
+              Cold: 2

@@ -15,5 +15,7 @@ job-description-scp999 = A friendly, gelatinous entity that causes boundless joy
 
 job-name-scp0192 = SCP-019-2 «The Monster Pot»
 job-description-scp0192 = An extremely aggressive creature that emerges from SCP-019.
+job-name-scp128 = SCP-128 «Kinetic Energy Entity»
+job-description-scp128 = A curious and mischievous invisible entity that loves to interact with the world.
 job-name-scp1589 = SCP-1589 «Roman Anthropophagus»
 job-description-scp1589 = An obedient and calm giant who carries out any orders.

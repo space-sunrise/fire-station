@@ -1,0 +1,40 @@
+﻿- type: entity
+  parent: ActionRepulse
+  id: Scp128Inpulse
+  name: inpulse
+  description: Inpulses.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: RepulseAttract
+    speed: 10
+    range: 5
+    whitelist:
+      components:
+      - Item
+      - Animateable
+  - type: Action
+    useDelay: 120
+    icon:
+      sprite: Objects/Specific/Medical/medical.rsi
+      state: medicated-suture
+
+
+- type: entity
+  parent: ActionRepulse
+  id: Scp128Outpulse
+  name: outpulse
+  description: Outpulses.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: RepulseAttract
+    speed: -20
+    range: 4
+    whitelist:
+      components:
+      - Item
+      - Animateable
+  - type: Action
+    useDelay: 180
+    icon:
+      sprite: Objects/Specific/Medical/medical.rsi
+      state: medicated-suture
