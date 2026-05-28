@@ -1,0 +1,11 @@
+- type: entity
+  id: CrateLavender5
+  parent: CrateGenericSteel
+  name: ящик лаванды
+  suffix: SCP-049
+  description: Герметичный ящик, содержащий 5 цветков лаванды. Пахнет успокаивающе.
+  components:
+  - type: StorageFill
+    contents:
+      - id: FoodLavender
+        amount: 5
