@@ -79,9 +79,22 @@
 
 - type: entity
   parent: [ BaseUplinkChaos, StorePresetScpChaosUplink]
+  id: LeaderUplinkChaos
+  name: Chaos Terminal
+  description: A special chaos terminal
+  components:
+  - type: Store
+    balance:
+      SupplyPoint: 25
+    buySuccessSound:
+      path: /Audio/Effects/Arcade/newgame.ogg
+
+
+- type: entity
+  parent: [ BaseUplinkChaos, StorePresetScpChaosUplink]
   id: UplinkChaos
-  name: Chaos Uplink
-  description: A special chaos uplink
+  name: Chaos Terminal
+  description: A special chaos terminal
   components:
   - type: Store
     balance:
