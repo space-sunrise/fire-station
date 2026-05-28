@@ -77,6 +77,11 @@
 - type: entity
   parent: [ClothingBackpackMerc, BaseChaosContraband]
   id: ClothingBackpackChaos
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Back/Backpacks/chaos.rsi
+    state: icon
+
 #рюкзак ПХ (заполн)
 - type: entity
   parent: ClothingBackpackChaos
