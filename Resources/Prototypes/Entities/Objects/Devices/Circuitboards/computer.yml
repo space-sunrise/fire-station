@@ -71,6 +71,7 @@
 - type: entity
   parent: BaseComputerCircuitboard
   id: CriminalRecordsComputerCircuitboard
+  categories: [ HideSpawnMenu ] # Fire edit
   name: criminal records computer board
   description: A computer printed circuit board for a criminal records computer.
   components:
