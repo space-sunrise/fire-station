@@ -1,10 +1,8 @@
 ﻿using Content.Shared.Damage;
-using Robust.Shared.GameStates;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
-namespace Content.Shared._Scp.Scp133;
+namespace Content.Server._Scp.Scp133;
 
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent]
 public sealed partial class Scp133Component : Component
 {
     [DataField]

@@ -3,9 +3,8 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Sticky.Components;
 using Content.Shared.Trigger;
 using Robust.Shared.Timing;
-using Robust.Shared.Network;
 
-namespace Content.Shared._Scp.Scp133;
+namespace Content.Server._Scp.Scp133;
 
 public sealed class Scp133System : EntitySystem
 {
