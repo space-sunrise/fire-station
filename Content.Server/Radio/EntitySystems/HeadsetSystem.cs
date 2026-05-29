@@ -152,6 +152,10 @@ public sealed partial class HeadsetSystem : SharedHeadsetSystem
         // this is currently done this way because receiving radio messages on an entity otherwise requires that entity
         // to have an ActiveRadioComponent
 
+        // Scp added start - custom headset receive sound
+        PlayHeadsetReceiveSound(ent, args);
+        // Scp added end
+
         var parent = Transform(ent).ParentUid;
 
         // Scp added start - custom headset receive sound
