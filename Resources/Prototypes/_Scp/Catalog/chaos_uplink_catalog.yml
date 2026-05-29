@@ -453,6 +453,15 @@
     stock: 2
 
 - type: listing
+  id: ChaosUplinkOtherChaosPDA
+  productEntity: ChaosInsurgencyPDA
+  categories:
+  - ChaosOther
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
   id: ChaosUplinkOtherChaosPinpointer
   productEntity: ChaosPinpointer
   cost:
