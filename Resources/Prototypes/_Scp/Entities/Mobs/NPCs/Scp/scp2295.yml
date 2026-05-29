@@ -101,7 +101,12 @@
   - type: ComplexInteraction
   - type: ScpRestriction
     canBeDisarmed: true
+    canStandingState: true
   - type: ActionGrant
     actions:
     - Scp2295Brutepack
     - Scp2295RegenerativeMesh
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: StandingState

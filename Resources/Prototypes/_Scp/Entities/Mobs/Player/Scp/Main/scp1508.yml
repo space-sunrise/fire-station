@@ -115,5 +115,10 @@
   - type: ScpRestriction
     canBeDisarmed: true
     canBePulled: true
+    canStandingState: true
   - type: Inventory
     templateId: scp1508
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: StandingState
