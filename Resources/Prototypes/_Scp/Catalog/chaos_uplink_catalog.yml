@@ -71,7 +71,7 @@
   id: ChaosUplinkWeaponMG342
   productEntity: ChaosStorageCrateMachineGunMG42
   name: MG-342
-  description: Дерзай - налетай, целься и стреляй.
+  description: chaos-catalog-weapon-mg42-description
   icon: { sprite: _Sunrise/Objects/Weapons/Guns/LMGs/mg42/big.rsi, state: base }
   cost:
     SupplyPoint: 25
