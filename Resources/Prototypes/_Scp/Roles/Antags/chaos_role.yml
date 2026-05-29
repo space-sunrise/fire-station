@@ -1,4 +1,60 @@
-﻿#дефиб ПХ медика
+﻿#region ANTAGS
+
+- type: antag
+  id: ChaosRaiderLeader
+  name: roles-antag-chaos-raider-leader-name
+  antagonist: true
+  setPreference: true
+  playTimeTracker: AntagChaosRaiderLeader
+  objective: roles-antag-chaos-raider-leader-objective
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 15h
+  - !type:AgeRequirement
+    requiredAge: 25
+  - !type:AgeRequirement
+    requiredAge: 45
+    inverted: true
+
+- type: antag
+  id: ChaosRaiderMedic
+  name: roles-antag-chaos-raider-medic-name
+  antagonist: true
+  setPreference: true
+  playTimeTracker: AntagChaosRaiderMedic
+  objective: roles-antag-chaos-raider-medic-objective
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 10h
+  - !type:RoleTimeRequirement
+    role: JobMedicalSpecialist
+    time: 5h
+  - !type:AgeRequirement
+    requiredAge: 25
+  - !type:AgeRequirement
+    requiredAge: 45
+    inverted: true
+
+- type: antag
+  id: ChaosRaiderFighter
+  name: roles-antag-chaos-raider-fighter-name
+  antagonist: true
+  setPreference: true
+  playTimeTracker: AntagChaosRaiderFighter
+  objective: roles-antag-chaos-raider-fighter-objective
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 10h
+  - !type:AgeRequirement
+    requiredAge: 25
+  - !type:AgeRequirement
+    requiredAge: 45
+    inverted: true
+
+#regionend
+
+
+#дефиб ПХ медика
 - type: entity
   parent: [DefibrillatorSyndicate, BaseChaosContraband]
   id: DefibrillatorChaos
@@ -21,6 +77,11 @@
 - type: entity
   parent: [ClothingBackpackMerc, BaseChaosContraband]
   id: ClothingBackpackChaos
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Back/Backpacks/chaos.rsi
+    state: icon
+
 #рюкзак ПХ (заполн)
 - type: entity
   parent: ClothingBackpackChaos
@@ -99,6 +160,7 @@
     ears: ClothingHeadsetAltChaos
     belt: ClothingBeltChaosFilled
     pocket1: ChaosAccessBreaker
+    pocket2: LeaderUplinkChaos
   inhand:
   - MedkitCombatFilled
 
@@ -117,8 +179,8 @@
     id: ChaosAccessBreakerUnlimited
     ears: ClothingHeadsetAltChaos
     belt: ClothingBeltChaosFilled
-    pocket1: CombatMedipen
-    pocket2: DefibrillatorChaos
+    pocket1: DefibrillatorChaos
+    pocket2: UplinkChaos
   inhand:
   - MedkitCombatFilled
 
@@ -138,5 +200,6 @@
     ears: ClothingHeadsetAltChaos
     belt: ClothingBeltChaosFilled
     pocket1: C4
+    pocket2: UplinkChaos
   inhand:
   - MedkitCombatFilled

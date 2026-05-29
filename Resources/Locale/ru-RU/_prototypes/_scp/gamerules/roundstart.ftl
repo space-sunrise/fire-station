@@ -16,3 +16,5 @@ ent-BasicFoundationChillEventScheduler = { ent-BaseGameRule }
     .desc = { ent-BaseGameRule.desc }
 ent-Scp = { ent-BaseGameRule }
     .desc = { ent-BaseGameRule.desc }
+ent-ScpChaosRaid = { ent-BaseGameRule }
+    .desc = { ent-BaseGameRule.desc }

@@ -2,7 +2,7 @@
   id: Scp1508
   name: ???
   suffix: SCP-1508
-  parent: 
+  parent:
   - BaseScpFriendly
   - InventoryBase
   - StripableInventoryBase
