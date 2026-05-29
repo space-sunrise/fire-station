@@ -2,7 +2,7 @@
   id: Scp106Abilities
   name: scp106-store-category-abilities
 
-#MTF uplink categoires
+#MTF uplink categories
 
 - type: storeCategory # Для Э-11 и Ню-7
   id: ScpKitStart
@@ -63,3 +63,30 @@
   id: ScpSpecWeapon
   name: store-category-scpspecweapon
   priority: 11
+
+# region Chaos Uplink Categories
+
+- type: storeCategory
+  id: ChaosWeaponRifle
+  name: store-category-ChaosWeaponRifle
+  priority: 0
+
+- type: storeCategory
+  id: ChaosWeaponPistol
+  name: store-category-ChaosWeaponPistol
+  priority: 1
+
+- type: storeCategory
+  id: ChaosWeaponAmmo
+  name: store-category-ChaosWeaponAmmo
+  priority: 2
+
+- type: storeCategory
+  id: ChaosMedkit
+  name: store-category-ChaosMedkit
+  priority: 3
+
+- type: storeCategory
+  id: ChaosOther
+  name: store-category-ChaosOther
+  priority: 4

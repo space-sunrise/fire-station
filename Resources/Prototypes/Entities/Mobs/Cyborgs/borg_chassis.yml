@@ -48,9 +48,15 @@
   id: BorgChassisMining
   parent: BorgChassisSelectable
   name: salvage cyborg
-  # components: # Fire Edit
-  # - type: BorgSwitchableType
-  #   selectedBorgType: mining
+  #components: # Fire Edit
+  # Sunrise-Start
+  #- type: FootprintEmitter
+  #  placementOffset: 0,0
+  #  leftBareFootState: [ footprint-tracked ]
+  #  rightBareFootState: [ footprint-tracked ]
+  # Sunrise-End
+  #- type: BorgSwitchableType
+  #  selectedBorgType: mining
 
 - type: entity
   id: BorgChassisEngineer
@@ -406,6 +412,12 @@
       - BorgModuleCargo
     hasMindState: miner_e
     noMindState: miner_e_r
+  # Sunrise-Start
+  - type: FootprintEmitter
+    placementOffset: 0,0
+    leftBareFootState: [ footprint-tracked ]
+    rightBareFootState: [ footprint-tracked ]
+  # Sunrise-End
 
 - type: entity
   parent: BaseBorgChassisSyndicateDerelict

@@ -1,3 +1,4 @@
+using Content.Shared._Scp.Pinpointer; // Fire edit
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Emag.Systems;
@@ -27,6 +28,17 @@ public abstract class SharedPinpointerSystem : EntitySystem
     {
         if (!args.CanReach || args.Target is not { } target)
             return;
+
+        // Fire edit start
+        if (HasComp<PinpointerLinkerComponent>(target) && component.IsActive)
+        {
+            component.Target = target;
+            if (component.UpdateTargetName)
+                component.TargetName = Name(target);
+            args.Handled = true;
+            return;
+        }
+        // Fire edit end
 
         if (!component.CanRetarget || component.IsActive)
             return;

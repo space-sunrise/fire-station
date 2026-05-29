@@ -84,7 +84,7 @@
       damageCap: 0
       damage:
         types:
-          Cellular: 0.1
+          Cellular: 0.02
     - type: Speech
       speechSounds: Lizard
 
@@ -137,7 +137,7 @@
     - type: MobThresholds
       thresholds:
         0: Alive
-        60: Dead
+        65: Dead
     - type: GhostRole
       makeSentient: true
       name: ghost-role-information-scp019-name
