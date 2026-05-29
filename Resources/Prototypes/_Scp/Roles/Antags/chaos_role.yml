@@ -183,6 +183,9 @@
     pocket2: UplinkChaos
   inhand:
   - MedkitCombatFilled
+  storage:
+   back:
+   - ChaosHypo
 
 # Боец (обычный ПХ)
 - type: startingGear

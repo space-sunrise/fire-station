@@ -473,3 +473,12 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 2
+
+- type: listing
+  id: ChaosUplinkOtherMassScanner
+  productEntity: HandHeldMassScanner
+  categories:
+  - ChaosOther
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
