@@ -1009,6 +1009,10 @@ CriminalRecordsComputerCircuitboard: SunriseCriminalRecordsComputerCircuitboard
 #ComputerCriminalRecords: SunriseComputerCriminalRecords
 #2026-04-19
 AtmosDeviceFanDirectionalInvisible: AtmosDeviceFanDirectional
+#2026-05-10 # Sunrise-TODO: Delete this after upstreaming wizards
+ComputerNukieDelivery: SyndicateComputerComms
+HandheldStationMapNukeops: HandheldStationMapUnpowered
+MagazineG36Extended: null
 # region Sunrise-End
 
 # Санрайз насрал опять
@@ -1018,6 +1022,34 @@ CrateServicePrinterDoc: null
 CrateServicePrinterDocRestock: null
 
 # Fire added start
+
+RandomVending: ScpRandomVending
+RandomVendingDrinks: ScpRandomVendingDrinks
+RandomVendingSnacks: ScpRandomVendingSnacks
+
+VendingMachineChang: ScpVendingMachineChang
+VendingMachineColaRed: ScpVendingMachineColaRed
+VendingMachineColaBlack: ScpVendingMachineColaBlack
+VendingMachineDiscount: ScpVendingMachineDiscount
+VendingMachineDonut: ScpVendingMachineDonut
+VendingMachineSmite: ScpVendingMachineSmite
+VendingMachineSnack: ScpVendingMachineSnack
+VendingMachineSnackBlue: ScpVendingMachineSnackBlue
+VendingMachineSnackOrange: ScpVendingMachineSnackOrange
+VendingMachineSnackTeal: ScpVendingMachineSnackTeal
+VendingMachineSoda: ScpVendingMachineSoda
+VendingMachineSec: ScpVendingMachineSec
+VendingMachineClothing: ScpVendingMachineClothing
+VendingMachineTheater: ScpVendingMachineTheater
+VendingMachineDrGibb: null
+VendingMachinePwrGame: null
+VendingMachineShamblersJuice: null
+VendingMachineSnackGreen: null
+VendingMachineSovietSoda: null
+VendingMachineSpaceUp: null
+VendingMachineStarkist: null
+
+ClothingUniformClassD: ClothingUniformClassDBasic
 ClosetWallAtmospherics: null
 ClosetWallWardrobeAtmosphericsFilled: null
 WardrobeBotanist: ScpLockerBotanistPhytogeneticist

@@ -1,0 +1,9 @@
+- type: entity
+  id: ChaosRaidStealAreaPoint
+  parent: MarkerBase
+  components:
+  - type: StealArea
+    range: 5
+    ignoreUnobstruct: true
+  - type: Sprite
+    state: red

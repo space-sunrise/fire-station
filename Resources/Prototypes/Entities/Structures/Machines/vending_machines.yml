@@ -1,4 +1,4 @@
-﻿# base
+# base
 
 - type: entity
   id: VendingMachine
@@ -406,6 +406,7 @@
 - type: entity
   parent: VendingMachine
   id: VendingMachineClothing
+  categories: [ HideSpawnMenu ] # Fire edit
   name: ClothesMate
   description: A vending machine for clothing.
   components:
@@ -547,6 +548,7 @@
 - type: entity
   parent: VendingMachineCola
   id: VendingMachineColaBlack
+  categories: [ HideSpawnMenu ] # Fire edit
   suffix: Black
   components:
   - type: Sprite
@@ -567,6 +569,7 @@
 - type: entity
   parent: VendingMachineCola
   id: VendingMachineColaRed
+  categories: [ HideSpawnMenu ] # Fire edit
   name: Space Cola Vendor
   description: It vends cola, in space.
   components:
@@ -588,6 +591,7 @@
 - type: entity
   parent: VendingMachineCola
   id: VendingMachineSpaceUp
+  categories: [ HideSpawnMenu ] # Fire edit
   name: Space-Up! Vendor
   description: Indulge in an explosion of flavor.
   components:
@@ -611,6 +615,7 @@
 - type: entity
   parent: VendingMachineCola
   id: VendingMachineSoda
+  categories: [ HideSpawnMenu ] # Fire edit
   suffix: Soda
   components:
   - type: VendingMachine
@@ -633,6 +638,7 @@
 - type: entity
   parent: VendingMachineCola
   id: VendingMachineStarkist
+  categories: [ HideSpawnMenu ] # Fire edit
   name: Star-kist Vendor
   description: The taste of a star in liquid form.
   components:
@@ -656,6 +662,7 @@
 - type: entity
   parent: VendingMachine
   id: VendingMachineShamblersJuice
+  categories: [ HideSpawnMenu ] # Fire edit
   name: Shambler's Juice Vendor
   description: ~Shake me up some of that Shambler's Juice!~
   components:
@@ -691,6 +698,7 @@
 - type: entity
   parent: VendingMachine
   id: VendingMachinePwrGame
+  categories: [ HideSpawnMenu ] # Fire edit
   name: Pwr Game Vendor
   description: You want it, we got it. Brought to you in partnership with Vlad's Salads.
   components:
@@ -728,6 +736,7 @@
 - type: entity
   parent: VendingMachine
   id: VendingMachineDrGibb
+  categories: [ HideSpawnMenu ] # Fire edit
   name: Dr. Gibb Vendor
   description: Canned explosion of different flavors in this very vendor!
   components:
@@ -765,6 +774,7 @@
 - type: entity
   parent: VendingMachine
   id: VendingMachineSmite
+  categories: [ HideSpawnMenu ] # Fire edit
   name: Smite Vendor
   description: Popular with the administration.
   components:
@@ -866,6 +876,7 @@
 - type: entity
   parent: VendingMachine
   id: VendingMachineDiscount
+  categories: [ HideSpawnMenu ] # Fire edit
   name: Discount Dan's
   description: A vending machine containing discount snacks from the infamous 'Discount Dan' franchise.
   components:
@@ -1023,6 +1034,7 @@
 - type: entity
   parent: VendingMachine
   id: VendingMachineSec
+  categories: [ HideSpawnMenu ] # Fire edit
   name: SecTech
   description: A vending machine containing Security equipment. A label reads SECURITY PERSONNEL ONLY.
   components:
@@ -1103,6 +1115,7 @@
 - type: entity
   parent: VendingMachine
   id: VendingMachineSnack
+  categories: [ HideSpawnMenu ] # Fire edit
   name: Getmore Chocolate Corp
   description: A snack machine courtesy of the Getmore Chocolate Corporation, based out of Mars.
   components:
@@ -1170,6 +1183,7 @@
 - type: entity
   parent: VendingMachineSnack
   id: VendingMachineSnackBlue
+  categories: [ HideSpawnMenu ] # Fire edit
   suffix: Blue
   components:
   - type: Sprite
@@ -1190,6 +1204,7 @@
 - type: entity
   parent: VendingMachineSnack
   id: VendingMachineSnackOrange
+  categories: [ HideSpawnMenu ] # Fire edit
   suffix: Orange
   components:
   - type: Sprite
@@ -1210,6 +1225,7 @@
 - type: entity
   parent: VendingMachineSnack
   id: VendingMachineSnackGreen
+  categories: [ HideSpawnMenu ] # Fire edit
   suffix: Green
   components:
   - type: Sprite
@@ -1230,6 +1246,7 @@
 - type: entity
   parent: VendingMachineSnack
   id: VendingMachineSnackTeal
+  categories: [ HideSpawnMenu ] # Fire edit
   suffix: Teal
   components:
   - type: Sprite
@@ -1250,6 +1267,7 @@
 - type: entity
   parent: VendingMachine
   id: VendingMachineSovietSoda
+  categories: [ HideSpawnMenu ] # Fire edit
   name: VODA # Sunrise-edit
   description: An old vending machine containing sweet water.
   suffix: VODA
@@ -1288,6 +1306,7 @@
 - type: entity
   parent: VendingMachine
   id: VendingMachineTheater
+  categories: [ HideSpawnMenu ] # Fire edit
   name: AutoDrobe
   description: A vending machine containing costumes.
   components:
@@ -1453,6 +1472,7 @@
 - type: entity
   parent: VendingMachine
   id: VendingMachineChang
+  categories: [ HideSpawnMenu ] # Fire edit
   name: Mr. Chang
   description: A self-serving Chinese food machine, for all your Chinese food needs.
   components:
@@ -1520,6 +1540,7 @@
 - type: entity
   parent: VendingMachine
   id: VendingMachineDonut
+  categories: [ HideSpawnMenu ] # Fire edit
   name: Monkin' Donuts
   description: A donut vendor provided by Robust Industries, LLC.
   components:

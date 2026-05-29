@@ -191,7 +191,7 @@
     layers:
     - state: green
     - sprite: _Scp/Mobs/Scp/scp-1589.rsi
-      state: scp-1589
+      state: alive
   - type: ConditionalSpawner
     prototypes:
     - Scp1589
