@@ -23,7 +23,7 @@
     updateTargetName: true
 
 - type: entity
-  parent: SyndiHypo
+  parent: [SyndiHypo, BaseChaosContraband]
   id: ChaosHypo
   name: Chaos hypospray
   description: By reverse engineering Foundation technology, the Chaos Insurgency produces them in limited quantities for its own use.
