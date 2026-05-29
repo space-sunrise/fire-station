@@ -93,6 +93,7 @@
     sprite: _Scp/Mobs/Scp/scp-131/scp-131-b.rsi
   - type: Clothing
     sprite: _Scp/Mobs/Scp/scp-131/scp-131-b.rsi
+  - type: Scp
   - type: GhostRole
     makeSentient: true
     name: ghost-role-information-scp131-name

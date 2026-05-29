@@ -69,3 +69,20 @@
   - BasicFoundationEventScheduler
   - ScpMetaGarbageSpawn
   - FreeScpRule
+
+- type: gamePreset
+  id: ScpChaosRaid
+  alias:
+  - chaosRaid
+  name: scp-title-chaos-raid
+  showInVote: false
+  hide: true
+  description: scp-description-chaos-raid
+  minPlayers: 25
+  rules:
+  - ScpModeEuclid
+  - SendDocumentEuclidMode
+  - BasicFoundationEventScheduler
+  - ScpMetaGarbageSpawn
+  - FreeScpRule
+  - ScpChaosRaid

@@ -1,0 +1,95 @@
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseChaosRaidObjective
+  components:
+  - type: Objective
+    issuer: objective-issuer-chaos
+  - type: RoleRequirement
+    roles:
+    - ChaosRaiderRole
+
+- type: entity
+  abstract: true
+  parent: [BaseChaosRaidObjective, BaseStealObjective]
+  id: BaseChaosRaidStealObjective
+  components:
+  - type: StealCondition
+    verifyMapExistence: false
+    descriptionText: objective-condition-chaos-raid-description
+    checkStealAreas: true
+
+- type: entity
+  abstract: true
+  parent: [BaseChaosRaidObjective, BaseChaosRaidStealObjective]
+  id: BaseChaosRaidStealCollectionObjective
+  components:
+  - type: StealCondition
+    verifyMapExistence: true
+    descriptionText: objective-condition-collection-chaos-raid-description
+
+# region Steal
+
+# TODO: Сейчас если это добавить в ротацию целей, то имя сущности, которую нужно украсть будет "???", нужно исправить это и добавить данную цель в ротацию.
+- type: entity
+  parent: [BaseChaosRaidObjective, BaseChaosRaidStealObjective]
+  id: ScpsStealObjective
+  components:
+  - type: StealCondition
+    stealGroup: Scp
+    checkStealAreas: true
+  - type: Objective
+    difficulty: 3.0
+
+# region Collections
+
+- type: entity
+  parent: BaseChaosRaidStealCollectionObjective
+  id: ItemScpsStealCollectionObjective
+  components:
+  - type: StealCondition
+    minCollectionSize: 4
+    maxCollectionSize: 10
+    stealGroup: ItemScp
+    checkStealAreas: true
+  - type: Objective
+    difficulty: 1.5
+
+# TODO: Заменить на цель кражи бумажечек, которые будут у Административного Персонала
+- type: entity
+  parent: BaseChaosRaidStealCollectionObjective
+  id: InfoPapersStealCollectionObjective
+  components:
+  - type: StealCondition
+    minCollectionSize: 5
+    maxCollectionSize: 10
+    stealGroup: ScpInfoPapers
+    checkStealAreas: true
+  - type: Objective
+    difficulty: 1.5
+
+# region Kill
+
+# TODO: Написать отдельную систему на кражу людей и создать цель кражи Административного персонала Учреждения
+- type: entity
+  parent: [BaseChaosRaidObjective, BaseKillObjective]
+  id: KillRandomAdministrationPersonelObjective
+  components:
+  - type: Objective
+    difficulty: 3.0
+    unique: false
+  - type: TargetObjective
+    title: objective-condition-kill-maroon-chaos-raid-title
+  - type: PickRandomPerson
+    filters:
+    - !type:BodyMindFilter
+      whitelist:
+        components:
+        - CommandStaff
+    - !type:TargetObjectiveMindFilter
+      blacklist:
+        components:
+        - KillPersonCondition
+  - type: KillPersonCondition
+    requireDead: true
+    requireMaroon: true

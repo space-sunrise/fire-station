@@ -1022,8 +1022,34 @@ CrateServicePrinterDoc: null
 CrateServicePrinterDocRestock: null
 
 # Fire added start
-ClothingUniformClassD: ClothingUniformClassDBasic
 
+RandomVending: ScpRandomVending
+RandomVendingDrinks: ScpRandomVendingDrinks
+RandomVendingSnacks: ScpRandomVendingSnacks
+
+VendingMachineChang: ScpVendingMachineChang
+VendingMachineColaRed: ScpVendingMachineColaRed
+VendingMachineColaBlack: ScpVendingMachineColaBlack
+VendingMachineDiscount: ScpVendingMachineDiscount
+VendingMachineDonut: ScpVendingMachineDonut
+VendingMachineSmite: ScpVendingMachineSmite
+VendingMachineSnack: ScpVendingMachineSnack
+VendingMachineSnackBlue: ScpVendingMachineSnackBlue
+VendingMachineSnackOrange: ScpVendingMachineSnackOrange
+VendingMachineSnackTeal: ScpVendingMachineSnackTeal
+VendingMachineSoda: ScpVendingMachineSoda
+VendingMachineSec: ScpVendingMachineSec
+VendingMachineClothing: ScpVendingMachineClothing
+VendingMachineTheater: ScpVendingMachineTheater
+VendingMachineDrGibb: null
+VendingMachinePwrGame: null
+VendingMachineShamblersJuice: null
+VendingMachineSnackGreen: null
+VendingMachineSovietSoda: null
+VendingMachineSpaceUp: null
+VendingMachineStarkist: null
+
+ClothingUniformClassD: ClothingUniformClassDBasic
 ClosetWallAtmospherics: null
 ClosetWallWardrobeAtmosphericsFilled: null
 WardrobeBotanist: ScpLockerBotanistPhytogeneticist

@@ -90,6 +90,113 @@
         max: -1
 
 - type: entity
+  abstract: true
+  parent: BaseGameRule
+  id: BaseChaosRaidRule
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesOperationPrefix
+    - NamesOperationSuffix
+    nameFormat: name-format-nuclear-operation
+  - type: RuleGrids
+  - type: AntagSelection
+  - type: AntagLoadProfileRule
+    speciesOverride: Human
+
+- type: entity
+  id: ScpChaosRaid
+  parent: BaseChaosRaidRule
+  components:
+  - type: GameRule
+    minPlayers: 25
+  - type: LoadMapRule
+    mapPath: /Maps/_Scp/Nonstation/ChaosPlanet.yml
+  - type: ChaosRaidRule
+  - type: AntagRandomObjectives
+    sets:
+    - groups: ChaosRaidObjectiveGroups
+      maxPicks: 4
+    maxDifficulty: 3
+  - type: AntagSelection
+    selectionTime: PrePlayerSpawn
+    definitions:
+    - prefRoles: [ ChaosRaiderLeader ]
+      fallbackRoles: [ ChaosRaiderFighter, ChaosRaiderMedic ]
+      spawnerPrototype: SpawnPointChaosRaiderLeader
+      startingGear: ChaosLeaderGear
+      max: 1
+      roleLoadout:
+      - RoleSurvivalNukie
+      components:
+      - type: GhostPanelAntagonistMarker
+        name: ghost-panel-antagonist-chaos-raider-leader-name
+        description: ghost-panel-antagonist-chaos-raider-leader-description
+        priority: 10
+      - type: MobChaosRaider
+      - type: RandomMetadata
+        nameSegments:
+        - NamesChaos
+        - LastNamesChaos
+        nameFormat: name-format-ert
+      - type: NpcFactionMember
+        factions:
+        - Chaos
+      mindRoles:
+      - MindRoleChaosRaiderLeader
+    - prefRoles: [ ChaosRaiderMedic ]
+      fallbackRoles: [ ChaosRaiderFighter, ChaosRaiderLeader ]
+      spawnerPrototype: SpawnPointChaosRaiderMedic
+      startingGear: ChaosMedicGear
+      min: 1
+      max: 3
+      roleLoadout:
+      - RoleSurvivalNukie
+      components:
+      - type: GhostPanelAntagonistMarker
+        name: ghost-panel-antagonist-chaos-raider-medic-name
+        description: ghost-panel-antagonist-chaos-raider-medic-description
+        priority: 10
+      - type: MobChaosRaider
+      - type: RandomMetadata
+        nameSegments:
+        - NamesChaos
+        - LastNamesChaos
+        nameFormat: name-format-ert
+      - type: NpcFactionMember
+        factions:
+        - Chaos
+      mindRoles:
+      - MindRoleChaosRaiderMedic
+    - prefRoles: [ ChaosRaiderFighter ]
+      fallbackRoles: [ ChaosRaiderLeader, ChaosRaiderMedic ]
+      spawnerPrototype: SpawnPointChaosRaiderFighter
+      min: 4
+      max: 8
+      playerRatio: 10
+      startingGear: ChaosGear
+      roleLoadout:
+      - RoleSurvivalNukie
+      components:
+      - type: GhostPanelAntagonistMarker
+        name: ghost-panel-antagonist-chaos-raider-fighter-name
+        description: ghost-panel-antagonist-chaos-raider-fighter-description
+        priority: 10
+      - type: MobChaosRaider
+      - type: RandomMetadata
+        nameSegments:
+        - NamesChaos
+        - LastNamesChaos
+        nameFormat: name-format-ert
+      - type: NpcFactionMember
+        factions:
+        - Chaos
+      mindRoles:
+      - MindRoleChaosRaiderFighter
+  - type: DynamicRuleCost
+    cost: 200
+
+- type: entity
   id: ScpMetaGarbageSpawn
   parent: BaseGameRule
   components:

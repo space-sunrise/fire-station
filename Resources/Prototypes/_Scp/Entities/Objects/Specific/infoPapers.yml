@@ -10,6 +10,8 @@
     stampedBy:
     - stampedColor: '#cc0000'
       stampedName: stamp-component-stamped-name-regional-command
+  - type: StealTarget
+    stealGroup: ScpInfoPapers
 
 - type: entity
   name: paper

@@ -12,6 +12,7 @@ ignore_list:
   - G36 # Fire added
   - AR18 # Fire added
   - P90 # Fire added
+  - M4A1 # Fire added
   - 'EntityUid'
   - 'Zzz...'
   - 'playglobalsound'
