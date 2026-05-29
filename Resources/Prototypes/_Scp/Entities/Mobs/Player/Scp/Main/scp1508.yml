@@ -122,3 +122,5 @@
     defaultRotation: 90
     horizontalRotation: 90
   - type: StandingState
+  - type: Loadout
+    prototypes: [ Scp1508Gear ]

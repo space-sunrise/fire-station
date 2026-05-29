@@ -92,7 +92,6 @@
           - Healing
           - SurgeryTool
           tags:
-          - Medkit
           - PillCanister
     sortedHands:
     - main
@@ -110,3 +109,24 @@
     defaultRotation: 90
     horizontalRotation: 90
   - type: StandingState
+  - type: Storage
+    whitelist:
+      components:
+      - Healing
+      - SurgeryTool
+      tags:
+      - PillCanister
+    clickInsert: false
+    grid:
+    - 0,0,1,3
+    maxItemSize: Large
+    storageInsertSound:
+      path: /Audio/Items/Medical/brutepack_end.ogg
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: []
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
