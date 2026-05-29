@@ -1,0 +1,102 @@
+# PINPOINTER
+
+- type: entity
+  parent: [PinpointerStationAlt, BaseChaosContraband]
+  name: chaos pinpointer
+  description: Universal pinpointer for special operations
+  id: ChaosPinpointer
+  suffix: Station
+  components:
+  - type: Sprite
+    layers:
+    - state: pinpointer-chaos
+      map: ["enum.PinpointerLayers.Base"]
+    - state: pinonnull
+      map: ["enum.PinpointerLayers.Screen"]
+      shader: unshaded
+      visible: false
+  - type: Icon
+    state: pinpointer-chaos
+  - type: Pinpointer
+    component: BecomesStation
+    targetName: the station
+    updateTargetName: true
+
+- type: entity
+  parent: [BaseItem, BaseChaosContraband]
+  name: ball
+  description: A universal ball used to indicate the direction of the pinpointer.
+  id: ChaosPinBall
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Specific/Chaos/chaos_pin_ball.rsi
+    state: icon
+  - type: Icon
+    sprite: _Scp/Objects/Specific/Chaos/chaos_pin_ball.rsi
+    state: icon
+  - type: PinpointerLinker
+  - type: EmbeddableProjectile
+    offset: 0.3,0.0
+    removalTime: 1.0
+  - type: ThrowingAngle
+    angle: 315
+  - type: LandAtCursor
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 0.5
+
+# UPLINK
+
+- type: entity
+  parent: [BaseItem, BaseChaosContraband]
+  id: BaseUplinkChaos
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Devices/chaos_uplink.rsi
+    layers:
+    - state: icon
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: Store
+    refundAllowed: false
+    ownerOnly: true
+    balance:
+      SupplyPoint: 20
+    buySuccessSound:
+      path: /Audio/Effects/Arcade/newgame.ogg
+  - type: Tag
+    tags:
+    - ScpChaosUplink
+  - type: Item
+    shape:
+    - 0,0,1,1
+
+- type: entity
+  parent: [ BaseUplinkChaos, StorePresetScpChaosUplink]
+  id: LeaderUplinkChaos
+  name: Chaos Terminal
+  description: A special chaos terminal
+  components:
+  - type: Store
+    balance:
+      SupplyPoint: 25
+    buySuccessSound:
+      path: /Audio/Effects/Arcade/newgame.ogg
+
+- type: entity
+  parent: [ BaseUplinkChaos, StorePresetScpChaosUplink]
+  id: UplinkChaos
+  name: Chaos Terminal
+  description: A special chaos terminal
+  components:
+  - type: Store
+    balance:
+      SupplyPoint: 20
+    buySuccessSound:
+      path: /Audio/Effects/Arcade/newgame.ogg

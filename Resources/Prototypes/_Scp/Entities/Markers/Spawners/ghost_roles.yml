@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   categories: [ HideSpawnMenu, Spawner ]
   parent: BaseAntagSpawner
   id: SpawnPointGhostScp2054X
@@ -17,3 +17,44 @@
       state: green
     - sprite: Mobs/Aliens/paradox_clone.rsi
       state: preview
+
+# Chaos
+
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: BaseAntagSpawner
+  id: SpawnPointChaosRaiderFighter
+  components:
+  - type: GhostRole
+    name: roles-antag-chaos-raider-fighter-name
+    description: roles-antag-chaos-raider-fighter-objective
+    rules: ghost-role-information-rules-default-team-antagonist
+    mindRoles:
+    - MindRoleChaosRaiderFighter
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: green
+
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: SpawnPointChaosRaiderFighter
+  id: SpawnPointChaosRaiderMedic
+  components:
+  - type: GhostRole
+    name: roles-antag-chaos-raider-medic-name
+    description: roles-antag-chaos-raider-medic-objective
+    rules: ghost-role-information-rules-default-team-antagonist
+    mindRoles:
+    - MindRoleChaosRaiderMedic
+
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: SpawnPointChaosRaiderFighter
+  id: SpawnPointChaosRaiderLeader
+  components:
+  - type: GhostRole
+    name: roles-antag-chaos-raider-leader-name
+    description: roles-antag-chaos-raider-leader-objective
+    rules: ghost-role-information-rules-default-team-antagonist
+    mindRoles:
+    - MindRoleChaosRaiderLeader

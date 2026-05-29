@@ -27,6 +27,7 @@
       - PillCanister
       - Pen
       - Bottle
+      - LavenderFlower
   - type: StorageFill
     contents:
     - id: BookScp049Diary

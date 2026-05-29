@@ -1,0 +1,30 @@
+
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleChaosRaiderFighter
+  name: Chaos Raider Fighter Role
+  components:
+  - type: MindRole
+    roleType: TeamAntagonist
+    subtype: role-subtype-chaos-raider-fighter
+    exclusiveAntag: true
+    antagPrototype: ChaosRaiderFighter
+  - type: ChaosRaiderRole
+
+- type: entity
+  parent: MindRoleChaosRaiderFighter
+  id: MindRoleChaosRaiderMedic
+  name: Chaos Raider Medic Role
+  components:
+  - type: MindRole
+    subtype: role-subtype-chaos-raider-medic
+    antagPrototype: ChaosRaiderMedic
+
+- type: entity
+  parent: MindRoleChaosRaiderFighter
+  id: MindRoleChaosRaiderLeader
+  name: Chaos Raider Leader Role
+  components:
+  - type: MindRole
+    subtype: role-subtype-chaos-raider-leader
+    antagPrototype: ChaosRaiderLeader

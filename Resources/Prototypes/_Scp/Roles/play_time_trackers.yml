@@ -242,3 +242,14 @@
 
 - type: playTimeTracker
   id: AntagScp2054X
+
+# Повстанцы Хаоса
+
+- type: playTimeTracker
+  id: AntagChaosRaiderLeader
+
+- type: playTimeTracker
+  id: AntagChaosRaiderMedic
+
+- type: playTimeTracker
+  id: AntagChaosRaiderFighter
