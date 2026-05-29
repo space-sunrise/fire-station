@@ -59,6 +59,9 @@
   id: MTFLoadoutCrate
 
 - type: Tag
+  id: ChaosLoadoutCrate
+
+- type: Tag
   id: UpgradeLocusKit
 
 - type: Tag
