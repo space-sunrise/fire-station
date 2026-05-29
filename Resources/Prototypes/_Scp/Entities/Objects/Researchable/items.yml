@@ -322,8 +322,6 @@
   - type: Sprite
     sprite: _Scp/Objects/Misc/sedative.rsi
     state: canister
-  - type: Item
-    size: Small
   - type: Storage
     grid:
     - 0,0,3,0
