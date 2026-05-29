@@ -17,6 +17,10 @@
   - type: Item
     size: Huge
     sprite: _Scp/Mobs/Scp/scp-2295.rsi
+  - type: Clothing
+    sprite: _Scp/Mobs/Scp/scp-2295.rsi
+    slots:
+    - MASK
   - type: MultiHandedItem
   - type: Scp
     class: Safe
