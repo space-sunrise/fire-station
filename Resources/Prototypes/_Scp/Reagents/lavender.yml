@@ -1,8 +1,8 @@
 ﻿- type: reagent
   id: LavenderTea
-  name: lavender tea
+  name: reagent-name-lavender-tea
   parent: GreenTea
-  desc: A delicious and aromatic tea made from lavender petals
+  desc: reagent-desc-lavender-tea
   physicalDesc: reagent-physical-desc-aromatic
   flavor: tea
   color: "#FFFFFF"
