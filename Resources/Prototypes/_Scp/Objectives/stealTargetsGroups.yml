@@ -2,7 +2,7 @@
   id: Scp
   name: steal-target-groups-scps
   sprite:
-    sprite: _Scp/Interface/Misc/chaos_objectives_icons.rsi # TODO: Заменить на нормальную иконку
+    sprite: _Scp/Interface/Misc/chaos_objectives_icons.rsi # TODO: Заменить на другую иконку
     state: StealItemScp
 
 - type: stealTargetGroup

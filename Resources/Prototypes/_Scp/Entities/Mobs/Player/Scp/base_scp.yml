@@ -109,8 +109,6 @@
   - MobFlammable
   id: BaseScpComponents
   components:
-  - type: StealTarget
-    stealGroup: Scp
   - type: Scp
     class: Neutralized
   - type: ScpRestriction
@@ -176,6 +174,9 @@
       - ScpCage
   - type: WatchingTarget
   - type: ProximityReceiver
+  - type: StealTarget
+    stealGroup: Scp
+
 
 - type: entity # Для добрых SCP: 131, 999 и т.д.
   abstract: true
