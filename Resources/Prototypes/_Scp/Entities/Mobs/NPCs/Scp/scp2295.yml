@@ -109,6 +109,7 @@
     actions:
     - Scp2295Brutepack
     - Scp2295RegenerativeMesh
+    - ActionOpenStorageImplant
   - type: RotationVisuals
     defaultRotation: 90
     horizontalRotation: 90
