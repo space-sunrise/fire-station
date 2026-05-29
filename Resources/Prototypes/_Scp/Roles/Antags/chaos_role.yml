@@ -184,8 +184,8 @@
   inhand:
   - MedkitCombatFilled
   storage:
-   back:
-   - ChaosHypo
+    back:
+    - ChaosHypo
 
 # Боец (обычный ПХ)
 - type: startingGear
