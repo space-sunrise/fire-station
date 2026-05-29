@@ -3,9 +3,9 @@ meta:
   category: Grid
   engineVersion: 271.1.0
   forkId: fire_station
-  forkVersion: 5ae3f7ef9c759324dd1013793d1f880542ed8a44
-  time: 05/28/2026 22:53:48
-  entityCount: 278
+  forkVersion: 6a7870407c5c94ebee44265b2cbf44d730011cba
+  time: 05/29/2026 00:06:44
+  entityCount: 280
 maps: []
 grids:
 - 1
@@ -773,6 +773,18 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -0.5,-4.5
+      parent: 1
+- proto: ChaosRaidStealAreaPoint
+  entities:
+  - uid: 279
+    components:
+    - type: Transform
+      pos: 2.5,-1.5
+      parent: 1
+  - uid: 280
+    components:
+    - type: Transform
+      pos: 2.5,3.5
       parent: 1
 - proto: DefibrillatorCabinetFilled
   entities:

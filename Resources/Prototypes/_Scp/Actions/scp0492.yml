@@ -1,0 +1,21 @@
+﻿- type: entity
+  id: ActionScp0492ToggleHarmHandRight
+  name: Toggle Hand.
+  description: Toggle the harm hand
+  components:
+  - type: Action
+    useDelay: 1
+    itemIconStyle: BigItem
+  - type: InstantAction
+    event: !type:ToggleLimbEvent
+
+- type: entity
+  id: ActionScp0492ToggleTubeHandLeft
+  name: Toggle Hand.
+  description: Toggle the tube hand
+  components:
+  - type: Action
+    useDelay: 1
+    itemIconStyle: BigItem
+  - type: InstantAction
+    event: !type:ToggleLimbEvent
