@@ -1,0 +1,20 @@
+- type: stealTargetGroup
+  id: Scp
+  name: steal-target-groups-scps
+  sprite:
+    sprite: _Scp/Interface/Misc/chaos_objectives_icons.rsi # TODO: Заменить на нормальную иконку
+    state: StealItemScp
+
+- type: stealTargetGroup
+  id: ItemScp
+  name: steal-target-groups-item-scps
+  sprite:
+    sprite: _Scp/Interface/Misc/chaos_objectives_icons.rsi
+    state: StealItemScp
+
+- type: stealTargetGroup
+  id: ScpInfoPapers
+  name: steal-target-groups-info-papers
+  sprite:
+    sprite: Objects/Misc/bureaucracy.rsi
+    state: paper

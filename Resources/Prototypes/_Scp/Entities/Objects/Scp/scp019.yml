@@ -1,0 +1,68 @@
+﻿- type: entity
+  id: Scp019
+  parent:
+  - BaseStructure
+  - BaseScpArtifactMinor
+  name: black vase
+  description: Large ceramic vase with ancient Greek style and decor.
+  suffix: SCP-019
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scp/scp-019.rsi
+    state: icon
+  - type: Physics
+    bodyType: Static
+  - type: Transform
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.45,0.25,0.45"
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+        density: 200
+  - type: Anchorable
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Damageable
+  - type: DamageOverlay
+    damagePopupType: SmallFloating
+    isStructure: true
+  - type: Scp
+    class: Keter
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+  - type: RepeatingTrigger
+    keyOut: basicSpawn
+    delay: 180
+  - type: SpawnEntityTableOnTrigger
+    keysIn: [ basicSpawn ]
+    useMapCoords: true
+    table: !type:GroupSelector
+      children:
+      - id: Scp019MonsterBasic
+      - id: Scp019MonsterFast
+      - id: Scp019MonsterSapient
+  - type: JitterOnTrigger
+    keysIn: [ basicSpawn ]
+    time: 1
+  - type: XenoArtifact
+    effectsTable: !type:GroupSelector
+      children:
+      - !type:NestedSelector
+        tableId: ScpArtifactEffectsDefaultTable
+        weight: 1
+      - !type:NestedSelector
+        tableId: ScpEffectMonsterSpawn019
+        weight: 3
+  - type: StatusEffects
+    allowed:
+    - Jitter
+  - type: Tag
+    tags:
+    - Scp019Vase

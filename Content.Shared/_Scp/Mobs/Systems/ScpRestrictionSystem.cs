@@ -1,6 +1,6 @@
 ﻿using Content.Shared._Scp.Mobs.Components;
 using Content.Shared._Scp.ScpMask;
-using Content.Shared._Sunrise.Carrying;
+using Content.Shared._Sunrise.Movement.Carrying;
 using Content.Shared.Actions.Events;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Buckle.Components;
@@ -36,7 +36,7 @@ public sealed class ScpRestrictionSystem : EntitySystem
         SubscribeLocalEvent<ScpRestrictionComponent, BuckleAttemptEvent>((_, _, args) => args.Cancelled = true);
         SubscribeLocalEvent<ScpRestrictionComponent, CanDragEvent>((_, _, args) => args.Handled = false);
         SubscribeLocalEvent<ScpRestrictionComponent, BeforeStaminaDamageEvent>(OnStaminaDamage);
-        SubscribeLocalEvent<ScpRestrictionComponent, CarryAttemptEvent>(OnCarryAttempt);
+        SubscribeLocalEvent<ScpRestrictionComponent, StartCarryAttemptEvent>(OnCarryAttempt);
 
         SubscribeLocalEvent<ScpRestrictionComponent, AttemptMobCollideEvent>(OnCollideAttempt);
     }
@@ -80,7 +80,7 @@ public sealed class ScpRestrictionSystem : EntitySystem
             args.Cancelled = true;
     }
 
-    private static void OnCarryAttempt(Entity<ScpRestrictionComponent> ent, ref CarryAttemptEvent args)
+    private static void OnCarryAttempt(Entity<ScpRestrictionComponent> ent, ref StartCarryAttemptEvent args)
     {
         if (!ent.Comp.CanCarry)
             args.Cancelled = true;

@@ -20,3 +20,5 @@ ent-StorePresetScpUplinkHight = { "" }
     .desc = { "" }
 ent-StorePresetScpUplinkHightCommander = { "" }
     .desc = { "" }
+ent-StorePresetScpChaosUplink = { "" }
+    .desc = { "" }

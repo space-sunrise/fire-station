@@ -109,12 +109,13 @@
   - greenshift
   - shittersafarideluxeedition
   name: greenshift-title
-  showInVote: false # Sunrise-Edit
+  showInVote: true
   hide: true # Fire edit
   description: greenshift-description
   rules:
   - SpaceTrafficControlFriendlyEventScheduler
   - BasicRoundstartVariation
+  - GreenShitStationEventScheduler
 
 - type: gamePreset
   id: Dynamic
@@ -124,6 +125,7 @@
   - director
   name: dynamic-title
   showInVote: true # Sunrise-Edit
+  hide: false # Sunrise-Edit
   description: dynamic-description
   rules:
   - DynamicRule

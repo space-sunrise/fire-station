@@ -24,7 +24,7 @@
     - type: Scp035MindProtection
     - type: Scp012Protection
   - type: Scp
-    class: Safe   
+    class: Safe
   - type: GuideHelp
     guides:
     - ScpResearch

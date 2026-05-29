@@ -1,0 +1,24 @@
+
+- type: weightedRandom
+  id: ChaosRaidObjectiveGroups
+  weights:
+    ChaosRaidObjectiveGroupStealCollection: 1
+    ChaosRaidObjectiveGroupKill: 1
+    #ChaosRaidObjectiveGroupSteal: 1
+
+ # TODO: Исправить отображение номеров объектов SCP и вернуть это в ротацию
+#- type: weightedRandom
+#  id: ChaosRaidObjectiveGroupSteal
+#  weights:
+    #ScpsStealObjective: 1
+
+- type: weightedRandom
+  id: ChaosRaidObjectiveGroupStealCollection
+  weights:
+    ItemScpsStealCollectionObjective: 1
+    InfoPapersStealCollectionObjective: 1
+
+- type: weightedRandom
+  id: ChaosRaidObjectiveGroupKill
+  weights:
+    KillRandomAdministrationPersonelObjective: 1
