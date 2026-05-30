@@ -129,6 +129,8 @@
       roleLoadout:
       - RoleSurvivalNukie
       components:
+      - type: ShowMessageOnSpawn
+        message: chaos-raid-rules-window
       - type: GhostPanelAntagonistMarker
         name: ghost-panel-antagonist-chaos-raider-leader-name
         description: ghost-panel-antagonist-chaos-raider-leader-description
@@ -136,7 +138,7 @@
       - type: MobChaosRaider
       - type: RandomMetadata
         nameSegments:
-        - NamesChaos
+        - NamesChaosLeader
         - LastNamesChaos
         nameFormat: name-format-ert
       - type: NpcFactionMember
@@ -153,6 +155,8 @@
       roleLoadout:
       - RoleSurvivalNukie
       components:
+      - type: ShowMessageOnSpawn
+        message: chaos-raid-rules-window
       - type: GhostPanelAntagonistMarker
         name: ghost-panel-antagonist-chaos-raider-medic-name
         description: ghost-panel-antagonist-chaos-raider-medic-description
@@ -160,7 +164,7 @@
       - type: MobChaosRaider
       - type: RandomMetadata
         nameSegments:
-        - NamesChaos
+        - NamesChaosMedic
         - LastNamesChaos
         nameFormat: name-format-ert
       - type: NpcFactionMember
@@ -173,11 +177,13 @@
       spawnerPrototype: SpawnPointChaosRaiderFighter
       min: 4
       max: 8
-      playerRatio: 10
+      playerRatio: 5
       startingGear: ChaosGear
       roleLoadout:
       - RoleSurvivalNukie
       components:
+      - type: ShowMessageOnSpawn
+        message: chaos-raid-rules-window
       - type: GhostPanelAntagonistMarker
         name: ghost-panel-antagonist-chaos-raider-fighter-name
         description: ghost-panel-antagonist-chaos-raider-fighter-description
