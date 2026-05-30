@@ -167,7 +167,7 @@
       - type: GhostPanelAntagonistMarker
         name: ghost-panel-antagonist-chaos-raider-medic-name
         description: ghost-panel-antagonist-chaos-raider-medic-description
-        priority: 10
+        priority: 5
       - type: MobChaosRaider
       - type: RandomMetadata
         nameSegments:
