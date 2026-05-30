@@ -1,7 +1,5 @@
 ﻿- type: entity
   id: Scp2908
-  name: PPSH-41
-  description: An old Soviet submachine gun with a distinctive wooden stock. Looks entirely ordinary for its era.
   parent:
   - BaseItemScp
   - WeaponSubMachineGunPPSH
