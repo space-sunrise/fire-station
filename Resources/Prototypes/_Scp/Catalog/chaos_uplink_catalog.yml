@@ -271,17 +271,6 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 5
-
-- type: listing
-  id: ChaosUplinkAmmoMagazineRifleHeavyFMJ
-  productEntity: MagazineRifleHeavyFMJ
-  cost:
-    SupplyPoint: 3
-  categories:
-  - ChaosWeaponAmmo
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 5
  
 - type: listing
   id: ChaosUplinkAmmoMagazineDragunovFMJ
@@ -601,6 +590,13 @@
   productEntity: ScpChaosCircuitBoard
   cost:
     SupplyPoint: 24
+  categories:
+  - ChaosOther
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
   id: ChaosUplinkOtherMassScanner
   productEntity: HandHeldMassScanner
   categories:
