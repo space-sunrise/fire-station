@@ -14,8 +14,6 @@
     size: Normal
   - type: Soil
     spawnPrototype: Scp124Soil
-  - type: StealTarget
-    stealGroup: Scp
 
 - type: entity
   id: Scp124Soil

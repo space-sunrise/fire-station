@@ -23,6 +23,23 @@
     updateTargetName: true
 
 - type: entity
+  parent: [SyndiHypo, BaseChaosContraband]
+  id: ChaosHypo
+  name: Chaos hypospray
+  description: By reverse engineering Foundation technology, the Chaos Insurgency produces them in limited quantities for its own use.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Specific/chaos_hypo.rsi
+    layers:
+      - state: hypo
+        map: ["enum.SolutionContainerLayers.Base"]
+      - state: hypo_fill1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: Item
+    sprite: _Scp/Objects/Specific/chaos_hypo.rsi
+
+- type: entity
   parent: [BaseItem, BaseChaosContraband]
   name: ball
   description: A universal ball used to indicate the direction of the pinpointer.

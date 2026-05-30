@@ -63,7 +63,7 @@
       damage:
         types:
           Slash: 3
-          Structural: 15
+          Structural: 25
     - type: ReplacementAccent
       accent: genericAggressive
     - type: Scp
