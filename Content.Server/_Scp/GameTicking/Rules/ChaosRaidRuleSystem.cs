@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Server._Scp.GameTicking.Rules.Components;
 using Content.Server.Antag;
+using Content.Server.Chat.Systems;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Mind;
@@ -9,6 +10,7 @@ using Content.Server.Objectives.Components;
 using Content.Server.Roles;
 using Content.Server.RoundEnd;
 using Content.Server.Station.Components;
+using Content.Server.Station.Systems;
 using Content.Shared._Scp.Chaos;
 using Content.Shared._Scp.Fear.Components;
 using Content.Shared.GameTicking.Components;
@@ -17,6 +19,7 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Zombies;
+using Robust.Shared.Audio;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Scp.GameTicking.Rules;
@@ -26,6 +29,8 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
     [Dependency] private readonly ObjectivesSystem _objectives = default!;
     [Dependency] private readonly MindSystem _mind = default!;
+    [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly RoundEndSystem _roundEnd = default!;
     [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
@@ -38,6 +43,7 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
         SubscribeLocalEvent<MobChaosRaiderComponent, ComponentRemove>(OnComponentRemove);
         SubscribeLocalEvent<MobChaosRaiderComponent, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<MobChaosRaiderComponent, EntityZombifiedEvent>(OnRaiderZombified);
+        SubscribeLocalEvent<MobChaosRaiderComponent, EntParentChangedMessage>(OnEntParentChanged);
 
         SubscribeLocalEvent<ChaosRaidRuleComponent, AfterAntagEntitySelectedEvent>(OnAfterAntagEntSelected);
         SubscribeLocalEvent<ChaosRaiderRoleComponent, GetBriefingEvent>(OnGetBriefing);
@@ -136,6 +142,36 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
     private void OnRaiderZombified(Entity<MobChaosRaiderComponent> ent, ref EntityZombifiedEvent args)
     {
         RemCompDeferred<MobChaosRaiderComponent>(ent);
+    }
+
+    private void OnEntParentChanged(Entity<MobChaosRaiderComponent> ent, ref EntParentChangedMessage args)
+    {
+        var query = QueryActiveRules();
+        while (query.MoveNext(out _, out var _, out var chaos, out _))
+        {
+            if (chaos.TargetComplex == null)
+                return;
+
+            if (chaos.TargetEnterAnnounced)
+                return;
+
+            if (!args.OldMapId.HasValue)
+                return;
+
+            if (args.Transform.MapID != Transform(chaos.TargetComplex.Value).MapID)
+                return;
+
+            var station = _station.GetOwningStation(ent, args.Transform);
+            if (!station.HasValue)
+                return;
+
+            _chat.DispatchStationAnnouncement(ent,
+                Loc.GetString("chaos-announce-on-spawn"),
+                Loc.GetString("scp-announce-on-spawn-source-name"),
+                colorOverride: Color.FromHex("#016900"),
+                announceVoice: "Hanson",
+                announcementSound: new SoundPathSpecifier("/Audio/_Scp/Effects/Announcement/mtf.ogg", new AudioParams { Volume = -5f }));
+        }
     }
 
     private void OnAfterAntagEntSelected(Entity<ChaosRaidRuleComponent> ent, ref AfterAntagEntitySelectedEvent args)

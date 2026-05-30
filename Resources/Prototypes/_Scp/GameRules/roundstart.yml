@@ -129,22 +129,13 @@
       roleLoadout:
       - RoleSurvivalNukie
       components:
+      - type: ShowMessageOnSpawn
+        message: chaos-raid-rules-window
       - type: GhostPanelAntagonistMarker
         name: ghost-panel-antagonist-chaos-raider-leader-name
         description: ghost-panel-antagonist-chaos-raider-leader-description
         priority: 10
       - type: MobChaosRaider
-      - type: ScpAnnounceOnSpawn
-        text: chaos-announce-on-spawn
-        useGlobalAnnouncement: true
-        announceOnStationGridEntered: true
-        announceOnArrival: false
-        stationAnnouncementColor: "#016900"
-        stationAnnouncementVoice: Hanson
-        stationAnnouncementSound:
-          path: /Audio/_Scp/Effects/Announcement/mtf.ogg
-          params:
-            volume: -5
       - type: RandomMetadata
         nameSegments:
         - NamesChaosLeader
@@ -164,6 +155,8 @@
       roleLoadout:
       - RoleSurvivalNukie
       components:
+      - type: ShowMessageOnSpawn
+        message: chaos-raid-rules-window
       - type: GhostPanelAntagonistMarker
         name: ghost-panel-antagonist-chaos-raider-medic-name
         description: ghost-panel-antagonist-chaos-raider-medic-description
@@ -189,6 +182,8 @@
       roleLoadout:
       - RoleSurvivalNukie
       components:
+      - type: ShowMessageOnSpawn
+        message: chaos-raid-rules-window
       - type: GhostPanelAntagonistMarker
         name: ghost-panel-antagonist-chaos-raider-fighter-name
         description: ghost-panel-antagonist-chaos-raider-fighter-description

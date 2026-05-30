@@ -45,6 +45,9 @@ public sealed partial class ChaosRaidRuleComponent : Component
     public TimeSpan NextObjectivesCheck = TimeSpan.Zero;
 
     [ViewVariables]
+    public bool TargetEnterAnnounced;
+
+    [ViewVariables]
     public Dictionary<EntityUid, float>? Objectives;
 
     [DataField]
