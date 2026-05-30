@@ -82,11 +82,16 @@
   priority: 2
 
 - type: storeCategory
+  id: ChaosEquipment
+  name: store-category-ChaosEquipment
+  priority: 3
+
+- type: storeCategory
   id: ChaosMedkit
   name: store-category-ChaosMedkit
-  priority: 3
+  priority: 4
 
 - type: storeCategory
   id: ChaosOther
   name: store-category-ChaosOther
-  priority: 4
+  priority: 5

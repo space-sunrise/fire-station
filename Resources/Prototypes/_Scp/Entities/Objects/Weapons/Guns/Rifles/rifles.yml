@@ -148,10 +148,10 @@
     sprite: _Scp/Objects/Weapons/ak_74/tiny.rsi
   - type: Gun
     minAngle: 2.7
-    maxAngle: 22
+    maxAngle: 18
     angleIncrease: 2
     angleDecay: 12
-    fireRate: 4.5
+    fireRate: 5.50
     soundGunshot:
       collection: ak47
   - type: ItemSlots

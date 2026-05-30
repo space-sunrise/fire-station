@@ -46,10 +46,21 @@
     stock: 1
 
 - type: listing
+  id: ChaosUplinkWeaponShotgunCycler
+  productEntity: WeaponShotgunCycler
+  cost:
+    SupplyPoint: 15
+  categories:
+  - ChaosWeaponRifle
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
   id: ChaosUplinkWeaponTrenchgun4034Sawn
   productEntity: WeaponShotgunTrenchgun4034Sawn
   cost:
-    SupplyPoint: 15
+    SupplyPoint: 10
   categories:
   - ChaosWeaponRifle
   conditions:
@@ -240,6 +251,50 @@
     stock: 3
 
 - type: listing
+  id: ChaosUplinkAmmoMagazineRifleFMJ
+  productEntity: MagazineRifleFMJ
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ChaosWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ChaosUplinkAmmoMagazineRifleHeavyFMJ
+  productEntity: MagazineRifleHeavyFMJ
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ChaosWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+ 
+- type: listing
+  id: ChaosUplinkAmmoMagazineDragunovFMJ
+  productEntity: MagazineDragunovFMJ
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ChaosWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ChaosUplinkAmmoMagazineLightRifleFMJ
+  productEntity: MagazineLightRifleFMJ
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ChaosWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
   id: ChaosUplinkAmmoMagazineBoxHeavy308FMJ
   productEntity: MagazineBoxHeavyRifleFMJ
   cost:
@@ -349,6 +404,42 @@
   - !type:ListingLimitedStockCondition
     stock: 3
 
+# region Equipment
+
+- type: listing
+  id: ChaosUplinkClothingOuterArmorSWAT
+  productEntity: ClothingOuterArmorSWAT
+  cost:
+    SupplyPoint: 40
+  categories:
+  - ChaosEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosUplinkPouchAmmo
+  productEntity: PouchAmmo
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ChaosEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosUplinkOtherNVD
+  productEntity: ClothingEyesNVD
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ChaosEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+
 # region Medkits
 
 - type: listing
@@ -361,6 +452,17 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 2
+
+- type: listing
+  id: ChaosUplinkMedkitChaosHypo
+  productEntity: ChaosHypo
+  cost:
+    SupplyPoint: 12
+  categories:
+  - ChaosMedkit
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
 
 - type: listing
   id: ChaosUplinkMedkitBurn
@@ -431,15 +533,15 @@
     stock: 2
 
 - type: listing
-  id: ChaosUplinkOtherNVD
-  productEntity: ClothingEyesNVD
+  id: ChaosUplinkOtherExShrapnelGrenade
+  productEntity: ExShrapnelGrenade
   cost:
-    SupplyPoint: 3
+    SupplyPoint: 4
   categories:
   - ChaosOther
   conditions:
   - !type:ListingLimitedStockCondition
-    stock: 1
+    stock: 3
 
 - type: listing
   id: ChaosUplinkOtherPowerCellHyper
@@ -482,6 +584,17 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 2
+
+- type: listing
+  id: ChaosUplinkOtherCircuitBoard
+  productEntity: ScpChaosCircuitBoard
+  cost:
+    SupplyPoint: 24
+  categories:
+  - ChaosOther
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
 
 - type: listing
   id: ChaosUplinkOtherMassScanner

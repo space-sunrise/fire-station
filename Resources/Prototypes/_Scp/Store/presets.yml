@@ -255,6 +255,7 @@
     - ChaosWeaponRifle
     - ChaosWeaponPistol
     - ChaosWeaponAmmo
+    - ChaosEquipment
     - ChaosMedkit
     - ChaosOther
     currencyWhitelist:

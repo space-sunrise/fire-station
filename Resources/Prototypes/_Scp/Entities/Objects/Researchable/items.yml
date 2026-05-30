@@ -290,3 +290,42 @@
   - type: UseDelay
     delay: 0.5
 #  - type: Telescope насрали
+
+# Другое
+
+- type: entity
+  parent: Pill
+  id: PillSedative
+  suffix: SCP
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/sedative.rsi
+    layers:
+    - state: pill
+  - type: Pill
+    useStandardVisuals: false
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 15
+        reagents:
+        - ReagentId: SedativeReagent
+          Quantity: 8
+        - ReagentId: Epinephrine
+          Quantity: 7
+
+- type: entity
+  parent: PillCanister
+  id: PillCanisterSedative
+  suffix: SCP
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/sedative.rsi
+    state: canister
+  - type: Storage
+    grid:
+    - 0,0,3,0
+  - type: StorageFill
+    contents:
+    - id: PillSedative
+      amount: 4
