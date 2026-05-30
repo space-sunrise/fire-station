@@ -167,7 +167,7 @@
       - type: GhostPanelAntagonistMarker
         name: ghost-panel-antagonist-chaos-raider-medic-name
         description: ghost-panel-antagonist-chaos-raider-medic-description
-        priority: 5
+        priority: 10
       - type: MobChaosRaider
       - type: RandomMetadata
         nameSegments:
@@ -184,7 +184,7 @@
       spawnerPrototype: SpawnPointChaosRaiderFighter
       min: 4
       max: 8
-      playerRatio: 50
+      playerRatio: 5
       startingGear: ChaosGear
       roleLoadout:
       - RoleSurvivalNukie

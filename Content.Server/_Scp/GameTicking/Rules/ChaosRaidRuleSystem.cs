@@ -161,7 +161,7 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
         while (query.MoveNext(out _, out var stealAreaComp, out var xform))
         {
             if (Transform(args.EntityUid).MapID != xform.MapID)
-                return;
+                continue;
 
             stealAreaComp.Owners.Add(mindId);
         }
@@ -179,7 +179,7 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
         ent.Comp.Objectives ??= new();
         foreach (var objective in mind.Objectives)
         {
-            ent.Comp.Objectives.TryAdd(objective, 0);
+            ent.Comp.Objectives.TryAdd(objective, 0f);
         }
     }
 
