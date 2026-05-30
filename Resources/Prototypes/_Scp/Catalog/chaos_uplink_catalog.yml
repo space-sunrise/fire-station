@@ -566,6 +566,15 @@
     stock: 2
 
 - type: listing
+  id: ChaosUplinkOtherChaosPDA
+  productEntity: ChaosInsurgencyPDA
+  categories:
+  - ChaosOther
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
   id: ChaosUplinkOtherChaosPinpointer
   productEntity: ChaosPinpointer
   cost:
@@ -592,6 +601,8 @@
   productEntity: ScpChaosCircuitBoard
   cost:
     SupplyPoint: 24
+  id: ChaosUplinkOtherMassScanner
+  productEntity: HandHeldMassScanner
   categories:
   - ChaosOther
   conditions:

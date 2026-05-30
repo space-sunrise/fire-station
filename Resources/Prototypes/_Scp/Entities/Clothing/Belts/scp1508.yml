@@ -1,0 +1,38 @@
+﻿- type: entity
+  parent: ClothingBeltStorageBase
+  categories: [ HideSpawnMenu ]
+  id: ClothingBeltScp1508
+  name: cardboard dispenser
+  description: A special recess for securing items.
+  components:
+  - type: Item
+    size: Ginormous
+  - type: Unremoveable
+  - type: Sprite
+    sprite: _Scp/Clothing/Belts/scp1508-belt.rsi
+    state: icon
+  - type: Storage
+    maxItemSize: Huge
+    grid:
+    - 0,0,7,1
+    blacklist:
+      components:
+      - Scp
+      - Healing
+    whitelist:
+      components:
+      - Edible
+      - Instrument
+      - Seed
+      tags:
+      - BotanyHoe
+      - BoxCardboard
+      - Payload # плюшевые игрушки
+      - Mop
+      - MopBasic
+      - WetFloorSign
+      - Trash
+      - TrashBag
+      - Bucket
+      - Flashlight
+      - KitchenKnife

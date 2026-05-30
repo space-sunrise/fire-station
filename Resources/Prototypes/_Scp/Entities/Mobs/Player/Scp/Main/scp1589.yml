@@ -125,6 +125,7 @@
     keysIn: [ StartPhrase ]
     time: 60
   - type: TimerTrigger
+    examinable: false
     keysIn: [ StartPhrase ]
     keyOut: EndPhrase
     delay: 60
