@@ -26,6 +26,9 @@ public sealed partial class ChaosRaidRuleComponent : Component
     [ViewVariables]
     public int RoundstartRaidersCount = 0;
 
+    [ViewVariables]
+    public int AliveRaidersCount = 0;
+
     [DataField]
     public EntityUid? TargetComplex;
 
@@ -33,10 +36,19 @@ public sealed partial class ChaosRaidRuleComponent : Component
     public ProtoId<NpcFactionPrototype> Faction = "Chaos";
 
     [ViewVariables]
-    public int ObjectivesCount = 0;
+    public int CompletedObjectivesCount = 0;
+
+    [DataField]
+    public TimeSpan ObjectivesCheckInterval = TimeSpan.FromSeconds(30);
 
     [ViewVariables]
-    public int CompletedObjectivesCount = 0;
+    public TimeSpan NextObjectivesCheck = TimeSpan.Zero;
+
+    [ViewVariables]
+    public bool TargetEnterAnnounced;
+
+    [ViewVariables]
+    public Dictionary<EntityUid, float>? Objectives;
 
     [DataField]
     public ChaosWinType WinType = ChaosWinType.Neutral;

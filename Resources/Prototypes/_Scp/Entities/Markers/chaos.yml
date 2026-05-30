@@ -7,3 +7,10 @@
     ignoreUnobstruct: true
   - type: Sprite
     state: red
+
+- type: entity
+  id: ChaosRaidStealAreaPointRange50
+  parent: ChaosRaidStealAreaPoint
+  components:
+  - type: StealArea
+    range: 50

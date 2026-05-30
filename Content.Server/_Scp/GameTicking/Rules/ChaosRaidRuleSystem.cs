@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Server._Scp.GameTicking.Rules.Components;
 using Content.Server.Antag;
+using Content.Server.Chat.Systems;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Mind;
@@ -9,6 +10,7 @@ using Content.Server.Objectives.Components;
 using Content.Server.Roles;
 using Content.Server.RoundEnd;
 using Content.Server.Station.Components;
+using Content.Server.Station.Systems;
 using Content.Shared._Scp.Chaos;
 using Content.Shared._Scp.Fear.Components;
 using Content.Shared.GameTicking.Components;
@@ -17,6 +19,8 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Zombies;
+using Robust.Shared.Audio;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Scp.GameTicking.Rules;
 
@@ -25,8 +29,11 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
     [Dependency] private readonly ObjectivesSystem _objectives = default!;
     [Dependency] private readonly MindSystem _mind = default!;
+    [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly RoundEndSystem _roundEnd = default!;
     [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
 
     public override void Initialize()
     {
@@ -36,6 +43,7 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
         SubscribeLocalEvent<MobChaosRaiderComponent, ComponentRemove>(OnComponentRemove);
         SubscribeLocalEvent<MobChaosRaiderComponent, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<MobChaosRaiderComponent, EntityZombifiedEvent>(OnRaiderZombified);
+        SubscribeLocalEvent<MobChaosRaiderComponent, EntParentChangedMessage>(OnEntParentChanged);
 
         SubscribeLocalEvent<ChaosRaidRuleComponent, AfterAntagEntitySelectedEvent>(OnAfterAntagEntSelected);
         SubscribeLocalEvent<ChaosRaiderRoleComponent, GetBriefingEvent>(OnGetBriefing);
@@ -67,7 +75,12 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
         GameRuleComponent gameRule,
         ref RoundEndTextAppendEvent args)
     {
-        CheckRoundShouldEnd((uid, component));
+        if (component.Objectives == null)
+            return;
+
+        CalculateObjectivesProgress(component);
+        CalculateFinalWinArgs(component);
+
         var winText = Loc.GetString($"chaos-raid-{component.WinType.ToString().ToLower()}");
         args.AddLine(winText);
 
@@ -78,8 +91,24 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
         }
 
         args.AddLine(Loc.GetString("chaos-raid-list-completed-objectives-count",
-            ("objectivesCount", component.ObjectivesCount), ("completedCount", component.CompletedObjectivesCount)
+            ("objectivesCount", component.Objectives.Count()), ("completedCount", component.CompletedObjectivesCount)
         ));
+
+        args.AddLine(Loc.GetString("chaos-raid-list-objective-data-start"));
+        int objectiveNum = 1;
+        foreach (var (objectiveId, progress) in component.Objectives)
+        {
+            var objectiveStatus = Loc.GetString("chaos-raid-list-objective-status-failed");
+            if (progress > 0.999f)
+                objectiveStatus = Loc.GetString("chaos-raid-list-objective-status-successfully");
+
+            args.AddLine(Loc.GetString("chaos-raid-list-objective-data",
+                ("objectiveNumber", objectiveNum), ("objectiveName", MetaData(objectiveId).EntityName), ("objectiveStatus", objectiveStatus)
+            ));
+            objectiveNum++;
+        }
+
+        args.AddLine("");
         args.AddLine(Loc.GetString("chaos-raid-list-start"));
 
         var antags = _antag.GetAntagIdentifiers(uid);
@@ -91,23 +120,59 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
         args.AddLine("");
     }
 
-    // TODO: Переделать эту систему, что бы она работала иначе, брав точки отдельно на шаттле, а так же базе повстанцев хаоса, а не на всей карте.
     private void OnMapInit(Entity<MobChaosRaiderComponent> ent, ref MapInitEvent args)
     {
         RemCompDeferred<FearComponent>(ent); // ПОВСТАНЦЫ БЕЗ СТРАХА!
+    }
 
-        var query = EntityQuery<StealAreaComponent, TransformComponent>();
-        if (!query.Any())
-            return;
+    private void OnComponentRemove(Entity<MobChaosRaiderComponent> ent, ref ComponentRemove args)
+    {
+        if (TryComp<MobStateComponent>(ent, out var stateComp) && stateComp.CurrentState != MobState.Dead)
+            ChangeAliveRaidersCount(-1);
+    }
 
-        if (!_mind.TryGetMind(ent, out var mindId, out _))
-            return;
+    private void OnMobStateChanged(Entity<MobChaosRaiderComponent> ent, ref MobStateChangedEvent args)
+    {
+        if (args.NewMobState == MobState.Dead)
+            ChangeAliveRaidersCount(-1);
+        else if (args.OldMobState == MobState.Dead && args.NewMobState != MobState.Dead)
+            ChangeAliveRaidersCount(1);
+    }
 
-        // Все StealArea-точки на этой карте (база повстанец хаоса) пренадлежат Повстанцам Хаоса
-        foreach (var (stealComp, xform) in query)
+    private void OnRaiderZombified(Entity<MobChaosRaiderComponent> ent, ref EntityZombifiedEvent args)
+    {
+        RemCompDeferred<MobChaosRaiderComponent>(ent);
+    }
+
+    private void OnEntParentChanged(Entity<MobChaosRaiderComponent> ent, ref EntParentChangedMessage args)
+    {
+        var query = QueryActiveRules();
+        while (query.MoveNext(out _, out var _, out var chaos, out _))
         {
-            if (Transform(ent).MapID == xform.MapID)
-                stealComp.Owners.Add(mindId);
+            if (chaos.TargetComplex == null)
+                return;
+
+            if (chaos.TargetEnterAnnounced)
+                return;
+
+            if (!args.OldMapId.HasValue)
+                return;
+
+            if (args.Transform.MapID != Transform(chaos.TargetComplex.Value).MapID)
+                return;
+
+            var station = _station.GetOwningStation(ent, args.Transform);
+            if (!station.HasValue)
+                return;
+
+            _chat.DispatchStationAnnouncement(ent,
+                Loc.GetString("chaos-announce-on-spawn"),
+                Loc.GetString("scp-announce-on-spawn-source-name"),
+                colorOverride: Color.FromHex("#016900"),
+                announceVoice: "Hanson",
+                announcementSound: new SoundPathSpecifier("/Audio/_Scp/Effects/Announcement/mtf.ogg", new AudioParams { Volume = -5f }));
+
+            chaos.TargetEnterAnnounced = true;
         }
     }
 
@@ -122,7 +187,38 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
             Color.Red,
             ent.Comp.GreetSoundNotification);
 
-        ent.Comp.RoundstartRaidersCount += 1;
+        ent.Comp.RoundstartRaidersCount++;
+        ent.Comp.AliveRaidersCount++;
+
+        if (!_mind.TryGetMind(args.EntityUid, out var mindId, out var mind))
+            return;
+
+        // TODO: Переделать эту систему, что бы она работала иначе, брав точки отдельно на шаттле, а так же базе повстанцев хаоса, а не на всей карте.
+        // Все StealArea-точки на этой карте (база повстанец хаоса) пренадлежат Повстанцам Хаоса
+        var query = AllEntityQuery<StealAreaComponent, TransformComponent>();
+        while (query.MoveNext(out _, out var stealAreaComp, out var xform))
+        {
+            if (Transform(args.EntityUid).MapID != xform.MapID)
+                continue;
+
+            stealAreaComp.Owners.Add(mindId);
+        }
+
+        if (ent.Comp.Objectives != null)
+        {
+            mind.Objectives.Clear();
+            foreach (var (uid, _) in ent.Comp.Objectives)
+            {
+                mind.Objectives.Add(uid);
+            }
+            return;
+        }
+
+        ent.Comp.Objectives ??= new();
+        foreach (var objective in mind.Objectives)
+        {
+            ent.Comp.Objectives.TryAdd(objective, 0f);
+        }
     }
 
     private void OnGetBriefing(Entity<ChaosRaiderRoleComponent> ent, ref GetBriefingEvent args)
@@ -130,132 +226,124 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
         args.Append(Loc.GetString("chaos-raider-briefing"));
     }
 
-    private void OnComponentRemove(Entity<MobChaosRaiderComponent> ent, ref ComponentRemove args)
+    public override void Update(float frameTime)
     {
-        CheckRoundShouldEnd();
+        base.Update(frameTime);
+
+        var query = QueryActiveRules();
+        while (query.MoveNext(out var uid, out _, out var chaos, out _))
+        {
+            if (_gameTiming.CurTime < chaos.NextObjectivesCheck)
+                continue;
+
+            chaos.NextObjectivesCheck = _gameTiming.CurTime + chaos.ObjectivesCheckInterval;
+
+            CheckShouldBeEndRound((uid, chaos));
+        }
     }
 
-    private void OnMobStateChanged(Entity<MobChaosRaiderComponent> ent, ref MobStateChangedEvent args)
-    {
-        if (args.NewMobState == MobState.Dead)
-            CheckRoundShouldEnd();
-    }
-
-    private void OnRaiderZombified(Entity<MobChaosRaiderComponent> ent, ref EntityZombifiedEvent args)
-    {
-        RemCompDeferred<MobChaosRaiderComponent>(ent);
-    }
-
-    private void SetWinType(Entity<ChaosRaidRuleComponent> ent, ChaosWinType type, bool endRound = true)
-    {
-        ent.Comp.WinType = type;
-
-        if (endRound && (type == ChaosWinType.CrewMajor || type == ChaosWinType.ChaosMajor))
-            _roundEnd.EndRound();
-    }
-
-    private void CheckRoundShouldEnd()
+    private void ChangeAliveRaidersCount(int amount)
     {
         var query = QueryActiveRules();
         while (query.MoveNext(out var uid, out _, out var chaos, out _))
         {
-            CheckRoundShouldEnd((uid, chaos));
+            chaos.AliveRaidersCount = Math.Max(0, chaos.AliveRaidersCount + amount);
+
+            if (chaos.AliveRaidersCount == 0)
+                CheckShouldBeEndRound((uid, chaos));
         }
     }
 
-    private void CheckRoundShouldEnd(Entity<ChaosRaidRuleComponent> ent)
+    private void CheckShouldBeEndRound(Entity<ChaosRaidRuleComponent> ent)
     {
-        if (ent.Comp.WinType == ChaosWinType.CrewMajor || ent.Comp.WinType == ChaosWinType.ChaosMajor)
+        if (ent.Comp.RoundstartRaidersCount == 0 || ent.Comp.Objectives == null)
             return;
 
-        CalculateProgress(ent.Comp, out var operativesAlives);
-        var halfRaiders = Math.Max(1, (ent.Comp.RoundstartRaidersCount + 1) / 2);
-        var halfObjectives = Math.Max(1, (ent.Comp.ObjectivesCount + 1) / 2);
+        CalculateObjectivesProgress(ent);
 
-        if (ent.Comp.CompletedObjectivesCount >= ent.Comp.ObjectivesCount &&
-            !ent.Comp.WinConditions.Contains(ChaosWinCondition.ChaosRaidersCompleteAllObjectives))
-            ent.Comp.WinConditions.Add(ChaosWinCondition.ChaosRaidersCompleteAllObjectives);
-
-        if (ent.Comp.WinConditions.Contains(ChaosWinCondition.ChaosRaidersCompleteAllObjectives) &&
-            ent.Comp.RoundstartRaidersCount > 1 &&
-            operativesAlives >= halfRaiders)
-            SetWinType(ent, ChaosWinType.ChaosMajor, false);
-
-        if (ent.Comp.WinType != ChaosWinType.ChaosMajor &&
-            ent.Comp.CompletedObjectivesCount >= halfObjectives)
-            SetWinType(ent, ChaosWinType.ChaosMinor, false);
-
-        if (ent.Comp.WinType != ChaosWinType.ChaosMajor &&
-            operativesAlives < halfRaiders)
-            SetWinType(ent, ChaosWinType.CrewMinor, false);
-
-        if (operativesAlives > 0)
+        if (ent.Comp.AliveRaidersCount > 0 &&
+            ent.Comp.CompletedObjectivesCount < ent.Comp.Objectives.Count())
             return;
-
-        if (!ent.Comp.WinConditions.Contains(ChaosWinCondition.CrewKillAllChaosRaiders))
-            ent.Comp.WinConditions.Add(ChaosWinCondition.CrewKillAllChaosRaiders);
-
-        if (ent.Comp.WinType != ChaosWinType.ChaosMajor)
-            SetWinType(ent, ChaosWinType.CrewMajor, false);
 
         if (ent.Comp.RoundEndBehavior == RoundEndBehavior.Nothing)
             return;
 
         _roundEnd.DoRoundEndBehavior(ent.Comp.RoundEndBehavior,
-        ent.Comp.EvacShuttleTime,
-        ent.Comp.RoundEndTextSender,
-        ent.Comp.RoundEndTextShuttleCall,
-        ent.Comp.RoundEndTextAnnouncement);
+            ent.Comp.EvacShuttleTime,
+            ent.Comp.RoundEndTextSender,
+            ent.Comp.RoundEndTextShuttleCall,
+            ent.Comp.RoundEndTextAnnouncement);
 
         ent.Comp.RoundEndBehavior = RoundEndBehavior.Nothing;
     }
 
-    private void CalculateProgress(ChaosRaidRuleComponent ruleComp, out int operativesAlives)
+    private void CalculateObjectivesProgress(ChaosRaidRuleComponent ruleComp)
     {
-        operativesAlives = 0;
-        var objectives = new Dictionary<string, float>();
+        var objectives = new Dictionary<EntityUid, float>();
         var completedObjectivesCount = 0;
-        var query = EntityQueryEnumerator<MobChaosRaiderComponent>();
-        while (query.MoveNext(out var uid, out var comp))
-        {
-            if (TryComp<MobStateComponent>(uid, out var stateComp) &&
-                stateComp.CurrentState == MobState.Alive)
-                operativesAlives++;
 
+        var query = EntityQueryEnumerator<MobChaosRaiderComponent>();
+        while (query.MoveNext(out var uid, out _))
+        {
             if (!_mind.TryGetMind(uid, out _, out var mind))
                 continue;
 
             foreach (var objective in mind.Objectives)
             {
-                var objectiveKey = GetObjectiveKey(objective);
                 var progress = _objectives.GetProgress(objective, (uid, mind)) ?? 0f;
 
-                objectives.TryAdd(objectiveKey, 0f);
-                objectives[objectiveKey] += progress;
+                objectives.TryAdd(objective, 0f);
+                objectives[objective] += progress;
             }
         }
 
         foreach (var (key, progress) in objectives)
         {
+            if (ruleComp.Objectives != null)
+                ruleComp.Objectives[key] = progress;
+
             if (progress >= 0.999f)
                 completedObjectivesCount++;
         }
 
-        ruleComp.ObjectivesCount = objectives.Count;
         ruleComp.CompletedObjectivesCount = completedObjectivesCount;
     }
 
-    private string GetObjectiveKey(EntityUid objective)
+    private void CalculateFinalWinArgs(ChaosRaidRuleComponent comp)
     {
-        var protoId = Prototype(objective)?.ID ?? "Unknown";
-        if (TryComp<TargetObjectiveComponent>(objective, out var targetComp))
-            return targetComp.Target != null
-                ? $"{protoId}_kill_{targetComp.Target}"
-                : protoId;
+        if (comp.WinType == ChaosWinType.ChaosMajor || comp.WinType == ChaosWinType.CrewMajor)
+            return;
 
-        if (TryComp<StealConditionComponent>(objective, out var stealComp))
-            return $"{protoId}_steal_{stealComp.StealGroup}";
+        if (comp.Objectives == null)
+            return;
 
-        return protoId;
+        var halfRaiders = Math.Max(1, (comp.RoundstartRaidersCount + 1) / 2);
+        var halfObjectives = Math.Max(1, (comp.Objectives.Count() + 1) / 2);
+
+        if (comp.CompletedObjectivesCount >= comp.Objectives.Count() &&
+            comp.Objectives.Count() > 0)
+            AddWinCondition(comp, ChaosWinCondition.ChaosRaidersCompleteAllObjectives);
+
+        if (comp.AliveRaidersCount <= 0)
+        {
+            AddWinCondition(comp, ChaosWinCondition.CrewKillAllChaosRaiders);
+            comp.WinType = ChaosWinType.CrewMajor;
+            return;
+        }
+
+        if (comp.WinConditions.Contains(ChaosWinCondition.ChaosRaidersCompleteAllObjectives) &&
+            comp.RoundstartRaidersCount > 1 &&
+            comp.AliveRaidersCount >= halfRaiders)
+            comp.WinType = ChaosWinType.ChaosMajor;
+        else if (comp.CompletedObjectivesCount >= halfObjectives)
+            comp.WinType = ChaosWinType.ChaosMinor;
+        else if (comp.AliveRaidersCount < halfRaiders)
+            comp.WinType = ChaosWinType.CrewMinor;
+    }
+
+    private void AddWinCondition(ChaosRaidRuleComponent comp, ChaosWinCondition winCondition)
+    {
+        if (!comp.WinConditions.Contains(winCondition))
+            comp.WinConditions.Add(winCondition);
     }
 }

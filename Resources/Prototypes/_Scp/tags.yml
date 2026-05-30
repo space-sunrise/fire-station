@@ -110,6 +110,9 @@
   id: ClothingHeadAwareness
 
 - type: Tag
+  id: MagazineScp2908
+
+- type: Tag
   id: LimbScp0492
 
 - type: Tag
