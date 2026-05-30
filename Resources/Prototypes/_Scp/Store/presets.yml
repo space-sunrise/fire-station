@@ -255,9 +255,9 @@
     - ChaosWeaponRifle
     - ChaosWeaponPistol
     - ChaosWeaponAmmo
+    - ChaosEquipment
     - ChaosMedkit
     - ChaosOther
-    - ChaosEquipment
     currencyWhitelist:
     - SupplyPoint
     balance:

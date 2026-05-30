@@ -92,41 +92,6 @@
   - !type:ListingLimitedStockCondition
     stock: 1
 
-# region Equipment
-
-- type: listing
-  id: ChaosUplinkClothingOuterArmorSWAT
-  productEntity: ClothingOuterArmorSWAT
-  cost:
-    SupplyPoint: 40
-  categories:
-  - ChaosEquipment
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 1
-
-- type: listing
-  id: ChaosUplinkPouchAmmo
-  productEntity: PouchAmmo
-  cost:
-    SupplyPoint: 2
-  categories:
-  - ChaosEquipment
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 1
-
-- type: listing
-  id: ChaosUplinkOtherNVD
-  productEntity: ClothingEyesNVD
-  cost:
-    SupplyPoint: 3
-  categories:
-  - ChaosEquipment
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 1
-
 # region Pistols & SubMachines
 
 - type: listing
@@ -449,6 +414,42 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 3
+
+# region Equipment
+
+- type: listing
+  id: ChaosUplinkClothingOuterArmorSWAT
+  productEntity: ClothingOuterArmorSWAT
+  cost:
+    SupplyPoint: 40
+  categories:
+  - ChaosEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosUplinkPouchAmmo
+  productEntity: PouchAmmo
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ChaosEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosUplinkOtherNVD
+  productEntity: ClothingEyesNVD
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ChaosEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
 
 # region Medkits
 
