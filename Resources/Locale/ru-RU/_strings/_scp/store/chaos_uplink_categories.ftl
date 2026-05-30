@@ -4,3 +4,4 @@ store-category-ChaosWeaponPistol = Пистолеты
 store-category-ChaosWeaponAmmo = Боеприпасы
 store-category-ChaosMedkit = Медицина
 store-category-ChaosOther = Дополнительно
+store-category-ChaosEquipment = Экипировка
