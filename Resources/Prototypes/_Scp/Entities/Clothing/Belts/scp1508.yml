@@ -36,8 +36,3 @@
       - Bucket
       - Flashlight
       - KitchenKnife
-
-- type: startingGear
-  id: Scp1508Gear
-  equipment:
-    belt: ClothingBeltScp1508

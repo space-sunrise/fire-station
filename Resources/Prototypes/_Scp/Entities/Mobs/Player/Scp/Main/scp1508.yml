@@ -124,3 +124,8 @@
   - type: StandingState
   - type: Loadout
     prototypes: [ Scp1508Gear ]
+
+- type: startingGear
+  id: Scp1508Gear
+  equipment:
+    belt: ClothingBeltScp1508
