@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "license": "CLA",
+  "copyright": "made by timur",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "r_harm_arm",
+      "directions": 4
+    },
+    {
+      "name": "l_tube_arm",
+      "directions": 4
+    },
+    {
+      "name": "flash_eyes",
+      "directions": 4
+    },
+    {
+      "name": "l_spring_leg",
+      "directions": 4
+    },
+    {
+      "name": "lighting_rod_liver",
+      "directions": 4
+    },
+    {
+      "name": "tube_lungs",
+      "directions": 4
+    }
+  ]
+}

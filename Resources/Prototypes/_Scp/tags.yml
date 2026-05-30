@@ -59,6 +59,9 @@
   id: MTFLoadoutCrate
 
 - type: Tag
+  id: ChaosLoadoutCrate
+
+- type: Tag
   id: UpgradeLocusKit
 
 - type: Tag
@@ -108,6 +111,9 @@
 
 - type: Tag
   id: MagazineScp2908
+
+- type: Tag
+  id: LimbScp0492
 
 - type: Tag
   id: LavenderFlower
