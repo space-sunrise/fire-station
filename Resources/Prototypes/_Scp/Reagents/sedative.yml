@@ -1,8 +1,8 @@
 ﻿- type: reagent
   id: SedativeReagent
-  name: reagent-name-scp500
-  desc: reagent-desc-scp500
-  physicalDesc: reagent-physicaldesc-scp500
+  name: reagent-name-sedative
+  desc: reagent-desc-sedative
+  physicalDesc: reagent-physicaldesc-sedative
   flavor: medicine
   color: "#86caf7"
   metabolisms:
