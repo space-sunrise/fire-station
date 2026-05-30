@@ -10956,3 +10956,14 @@
   id: 464
   time: '2026-05-30T18:25:14.0000000+00:00'
   url: https://github.com/space-sunrise/project-fire/pull/1031
+- author: Wardex
+  changes:
+  - message: "\u0423\u0432\u0435\u043B\u0438\u0447\u0435\u043D\u043E \u0432\u0440\u0435\
+      \u043C\u044F, \u043A\u043E\u0442\u043E\u0440\u043E\u0435 \u0442\u0440\u0435\u0431\
+      \u0443\u0435\u0442\u0441\u044F \u0447\u0442\u043E \u0431\u044B \u0438\u0433\u0440\
+      \u0430\u0442\u044C \u043D\u0430 \u041C\u0435\u0434\u0438\u043A\u0435 \u041F\u043E\
+      \u0432\u0441\u0442\u0430\u043D\u0446\u0435\u0432 \u0425\u0430\u043E\u0441\u0430"
+    type: Tweak
+  id: 465
+  time: '2026-05-30T20:09:36.0000000+00:00'
+  url: https://github.com/space-sunrise/project-fire/pull/1033

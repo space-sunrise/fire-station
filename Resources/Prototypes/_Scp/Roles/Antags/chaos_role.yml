@@ -25,7 +25,7 @@
   objective: roles-antag-chaos-raider-medic-objective
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 10h
+    time: 15h
   - !type:RoleTimeRequirement
     role: JobMedicalSpecialist
     time: 5h
