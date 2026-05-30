@@ -171,6 +171,8 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
                 colorOverride: Color.FromHex("#016900"),
                 announceVoice: "Hanson",
                 announcementSound: new SoundPathSpecifier("/Audio/_Scp/Effects/Announcement/mtf.ogg", new AudioParams { Volume = -5f }));
+
+            chaos.TargetEnterAnnounced = true;
         }
     }
 
