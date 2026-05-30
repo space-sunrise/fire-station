@@ -30,7 +30,6 @@
 
 # region Steal
 
-# TODO: Сейчас если это добавить в ротацию целей, то имя сущности, которую нужно украсть будет "???", нужно исправить это и добавить данную цель в ротацию.
 - type: entity
   parent: [BaseChaosRaidObjective, BaseChaosRaidStealObjective]
   id: ScpsStealObjective
@@ -39,7 +38,7 @@
     stealGroup: Scp
     checkStealAreas: true
   - type: Objective
-    difficulty: 3.0
+    difficulty: 2.5
 
 # region Collections
 
@@ -70,7 +69,7 @@
 
 # region Kill
 
-# TODO: Написать отдельную систему на кражу людей и создать цель кражи Административного персонала Учреждения
+# TODO: Написать отдельную систему/использовать существующую для кражи людей и создать цель кражи Административного персонала Учреждения
 - type: entity
   parent: [BaseChaosRaidObjective, BaseKillObjective]
   id: KillRandomAdministrationPersonelObjective

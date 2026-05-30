@@ -2,19 +2,8 @@
 # region Rifles
 
 - type: listing
-  id: ChaosUplinkWeaponSKM24
-  productEntity: WeaponRifleSKM24Green
-  cost:
-    SupplyPoint: 5
-  categories:
-  - ChaosWeaponRifle
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 1
-
-- type: listing
-  id: ChaosUplinkWeaponSKM28
-  productEntity: WeaponRifleSKM28
+  id: ChaosUplinkWeaponAK74M
+  productEntity: WeaponRifleAK74
   cost:
     SupplyPoint: 5
   categories:
@@ -80,7 +69,10 @@
 
 - type: listing
   id: ChaosUplinkWeaponMG342
-  productEntity: WeaponMachineGunMG42
+  productEntity: ChaosStorageCrateMachineGunMG42
+  name: MG-342
+  description: chaos-catalog-weapon-mg42-description
+  icon: { sprite: _Sunrise/Objects/Weapons/Guns/LMGs/mg42/big.rsi, state: base }
   cost:
     SupplyPoint: 25
   categories:
@@ -129,6 +121,17 @@
   productEntity: WeaponSubMachineGunP90
   cost:
     SupplyPoint: 10
+  categories:
+  - ChaosWeaponPistol
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosUplinkWeaponM1911
+  productEntity: WeaponPistolM1911
+  cost:
+    SupplyPoint: 3
   categories:
   - ChaosWeaponPistol
   conditions:
