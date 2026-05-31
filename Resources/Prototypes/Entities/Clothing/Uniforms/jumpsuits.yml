@@ -407,7 +407,7 @@
   description: The jumpsuit for the poor sop with a mop.
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/Uniforms//uniformJanitor.rsi # Fire edit
+    sprite: _Scp/Clothing/Uniforms/uniformJanitor.rsi # Fire edit
 
 - type: entity
   parent: ClothingUniformBase

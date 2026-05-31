@@ -111,7 +111,7 @@
   description: Specialised non-slip rubber boots, designed to reduce janitorial workplace accidents; a tider's treasure.
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/Shoes//BootsJanitor.rsi # Fire edit
+    sprite: _Scp/Clothing/Shoes/BootsJanitor.rsi # Fire edit
   - type: Clothing
     sprite: _Scp/Clothing/Shoes/BootsJanitor.rsi # Fire edit
   - type: ClothingSpeedModifier
