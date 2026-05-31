@@ -2,10 +2,10 @@
 # region Rifles
 
 - type: listing
-  id: ChaosUplinkWeaponAK74M
-  productEntity: WeaponRifleAK74
+  id: ChaosUplinkWeaponAK103
+  productEntity: WeaponRifleAK103
   cost:
-    SupplyPoint: 5
+    SupplyPoint: 10
   categories:
   - ChaosWeaponRifle
   conditions:
@@ -85,7 +85,7 @@
   description: chaos-catalog-weapon-mg42-description
   icon: { sprite: _Sunrise/Objects/Weapons/Guns/LMGs/mg42/big.rsi, state: base }
   cost:
-    SupplyPoint: 25
+    SupplyPoint: 35
   categories:
   - ChaosWeaponRifle
   conditions:
