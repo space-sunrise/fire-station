@@ -113,7 +113,7 @@
   - type: Sprite
     sprite: _Scp/Clothing/Shoes//BootsJanitor.rsi # Fire edit
   - type: Clothing
-    sprite: _Scp/Clothing/Shoes//BootsJanitor.rsi # Fire edit
+    sprite: _Scp/Clothing/Shoes/BootsJanitor.rsi # Fire edit
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
