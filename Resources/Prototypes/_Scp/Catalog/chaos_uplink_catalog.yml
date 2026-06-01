@@ -493,6 +493,28 @@
     stock: 3
 
 - type: listing
+  id: ChaosUplinkAmmoMagazinePistolSubMachineGunSP
+  productEntity: MagazinePistolSubMachineGunSP
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ChaosWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ChaosUplinkAmmoMagazinePistolSubMachineGunFMJ
+  productEntity: MagazinePistolSubMachineGunFMJ
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ChaosWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
   id: ChaosUplinkAmmoMagazineBoxPistol35FMJ
   productEntity: MagazineBoxPistolFMJ
   cost:
