@@ -156,10 +156,10 @@
     gloves: ClothingHandsGlovesChaos
     outerClothing: ClothingOuterArmorChaosVest
     shoes: ClothingShoesBootsChaosFilled
-    id: ChaosAccessBreakerUnlimited
+    id: ChaosAccessBreaker
     ears: ClothingHeadsetAltChaos
     belt: ClothingBeltChaosFilled
-    pocket1: ChaosAccessBreaker
+    pocket1: WeaponPistolGoldenMk58
     pocket2: LeaderUplinkChaos
   inhand:
   - MedkitCombatFilled
