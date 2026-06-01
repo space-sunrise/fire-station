@@ -1,5 +1,29 @@
 ﻿- type: entity
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseChaosContraband]
+  id: ClothingOuterArmorChaosHeavyVest
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/chaos_heavyvest.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/chaos_heavyvest.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.4
+        Heat: 0.9
+        Caustic: 0.9
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+  - type: HeldSpeedModifier
+  - type: ExplosionResistance
+    damageCoefficient: 0.7
+  - type: GroupExamine
+
+- type: entity
+  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseChaosContraband]
   id: ClothingOuterArmorChaosVest
   components:
   - type: Sprite

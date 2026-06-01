@@ -407,6 +407,17 @@
 # region Equipment
 
 - type: listing
+  id: ChaosUplinkClothingOuterArmorChaosHeavyVest
+  productEntity: ClothingOuterArmorChaosHeavyVest
+  cost:
+    SupplyPoint: 15
+  categories:
+  - ChaosEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
   id: ChaosUplinkClothingOuterArmorSWAT
   productEntity: ClothingOuterArmorSWAT
   cost:
