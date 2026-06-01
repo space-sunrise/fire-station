@@ -1,6 +1,8 @@
 ﻿- type: entity
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseChaosContraband]
   id: ClothingOuterArmorChaosHeavyVest
+  name: heavy rebel vest
+  description: Heavy armor of the Chaos Insurgents, has more protective elements and better armor plate.
   components:
   - type: Sprite
     sprite: _Scp/Clothing/OuterClothing/Armor/chaos_heavyvest.rsi

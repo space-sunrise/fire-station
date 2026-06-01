@@ -1,2 +1,2 @@
-ent-ClothingBeltChaos = unloading of rebels
+ent-ClothingBeltChaos = chaos chest rig
     .desc = { ent-ClothingBeltStorageBase.desc }
