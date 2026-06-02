@@ -12,8 +12,14 @@ public sealed partial class Scp133Component : Component
     };
 
     [DataField]
-    public float Delay = 2.5f;
+    public TimeSpan Delay = TimeSpan.FromSeconds(2.5f);
 
     [DataField]
     public bool DeleteAfter = true;
+
+    [ViewVariables]
+    public TimeSpan? DamageTime;
+
+    [ViewVariables]
+    public EntityUid? EntTarget;
 }

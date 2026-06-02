@@ -1,5 +1,4 @@
-﻿using Content.Shared.Damage;
-using Content.Shared.Damage.Systems;
+﻿using Content.Shared.Damage.Systems;
 using Content.Shared.Sticky.Components;
 using Content.Shared.Trigger;
 using Robust.Shared.Timing;
@@ -9,43 +8,68 @@ namespace Content.Server._Scp.Scp133;
 public sealed class Scp133System : EntitySystem
 {
     [Dependency] private readonly DamageableSystem _damageable = default!;
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
 
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<Scp133Component, TriggerEvent>(OnTrigger);
+
+        SubscribeLocalEvent<Scp133Component, TriggerEvent>(OnTriggered);
     }
 
-    private void OnTrigger(EntityUid uid, Scp133Component component, TriggerEvent args)
+    private void OnTriggered(Entity<Scp133Component> ent, ref TriggerEvent args)
     {
-        if (!TryComp<StickyComponent>(uid, out var sticky) || sticky.StuckTo == null)
+        if (!TryComp<StickyComponent>(ent, out var stickyComp) || stickyComp.StuckTo == null)
             return;
-        TryActivate(uid, component, sticky.StuckTo.Value);
+
+        args.Handled = TryActivate(ent, stickyComp.StuckTo.Value);
     }
 
-    public bool TryActivate(EntityUid uid, Scp133Component component, EntityUid target)
+    private bool TryActivate(Entity<Scp133Component> ent, EntityUid target)
     {
-        if (!CanActivate(uid, component, target))
+        if (!CanActivate(ent, target))
             return false;
-        var delayTime = TimeSpan.FromSeconds(component.Delay);
-        Timer.Spawn(delayTime, () =>
-        {
-            if (!Exists(target) || !Exists(uid))
-                return;
-            PerformActivation(uid, component, target);
-        });
+
+        ent.Comp.DamageTime = _gameTiming.CurTime + ent.Comp.Delay;
+        ent.Comp.EntTarget = target;
+
         return true;
     }
 
-    private bool CanActivate(EntityUid uid, Scp133Component component, EntityUid target)
+    public override void Update(float frameTime)
     {
-        return Exists(target) && Exists(uid);
+        base.Update(frameTime);
+
+        var query = EntityQueryEnumerator<Scp133Component>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (comp.DamageTime == null || comp.EntTarget == null)
+                continue;
+
+            if (_gameTiming.CurTime < comp.DamageTime.Value)
+                continue;
+
+            var target = comp.EntTarget.Value;
+            comp.DamageTime = null;
+            comp.EntTarget = null;
+
+            PerformAction((uid, comp), target);
+        }
     }
 
-    private void PerformActivation(EntityUid uid, Scp133Component component, EntityUid target)
+    public void PerformAction(Entity<Scp133Component> ent, EntityUid target)
     {
-        _damageable.TryChangeDamage(target, component.Damage, ignoreResistances: true);
-        if (component.DeleteAfter)
-            QueueDel(uid);
+        if (!CanActivate(ent, target))
+            return;
+
+        _damageable.TryChangeDamage(target, ent.Comp.Damage, ignoreResistances: true);
+
+        if (ent.Comp.DeleteAfter)
+            QueueDel(ent);
+    }
+
+    private bool CanActivate(Entity<Scp133Component> ent, EntityUid target)
+    {
+        return Exists(ent) && Exists(target);
     }
 }
