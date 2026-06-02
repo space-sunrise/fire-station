@@ -92,6 +92,7 @@
           - Healing # это не его задача лечить, такие сцп уже есть
         whitelist:
           components:
+          - LightReplacer
           - Edible
           - Instrument
           - Seed
@@ -107,6 +108,7 @@
           - Bucket
           - Flashlight
           - KitchenKnife
+          - Plunger
     sortedHands:
     - main
     activeHandId: main
