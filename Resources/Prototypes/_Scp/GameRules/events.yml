@@ -48,7 +48,7 @@
   - type: SpawnInEntityStorageRule
     probability: 0.08
     entities:
-    - id: PaperContainerScp133
+    - id: Scp1837
   - type: SpawnInPlayerInventoryRule
     probability: 0.05
     sound:
