@@ -110,9 +110,6 @@
         !type:DamageTrigger
         damage: 10000
       behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalBreak
       - !type:SpawnEntitiesBehavior
         spawn:
           Scp019MonsterSapient:
