@@ -12,6 +12,7 @@
     pollDuration: 900
     transferDelay: 180
   - type: Sprite
+    scale: 0.9, 0.9
     drawdepth: Mobs
     sprite: _Scp/Mobs/Scp/scp-1508.rsi
     layers:
