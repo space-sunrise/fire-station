@@ -1,0 +1,9 @@
+- type: inventoryTemplate
+  id: scp173
+  slots:
+  - name: mask
+    slotTexture: mask
+    slotFlags: MASK
+    uiWindowPos: 0,2
+    strippingWindowPos: 0,1
+    displayName: Mask
