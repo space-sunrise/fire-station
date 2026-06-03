@@ -165,7 +165,7 @@
   description: A backpack specially designed to repel stains and hazardous liquids.
   components:
   - type: Sprite
-    sprite: Clothing/Back/Backpacks/science.rsi
+    sprite: _Scp/Clothing/Back/Backpacks/science.rsi # Fire edit
 
 - type: entity
   parent: ClothingBackpack

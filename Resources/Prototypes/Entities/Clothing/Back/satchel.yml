@@ -112,7 +112,7 @@
   description: Useful for holding research materials.
   components:
   - type: Sprite
-    sprite: Clothing/Back/Satchels/science.rsi
+    sprite: _Scp/Clothing/Back/Satchels/science.rsi # Fire edit
 
 - type: entity
   parent: [ClothingBackpackSatchel, BaseSecurityContraband]

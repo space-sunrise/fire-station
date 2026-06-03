@@ -190,9 +190,9 @@
   description: A suit that protects against minor chemical spills.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/labcoat.rsi
+    sprite: _Scp/Clothing/OuterClothing/Coats/labcoat.rsi # Fire edit
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/labcoat.rsi
+    sprite: _Scp/Clothing/OuterClothing/Coats/labcoat.rsi # Fire edit
   - type: Pierceable
     level: Metal
   - type: Armor
