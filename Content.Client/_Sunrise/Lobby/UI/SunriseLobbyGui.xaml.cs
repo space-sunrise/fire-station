@@ -139,9 +139,13 @@ public sealed partial class SunriseLobbyGui : UIScreen
         SetServersHubEnable(enable);
     }
 
-    private void OnServiceAuthEnableChanged(bool enable)
+    private void OnSponsorEnableChanged(bool enable)
     {
         SetUserProfileEnable(enable);
+    }
+
+    private void OnContributorsEnableChanged(bool enable)
+    {
         SetContributorsEnable(enable);
     }
 

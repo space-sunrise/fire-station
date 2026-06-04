@@ -17,8 +17,6 @@
   alternativeTitles:
   - job-alt-title-prospector
   setPreference: false # Fire added
-  alternativeTitles:
-  - job-alt-title-prospector
   access:
   - Cargo
   - Salvage
