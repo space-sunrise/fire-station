@@ -113,7 +113,7 @@ public sealed partial class AdminLogManager : SharedAdminLogManager, IAdminLogMa
             value => _queueMax = value, true);
         _configuration.OnValueChanged(CCVars.AdminLogsPreRoundQueueMax,
             value => _preRoundQueueMax = value, true);
-        // Sunrise edit start - keep Loki configuration in fork partial
+        // Sunrise edit start - держим конфигурацию Loki в fork partial
         InitializeLokiConfiguration();
         // Sunrise edit end
         _configuration.OnValueChanged(CCVars.AdminLogsDropThreshold,
@@ -146,7 +146,7 @@ public sealed partial class AdminLogManager : SharedAdminLogManager, IAdminLogMa
         }
         finally
         {
-            // Sunrise edit start - release fork Loki resources during admin log shutdown
+            // Sunrise edit start - освобождаем fork-ресурсы Loki при shutdown admin log
             ShutdownLoki();
             // Sunrise edit end
         }
@@ -261,7 +261,7 @@ public sealed partial class AdminLogManager : SharedAdminLogManager, IAdminLogMa
         _preRoundLogQueue.Clear();
         PreRoundQueue.Set(0);
 
-        // Sunrise edit start - choose Loki or database admin log persistence
+        // Sunrise edit start - выбираем Loki или database persistence для admin logs
         Task task;
         if (_lokiEnabled)
         {
@@ -588,7 +588,7 @@ public sealed partial class AdminLogManager : SharedAdminLogManager, IAdminLogMa
             list = new List<SharedAdminLog>(initialSize);
         }
 
-        // Sunrise edit start - read admin logs from Loki when enabled
+        // Sunrise edit start - читаем admin logs из Loki, когда он включен
         if (_lokiEnabled)
         {
             await GetAdminLogsFromLoki(filter, list);
@@ -604,7 +604,7 @@ public sealed partial class AdminLogManager : SharedAdminLogManager, IAdminLogMa
         return list;
     }
 
-    // Sunrise edit start - route log message reads through Loki-aware query paths
+    // Sunrise edit start - направляем чтение log messages через Loki-aware query paths
     public async IAsyncEnumerable<string> AllMessages(LogFilter? filter = null)
     {
         if (_lokiEnabled)
@@ -663,7 +663,7 @@ public sealed partial class AdminLogManager : SharedAdminLogManager, IAdminLogMa
         return Round(_currentRoundId);
     }
 
-    // Sunrise edit start - prefer Loki count and report zero if Loki is unavailable
+    // Sunrise edit start - предпочитаем счетчик Loki и возвращаем ноль, если Loki недоступен
     public async Task<int> CountLogs(int round)
     {
         if (_lokiEnabled)
