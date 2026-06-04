@@ -29,6 +29,112 @@
   - type: Clickable
   - type: InteractionOutline
   - type: Damageable
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 500
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Scp019MonsterSapient:
+            min: 2
+            max: 4
+    - trigger:
+        !type:DamageTrigger
+        damage: 1000
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Scp019MonsterSapient:
+            min: 2
+            max: 4
+    - trigger:
+        !type:DamageTrigger
+        damage: 2000
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Scp019MonsterSapient:
+            min: 2
+            max: 4
+          Scp019MonsterBasic:
+            min: 1
+            max: 2
+    - trigger:
+        !type:DamageTrigger
+        damage: 3500
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Scp019MonsterSapient:
+            min: 2
+            max: 4
+          Scp019MonsterBasic:
+            min: 1
+            max: 2
+          Scp019MonsterFast:
+            min: 1
+            max: 2
+    - trigger:
+        !type:DamageTrigger
+        damage: 5000
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Scp019MonsterSapient:
+            min: 2
+            max: 4
+          Scp019MonsterBasic:
+            min: 2
+            max: 3
+          Scp019MonsterFast:
+            min: 1
+            max: 2
+    - trigger:
+        !type:DamageTrigger
+        damage: 7500
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Scp019MonsterSapient:
+            min: 3
+            max: 5
+          Scp019MonsterBasic:
+            min: 2
+            max: 3
+          Scp019MonsterFast:
+            min: 1
+            max: 2
+    - trigger:
+        !type:DamageTrigger
+        damage: 10000
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Scp019MonsterSapient:
+            min: 2
+            max: 3
+          Scp019MonsterBasic:
+            min: 2
+            max: 4
+          Scp019MonsterFast:
+            min: 2
+            max: 4
+          Scp019GlassShard:
+            min: 2
+            max: 3
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: DamageVisuals
+    thresholds: [250, 500, 1000, 1500, 2000]
+    damageDivisor: 4
+    trackAllDamage: true
+    damageOverlay:
+      sprite: _Scp/Objects/Scp/scp-019-cracks.rsi
   - type: DamageOverlay
     damagePopupType: SmallFloating
     isStructure: true
@@ -66,3 +172,4 @@
   - type: Tag
     tags:
     - Scp019Vase
+  - type: Appearance

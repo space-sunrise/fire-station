@@ -13,17 +13,6 @@
     stock: 1
 
 - type: listing
-  id: ChaosUplinkWeaponMP7
-  productEntity: WeaponSubMachineGunMP7
-  cost:
-    SupplyPoint: 5
-  categories:
-  - ChaosWeaponRifle
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 1
-
-- type: listing
   id: ChaosUplinkWeaponAKMU
   productEntity: WeaponRifleAKMU
   cost:
@@ -148,7 +137,18 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
-
+    
+- type: listing
+  id: ChaosUplinkWeaponMP7
+  productEntity: WeaponSubMachineGunMP7
+  cost:
+    SupplyPoint: 5
+  categories:
+  - ChaosWeaponPistol
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+    
 # region Ammo
 
 - type: listing
