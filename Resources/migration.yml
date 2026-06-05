@@ -2793,4 +2793,8 @@ ClothingUniformJumpsuitBlueDirectorFormal: ClothingUniformJumpsuitDirector
 ClothingHeadHatCapDirector: ClothingHeadHatDirector
 ClothingHandsGlovesDirector: ClothingHandsGlovesDirectorSpecial
 
+# kalashnikov assault rifle rename
+GunLockerFilledAK74: GunLockerFilledAK103
+WeaponRifleAK74: WeaponRifleAK103
+
 # Fire added end
