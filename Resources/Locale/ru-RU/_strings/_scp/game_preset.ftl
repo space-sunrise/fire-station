@@ -43,3 +43,6 @@ scp-description-thaumiel =
     | Безопасный: ДА
     | Евклид: ДА
     | Кетер: ДА
+
+scp-title-chaos-raid = Рейд Повстанцев Хаоса
+scp-description-chaos-raid = Данная смена может оказаться для вас последней. В этой жизни.

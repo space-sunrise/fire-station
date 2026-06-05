@@ -84,8 +84,8 @@ public sealed class Scp035System : SharedScp035System
         if (!_ghost.OnGhostAttempt(mindId, false, false, false, mind))
             return;
 
-        EnsureComp<GhostTakeoverAvailableComponent>(ent);
-        var ghostRoleComp = EnsureComp<GhostRoleComponent>(ent);
+        EnsureComp<GhostTakeoverAvailableComponent>(args.Wearer);
+        var ghostRoleComp = EnsureComp<GhostRoleComponent>(args.Wearer);
         ghostRoleComp.RoleName = Loc.GetString("scp-035-ghost-role-name");
         ghostRoleComp.RoleDescription = Loc.GetString("scp-035-ghost-role-desc");
         ghostRoleComp.RaffleConfig = new GhostRoleRaffleConfig(ent.Comp.GhostSettings);

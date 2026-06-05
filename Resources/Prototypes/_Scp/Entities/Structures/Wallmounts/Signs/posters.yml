@@ -906,6 +906,15 @@
   - type: Sprite
     state: scp2295
 
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP2908
+  name: SCP-2908 poster
+  description: Information poster for SCP-2908.
+  components:
+  - type: Sprite
+    state: scp2908
+
 # Длинные плакаты
 
 - type: entity

@@ -183,7 +183,8 @@
     TriggerDeath: 1
     TriggerMagnet: 1
     # Дальше наши самописные
-    TriggerHealthAnalyzer: 1
+#   TriggerHealthAnalyzer: 1
+# пока не работает
 
 - type: weightedRandomXenoArchTrigger
   id: Scp330Triggers

@@ -17,6 +17,10 @@
   - type: Item
     size: Huge
     sprite: _Scp/Mobs/Scp/scp-2295.rsi
+  - type: Clothing
+    sprite: _Scp/Mobs/Scp/scp-2295.rsi
+    slots:
+    - MASK
   - type: MultiHandedItem
   - type: Scp
     class: Safe
@@ -92,7 +96,6 @@
           - Healing
           - SurgeryTool
           tags:
-          - Medkit
           - PillCanister
     sortedHands:
     - main
@@ -101,7 +104,34 @@
   - type: ComplexInteraction
   - type: ScpRestriction
     canBeDisarmed: true
+    canStandingState: true
   - type: ActionGrant
     actions:
     - Scp2295Brutepack
     - Scp2295RegenerativeMesh
+    - ActionOpenStorageImplant
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: StandingState
+  - type: Storage
+    whitelist:
+      components:
+      - Healing
+      - SurgeryTool
+      tags:
+      - PillCanister
+    clickInsert: false
+    grid:
+    - 0,0,1,3
+    maxItemSize: Large
+    storageInsertSound:
+      path: /Audio/Items/Medical/brutepack_end.ogg
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: []
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface

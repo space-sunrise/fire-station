@@ -3,6 +3,7 @@
   name: random vending machine spawner
   suffix: Snacks
   parent: MarkerBase
+  abstract: true # Fire edit
   components:
   - type: Sprite
     layers:
@@ -10,11 +11,6 @@
       - sprite: Structures/Machines/VendingMachines/random.rsi
         state: snack
   - type: RandomSpawner
-  # Fire edit start
-    rarePrototypes:
-    - Scp261
-    rareChance: 0.03
-  # Fire edit end
     prototypes:
       - VendingMachineDiscount
       - VendingMachineSnack

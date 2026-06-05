@@ -244,3 +244,21 @@
     - SupplyPoint
     balance:
       SupplyPoint: 0
+
+- type: entity
+  id: StorePresetScpChaosUplink
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-ChaosUplink
+    categories:
+    - ChaosWeaponRifle
+    - ChaosWeaponPistol
+    - ChaosWeaponAmmo
+    - ChaosEquipment
+    - ChaosMedkit
+    - ChaosOther
+    currencyWhitelist:
+    - SupplyPoint
+    balance:
+      SupplyPoint: 0

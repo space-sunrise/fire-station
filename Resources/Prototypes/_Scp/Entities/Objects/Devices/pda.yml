@@ -620,8 +620,8 @@
 - type: entity
   parent: MobileTaskForcePDA
   id: ChaosInsurgencyPDA
-  name: chaos insurgency operative PDA
-  description: "Field PDA for Chaos Insurgency operatives: quick access to maps, target data, orders, and action logs. Optimized for autonomous and extreme conditions."
+  name: chaos insurgency PDA
+  description: "Chaos Insurgency Field PDA: Quick access to maps, activity log, location data, and health analysis. Optimized for offline and extreme conditions."
 
 - type: entity
   parent: ScpBaseSecurityPDA

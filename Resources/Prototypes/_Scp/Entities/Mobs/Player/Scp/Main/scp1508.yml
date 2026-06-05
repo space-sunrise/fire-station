@@ -2,7 +2,7 @@
   id: Scp1508
   name: ???
   suffix: SCP-1508
-  parent: 
+  parent:
   - BaseScpFriendly
   - InventoryBase
   - StripableInventoryBase
@@ -36,8 +36,8 @@
     factions:
     - SimpleNeutral
   - type: MovementSpeedModifier
-    baseWalkSpeed: 1
-    baseSprintSpeed: 2
+    baseWalkSpeed: 2
+    baseSprintSpeed: 3
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Scale
@@ -115,5 +115,17 @@
   - type: ScpRestriction
     canBeDisarmed: true
     canBePulled: true
+    canStandingState: true
   - type: Inventory
     templateId: scp1508
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: StandingState
+  - type: Loadout
+    prototypes: [ Scp1508Gear ]
+
+- type: startingGear
+  id: Scp1508Gear
+  equipment:
+    belt: ClothingBeltScp1508
