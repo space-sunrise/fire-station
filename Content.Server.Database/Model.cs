@@ -46,9 +46,13 @@ namespace Content.Server.Database
         public DbSet<RoleWhitelist> RoleWhitelists { get; set; } = null!;
         public DbSet<BanTemplate> BanTemplate { get; set; } = null!;
         public DbSet<IPIntelCache> IPIntelCache { get; set; } = null!;
+        // Sunrise-Start
         public DbSet<AHelpMessage> AHelpMessages { get; set; } = default!;
         public DbSet<MentorHelpTicket> MentorHelpTickets { get; set; } = default!;
         public DbSet<MentorHelpMessage> MentorHelpMessages { get; set; } = default!;
+        public DbSet<UiLike> UiLikes { get; set; } = default!;
+        public DbSet<TutorialCompletion> TutorialCompletions { get; set; } = default!;
+        // Sunrise-End
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -1368,6 +1372,7 @@ namespace Content.Server.Database
         public float Score { get; set; }
     }
 
+    // Sunrise-start
     [Table("ahelp_messages"), Index(nameof(ReceiverUserId))]
     public class AHelpMessage
     {
@@ -1487,4 +1492,33 @@ namespace Content.Server.Database
         /// </summary>
         public bool IsStaffOnly { get; set; } = false;
     }
+
+    [PrimaryKey(nameof(ScopeId), nameof(ItemId), nameof(PlayerUserId))]
+    [Index(nameof(PlayerUserId), nameof(ScopeId))]
+    public sealed class UiLike
+    {
+        [Required, MaxLength(128)]
+        public string ScopeId { get; set; } = string.Empty;
+
+        [Required, MaxLength(128)]
+        public string ItemId { get; set; } = string.Empty;
+
+        [Required]
+        public Guid PlayerUserId { get; set; }
+    }
+
+    [Table("tutorial_completion"), Index(nameof(PlayerUserId)), Index(nameof(TutorialId)), PrimaryKey(nameof(PlayerUserId), nameof(TutorialId))]
+    public class TutorialCompletion
+    {
+        [Required, ForeignKey("Player")]
+        public Guid PlayerUserId { get; set; }
+
+        [Required]
+        public string TutorialId { get; set; } = default!;
+
+        public DateTimeOffset CompletedAt { get; set; }
+        public int CompletionCount { get; set; } = 1;
+        public double? AccountAgeDays { get; set; }
+    }
+    // Sunrise-end
 }

@@ -1,0 +1,23 @@
+
+- type: weightedRandom
+  id: ChaosRaidObjectiveGroups
+  weights:
+    ChaosRaidObjectiveGroupStealCollection: 1
+    ChaosRaidObjectiveGroupKill: 1
+    ChaosRaidObjectiveGroupSteal: 1
+
+- type: weightedRandom
+  id: ChaosRaidObjectiveGroupSteal
+  weights:
+    ScpsStealObjective: 0.8
+
+- type: weightedRandom
+  id: ChaosRaidObjectiveGroupStealCollection
+  weights:
+    ItemScpsStealCollectionObjective: 1
+    InfoPapersStealCollectionObjective: 1
+
+- type: weightedRandom
+  id: ChaosRaidObjectiveGroupKill
+  weights:
+    KillRandomAdministrationPersonelObjective: 1

@@ -1,0 +1,10 @@
+- type: entity
+  id: CrateLavender5
+  parent: CrateGenericSteel
+  name: lavender crate
+  description: A sealed steel crate containing five fresh lavender flowers.
+  components:
+  - type: StorageFill
+    contents:
+      - id: FoodLavender
+        amount: 5

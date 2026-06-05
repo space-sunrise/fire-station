@@ -1,0 +1,26 @@
+﻿{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "made by peper",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "basic",
+            "directions": 4
+        },
+        {
+            "name": "fast",
+            "directions": 4
+        },
+        {
+            "name": "sapient",
+            "directions": 4
+        },
+		{
+            "name": "dead"
+		}
+    ]
+}

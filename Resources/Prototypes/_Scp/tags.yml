@@ -59,6 +59,9 @@
   id: MTFLoadoutCrate
 
 - type: Tag
+  id: ChaosLoadoutCrate
+
+- type: Tag
   id: UpgradeLocusKit
 
 - type: Tag
@@ -77,6 +80,9 @@
   id: ScpMuffleCountsThisAsNone
 
 - type: Tag
+  id: Scp019Vase
+
+- type: Tag
   id: Scp330Candy
 
 - type: Tag
@@ -87,6 +93,9 @@
 
 - type: Tag
   id: Scp173Shard
+
+- type: Tag
+  id: Scp019GlassShard
 
 - type: Tag
   id: ReinforcedMaskScp096
@@ -102,3 +111,12 @@
 
 - type: Tag
   id: ClothingHeadAwareness
+
+- type: Tag
+  id: MagazineScp2908
+
+- type: Tag
+  id: LimbScp0492
+
+- type: Tag
+  id: LavenderFlower

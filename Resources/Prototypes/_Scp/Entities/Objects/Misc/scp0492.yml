@@ -1,0 +1,245 @@
+
+- type: entity
+  id: RightHarmArm0492
+  name: malicious right arm
+  description: A dark steel arm. When replacing the right arm surgically, the patient gains the ability to deliver painful strikes to enemies with it.
+  suffix: SCP-049-2
+  parent: [PartCyber, BaseRightArm]
+  components:
+    - type: BaseLayerId
+      layer: RHarmArm0492
+    - type: Sprite
+      sprite: _Scp/Objects/Misc/scp049_limbs/icons.rsi
+      state: "icon_harm_arm"
+    - type: Icon
+      sprite: _Scp/Objects/Misc/scp049_limbs/icons.rsi
+      state: "icon_harm_arm"
+    - type: LimbWithItems
+      action: ActionScp0492ToggleHarmHandRight
+    - type: LimbItemStorage
+      items:
+        - HarmArmWeapon0492
+    - type: Tag
+      tags:
+      - LimbScp0492
+
+- type: entity
+  id: LeftTubeArm0492
+  name: tubular left arm
+  description: An elongated copper tube. When replacing the left arm surgically, the patient gains the ability to shoot their bodily waste through the tube.
+  suffix: SCP-049-2
+  parent: [PartCyber, BaseLeftArm]
+  components:
+    - type: BaseLayerId
+      layer: LTubeArm0492
+    - type: Sprite
+      sprite: _Scp/Objects/Misc/scp049_limbs/icons.rsi
+      state: "icon_tube_arm"
+    - type: Icon
+      sprite: _Scp/Objects/Misc/scp049_limbs/icons.rsi
+      state: "icon_tube_arm"
+    - type: LimbWithItems
+      action: ActionScp0492ToggleTubeHandLeft
+    - type: LimbItemStorage
+      items:
+        - TubeArmWeapon0492
+    - type: Tag
+      tags:
+      - LimbScp0492
+
+- type: entity
+  id: LeftSpringLeg0492
+  name: springy left leg
+  description: A large silver spring. When replacing the left leg surgically, the patient begins to move faster.
+  suffix: SCP-049-2
+  parent: [PartCyber, BaseLeftLeg]
+  components:
+    - type: BaseLayerId
+      layer: LSpringLeg0492
+    - type: Sprite
+      sprite: _Scp/Objects/Misc/scp049_limbs/icons.rsi
+      state: "icon_spring_leg"
+    - type: Icon
+      sprite: _Scp/Objects/Misc/scp049_limbs/icons.rsi
+      state: "icon_spring_leg"
+    - type: MovementBodyPart
+      sprintSpeed : 5.825 # +5%
+      maxDensity: 111
+    - type: Tag
+      tags:
+      - LimbScp0492
+
+- type: entity
+  id: OrganFlashEyes0492
+  parent: 
+  - BaseItem
+  - BaseOrganEyes
+  name: tube eyes
+  description: Two flexible tubes with bulbs at the ends. When replacing the eyes surgically, the patient stops getting blinded by flashes.
+  suffix: SCP-049-2
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/scp049_limbs/icons.rsi
+    state: "icon_flash_eyes"
+  - type: Organ
+  - type: Gibbable
+  - type: Item
+    size: Normal
+  - type: FunctionalOrgan
+    comps:
+    - type: FlashImmunity
+  - type: OrganVisualization
+    layer: Eyes
+    prototype: FlashEyes0492
+  - type: Tag
+    tags:
+    - LimbScp0492
+
+- type: entity
+  id: OrganTubeLungs0492
+  parent: 
+  - BaseItem
+  - BaseOrganLungs
+  name: pump lungs
+  description: A pump made of fairly hard black rubber. When replacing the lungs surgically, the patient avoids falls and stops slipping.
+  suffix: SCP-049-2
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/scp049_limbs/icons.rsi
+    state: "icon_tube_lungs"
+  - type: Organ
+  - type: Gibbable
+  - type: Item
+    size: Normal
+  - type: FunctionalOrgan
+    comps:
+    - type: NoSlip
+  - type: OrganVisualization
+    layer: Snout
+    prototype: TubeLungs0492
+  - type: Tag
+    tags:
+    - LimbScp0492
+
+- type: entity
+  id: OrganLightingRodLiver0492
+  parent: 
+  - BaseItem
+  - BaseOrganLiver
+  name: lightning rod liver
+  description: A compact copper part of a lightning rod. When replacing the liver surgically, the patient cannot be shocked by electric current.
+  suffix: SCP-049-2
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/scp049_limbs/icons.rsi
+    state: "icon_lighting_rod_liver"
+  - type: Organ
+  - type: Gibbable
+  - type: Item
+    size: Normal
+  - type: FunctionalOrgan
+    comps:
+    - type: Insulated
+  - type: OrganVisualization
+    layer: Snout
+    prototype: LightingRodLiver0492
+  - type: Tag
+    tags:
+    - LimbScp0492
+
+- type: entity
+  parent: BaseItem
+  id: HarmArmWeapon0492
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: BloodSplatterer
+    probability: 0.4
+    bloodLineProbability: 0.1
+  - type: Sharp
+  - type: Execution
+    doAfterDuration: 4.0
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Slash: 20
+        Structural: 30
+    attackRate: 0.6
+  - type: MeleeThrowOnHit
+    speed: 2
+    distance: 0.25
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/scp049_limbs/icons.rsi
+    state: "icon_harm_arm"
+
+- type: entity
+  parent: BaseItem
+  id: TubeArmWeapon0492
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/scp049_limbs/icons.rsi
+    state: "icon_tube_arm"
+  - type: Gun
+    fireRate: 3
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    soundGunshot:
+      path: /Audio/_Sunrise/FleshCult/spike_gun_shot.ogg
+  - type: AmmoCounter
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 80
+    rechargeSound: /Audio/_Sunrise/FleshCult/spike_gun_reload.ogg
+  - type: BasicEntityAmmoProvider
+    proto: BulletSplashAcid
+    capacity: 10
+    count: 5
+
+- type: humanoidBaseSprite
+  id: RHarmArm0492
+  matchSkin: false
+  markingsMatchSkin: false
+  baseSprite:
+    sprite: _Scp/Objects/Misc/scp049_limbs/limbs.rsi
+    state: "r_harm_arm"
+
+- type: humanoidBaseSprite
+  id: LTubeArm0492
+  matchSkin: false
+  markingsMatchSkin: false
+  baseSprite:
+    sprite: _Scp/Objects/Misc/scp049_limbs/limbs.rsi
+    state: "l_tube_arm"
+
+- type: humanoidBaseSprite
+  id: FlashEyes0492
+  matchSkin: false
+  markingsMatchSkin: false
+  baseSprite:
+    sprite: _Scp/Objects/Misc/scp049_limbs/limbs.rsi
+    state: "flash_eyes"
+
+- type: humanoidBaseSprite
+  id: LSpringLeg0492
+  matchSkin: false
+  markingsMatchSkin: false
+  baseSprite:
+    sprite: _Scp/Objects/Misc/scp049_limbs/limbs.rsi
+    state: "l_spring_leg"
+
+- type: humanoidBaseSprite
+  id: TubeLungs0492
+  matchSkin: false
+  markingsMatchSkin: false
+  baseSprite:
+    sprite: _Scp/Objects/Misc/scp049_limbs/limbs.rsi
+    state: "tube_lungs"
+
+- type: humanoidBaseSprite
+  id: LightingRodLiver0492
+  matchSkin: false
+  markingsMatchSkin: false
+  baseSprite:
+    sprite: _Scp/Objects/Misc/scp049_limbs/limbs.rsi
+    state: "lighting_rod_liver"

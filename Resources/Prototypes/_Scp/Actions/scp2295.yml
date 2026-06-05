@@ -1,0 +1,35 @@
+﻿- type: entity
+  id: Scp2295Brutepack
+  name: plushie treatment
+  description: Produce a crude medical pack made of unknown materials.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 30
+    icon:
+      sprite: Objects/Specific/Medical/medical.rsi
+      state: medicated-suture
+    itemIconStyle: BigAction
+    raiseOnUser: true
+  - type: InstantAction
+    event: !type:InstantSpawnSpellEvent
+      prototype: BrutepackAdvanced1
+      posData: !type:TargetCasterPos
+
+- type: entity
+  id: Scp2295RegenerativeMesh
+  name: regenerative mesh
+  description: Produce multiple pieces of anomalous fabric.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 90
+    icon:
+      sprite: Objects/Specific/Medical/medical.rsi
+      state: regenerative-mesh
+    itemIconStyle: BigAction
+    raiseOnUser: true
+  - type: InstantAction
+    event: !type:InstantSpawnSpellEvent
+      prototype: RegenerativeMesh
+      posData: !type:TargetCasterPos

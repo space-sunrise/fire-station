@@ -58,7 +58,7 @@ public abstract class SharedScp106ContainmentSystem : EntitySystem
             return;
 
         scp106Component.IsContained = true;
-        Dirty(ent);
+        Dirty(ent, scp106Component);
 
         if (!TryComp<FixturesComponent>(args.OtherEntity, out var fixturesComponent))
             return;

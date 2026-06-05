@@ -1,0 +1,17 @@
+- type: entity
+  parent: [BaseFoundationEnemyContraband, ChaosAccessBreakerUnlimited]
+  id: GRUAccessBreakerUnlimited
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tools/GRU_access_breaker.rsi
+    state: icon
+  - type: Item
+    sprite: _Scp/Objects/Tools/GRU_access_breaker.rsi
+
+- type: entity
+  parent: GRUAccessBreakerUnlimited
+  id: GRUAccessBreakerLimited
+  suffix: Limited
+  components:
+  - type: LimitedCharges
+  - type: AutoRecharge
