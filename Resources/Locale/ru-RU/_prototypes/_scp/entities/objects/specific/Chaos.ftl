@@ -3,7 +3,7 @@ ent-UplinkChaos = терминал Повстанцев Хаоса
     .suffix = Обычный
 ent-LeaderUplinkChaos = { ent-UplinkChaos }
     .desc = { ent-UplinkChaos.desc }
-    .suffix = Командирский
+    .suffix = Командир
 
 ent-ChaosPinpointer = пинпоинтер Повстанцев Хаоса
     .desc = Специализированный пинпоинтер, купленный на чёрном рынке.
