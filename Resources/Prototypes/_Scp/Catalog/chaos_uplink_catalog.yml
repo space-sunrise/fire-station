@@ -74,7 +74,7 @@
   description: chaos-catalog-weapon-mg42-description
   icon: { sprite: _Sunrise/Objects/Weapons/Guns/LMGs/mg42/big.rsi, state: base }
   cost:
-    SupplyPoint: 35
+    SupplyPoint: 40
   categories:
   - ChaosWeaponRifle
   conditions:
@@ -586,7 +586,7 @@
   id: ChaosUplinkClothingOuterArmorChaosHeavyVest
   productEntity: ClothingOuterArmorChaosHeavyVest
   cost:
-    SupplyPoint: 15
+    SupplyPoint: 20
   categories:
   - ChaosEquipment
   conditions:
