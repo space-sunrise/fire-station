@@ -1,4 +1,4 @@
-using Content.Shared.Whitelist;
+using Content.Shared.Whitelist; // Fire edit
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 

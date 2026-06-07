@@ -284,7 +284,7 @@ public sealed class StationAiRadial : BaseStationAiAction
 [Serializable, NetSerializable]
 public abstract class BaseStationAiAction
 {
-    [field: NonSerialized]
+    [field:NonSerialized]
     public EntityUid User { get; set; }
 }
 
