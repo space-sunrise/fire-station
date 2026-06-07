@@ -124,7 +124,7 @@ public abstract partial class SharedStationAiSystem
             return;
 
         ev.Event.User = ev.Actor;
-        RaiseLocalEvent(target.Value, (object)ev.Event);
+        RaiseLocalEvent(target.Value, (object) ev.Event);
     }
 
     private void OnMessageAttempt(Entity<StationAiWhitelistComponent> ent, ref BoundUserInterfaceMessageAttempt ev)
