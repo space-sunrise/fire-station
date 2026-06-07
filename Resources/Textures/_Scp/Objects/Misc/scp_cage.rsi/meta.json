@@ -13,6 +13,9 @@
             "name": "open"
         },
         {
+            "name": "door"
+        },
+        {
             "name": "closed"
         }
     ]
