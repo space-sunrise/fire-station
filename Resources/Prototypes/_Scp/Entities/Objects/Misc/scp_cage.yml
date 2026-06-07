@@ -73,6 +73,7 @@
       components:
       - Scp
   - type: Lock
+    lockTime: 5
   - type: AccessReader
     access: [["Security"], ["Research"]]
   - type: SuppressArtifactContainer
