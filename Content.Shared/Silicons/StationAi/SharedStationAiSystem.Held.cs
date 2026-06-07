@@ -166,6 +166,7 @@ public abstract partial class SharedStationAiSystem
         }
 
         // Fire edit start
+        // TODO: Сейчас при нажатии Alt + по шлюзу энергия списывается дважды, за взаимодействие + использование открытой панельки, нужно будет это исправить
         if (args.Cancelled || args.Target == null)
             return;
 
@@ -173,16 +174,16 @@ public abstract partial class SharedStationAiSystem
             core.Comp == null)
             return;
 
-        if (_whitelist.IsWhitelistPass(core.Comp.SignalEntitiesWhitelist, args.Target.Value))
+        if (_whitelist.IsWhitelistPass(core.Comp.IncreasedChargeCostWhitelist, args.Target.Value))
         {
-            if (_battery.GetCharge(core.Owner) < core.Comp.ButtonInteractionChargeCost)
+            if (_battery.GetCharge(core.Owner) < core.Comp.IncreasedInteractionChargeCost)
             {
                 ShowNotChargeEnoughPopup(ent);
                 args.Cancelled = true;
                 return;
             }
 
-            if (!_battery.TryUseCharge(core.Owner, core.Comp.ButtonInteractionChargeCost))
+            if (!_battery.TryUseCharge(core.Owner, core.Comp.IncreasedInteractionChargeCost))
                 args.Cancelled = true;
             return;
         }

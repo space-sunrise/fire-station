@@ -55,13 +55,13 @@ public sealed partial class StationAiCoreComponent : Component
     public float ControlDoorChargeCost = 7500f; // Joule's
 
     [DataField]
-    public float ButtonInteractionChargeCost = 10000f; // Joule's
+    public float IncreasedInteractionChargeCost = 10000f; // Joule's
 
     [DataField]
     public float OtherInteractionsChargeCost = 1500f; // Joule's
 
     [DataField]
-    public EntityWhitelist SignalEntitiesWhitelist = new()
+    public EntityWhitelist IncreasedChargeCostWhitelist = new()
     {
         Components = ["SignalSwitch"]
     };
