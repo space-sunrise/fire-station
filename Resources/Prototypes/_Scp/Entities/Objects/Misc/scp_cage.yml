@@ -181,7 +181,18 @@
   components:
   - type: Sprite
     sprite: _Scp/Objects/Misc/scp_cage.rsi
-    state: open
+    layers:
+    - state: open
+    - state: base
+      map: [ "enum.ConstructionVisuals.Layer" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ConstructionVisuals.Key:
+        enum.ConstructionVisuals.Layer:
+          start: { state: base }
+          doorInserted: { state: door }
+          doorAnchored: { state: door }
   - type: Transform
     noRot: true
   - type: InteractionOutline
@@ -205,6 +216,8 @@
   start: start
   graph:
     - node: start
+      actions:
+      - !type:AppearanceChange
       edges:
         - to: doorInserted
           steps:
@@ -212,12 +225,16 @@
               name: scp-cage-door-insert
               doAfter: 15
     - node: doorInserted
+      actions:
+      - !type:AppearanceChange
       edges:
         - to: doorAnchored
           steps:
             - tool: Anchoring
               doAfter: 15
     - node: doorAnchored
+      actions:
+      - !type:AppearanceChange
       edges:
         - to: finished
           steps:
