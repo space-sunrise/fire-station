@@ -120,4 +120,7 @@
   - type: StatusEffects
     allowed:
     - Stun
+    - Flashed
   - type: ComplexInteraction
+  - type: FlashImmunity
+    enabled: false
