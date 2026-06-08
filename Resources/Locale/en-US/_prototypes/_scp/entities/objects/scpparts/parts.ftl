@@ -14,3 +14,5 @@ ent-Scp096PhotoDeveloped = { ent-Scp096Photo }
     .desc = A small photograph depicting a humanoid creature of anomalously large stature with disproportionately long arms. You peer into its face... oh god...
 ent-Scp096Photo = strange photograph
     .desc = A small photograph in which the contents are almost indistinguishable. You can barely recognize the outline of a humanoid silhouette.
+ent-Scp019GlassShard = ceramic shard
+    .desc = Ceramic shard with recognizable ancient Greek style and decor.
