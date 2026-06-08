@@ -7,7 +7,7 @@
   categories:
   - Scp106Abilities
   cost:
-    LifeEssence: 10
+    LifeEssence: 0
   raiseProductEventOnUser: true
   icon:
     sprite: _Scp/Actions/scp-106.rsi
@@ -89,3 +89,4 @@
     state: become_phantom # TODO свой спрайт
   conditions:
   - !type:ListingLimitedStockCondition
+    stock: 1

@@ -70,6 +70,11 @@ public sealed partial class Scp106BoughtTerrify : InstantActionEvent
     [DataField] public EntProtoId BoughtAction;
 }
 
+public sealed partial class Scp106BoughtPuddle : InstantActionEvent
+{
+    [DataField] public EntProtoId BoughtAction;
+}
+
 #region DoAfters
 
 [Serializable, NetSerializable]
