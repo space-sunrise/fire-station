@@ -35,11 +35,6 @@ public sealed partial class Scp106LeavePhantomAction : InstantActionEvent;
 
 public sealed partial class Scp106ShopAction : InstantActionEvent;
 
-public sealed partial class Scp106BoughtPhantomAction : InstantActionEvent
-{
-    [DataField] public EntProtoId BoughtAction;
-}
-
 public sealed partial class Scp106OnUpgradePhantomAction : InstantActionEvent
 {
     [DataField] public TimeSpan CooldownReduce;
