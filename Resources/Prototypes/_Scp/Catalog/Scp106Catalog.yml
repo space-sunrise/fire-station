@@ -72,3 +72,20 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
+
+- type: listing
+  id: Scp106Puddle
+  name: scp106-shop-puddle-name
+  description: scp106-shop-puddle-desc
+  productEvent: !type:Scp106BoughtPuddle
+    boughtAction: Scp106PuddleSpawnAction
+  categories:
+  - Scp106Abilities
+  cost:
+    LifeEssence: 15
+  raiseProductEventOnUser: true
+  icon:
+    sprite: _Scp/Actions/scp-106.rsi
+    state: become_phantom # TODO свой спрайт
+  conditions:
+  - !type:ListingLimitedStockCondition

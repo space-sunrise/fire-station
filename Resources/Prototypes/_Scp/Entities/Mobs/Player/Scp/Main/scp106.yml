@@ -75,7 +75,6 @@
     - Scp106RandomTeleportAction
     - Scp106BackroomsAction
     - ActionScp106Shop
-    - Scp106PuddleSpawnAction
   - type: TTS
     voice: HearthstoneSotis
   - type: Vocal
@@ -123,5 +122,3 @@
     - Stun
   - type: ComplexInteraction
   - type: SpeedModifierContactCapClothing
-    maxContactSprintSlowdown: 1
-    maxContactWalkSlowdown: 1

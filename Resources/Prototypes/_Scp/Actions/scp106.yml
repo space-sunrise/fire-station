@@ -27,21 +27,6 @@
       cost: 30
 
 - type: entity
-  id: Scp106PuddleSpawnAction
-  components:
-  - type: Action
-    raiseOnUser: true
-    itemIconStyle: BigAction
-    useDelay: 180
-    icon:
-      sprite: _Scp/Actions/scp-106.rsi
-      state: become_phantom
-  - type: InstantAction
-    event: !type:InstantSpawnSpellEvent
-      prototype: PuddleScp106Reagent200
-      posData: !type:TargetCasterPos
-
-- type: entity
   id: ActionScp106Shop
   components:
   - type: Action
@@ -144,6 +129,21 @@
   - type: InstantAction
     event: !type:Scp106TerrifyNearbyActionEvent
       cost: 30
+
+- type: entity
+  id: Scp106PuddleSpawnAction
+  components:
+  - type: Action
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 180
+    icon:
+      sprite: _Scp/Actions/scp-106.rsi
+      state: become_phantom # TODO свой спрайт
+  - type: InstantAction
+    event: !type:InstantSpawnSpellEvent
+      prototype: PuddleScp106Reagent200
+      posData: !type:TargetCasterPos
 
 ### PHANTOM ABILITIES END
 
