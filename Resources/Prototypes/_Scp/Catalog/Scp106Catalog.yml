@@ -16,9 +16,6 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 4
-  - !type:BuyBeforeCondition
-    whitelist:
-    - Scp106BoughtPhantomAction
 
 - type: listing
   id: Scp106BareBlade
