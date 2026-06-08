@@ -40,7 +40,6 @@
     event: !type:InstantSpawnSpellEvent
       prototype: PuddleScp106Reagent200
       posData: !type:TargetCasterPos
-      cost: 30
 
 - type: entity
   id: ActionScp106Shop
