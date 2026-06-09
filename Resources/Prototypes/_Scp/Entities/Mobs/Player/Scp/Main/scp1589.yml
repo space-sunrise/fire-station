@@ -158,3 +158,15 @@
     - main
     activeHandId: main
   - type: Stripping
+  - type: Prying
+    speedModifier: 5
+    pryPowered: true
+    force: true
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+  - type: FieldOfView
+    angle: 240
