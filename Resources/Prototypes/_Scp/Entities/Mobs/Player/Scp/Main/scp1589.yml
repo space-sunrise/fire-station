@@ -109,7 +109,7 @@
     accent: genericAggressive
   - type: SlowAccent
   - type: TTS
-    voice: Dota2Pudge
+    voice: HeartstoneHamulRunicalTotem
   - type: TriggerOnVoice
     keyOut: StartPhrase
     defaultKeyPhrase: key-phrase-scp1589
