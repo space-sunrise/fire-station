@@ -105,9 +105,9 @@
     magnitude: 2
     correctionPower: 1
   - type: Pacified
-#  - type: ReplacementAccent
-#    accent: genericAggressive
-#  - type: SlowAccent
+  - type: ReplacementAccent
+    accent: genericAggressive
+  - type: SlowAccent
   - type: TTS
     voice: HeartstoneHamulRunicalTotem
   - type: TriggerOnVoice
