@@ -105,9 +105,9 @@
     magnitude: 2
     correctionPower: 1
   - type: Pacified
-  - type: ReplacementAccent
-    accent: genericAggressive
-  - type: SlowAccent
+#  - type: ReplacementAccent
+#    accent: genericAggressive
+#  - type: SlowAccent
   - type: TTS
     voice: HeartstoneHamulRunicalTotem
   - type: TriggerOnVoice
@@ -129,6 +129,11 @@
     keysIn: [ StartPhrase ]
     keyOut: EndPhrase
     delay: 60
+  - type: PopupOnTrigger
+    keysIn: [ StartPhrase ]
+    text: scp1589-popup-triggered
+    popupType: Medium
+    userIsRecipient: false
   - type: AddComponentsOnTrigger
     keysIn: [ EndPhrase ]
     components:
@@ -170,3 +175,8 @@
         Piercing: 0.9
   - type: FieldOfView
     angle: 240
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepScp939
+      params:
+        volume: 3
