@@ -1,9 +1,9 @@
 - type: reagent
   parent: Blood
   id: Scp106Reagent
-  name: reagent-name-scp106
+  name: reagent-scp-106-name
   group: Biological
-  desc: reagent-desc-scp106
+  desc: reagent-scp106-desc
   color: "#1A1C1A"
   flavor: horrible
   recognizable: false
