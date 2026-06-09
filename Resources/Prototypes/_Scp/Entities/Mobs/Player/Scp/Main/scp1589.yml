@@ -164,7 +164,7 @@
     activeHandId: main
   - type: Stripping
   - type: Prying
-    speedModifier: 5
+    speedModifier: 2
     pryPowered: true
     force: true
   - type: Armor
