@@ -183,14 +183,14 @@
     sprite: _Scp/Objects/Misc/scp_cage.rsi
     layers:
     - state: open
-    - state: base
+    - state: broken
       map: [ "enum.ConstructionVisuals.Layer" ]
   - type: Appearance
   - type: GenericVisualizer
     visuals:
       enum.ConstructionVisuals.Key:
         enum.ConstructionVisuals.Layer:
-          start: { state: base }
+          start: { state: broken }
           doorInserted: { state: door }
           doorAnchored: { state: door }
   - type: Transform
