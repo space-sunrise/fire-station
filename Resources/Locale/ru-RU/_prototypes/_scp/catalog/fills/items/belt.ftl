@@ -36,3 +36,5 @@ ent-ClothingBeltMtfAmmoShellShotgunBulldog = { ent-ClothingBeltMtfAmmo }
     .desc = { ent-ClothingBeltMtfAmmo.desc }
 ent-ClothingBeltMtfAmmoBR64 = { ent-ClothingBeltMtfAmmo }
     .desc = { ent-ClothingBeltMtfAmmo.desc }
+ent-ClothingBeltSheathFilledScp3288 = { ent-ClothingBeltSheathFilled }
+    .desc = { ent-ClothingBeltSheathFilled.desc }
