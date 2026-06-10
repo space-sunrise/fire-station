@@ -7,7 +7,6 @@
   - InventoryBase
   - StripableInventoryBase
   id: BaseMobScp3288Monster
-  name: ???
   abstract: true
   components:
     - type: Pullable

@@ -117,13 +117,13 @@
 - type: job
   id: Scp3288Alpha
   name: job-name-scp3288Alpha
-  description: job-description-scp3288Alpha
-  playTimeTracker: JobScp3288Alpha
+  description: job-description-scp3288-alpha
+  playTimeTracker: JobScp3288-alpha
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 756000 # 210h
   weight: 1020
-  icon: JobIconScp106
+#  icon: TODO
   joinNotifyCrew: false
   overrideConsoleVisibility: false
   canBeAntag: false
