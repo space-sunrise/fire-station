@@ -159,7 +159,6 @@
     id: ChaosAccessBreaker
     ears: ClothingHeadsetAltChaos
     belt: ClothingBeltChaosFilled
-    pocket1: WeaponPistolGoldenMk58
     pocket2: LeaderUplinkChaos
   inhand:
   - MedkitCombatFilled
