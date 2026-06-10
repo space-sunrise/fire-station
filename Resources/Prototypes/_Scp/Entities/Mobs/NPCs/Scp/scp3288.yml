@@ -66,7 +66,7 @@
       damage:
         types:
           Slash: 10
-          Structural: 25
+          Structural: 5
     - type: Scp
       class: Keter
     - type: FearSource
