@@ -1,3 +1,3 @@
 ent-CeremonialSabre = ceremonial sabre
-    .desc = A ceremonial weapon belonging to the Habsburgs family.
+    .desc = A ceremonial weapon belonging to the Habsburg family.
     .suffix = SCP-3288

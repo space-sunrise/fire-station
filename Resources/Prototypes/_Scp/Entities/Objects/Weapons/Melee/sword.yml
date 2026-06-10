@@ -2,7 +2,7 @@
   name: ceremonial sabre
   parent: BaseSword
   id: CeremonialSabre
-  description: A ceremonial weapon belonging to the Habsburgs family.
+  description: A ceremonial weapon belonging to the Habsburg family.
   suffix: SCP-3288
   components:
   - type: Sprite
