@@ -118,7 +118,7 @@
   id: Scp3288Alpha
   name: job-name-scp3288Alpha
   description: job-description-scp3288-alpha
-  playTimeTracker: JobScp3288-alpha
+  playTimeTracker: JobScp3288Alpha
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 756000 # 210h
