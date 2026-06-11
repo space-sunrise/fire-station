@@ -586,18 +586,7 @@
   id: ChaosUplinkClothingOuterArmorChaosHeavyVest
   productEntity: ClothingOuterArmorChaosHeavyVest
   cost:
-    SupplyPoint: 20
-  categories:
-  - ChaosEquipment
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 1
-
-- type: listing
-  id: ChaosUplinkClothingOuterArmorSWAT
-  productEntity: ClothingOuterArmorSWAT
-  cost:
-    SupplyPoint: 40
+    SupplyPoint: 25
   categories:
   - ChaosEquipment
   conditions:
