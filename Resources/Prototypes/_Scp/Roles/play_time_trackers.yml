@@ -253,3 +253,6 @@
 
 - type: playTimeTracker
   id: AntagChaosRaiderFighter
+
+- type: playTimeTracker
+  id: AntagChaosSpy

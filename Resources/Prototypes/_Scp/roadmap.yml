@@ -93,7 +93,7 @@
     - id: traitors
       name: roadmap-traitors-name
       desc: roadmap-traitors-description
-      state: Planned
+      state: Complete
     - id: assault
       name: roadmap-assault-name
       desc: roadmap-assault-description

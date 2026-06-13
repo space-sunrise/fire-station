@@ -18,3 +18,7 @@ ent-Scp = { ent-BaseGameRule }
     .desc = { ent-BaseGameRule.desc }
 ent-ScpChaosRaid = { ent-BaseGameRule }
     .desc = { ent-BaseGameRule.desc }
+ent-ScpChaosSpy = { ent-BaseGameRule }
+    .desc = { ent-BaseGameRule.desc }
+ent-ScpChaosSpyModern = { ent-BaseGameRule }
+    .desc = { ent-BaseGameRule.desc }

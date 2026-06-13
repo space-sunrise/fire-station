@@ -23,6 +23,7 @@
     prototype: BoxCardboard
   - !type:AddComponentSpecial
     components:
+    - type: LowPisitionStaff
     - type: EmployeeClass
       class: C
     - type: AccessLevel

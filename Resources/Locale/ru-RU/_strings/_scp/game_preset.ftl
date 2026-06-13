@@ -45,4 +45,10 @@ scp-description-thaumiel =
     | Кетер: ДА
 
 scp-title-chaos-raid = Рейд Повстанцев Хаоса
-scp-description-chaos-raid = Данная смена может оказаться для вас последней. В этой жизни.
+scp-description-chaos-raid = 
+    Данная смена может оказаться для вас последней. В этой жизни.
+    { scp-description-euclid }
+scp-title-chaos-spy = Шпионы Повстанцев Хаоса
+scp-description-chaos-spy = 
+    Среди нас предатель...
+    { scp-description-euclid }
