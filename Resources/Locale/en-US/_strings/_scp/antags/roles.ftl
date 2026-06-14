@@ -1,6 +1,6 @@
 
 # CHAOS
-roles-antag-chaos-raider-fighter-name = Chaos fighter
+roles-antag-chaos-raider-fighter-name = Chaos Fighter
 roles-antag-chaos-raider-fighter-objective = Complete the Chaos Insurgency's overall objective in this area.
 roles-antag-chaos-raider-medic-name = Chaos Medic
 roles-antag-chaos-raider-medic-objective = { roles-antag-chaos-raider-fighter-objective }

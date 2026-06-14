@@ -228,7 +228,7 @@
         - AntagImmune
       whitelist:
         components:
-        - LowPisitionStaff
+        - LowPositionStaff
       lateJoinAdditional: false
       mindRoles:
       - MindRoleChaosSpy
@@ -250,7 +250,7 @@
       blacklist:
         components:
         - AntagImmune
-        - LowPisitionStaff
+        - LowPositionStaff
       lateJoinAdditional: false
       mindRoles:
       - MindRoleChaosSpy
@@ -273,7 +273,7 @@
         - AntagImmune
       whitelist:
         components:
-        - LowPisitionStaff
+        - LowPositionStaff
       lateJoinAdditional: false
       mindRoles:
       - MindRoleChaosSleepSpy

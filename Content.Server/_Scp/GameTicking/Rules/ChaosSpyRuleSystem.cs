@@ -62,7 +62,10 @@ public sealed class ChaosSpyRuleSystem : GameRuleSystem<ChaosSpyRuleComponent>
 
         ent.Comp.ChaosSleepSpyRuleEnt = _gameTicker.AddGameRule(ent.Comp.ChaosSleepSpyRuleProtoId);
         if (!TryComp<ChaosSleepSpyRuleComponent>(ent.Comp.ChaosSleepSpyRuleEnt, out var sleepSpyRuleComp))
+        {
+            _gameTicker.EndGameRule(ent.Comp.ChaosSleepSpyRuleEnt.Value);
             return;
+        }
 
         sleepSpyRuleComp.CodeWords = ent.Comp.CodeWords;
         _gameTicker.StartGameRule(ent.Comp.ChaosSleepSpyRuleEnt.Value);
@@ -142,7 +145,8 @@ public sealed class ChaosSpyRuleSystem : GameRuleSystem<ChaosSpyRuleComponent>
 
     private void OnObjectivesTextPrepend(Entity<ChaosSpyRuleComponent> ent, ref ObjectivesTextPrependEvent args)
     {
-        args.Text += "\n" + Loc.GetString("traitor-round-end-codewords", ("codewords", string.Join(", ", _codeword.GetCodewords(ent.Comp.CodewordsFactionProtoId))));
+        if (ent.Comp.CodeWords != null)
+            args.Text += "\n" + Loc.GetString("traitor-round-end-codewords", ("codewords", string.Join(", ", ent.Comp.CodeWords)));
     }
 
     private string GenerateBriefind(string[]? codewords, Note[]? uplinkCode, string? objectiveIssuer = null)
