@@ -25,10 +25,10 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly INetManager _net = default!;
 
+    private const float ReducedBlinkingToleranceDecayPerSecond = 0.05f;
+
     protected EntityQuery<BlinkableComponent> BlinkableQuery;
     protected EntityQuery<ActiveReducedBlinkingUserComponent> ActiveReducedBlinkingQuery;
-
-    private const float ReducedBlinkingToleranceDecayPerSecond = 0.05f;
 
     public override void Initialize()
     {
