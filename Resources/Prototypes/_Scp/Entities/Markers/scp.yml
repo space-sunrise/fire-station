@@ -156,20 +156,6 @@
 
 - type: entity
   name: SCP-208 spawner
-  id: SpawnScp208
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-    - state: green
-    - sprite: _Scp/Mobs/Scp/scp-208.rsi
-      state: scp-208
-  - type: ConditionalSpawner
-    prototypes:
-    - Scp208
-
-- type: entity
-  name: SCP-208 spawner
   suffix: 50%
   id: SpawnScp208
   parent: MarkerBase

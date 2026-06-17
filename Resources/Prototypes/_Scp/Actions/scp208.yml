@@ -1,7 +1,7 @@
 ﻿- type: entity
   id: Scp208Shield
   name: Physical shield
-  description: Вы создаете крепкий барьер прямо перед носом противника.
+  description: You create a strong barrier right in front of your opponent.
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
