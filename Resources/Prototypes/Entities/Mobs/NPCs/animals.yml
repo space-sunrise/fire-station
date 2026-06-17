@@ -1752,7 +1752,9 @@
 - type: entity
   name: kobold
   id: MobKobold
-  parent: MobBaseKobold
+  parent: 
+  - MobBaseKobold
+  - BaseFriendlyScpArtifactMinor # Fire added
   description: Cousins to the sentient race of lizard people, kobolds blend in with their natural habitat and are as nasty as monkeys; ready to pull out your hair and stab you to death.
   components:
   - type: Clumsy
@@ -2100,7 +2102,9 @@
 - type: entity
   name: cancer mouse
   description: Toxic. Squeak!
-  parent: MobMouse
+  parent: 
+  - MobMouse
+  - BaseFriendlyScpArtifactMinor # Fire added
   id: MobMouseCancer
   components:
   - type: GhostRole
@@ -2826,7 +2830,9 @@
 
 - type: entity
   name: clown spider
-  parent: MobSpiderAngryBase
+  parent: 
+  - MobSpiderAngryBase
+  - BaseFriendlyScpArtifactMinor # Fire added
   id: MobClownSpider
   description: Combines the two most terrifying things in existence, spiders and clowns.
   components:
