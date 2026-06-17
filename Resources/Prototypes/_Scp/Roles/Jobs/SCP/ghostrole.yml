@@ -35,7 +35,25 @@
   alwaysShowInBanPanel: true
   setPreference: false
   applyTraits: false
-  
+
+- type: job
+  id: Scp208
+  name: job-name-scp208
+  description: job-description-scp208
+  playTimeTracker: JobScp208
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 432000 # 120h
+  weight: 968
+  #icon: TODO
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp208
+  alwaysShowInBanPanel: true
+  setPreference: false
+  applyTraits: false
+
 - type: job
   id: Scp1508
   name: job-name-scp1508

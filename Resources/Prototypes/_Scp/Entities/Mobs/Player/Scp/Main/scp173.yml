@@ -42,7 +42,7 @@
     - whitelist:
         components:
         - MobState
-        - HumanoidAppearance
+        - Blinkable
         requireAll: true
       damage:
         types:

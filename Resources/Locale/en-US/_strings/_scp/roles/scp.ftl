@@ -17,3 +17,5 @@ job-name-scp0192 = SCP-019-2 «The Monster Pot»
 job-description-scp0192 = An extremely aggressive creature that emerges from SCP-019.
 job-name-scp1589 = SCP-1589 «Roman Anthropophagus»
 job-description-scp1589 = An obedient and calm giant who carries out any orders.
+job-name-scp208 = SCP-208 «Bes»
+job-description-scp208 = A kind-hearted Egyptian deity who endlessly wishes only goodness and happiness for people.
