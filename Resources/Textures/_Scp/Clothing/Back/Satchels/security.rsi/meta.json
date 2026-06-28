@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "license": "CLA",
+  "license": "CC-BY-SA-3.0",
   "copyright": "made by peper",
   "size": {
     "x": 32,
@@ -11,7 +11,7 @@
       "name": "icon"
     },
     {
-      "name": "equipped-BELT",
+      "name": "equipped-BACKPACK",
       "directions": 4
     },
     {

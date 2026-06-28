@@ -81,7 +81,7 @@
   description: It's a very robust backpack.
   components:
   - type: Sprite
-    sprite: _Sunrise/Clothing/Back/Backpacks/security.rsi #Sunrise-Edit
+    sprite: _Scp/Clothing/Back/Backpacks/security.rsi #Fire edit
 
 - type: entity
   parent: [ClothingBackpack, BaseSecurityContraband]
