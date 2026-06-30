@@ -201,9 +201,9 @@
     needsHands: true
   - type: Vocal
     sounds:
-      Male: Human
-      Female: Human
-      Unsexed: Human
+      Male: MaleHuman
+      Female: MaleHuman
+      Unsexed: MaleHuman
   - type: Speech
   - type: TTS
   - type: UserInterface
