@@ -12,7 +12,17 @@
   - type: CanJump
     isOnlyEmotion: false
   - type: CanFall
-  - type: WatchingTarget
+  - type: Fear
+    phobias:
+    - Exoremophobia
+    - Necrophobia
+  - type: ProximityTarget
+  - type: ComponentToggler
+    components:
+    - type: FearSource
+      phobiaType: Necrophobia
+      uponComeCloser: None
+    - type: WatchingTarget
   - type: SlowOnDamage
     speedModifierThresholds:
       80: 0.9
@@ -40,7 +50,6 @@
   - type: Emoting
   - type: BodyEmotes
     soundsId: GeneralBodyEmotes
-  - type: Fear
   - type: Mood
 #  - type: Blinkable открою после принятия сцп 208
   - type: AutoGhostRole
