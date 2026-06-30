@@ -1,5 +1,7 @@
 ent-Scp106BackroomsAction = Teleport to the pocket dimension
     .desc = Teleports you to the pocket dimension. Requires you to stand still
+ent-Scp106PuddleSpawnAction = Dark substance
+    .desc = Releases a moderate amount of black rot, slowing anyone who steps on it.
 ent-Scp106RandomTeleportAction = Teleport to the compound
     .desc = Teleports you to the compound. Requires you to stand still
 ent-ActionScp106Shop = Embodiment of suffering
