@@ -35,6 +35,15 @@
 
 - type: entity
   parent: BaseSignDirectionalScp
+  id: SignDirectionalScp007
+  name: SCP-007 sign
+  description: Points in a direction you shouldn't go without a clear understanding of where it leads.
+  components:
+  - type: Sprite
+    state: 007
+
+- type: entity
+  parent: BaseSignDirectionalScp
   id: SignDirectionalScp012
   name: SCP-012 sign
   description: Points in a direction you shouldn't go without a clear understanding of where it leads.
@@ -176,6 +185,15 @@
   components:
   - type: Sprite
     state: 500
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp527
+  name: SCP-527 sign
+  description: Points in a direction you shouldn't go without a clear understanding of where it leads.
+  components:
+  - type: Sprite
+    state: 527
 
 - type: entity
   parent: BaseSignDirectionalScp

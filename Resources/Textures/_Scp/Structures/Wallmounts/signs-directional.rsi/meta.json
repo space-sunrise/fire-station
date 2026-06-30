@@ -8,6 +8,7 @@
     },
     "states": [
         { "name": "005", "directions": 4 },
+		{ "name": "007", "directions": 4 },
         { "name": "012", "directions": 4 },
 		{ "name": "018", "directions": 4 },
         { "name": "035", "directions": 4 },
@@ -24,6 +25,7 @@
         { "name": "330", "directions": 4 },
 		{ "name": "427", "directions": 4 },
         { "name": "500", "directions": 4 },
+        { "name": "527", "directions": 4 },
         { "name": "612", "directions": 4 },
 		{ "name": "714", "directions": 4 },
         { "name": "939", "directions": 4 },

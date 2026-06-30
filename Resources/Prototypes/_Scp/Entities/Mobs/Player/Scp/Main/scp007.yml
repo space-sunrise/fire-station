@@ -1,0 +1,128 @@
+﻿- type: entity
+  id: Scp007
+  name: ???
+  suffix: SCP-007
+  parent:
+  - BaseScpFriendly
+  - MobCombat
+  - MobBloodstream
+  - InventoryBase
+  - StripableInventoryBase
+  components:
+  - type: CanJump
+    isOnlyEmotion: false
+  - type: CanFall
+  - type: WatchingTarget
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      80: 0.9
+      130: 0.8
+      160: 0.7
+  - type: Pullable
+  - type: Puller
+    needsHands: true
+  - type: Speech
+  - type: TTS
+    voice: DeathNoteYagami
+  - type: UserInterface
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: Buckle
+  - type: Stripping
+  - type: Body
+    prototype: Human
+  - type: FieldOfView
+    angle: 240
+  - type: Crawler
+  - type: Emoting
+  - type: BodyEmotes
+    soundsId: GeneralBodyEmotes
+  - type: Fear
+  - type: Mood
+#  - type: Blinkable открою после принятия сцп 208
+  - type: AutoGhostRole
+    disconnectDelay: 600
+    pollDuration: 900
+    transferDelay: 180
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Mobs/Scp/scp-007.rsi
+    layers:
+    - state: scp-007
+    - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+      sprite: Objects/Misc/handcuffs.rsi
+      state: body-overlay-2
+      color: "#ffffff"
+      visible: false
+  - type: Scp
+    class: Euclid
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 5
+  - type: GhostPanelAntagonistMarker
+    name: ghost-panel-antagonist-scp-minor-name
+    description: ghost-panel-antagonist-scp-minor-description
+    priority: 0
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: GhostRole
+    makeSentient: true
+    name: ghost-role-information-scp007-name
+    description: ghost-role-information-scp007-description
+    raffle:
+      settings: short
+    job: Scp007
+  - type: GhostTakeoverAvailable
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+    - ScpResearchAdvanced
+  - type: Hands
+  - type: ComplexInteraction
+  - type: ScpRestriction
+    canBeDisarmed: true
+    canBePulled: true
+    canStandingState: true
+  - type: Inventory
+    templateId: human
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: StandingState
+  - type: Loadout
+    prototypes: [ Scp007Gear ]
+  - type: StatusEffects
+    allowed:
+    - SlowedDown
+    - Stutter
+    - ForcedSleep
+    - Pacified
+    - RadiationProtection
+    - Drowsiness
+    - Jumping
+  - type: Climbing
+  - type: Cuffable
+  - type: Tag
+    tags:
+    - FootstepSound
+    - CannotSuicide
+    - DoorBumpOpener
+    - Scp007
+
+- type: startingGear
+  id: Scp007Gear
+  equipment:
+    id: KeyCardPassEmpty
+    shoes: ClothingShoesBootsLaceup
+    jumpsuit: ClothingUniformJumpsuitSecBlue
+    belt: ClothingBeltStorageWaistbag
+    pants: ClothingPantsManStripe
+    socks: ClothingKneeWhite

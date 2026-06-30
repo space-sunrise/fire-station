@@ -194,6 +194,21 @@
   - type: Item
     sprite: Objects/Specific/Medical/Surgery/scissors.rsi
     storedRotation: 90
+  # Fire edit start - исследования сцп
+  - type: ScpInteractTool
+    delay: 30
+    cooldown: 600 # 5 минут
+    cooldownMessage: scp-interact-time-left
+    event: !type:ScpSpawnInteractDoAfterEvent
+      toSpawn: ScpDirtLump
+    sound: /Audio/Effects/break_stone.ogg # TODO: Звук
+    whitelist:
+      tags:
+      - Scp007
+  - type: GuideHelp
+    guides:
+    - ScpResearchAdvanced
+  # Fire edit end
 
 - type: entity
   name: retractor

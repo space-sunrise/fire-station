@@ -638,6 +638,15 @@
 
 - type: entity
   parent: PosterScpContainmentRoomBase
+  id: PosterSCP007
+  name: SCP-007 poster
+  description: Information poster for SCP-007.
+  components:
+  - type: Sprite
+    state: scp007
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
   id: PosterScp012
   name: SCP-012 poster
   description: Information poster for SCP-012.
@@ -824,6 +833,15 @@
   components:
   - type: Sprite
     state: scp500
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP527
+  name: SCP-527 poster
+  description: Information poster for SCP-527.
+  components:
+  - type: Sprite
+    state: scp527
 
 - type: entity
   parent: PosterScpContainmentRoomBase

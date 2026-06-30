@@ -197,6 +197,34 @@
     - Scp1589
 
 - type: entity
+  name: SCP-527 spawner
+  id: SpawnScp527
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/Mobs/Scp/scp-527.rsi
+      state: scp-527
+  - type: ConditionalSpawner
+    prototypes:
+    - Scp527
+
+- type: entity
+  name: SCP-007 spawner
+  id: SpawnScp007
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/Mobs/Scp/scp-007.rsi
+      state: scp-007
+  - type: ConditionalSpawner
+    prototypes:
+    - Scp007
+
+- type: entity
   name: SCP-457 spawner
   id: SpawnScp457
   parent: MarkerBase

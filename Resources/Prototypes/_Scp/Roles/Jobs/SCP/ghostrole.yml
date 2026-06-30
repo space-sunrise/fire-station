@@ -75,6 +75,42 @@
 # Евклид
 
 - type: job
+  id: Scp007
+  name: job-name-scp007
+  description: job-description-scp007
+  playTimeTracker: JobScp007
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 108000 # 30h
+  weight: 965
+  #icon: TODO
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp007
+  alwaysShowInBanPanel: true
+  setPreference: false
+  applyTraits: false
+
+- type: job
+  id: Scp527
+  name: job-name-scp527
+  description: job-description-scp527
+  playTimeTracker: JobScp527
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 108000 # 30h
+  weight: 965
+  #icon: TODO
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp527
+  alwaysShowInBanPanel: true
+  setPreference: false
+  applyTraits: false
+
+- type: job
   id: Scp1589
   name: job-name-scp1589
   description: job-description-scp1589

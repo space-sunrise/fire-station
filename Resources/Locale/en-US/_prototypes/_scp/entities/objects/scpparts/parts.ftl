@@ -16,3 +16,5 @@ ent-Scp096Photo = strange photograph
     .desc = A small photograph in which the contents are almost indistinguishable. You can barely recognize the outline of a humanoid silhouette.
 ent-Scp019GlassShard = ceramic shard
     .desc = Ceramic shard with recognizable ancient Greek style and decor.
+ent-ScpDirtLump = lump of dirt
+    .desc = A small pile of soil.

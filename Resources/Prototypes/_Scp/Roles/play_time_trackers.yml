@@ -151,6 +151,9 @@
 # SCP
 
 - type: playTimeTracker
+  id: JobScp007
+
+- type: playTimeTracker
   id: JobScp0192
 
 - type: playTimeTracker
@@ -173,6 +176,9 @@
 
 - type: playTimeTracker
   id: JobScp173
+
+- type: playTimeTracker
+  id: JobScp527
 
 - type: playTimeTracker
   id: JobScp939

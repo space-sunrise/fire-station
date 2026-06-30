@@ -13,7 +13,11 @@ job-description-scp939 = Sightless, predatory creatures, attracting victims with
 job-name-scp999 = SCP-999 "The Tickle Monster"
 job-description-scp999 = A friendly, gelatinous entity that causes boundless joy and laughter. Able to relieve stress and cure depression.
 
+job-name-scp007 = SCP-007 «Abdominal planet»
+job-description-scp007 = A good young man with a replica of the Earth in his stomach. He is completely indifferent to this.
 job-name-scp0192 = SCP-019-2 «The Monster Pot»
 job-description-scp0192 = An extremely aggressive creature that emerges from SCP-019.
+job-name-scp527 = SCP-527 «Mr. Fish»
+job-description-scp527 = Mr. Fish - one of the Little Misters in Dr. Wondertainment's collection. He has a fish head instead of a human head... That's all.
 job-name-scp1589 = SCP-1589 «Roman Anthropophagus»
 job-description-scp1589 = An obedient and calm giant who carries out any orders.
