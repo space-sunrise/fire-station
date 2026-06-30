@@ -89,6 +89,7 @@
   - type: ScpRestriction
     canBeDisarmed: true
     canBePulled: true
+    CanPull: true
     canStandingState: true
   - type: Inventory
     templateId: human
