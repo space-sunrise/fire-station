@@ -13,7 +13,7 @@ job-description-scp939 = Sightless, predatory creatures, attracting victims with
 job-name-scp999 = SCP-999 "The Tickle Monster"
 job-description-scp999 = A friendly, gelatinous entity that causes boundless joy and laughter. Able to relieve stress and cure depression.
 
-job-name-scp007 = SCP-007 «Abdominal planet»
+job-name-scp007 = SCP-007 «Abdominal Planet»
 job-description-scp007 = A good young man with a replica of the Earth in his stomach. He is completely indifferent to this.
 job-name-scp0192 = SCP-019-2 «The Monster Pot»
 job-description-scp0192 = An extremely aggressive creature that emerges from SCP-019.

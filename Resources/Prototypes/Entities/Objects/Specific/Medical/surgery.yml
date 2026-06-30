@@ -194,6 +194,19 @@
   - type: Item
     sprite: Objects/Specific/Medical/Surgery/scissors.rsi
     storedRotation: 90
+
+- type: entity
+  name: retractor
+  id: Retractor
+  parent: BaseScissors
+  description: A surgical tool used to hold open incisions.
+  components:
+  - type: Retractor
+  - type: SurgeryTool
+    startSound:
+      path: /Audio/_Sunrise/Medical/Surgery/retractor1.ogg
+    endSound:
+      path: /Audio/_Sunrise/Medical/Surgery/retractor2.ogg
   # Fire edit start - исследования сцп
   - type: ScpInteractTool
     delay: 30
@@ -209,19 +222,6 @@
     guides:
     - ScpResearchAdvanced
   # Fire edit end
-
-- type: entity
-  name: retractor
-  id: Retractor
-  parent: BaseScissors
-  description: A surgical tool used to hold open incisions.
-  components:
-  - type: Retractor
-  - type: SurgeryTool
-    startSound:
-      path: /Audio/_Sunrise/Medical/Surgery/retractor1.ogg
-    endSound:
-      path: /Audio/_Sunrise/Medical/Surgery/retractor2.ogg
 
 - type: entity
   name: advanced retractor

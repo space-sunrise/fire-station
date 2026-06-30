@@ -84,7 +84,7 @@
 
 - type: entity
   id: Scp019GlassShard
-  parent: BaseScpMaterial
+  parent: BaseScpResearchMaterial
   name: ceramic shard
   description: Ceramic shard with recognizable ancient Greek style and decor.
   components:
@@ -99,7 +99,7 @@
 
 - type: entity
   id: ScpDirtLump
-  parent: BaseScpMaterial
+  parent: BaseScpResearchMaterial
   name: lump of dirt
   description: A small pile of soil.
   components:
