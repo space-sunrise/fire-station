@@ -199,9 +199,13 @@
   - type: Pullable
   - type: Puller
     needsHands: true
+  - type: Vocal
+    sounds:
+      Male: Human
+      Female: Human
+      Unsexed: Human
   - type: Speech
   - type: TTS
-    voice: DeathNoteYagami
   - type: UserInterface
     interfaces:
       enum.StrippingUiKey.Key:
