@@ -3,55 +3,19 @@
   name: ???
   suffix: SCP-527
   parent:
-  - BaseScpFriendly
+  - BaseScpFriendlySapient
   - MobCombat
   - MobBloodstream
-  - InventoryBase
-  - StripableInventoryBase
   components:
-  - type: CanJump
-    isOnlyEmotion: false
-  - type: CanFall
-  - type: Fear
-    phobias:
-    - Exoremophobia
-    - Necrophobia
-  - type: ProximityTarget
-  - type: ComponentToggler
-    components:
-    - type: FearSource
-      phobiaType: Necrophobia
-      uponComeCloser: None
-    - type: WatchingTarget
   - type: SlowOnDamage
     speedModifierThresholds:
       80: 0.9
       130: 0.8
       160: 0.7
-  - type: Pullable
-  - type: Puller
-    needsHands: true
-  - type: Speech
   - type: TTS
     voice: ChocolateFabricWonka
-  - type: UserInterface
-    interfaces:
-      enum.StrippingUiKey.Key:
-        type: StrippableBoundUserInterface
-      enum.StoreUiKey.Key:
-        type: StoreBoundUserInterface
-  - type: Buckle
-  - type: Stripping
-  - type: Body
-    prototype: Human
-  - type: FieldOfView
-    angle: 240
-  - type: Crawler
-  - type: Emoting
-  - type: BodyEmotes
-    soundsId: GeneralBodyEmotes
   - type: Mood
-#  - type: Blinkable открою после принятия сцп 208
+  - type: Blinkable
   - type: AutoGhostRole
     disconnectDelay: 600
     pollDuration: 900
@@ -93,33 +57,10 @@
   - type: GuideHelp
     guides:
     - ScpResearch
-  - type: Hands
-  - type: ComplexInteraction
-  - type: ScpRestriction
-    canBeDisarmed: true
-    canBePulled: true
-    canPull: true
-    canStandingState: true
-  - type: Inventory
-    templateId: human
-  - type: RotationVisuals
-    defaultRotation: 90
-    horizontalRotation: 90
-  - type: StandingState
   - type: Loadout
     prototypes: [ Scp527Gear ]
   - type: Thirst
   - type: Hunger
-  - type: StatusEffects
-    allowed:
-    - SlowedDown
-    - Stutter
-    - ForcedSleep
-    - Pacified
-    - RadiationProtection
-    - Drowsiness
-    - Jumping
-  - type: Climbing
   - type: Cuffable
 
 - type: startingGear
