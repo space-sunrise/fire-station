@@ -150,44 +150,23 @@
 
 # Scp-106
 
+# TODO: Возможно стоит телепортировать его в радиусе от удара куда-то или отбрасывать, чтобы эффектнее смотрелось
+# TODO: чатгпт снова дал идею - использовать заряд и встроенную батарею для работы, визуализировать поле какое-то еще
 - type: entity
-  parent: 
-  - ClothingOuterBase
-  - PowerCellSlotSmallItem
+  parent: ClothingOuterBase
   id: ClothingOuterAntiTeleportation
   suffix: SCP-106 Item
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Armor/armor_reflec.rsi
   - type: Clothing
-    equipDelay: 1.5
-    unequipDelay: 1.5
     sprite: Clothing/OuterClothing/Armor/armor_reflec.rsi
   - type: Item
     size: Normal
     storedRotation: -90
-  - type: PowerCellDraw
-    drawRate: 3.5
-    useCharge: 20
-  - type: ItemToggle
-    predictable: false # issues between ToggleCellDraw and ItemToggleActiveSound
-    onUse: false
-    canActivateInhand: false
-    soundActivate:
-      path: /Audio/_Sunrise/Items/Goggles/activate.ogg
-    soundDeactivate:
-      path: /Audio/_Sunrise/Items/Goggles/deactivate.ogg
-    soundFailToActivate:
-      path: /Audio/Machines/button.ogg
-  - type: ToggleCellDraw
-  - type: ToggleClothing
-    action: ProtectionToggleAction
-    mustEquip: true
-    disableOnUnequip: true
-  - type: ComponentToggler
-    parent: true
+  - type: ClothingAddComponents
     components:
-      - type: Scp106Protection
+    - type: Scp106Protection
   - type: Tag
     tags:
     - ClothingOuterAntiTeleportation
