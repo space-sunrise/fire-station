@@ -200,17 +200,6 @@
   - SalvageEquipment
   conditions:
   - !type:ListingLimitedStockCondition
-    stock: 2
-
-- type: listing
-  id: VendorSalvageJetpackMini
-  productEntity: JetpackMini
-  cost:
-    SalvageTicket: 130
-  categories:
-  - SalvageEquipment
-  conditions:
-  - !type:ListingLimitedStockCondition
     stock: 5
 
 - type: listing
