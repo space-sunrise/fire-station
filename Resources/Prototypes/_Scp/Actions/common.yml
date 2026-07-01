@@ -10,3 +10,16 @@
       state: icon
   - type: InstantAction
     event: !type:ScpTearMaskEvent
+
+- type: entity
+  parent: BaseAction
+  id: ProtectionToggleAction
+  name: Switching protection device
+  description: Switches protection device.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 1
+    icon: { sprite: _Scp/Clothing/Head/Helmets/aipowered.rsi, state: icon }
+  - type: InstantAction
+    event: !type:ToggleActionEvent
