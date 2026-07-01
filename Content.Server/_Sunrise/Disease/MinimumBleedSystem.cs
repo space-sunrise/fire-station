@@ -3,6 +3,7 @@
 using Content.Shared.Body.Components;
 using Robust.Shared.Configuration;
 namespace Content.Server._Sunrise.Disease;
+
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Content.Server.Body.Components;

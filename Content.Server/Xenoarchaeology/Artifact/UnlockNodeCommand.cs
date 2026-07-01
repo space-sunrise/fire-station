@@ -35,32 +35,32 @@ public sealed class UnlockNodeCommand : LocalizedEntityCommands
         switch (args.Length)
         {
             case 1:
-            {
-                var query = EntityManager.EntityQueryEnumerator<XenoArtifactComponent>();
-                var completionOptions = new List<CompletionOption>();
-                while (query.MoveNext(out var uid, out _))
                 {
-                    completionOptions.Add(new CompletionOption(uid.ToString()));
-                }
+                    var query = EntityManager.EntityQueryEnumerator<XenoArtifactComponent>();
+                    var completionOptions = new List<CompletionOption>();
+                    while (query.MoveNext(out var uid, out _))
+                    {
+                        completionOptions.Add(new CompletionOption(uid.ToString()));
+                    }
 
-                return CompletionResult.FromHintOptions(completionOptions, Loc.GetString("cmd-unlocknode-artifact-hint"));
-            }
+                    return CompletionResult.FromHintOptions(completionOptions, Loc.GetString("cmd-unlocknode-artifact-hint"));
+                }
             case 2 when
                 NetEntity.TryParse(args[0], out var netEnt) &&
                 EntityManager.TryGetEntity(netEnt, out var artifactUid) &&
                 EntityManager.TryGetComponent<XenoArtifactComponent>(artifactUid, out var comp):
-            {
-                var result = new List<CompletionOption>();
-                foreach (var node in _artiSystem.GetAllNodes((artifactUid.Value, comp)))
                 {
-                    var metaData = EntityManager.MetaQuery.Comp(artifactUid.Value);
-                    var entityUidStr = EntityManager.GetNetEntity(node).ToString();
-                    var completionOption = new CompletionOption(entityUidStr, metaData.EntityName);
-                    result.Add(completionOption);
-                }
+                    var result = new List<CompletionOption>();
+                    foreach (var node in _artiSystem.GetAllNodes((artifactUid.Value, comp)))
+                    {
+                        var metaData = EntityManager.MetaQuery.Comp(artifactUid.Value);
+                        var entityUidStr = EntityManager.GetNetEntity(node).ToString();
+                        var completionOption = new CompletionOption(entityUidStr, metaData.EntityName);
+                        result.Add(completionOption);
+                    }
 
-                return CompletionResult.FromHintOptions(result, Loc.GetString("cmd-unlocknode-node-hint"));
-            }
+                    return CompletionResult.FromHintOptions(result, Loc.GetString("cmd-unlocknode-node-hint"));
+                }
             default:
                 return CompletionResult.Empty;
         }

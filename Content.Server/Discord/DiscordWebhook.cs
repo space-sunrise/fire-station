@@ -13,7 +13,7 @@ namespace Content.Server.Discord;
 public sealed class DiscordWebhook : IPostInjectInit, IDisposable
 {
     private static readonly JsonSerializerOptions JsonOptions = new JsonSerializerOptions
-        { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
+    { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
 
     [Dependency] private readonly ILogManager _log = default!;
     [Dependency] private readonly IConfigurationManager _configuration = default!;
@@ -178,7 +178,7 @@ public sealed class DiscordWebhook : IPostInjectInit, IDisposable
         {
             throw new InvalidOperationException("Failed to create proxy handler");
         }
-        
+
         var client = new HttpClient(handler);
         client.Timeout = Timeout;
 

@@ -42,8 +42,8 @@ public sealed partial class DungeonJob
 
                 if (!_anchorable.TileFree((_gridUid, _grid),
                         tile,
-                        (int) CollisionGroup.MachineLayer,
-                        (int) CollisionGroup.MachineLayer))
+                        (int)CollisionGroup.MachineLayer,
+                        (int)CollisionGroup.MachineLayer))
                 {
                     continue;
                 }

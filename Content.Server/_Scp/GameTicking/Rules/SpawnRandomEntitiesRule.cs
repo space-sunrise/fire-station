@@ -24,7 +24,7 @@ public sealed class SpawnRandomEntitiesRule : StationEventSystem<SpawnRandomEnti
 
         var totalTiles = _station.GetTileCount((station.Value, stationDataComponent));
         var dirtyMod = RobustRandom.NextGaussian(component.TilesPerEntityAverage, component.TilesPerEntityStdDev);
-        var trashTiles = Math.Max((int) (totalTiles * (1 / dirtyMod)), 0);
+        var trashTiles = Math.Max((int)(totalTiles * (1 / dirtyMod)), 0);
 
         for (var i = 0; i < trashTiles; i++)
         {

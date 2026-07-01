@@ -228,7 +228,7 @@ public sealed partial class InstrumentSystem : SharedInstrumentSystem
             // Prevent stuck notes when turning off a channel... Shrimple.
             // Sunrise edit start - scope all-notes-off to nearby listeners
             RaiseInstrumentMidiEvent(uid,
-                new InstrumentMidiEventEvent(msg.Uid, new[] { RobustMidiEvent.AllNotesOff((byte) msg.Channel, 0) }),
+                new InstrumentMidiEventEvent(msg.Uid, new[] { RobustMidiEvent.AllNotesOff((byte)msg.Channel, 0) }),
                 user);
             // Sunrise edit end
         }
@@ -276,7 +276,7 @@ public sealed partial class InstrumentSystem : SharedInstrumentSystem
         var instrumentQuery = GetEntityQuery<InstrumentComponent>();
 
         if (!TryComp(uid, out InstrumentComponent? originInstrument)
-            || originInstrument.InstrumentPlayer is not {} originPlayer)
+            || originInstrument.InstrumentPlayer is not { } originPlayer)
             return Array.Empty<(NetEntity, string)>();
 
         // It's probably faster to get all possible active instruments than all entities in range
@@ -291,7 +291,7 @@ public sealed partial class InstrumentSystem : SharedInstrumentSystem
                 continue;
 
             // We want to use the instrument player's name.
-            if (instrument.InstrumentPlayer is not {} playerUid)
+            if (instrument.InstrumentPlayer is not { } playerUid)
                 continue;
 
             // Maybe a bit expensive but oh well GetBands is queued and has a timer anyway.
@@ -381,12 +381,12 @@ public sealed partial class InstrumentSystem : SharedInstrumentSystem
 
             if (instrument.RespectMidiLimits)
             {
-                if (instrument.LaggedBatches == (int) (MaxMidiLaggedBatches * (1 / 3d) + 1))
+                if (instrument.LaggedBatches == (int)(MaxMidiLaggedBatches * (1 / 3d) + 1))
                 {
                     _popup.PopupEntity(Loc.GetString("instrument-component-finger-cramps-light-message"),
                         uid, attached, PopupType.SmallCaution);
                 }
-                else if (instrument.LaggedBatches == (int) (MaxMidiLaggedBatches * (2 / 3d) + 1))
+                else if (instrument.LaggedBatches == (int)(MaxMidiLaggedBatches * (2 / 3d) + 1))
                 {
                     _popup.PopupEntity(Loc.GetString("instrument-component-finger-cramps-serious-message"),
                         uid, attached, PopupType.MediumCaution);
@@ -452,7 +452,7 @@ public sealed partial class InstrumentSystem : SharedInstrumentSystem
         var query = AllEntityQuery<ActiveInstrumentComponent, InstrumentComponent>();
         while (query.MoveNext(out var uid, out _, out var instrument))
         {
-            if (instrument.Master is {} master)
+            if (instrument.Master is { } master)
             {
                 if (Deleted(master))
                 {
@@ -478,7 +478,7 @@ public sealed partial class InstrumentSystem : SharedInstrumentSystem
                 (instrument.BatchesDropped >= MaxMidiBatchesDropped
                  || instrument.LaggedBatches >= MaxMidiLaggedBatches))
             {
-                if (instrument.InstrumentPlayer is {Valid: true} mob)
+                if (instrument.InstrumentPlayer is { Valid: true } mob)
                 {
                     _stuns.TryUpdateParalyzeDuration(mob, TimeSpan.FromSeconds(1));
 

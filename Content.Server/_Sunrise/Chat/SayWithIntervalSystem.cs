@@ -52,12 +52,12 @@ public sealed class SayWithIntervalSystem : EntitySystem
             return;
 
         InGameICChatType type = InGameICChatType.Speak;
-        switch(advert.chatType)
+        switch (advert.chatType)
         {
             case "whisper": type = InGameICChatType.Whisper; break;
             case "emote": type = InGameICChatType.Emote; break;
             case "collectiveMind": type = InGameICChatType.CollectiveMind; break;
-            default:  type = InGameICChatType.Speak; break;
+            default: type = InGameICChatType.Speak; break;
         } // Костыль, но InGameICChatType не указывается ингейм
         _chat.TrySendInGameICMessage(uid, advert.Message, type, false, isFormatted: advert.Format);
     }

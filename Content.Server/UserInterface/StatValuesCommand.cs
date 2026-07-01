@@ -189,7 +189,7 @@ public sealed class StatValuesCommand : IConsoleCommand
                 continue;
             }
 
-            var comp = (MeleeWeaponComponent) meleeComp.Component;
+            var comp = (MeleeWeaponComponent)meleeComp.Component;
 
             // TODO: Esword damage
 
@@ -200,7 +200,7 @@ public sealed class StatValuesCommand : IConsoleCommand
             var wieldedDamage = "-";
             if (proto.Components.TryGetValue(increaseDamageName, out var increaseDamageComp))
             {
-                var comp2 = (IncreaseDamageOnWieldComponent) increaseDamageComp.Component;
+                var comp2 = (IncreaseDamageOnWieldComponent)increaseDamageComp.Component;
 
                 wieldedStructuralDamage = (structuralDamage + comp2.BonusDamage.DamageDict.GetValueOrDefault(StructuralDamageType)).ToString();
                 wieldedDamage = (baseDamage + comp2.BonusDamage.GetTotal() - comp2.BonusDamage.DamageDict.GetValueOrDefault(StructuralDamageType)).ToString();
@@ -291,7 +291,7 @@ public sealed class StatValuesCommand : IConsoleCommand
                 continue;
             }
 
-            var comp = (ApcPowerReceiverComponent) powerConsumer.Component;
+            var comp = (ApcPowerReceiverComponent)powerConsumer.Component;
 
             if (comp.Load == 0)
                 continue;

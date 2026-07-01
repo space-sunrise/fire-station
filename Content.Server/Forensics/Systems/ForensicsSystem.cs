@@ -169,7 +169,7 @@ namespace Content.Server.Forensics
                 {
                     if (data is DnaData)
                     {
-                        list.Add(((DnaData) data).DNA);
+                        list.Add(((DnaData)data).DNA);
                     }
                 }
             }

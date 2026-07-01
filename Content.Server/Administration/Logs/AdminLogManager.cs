@@ -390,7 +390,7 @@ public sealed partial class AdminLogManager : SharedAdminLogManager, IAdminLogMa
                     continue;
 
                 case EntityStringRepresentation rep:
-                    if (rep.Session is {} session)
+                    if (rep.Session is { } session)
                         AddPlayer(players, session.UserId.UserId, logId);
                     continue;
 

@@ -19,7 +19,7 @@ public sealed partial class ProtoNitrateHydrogenConversionReaction : IGasReactio
 
         var producedAmount = Math.Min(Atmospherics.ProtoNitrateHydrogenConversionMaxRate, Math.Min(initialHydrogen, initialProtoNitrate));
 
-        if (producedAmount <= 0 || initialHydrogen-producedAmount < 0f)
+        if (producedAmount <= 0 || initialHydrogen - producedAmount < 0f)
             return ReactionResult.NoReaction;
 
         var oldHeatCapacity = atmosphereSystem.GetHeatCapacity(mixture, true);

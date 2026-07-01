@@ -142,7 +142,7 @@ public struct MonstermosInfo
     /// <param name="index">The index of the direction</param>
     public float this[int index]
     {
-        get => this[(AtmosDirection) (1 << index)];
-        set => this[(AtmosDirection) (1 << index)] = value;
+        get => this[(AtmosDirection)(1 << index)];
+        set => this[(AtmosDirection)(1 << index)] = value;
     }
 }

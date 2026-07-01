@@ -7,6 +7,7 @@ using Content.Shared.Actions;
 using Robust.Shared.Reflection;
 
 namespace Content.Server._Starlight.Actions;
+
 public sealed partial class SLActionSystem : EntitySystem
 {
     [Dependency] private readonly IReflectionManager _reflection = default!;
@@ -15,7 +16,7 @@ public sealed partial class SLActionSystem : EntitySystem
     [Dependency] private readonly StarlightEntitySystem _entities = default!;
 
     private static MethodInfo? s_handlerMethod;
-    public override void Initialize() 
+    public override void Initialize()
     {
         base.Initialize();
 
@@ -35,7 +36,7 @@ public sealed partial class SLActionSystem : EntitySystem
     {
         var actionEnt = ent.Comp.ActionEntity; // (╯‵□′)╯︵┻━┻
 
-        if (_actionContainer.EnsureAction(ent, ref actionEnt, out var action, ent.Comp.Action) 
+        if (_actionContainer.EnsureAction(ent, ref actionEnt, out var action, ent.Comp.Action)
             && ent.Comp.EntityIcon)
             _actions.SetEntityIcon((actionEnt!.Value, action), ent);
 

@@ -22,5 +22,5 @@ public sealed partial class LiquidParticlesGeneratorComponent : Component
     public float Angle = 360f;
 
     [DataField]
-    public float Radians = (float) Math.PI * 2f;
+    public float Radians = (float)Math.PI * 2f;
 }

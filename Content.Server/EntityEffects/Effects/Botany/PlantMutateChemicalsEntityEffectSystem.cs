@@ -39,7 +39,7 @@ public sealed partial class PlantMutateChemicalsEntityEffectSystem : EntityEffec
             seedChemQuantity.Inherent = false;
         }
         var potencyDivisor = 100f / seedChemQuantity.Max;
-        seedChemQuantity.PotencyDivisor = (float) potencyDivisor;
+        seedChemQuantity.PotencyDivisor = (float)potencyDivisor;
         chemicals[chemicalId] = seedChemQuantity;
     }
 }

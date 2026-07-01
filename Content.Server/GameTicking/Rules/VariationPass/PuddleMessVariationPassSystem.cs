@@ -21,7 +21,7 @@ public sealed class PuddleMessVariationPassSystem : VariationPassSystem<PuddleMe
             return;
 
         var puddleMod = Random.NextGaussian(ent.Comp.TilesPerSpillAverage, ent.Comp.TilesPerSpillStdDev);
-        var puddleTiles = Math.Max((int) (totalTiles * (1 / puddleMod)), 0);
+        var puddleTiles = Math.Max((int)(totalTiles * (1 / puddleMod)), 0);
 
         for (var i = 0; i < puddleTiles; i++)
         {

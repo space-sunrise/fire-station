@@ -8,4 +8,4 @@ namespace Content.Server._Sunrise.Speech.Components;
 /// </summary>
 [RegisterComponent]
 [Access(typeof(FormalAccentSystem))]
-public sealed partial class FormalAccentComponent : Component {} // Fish-edit
+public sealed partial class FormalAccentComponent : Component { } // Fish-edit

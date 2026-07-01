@@ -18,6 +18,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Reflection;
 
 namespace Content.Server._Starlight.Medical.Limbs;
+
 public sealed partial class LimbSystem : SharedLimbSystem
 {
     private static MethodInfo? s_raiseLocalEventRefMethod;
@@ -116,7 +117,7 @@ public sealed partial class LimbSystem : SharedLimbSystem
                     if (limbAttachedEvent != null)
                     {
                         var closedMethod = s_raiseLocalEventRefMethod!.MakeGenericMethod(eventType);
-                        closedMethod.Invoke(this, [ body.Owner, limbAttachedEvent, false ]);
+                        closedMethod.Invoke(this, [body.Owner, limbAttachedEvent, false]);
                     }
                 }
             }

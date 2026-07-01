@@ -6,5 +6,5 @@
 [RegisterComponent]
 public sealed partial class Scp939MuzzledComponent : Component
 {
-    
+
 }

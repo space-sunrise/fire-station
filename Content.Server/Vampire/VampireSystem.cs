@@ -246,7 +246,7 @@ public sealed partial class VampireSystem : EntitySystem
         if (!comp.Balance.TryGetValue(VampireComponent.CurrencyProto, out var balance))
             return;
 
-        var chargeDisplay = (int) Math.Round((decimal) balance);
+        var chargeDisplay = (int)Math.Round((decimal)balance);
         var mutationsAction = GetPowerEntity(comp, VampireComponent.MutationsActionPrototype);
 
         if (mutationsAction == null)
@@ -265,12 +265,12 @@ public sealed partial class VampireSystem : EntitySystem
         AbilityInfo entity = default;
 
         if (TryComp<VampireAlertComponent>(uid, out var alertComp))
-            _vampire.SetAlertBloodAmount(alertComp,_vampire.GetBloodEssence(uid).Int());
+            _vampire.SetAlertBloodAmount(alertComp, _vampire.GetBloodEssence(uid).Int());
 
         if (component.actionEntities.TryGetValue("ActionVampireCloakOfDarkness", out entity) && !HasComp<VampireSealthComponent>(uid) && _vampire.GetBloodEssence(uid) < FixedPoint2.New(300))
             component.actionEntities.Remove("ActionVampireCloakOfDarkness");
 
-        UpdateAbilities(uid, component , VampireComponent.MutationsActionPrototype, null , bloodEssence >= FixedPoint2.New(50) && !HasComp<VampireSealthComponent>(uid));
+        UpdateAbilities(uid, component, VampireComponent.MutationsActionPrototype, null, bloodEssence >= FixedPoint2.New(50) && !HasComp<VampireSealthComponent>(uid));
 
         // Thermal Vision - appears at 500 blood and stays available even if blood drops below 500
         UpdateAbilities(uid, component, "ActionVampireThermalVision", "ThermalVision",
@@ -279,30 +279,30 @@ public sealed partial class VampireSystem : EntitySystem
         //Hemomancer
 
         // Blood Steal
-        UpdateAbilities(uid, component , "ActionVampireBloodSteal", "BloodSteal" , bloodEssence >= FixedPoint2.New(200) && component.CurrentMutation == VampireMutationsType.Hemomancer);
+        UpdateAbilities(uid, component, "ActionVampireBloodSteal", "BloodSteal", bloodEssence >= FixedPoint2.New(200) && component.CurrentMutation == VampireMutationsType.Hemomancer);
 
         // Screech
-        UpdateAbilities(uid, component , "ActionVampireScreech", "Screech" , bloodEssence >= FixedPoint2.New(300) && component.CurrentMutation == VampireMutationsType.Hemomancer);
+        UpdateAbilities(uid, component, "ActionVampireScreech", "Screech", bloodEssence >= FixedPoint2.New(300) && component.CurrentMutation == VampireMutationsType.Hemomancer);
 
         //Umbrae
 
         //Glare
-        UpdateAbilities(uid, component , "ActionVampireGlare", "Glare" , bloodEssence >= FixedPoint2.New(200) && component.CurrentMutation == VampireMutationsType.Umbrae);
+        UpdateAbilities(uid, component, "ActionVampireGlare", "Glare", bloodEssence >= FixedPoint2.New(200) && component.CurrentMutation == VampireMutationsType.Umbrae);
 
         //CloakOfDarkness
-        UpdateAbilities(uid, component , "ActionVampireCloakOfDarkness", "CloakOfDarkness" , bloodEssence >= FixedPoint2.New(300) && component.CurrentMutation == VampireMutationsType.Umbrae);
+        UpdateAbilities(uid, component, "ActionVampireCloakOfDarkness", "CloakOfDarkness", bloodEssence >= FixedPoint2.New(300) && component.CurrentMutation == VampireMutationsType.Umbrae);
 
         //Gargantua
 
-        UpdateAbilities(uid, component , "ActionVampireUnholyStrength", "UnholyStrength" , bloodEssence >= FixedPoint2.New(200) && component.CurrentMutation == VampireMutationsType.Gargantua);
+        UpdateAbilities(uid, component, "ActionVampireUnholyStrength", "UnholyStrength", bloodEssence >= FixedPoint2.New(200) && component.CurrentMutation == VampireMutationsType.Gargantua);
 
-        UpdateAbilities(uid, component , "ActionVampireSupernaturalStrength", "SupernaturalStrength" , bloodEssence >= FixedPoint2.New(300) && component.CurrentMutation == VampireMutationsType.Gargantua);
+        UpdateAbilities(uid, component, "ActionVampireSupernaturalStrength", "SupernaturalStrength", bloodEssence >= FixedPoint2.New(300) && component.CurrentMutation == VampireMutationsType.Gargantua);
 
         //Bestia
 
-        UpdateAbilities(uid, component , "ActionVampireBatform", "PolymorphBat" , bloodEssence >= FixedPoint2.New(200) && component.CurrentMutation == VampireMutationsType.Bestia);
+        UpdateAbilities(uid, component, "ActionVampireBatform", "PolymorphBat", bloodEssence >= FixedPoint2.New(200) && component.CurrentMutation == VampireMutationsType.Bestia);
 
-        UpdateAbilities(uid, component , "ActionVampireMouseform", "PolymorphMouse" , bloodEssence >= FixedPoint2.New(300) && component.CurrentMutation == VampireMutationsType.Bestia);
+        UpdateAbilities(uid, component, "ActionVampireMouseform", "PolymorphMouse", bloodEssence >= FixedPoint2.New(300) && component.CurrentMutation == VampireMutationsType.Bestia);
     }
 
     private void UpdateAbilities(EntityUid uid, VampireComponent component, string actionId, string? powerId, bool addAction)

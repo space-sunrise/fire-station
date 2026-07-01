@@ -122,7 +122,7 @@ public sealed class MappingReplacementSystem : EntitySystem
         if (!prototype.Components.TryGetValue(_factory.GetComponentName<MappingReplacementComponent>(), out var compRegistry))
             return false;
 
-        replacement = (MappingReplacementComponent) compRegistry.Component;
+        replacement = (MappingReplacementComponent)compRegistry.Component;
         return true;
     }
 

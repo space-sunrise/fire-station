@@ -42,7 +42,7 @@ public sealed class ShowRulesCommand : LocalizedCommands
 
         var coreRules = _configuration.GetCVar(CCVars.RulesFile);
         var message = new SendRulesInformationMessage
-            { PopupTime = seconds, CoreRules = coreRules, ShouldShowRules = true };
+        { PopupTime = seconds, CoreRules = coreRules, ShouldShowRules = true };
         _net.ServerSendMessage(message, player.Channel);
     }
 

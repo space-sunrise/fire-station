@@ -48,8 +48,8 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
 
     private const double DungeonJobTime = 0.005;
 
-    public const int CollisionMask = (int) CollisionGroup.Impassable;
-    public const int CollisionLayer = (int) CollisionGroup.Impassable;
+    public const int CollisionMask = (int)CollisionGroup.Impassable;
+    public const int CollisionLayer = (int)CollisionGroup.Impassable;
 
     private readonly JobQueue _dungeonJobQueue = new(DungeonJobTime);
     private readonly Dictionary<DungeonJob.DungeonJob, CancellationTokenSource> _dungeonJobs = new();
@@ -125,7 +125,7 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
 
         foreach (var proto in rooms.Modified.Values)
         {
-            var roomProto = (DungeonRoomPrototype) proto;
+            var roomProto = (DungeonRoomPrototype)proto;
             var query = AllEntityQuery<DungeonAtlasTemplateComponent>();
 
             while (query.MoveNext(out var uid, out var comp))
@@ -143,7 +143,7 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
 
         foreach (var proto in rooms.Modified.Values)
         {
-            var roomProto = (DungeonRoomPrototype) proto;
+            var roomProto = (DungeonRoomPrototype)proto;
             var query = AllEntityQuery<DungeonAtlasTemplateComponent>();
             var found = false;
 
@@ -177,7 +177,7 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
 
         var opts = new MapLoadOptions
         {
-            DeserializationOptions = DeserializationOptions.Default with {PauseMaps = true},
+            DeserializationOptions = DeserializationOptions.Default with { PauseMaps = true },
             ExpectedCategory = FileCategory.Map
         };
 

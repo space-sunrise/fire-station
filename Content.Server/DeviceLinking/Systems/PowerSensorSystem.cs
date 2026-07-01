@@ -96,7 +96,7 @@ public sealed class PowerSensorSystem : EntitySystem
         var powerSwitchable = Comp<PowerSwitchableComponent>(uid);
         var cable = powerSwitchable.Cables[powerSwitchable.ActiveIndex];
         var nodeContainer = Comp<NodeContainerComponent>(uid);
-        var deviceNode = (CableDeviceNode) nodeContainer.Nodes[cable.Node];
+        var deviceNode = (CableDeviceNode)nodeContainer.Nodes[cable.Node];
 
         // update state based on the power stats retrieved from the selected power network
         var xform = _xformQuery.GetComponent(uid);
@@ -106,7 +106,7 @@ public sealed class PowerSensorSystem : EntitySystem
         if (deviceNode.NodeGroup == null)
             return;
 
-        var group = (IBasePowerNet) deviceNode.NodeGroup;
+        var group = (IBasePowerNet)deviceNode.NodeGroup;
         var stats = _powerNet.GetNetworkStatistics(group.NetworkNode);
         var charge = comp.Output ? stats.OutStorageCurrent : stats.InStorageCurrent;
         var chargingState = charge > comp.LastCharge;

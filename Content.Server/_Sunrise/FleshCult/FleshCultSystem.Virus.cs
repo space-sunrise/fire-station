@@ -73,36 +73,36 @@ public sealed partial class FleshCultSystem
                     }
                     break;
                 case PendingFleshCultistStage.Third:
-                {
-                    if (!HasComp<MindContainerComponent>(uid) || !TryComp<ActorComponent>(uid, out var targetActor))
-                        return;
-
-                    var targetPlayer = targetActor.PlayerSession;
-
-                    if (HasComp<MindShieldComponent>(uid))
                     {
-                        // SUNRISE-TODO: Сделать это внутри системы майншилда
-                        _popup.PopupEntity("Активация самоуничтожения импланта защиты разума", uid, PopupType.LargeCaution);
-                        _body.GibBody(uid, true);
-                        _explosionSystem.QueueExplosion(uid, "Default", 50, 5, 30, canCreateVacuum: false);
-                        break;
-                    }
+                        if (!HasComp<MindContainerComponent>(uid) || !TryComp<ActorComponent>(uid, out var targetActor))
+                            return;
 
-                    if (!TryComp<HumanoidAppearanceComponent>(uid, out var humanoidAppearance))
-                        break;
+                        var targetPlayer = targetActor.PlayerSession;
 
-                    if (!_speciesWhitelist.Contains(humanoidAppearance.Species))
-                    {
+                        if (HasComp<MindShieldComponent>(uid))
+                        {
+                            // SUNRISE-TODO: Сделать это внутри системы майншилда
+                            _popup.PopupEntity("Активация самоуничтожения импланта защиты разума", uid, PopupType.LargeCaution);
+                            _body.GibBody(uid, true);
+                            _explosionSystem.QueueExplosion(uid, "Default", 50, 5, 30, canCreateVacuum: false);
+                            break;
+                        }
+
+                        if (!TryComp<HumanoidAppearanceComponent>(uid, out var humanoidAppearance))
+                            break;
+
+                        if (!_speciesWhitelist.Contains(humanoidAppearance.Species))
+                        {
+                            RemCompDeferred<PendingFleshCultistComponent>(uid);
+                            break;
+                        }
+
+                        _antag.ForceMakeAntag<FleshCultRuleComponent>(targetPlayer, DefaultFleshCultRule);
+
+                        comp.CurrentStage = PendingFleshCultistStage.Final;
                         RemCompDeferred<PendingFleshCultistComponent>(uid);
                         break;
                     }
-
-                    _antag.ForceMakeAntag<FleshCultRuleComponent>(targetPlayer, DefaultFleshCultRule);
-
-                    comp.CurrentStage = PendingFleshCultistStage.Final;
-                    RemCompDeferred<PendingFleshCultistComponent>(uid);
-                    break;
-                }
             }
         }
     }

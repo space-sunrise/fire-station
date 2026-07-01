@@ -121,7 +121,7 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
                 // Sunrise-Start
                 var session = _actors.GetSession(entity);
 
-                string [] sponsorsPrototypes = [];
+                string[] sponsorsPrototypes = [];
                 if (_sponsorsManager != null && session != null)
                 {
                     if (_sponsorsManager.TryGetPrototypes(session.UserId, out var prototypes))

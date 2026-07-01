@@ -50,7 +50,7 @@ public sealed partial class Scp173System : SharedScp173System
     [Dependency] private readonly InteractionSystem _interaction = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly AudioSystem _audio= default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly ExplosionSystem _explosion = default!;
     [Dependency] private readonly ScpHelpers _helpers = default!;
     [Dependency] private readonly ScpDamageOnCollideSystem _damageOnCollide = default!;
@@ -304,7 +304,7 @@ public sealed partial class Scp173System : SharedScp173System
         var ray = new CollisionRay(
             performerPos,
             normalizedDirection,
-            collisionMask: (int) CollisionGroup.AllMask
+            collisionMask: (int)CollisionGroup.AllMask
         );
 
         var rayCastResults = _physics.IntersectRay(

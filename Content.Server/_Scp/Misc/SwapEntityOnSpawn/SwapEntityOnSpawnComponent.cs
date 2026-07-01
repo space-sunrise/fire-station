@@ -6,7 +6,7 @@ namespace Content.Server._Scp.Misc.SwapEntityOnSpawn;
 public sealed partial class SwapEntityOnSpawnComponent : Component
 {
     [DataField(required: true)]
-    public HashSet<EntProtoId> Replace = new ();
+    public HashSet<EntProtoId> Replace = new();
 
     /// <summary>
     /// Шанс замены ентити с заменяемого на заменяющий

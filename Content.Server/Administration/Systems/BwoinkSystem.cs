@@ -130,14 +130,14 @@ namespace Content.Server.Administration.Systems
             SubscribeNetworkEvent<BwoinkRequestDbMessages>(OnRequestDbMessages);
             SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => _activeConversations.Clear());
 
-        	_rateLimit.Register(
+            _rateLimit.Register(
                 RateLimitKey,
                 new RateLimitRegistration(CCVars.AhelpRateLimitPeriod,
                     CCVars.AhelpRateLimitCount,
                     PlayerRateLimitedAction)
                 );
 
-                IoCManager.Instance!.TryResolveType(out _sponsorsManager); // Sunrise-Sponsors
+            IoCManager.Instance!.TryResolveType(out _sponsorsManager); // Sunrise-Sponsors
         }
 
         private async void OnCallChanged(string url)

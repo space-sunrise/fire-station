@@ -28,7 +28,7 @@ public sealed class RejuvenateCommand : ToolshedCommand
         _rejuvenate ??= GetSys<RejuvenateSystem>();
         if (ExecutingEntity(ctx) is not { } ent)
         {
-            if (ctx.Session is {} session)
+            if (ctx.Session is { } session)
                 ctx.ReportError(new SessionHasNoEntityError(session));
             else
                 ctx.ReportError(new NotForServerConsoleError());

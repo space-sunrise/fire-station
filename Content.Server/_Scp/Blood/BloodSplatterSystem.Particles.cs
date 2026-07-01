@@ -173,7 +173,7 @@ public sealed partial class BloodSplatterSystem
         }
 
         var speed = _random.NextFloat(ent.Comp.Speed.X, ent.Comp.Speed.Y);
-        var direction = new Vector2((float) Math.Cos(angle.Theta), (float) Math.Sin(angle.Theta));
+        var direction = new Vector2((float)Math.Cos(angle.Theta), (float)Math.Sin(angle.Theta));
 
         ent.Comp.Velocity = direction * speed;
     }

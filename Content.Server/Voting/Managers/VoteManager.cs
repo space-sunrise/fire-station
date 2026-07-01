@@ -325,7 +325,7 @@ namespace Content.Server.Voting.Managers
                 msg.IsYourVoteDirty = dirty;
                 if (dirty)
                 {
-                    msg.YourVote = (byte) cast;
+                    msg.YourVote = (byte)cast;
                 }
             }
 
@@ -339,7 +339,7 @@ namespace Content.Server.Voting.Managers
             for (var i = 0; i < msg.Options.Length; i++)
             {
                 ref var entry = ref v.Entries[i];
-                msg.Options[i] = (msg.DisplayVotes ? (ushort) entry.Votes : (ushort) 0, entry.Text);
+                msg.Options[i] = (msg.DisplayVotes ? (ushort)entry.Votes : (ushort)0, entry.Text);
             }
 
             player.Channel.SendMessage(msg);
@@ -461,7 +461,7 @@ namespace Content.Server.Voting.Managers
 
             // Store all votes in order for webhooks
             var voteTally = new List<int>();
-            foreach(var entry in v.Entries)
+            foreach (var entry in v.Entries)
             {
                 voteTally.Add(entry.Votes);
             }

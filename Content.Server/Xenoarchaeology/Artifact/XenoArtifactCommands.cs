@@ -105,7 +105,7 @@ public sealed class XenoArtifactCommand : ToolshedCommand
             Del(ent);
         }
 
-        return (float) sum / n;
+        return (float)sum / n;
     }
 
     /// <summary> Unlocks all nodes of artifact. </summary>

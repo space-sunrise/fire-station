@@ -126,7 +126,7 @@ public sealed class HellSpawnArenaSystem : SharedHellSpawnArenaSystem
         QueueDel(uid);
     }
 
-    public bool SpawnHellSpawn( [NotNullWhen(true)] out EntityUid? entityUid)
+    public bool SpawnHellSpawn([NotNullWhen(true)] out EntityUid? entityUid)
     {
         if (Arena == null)
         {

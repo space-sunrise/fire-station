@@ -75,7 +75,7 @@ public sealed class AnomalyScannerSystem : SharedAnomalyScannerSystem
         while (anomalyQuery.MoveNext(out var ent, out var anomaly))
         {
             var secondsUntilNextPulse = (anomaly.NextPulseTime - Timing.CurTime).TotalSeconds;
-            UpdateScannerPulseTimers((ent, anomaly),  secondsUntilNextPulse);
+            UpdateScannerPulseTimers((ent, anomaly), secondsUntilNextPulse);
         }
     }
 

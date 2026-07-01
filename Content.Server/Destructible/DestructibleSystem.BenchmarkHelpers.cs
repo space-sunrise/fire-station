@@ -24,12 +24,12 @@ public sealed partial class DestructibleSystem
     /// </summary>
     public void TestAllBehaviors(List<Entity<Shared.Damage.Components.DamageableComponent, DestructibleComponent>> destructibles)
     {
-       foreach (var (uid, damageable, destructible) in destructibles)
-       {
-           foreach (var threshold in destructible.Thresholds)
-           {
-               Execute(threshold, uid);
-           }
-       }
+        foreach (var (uid, damageable, destructible) in destructibles)
+        {
+            foreach (var threshold in destructible.Thresholds)
+            {
+                Execute(threshold, uid);
+            }
+        }
     }
 }

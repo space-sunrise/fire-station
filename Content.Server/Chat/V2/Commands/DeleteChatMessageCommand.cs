@@ -18,7 +18,7 @@ public sealed class DeleteChatMessageCommand : ToolshedCommand
     {
         if (!_manager.GetEntitySystem<ChatRepositorySystem>().Delete(messageId))
         {
-             ctx.ReportError(new MessageIdDoesNotExist());
+            ctx.ReportError(new MessageIdDoesNotExist());
         }
     }
 }

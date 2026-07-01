@@ -7,7 +7,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Server.Mobs;
 
 /// <see cref="DeathgaspComponent"/>
-public sealed class DeathgaspSystem: EntitySystem
+public sealed class DeathgaspSystem : EntitySystem
 {
     [Dependency] private readonly ChatSystem _chat = default!;
 

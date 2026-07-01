@@ -36,8 +36,8 @@ public sealed partial class MetaGarbageSystem : EntitySystem
     [Dependency] private readonly LightBulbSystem _bulb = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
-    private static readonly HashSet<ProtoId<TagPrototype>> AllowedTags = [ "Trash", "MetaGarbageSavable" ];
-    private static readonly HashSet<ProtoId<TagPrototype>> ForbiddenTags = [ "MetaGarbagePreventSaving" ];
+    private static readonly HashSet<ProtoId<TagPrototype>> AllowedTags = ["Trash", "MetaGarbageSavable"];
+    private static readonly HashSet<ProtoId<TagPrototype>> ForbiddenTags = ["MetaGarbagePreventSaving"];
     private static readonly ProtoId<TagPrototype> ReplaceTag = "MetaGarbageReplace";
     private static readonly ProtoId<TagPrototype> ContainerAllowedTag = "MetaGarbageCanBeSpawnedInContainer";
 
@@ -58,7 +58,7 @@ public sealed partial class MetaGarbageSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<MetaGarbageTargetComponent, StationPostInitEvent>(OnMapInit, after:[typeof(SharedSolutionContainerSystem)]);
+        SubscribeLocalEvent<MetaGarbageTargetComponent, StationPostInitEvent>(OnMapInit, after: [typeof(SharedSolutionContainerSystem)]);
         SubscribeLocalEvent<RealRoundEndedMessage>(OnRoundEnded);
 
         InitializeCCVars();

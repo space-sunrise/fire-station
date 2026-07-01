@@ -103,7 +103,7 @@ public sealed class PlanetPrisonStationSystem : EntitySystem
         _chat.DispatchServerAnnouncement(Loc.GetString("planet-prison-select-map", ("stationName", gameMap.MapName)), Color.LightBlue);
         _chat.DispatchServerAnnouncement(Loc.GetString("planet-prison-select-biome", ("biomeName", biome.ID)), Color.LightBlue);
 
-        var opts = DeserializationOptions.Default with {InitializeMaps = true};
+        var opts = DeserializationOptions.Default with { InitializeMaps = true };
         var uids = _gameTicker.LoadGameMap(gameMap, out var mapId, opts, rot: Angle.Zero);
 
         component.MapId = mapId;

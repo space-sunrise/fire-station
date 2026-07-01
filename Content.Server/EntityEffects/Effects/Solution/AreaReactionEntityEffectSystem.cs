@@ -31,7 +31,7 @@ public sealed partial class AreaReactionEntityEffectsSystem : EntityEffectSystem
     {
         var xform = Transform(entity);
         var mapCoords = _xform.GetMapCoordinates(entity);
-        var spreadAmount = (int) Math.Max(0, Math.Ceiling(args.Scale / args.Effect.OverflowThreshold));
+        var spreadAmount = (int)Math.Max(0, Math.Ceiling(args.Scale / args.Effect.OverflowThreshold));
         var effect = args.Effect;
 
         if (!_mapManager.TryFindGridAt(mapCoords, out var gridUid, out var grid) ||

@@ -17,7 +17,7 @@ public sealed class RampingStationEventSchedulerSystem : GameRuleSystem<RampingS
     /// </summary>
     public float GetChaosModifier(EntityUid uid, RampingStationEventSchedulerComponent component)
     {
-        var roundTime = (float) _gameTicker.RoundDuration().TotalSeconds;
+        var roundTime = (float)_gameTicker.RoundDuration().TotalSeconds;
         if (roundTime > component.EndTime)
             return component.MaxChaos;
 

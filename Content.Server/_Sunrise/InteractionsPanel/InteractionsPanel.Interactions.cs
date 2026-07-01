@@ -90,9 +90,9 @@ public partial class InteractionsPanel
     {
         if (playerSession?.AttachedEntity is not { Valid: true } player || !Exists(player))
             return false;
-        if(!HasComp<TransformComponent>(player))
+        if (!HasComp<TransformComponent>(player))
             return false;
-        if(!HasComp<TransformComponent>(entity))
+        if (!HasComp<TransformComponent>(entity))
             return false;
         if (!_interaction.InRangeAndAccessible(player, entity))
             return false;

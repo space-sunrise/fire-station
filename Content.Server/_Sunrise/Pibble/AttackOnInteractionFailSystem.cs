@@ -20,7 +20,7 @@ public sealed class AttackOnInteractionFailSystem : EntitySystem
     private void OnInteractionFailure(EntityUid uid, AttackOnInteractionFailComponent component, InteractionFailureEvent args)
     {
         _npcFaction.AggroEntity(uid, args.User);
-        if (component.AttackMemoryLength is {} memoryLength)
+        if (component.AttackMemoryLength is { } memoryLength)
             component.AttackMemories[args.User] = _timing.CurTime + memoryLength;
     }
 

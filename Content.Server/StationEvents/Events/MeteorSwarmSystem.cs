@@ -85,7 +85,7 @@ public sealed class MeteorSwarmSystem : GameRuleSystem<MeteorSwarmComponent>
             var subOffsetAngle = RobustRandom.Prob(0.5f)
                 ? angle + Math.PI / 2
                 : angle - Math.PI / 2;
-            var subOffset = subOffsetAngle.RotateVec(new Vector2( (playableArea.TopRight - playableArea.Center).Length() / 3 * RobustRandom.NextFloat(), 0));
+            var subOffset = subOffsetAngle.RotateVec(new Vector2((playableArea.TopRight - playableArea.Center).Length() / 3 * RobustRandom.NextFloat(), 0));
 
             var spawnPosition = new MapCoordinates(center + offset + subOffset, mapId);
             var meteor = Spawn(spawnProto, spawnPosition);

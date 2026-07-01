@@ -24,11 +24,11 @@ namespace Content.Server._Starlight.Weapons.Gunnery;
 /// </summary>
 public sealed class GunneryConsoleSystem : EntitySystem
 {
-    [Dependency] private readonly UserInterfaceSystem   _ui        = default!;
-    [Dependency] private readonly ShuttleConsoleSystem  _console   = default!;
-    [Dependency] private readonly SharedGunSystem       _gun       = default!;
+    [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private readonly ShuttleConsoleSystem _console = default!;
+    [Dependency] private readonly SharedGunSystem _gun = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly IGameTiming           _timing    = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     private const float UpdateInterval = 0.25f;
     private float _updateTimer;
@@ -170,8 +170,8 @@ public sealed class GunneryConsoleSystem : EntitySystem
 
         // Record fire time and target before shooting so OnGuidedProjectileStartup can claim
         // the spawned entity and activate tracking toward the clicked position.
-        comp.LastFireTime       = _timing.CurTime;
-        comp.LastFireTargetPos  = targetMapPos.Position;
+        comp.LastFireTime = _timing.CurTime;
+        comp.LastFireTargetPos = targetMapPos.Position;
 
         // Pass cannon as the "user" so AttemptShoot uses the cannon's world position as the
         // projectile spawn origin instead of the player's position.
@@ -227,8 +227,8 @@ public sealed class GunneryConsoleSystem : EntitySystem
             return;
 
         guided.SteeringTarget = targetMapCoords.Position;
-        guided.Active         = true;
-        guided.Controller     = uid;
+        guided.Active = true;
+        guided.Controller = uid;
     }
 
     // ── State building ─────────────────────────────────────────────────────
@@ -238,17 +238,17 @@ public sealed class GunneryConsoleSystem : EntitySystem
         if (!_ui.HasUi(uid, GunneryConsoleUiKey.Key))
             return;
 
-        var xform             = Transform(uid);
+        var xform = Transform(uid);
         EntityCoordinates? coordinates = null;
-        Angle?             angle       = null;
+        Angle? angle = null;
 
         if (xform.ParentUid == xform.GridUid)
         {
             coordinates = xform.Coordinates;
-            angle       = xform.LocalRotation;
+            angle = xform.LocalRotation;
         }
 
-        var docks    = _console.GetAllDocks();
+        var docks = _console.GetAllDocks();
         NavInterfaceState navState;
 
         if (coordinates != null && angle != null)
@@ -260,7 +260,7 @@ public sealed class GunneryConsoleSystem : EntitySystem
 
         // Populate standard radar blips (rockets, shells, etc.)
         var consoleMapCoords = _transform.GetMapCoordinates(uid);
-        var maxRangeSq       = comp.MaxRange * comp.MaxRange;
+        var maxRangeSq = comp.MaxRange * comp.MaxRange;
 
         var blipQuery = AllEntityQuery<RadarBlipComponent, TransformComponent>();
         while (blipQuery.MoveNext(out var blipUid, out var blip, out var blipXform))
@@ -303,7 +303,7 @@ public sealed class GunneryConsoleSystem : EntitySystem
 
         // Build cannon blip list: all GunneryTrackable guns on the same grid.
         var cannons = new List<CannonBlipData>();
-        var gridId  = xform.GridUid;
+        var gridId = xform.GridUid;
 
         if (gridId != null && HasComp<MapGridComponent>(gridId.Value))
         {
@@ -335,7 +335,7 @@ public sealed class GunneryConsoleSystem : EntitySystem
 
         var trackedNet = comp.TrackedGuidedProjectile.HasValue
             ? GetNetEntity(comp.TrackedGuidedProjectile.Value)
-            : (NetEntity?) null;
+            : (NetEntity?)null;
 
         _ui.SetUiState(uid, GunneryConsoleUiKey.Key,
             new GunneryConsoleBoundUserInterfaceState(navState, cannons, trackedNet));

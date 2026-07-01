@@ -25,6 +25,6 @@ public sealed class ACmdCommand : ToolshedCommand
     public bool CanInvoke(IInvocationContext ctx, [PipedArgument] CommandSpec command, ICommonSession player)
     {
         // Deliberately discard the error.
-        return ((IPermissionController) _adminManager).CheckInvokable(command, player, out _);
+        return ((IPermissionController)_adminManager).CheckInvokable(command, player, out _);
     }
 }

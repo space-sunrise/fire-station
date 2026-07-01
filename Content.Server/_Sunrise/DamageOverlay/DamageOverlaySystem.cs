@@ -21,7 +21,7 @@ public sealed class DamageOverlaySystem : EntitySystem
     [Dependency] private readonly ISharedPlayerManager _player = default!;
 
     private static readonly HashSet<ICommonSession> DisabledSessions = [];
-    private readonly Dictionary<ICommonSession, DamageOverlaySettings> _playerSettings = new ();
+    private readonly Dictionary<ICommonSession, DamageOverlaySettings> _playerSettings = new();
 
     public override void Initialize()
     {

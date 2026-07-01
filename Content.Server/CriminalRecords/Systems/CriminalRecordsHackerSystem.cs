@@ -33,7 +33,7 @@ public sealed class CriminalRecordsHackerSystem : SharedCriminalRecordsHackerSys
         if (args.Cancelled || args.Handled || args.Target == null)
             return;
 
-        if (_station.GetOwningStation(ent) is not {} station)
+        if (_station.GetOwningStation(ent) is not { } station)
             return;
 
         var reasons = _proto.Index(ent.Comp.Reasons);

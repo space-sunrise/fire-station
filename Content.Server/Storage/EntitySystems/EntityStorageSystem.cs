@@ -39,7 +39,7 @@ public sealed class EntityStorageSystem : SharedEntityStorageSystem
         if (args.Cancelled || args.Handled)
             return;
 
-        if (!CanOpen(args.User, ent, requireHands:false))
+        if (!CanOpen(args.User, ent, requireHands: false))
             return;
 
         DoOpenStorage(ent.Owner, ent.Comp, args.User);

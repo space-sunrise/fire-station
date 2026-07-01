@@ -42,7 +42,7 @@ public sealed class SlurredSystem : SharedSlurredSystem
             return 0;
 
         // This is a magic number. Why this value? No clue it was made 3 years before I refactored this.
-        var magic = time.Item2 == null ? SlurredModifier : (float) (time.Item2 - _timing.CurTime).Value.TotalSeconds - SlurredThreshold;
+        var magic = time.Item2 == null ? SlurredModifier : (float)(time.Item2 - _timing.CurTime).Value.TotalSeconds - SlurredThreshold;
 
         return Math.Clamp(magic / SlurredModifier, 0f, 1f);
     }
@@ -106,7 +106,7 @@ public sealed class SlurredSystem : SharedSlurredSystem
                 }
             }
 
-            if (!_random.Prob(scale * 3/20))
+            if (!_random.Prob(scale * 3 / 20))
             {
                 sb.Append(character);
                 continue;

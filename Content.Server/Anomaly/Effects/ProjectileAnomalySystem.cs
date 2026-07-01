@@ -74,7 +74,7 @@ public sealed class ProjectileAnomalySystem : EntitySystem
                 ? _random.PickAndTake(priority)
                 : _random.Pick(_inRange);
 
-            var targetXForm= _xFormQuery.GetComponent(target);
+            var targetXForm = _xFormQuery.GetComponent(target);
             var targetCoords = targetXForm.Coordinates.Offset(_random.NextVector2(0.5f));
 
             ShootProjectile(

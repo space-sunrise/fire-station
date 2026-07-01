@@ -212,7 +212,7 @@ namespace Content.Server._Sunrise.BloodCult.Runes.Systems
                     colorOverride: Color.Red);
             }
 
-             if (!IsAllowedToDraw(whoCalled))
+            if (!IsAllowedToDraw(whoCalled))
                 return false;
 
             var ev = new CultDrawEvent
@@ -456,7 +456,7 @@ namespace Content.Server._Sunrise.BloodCult.Runes.Systems
                 var canConvert = !HasComp<MindShieldComponent>(victim.Value)
                                       && !HasComp<BibleUserComponent>(victim.Value);
 
-                if (hasMind && canConvert )
+                if (hasMind && canConvert)
                 {
                     if (args.Cultists.Count < component.ConvertMinCount)
                     {

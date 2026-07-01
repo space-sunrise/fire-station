@@ -9,7 +9,7 @@ namespace Content.Server._Sunrise.StationCentComm;
 [RegisterComponent]
 public sealed partial class StationCentCommComponent : Component
 {
-    [DataField(customTypeSerializer:typeof(PrototypeIdSerializer<GameMapPrototype>), required: true)]
+    [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<GameMapPrototype>), required: true)]
     public string Station = default!;
 
     [DataField]

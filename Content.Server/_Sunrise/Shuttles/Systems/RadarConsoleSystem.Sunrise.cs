@@ -26,7 +26,7 @@ public sealed partial class RadarConsoleSystem
         _blipUpdateTimer = 0f;
 
         // Prune expired Apollo laser traces before syncing state.
-        _laserSystem.PruneExpiredTraces((float) _timing.CurTime.TotalSeconds);
+        _laserSystem.PruneExpiredTraces((float)_timing.CurTime.TotalSeconds);
 
         var query = AllEntityQuery<RadarConsoleComponent>();
         while (query.MoveNext(out var uid, out var comp))

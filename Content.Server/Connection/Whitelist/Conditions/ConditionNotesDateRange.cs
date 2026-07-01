@@ -15,7 +15,7 @@ public sealed partial class ConditionNotesDateRange : WhitelistCondition
     public bool IncludeExpired = false;
 
     [DataField]
-    public NoteSeverity MinimumSeverity  = NoteSeverity.Minor;
+    public NoteSeverity MinimumSeverity = NoteSeverity.Minor;
 
     /// <summary>
     /// The minimum number of notes required.

@@ -21,7 +21,7 @@ namespace Content.Server.Roles
                 return;
             }
 
-            foreach(var job in _prototypeManager.EnumeratePrototypes<JobPrototype>())
+            foreach (var job in _prototypeManager.EnumeratePrototypes<JobPrototype>())
             {
                 shell.WriteLine(job.ID);
             }

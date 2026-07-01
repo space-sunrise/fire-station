@@ -2,6 +2,7 @@
 using Content.Shared.FixedPoint;
 
 namespace Content.Server.Starlight.Energy.Supermatter;
+
 internal static class Const
 {
     public static FixedPoint2 HeatPercent = 0.82f;

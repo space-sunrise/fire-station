@@ -36,7 +36,7 @@ public sealed class CodewordSystem : EntitySystem
     public string[] GetCodewords(ProtoId<CodewordFactionPrototype> faction)
     {
         var query = EntityQueryEnumerator<CodewordManagerComponent>();
-        while (query.MoveNext(out  _, out var manager))
+        while (query.MoveNext(out _, out var manager))
         {
             if (!manager.Codewords.TryGetValue(faction, out var codewordEntity))
                 return GenerateForFaction(faction, ref manager);

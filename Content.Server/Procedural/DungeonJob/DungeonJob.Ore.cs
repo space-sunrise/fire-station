@@ -75,7 +75,7 @@ public sealed partial class DungeonJob
             if (_prototype.Resolve(gen.Entity, out var proto) &&
                 proto.Components.TryGetComponent("EntityRemap", out var comps))
             {
-                var remappingComp = (EntityRemapComponent) comps;
+                var remappingComp = (EntityRemapComponent)comps;
                 remapping = remappingComp.Mask;
             }
 

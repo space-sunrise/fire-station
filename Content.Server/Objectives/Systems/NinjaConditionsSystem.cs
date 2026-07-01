@@ -43,7 +43,7 @@ public sealed class NinjaConditionsSystem : EntitySystem
         if (target == 0)
             return 1f;
 
-        return MathF.Min(comp.DoorsJacked / (float) target, 1f);
+        return MathF.Min(comp.DoorsJacked / (float)target, 1f);
     }
 
     // spider charge
@@ -102,6 +102,6 @@ public sealed class NinjaConditionsSystem : EntitySystem
         if (target == 0)
             return 1f;
 
-        return MathF.Min(comp.DownloadedNodes.Count / (float) target, 1f);
+        return MathF.Min(comp.DownloadedNodes.Count / (float)target, 1f);
     }
 }

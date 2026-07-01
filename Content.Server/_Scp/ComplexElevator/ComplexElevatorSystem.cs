@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Doors.Systems;
-using Content.Shared._Scp.ComplexElevator;
+using Content.Server._Scp.ComplexElevator;
 using Robust.Shared.GameObjects;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Damage;
@@ -123,27 +123,50 @@ public sealed partial class ComplexElevatorSystem : EntitySystem
                 {
                     if (elevator.UseIntermediateFloor)
                     {
-                        ClearGasInTargetArea(uid, elevator.IntermediateFloorId);
-                        KillEntitiesInTargetArea((uid, elevator), elevator.IntermediateFloorId);
-                        elevator.CurrentFloor = elevator.IntermediateFloorId;
-                        Dirty(uid, elevator);
+                        if (TeleportToFloor(uid, elevator.IntermediateFloorId, elevator))
+                        {
+                            ClearGasInTargetArea(uid, elevator.IntermediateFloorId);
+                            KillEntitiesInTargetArea((uid, elevator), elevator.IntermediateFloorId);
 
-                        TeleportToFloor(uid, elevator.IntermediateFloorId, elevator);
+                            elevator.CurrentFloor = elevator.IntermediateFloorId;
+                            Dirty(uid, elevator);
 
-                        _audio.PlayPvs(elevator.TravelSound, uid);
+                            _audio.PlayPvs(elevator.TravelSound, uid);
 
-                        moving.Phase = ElevatorMovementPhase.Travelling;
-                        moving.MovementStartTime = _timing.CurTime;
-                        Dirty(uid, moving);
+                            moving.Phase = ElevatorMovementPhase.Travelling;
+                            moving.MovementStartTime = _timing.CurTime;
+                            Dirty(uid, moving);
+                        }
                     }
                     else
                     {
+                        if (TeleportToFloor(uid, moving.TargetFloor, elevator))
+                        {
+                            ClearGasInTargetArea(uid, moving.TargetFloor);
+                            KillEntitiesInTargetArea((uid, elevator), moving.TargetFloor);
+
+                            elevator.CurrentFloor = moving.TargetFloor;
+                            Dirty(uid, elevator);
+
+                            OpenDoorsForFloor(elevator.ElevatorId, moving.TargetFloor);
+                            _audio.PlayPvs(elevator.ArrivalSound, uid);
+
+                            toRemove.Add(uid);
+                        }
+                    }
+                }
+            }
+            else if (moving.Phase == ElevatorMovementPhase.Travelling)
+            {
+                if (elapsed >= elevator.IntermediateDelay)
+                {
+                    if (TeleportToFloor(uid, moving.TargetFloor, elevator))
+                    {
                         ClearGasInTargetArea(uid, moving.TargetFloor);
                         KillEntitiesInTargetArea((uid, elevator), moving.TargetFloor);
+
                         elevator.CurrentFloor = moving.TargetFloor;
                         Dirty(uid, elevator);
-
-                        TeleportToFloor(uid, moving.TargetFloor, elevator);
 
                         OpenDoorsForFloor(elevator.ElevatorId, moving.TargetFloor);
                         _audio.PlayPvs(elevator.ArrivalSound, uid);
@@ -152,31 +175,14 @@ public sealed partial class ComplexElevatorSystem : EntitySystem
                     }
                 }
             }
-            else if (moving.Phase == ElevatorMovementPhase.Travelling)
+
+            foreach (var movingUid in toRemove)
             {
-                if (elapsed >= elevator.IntermediateDelay)
+                RemComp<ElevatorMovingComponent>(movingUid);
+                if (TryComp<ComplexElevatorComponent>(movingUid, out var movingElevator))
                 {
-                    ClearGasInTargetArea(uid, moving.TargetFloor);
-                    KillEntitiesInTargetArea((uid, elevator), moving.TargetFloor);
-                    elevator.CurrentFloor = moving.TargetFloor;
-                    Dirty(uid, elevator);
-
-                    TeleportToFloor(uid, moving.TargetFloor, elevator);
-
-                    OpenDoorsForFloor(elevator.ElevatorId, moving.TargetFloor);
-                    _audio.PlayPvs(elevator.ArrivalSound, uid);
-
-                    toRemove.Add(uid);
+                    UpdateButtonLights((movingUid, movingElevator));
                 }
-            }
-        }
-
-        foreach (var uid in toRemove)
-        {
-            RemComp<ElevatorMovingComponent>(uid);
-            if (TryComp<ComplexElevatorComponent>(uid, out var elevator))
-            {
-                UpdateButtonLights((uid, elevator));
             }
         }
     }
@@ -194,12 +200,12 @@ public sealed partial class ComplexElevatorSystem : EntitySystem
         }
     }
 
-    private void TeleportToFloor(EntityUid uid, string floorId, ComplexElevatorComponent elevatorComp)
+    private bool TeleportToFloor(EntityUid uid, string floorId, ComplexElevatorComponent elevatorComp)
     {
         if (!TryFindPoint(floorId, out var point))
         {
             Log.Warning($"Could not find ElevatorPoint for floor {floorId} for elevator {elevatorComp.ElevatorId}");
-            return;
+            return false;
         }
 
         var pointTransform = Transform(point.Value.Owner);
@@ -238,7 +244,7 @@ public sealed partial class ComplexElevatorSystem : EntitySystem
         var destParent = pointTransform.GridUid ?? pointTransform.MapUid;
 
         if (destParent == null)
-            return;
+            return false;
 
         foreach (var (entUid, relativePos) in entitiesToTeleport)
         {
@@ -248,6 +254,7 @@ public sealed partial class ComplexElevatorSystem : EntitySystem
         }
 
         _transform.SetCoordinates(uid, pointTransform.Coordinates);
+        return true;
     }
 
     private void HandleButtonPress(Entity<ElevatorButtonComponent> button, Entity<ComplexElevatorComponent> elevator)

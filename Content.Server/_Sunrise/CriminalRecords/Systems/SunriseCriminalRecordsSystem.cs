@@ -136,7 +136,7 @@ public sealed class SunriseCriminalRecordsSystem : SharedSunriseCriminalRecordsS
         component.CurrentUIState = msg.State;
         UpdateUserInterface(uid, component);
     }
-    
+
     private void OnChangeStatus(EntityUid uid, SunriseCriminalRecordsConsoleComponent component, SunriseCriminalRecordsChangeStatusMessage msg)
     {
         if (!CheckAccess(uid, msg.Actor))
@@ -295,11 +295,11 @@ public sealed class SunriseCriminalRecordsSystem : SharedSunriseCriminalRecordsS
             if (_stationRecords.TryGetRecord<GeneralStationRecord>(key, out var general))
             {
                 listingRecords.Add(new SunriseCriminalRecordListing(
-                    id, 
-                    general.Name, 
-                    general.DNA, 
-                    general.Fingerprint, 
-                    general.Species, 
+                    id,
+                    general.Name,
+                    general.DNA,
+                    general.Fingerprint,
+                    general.Species,
                     general.Gender.ToString(),
                     general.JobTitle));
             }

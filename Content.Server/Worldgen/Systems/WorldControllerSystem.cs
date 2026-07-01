@@ -110,7 +110,7 @@ public sealed class WorldControllerSystem : EntitySystem
             var wc = _xformSys.GetWorldPosition(xform);
             var coords = WorldGen.WorldToChunkCoords(wc);
             var chunks = new GridPointsNearEnumerator(coords.Floored(),
-                (int) Math.Ceiling(worldLoader.Radius / (float) WorldGen.ChunkSize) + 1);
+                (int)Math.Ceiling(worldLoader.Radius / (float)WorldGen.ChunkSize) + 1);
 
             var set = chunksToLoad[map];
 

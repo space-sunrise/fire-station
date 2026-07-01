@@ -51,7 +51,7 @@ public sealed partial class ResearchSystem
         if (!TryGetClientServer(uid, out var serverEnt, out var serverComponent))
             return;
 
-        if(serverComponent.NextRediscover > _timing.CurTime)
+        if (serverComponent.NextRediscover > _timing.CurTime)
             return;
 
         var rediscoverCost = serverComponent.RediscoverCost;

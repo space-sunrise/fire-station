@@ -16,7 +16,7 @@ public sealed partial class HasStatusEffectPrecondition : HTNPrecondition
     public override void Initialize(IEntitySystemManager sysManager)
     {
         base.Initialize(sysManager);
-        _statusEffects =  sysManager.GetEntitySystem<StatusEffectsSystem>();
+        _statusEffects = sysManager.GetEntitySystem<StatusEffectsSystem>();
     }
 
     public override bool IsMet(NPCBlackboard blackboard)

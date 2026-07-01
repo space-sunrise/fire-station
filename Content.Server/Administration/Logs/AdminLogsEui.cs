@@ -107,45 +107,45 @@ public sealed class AdminLogsEui : BaseEui
         switch (msg)
         {
             case LogsRequest request:
-            {
-                _sawmill.Info($"Admin log request from admin with id {Player.UserId.UserId} and name {Player.Name}");
-
-                _logSendCancellation.Cancel();
-                _logSendCancellation = new CancellationTokenSource();
-                _filter = new LogFilter
                 {
-                    CancellationToken = _logSendCancellation.Token,
-                    Round = request.RoundId,
-                    Search = request.Search,
-                    Types = request.Types,
-                    Impacts = request.Impacts,
-                    Before = request.Before,
-                    After = request.After,
-                    IncludePlayers = request.IncludePlayers,
-                    AnyPlayers = request.AnyPlayers,
-                    AllPlayers = request.AllPlayers,
-                    IncludeNonPlayers = request.IncludeNonPlayers,
-                    LastLogId = null,
-                    LastLogCursor = null,
-                    // Sunrise edit start - request one extra record and keep cursor on visible page edge
-                    LokiCursorOverfetch = 1,
-                    Limit = _clientBatchSize + 1
-                    // Sunrise edit end
-                };
+                    _sawmill.Info($"Admin log request from admin with id {Player.UserId.UserId} and name {Player.Name}");
 
-                var roundId = _filter.Round ??= CurrentRoundId;
-                await LoadFromDb(roundId);
+                    _logSendCancellation.Cancel();
+                    _logSendCancellation = new CancellationTokenSource();
+                    _filter = new LogFilter
+                    {
+                        CancellationToken = _logSendCancellation.Token,
+                        Round = request.RoundId,
+                        Search = request.Search,
+                        Types = request.Types,
+                        Impacts = request.Impacts,
+                        Before = request.Before,
+                        After = request.After,
+                        IncludePlayers = request.IncludePlayers,
+                        AnyPlayers = request.AnyPlayers,
+                        AllPlayers = request.AllPlayers,
+                        IncludeNonPlayers = request.IncludeNonPlayers,
+                        LastLogId = null,
+                        LastLogCursor = null,
+                        // Sunrise edit start - request one extra record and keep cursor on visible page edge
+                        LokiCursorOverfetch = 1,
+                        Limit = _clientBatchSize + 1
+                        // Sunrise edit end
+                    };
 
-                SendLogs(true);
-                break;
-            }
+                    var roundId = _filter.Round ??= CurrentRoundId;
+                    await LoadFromDb(roundId);
+
+                    SendLogs(true);
+                    break;
+                }
             case NextLogsRequest:
-            {
-                _sawmill.Info($"Admin log next batch request from admin with id {Player.UserId.UserId} and name {Player.Name}");
+                {
+                    _sawmill.Info($"Admin log next batch request from admin with id {Player.UserId.UserId} and name {Player.Name}");
 
-                SendLogs(false);
-                break;
-            }
+                    SendLogs(false);
+                    break;
+                }
         }
     }
 

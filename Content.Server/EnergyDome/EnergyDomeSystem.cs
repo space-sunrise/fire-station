@@ -223,7 +223,8 @@ public sealed partial class EnergyDomeSystem : EntitySystem
         }
 
         //it seems to me it would not work well to hang both a powercell and an internal battery with wire charging on the object....
-        if (TryComp<BatteryComponent>(generatorUid, out var battery)) {
+        if (TryComp<BatteryComponent>(generatorUid, out var battery))
+        {
             _battery.UseCharge(generatorUid, energyLeak);
 
             if (battery.State == BatteryState.Empty)

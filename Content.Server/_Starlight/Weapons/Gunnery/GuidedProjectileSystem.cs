@@ -13,8 +13,8 @@ namespace Content.Server._Starlight.Weapons.Gunnery;
 /// </summary>
 public sealed class GuidedProjectileSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPhysicsSystem    _physics   = default!;
-    [Dependency] private readonly SharedTransformSystem  _transform = default!;
+    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     public override void Update(float frameTime)
     {
@@ -31,13 +31,13 @@ public sealed class GuidedProjectileSystem : EntitySystem
                 continue;
 
             var currentPos = _transform.GetMapCoordinates(uid, xform).Position;
-            var toTarget   = guided.SteeringTarget - currentPos;
+            var toTarget = guided.SteeringTarget - currentPos;
 
             if (toTarget.LengthSquared() < 0.01f)
                 continue;
 
-            var desiredDir  = Vector2.Normalize(toTarget);
-            var currentDir  = Vector2.Normalize(physics.LinearVelocity);
+            var desiredDir = Vector2.Normalize(toTarget);
+            var currentDir = Vector2.Normalize(physics.LinearVelocity);
 
             // Maximum rotation this frame (radians).
             var maxTurn = float.DegreesToRadians(guided.TurnRate) * frameTime;
@@ -55,10 +55,10 @@ public sealed class GuidedProjectileSystem : EntitySystem
             {
                 // Rotate currentDir toward desiredDir by maxTurn.
                 // Cross product sign determines rotation direction.
-                var cross      = currentDir.X * desiredDir.Y - currentDir.Y * desiredDir.X;
-                var rotAngle   = cross >= 0f ? maxTurn : -maxTurn;
-                var cos        = MathF.Cos(rotAngle);
-                var sin        = MathF.Sin(rotAngle);
+                var cross = currentDir.X * desiredDir.Y - currentDir.Y * desiredDir.X;
+                var rotAngle = cross >= 0f ? maxTurn : -maxTurn;
+                var cos = MathF.Cos(rotAngle);
+                var sin = MathF.Sin(rotAngle);
                 newDir = new Vector2(
                     cos * currentDir.X - sin * currentDir.Y,
                     sin * currentDir.X + cos * currentDir.Y);

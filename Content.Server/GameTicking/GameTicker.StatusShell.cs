@@ -60,7 +60,7 @@ namespace Content.Server.GameTicking
                 jObject["players"] = players; // Sunrise-Queue
                 jObject["soft_max_players"] = _cfg.GetCVar(CCVars.SoftMaxPlayers);
                 jObject["panic_bunker"] = _cfg.GetCVar(CCVars.PanicBunkerEnabled);
-                jObject["run_level"] = (int) _runLevel;
+                jObject["run_level"] = (int)_runLevel;
                 if (preset != null)
                 {
                     if (preset.Hide)

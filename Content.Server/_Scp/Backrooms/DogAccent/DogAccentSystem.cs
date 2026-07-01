@@ -40,7 +40,7 @@ public sealed class DogAccentSystem : EntitySystem
     private string ReplaceRandomWords(string message)
     {
         // Разбиваем строку на слова
-        var words = message.Split([' ', ',', '.', '!', '?' ], StringSplitOptions.RemoveEmptyEntries);
+        var words = message.Split([' ', ',', '.', '!', '?'], StringSplitOptions.RemoveEmptyEntries);
 
         var count = _random.Next(1, words.Length + 1);
 

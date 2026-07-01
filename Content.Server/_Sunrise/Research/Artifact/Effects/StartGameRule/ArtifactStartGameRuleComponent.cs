@@ -6,5 +6,5 @@ namespace Content.Server._Sunrise.Research.Artifact.Effects.StartGamerule;
 public sealed partial class ArtifactStartGameRuleComponent : Component
 {
     [DataField(required: true)]
-    public Dictionary<EntProtoId, int> Rules = new ();
+    public Dictionary<EntProtoId, int> Rules = new();
 }

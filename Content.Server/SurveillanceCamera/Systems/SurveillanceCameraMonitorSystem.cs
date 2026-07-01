@@ -158,7 +158,8 @@ public sealed class SurveillanceCameraMonitorSystem : EntitySystem
                         }
 
                         component.KnownCameras.Add(netEntCamera,
-                            new CameraData{
+                            new CameraData
+                            {
                                 Name = name,
                                 CameraAddress = address,
                                 SubnetAddress = subnetAddress,

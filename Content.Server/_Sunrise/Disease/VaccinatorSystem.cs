@@ -129,7 +129,7 @@ public sealed class VaccinatorSystem : SharedVaccinatorSystem
                     }
                 }
                 text.AppendLine("После чего положить полученную жидкость в вакцинатор, добавив одну каплю крови здорового человека.");
-                if(TryComp<PaperComponent>(printed, out var paperComp))
+                if (TryComp<PaperComponent>(printed, out var paperComp))
                 {
                     _paperSystem.SetContent((printed, paperComp), text.ToString());
                 }

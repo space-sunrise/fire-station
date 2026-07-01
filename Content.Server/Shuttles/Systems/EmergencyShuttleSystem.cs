@@ -600,9 +600,9 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
         EnsureComp<UnbuildableGridComponent>(uid.Value.Owner); // Sunrise-edit
         EnsureComp<ImmortalGridComponent>(uid.Value.Owner); // Sunrise-edit
 
-       var template = _random.Pick(component.Biomes);
-       var biome = _prototypeManager.Index<BiomeTemplatePrototype>(template);
-       _biomes.EnsurePlanet(mapUid, biome);
+        var template = _random.Pick(component.Biomes);
+        var biome = _prototypeManager.Index<BiomeTemplatePrototype>(template);
+        _biomes.EnsurePlanet(mapUid, biome);
 
         component.MapEntity = mapUid;
         component.Entity = uid;
@@ -668,7 +668,7 @@ public sealed partial class EmergencyShuttleSystem : SharedEmergencyShuttleSyste
         // Sunrise-start
         var mapId = _mapManager.CreateMap();
 
-        var mapOptions = new DeserializationOptions {};
+        var mapOptions = new DeserializationOptions { };
         if (!_loader.TryLoadGrid(mapId, shuttlePath, out var shuttle, mapOptions))
         {
             Log.Error($"Unable to spawn emergency shuttle {shuttlePath} for {ToPrettyString(ent)}");

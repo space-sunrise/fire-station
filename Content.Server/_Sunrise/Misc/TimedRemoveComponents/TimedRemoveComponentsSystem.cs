@@ -6,7 +6,7 @@ namespace Content.Server._Sunrise.Misc.TimedRemoveComponents;
 
 public sealed class TimedRemoveComponentsSystem : EntitySystem
 {
-    private static CancellationTokenSource _timerDespawnToken = new ();
+    private static CancellationTokenSource _timerDespawnToken = new();
 
     public override void Initialize()
     {

@@ -65,7 +65,7 @@ public sealed partial class AnomalySystem : SharedAnomalySystem
     private void OnMapInit(Entity<AnomalyComponent> anomaly, ref MapInitEvent args)
     {
         anomaly.Comp.NextPulseTime = Timing.CurTime + GetPulseLength(anomaly.Comp) * 3; // longer the first time
-        ChangeAnomalyStability(anomaly, Random.NextFloat(anomaly.Comp.InitialStabilityRange.Item1 , anomaly.Comp.InitialStabilityRange.Item2), anomaly.Comp);
+        ChangeAnomalyStability(anomaly, Random.NextFloat(anomaly.Comp.InitialStabilityRange.Item1, anomaly.Comp.InitialStabilityRange.Item2), anomaly.Comp);
         ChangeAnomalySeverity(anomaly, Random.NextFloat(anomaly.Comp.InitialSeverityRange.Item1, anomaly.Comp.InitialSeverityRange.Item2), anomaly.Comp);
 
         ShuffleParticlesEffect(anomaly);
@@ -163,7 +163,7 @@ public sealed partial class AnomalySystem : SharedAnomalySystem
 
         var pointsPerSecond = new Dictionary<ProtoId<ResearchPointPrototype>, int>();
 
-        foreach (var (pointType,  maxPoints) in component.MaxPointsPerSecond)
+        foreach (var (pointType, maxPoints) in component.MaxPointsPerSecond)
         {
             var minPoints = component.MinPointsPerSecond.GetValueOrDefault(pointType);
 

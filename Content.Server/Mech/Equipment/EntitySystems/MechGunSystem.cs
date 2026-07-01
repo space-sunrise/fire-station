@@ -8,6 +8,7 @@ using Content.Shared.Weapons.Ranged.Systems;
 using Content.Shared.Weapons.Ranged.Events;
 
 namespace Content.Server.Mech.Equipment.EntitySystems;
+
 public sealed class MechGunSystem : EntitySystem
 {
     [Dependency] private readonly MechSystem _mech = default!;
@@ -16,7 +17,7 @@ public sealed class MechGunSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<MechEquipmentComponent, GunShotEvent>((id,cmp,_)=> TryChargeGunBattery(id, cmp));
+        SubscribeLocalEvent<MechEquipmentComponent, GunShotEvent>((id, cmp, _) => TryChargeGunBattery(id, cmp));
         SubscribeLocalEvent<MechEquipmentComponent, OnEmptyGunShotEvent>((id, cmp, _) => TryChargeGunBattery(id, cmp));
     }
 

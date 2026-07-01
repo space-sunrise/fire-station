@@ -469,13 +469,13 @@ namespace Content.Server.Kitchen.EntitySystems
 
         public void UpdateUserInterfaceState(EntityUid uid, MicrowaveComponent component)
         {
-             _userInterface.SetUiState(uid, component.Key, new MicrowaveUpdateUserInterfaceState( //Sunrise-Edit
-                GetNetEntityArray(component.Storage.ContainedEntities.ToArray()),
-                HasComp<ActiveMicrowaveComponent>(uid),
-                component.CurrentCookTimeButtonIndex,
-                component.CurrentCookTimerTime,
-                component.CurrentCookTimeEnd
-            ));
+            _userInterface.SetUiState(uid, component.Key, new MicrowaveUpdateUserInterfaceState( //Sunrise-Edit
+               GetNetEntityArray(component.Storage.ContainedEntities.ToArray()),
+               HasComp<ActiveMicrowaveComponent>(uid),
+               component.CurrentCookTimeButtonIndex,
+               component.CurrentCookTimerTime,
+               component.CurrentCookTimeEnd
+           ));
         }
 
         public void SetAppearance(EntityUid uid, MicrowaveVisualState state, MicrowaveComponent? component = null, AppearanceComponent? appearanceComponent = null)
@@ -690,7 +690,7 @@ namespace Content.Server.Kitchen.EntitySystems
             }
 
             //cook only as many of those portions as time allows
-            return (recipe, (int) Math.Min(portions, component.CurrentCookTimerTime / recipe.CookTime));
+            return (recipe, (int)Math.Min(portions, component.CurrentCookTimerTime / recipe.CookTime));
         }
 
         public override void Update(float frameTime)

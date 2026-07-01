@@ -36,7 +36,7 @@ public sealed class ArtifactAnalyzerSystem : SharedArtifactAnalyzerSystem
             return;
 
         // Fire edit start - добавил поддержку разных очков исследования
-        Dictionary <ProtoId<ResearchPointPrototype>, int> sumResearch = new ();
+        Dictionary<ProtoId<ResearchPointPrototype>, int> sumResearch = new();
         foreach (var node in _xenoArtifact.GetAllNodes(artifact.Value))
         {
             var research = _xenoArtifact.GetResearchValue(node);

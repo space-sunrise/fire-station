@@ -27,7 +27,7 @@ namespace Content.Server.EntityList
                 return;
             }
 
-            if (player.AttachedEntity is not {} attached)
+            if (player.AttachedEntity is not { } attached)
             {
                 shell.WriteError(Loc.GetString("shell-only-players-can-run-this-command"));
                 return;

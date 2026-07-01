@@ -29,7 +29,7 @@ namespace Content.Server.Body.Commands
                 return;
             }
 
-            if (player.AttachedEntity is not {} attached)
+            if (player.AttachedEntity is not { } attached)
             {
                 shell.WriteLine(Loc.GetString($"shell-must-be-attached-to-entity"));
                 return;

@@ -11,7 +11,8 @@ namespace Content.Server._Sunrise.Pacificator;
 public sealed partial class PacificatorComponent : Component
 {
     // 1% charge per second.
-    [ViewVariables(VVAccess.ReadWrite)] [DataField("chargeRate")]
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField("chargeRate")]
     public float ChargeRate { get; set; } = 0.01f;
     // The gravity generator has two power values.
     // Idle power is assumed to be the power needed to run the control systems and interface.
@@ -37,7 +38,7 @@ public sealed partial class PacificatorComponent : Component
     public float MaxCharge { get; set; } = 1;
 
     // 0 -> 1
-    [ViewVariables(VVAccess.ReadWrite)] [DataField("charge")] public float Charge { get; set; } = 1;
+    [ViewVariables(VVAccess.ReadWrite)][DataField("charge")] public float Charge { get; set; } = 1;
 
     [ViewVariables]
     public bool Active { get; set; } = false;

@@ -116,7 +116,7 @@ namespace Content.Server.Atmos.EntitySystems
 
             for (var i = 0; i < Atmospherics.Directions; i++)
             {
-                var direction = (AtmosDirection) (1 << i);
+                var direction = (AtmosDirection)(1 << i);
                 var indices = tile.GridIndices.Offset(direction);
                 if (atmos.Tiles.TryGetValue(indices, out var adj)
                     && adj.NoGridTile
@@ -147,7 +147,7 @@ namespace Content.Server.Atmos.EntitySystems
                 var connected = false;
                 for (var i = 0; i < Atmospherics.Directions; i++)
                 {
-                    var indices = tile.GridIndices.Offset((AtmosDirection) (1 << i));
+                    var indices = tile.GridIndices.Offset((AtmosDirection)(1 << i));
                     if (_map.TryGetTile(ent.Comp3, indices, out var gridTile) && !gridTile.IsEmpty)
                     {
                         connected = true;
@@ -178,7 +178,7 @@ namespace Content.Server.Atmos.EntitySystems
             bool mapAtmosphere;
             if (_map.TryGetTile(ent.Comp3, idx, out var gTile) && !gTile.IsEmpty)
             {
-                var contentDef = (ContentTileDefinition) _tileDefinitionManager[gTile.TypeId];
+                var contentDef = (ContentTileDefinition)_tileDefinitionManager[gTile.TypeId];
                 mapAtmosphere = contentDef.MapAtmosphere;
                 tile.ThermalConductivity = contentDef.ThermalConductivity;
                 tile.HeatCapacity = contentDef.HeatCapacity;
@@ -187,7 +187,7 @@ namespace Content.Server.Atmos.EntitySystems
             else
             {
                 mapAtmosphere = true;
-                tile.ThermalConductivity =  0.5f;
+                tile.ThermalConductivity = 0.5f;
                 tile.HeatCapacity = float.PositiveInfinity;
 
                 if (!tile.NoGridTile)
@@ -272,7 +272,7 @@ namespace Content.Server.Atmos.EntitySystems
             if (tile.Air != null)
                 return;
 
-            tile.Air = new GasMixture(volume){Temperature = Atmospherics.T20C};
+            tile.Air = new GasMixture(volume) { Temperature = Atmospherics.T20C };
 
             if (data.FixVacuum)
                 GridFixTileVacuum(tile);
@@ -324,7 +324,7 @@ namespace Content.Server.Atmos.EntitySystems
             Entity<GridAtmosphereComponent, GasTileOverlayComponent, MapGridComponent, TransformComponent> ent)
         {
             var atmosphere = ent.Comp1;
-            if(!atmosphere.ProcessingPaused)
+            if (!atmosphere.ProcessingPaused)
                 QueueRunTiles(atmosphere.CurrentRunTiles, atmosphere.ActiveTiles);
 
             var number = 0;
@@ -425,7 +425,7 @@ namespace Content.Server.Atmos.EntitySystems
             Entity<GridAtmosphereComponent, GasTileOverlayComponent, MapGridComponent, TransformComponent> ent)
         {
             var atmosphere = ent.Comp1;
-            if(!atmosphere.ProcessingPaused)
+            if (!atmosphere.ProcessingPaused)
                 QueueRunTiles(atmosphere.CurrentRunTiles, atmosphere.HotspotTiles);
 
             var number = 0;
@@ -449,7 +449,7 @@ namespace Content.Server.Atmos.EntitySystems
 
         private bool ProcessSuperconductivity(GridAtmosphereComponent atmosphere)
         {
-            if(!atmosphere.ProcessingPaused)
+            if (!atmosphere.ProcessingPaused)
                 QueueRunTiles(atmosphere.CurrentRunTiles, atmosphere.SuperconductivityTiles);
 
             var number = 0;
@@ -628,7 +628,7 @@ namespace Content.Server.Atmos.EntitySystems
                 _currentRunAtmosphere.Clear();
 
                 var query = EntityQueryEnumerator<GridAtmosphereComponent, GasTileOverlayComponent, MapGridComponent, TransformComponent>();
-                while (query.MoveNext(out var uid, out var atmos, out var overlay, out var grid, out var xform ))
+                while (query.MoveNext(out var uid, out var atmos, out var overlay, out var grid, out var xform))
                 {
                     _currentRunAtmosphere.Add((uid, atmos, overlay, grid, xform));
                 }

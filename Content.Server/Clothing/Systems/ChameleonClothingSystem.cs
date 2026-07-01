@@ -57,7 +57,7 @@ public sealed class ChameleonClothingSystem : SharedChameleonClothingSystem
         if (string.IsNullOrEmpty(protoId) || !_proto.TryIndex(protoId, out EntityPrototype? proto))
             return;
         //if (!IsValidTarget(proto, component.Slot, component.RequireTag)) //Sunrise-Edit
-            //return; //Sunrise-Edit
+        //return; //Sunrise-Edit
         component.Default = protoId;
 
         UpdateIdentityBlocker(uid, component, proto);

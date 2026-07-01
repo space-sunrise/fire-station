@@ -5,7 +5,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Server._Sunrise.TransitHub;
 
-[RegisterComponent, Access( typeof(EmergencyShuttleSystem))]
+[RegisterComponent, Access(typeof(EmergencyShuttleSystem))]
 public sealed partial class StationTransitHubComponent : Component
 {
     [DataField]

@@ -25,7 +25,7 @@ public sealed partial class MetaGarbageTargetComponent : Component
     /// Значение - шанс, что сущность с этим реагентом будет заспавнена.
     /// </summary>
     [DataField]
-    public Dictionary<ProtoId<ReagentPrototype>, float> ReagentSaveModifiers = new ();
+    public Dictionary<ProtoId<ReagentPrototype>, float> ReagentSaveModifiers = new();
 }
 
 /// <summary>

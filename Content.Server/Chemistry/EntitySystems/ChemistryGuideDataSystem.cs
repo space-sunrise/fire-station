@@ -55,7 +55,7 @@ public sealed class ChemistryGuideDataSystem : SharedChemistryGuideDataSystem
 
         foreach (var (id, proto) in reagents.Modified)
         {
-            var reagentProto = (ReagentPrototype) proto;
+            var reagentProto = (ReagentPrototype)proto;
             var entry = new ReagentGuideEntry(reagentProto, PrototypeManager, EntityManager.EntitySysManager);
             changeset.GuideEntries.Add(id, entry);
             Registry[id] = entry;

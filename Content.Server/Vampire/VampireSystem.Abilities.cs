@@ -252,7 +252,7 @@ public sealed partial class VampireSystem
         }
     }
 
-        private void OnVampireThermalVision(EntityUid entity, VampireComponent component, VampireThermalVisionEvent ev)
+    private void OnVampireThermalVision(EntityUid entity, VampireComponent component, VampireThermalVisionEvent ev)
     {
         if (!TryGetPowerDefinition(ev.DefinitionName, out var def))
             return;
@@ -477,7 +477,7 @@ public sealed partial class VampireSystem
             if (victimBloodRemaining <= 0)
                 continue;
 
-            var volumeToConsume = (FixedPoint2) Math.Min((float) victimBloodRemaining.Value, 20); //HARDCODE, 20u of blood per person per use
+            var volumeToConsume = (FixedPoint2)Math.Min((float)victimBloodRemaining.Value, 20); //HARDCODE, 20u of blood per person per use
 
             targets.Add(entity);
 
@@ -500,7 +500,7 @@ public sealed partial class VampireSystem
         var bloodEssence = _vampire.GetBloodEssence(vampire);
 
         //Update abilities, add new unlocks
-        UpdateAbilities(vampire, vampire.Comp, "ActionVampireBloodSteal", "BloodSteal" , bloodEssence >= FixedPoint2.New(200) && vampire.Comp.CurrentMutation == VampireMutationsType.Hemomancer);
+        UpdateAbilities(vampire, vampire.Comp, "ActionVampireBloodSteal", "BloodSteal", bloodEssence >= FixedPoint2.New(200) && vampire.Comp.CurrentMutation == VampireMutationsType.Hemomancer);
     }
     private bool CloakOfDarkness(Entity<VampireComponent> vampire, float upkeep, float passiveVisibilityRate, float movementVisibilityRate)
     {
@@ -763,12 +763,12 @@ public sealed partial class VampireSystem
             return;
         }
 
-        var volumeToConsume = (FixedPoint2) Math.Min((float) victimBloodRemaining.Value, args.Volume);
-        var volumeToDrain = (FixedPoint2) Math.Min((float) victimBloodRemaining.Value, args.Volume * 8);
+        var volumeToConsume = (FixedPoint2)Math.Min((float)victimBloodRemaining.Value, args.Volume);
+        var volumeToDrain = (FixedPoint2)Math.Min((float)victimBloodRemaining.Value, args.Volume * 8);
 
         if (_mind.TryGetMind(entity, out var mindId, out var mind))
             if (_mind.TryGetObjectiveComp<BloodDrainConditionComponent>(mindId, out var objective, mind))
-                    objective.BloodDranked = entity.Comp.TotalBloodDrank;
+                objective.BloodDranked = entity.Comp.TotalBloodDrank;
 
         //Slurp
         _audio.PlayPvs(entity.Comp.BloodDrainSound, entity.Owner, AudioParams.Default.WithVolume(-3f));

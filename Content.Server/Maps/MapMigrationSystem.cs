@@ -36,7 +36,7 @@ public sealed class MapMigrationSystem : EntitySystem
         // Verify that all of the entries map to valid entity prototypes.
         foreach (var node in mappings.Children.Values)
         {
-            var newId = ((ValueDataNode) node).Value;
+            var newId = ((ValueDataNode)node).Value;
             if (!string.IsNullOrEmpty(newId) && newId != "null")
                 DebugTools.Assert(_protoMan.HasIndex<EntityPrototype>(newId), $"{newId} is not an entity prototype.");
         }
@@ -56,7 +56,7 @@ public sealed class MapMigrationSystem : EntitySystem
         if (documents == null)
             return false;
 
-        mappings = (MappingDataNode) documents.Root;
+        mappings = (MappingDataNode)documents.Root;
         return true;
     }
 

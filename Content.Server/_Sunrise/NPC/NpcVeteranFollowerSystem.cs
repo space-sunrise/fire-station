@@ -50,7 +50,7 @@ public sealed class NpcVeteranFollowerSystem : EntitySystem
             if (_tag.HasTag(uid, comp.BossTag) || !_mobState.IsAlive(uid))
                 continue;
 
-            comp.RecheckAccumulator -= (float) UpdateCooldown.TotalSeconds;
+            comp.RecheckAccumulator -= (float)UpdateCooldown.TotalSeconds;
             if (comp.RecheckAccumulator > 0f)
                 continue;
 

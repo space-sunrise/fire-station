@@ -149,7 +149,7 @@ public sealed partial class MessengerServerSystem
         if (pda.ContainedId != null && TryComp<IdCardComponent>(pda.ContainedId.Value, out var idCard))
         {
             jobTitle = idCard.LocalizedJobTitle;
-            departments.AddRange(idCard.JobDepartments.Select(d => (string) d));
+            departments.AddRange(idCard.JobDepartments.Select(d => (string)d));
             jobIconId = idCard.JobIcon;
         }
 
@@ -318,7 +318,7 @@ public sealed partial class MessengerServerSystem
         {
             userName = idCard.FullName;
             jobTitle = idCard.LocalizedJobTitle;
-            departments.AddRange(idCard.JobDepartments.Select(d => (string) d));
+            departments.AddRange(idCard.JobDepartments.Select(d => (string)d));
             jobIconId = idCard.JobIcon;
         }
 
@@ -441,7 +441,7 @@ public sealed partial class MessengerServerSystem
             }
             else if (autoGroupProto.Departments.Count > 0)
             {
-                shouldAdd = autoGroupProto.Departments.Any(d => departments.Contains((string) d));
+                shouldAdd = autoGroupProto.Departments.Any(d => departments.Contains((string)d));
             }
 
             if (!shouldAdd)
@@ -631,7 +631,7 @@ public sealed partial class MessengerServerSystem
         if (pdaComp.ContainedId != null && TryComp<IdCardComponent>(pdaComp.ContainedId.Value, out var idCard))
         {
             jobTitle = idCard.LocalizedJobTitle;
-            departments.AddRange(idCard.JobDepartments.Select(d => (string) d));
+            departments.AddRange(idCard.JobDepartments.Select(d => (string)d));
             jobIconId = idCard.JobIcon;
         }
 

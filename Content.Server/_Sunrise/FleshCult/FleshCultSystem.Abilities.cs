@@ -184,7 +184,7 @@ public sealed partial class FleshCultSystem
                             uid, uid);
                         return;
                     }
-                    _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager ,uid, component.DevourTime,
+                    _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, uid, component.DevourTime,
                         new FleshCultistDevourDoAfterEvent(), uid, target: target, used: uid)
                     {
                         BreakOnMove = true,
@@ -500,10 +500,10 @@ public sealed partial class FleshCultSystem
                     return;
                 }
 
-               if (_tagSystem.HasAnyTag(entity.Value, args.CheckTags))
-               {
-                   _inventory.TryUnequip(uid, slot, true, true);
-               }
+                if (_tagSystem.HasAnyTag(entity.Value, args.CheckTags))
+                {
+                    _inventory.TryUnequip(uid, slot, true, true);
+                }
             }
         }
 
@@ -575,7 +575,7 @@ public sealed partial class FleshCultSystem
             {
                 PhysicsComponent? physics = null; // We use this to check if it's impassable
                 if (HasComp<MobStateComponent>(entity) && entity != uid || // Is it a mob?
-                    Resolve(entity, ref physics, false) && (physics.CollisionLayer & (int) CollisionGroup.Impassable) != 0 ||
+                    Resolve(entity, ref physics, false) && (physics.CollisionLayer & (int)CollisionGroup.Impassable) != 0 ||
                     HasComp<ConstructionComponent>(entity) && entity != uid) // Is construction?
                 {
                     _popup.PopupEntity(Loc.GetString("flesh-cultist-cant-spawn-flesh-heart-here",

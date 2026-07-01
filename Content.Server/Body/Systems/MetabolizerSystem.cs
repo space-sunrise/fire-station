@@ -213,12 +213,12 @@ public sealed class MetabolizerSystem : SharedMetabolizerSystem
                 // Remove $rate, as long as there's enough reagent there to actually remove that much
                 mostToRemove = FixedPoint2.Clamp(rate, 0, quantity);
 
-                var scale = (float) mostToRemove;
+                var scale = (float)mostToRemove;
 
                 // TODO: This is a very stupid workaround to lungs heavily relying on scale = reagent quantity. Needs lung and metabolism refactors to remove.
                 // TODO: Lungs just need to have their scale be equal to the mols consumed, scale needs to be not hardcoded either and configurable per metabolizer...
                 if (group.Id != Gas)
-                    scale /= (float) entry.MetabolismRate;
+                    scale /= (float)entry.MetabolismRate;
 
                 // if it's possible for them to be dead, and they are,
                 // then we shouldn't process any effects, but should probably

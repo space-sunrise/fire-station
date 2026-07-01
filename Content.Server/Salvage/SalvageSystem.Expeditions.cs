@@ -157,7 +157,7 @@ public sealed partial class SalvageSystem
         var difficulties = _prototypeManager
             .EnumeratePrototypes<SalvageDifficultyPrototype>()
             .Where(d => d.Delay <= roundDuration && d.Probability > 0f)
-            .ToDictionary(d => d.ID, d => d.Probability); 
+            .ToDictionary(d => d.ID, d => d.Probability);
 
         if (difficulties.Count == 0)
             return;

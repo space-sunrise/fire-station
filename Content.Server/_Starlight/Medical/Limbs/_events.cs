@@ -11,7 +11,7 @@ public record struct LimbAttachedEvent<T>
     public readonly EntityUid Limb;
     public readonly T Comp;
 }
-    [ByRefEvent]
+[ByRefEvent]
 public record struct LimbRemovedEvent<T>
 {
     public LimbRemovedEvent(EntityUid limb, T comp)

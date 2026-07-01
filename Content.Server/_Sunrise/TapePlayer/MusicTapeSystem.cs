@@ -18,7 +18,7 @@ public sealed class MusicTapeSystem : EntitySystem
     {
         var resolved = _audioSystem.ResolveSound(comp.Sound);
         var length = _audioSystem.GetAudioLength(resolved);
-        comp.SongLengthSeconds = (float) length.TotalSeconds;
+        comp.SongLengthSeconds = (float)length.TotalSeconds;
         Dirty(uid, comp);
     }
 }

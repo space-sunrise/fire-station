@@ -212,9 +212,9 @@ public sealed class AlertLevelSystem : EntitySystem
     }
 }
 public sealed class AlertLevelDelayFinishedEvent : EntityEventArgs
-{}
+{ }
 public sealed class AlertLevelPrototypeReloadedEvent : EntityEventArgs
-{}
+{ }
 // Sunrise-Start
 public sealed class AlertLevelChangedEvent : EntityEventArgs
 {

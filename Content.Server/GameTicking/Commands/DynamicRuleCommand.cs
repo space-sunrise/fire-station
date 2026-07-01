@@ -42,7 +42,7 @@ public sealed class DynamicRuleCommand : ToolshedCommand
 
     [CommandImplementation("adjust")]
     public IEnumerable<float?> Adjust([PipedArgument] IEnumerable<EntityUid> input, float value)
-        => input.Select(i => Adjust(i,value));
+        => input.Select(i => Adjust(i, value));
 
     [CommandImplementation("adjust")]
     public float? Adjust([PipedArgument] EntityUid input, float value)
@@ -54,7 +54,7 @@ public sealed class DynamicRuleCommand : ToolshedCommand
 
     [CommandImplementation("set")]
     public IEnumerable<float?> Set([PipedArgument] IEnumerable<EntityUid> input, float value)
-        => input.Select(i => Set(i,value));
+        => input.Select(i => Set(i, value));
 
     [CommandImplementation("set")]
     public float? Set([PipedArgument] EntityUid input, float value)

@@ -85,7 +85,7 @@ public sealed class HealthAnalyzerSystem : AbstractAnalyzerSystem<HealthAnalyzer
         }
 
         // Sunrise edit start - новый триггер
-        RaiseLocalEvent(target, new EntityAnalyzedEvent ());
+        RaiseLocalEvent(target, new EntityAnalyzedEvent());
         // Sunrise edit end
 
         if (TryComp<UnrevivableComponent>(target, out var unrevivableComp) && unrevivableComp.Analyzable)

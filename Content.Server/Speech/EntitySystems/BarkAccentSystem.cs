@@ -44,7 +44,7 @@ namespace Content.Server.Speech.EntitySystems
                 // Russian-Localization-Start
                 .Replace("l", "r").Replace("L", "R")
                 .Replace("л", "р").Replace("Л", "Р");
-                // Russian-Localization-End
+            // Russian-Localization-End
         }
 
         private void OnAccent(Entity<BarkAccentComponent> entity, ref AccentGetEvent args)

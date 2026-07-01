@@ -297,7 +297,7 @@ public sealed class AmeControllerSystem : EntitySystem
     {
         if (!TryGetAMENodeGroup(ent, out var group))
             return 0;
-        return  group.CoreCount * 8;
+        return group.CoreCount * 8;
     }
 
     private void UpdateDisplay(EntityUid uid, int stability, AmeControllerComponent? controller = null, AppearanceComponent? appearance = null)

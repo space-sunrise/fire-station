@@ -110,7 +110,7 @@ public sealed class SalvageJobBoardSystem : EntitySystem
             // don't worry abooouuuuut it (it'll be O K !)
             var high = i != ent.Comp.RankThresholds.Count - 1
                 ? ent.Comp.RankThresholds.Keys.ElementAt(i + 1)
-                :  _prototypeManager.EnumeratePrototypes<CargoBountyPrototype>()
+                : _prototypeManager.EnumeratePrototypes<CargoBountyPrototype>()
                 .Count(p => ent.Comp.RankThresholds.Values
                     .Select(r => r.BountyGroup)
                     .Contains(p.Group));
@@ -174,7 +174,7 @@ public sealed class SalvageJobBoardSystem : EntitySystem
             _cargo.UpdateBankAccount(
                 (ent.Owner, stationBankAccount),
                 jobProto.Reward,
-                _cargo.CreateAccountDistribution((ent,  stationBankAccount)));
+                _cargo.CreateAccountDistribution((ent, stationBankAccount)));
         }
 
         // We ranked up!

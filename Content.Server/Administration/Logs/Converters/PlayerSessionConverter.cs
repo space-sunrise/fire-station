@@ -10,7 +10,7 @@ public sealed class PlayerSessionConverter : AdminLogConverter<SerializablePlaye
     {
         writer.WriteStartObject();
 
-        if (value.Uid is {Valid: true} playerEntity)
+        if (value.Uid is { Valid: true } playerEntity)
         {
             writer.WriteNumber("id", playerEntity.Id);
             writer.WriteString("name", value.Name);

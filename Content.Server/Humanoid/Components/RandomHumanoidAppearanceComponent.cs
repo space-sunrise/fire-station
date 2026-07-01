@@ -18,7 +18,7 @@ public sealed partial class RandomHumanoidAppearanceComponent : Component
     /// <summary>
     /// Настраивает цвет кожи в HEX формате. Учитывайте что только бежевые и темные цвета могут подойти человекоподобным. Советую подбирать цвет прям в игре.
     /// </summary>
-    [DataField] 
+    [DataField]
     public Color? SkinColor = null;
 
     /// <summary>

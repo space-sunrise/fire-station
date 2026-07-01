@@ -209,9 +209,9 @@ public sealed class SupermatterSystem : AccUpdateEntitySystem
         if (breakDelta == 0) return;
         supermatter.Comp.AccBreak -= breakDelta;
 
-        gas.AdjustMoles((int)Gas.Tritium, breakDelta.Float()/2);
+        gas.AdjustMoles((int)Gas.Tritium, breakDelta.Float() / 2);
 
-        gas.AdjustMoles((int)Gas.Oxygen, breakDelta.Float()*4);
+        gas.AdjustMoles((int)Gas.Oxygen, breakDelta.Float() * 4);
     }
 
     private static void ProcessHeat(Entity<SupermatterComponent> supermatter, GasMixture gas, float heatTransfer, float heatModifier)

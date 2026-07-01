@@ -47,7 +47,7 @@ public sealed partial class AssaultOpsRuleComponent : Component
 
     [DataField("winType")] public WinType WinType = WinType.Stalemate;
 
-    [DataField("winConditions")] public List<WinCondition> WinConditions = new ();
+    [DataField("winConditions")] public List<WinCondition> WinConditions = new();
 
     public EntityUid? ShuttleGrid;
 

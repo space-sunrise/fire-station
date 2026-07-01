@@ -159,8 +159,8 @@ public sealed partial class ShuttleSystem
         _atmosphere.SetMapSpace(mapUid, false);
 
         var moles = new float[Atmospherics.AdjustedNumberOfGases];
-        moles[(int) Gas.Oxygen] = 5.89f;
-        moles[(int) Gas.Nitrogen] = 21.16f;
+        moles[(int)Gas.Oxygen] = 5.89f;
+        moles[(int)Gas.Nitrogen] = 21.16f;
 
         var mixture = new GasMixture(moles, Atmospherics.T0C - 50);
 
@@ -267,7 +267,7 @@ public sealed partial class ShuttleSystem
         {
 
             // Too large to FTL
-            if (FTLMassLimit > 0 &&  shuttlePhysics.Mass > FTLMassLimit)
+            if (FTLMassLimit > 0 && shuttlePhysics.Mass > FTLMassLimit)
             {
                 reason = Loc.GetString("shuttle-console-mass");
                 return false;

@@ -101,7 +101,7 @@ public sealed class ChameleonControllerSystem : SharedChameleonControllerSystem
         // Sunrise-start
         var effectiveJobProtoId = LoadoutSystem.GetEffectiveRolePrototype(jobProtoId, _proto);
         if (!_proto.HasIndex<RoleLoadoutPrototype>(effectiveJobProtoId))
-        // Sunrise-end
+            // Sunrise-end
             return;
 
         defaultRoleLoadout = new RoleLoadout(jobProtoId);

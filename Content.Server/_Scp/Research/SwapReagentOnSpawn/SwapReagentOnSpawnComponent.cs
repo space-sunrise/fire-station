@@ -4,7 +4,7 @@
 public sealed partial class SwapReagentOnSpawnComponent : Component
 {
     [DataField(required: true)]
-    public Dictionary<string, string> Replace = new ();
+    public Dictionary<string, string> Replace = new();
 
     /// <summary>
     /// Шанс замены реагента с заменяемого на заменяющий

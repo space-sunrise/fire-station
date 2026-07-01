@@ -20,6 +20,7 @@ using Robust.Shared.Map;
 using Content.Shared.Damage.Systems;
 
 namespace Content.Server._Starlight.Weapon.Systems;
+
 public sealed partial class WeaponDismantleOnShootSystem : SharedWeaponDismantleOnShootSystem
 {
     [Dependency] private readonly TagSystem _tagSystem = default!;

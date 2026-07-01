@@ -17,7 +17,7 @@ public sealed partial class DungeonJob
         var checkedTiles = new HashSet<Vector2i>();
         var allExterior = new HashSet<Vector2i>(dungeon.CorridorExteriorTiles);
         allExterior.UnionWith(dungeon.RoomExteriorTiles);
-        var tileDef = (ContentTileDefinition) _tileDefManager[gen.Tile];
+        var tileDef = (ContentTileDefinition)_tileDefManager[gen.Tile];
         var contents = _prototype.Index(gen.Contents);
 
         foreach (var neighbor in allExterior)

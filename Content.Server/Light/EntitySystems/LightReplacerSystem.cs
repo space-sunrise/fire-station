@@ -86,7 +86,7 @@ public sealed class LightReplacerSystem : SharedLightReplacerSystem
         // behaviour will depends on target type
         if (eventArgs.Target != null)
         {
-            var targetUid = (EntityUid) eventArgs.Target;
+            var targetUid = (EntityUid)eventArgs.Target;
 
             // replace broken light in fixture?
             if (TryComp<PoweredLightComponent>(targetUid, out var fixture))

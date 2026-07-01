@@ -46,7 +46,7 @@ public sealed partial class CargoSystem
         }
 
         ent.Comp.NextAccountActionTime = Timing.CurTime + ent.Comp.AccountActionDelay;
-        UpdateBankAccount((station, bank), -args.Amount,  ent.Comp.Account, dirty: false);
+        UpdateBankAccount((station, bank), -args.Amount, ent.Comp.Account, dirty: false);
         _audio.PlayPvs(ApproveSound, ent);
 
         var tryGetIdentityShortInfoEvent = new TryGetIdentityShortInfoEvent(ent, args.Actor);
@@ -116,7 +116,7 @@ public sealed partial class CargoSystem
         var differs = false;
         foreach (var (account, percent) in args.Percents)
         {
-            if (percent != (int) Math.Round(bank.RevenueDistribution[account] * 100))
+            if (percent != (int)Math.Round(bank.RevenueDistribution[account] * 100))
             {
                 differs = true;
                 break;
@@ -132,7 +132,7 @@ public sealed partial class CargoSystem
 
         var primaryCut = bank.RevenueDistribution[bank.PrimaryAccount];
         bank.RevenueDistribution.Clear();
-        foreach (var (account, percent )in args.Percents)
+        foreach (var (account, percent) in args.Percents)
         {
             bank.RevenueDistribution.Add(account, percent / 100.0);
         }

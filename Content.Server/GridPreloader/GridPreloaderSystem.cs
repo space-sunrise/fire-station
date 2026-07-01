@@ -15,6 +15,7 @@ using JetBrains.Annotations;
 using Robust.Shared.EntitySerialization.Systems;
 
 namespace Content.Server.GridPreloader;
+
 public sealed class GridPreloaderSystem : SharedGridPreloaderSystem
 {
     [Dependency] private readonly IConfigurationManager _cfg = default!;

@@ -51,3 +51,4 @@ public sealed partial class ComplexElevatorComponent : Component
 
     [DataField]
     public float CrushDamage = 2000f;
+}

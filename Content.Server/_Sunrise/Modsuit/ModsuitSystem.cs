@@ -33,13 +33,13 @@ public sealed class ModsuitSystem : SharedModsuitSystem
 
         if (comp.IsActivated == true)
             return;
-        
-        if (args.Container.ID != "modsuit_core") 
+
+        if (args.Container.ID != "modsuit_core")
             return;
 
         if (!TryComp<TagComponent>(args.EntityUid, out var itemSlots) || !_tag.HasTag(itemSlots, "ModsuitCore"))
             return;
-        
+
         comp.IsActivated = true;
         EntityManager.Dirty(uid, comp);
 
@@ -57,7 +57,7 @@ public sealed class ModsuitSystem : SharedModsuitSystem
 
             if (!TryComp<PersonalBiocodeComponent>(Toggleable.ClothingUid, out var SuitBiocode))
                 return;
-            
+
             if (PersonDNA.DNA != null)
                 SuitBiocode.DNA = PersonDNA.DNA;
 

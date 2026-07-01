@@ -59,7 +59,7 @@ public sealed class OutfitSystem : EntitySystem
             foreach (var slot in slots)
             {
                 _invSystem.TryUnequip(target, slot.Name, true, true, false, inventoryComponent);
-                var gearStr = ((IEquipmentLoadout) startingGear).GetGear(slot.Name);
+                var gearStr = ((IEquipmentLoadout)startingGear).GetGear(slot.Name);
                 if (gearStr == string.Empty)
                     continue;
 
@@ -101,7 +101,7 @@ public sealed class OutfitSystem : EntitySystem
             var effectiveJobProtoId = LoadoutSystem.GetEffectiveRolePrototype(jobProtoId, _prototypeManager);
 
             if (!_prototypeManager.TryIndex<RoleLoadoutPrototype>(effectiveJobProtoId, out var jobProto))
-            // Sunrise-end
+                // Sunrise-end
                 break;
 
             // Don't require a player, so this works on Urists
@@ -116,7 +116,7 @@ public sealed class OutfitSystem : EntitySystem
                 // If they don't have a loadout for the role, make a default one
                 roleLoadout = new RoleLoadout(jobProtoId);
                 // Sunrise-Start
-                string [] sponsorsPrototypes = [];
+                string[] sponsorsPrototypes = [];
                 if (_sponsorsManager != null && session != null)
                 {
                     if (_sponsorsManager.TryGetPrototypes(session.UserId, out var prototypes))

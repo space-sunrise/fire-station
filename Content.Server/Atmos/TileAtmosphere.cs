@@ -166,7 +166,7 @@ public sealed partial class TileAtmosphere : IGasMixtureHolder // Sunrise-edit
     /// </summary>
     GasMixture IGasMixtureHolder.Air
     {
-        get => Air ?? new GasMixture(Atmospherics.CellVolume){ Temperature = Temperature };
+        get => Air ?? new GasMixture(Atmospherics.CellVolume) { Temperature = Temperature };
         set => Air = value;
     }
 
@@ -220,7 +220,7 @@ public sealed partial class TileAtmosphere : IGasMixtureHolder // Sunrise-edit
         AirArchived = Air?.Clone();
         Space = space;
 
-        if(immutable)
+        if (immutable)
             Air?.MarkImmutable();
     }
 

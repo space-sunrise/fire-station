@@ -117,7 +117,7 @@ public sealed partial class AdminLogManager
                 var playerIds = log.Players.Select(player => player.PlayerUserId.ToString()).ToArray();
                 var playerIdsJson = JsonSerializer.Serialize(playerIds);
                 var jsonLine =
-                    $"{{\"id\":{log.Id},\"roundId\":{log.RoundId},\"type\":{(int) log.Type},\"impact\":{(int) log.Impact},\"date\":\"{log.Date:O}\",\"message\":{JsonSerializer.Serialize(log.Message)},\"message_fmt\":{JsonSerializer.Serialize(formattedMessage)},\"json\":{log.Json.RootElement.GetRawText()},\"playerIds\":{playerIdsJson}}}";
+                    $"{{\"id\":{log.Id},\"roundId\":{log.RoundId},\"type\":{(int)log.Type},\"impact\":{(int)log.Impact},\"date\":\"{log.Date:O}\",\"message\":{JsonSerializer.Serialize(log.Message)},\"message_fmt\":{JsonSerializer.Serialize(formattedMessage)},\"json\":{log.Json.RootElement.GetRawText()},\"playerIds\":{playerIdsJson}}}";
 
                 stream.Values.Add([nanoTime.ToString(), jsonLine]);
             }
@@ -276,18 +276,18 @@ public sealed partial class AdminLogManager
 
             if (filter.Types is { Count: > 0 })
             {
-                var types = string.Join("|", filter.Types.Select(type => (int) type));
+                var types = string.Join("|", filter.Types.Select(type => (int)type));
                 query += $" | type=~\"{types}\"";
             }
 
             if (filter.Impacts is { Count: > 0 })
             {
-                var impacts = string.Join("|", filter.Impacts.Select(impact => (int) impact));
+                var impacts = string.Join("|", filter.Impacts.Select(impact => (int)impact));
                 query += $" | impact=~\"{impacts}\"";
             }
         }
 
-        if (GetLokiQueryCursorLogId(filter, cursor) is {} cursorLogId)
+        if (GetLokiQueryCursorLogId(filter, cursor) is { } cursorLogId)
             query += ascending ? $" | id > {cursorLogId}" : $" | id < {cursorLogId}";
 
         if (!string.IsNullOrEmpty(filter?.Search))
@@ -400,8 +400,8 @@ public sealed partial class AdminLogManager
             var roundId = token.TryGetProperty("roundId", out var roundIdToken) && roundIdToken.TryGetInt32(out var parsedRoundId)
                 ? parsedRoundId
                 : 0;
-            var type = (LogType) token.GetProperty("type").GetInt32();
-            var impact = (LogImpact) token.GetProperty("impact").GetInt32();
+            var type = (LogType)token.GetProperty("type").GetInt32();
+            var impact = (LogImpact)token.GetProperty("impact").GetInt32();
             var date = token.GetProperty("date").GetDateTime();
             var message = token.GetProperty("message").GetString() ?? string.Empty;
             var players = ParseLokiPlayers(token);

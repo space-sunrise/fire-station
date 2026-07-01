@@ -463,7 +463,7 @@ namespace Content.Server._Sunrise.BloodCult.Runes.Systems
                 };
                 damageThreshold.AddBehavior(new SpawnEntitiesBehavior
                 {
-                    Spawn = new Dictionary<EntProtoId, MinMax> { { entityStructureId, new MinMax{Min = 1, Max = 1} } },
+                    Spawn = new Dictionary<EntProtoId, MinMax> { { entityStructureId, new MinMax { Min = 1, Max = 1 } } },
                     Offset = 0f
                 });
                 damageThreshold.AddBehavior(new DoActsBehavior

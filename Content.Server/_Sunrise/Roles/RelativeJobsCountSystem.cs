@@ -64,8 +64,8 @@ public sealed class RelativeJobsCountSystem : EntitySystem
 
             // Расчет количества дополнительных слотов. Минимально 0, максимальное зависит от maxSlots
             var additionalSlots = maxSlots >= 0
-                ? (int) Math.Clamp(totalPlayer / settings.AnyTargetOnlineIncreaseSlot, 0f, maxSlots)
-                : (int) Math.Round(totalPlayer / settings.AnyTargetOnlineIncreaseSlot);
+                ? (int)Math.Clamp(totalPlayer / settings.AnyTargetOnlineIncreaseSlot, 0f, maxSlots)
+                : (int)Math.Round(totalPlayer / settings.AnyTargetOnlineIncreaseSlot);
 
             AddSlots(station, settings, additionalSlots);
         }

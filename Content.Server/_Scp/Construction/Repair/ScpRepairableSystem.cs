@@ -522,7 +522,7 @@ public sealed class ScpRepairableSystem : EntitySystem
                     user,
                     ent,
                     TimeSpan.FromSeconds(toolInsertStep.DoAfter),
-                    [ toolInsertStep.Tool ],
+                    [toolInsertStep.Tool],
                     new ConstructionInteractDoAfterEvent(GetNetCoordinates(Transform(ent).Coordinates)),
                     out _,
                     toolInsertStep.Fuel);

@@ -271,11 +271,11 @@ public sealed partial class StationJobsSystem
                         }
                     } while (priorCount != stationShares[station]);
                 }
-                done: ;
+            done:;
             }
         }
 
-        endFunc:
+    endFunc:
         return assigned;
     }
 
@@ -304,11 +304,11 @@ public sealed partial class StationJobsSystem
             }
 
             var profile = profiles[player];
-             if (profile.PreferenceUnavailable != PreferenceUnavailableMode.SpawnAsOverflow)
-             {
-                 assignedJobs.Add(player, (null, EntityUid.Invalid));
-                 continue;
-             }
+            if (profile.PreferenceUnavailable != PreferenceUnavailableMode.SpawnAsOverflow)
+            {
+                assignedJobs.Add(player, (null, EntityUid.Invalid));
+                continue;
+            }
 
             _random.Shuffle(givenStations);
 

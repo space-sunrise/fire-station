@@ -79,7 +79,7 @@ namespace Content.Server.Medical.BiomassReclaimer
                         var direction = new Vector2(_robustRandom.Next(-30, 30), _robustRandom.Next(-30, 30));
                         _throwing.TryThrow(thrown, direction, _robustRandom.Next(1, 10));
                     }
-                    reclaimer.RandomMessTimer += (float) reclaimer.RandomMessInterval.TotalSeconds;
+                    reclaimer.RandomMessTimer += (float)reclaimer.RandomMessInterval.TotalSeconds;
                 }
 
                 if (reclaimer.ProcessingTimer > 0)
@@ -87,7 +87,7 @@ namespace Content.Server.Medical.BiomassReclaimer
                     continue;
                 }
 
-                var actualYield = (int) (reclaimer.CurrentExpectedYield); // can only have integer biomass
+                var actualYield = (int)(reclaimer.CurrentExpectedYield); // can only have integer biomass
                 reclaimer.CurrentExpectedYield = reclaimer.CurrentExpectedYield - actualYield; // store non-integer leftovers
                 _material.SpawnMultipleFromMaterial(actualYield, BiomassPrototype, Transform(uid).Coordinates);
 

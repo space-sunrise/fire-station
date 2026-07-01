@@ -241,7 +241,7 @@ public sealed class MoverController : SharedMoverController
         }
         else
         {
-            remainingFraction = (ushort.MaxValue - component.LastInputSubTick) / (float) ushort.MaxValue;
+            remainingFraction = (ushort.MaxValue - component.LastInputSubTick) / (float)ushort.MaxValue;
         }
 
         ApplyTick(component, remainingFraction);
@@ -270,7 +270,7 @@ public sealed class MoverController : SharedMoverController
 
         if (subTick >= pilot.LastInputSubTick)
         {
-            var fraction = (subTick - pilot.LastInputSubTick) / (float) ushort.MaxValue;
+            var fraction = (subTick - pilot.LastInputSubTick) / (float)ushort.MaxValue;
 
             ApplyTick(pilot, fraction);
             pilot.LastInputSubTick = subTick;
@@ -362,8 +362,8 @@ public sealed class MoverController : SharedMoverController
 
         var horizIndex = vel.X > 0 ? 1 : 3; // east else west
         var vertIndex = vel.Y > 0 ? 2 : 0; // north else south
-        var horizComp = vel.X != 0 ? MathF.Pow(Vector2.Dot(vel, new (shuttle.LinearThrust[horizIndex] / shuttle.LinearThrust[horizIndex], 0f)), 2) : 0;
-        var vertComp = vel.Y != 0 ? MathF.Pow(Vector2.Dot(vel, new (0f, shuttle.LinearThrust[vertIndex] / shuttle.LinearThrust[vertIndex])), 2) : 0;
+        var horizComp = vel.X != 0 ? MathF.Pow(Vector2.Dot(vel, new(shuttle.LinearThrust[horizIndex] / shuttle.LinearThrust[horizIndex], 0f)), 2) : 0;
+        var vertComp = vel.Y != 0 ? MathF.Pow(Vector2.Dot(vel, new(0f, shuttle.LinearThrust[vertIndex] / shuttle.LinearThrust[vertIndex])), 2) : 0;
 
         return shuttle.BaseMaxLinearVelocity * vel * MathF.ReciprocalSqrtEstimate(horizComp + vertComp);
     }
@@ -477,7 +477,7 @@ public sealed class MoverController : SharedMoverController
                         if (shuttleVelocity.X < -appearanceThreshold)
                             _thruster.EnableLinearThrustDirection(shuttle, DirectionFlag.East);
 
-                        var index = (int) Math.Log2((int) DirectionFlag.East);
+                        var index = (int)Math.Log2((int)DirectionFlag.East);
                         force.X += shuttle.LinearThrust[index];
                     }
                     else if (shuttleVelocity.X > 0f)
@@ -487,7 +487,7 @@ public sealed class MoverController : SharedMoverController
                         if (shuttleVelocity.X > appearanceThreshold)
                             _thruster.EnableLinearThrustDirection(shuttle, DirectionFlag.West);
 
-                        var index = (int) Math.Log2((int) DirectionFlag.West);
+                        var index = (int)Math.Log2((int)DirectionFlag.West);
                         force.X -= shuttle.LinearThrust[index];
                     }
 
@@ -498,7 +498,7 @@ public sealed class MoverController : SharedMoverController
                         if (shuttleVelocity.Y < -appearanceThreshold)
                             _thruster.EnableLinearThrustDirection(shuttle, DirectionFlag.North);
 
-                        var index = (int) Math.Log2((int) DirectionFlag.North);
+                        var index = (int)Math.Log2((int)DirectionFlag.North);
                         force.Y += shuttle.LinearThrust[index];
                     }
                     else if (shuttleVelocity.Y > 0f)
@@ -508,7 +508,7 @@ public sealed class MoverController : SharedMoverController
                         if (shuttleVelocity.Y > appearanceThreshold)
                             _thruster.EnableLinearThrustDirection(shuttle, DirectionFlag.South);
 
-                        var index = (int) Math.Log2((int) DirectionFlag.South);
+                        var index = (int)Math.Log2((int)DirectionFlag.South);
                         force.Y -= shuttle.LinearThrust[index];
                     }
 
@@ -591,7 +591,7 @@ public sealed class MoverController : SharedMoverController
                     }
 
                     var force = Vector2.Zero;
-                    var index = (int) Math.Log2((int) dir);
+                    var index = (int)Math.Log2((int)dir);
                     var thrust = shuttle.LinearThrust[index];
 
                     switch (dir)

@@ -89,7 +89,7 @@ public interface IRelativeCountSettings
     /// <summary>
     /// Работа, на которую будут выдаваться слоты.
     /// </summary>
-   public ProtoId<JobPrototype> TargetJob { get; set; }
+    public ProtoId<JobPrototype> TargetJob { get; set; }
 
     /// <summary>
     /// Максимум слотов, которые будут открыты для данной роли через данные настройки.

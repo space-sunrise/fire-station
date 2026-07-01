@@ -68,7 +68,7 @@ public sealed partial class GameTicker
             return false;
         }
 
-        tracks = new() {new RoundEndMusicTrack(new SoundCollectionSpecifier(collectionId))};
+        tracks = new() { new RoundEndMusicTrack(new SoundCollectionSpecifier(collectionId)) };
         return true;
     }
 

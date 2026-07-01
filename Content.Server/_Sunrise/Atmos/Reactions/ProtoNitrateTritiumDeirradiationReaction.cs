@@ -17,8 +17,8 @@ public sealed partial class ProtoNitrateTritiumConversionReaction : IGasReaction
         var initialProtoNitrate = mixture.GetMoles(Gas.ProtoNitrate);
         var initialTritium = mixture.GetMoles(Gas.Tritium);
 
-        var temperature = mixture.Temperature; 
-        var producedAmount = Math.Min(temperature / 34f * initialTritium * initialProtoNitrate/ (initialTritium + 10f * initialProtoNitrate), Math.Min(initialTritium, initialProtoNitrate * 0.01f));
+        var temperature = mixture.Temperature;
+        var producedAmount = Math.Min(temperature / 34f * initialTritium * initialProtoNitrate / (initialTritium + 10f * initialProtoNitrate), Math.Min(initialTritium, initialProtoNitrate * 0.01f));
 
         if (initialTritium - producedAmount < 0 || initialProtoNitrate - producedAmount * 0.01f < 0)
             return ReactionResult.NoReaction;

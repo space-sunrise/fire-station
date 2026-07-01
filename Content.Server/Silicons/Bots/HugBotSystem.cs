@@ -22,7 +22,7 @@ public sealed class HugBotSystem : SharedHugBotSystem
     private void OnHtnRaisedEvent(Entity<HugBotComponent> entity, ref HTNRaisedEvent args)
     {
         if (args.Args is not HugBotDidHugEvent ||
-            args.Target is not {} target)
+            args.Target is not { } target)
             return;
 
         var ev = new HugBotHugEvent(GetNetEntity(entity));

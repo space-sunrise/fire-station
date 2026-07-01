@@ -7,6 +7,7 @@ using Content.Shared.Popups;
 using Robust.Shared.Player;
 
 namespace Content.Server.Morgue;
+
 public sealed class CrematoriumSystem : SharedCrematoriumSystem
 {
     [Dependency] private readonly GhostSystem _ghostSystem = default!;

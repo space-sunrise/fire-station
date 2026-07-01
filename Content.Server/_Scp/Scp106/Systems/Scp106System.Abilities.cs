@@ -26,7 +26,7 @@ public sealed partial class Scp106System
 
     public override bool PhantomTeleport(Scp106BecomeTeleportPhantomActionEvent args)
     {
-        if (args.Args.EventTarget is not {} phantom)
+        if (args.Args.EventTarget is not { } phantom)
             return false;
 
         if (!TryComp<Scp106PhantomComponent>(phantom, out var phantomComponent))

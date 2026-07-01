@@ -85,7 +85,7 @@ public sealed class MapperSyncManager
                 req.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
             var res = await _httpClient.SendAsync(req);
-            
+
             if (res.IsSuccessStatusCode)
             {
                 var json = await res.Content.ReadAsStringAsync();
@@ -132,37 +132,37 @@ public sealed class MapperSyncManager
                 req.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
             var res = await _httpClient.SendAsync(req);
-            
+
             if (res.IsSuccessStatusCode)
             {
                 var contentBytes = await res.Content.ReadAsByteArrayAsync();
-                
+
                 // Ensure it ends with .yml
                 if (!mapPath.EndsWith(".yml", StringComparison.OrdinalIgnoreCase))
                     mapPath += ".yml";
-                
+
                 // Construct target respath
                 var targetPath = new ResPath(mapPath);
-                
+
                 // Needs to be rooted to /Maps/
                 if (!targetPath.ToString().StartsWith("/Maps/", StringComparison.OrdinalIgnoreCase))
                 {
                     targetPath = new ResPath("/Maps") / targetPath;
                 }
-                
+
                 // Ensure directory exists
                 var dir = targetPath.Directory;
                 _res.UserData.CreateDir(dir);
-                
+
                 // Write file (Overwrite)
                 using var stream = _res.UserData.OpenWrite(targetPath);
                 stream.SetLength(0); // Ensure clean overwrite
                 await stream.WriteAsync(contentBytes, 0, contentBytes.Length);
                 await stream.FlushAsync();
-                
+
                 return (true, string.Empty);
             }
-            
+
             return (false, $"HTTP Error: {res.StatusCode}");
         }
         catch (Exception ex)
@@ -173,7 +173,7 @@ public sealed class MapperSyncManager
     }
 
     // --- SERVER SIDE HANDLERS ---
-    
+
     private async Task<bool> HandleMapRequest(IStatusHandlerContext context)
     {
         if (!context.Url.AbsolutePath.StartsWith("/mappersync/"))
@@ -203,7 +203,7 @@ public sealed class MapperSyncManager
             await HandleList(context);
             return true;
         }
-        
+
         if (context.Url.AbsolutePath == "/mappersync/download" && context.IsGetLike)
         {
             await HandleDownload(context);
@@ -219,7 +219,7 @@ public sealed class MapperSyncManager
 
         _sawmill.Debug("MapperSync: Starting scan for maps in UserData root (ResPath.Root)...");
         FindMaps(_res.UserData, ResPath.Root, maps);
-        
+
         _sawmill.Info($"MapperSync: Scanned UserData, found {maps.Count} maps.");
 
         await context.RespondJsonAsync(maps);

@@ -439,7 +439,7 @@ public sealed class CultBloodSpellSystem : EntitySystem
             TryComp<BasicEntityAmmoProviderComponent>(uid, out var ammoProviderComponent) &&
             ammoProviderComponent.Count != null)
         {
-            cultistComponent.BloodCharges += (FixedPoint2) ammoProviderComponent.Count * component.ShotCost;
+            cultistComponent.BloodCharges += (FixedPoint2)ammoProviderComponent.Count * component.ShotCost;
         }
 
         QueueDel(uid);

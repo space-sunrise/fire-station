@@ -57,7 +57,7 @@ public sealed class SingletonDeviceNetServerSystem : EntitySystem
 
             if (!server.Available)
             {
-                DisconnectServer(uid,server, device);
+                DisconnectServer(uid, server, device);
                 continue;
             }
 

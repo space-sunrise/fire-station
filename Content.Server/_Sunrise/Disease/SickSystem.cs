@@ -35,6 +35,7 @@ using Content.Shared.Store.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Chemistry.Components;
 namespace Content.Server._Sunrise.Disease;
+
 public sealed class SickSystem : SharedSickSystem
 {
     [Dependency] private readonly AutoEmoteSystem _autoEmote = default!;

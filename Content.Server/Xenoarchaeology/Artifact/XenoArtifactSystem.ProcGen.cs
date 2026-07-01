@@ -148,7 +148,7 @@ public sealed partial class XenoArtifactSystem
             return new();
 
         // Try and get larger as we create more layers. Prevents excessive layers.
-        var mod = RobustRandom.Next((int) (iteration / 1.5f), iteration + 1);
+        var mod = RobustRandom.Next((int)(iteration / 1.5f), iteration + 1);
 
         var layerMin = Math.Min(ent.Comp.NodesPerSegmentLayer.Min + mod, segmentSize);
         var layerMax = Math.Min(ent.Comp.NodesPerSegmentLayer.Max + mod, segmentSize);

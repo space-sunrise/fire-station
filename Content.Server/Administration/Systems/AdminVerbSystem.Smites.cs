@@ -812,7 +812,7 @@ public sealed partial class AdminVerbSystem
         {
             Text = vulpName,
             Category = VerbCategory.Smite,
-            Icon = new SpriteSpecifier.Rsi(new ("/Textures/Objects/Fun/Balls/tennisball.rsi"), "icon"),
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Fun/Balls/tennisball.rsi"), "icon"),
             Act = () =>
             {
                 _polymorphSystem.PolymorphEntity(args.Target, VulpkaninSmite);
@@ -1235,7 +1235,7 @@ public sealed partial class AdminVerbSystem
         var damageToKill = GetDamageToKill(target);
         _electrocutionSystem.TryDoElectrocution(target,
             null,
-            (int) damageToKill,
+            (int)damageToKill,
             TimeSpan.FromSeconds(30),
             refresh: true,
             ignoreInsulation: true);

@@ -7,5 +7,5 @@ public sealed partial class ChokeOnReadComponent : Component
     /// Список проклятых существ
     /// </summary>
     [ViewVariables]
-    public HashSet<EntityUid> Cursed = new ();
+    public HashSet<EntityUid> Cursed = new();
 }

@@ -36,7 +36,7 @@ public sealed class XATMagnetSystem : BaseQueryUpdateXATSystem<XATMagnetComponen
         _lookup.GetEntitiesInRange(coords, node.Comp1.MagbootsRange, _magbootEntities);
         foreach (var ent in _magbootEntities)
         {
-            if(!TryComp<ItemToggleComponent>(ent, out var itemToggle) || !itemToggle.Activated)
+            if (!TryComp<ItemToggleComponent>(ent, out var itemToggle) || !itemToggle.Activated)
                 continue;
 
             Trigger(artifact, node);

@@ -29,7 +29,7 @@ public sealed class DragonRuleSystem : GameRuleSystem<DragonRuleComponent>
     {
         var ent = args.Mind.Comp.OwnedEntity;
 
-        if(ent is null)
+        if (ent is null)
             return;
 
         args.Append(MakeBriefing(ent.Value));
@@ -42,7 +42,7 @@ public sealed class DragonRuleSystem : GameRuleSystem<DragonRuleComponent>
 
         _roleSystem.MindHasRole<DragonRoleComponent>(mindId, out var dragonRole);
 
-        if(dragonRole is null)
+        if (dragonRole is null)
             return;
 
         _antag.SendBriefing(args.EntityUid, MakeBriefing(args.EntityUid), null, null);

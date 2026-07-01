@@ -84,7 +84,7 @@ public sealed partial class ResearchSystem
             var modifier = _roundPopulationModifier ?? 1f;
 
             if (modifier != 1f)
-                points = (int) MathF.Round(points * modifier, MidpointRounding.AwayFromZero);
+                points = (int)MathF.Round(points * modifier, MidpointRounding.AwayFromZero);
         }
 
         //ModifyServerPoints(uid, points, component);

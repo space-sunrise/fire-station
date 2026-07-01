@@ -1,5 +1,5 @@
 using Content.Server.Administration.Managers;
-using Content.Shared._Scp.ComplexElevator;
+using Content.Server._Scp.ComplexElevator;
 using Content.Shared.Database;
 using Content.Shared.Verbs;
 using Robust.Server.GameObjects;
@@ -11,12 +11,12 @@ public sealed partial class ComplexElevatorSystem
 {
     [Dependency] private readonly IAdminManager _adminManager = default!;
 
-    private void InitializeDebug()
-    {
-        SubscribeLocalEvent<ComplexElevatorComponent, GetVerbsEvent<Verb>>(AddAdminElevatorVerbs);
-        SubscribeLocalEvent<ElevatorPointComponent, GetVerbsEvent<Verb>>(AddAdminPointVerbs);
-    }
+ private void InitializeDebug()
+{
+    SubscribeLocalEvent<ComplexElevatorComponent, GetVerbsEvent<Verb>>(AddAdminElevatorVerbs);
 
+    SubscribeLocalEvent<ElevatorPointComponent, GetVerbsEvent<Verb>>(AddAdminPointVerbs);
+}
     private void AddAdminElevatorVerbs(EntityUid uid, ComplexElevatorComponent comp, GetVerbsEvent<Verb> args)
     {
         if (!TryComp(args.User, out ActorComponent? actor) || !_adminManager.IsAdmin(actor.PlayerSession))

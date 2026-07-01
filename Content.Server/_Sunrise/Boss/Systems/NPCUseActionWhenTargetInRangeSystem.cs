@@ -61,7 +61,7 @@ public sealed class NPCUseActionWhenTargetInRangeSystem : EntitySystem
                 continue;
 
             // Spread initial cooldowns so NPCs do not unload all granted actions at spawn.
-            var randomDelay = TimeSpan.FromSeconds(_random.NextFloat() * (float) useDelay.TotalSeconds);
+            var randomDelay = TimeSpan.FromSeconds(_random.NextFloat() * (float)useDelay.TotalSeconds);
             if (randomDelay > TimeSpan.Zero)
                 _actions.SetCooldown(action.ActionEnt, randomDelay);
         }

@@ -15,6 +15,6 @@ public sealed partial class CodewordFactionPrototype : IPrototype
     /// <summary>
     /// The generator to use for this faction.
     /// </summary>
-    [DataField(required:true)]
+    [DataField(required: true)]
     public ProtoId<CodewordGeneratorPrototype> Generator { get; private set; } = default!;
 }

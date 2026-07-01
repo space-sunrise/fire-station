@@ -149,13 +149,13 @@ public sealed class IcarusTerminalSystem : EntitySystem
                     Authorize(component);
                 break;
             case IcarusTerminalStatus.FIRE_READY:
-            {
-                if (!IsAccessGranted(component.Owner))
                 {
-                    component.Status = IcarusTerminalStatus.AWAIT_DISKS;
+                    if (!IsAccessGranted(component.Owner))
+                    {
+                        component.Status = IcarusTerminalStatus.AWAIT_DISKS;
+                    }
+                    break;
                 }
-                break;
-            }
         }
     }
 
@@ -163,8 +163,8 @@ public sealed class IcarusTerminalSystem : EntitySystem
     {
         _userInterfaceSystem.SetUiState(component.Owner, IcarusTerminalUiKey.Key, new IcarusTerminalUiState(
             component.Status,
-            (int) component.RemainingTime,
-            (int) component.CooldownTime)
+            (int)component.RemainingTime,
+            (int)component.CooldownTime)
         );
     }
 

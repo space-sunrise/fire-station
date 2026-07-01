@@ -11,7 +11,7 @@ namespace Content.Server.Power.Components
         /// <summary>
         /// The structure prototype for the cable coil to place.
         /// </summary>
-        [DataField("cablePrototypeID", customTypeSerializer:typeof(PrototypeIdSerializer<EntityPrototype>))]
+        [DataField("cablePrototypeID", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
         public string? CablePrototypeId = "CableHV";
 
         /// <summary>

@@ -33,7 +33,7 @@ public sealed class IdCardSystem : SharedIdCardSystem
     }
 
     private void OnMicrowaved(EntityUid uid, IdCardComponent component, BeingMicrowavedEvent args)
-    {   
+    {
         //Sunrise-Start
         if (!args.BeingIrradiated)
             return;

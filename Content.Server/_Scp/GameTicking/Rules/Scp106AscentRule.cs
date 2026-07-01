@@ -88,7 +88,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
     private EntityUid _ruleUid;
     private EntityUid? _spawnPortalsRuleUid;
 
-    private CancellationTokenSource _timerDespawnToken = new ();
+    private CancellationTokenSource _timerDespawnToken = new();
 
     public override void Initialize()
     {
@@ -267,7 +267,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         }
 
         nuke.ArmMusic = ShiftNoReturnPointReachedMusic;
-        nuke.Timer = (int) endSongLenght.TotalSeconds + 7; // Чтобы не моментально начинала ебашить
+        nuke.Timer = (int)endSongLenght.TotalSeconds + 7; // Чтобы не моментально начинала ебашить
         nuke.RemainingTime = nuke.Timer;
         _nuke.ArmBomb(nuke.Owner, nuke);
 

@@ -27,7 +27,7 @@ public sealed class RandomHumanoidAppearanceSystem : EntitySystem
 
         var profile = HumanoidCharacterProfile.RandomWithSpecies(humanoid.Species);
         //If we have a specified hair style, change it to this
-        if(component.Hair != null)
+        if (component.Hair != null)
             profile = profile.WithCharacterAppearance(profile.Appearance.WithHairStyleName(component.Hair));
 
         _humanoid.LoadProfile(uid, profile, humanoid);
@@ -40,10 +40,10 @@ public sealed class RandomHumanoidAppearanceSystem : EntitySystem
         {
             if (component.SkinColor != null)
                 _humanoid.SetSkinColor(uid, component.SkinColor.Value, humanoid: humanoidAppearance);
-            
+
             if (component.HairColor != null)
                 SetMarkingColor(uid, MarkingCategories.Hair, component.HairColor.Value, humanoidAppearance);
-            
+
             if (component.FacialHairColor != null) // Да, цвет бороды, йоу.
                 SetMarkingColor(uid, MarkingCategories.FacialHair, component.FacialHairColor.Value, humanoidAppearance);
         }
@@ -51,7 +51,7 @@ public sealed class RandomHumanoidAppearanceSystem : EntitySystem
     }
 
     // Sunrise-Start
-    private void SetMarkingColor(EntityUid uid, MarkingCategories category, Color color, 
+    private void SetMarkingColor(EntityUid uid, MarkingCategories category, Color color,
         HumanoidAppearanceComponent humanoid)
     {
         if (!humanoid.MarkingSet.Markings.TryGetValue(category, out var markings))
@@ -64,7 +64,7 @@ public sealed class RandomHumanoidAppearanceSystem : EntitySystem
                 marking.SetColor(i, color);
             }
         }
-        
+
         Dirty(uid, humanoid);
     }
     // Sunrise-End

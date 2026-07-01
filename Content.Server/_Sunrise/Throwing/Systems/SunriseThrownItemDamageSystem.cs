@@ -222,7 +222,7 @@ public sealed class SunriseThrownItemDamageSystem : EntitySystem
         {
             var total = component.DamageTypes.GetTotal();
             if (total > 0)
-                return component.DamageTypes * (1.0f / (float) total);
+                return component.DamageTypes * (1.0f / (float)total);
 
             return component.DamageTypes;
         }
@@ -232,7 +232,7 @@ public sealed class SunriseThrownItemDamageSystem : EntitySystem
         {
             var total = melee.Damage.GetTotal();
             if (total > 0)
-                return melee.Damage * (1.0f / (float) total);
+                return melee.Damage * (1.0f / (float)total);
         }
 
         // 3. Fallback: No damage distribution

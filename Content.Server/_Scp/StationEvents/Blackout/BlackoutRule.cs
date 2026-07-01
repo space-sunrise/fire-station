@@ -25,7 +25,7 @@ public sealed class BlackoutRule : StationEventSystem<BlackoutRuleComponent>
             return;
 
         var query = AllEntityQuery<ApcComponent, TransformComponent>();
-        while (query.MoveNext(out var apcUid ,out var apc, out var transform))
+        while (query.MoveNext(out var apcUid, out var apc, out var transform))
         {
             if (!apc.MainBreakerEnabled)
                 continue;
@@ -49,7 +49,7 @@ public sealed class BlackoutRule : StationEventSystem<BlackoutRuleComponent>
         component.FrameTimeAccumulator += frameTime;
         if (component.FrameTimeAccumulator > component.UpdateRate)
         {
-            updates = (int) (component.FrameTimeAccumulator / component.UpdateRate);
+            updates = (int)(component.FrameTimeAccumulator / component.UpdateRate);
             component.FrameTimeAccumulator -= component.UpdateRate * updates;
         }
 

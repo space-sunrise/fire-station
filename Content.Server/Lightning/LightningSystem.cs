@@ -84,7 +84,7 @@ public sealed class LightningSystem : SharedLightningSystem
         bool shooted = false;  //starlight
         int shootedCount = 0;
         int count = -1;
-        while(shootedCount < boltCount)
+        while (shootedCount < boltCount)
         {
             count++;
 

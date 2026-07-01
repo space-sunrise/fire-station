@@ -209,7 +209,7 @@ public sealed class MappingAutoSaveSystem : EntitySystem
                 continue;
 
             var tile = _map.GetTileRef(grid.Owner, grid.Comp, childTransform.Coordinates);
-            var tileDefinition = (ContentTileDefinition) _tileDefinition[tile.Tile.TypeId];
+            var tileDefinition = (ContentTileDefinition)_tileDefinition[tile.Tile.TypeId];
 
             if (tileDefinition.ID == TileWallsCommand.TilePrototypeId)
                 continue;

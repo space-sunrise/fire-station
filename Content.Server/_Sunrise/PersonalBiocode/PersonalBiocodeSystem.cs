@@ -7,7 +7,7 @@ using Content.Shared.Popups;
 using Content.Server._Sunrise.PersonalBiocode;
 using Content.Shared._Sunrise.PersonalBiocode;
 using Content.Shared.Emag.Systems;
-﻿using Content.Shared.Actions;
+using Content.Shared.Actions;
 using Content.Shared.Forensics.Components;
 using Robust.Shared.Prototypes;
 using Content.Shared.Clothing.EntitySystems;
@@ -62,14 +62,14 @@ public sealed class PersonalBiocodeSystem : SharedPersonalBiocodeSystem // По�
         args.Handled = true;
     }
 
-     public void OnEquip(EntityUid uid, PersonalBiocodeComponent comp, GotEquippedEvent args)
+    public void OnEquip(EntityUid uid, PersonalBiocodeComponent comp, GotEquippedEvent args)
     {
         if (comp.IsAuthorized == true)
         {
             if (TryComp(args.Equipee, out DnaComponent? PersonNDA) && comp.DNA == PersonNDA.DNA)
             {
-                _popupSystem.PopupClient("biocode-equip-failure", args.Equipee, args.Equipee, PopupType.MediumCaution);     
-                return;    
+                _popupSystem.PopupClient("biocode-equip-failure", args.Equipee, args.Equipee, PopupType.MediumCaution);
+                return;
             }
 
             _inventory.TryUnequip(args.Equipee, "outerClothing", true, true);
@@ -81,7 +81,7 @@ public sealed class PersonalBiocodeSystem : SharedPersonalBiocodeSystem // По�
     {
         if (args.Handled)
             return;
-        
+
         if (!comp.BreakAble)
             return;
 

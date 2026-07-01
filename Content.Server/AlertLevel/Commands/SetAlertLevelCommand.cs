@@ -18,7 +18,7 @@ namespace Content.Server.AlertLevel.Commands
 
         public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
         {
-            var levelNames = new string[] {};
+            var levelNames = new string[] { };
             var player = shell.Player;
             if (player?.AttachedEntity != null)
             {
@@ -80,10 +80,10 @@ namespace Content.Server.AlertLevel.Commands
         private string[] GetStationLevelNames(EntityUid station)
         {
             if (!EntityManager.TryGetComponent<AlertLevelComponent>(station, out var alertLevelComp))
-                return new string[]{};
+                return new string[] { };
 
             if (alertLevelComp.AlertLevels == null)
-                return new string[]{};
+                return new string[] { };
 
             return alertLevelComp.AlertLevels.Levels.Keys.ToArray();
         }

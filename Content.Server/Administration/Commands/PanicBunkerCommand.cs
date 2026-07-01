@@ -25,7 +25,7 @@ public sealed class PanicBunkerCommand : LocalizedCommands
     {
         if (args.Length > 1)
         {
-            shell.WriteError(loc.GetString("shell-need-between-arguments",("lower", 0), ("upper", 1)));
+            shell.WriteError(loc.GetString("shell-need-between-arguments", ("lower", 0), ("upper", 1)));
             return null;
         }
 
@@ -144,7 +144,7 @@ public sealed class PanicBunkerMinAccountAgeCommand : LocalizedCommands
 
         if (args.Length > 1)
         {
-            shell.WriteError(Loc.GetString("shell-need-between-arguments",("lower", 0), ("upper", 1)));
+            shell.WriteError(Loc.GetString("shell-need-between-arguments", ("lower", 0), ("upper", 1)));
             return;
         }
 
@@ -176,7 +176,7 @@ public sealed class PanicBunkerMinOverallMinutesCommand : LocalizedCommands
 
         if (args.Length > 1)
         {
-            shell.WriteError(Loc.GetString("shell-need-between-arguments",("lower", 0), ("upper", 1)));
+            shell.WriteError(Loc.GetString("shell-need-between-arguments", ("lower", 0), ("upper", 1)));
             return;
         }
 

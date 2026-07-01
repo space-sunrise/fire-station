@@ -157,7 +157,7 @@ public sealed partial class DeliverySystem : SharedDeliverySystem
         var calculatedPenalty = (int)(ent.Comp.BaseSpesoPenalty * multiplier);
 
         // Prevents cargo from going into negatives
-        if (calculatedPenalty > penaltyAccountBalance )
+        if (calculatedPenalty > penaltyAccountBalance)
             calculatedPenalty = Math.Max(0, penaltyAccountBalance);
 
         _cargo.UpdateBankAccount(

@@ -91,29 +91,29 @@ public sealed class FleshCultRuleSystem : GameRuleSystem<FleshCultRuleComponent>
             switch (ev.Status)
             {
                 case FleshHeartStatus.Base:
-                {
-                    fleshCult.FleshHearts.Add(ev.FleshHeartUid, FleshHeartStatus.Base);
-                    break;
-                }
+                    {
+                        fleshCult.FleshHearts.Add(ev.FleshHeartUid, FleshHeartStatus.Base);
+                        break;
+                    }
                 case FleshHeartStatus.Active:
-                {
-                    if (fleshCult.FleshHearts.ContainsKey(ev.FleshHeartUid))
-                        fleshCult.FleshHearts[ev.FleshHeartUid] = FleshHeartStatus.Active;
-                    break;
-                }
+                    {
+                        if (fleshCult.FleshHearts.ContainsKey(ev.FleshHeartUid))
+                            fleshCult.FleshHearts[ev.FleshHeartUid] = FleshHeartStatus.Active;
+                        break;
+                    }
                 case FleshHeartStatus.Destruction:
-                {
-                    if (fleshCult.FleshHearts.ContainsKey(ev.FleshHeartUid))
-                        fleshCult.FleshHearts[ev.FleshHeartUid] = FleshHeartStatus.Destruction;
-                    break;
-                }
+                    {
+                        if (fleshCult.FleshHearts.ContainsKey(ev.FleshHeartUid))
+                            fleshCult.FleshHearts[ev.FleshHeartUid] = FleshHeartStatus.Destruction;
+                        break;
+                    }
                 case FleshHeartStatus.Final:
-                {
-                    if (fleshCult.FleshHearts.ContainsKey(ev.FleshHeartUid))
-                        fleshCult.FleshHearts[ev.FleshHeartUid] = FleshHeartStatus.Final;
-                    _roundEndSystem.EndRound();
-                    break;
-                }
+                    {
+                        if (fleshCult.FleshHearts.ContainsKey(ev.FleshHeartUid))
+                            fleshCult.FleshHearts[ev.FleshHeartUid] = FleshHeartStatus.Final;
+                        _roundEndSystem.EndRound();
+                        break;
+                    }
             }
         }
     }
@@ -202,7 +202,7 @@ public sealed class FleshCultRuleSystem : GameRuleSystem<FleshCultRuleComponent>
         {
             if (activateHearts > 0)
             {
-                result +=  "\n" + Loc.GetString("flesh-cult-round-end-count-activate-flesh-hearts", ("heartsCount",
+                result += "\n" + Loc.GetString("flesh-cult-round-end-count-activate-flesh-hearts", ("heartsCount",
                     activateHearts));
             }
             else
@@ -212,7 +212,7 @@ public sealed class FleshCultRuleSystem : GameRuleSystem<FleshCultRuleComponent>
 
             if (destroyHearts > 0)
             {
-                result +=  "\n" + Loc.GetString("flesh-cult-round-end-count-destroy-flesh-hearts", ("heartsCount",
+                result += "\n" + Loc.GetString("flesh-cult-round-end-count-destroy-flesh-hearts", ("heartsCount",
                     destroyHearts));
             }
             else

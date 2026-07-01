@@ -44,10 +44,10 @@ public sealed class BorgHypospraySystem : EntitySystem
         Dirty(hypospray, borgHypo);
 
         // Make the announcement
-        var message = Loc.GetString("borg-hypospray-inject-announcement", 
+        var message = Loc.GetString("borg-hypospray-inject-announcement",
             ("target", MetaData(target).EntityName ?? "Unknown"),
             ("reagent", reagentProto?.LocalizedName ?? "Unknown"));
-        
+
         _chat.TrySendInGameICMessage(user, message, InGameICChatType.Speak, ChatTransmitRange.Normal);
     }
 

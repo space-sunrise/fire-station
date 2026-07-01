@@ -106,8 +106,8 @@ public sealed partial class SunriseHelpersSystem : SharedSunriseHelpersSystem
 
         for (var i = 0; i < 10; i++)
         {
-            var randomX = _random.Next((int) aabb.Left, (int) aabb.Right);
-            var randomY = _random.Next((int) aabb.Bottom, (int) aabb.Top);
+            var randomX = _random.Next((int)aabb.Left, (int)aabb.Right);
+            var randomY = _random.Next((int)aabb.Bottom, (int)aabb.Top);
 
             tile = new Vector2i(randomX, randomY);
             if (_atmosphere.IsTileSpace(targetGrid, Transform(targetGrid).MapUid, tile)

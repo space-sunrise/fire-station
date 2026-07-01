@@ -404,7 +404,7 @@ public sealed class NetTexturesManager
     private bool TryAddContentFile(ResPath filePath, ResPath relativePath, List<TransferResourceEntry> filesToSend)
     {
         var relativePathLength = Encoding.UTF8.GetByteCount(relativePath.CanonPath);
-        if ((uint) relativePathLength > NetTextureConstants.MaxTransferPathLength)
+        if ((uint)relativePathLength > NetTextureConstants.MaxTransferPathLength)
         {
             _sawmill.Warning(
                 $"Skipping NetTexture file with a relative path longer than the supported transfer limit: {relativePath} ({relativePathLength} > {NetTextureConstants.MaxTransferPathLength})");
@@ -426,7 +426,7 @@ public sealed class NetTexturesManager
                 return false;
             }
 
-            filesToSend.Add(TransferResourceEntry.FromContent(relativePath, filePath, (int) stream.Length));
+            filesToSend.Add(TransferResourceEntry.FromContent(relativePath, filePath, (int)stream.Length));
         }
 
         return true;
@@ -575,8 +575,8 @@ public sealed class NetTexturesManager
                     headerBuffer = ArrayPool<byte>.Shared.Rent(requiredHeaderLength);
                 }
 
-                BinaryPrimitives.WriteUInt32LittleEndian(headerBuffer.AsSpan(0, 4), (uint) pathBytes.Length);
-                BinaryPrimitives.WriteUInt32LittleEndian(headerBuffer.AsSpan(4, 4), (uint) file.Length);
+                BinaryPrimitives.WriteUInt32LittleEndian(headerBuffer.AsSpan(0, 4), (uint)pathBytes.Length);
+                BinaryPrimitives.WriteUInt32LittleEndian(headerBuffer.AsSpan(4, 4), (uint)file.Length);
                 Array.Copy(pathBytes, 0, headerBuffer, 8, pathBytes.Length);
                 await stream.WriteAsync(headerBuffer.AsMemory(0, requiredHeaderLength)).ConfigureAwait(false);
                 await WriteTransferData(stream, file, buffer).ConfigureAwait(false);

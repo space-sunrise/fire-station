@@ -16,7 +16,7 @@ public sealed class AdminWhoSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        
+
         SubscribeNetworkEvent<RequestAdminWhoEvent>(OnRequestAdminWho);
     }
 
@@ -40,7 +40,7 @@ public sealed class AdminWhoSystem : EntitySystem
         }
 
         var adminList = new List<AdminWhoEntry>();
-        
+
         foreach (var admin in _adminManager.ActiveAdmins)
         {
             var adminData = _adminManager.GetAdminData(admin);
@@ -50,7 +50,7 @@ public sealed class AdminWhoSystem : EntitySystem
                 continue;
 
             var isAfk = seeAfk && _afkManager.IsAfk(admin);
-            
+
             adminList.Add(new AdminWhoEntry(
                 admin.Name,
                 adminData.Title,

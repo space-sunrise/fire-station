@@ -4,6 +4,7 @@ using Content.Shared.Cuffs;
 using Content.Shared.DoAfter;
 
 namespace Content.Server._Sunrise.Abilities;
+
 public sealed class BorgCuffedSystem : EntitySystem
 {
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
@@ -24,7 +25,7 @@ public sealed class BorgCuffedSystem : EntitySystem
 
     private void OnCuffed(EntityUid uid, BorgCuffedComponent component, BorgCuffedActionEvent args)
     {
-        _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager ,uid, component.CuffTime,
+        _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, uid, component.CuffTime,
             new BorgCuffedDoAfterEvent(), uid, target: args.Target, used: uid)
         {
             BreakOnMove = true,

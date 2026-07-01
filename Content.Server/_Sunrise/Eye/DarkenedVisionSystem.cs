@@ -12,4 +12,4 @@ using Content.Shared.Sunrise.Clothing.Components;
 
 namespace Content.Server.Sunrise.Eye;
 
-public sealed class DarkenedVisionSystem : SharedDarkenedVisionSystem {}
+public sealed class DarkenedVisionSystem : SharedDarkenedVisionSystem { }

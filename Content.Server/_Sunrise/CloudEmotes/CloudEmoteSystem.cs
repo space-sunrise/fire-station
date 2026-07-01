@@ -29,7 +29,8 @@ public sealed class CloudEmoteSystem : SharedCloudEmoteSystem
         var query = EntityQueryEnumerator<CloudEmoteActiveComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
-            if (comp.Phase == -1) { // Called only one time. This segment better be moved to OnAddedComponentEvent<CloudEmoteActiveComponent> if this thing exists
+            if (comp.Phase == -1)
+            { // Called only one time. This segment better be moved to OnAddedComponentEvent<CloudEmoteActiveComponent> if this thing exists
                 comp.Phase += 1;
                 display("CloudEmoteStart", uid, comp);
             }

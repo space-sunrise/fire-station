@@ -60,7 +60,7 @@ public sealed class VentCrawableSystem : EntitySystem
             if (TryComp<VentCrawlerComponent>(entity, out var ventCrawComp))
             {
                 ventCrawComp.InTube = false;
-                Dirty(entity , ventCrawComp);
+                Dirty(entity, ventCrawComp);
             }
 
             if (EntityManager.TryGetComponent(entity, out PhysicsComponent? physics))

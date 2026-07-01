@@ -61,7 +61,7 @@ public sealed class PowerSwitchableSystem : SharedPowerSwitchableSystem
         var nodeContainer = Comp<NodeContainerComponent>(uid);
         foreach (var cable in comp.Cables)
         {
-            var node = (CableDeviceNode) nodeContainer.Nodes[cable.Node];
+            var node = (CableDeviceNode)nodeContainer.Nodes[cable.Node];
             node.Enabled = cable.Voltage == voltage;
             _nodeGroup.QueueReflood(node);
         }

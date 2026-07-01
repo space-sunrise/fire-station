@@ -200,44 +200,44 @@ public sealed class StatsBoardSystem : EntitySystem
         switch (args.NewMobState)
         {
             case MobState.Dead:
-            {
-                value.DeadCount += 1;
-
-                EntityUid? origin = null;
-                if (args.Origin != null)
                 {
-                    origin = args.Origin.Value;
-                }
+                    value.DeadCount += 1;
 
-                if (_firstMurder.victim == null && HasComp<HumanoidAppearanceComponent>(uid))
-                {
-                    _firstMurder.victim = uid;
-                    _firstMurder.killer = origin;
-                    _firstMurder.time = _gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan);
-                    Logger.Info($"First Murder. CurTime: {_gameTiming.CurTime}, RoundStartTimeSpan: {_gameTicker.RoundStartTimeSpan}, Substract: {_gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan)}");
-                }
-
-                if (origin != null)
-                {
-                    if (_hamsterKiller == null && _tagSystem.HasTag(uid, "Hamster"))
+                    EntityUid? origin = null;
+                    if (args.Origin != null)
                     {
-                        _hamsterKiller = origin.Value;
+                        origin = args.Origin.Value;
                     }
 
-                    if (!_statisticEntries.TryGetValue(origin.Value, out var originEntry))
-                        return;
-
-                    if (_tagSystem.HasTag(uid, "Mouse"))
+                    if (_firstMurder.victim == null && HasComp<HumanoidAppearanceComponent>(uid))
                     {
-                        originEntry.KilledMouseCount += 1;
+                        _firstMurder.victim = uid;
+                        _firstMurder.killer = origin;
+                        _firstMurder.time = _gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan);
+                        Logger.Info($"First Murder. CurTime: {_gameTiming.CurTime}, RoundStartTimeSpan: {_gameTicker.RoundStartTimeSpan}, Substract: {_gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan)}");
                     }
 
-                    if (HasComp<HumanoidAppearanceComponent>(uid))
-                        originEntry.HumanoidKillCount += 1;
-                }
+                    if (origin != null)
+                    {
+                        if (_hamsterKiller == null && _tagSystem.HasTag(uid, "Hamster"))
+                        {
+                            _hamsterKiller = origin.Value;
+                        }
 
-                break;
-            }
+                        if (!_statisticEntries.TryGetValue(origin.Value, out var originEntry))
+                            return;
+
+                        if (_tagSystem.HasTag(uid, "Mouse"))
+                        {
+                            originEntry.KilledMouseCount += 1;
+                        }
+
+                        if (HasComp<HumanoidAppearanceComponent>(uid))
+                            originEntry.HumanoidKillCount += 1;
+                    }
+
+                    break;
+                }
         }
     }
 

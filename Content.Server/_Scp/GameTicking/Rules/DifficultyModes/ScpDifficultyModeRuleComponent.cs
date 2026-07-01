@@ -11,7 +11,7 @@ public sealed partial class ScpDifficultyModeRuleComponent : Component
     /// <summary>
     /// Какой параметр мин-макс будет означать неограниченные слоты
     /// </summary>
-    public static readonly MinMaxExtended UnlimitedSlotsFlag = new (-1, -1);
+    public static readonly MinMaxExtended UnlimitedSlotsFlag = new(-1, -1);
 
     /// <summary>
     /// Количество доступных в этом режиме игры SCP объектов выбранного класса.

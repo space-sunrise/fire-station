@@ -27,7 +27,7 @@ public sealed partial class DungeonJob
 
             for (var i = 0; i < 4; i++)
             {
-                var dir = (DirectionFlag) Math.Pow(2, i);
+                var dir = (DirectionFlag)Math.Pow(2, i);
                 var dirVec = dir.AsDir().ToIntVec();
 
                 foreach (var tile in room.Tiles)
@@ -35,7 +35,7 @@ public sealed partial class DungeonJob
                     var tileAngle = (tile + _grid.TileSizeHalfVector - room.Center).ToAngle();
                     var roundedAngle = Math.Round(tileAngle.Theta / (Math.PI / 2)) * (Math.PI / 2);
 
-                    var tileVec = (Vector2i) new Angle(roundedAngle).ToVec().Rounded();
+                    var tileVec = (Vector2i)new Angle(roundedAngle).ToVec().Rounded();
 
                     if (!tileVec.Equals(dirVec))
                         continue;
@@ -81,7 +81,7 @@ public sealed partial class DungeonJob
                 {
                     var tile = validTiles[j];
                     var gridPos = _maps.GridTileToLocal(_gridUid, _grid, tile);
-                    _maps.SetTile(_gridUid, _grid, tile, _tile.GetVariantTile((ContentTileDefinition) tileDef, random));
+                    _maps.SetTile(_gridUid, _grid, tile, _tile.GetVariantTile((ContentTileDefinition)tileDef, random));
 
                     _entManager.SpawnEntitiesAttachedTo(gridPos, _entTable.GetSpawns(contents, random));
                 }

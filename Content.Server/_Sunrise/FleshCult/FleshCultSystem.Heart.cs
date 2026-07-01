@@ -132,71 +132,71 @@ public sealed partial class FleshCultSystem
             switch (comp.Status)
             {
                 case HeartStatus.Base:
-                {
-                    comp.Accumulator += frameTime;
-
-                    if (comp.Accumulator <= 1)
-                        continue;
-
-                    comp.Accumulator -= 1;
-                    if (comp.BodyContainer.ContainedEntities.Count >= comp.BodyToFinalStage)
                     {
-                        comp.SpawnMobsAccumulator = 500;
-                        comp.Status = HeartStatus.Active;
-                        RaiseLocalEvent(new FleshHeartStatusChangeEvent()
+                        comp.Accumulator += frameTime;
+
+                        if (comp.Accumulator <= 1)
+                            continue;
+
+                        comp.Accumulator -= 1;
+                        if (comp.BodyContainer.ContainedEntities.Count >= comp.BodyToFinalStage)
                         {
-                            FleshHeartUid = ent,
-                            OwningStation = xform.GridUid,
-                            Status = FleshHeartStatus.Active
-                        });
-                        _pointLight.SetEnabled(ent, true);
-                        _chatSystem.DispatchGlobalAnnouncement(
-                            Loc.GetString("flesh-heart-activate-warning"),
-                            colorOverride: Color.Red);
-                        var stationUid = _stationSystem.GetOwningStation(ent);
-                        SpawnFleshFloorOnOpenTiles(ent, comp, Transform(ent), 1);
-                        _roundEndSystem.CancelRoundEndCountdown(stationUid);
-                        _audioSystem.PlayPvs(comp.TransformSound, ent, comp.TransformSound.Params);
-                        comp.AmbientAudioStream = _audioSystem.PlayGlobal(
-                            "/Audio/_Sunrise/FleshCult/flesh_heart.ogg", Filter.Broadcast(), true,
-                            AudioParams.Default.WithLoop(true).WithVolume(-3f))!.Value.Entity;
-                        _sharedAppearance.SetData(ent, FleshHeartVisuals.State, FleshHeartStatus.Active);
+                            comp.SpawnMobsAccumulator = 500;
+                            comp.Status = HeartStatus.Active;
+                            RaiseLocalEvent(new FleshHeartStatusChangeEvent()
+                            {
+                                FleshHeartUid = ent,
+                                OwningStation = xform.GridUid,
+                                Status = FleshHeartStatus.Active
+                            });
+                            _pointLight.SetEnabled(ent, true);
+                            _chatSystem.DispatchGlobalAnnouncement(
+                                Loc.GetString("flesh-heart-activate-warning"),
+                                colorOverride: Color.Red);
+                            var stationUid = _stationSystem.GetOwningStation(ent);
+                            SpawnFleshFloorOnOpenTiles(ent, comp, Transform(ent), 1);
+                            _roundEndSystem.CancelRoundEndCountdown(stationUid);
+                            _audioSystem.PlayPvs(comp.TransformSound, ent, comp.TransformSound.Params);
+                            comp.AmbientAudioStream = _audioSystem.PlayGlobal(
+                                "/Audio/_Sunrise/FleshCult/flesh_heart.ogg", Filter.Broadcast(), true,
+                                AudioParams.Default.WithLoop(true).WithVolume(-3f))!.Value.Entity;
+                            _sharedAppearance.SetData(ent, FleshHeartVisuals.State, FleshHeartStatus.Active);
+                        }
+                        break;
                     }
-                    break;
-                }
                 case HeartStatus.Active:
-                {
-                    comp.SpawnMobsAccumulator += frameTime;
-                    comp.SpawnObjectsAccumulator += frameTime;
-                    comp.FinalStageAccumulator += frameTime;
-                    if (comp.SpawnMobsAccumulator >= comp.SpawnMobsFrequency)
                     {
-                        comp.SpawnMobsAccumulator = 0;
-                        SpawnMonstersOnOpenTiles(comp, xform, comp.SpawnMobsAmount, comp.SpawnMobsRadius);
-                    }
-
-                    if (comp.SpawnObjectsAccumulator >= comp.SpawnObjectsFrequency)
-                    {
-                        comp.SpawnObjectsAccumulator = 0;
-                        // SpawnObjectsOnOpenTiles(comp, xform, comp.SpawnObjectsAmount, comp.SpawnObjectsRadius);
-                    }
-
-                    if (comp.FinalStageAccumulator >= comp.TimeLiveFinalHeartToWin)
-                    {
-                        RaiseLocalEvent(new FleshHeartStatusChangeEvent()
+                        comp.SpawnMobsAccumulator += frameTime;
+                        comp.SpawnObjectsAccumulator += frameTime;
+                        comp.FinalStageAccumulator += frameTime;
+                        if (comp.SpawnMobsAccumulator >= comp.SpawnMobsFrequency)
                         {
-                            FleshHeartUid = ent,
-                            OwningStation = owningStation,
-                            Status = FleshHeartStatus.Final
-                        });
-                        comp.Status = HeartStatus.Disable;
+                            comp.SpawnMobsAccumulator = 0;
+                            SpawnMonstersOnOpenTiles(comp, xform, comp.SpawnMobsAmount, comp.SpawnMobsRadius);
+                        }
+
+                        if (comp.SpawnObjectsAccumulator >= comp.SpawnObjectsFrequency)
+                        {
+                            comp.SpawnObjectsAccumulator = 0;
+                            // SpawnObjectsOnOpenTiles(comp, xform, comp.SpawnObjectsAmount, comp.SpawnObjectsRadius);
+                        }
+
+                        if (comp.FinalStageAccumulator >= comp.TimeLiveFinalHeartToWin)
+                        {
+                            RaiseLocalEvent(new FleshHeartStatusChangeEvent()
+                            {
+                                FleshHeartUid = ent,
+                                OwningStation = owningStation,
+                                Status = FleshHeartStatus.Final
+                            });
+                            comp.Status = HeartStatus.Disable;
+                        }
+                        break;
                     }
-                    break;
-                }
                 case HeartStatus.Disable:
-                {
-                    break;
-                }
+                    {
+                        break;
+                    }
             }
         }
     }
@@ -400,7 +400,7 @@ public sealed partial class FleshCultSystem
                     continue;
                 if (body.BodyType != BodyType.Static ||
                     !body.Hard ||
-                    (body.CollisionLayer & (int) CollisionGroup.Impassable) == 0)
+                    (body.CollisionLayer & (int)CollisionGroup.Impassable) == 0)
                     continue;
                 valid = false;
                 break;

@@ -46,7 +46,7 @@ public sealed class PlayerRateLimitManager : SharedPlayerRateLimitManager
 
         // Breached rate limits, inform admins if configured.
         // Negative delays can be used to disable admin announcements.
-        if (registration.AdminAnnounceDelay is {TotalSeconds: >= 0} cvarAnnounceDelay)
+        if (registration.AdminAnnounceDelay is { TotalSeconds: >= 0 } cvarAnnounceDelay)
         {
             if (datum.NextAdminAnnounce < time)
             {

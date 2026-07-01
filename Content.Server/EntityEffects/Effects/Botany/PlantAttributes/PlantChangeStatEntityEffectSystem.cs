@@ -24,7 +24,7 @@ public sealed partial class PlantChangeStatEntityEffectSystem : EntityEffectSyst
 
         if (member == null)
         {
-            Log.Error($"{ effect.GetType().Name } Error: Member { args.Effect.TargetValue} not found on { entity.Comp.Seed.GetType().Name }. Did you misspell it?");
+            Log.Error($"{effect.GetType().Name} Error: Member {args.Effect.TargetValue} not found on {entity.Comp.Seed.GetType().Name}. Did you misspell it?");
             return;
         }
 

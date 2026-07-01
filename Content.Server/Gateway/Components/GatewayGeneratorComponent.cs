@@ -19,7 +19,7 @@ public sealed partial class GatewayGeneratorComponent : Component
     /// <summary>
     /// Next time another seed unlocks.
     /// </summary>
-    [DataField(customTypeSerializer:typeof(TimeOffsetSerializer))]
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
     [AutoPausedField]
     public TimeSpan NextUnlock;
 

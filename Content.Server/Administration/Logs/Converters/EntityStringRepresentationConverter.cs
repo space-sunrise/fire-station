@@ -12,7 +12,7 @@ public sealed class EntityStringRepresentationConverter : AdminLogConverter<Enti
     {
         writer.WriteStartObject();
 
-        writer.WriteNumber("id", (int) value.Uid);
+        writer.WriteNumber("id", (int)value.Uid);
 
         if (value.Name != null)
         {

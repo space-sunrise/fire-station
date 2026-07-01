@@ -41,7 +41,7 @@ public sealed partial class AnomalyVesselComponent : Component
     /// <summary>
     /// When the next beep sound will play
     /// </summary>
-    [DataField("nextBeep", customTypeSerializer:typeof(TimeOffsetSerializer))]
+    [DataField("nextBeep", customTypeSerializer: typeof(TimeOffsetSerializer))]
     [AutoPausedField]
     public TimeSpan NextBeep = TimeSpan.Zero;
 

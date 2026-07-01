@@ -81,7 +81,8 @@ public sealed class NanoTaskCartridgeSystem : SharedNanoTaskCartridgeSystem
         msg.PushNewline();
         msg.AddMarkupOrThrow(Loc.GetString("nano-task-printed-requester", ("requester", FormattedMessage.EscapeText(item.TaskIsFor))));
         msg.PushNewline();
-        msg.AddMarkupOrThrow(item.Priority switch {
+        msg.AddMarkupOrThrow(item.Priority switch
+        {
             NanoTaskPriority.High => Loc.GetString("nano-task-printed-high-priority"),
             NanoTaskPriority.Medium => Loc.GetString("nano-task-printed-medium-priority"),
             NanoTaskPriority.Low => Loc.GetString("nano-task-printed-low-priority"),
@@ -111,32 +112,32 @@ public sealed class NanoTaskCartridgeSystem : SharedNanoTaskCartridgeSystem
                 ent.Comp.Tasks.Add(new(ent.Comp.Counter++, task.Item));
                 break;
             case NanoTaskUpdateTask task:
-            {
-                if (!task.Item.Data.Validate())
-                    return;
+                {
+                    if (!task.Item.Data.Validate())
+                        return;
 
-                var idx = ent.Comp.Tasks.FindIndex(t => t.Id == task.Item.Id);
-                if (idx != -1)
-                    ent.Comp.Tasks[idx] = task.Item;
-                break;
-            }
+                    var idx = ent.Comp.Tasks.FindIndex(t => t.Id == task.Item.Id);
+                    if (idx != -1)
+                        ent.Comp.Tasks[idx] = task.Item;
+                    break;
+                }
             case NanoTaskDeleteTask task:
                 ent.Comp.Tasks.RemoveAll(t => t.Id == task.Id);
                 break;
             case NanoTaskPrintTask task:
-            {
-                if (!task.Item.Validate())
-                    return;
-                if (_timing.CurTime < ent.Comp.NextPrintAllowedAfter)
-                    return;
+                {
+                    if (!task.Item.Validate())
+                        return;
+                    if (_timing.CurTime < ent.Comp.NextPrintAllowedAfter)
+                        return;
 
-                ent.Comp.NextPrintAllowedAfter = _timing.CurTime + ent.Comp.PrintDelay;
-                var printed = Spawn("PaperNanoTaskItem", Transform(message.Actor).Coordinates);
-                _hands.PickupOrDrop(message.Actor, printed);
-                _audio.PlayPvs(new SoundPathSpecifier("/Audio/Machines/printer.ogg"), ent.Owner);
-                SetupPrintedTask(printed, task.Item);
-                break;
-            }
+                    ent.Comp.NextPrintAllowedAfter = _timing.CurTime + ent.Comp.PrintDelay;
+                    var printed = Spawn("PaperNanoTaskItem", Transform(message.Actor).Coordinates);
+                    _hands.PickupOrDrop(message.Actor, printed);
+                    _audio.PlayPvs(new SoundPathSpecifier("/Audio/Machines/printer.ogg"), ent.Owner);
+                    SetupPrintedTask(printed, task.Item);
+                    break;
+                }
         }
 
         UpdateUiState(ent, GetEntity(args.LoaderUid));

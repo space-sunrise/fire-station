@@ -96,7 +96,7 @@ public sealed class BanExemptionGetCommand : LocalizedCommands
         var first = true;
         for (var i = 0; i < sizeof(ServerBanExemptFlags) * 8; i++)
         {
-            var mask = (ServerBanExemptFlags) (1 << i);
+            var mask = (ServerBanExemptFlags)(1 << i);
             if ((mask & flags) == 0)
                 continue;
 

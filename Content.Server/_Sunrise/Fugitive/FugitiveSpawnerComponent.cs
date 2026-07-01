@@ -14,6 +14,6 @@ namespace Content.Server._Sunrise.Fugitive
          DataField("prototype", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
         public string Prototype = "MobHumanFugitive";
 
-        public List<string> Implants = new() { "UplinkImplant", "FreedomImplant"};
+        public List<string> Implants = new() { "UplinkImplant", "FreedomImplant" };
     }
 }

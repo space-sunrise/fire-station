@@ -45,9 +45,9 @@ public sealed class ActionOnInteractSystem : EntitySystem
         if (args.Handled || !args.Complex)
             return;
 
-        if (component.ActionEntities is not {} actionEnts)
+        if (component.ActionEntities is not { } actionEnts)
         {
-            if (!TryComp<ActionsContainerComponent>(uid,  out var actionsContainerComponent))
+            if (!TryComp<ActionsContainerComponent>(uid, out var actionsContainerComponent))
                 return;
 
             actionEnts = actionsContainerComponent.Container.ContainedEntities.ToList();
@@ -72,16 +72,16 @@ public sealed class ActionOnInteractSystem : EntitySystem
         if (args.Handled)
             return;
 
-        if (component.ActionEntities is not {} actionEnts)
+        if (component.ActionEntities is not { } actionEnts)
         {
-            if (!TryComp<ActionsContainerComponent>(uid,  out var actionsContainerComponent))
+            if (!TryComp<ActionsContainerComponent>(uid, out var actionsContainerComponent))
                 return;
 
             actionEnts = actionsContainerComponent.Container.ContainedEntities.ToList();
         }
 
         // First, try entity target actions
-        if (args.Target is {} target)
+        if (args.Target is { } target)
         {
             var entOptions = GetValidActions<EntityTargetActionComponent>(actionEnts, args.CanReach);
             for (var i = entOptions.Count - 1; i >= 0; i--)
@@ -119,7 +119,7 @@ public sealed class ActionOnInteractSystem : EntitySystem
             return;
 
         var (actId, comp, world) = _random.Pick(options);
-        if (world.Event is {} worldEv)
+        if (world.Event is { } worldEv)
         {
             worldEv.Target = args.ClickLocation;
             worldEv.Entity = HasComp<EntityTargetActionComponent>(actId) ? args.Target : null;
@@ -129,7 +129,7 @@ public sealed class ActionOnInteractSystem : EntitySystem
         args.Handled = true;
     }
 
-    private List<Entity<ActionComponent, T>> GetValidActions<T>(List<EntityUid>? actions, bool canReach = true) where T: Component
+    private List<Entity<ActionComponent, T>> GetValidActions<T>(List<EntityUid>? actions, bool canReach = true) where T : Component
     {
         var valid = new List<Entity<ActionComponent, T>>();
 
@@ -138,7 +138,7 @@ public sealed class ActionOnInteractSystem : EntitySystem
 
         foreach (var id in actions)
         {
-            if (_actions.GetAction(id) is not {} action ||
+            if (_actions.GetAction(id) is not { } action ||
                 !TryComp<T>(id, out var comp) ||
                 !_actions.ValidAction(action, canReach))
             {

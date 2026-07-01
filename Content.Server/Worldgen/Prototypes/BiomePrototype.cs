@@ -53,7 +53,7 @@ public sealed partial class BiomePrototype : IPrototype, IInheritingPrototype
         // Add all components required by the prototype. Engine update for this whenst.
         foreach (var data in ChunkComponents.Values)
         {
-            var comp = (Component) serialization.CreateCopy(data.Component, notNullableOverride: true);
+            var comp = (Component)serialization.CreateCopy(data.Component, notNullableOverride: true);
             entityManager.AddComponent(target, comp);
         }
     }
