@@ -209,10 +209,11 @@
   - type: GameRule
     minPlayers: 25
   - type: ChaosSpyRule
-  - type: AntagRandomObjectives
-    sets:
-    - groups: TraitorObjectiveGroups
-    maxDifficulty: 3
+#  - type: AntagRandomObjectives
+#    sets:
+#    - groups: ChaosRaidObjectiveGroups
+#      maxPicks: 4
+#    maxDifficulty: 3
   - type: DynamicRuleCost
     cost: 100
   - type: AntagSelection
@@ -233,50 +234,50 @@
       mindRoles:
       - MindRoleChaosSpy
 
-- type: entity
-  parent: ScpChaosSpy
-  id: ScpChaosSpyModern
-  components:
-  - type: GameRule
-    minPlayers: 30
-  - type: ChaosSpyRule
-    isModernRule: true
-  - type: AntagSelection
-    definitions:
-    - prefRoles: [ ChaosSpy ]
-      max: 3
-      playerRatio: 5
-      pickCommandStaff: true
-      blacklist:
-        components:
-        - AntagImmune
-        - LowPositionStaff
-      lateJoinAdditional: false
-      mindRoles:
-      - MindRoleChaosSpy
+#- type: entity
+#  parent: ScpChaosSpy
+#  id: ScpChaosSpyModern
+#  components:
+#  - type: GameRule
+#    minPlayers: 30
+#  - type: ChaosSpyRule
+#    isModernRule: true
+#  - type: AntagSelection
+#    definitions:
+#    - prefRoles: [ ChaosSpy ]
+#      max: 3
+#      playerRatio: 5
+#      pickCommandStaff: true
+#      blacklist:
+#        components:
+#        - AntagImmune
+#        - LowPositionStaff
+#      lateJoinAdditional: false
+#      mindRoles:
+#      - MindRoleChaosSpy
 
-- type: entity
-  parent: BaseGameRule
-  id: ScpChaosSleepSpy
-  components:
-  - type: GameRule
-    minPlayers: 30
-  - type: ChaosSleepSpyRule
-  - type: AntagSelection
-    definitions: 
-    - prefRoles: [ ChaosSleepSpy ]
-      max: 5
-      playerRatio: 5
-      pickCommandStaff: false
-      blacklist:
-        components:
-        - AntagImmune
-      whitelist:
-        components:
-        - LowPositionStaff
-      lateJoinAdditional: false
-      mindRoles:
-      - MindRoleChaosSleepSpy
+#- type: entity
+#  parent: BaseGameRule
+#  id: ScpChaosSleepSpy
+#  components:
+#  - type: GameRule
+#    minPlayers: 30
+#  - type: ChaosSleepSpyRule
+#  - type: AntagSelection
+#    definitions: 
+#    - prefRoles: [ ChaosSleepSpy ]
+#      max: 5
+#      playerRatio: 5
+#      pickCommandStaff: false
+#      blacklist:
+#        components:
+#        - AntagImmune
+#      whitelist:
+#        components:
+#        - LowPositionStaff
+#      lateJoinAdditional: false
+#      mindRoles:
+#      - MindRoleChaosSleepSpy
 
 - type: entity
   id: ScpMetaGarbageSpawn

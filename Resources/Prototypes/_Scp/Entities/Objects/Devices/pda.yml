@@ -46,6 +46,14 @@
     quickEquip: false
     slots:
     - Belt
+  - type: Store
+    name: store-preset-name-uplink
+    categories:
+    - UplinkWeaponry
+    currencyWhitelist:
+    - Telecrystal
+    balance:
+      Telecrystal: 0
 
 - type: entity
   parent: ScpBasePDA
