@@ -13,6 +13,12 @@
             "name": "open"
         },
         {
+            "name": "broken"
+        },
+        {
+            "name": "door"
+        },
+        {
             "name": "closed"
         }
     ]

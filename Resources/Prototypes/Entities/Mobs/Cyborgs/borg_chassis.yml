@@ -57,6 +57,17 @@
   # Sunrise-End
   #- type: BorgSwitchableType
   #  selectedBorgType: mining
+  components: 
+  # - type: BorgSwitchableType # Fire Edit
+  #   selectedBorgType: mining # Fire Edit
+  # Sunrise-Start
+  - type: FootprintEmitter
+    placementOffset: 0,0
+    leftBareFootState: [ footprint-tracked ]
+    rightBareFootState: [ footprint-tracked ]
+  # Sunrise-End
+  - type: BorgSwitchableType
+    selectedBorgType: mining
 
 - type: entity
   id: BorgChassisEngineer
