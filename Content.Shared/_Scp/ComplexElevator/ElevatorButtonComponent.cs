@@ -1,22 +1,23 @@
+using Robust.Shared.GameObjects;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._Scp.ComplexElevator;
 
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class ElevatorButtonComponent : Component
 {
-    [DataField]
+    [DataField, AutoNetworkedField]
     public string ElevatorId = string.Empty;
 
-    [DataField]
+    [DataField, AutoNetworkedField]
     public ElevatorButtonType ButtonType = ElevatorButtonType.CallButton;
 
-    [DataField]
+    [DataField, AutoNetworkedField]
     public string Floor = string.Empty;
-
 }
 
+[Serializable, NetSerializable]
 public enum ElevatorButtonType
 {
     CallButton,
