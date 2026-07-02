@@ -94,7 +94,6 @@ public sealed partial class ComplexElevatorSystem : EntitySystem
             if (moving.MovementStartTime == null)
             {
                 moving.MovementStartTime = _timing.CurTime;
-                Dirty(uid, moving);
                 continue;
             }
 
@@ -123,12 +122,13 @@ public sealed partial class ComplexElevatorSystem : EntitySystem
                 {
                     if (elevator.UseIntermediateFloor)
                     {
-                        ClearGasInTargetArea(uid, elevator.IntermediateFloorId);
-                        KillEntitiesInTargetArea((uid, elevator), elevator.IntermediateFloorId);
-                        elevator.CurrentFloor = elevator.IntermediateFloorId;
-                        Dirty(uid, elevator);
+                        if (TeleportToFloor(uid, elevator.IntermediateFloorId, elevator))
+                        {
+                            ClearGasInTargetArea(uid, elevator.IntermediateFloorId);
+                            KillEntitiesInTargetArea((uid, elevator), elevator.IntermediateFloorId);
 
-                        TeleportToFloor(uid, elevator.IntermediateFloorId, elevator);
+                            elevator.CurrentFloor = elevator.IntermediateFloorId;
+                            Dirty(uid, elevator);
 
                         _audio.PlayPvs(elevator.TravelSound, uid);
 
@@ -324,7 +324,6 @@ public sealed partial class ComplexElevatorSystem : EntitySystem
         moving.TargetFloor = targetFloor;
         moving.MovementStartTime = _timing.CurTime;
         moving.Phase = ElevatorMovementPhase.DoorClosing;
-        Dirty(ent, moving);
 
         UpdateButtonLights(ent);
     }
