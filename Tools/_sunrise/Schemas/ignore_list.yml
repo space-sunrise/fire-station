@@ -152,6 +152,7 @@ ignore_list:
   - 'RL-5'
   - 'Zauer'
   - 'Trenchgun L-4034'
+  - 'AS-12 "Hasta la vista"'
   - 'SPAS-12'
   - 'TBD'
   - '°C ( K)'
@@ -207,6 +208,10 @@ ignore_list:
   - 'RobustChat'
   - 'www.wetskrell.nt'
   - '25-j*%...o1q'
+  - '1u'
+  - '5u'
+  - '10u'
+  - '20u'
 
 ignore_files:
   - commands.ftl # Fire added

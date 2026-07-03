@@ -6,7 +6,7 @@ using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Mind;
 using Content.Server.Objectives;
-using Content.Server.Objectives.Components;
+using Content.Shared.Objectives.Components;
 using Content.Server.Roles;
 using Content.Server.RoundEnd;
 using Content.Server.Station.Components;
@@ -196,12 +196,14 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
         // TODO: Переделать эту систему, что бы она работала иначе, брав точки отдельно на шаттле, а так же базе повстанцев хаоса, а не на всей карте.
         // Все StealArea-точки на этой карте (база повстанец хаоса) пренадлежат Повстанцам Хаоса
         var query = AllEntityQuery<StealAreaComponent, TransformComponent>();
-        while (query.MoveNext(out _, out var stealAreaComp, out var xform))
+        while (query.MoveNext(out var uid, out var stealAreaComp, out var xform))
         {
             if (Transform(args.EntityUid).MapID != xform.MapID)
                 continue;
 
             stealAreaComp.Owners.Add(mindId);
+            stealAreaComp.OwnerCount = stealAreaComp.Owners.Count;
+            Dirty(uid, stealAreaComp);
         }
 
         if (ent.Comp.Objectives != null)
