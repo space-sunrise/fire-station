@@ -1,20 +1,3 @@
-- type: listing
-  id: Scp106BoughtPhantomAction
-  name: scp106-shop-phantom-name
-  description: scp106-shop-phantom-desc
-  productEvent: !type:Scp106BoughtPhantomAction
-    boughtAction: Scp106BecomePhantom
-  categories:
-  - Scp106Abilities
-  cost:
-    LifeEssence: 10
-  raiseProductEventOnUser: true
-  icon:
-    sprite: _Scp/Actions/scp-106.rsi
-    state: become_phantom
-  conditions:
-  - !type:ListingLimitedStockCondition
-      stock: 1
 
 - type: listing
   id: Scp106UpgradePhantom
@@ -33,9 +16,6 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 4
-  - !type:BuyBeforeCondition
-    whitelist:
-    - Scp106BoughtPhantomAction
 
 - type: listing
   id: Scp106BareBlade
@@ -69,6 +49,24 @@
   icon:
     sprite: _Scp/Actions/scp-106.rsi
     state: terrify
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: Scp106Puddle
+  name: scp106-shop-puddle-name
+  description: scp106-shop-puddle-desc
+  productEvent: !type:Scp106BoughtPuddle
+    boughtAction: Scp106PuddleSpawnAction
+  categories:
+  - Scp106Abilities
+  cost:
+    LifeEssence: 15
+  raiseProductEventOnUser: true
+  icon:
+    sprite: _Scp/Actions/scp-106.rsi
+    state: become_phantom # TODO свой спрайт
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1

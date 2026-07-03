@@ -1,6 +1,7 @@
 eye-droplets-failed = Глаза { $name } должны быть открыты
 eye-droplets-used = { $name } закапывает капли себе в глаза
 eye-droplets-first-bonus-end = Глаза начинают пересыхать, придется начать моргать
+eye-droplets-tolerance-too-high = Кажется, что мои глаза привыкли к каплям!
 eye-droplets-end = Глаза пересохли, кажется капли выветрились!
 close-eye-phrase-1 = Моргаю!
 close-eye-phrase-2 = Моргаю!!

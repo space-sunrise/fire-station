@@ -202,8 +202,9 @@
   - type: TelecomServer
   # Sunrise-Start
   - type: TelecomThermal
-    heatPerMessage: 5000
-    maxTemperature: 390
+    maxBandwidth: 30
+    heatPerMessage: 10000
+    maxTemperature: 400
     hysteresisTemperature: 360
   - type: Temperature
     specificHeat: 25
