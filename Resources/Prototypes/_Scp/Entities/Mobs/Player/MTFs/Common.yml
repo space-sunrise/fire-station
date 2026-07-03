@@ -1,4 +1,4 @@
-﻿# ВЕЩИ АПЛИНКА
+# ВЕЩИ АПЛИНКА
 - type: entity
   parent: WeaponPulseCarbine
   id: WeaponPulseCarbineScp
@@ -64,6 +64,11 @@
 - type: entity
   parent: PowerCellNanoTrasen
   id: PowerCellScp
+  components:
+  - type: Tag
+    tags:
+    - PowerCellHyper
+    - PowerCell
 
 - type: entity
   parent: ClothingBackpackDuffelMilitary
