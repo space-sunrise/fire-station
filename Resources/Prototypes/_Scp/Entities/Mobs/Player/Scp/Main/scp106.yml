@@ -75,6 +75,7 @@
     - Scp106RandomTeleportAction
     - Scp106BackroomsAction
     - ActionScp106Shop
+    - Scp106BecomePhantom
   - type: TTS
     voice: HearthstoneSotis
   - type: Vocal
@@ -108,7 +109,7 @@
     - ScpFear
   - type: Store
     balance:
-      LifeEssence: 20
+      LifeEssence: 10
     currencyWhitelist:
     - LifeEssence
     categories:
@@ -121,3 +122,4 @@
     allowed:
     - Stun
   - type: ComplexInteraction
+  - type: SpeedModifierContactCapClothing

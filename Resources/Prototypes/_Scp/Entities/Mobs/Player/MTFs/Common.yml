@@ -12,8 +12,21 @@
   id: WeaponPulsePistolScp
 
 - type: entity
-  parent: HyposprayERT
+  parent: Hypospray
   id: HyposprayMTF
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Medical/hypospray.rsi
+    layers:
+    - state: combat_hypo
+      map: ["enum.SolutionContainerLayers.Base"]
+    - state: hypo_fill1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+  - type: SolutionContainerManager
+    solutions:
+      hypospray:
+        maxVol: 20
 
 - type: entity
   parent: ClothingBackpackDuffelNanotrasenMedicalBundleFilled

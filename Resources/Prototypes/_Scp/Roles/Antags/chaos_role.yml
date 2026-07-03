@@ -156,10 +156,9 @@
     gloves: ClothingHandsGlovesChaos
     outerClothing: ClothingOuterArmorChaosVest
     shoes: ClothingShoesBootsChaosFilled
-    id: ChaosAccessBreakerUnlimited
+    id: ChaosAccessBreaker
     ears: ClothingHeadsetAltChaos
     belt: ClothingBeltChaosFilled
-    pocket1: ChaosAccessBreaker
     pocket2: LeaderUplinkChaos
   inhand:
   - MedkitCombatFilled
@@ -176,7 +175,7 @@
     gloves: ClothingHandsGlovesChaos
     outerClothing: ClothingOuterArmorChaosVest
     shoes: ClothingShoesBootsChaosFilled
-    id: ChaosAccessBreakerUnlimited
+    id: ChaosAccessBreaker
     ears: ClothingHeadsetAltChaos
     belt: ClothingBeltChaosFilled
     pocket1: DefibrillatorChaos
@@ -196,7 +195,7 @@
     gloves: ClothingHandsGlovesChaos
     outerClothing: ClothingOuterArmorChaosVest
     shoes: ClothingShoesBootsChaosFilled
-    id: ChaosAccessBreakerUnlimited
+    id: ChaosAccessBreaker
     ears: ClothingHeadsetAltChaos
     belt: ClothingBeltChaosFilled
     pocket1: C4

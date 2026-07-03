@@ -87,18 +87,42 @@
     - ReinforcedMaskScp096
 
 - type: entity
-  parent: ClothingHeadBase
+  parent: 
+  - ClothingHeadBase
+  - PowerCellSlotSmallItem
   id: ClothingHeadHelmetAiPowered
   suffix: SCP-096 Item
   components:
+  - type: PowerCellDraw
+    drawRate: 3.5
+    useCharge: 20
+  - type: ItemToggle
+    predictable: false # issues between ToggleCellDraw and ItemToggleActiveSound
+    onUse: false
+    canActivateInhand: false
+    soundActivate:
+      path: /Audio/_Sunrise/Items/Goggles/activate.ogg
+    soundDeactivate:
+      path: /Audio/_Sunrise/Items/Goggles/deactivate.ogg
+    soundFailToActivate:
+      path: /Audio/Machines/button.ogg
+  - type: ToggleCellDraw
+  - type: ToggleClothing
+    action: ProtectionToggleAction
+    mustEquip: true
+    disableOnUnequip: true
+  - type: ComponentToggler
+    parent: true
+    components:
+      - type: Scp096Protection
+        problemChance: 0.003 # 0,3% каждый тик проебаться
+  - type: Clothing
+    equipDelay: 1.5
+    unequipDelay: 1.5
   - type: Sprite
     sprite: _Scp/Clothing/Head/Helmets/aipowered.rsi
   - type: Item
     size: Normal
-  - type: ClothingAddComponents
-    components:
-    - type: Scp096Protection
-      problemChance: 0.002 # 0,2% каждый тик проебаться
   - type: Tag
     tags:
     - ClothingHeadHelmetAiPowered
