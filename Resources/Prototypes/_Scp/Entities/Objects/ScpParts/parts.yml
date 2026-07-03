@@ -80,6 +80,21 @@
     tags:
     - Scp173PaintBall
 
+# Scp019
+
+- type: entity
+  id: Scp019GlassShard
+  parent: BaseScpMaterial
+  name: ceramic shard
+  description: Ceramic shard with recognizable ancient Greek style and decor.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Research/research_material.rsi
+    state: scp019-shard
+  - type: Tag
+    tags:
+    - Scp019GlassShard
+
 # Scp096
 
 - type: entity # Для спавнов
