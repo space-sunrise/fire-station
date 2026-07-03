@@ -66,12 +66,6 @@
     - MagazinePistol40HP
     - MagazinePistol40FMJ
     - MagazinePistol40Empty
-    # Pistol High Capacity
-    - MagazinePistolHighCapacitySP
-    - MagazinePistolHighCapacityHP
-    - MagazinePistolHighCapacityFMJ
-    - MagazinePistolHighCapacityRubber
-    - MagazinePistolHighCapacityEmpty
     # SMG
     - MagazineP90 # Fire Edit
     - MagazinePistolSubMachineGunSP
@@ -95,6 +89,7 @@
     - MagazineRifleHeavyEmpty
     # Shotgun Speedloader
     - SpeedLoaderShellShotgun
+    - SpeedLoaderShotgunBirdshot
     - SpeedLoaderShotgunEmpty
     - SpeedLoaderShotgunSlug
     - SpeedLoaderShotgunBeanbag
@@ -188,6 +183,7 @@
     - MagazineRifleHeavyEmpty
     # Shotgun Speedloader
     - SpeedLoaderShellShotgun
+    - SpeedLoaderShotgunBirdshot
     - SpeedLoaderShotgunEmpty
     - SpeedLoaderShotgunSlug
     - SpeedLoaderShotgunBeanbag
@@ -209,6 +205,8 @@
     - WeaponEnergyGun
     - WeaponMiniEnergyGun
     - WeaponIonCarbine
+    - WeaponDecloner
+    - ScanGateMachineCircuitboard
     - MagazineBatteryLr30
     - WeaponSunriseLaserPistol
     - FlareGunSecurityUpgrade
@@ -243,7 +241,7 @@
     #
     - EnergyDomeDirectionalTurtle
     - WeaponTemperatureGun
-    - ModularReceiverAuto
+    #- ModularReceiverAuto
     - LecterUpgrade
     - DrozdUpgrade
   #####################BOX#######################
@@ -294,10 +292,6 @@
     - MagazinePistolUranium
     - MagazinePistolAP
     - MagazinePistol40AP
-  # Pistol High Capacity
-    - MagazinePistolHighCapacityIncendiary
-    - MagazinePistolHighCapacityUranium
-    - MagazinePistolHighCapacityAP
   # SMG
     - MagazinePistolSubMachineGunIncendiary
     - MagazinePistolSubMachineGunUranium
@@ -316,9 +310,13 @@
     - MagazineRifleHeavyIncendiary
     - MagazineRifleHeavyAP
     - MagazineRifleHeavyUranium
+    - RifleHeavyMagazineEmpty
     - RifleHeavyMagazineFMJ
     - RifleHeavyMagazineHP
     - RifleHeavyMagazineSP
+    - RifleHeavyMagazineAP
+    - RifleHeavyMagazineIncendiary
+    - RifleHeavyMagazineUranium
   # Shotgun
     - SpeedLoaderShotgunIncendiary
     - SpeedLoaderShotgunUranium
@@ -384,6 +382,7 @@
     - MagazineRifleFMJ
     # Shotgun Speedloader
     - SpeedLoaderShellShotgun
+    - SpeedLoaderShotgunBirdshot
     - SpeedLoaderShotgunSlug
     # Shuttle stuff
     - MagazineGrenadeEmpty
@@ -400,10 +399,10 @@
     - MagazineBoxBelt127
     - MagazineBoxBelt127Artillery
     # .308 Cannon
+    - RifleHeavyMagazineEmpty
     - RifleHeavyMagazineFMJ
     - RifleHeavyMagazineHP
     - RifleHeavyMagazineSP
-    - RifleHeavyMagazineArtillery
     # Structure
     - PowerCageRechargerCircuitboard
     - ShuttleGunDusterCircuitboard
@@ -425,6 +424,7 @@
   - MagazineBoxBelt127Frag
   - MagazineBoxBelt127Blast
   - MagazineBoxBelt127Emp
+  - RifleHeavyMagazineArtillery
   - ShuttleGunQuadlingCircuitboard
   - ShuttleGunTeslaHyperionCircuitboard
   - ShuttleGunBullfrogCircuitboard
@@ -434,6 +434,8 @@
   - MagazineShotgunSlug
   # # # AP
   - RifleHeavyMagazineAP
+  - RifleHeavyMagazineIncendiary
+  - RifleHeavyMagazineUranium
   - MagazineBoxLightRifleAP
   - MagazineBoxMagnumAP
   - MagazineBoxPistolAP
@@ -476,9 +478,12 @@
   - MagazineLightRifleBeltBoxFMJ
 
 - type: latheRecipePack
-  id: SyndicateAmmoSunrise
+  id: SyndicateAmmoDynamicSunrise
   recipes:
     - MagazineRifleBoxIncendiary
     - MagazineRifleBoxUranium
     - MagazineShotgunIncendiary
     - MagazineShotgunBeanbag
+    - MagazinePistolHighCapacityIncendiary
+    - MagazinePistolHighCapacityUranium
+    - MagazinePistolHighCapacityAP

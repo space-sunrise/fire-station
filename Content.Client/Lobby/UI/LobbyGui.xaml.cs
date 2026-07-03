@@ -151,7 +151,6 @@ namespace Content.Client.Lobby.UI
 
             _configurationManager.OnValueChanged(SunriseCCVars.LobbyOpacity, OnLobbyOpacityChanged, true);
             _configurationManager.OnValueChanged(SunriseCCVars.ServersHubEnable, OnServersHubEnableChanged, true);
-            _configurationManager.OnValueChanged(SunriseCCVars.ServiceAuthEnabled, OnServiceAuthEnableChanged, true);
             _configurationManager.OnValueChanged(SunriseCCVars.ServerName, OnServerNameChanged, true);
 
             Chat.SetChatOpacity();
@@ -250,12 +249,6 @@ namespace Content.Client.Lobby.UI
         private void OnServersHubEnableChanged(bool enable)
         {
             SetServersHubEnable(enable);
-        }
-
-        private void OnServiceAuthEnableChanged(bool enable)
-        {
-            SetUserProfileEnable(enable);
-            SetContributorsEnable(enable);
         }
 
         private void SetServersHubEnable(bool enable)
