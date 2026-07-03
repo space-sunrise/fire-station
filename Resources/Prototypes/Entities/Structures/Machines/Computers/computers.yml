@@ -50,10 +50,6 @@
   - type: AtmosAlertsComputer
     beepSound:
       path: /Audio/_Sunrise/Effects/beeps.ogg
-      # Sunrise - Start
-      params:
-        volume: -5
-      # Sunrise - End
   - type: ActivatableUI
     singleUser: true
     key: enum.AtmosAlertsComputerUiKey.Key
@@ -305,6 +301,7 @@
     allowedFlags:
       - Hide
       - HideLabel
+    hideOnInit: true
   - type: ActivatableUI
     key: enum.IFFConsoleUiKey.Key
   - type: UserInterface
@@ -1096,7 +1093,7 @@
     account: Engineering
     announcementChannel: Engineering
     removeLimitAccess: [ "ChiefTechnicalSpecialist" ] # Fire edit
-    mode: SendToPrimary
+    mode: SendToPrimary # Fire edit
   - type: ActiveRadio
     channels:
     - Engineering
@@ -1130,7 +1127,7 @@
     account: Medical
     announcementChannel: Medical
     removeLimitAccess: [ "HeadOfMedicalSector" ] # Fire edit
-    mode: SendToPrimary
+    mode: SendToPrimary # Fire edit
   - type: ActiveRadio
     channels:
     - Medical
@@ -1164,7 +1161,7 @@
     account: Science
     announcementChannel: Science
     removeLimitAccess: [ "ScientificServiceDirector" ] # Fire edit
-    mode: SendToPrimary
+    mode: SendToPrimary # Fire edit
   - type: ActiveRadio
     channels:
     - Science
@@ -1198,7 +1195,7 @@
     account: Security
     announcementChannel: Security
     removeLimitAccess: [ "SecurityCommander" ] # Fire edit
-    mode: SendToPrimary
+    mode: SendToPrimary # Fire edit
   - type: ActiveRadio
     channels:
     - Security
@@ -1232,7 +1229,7 @@
     account: Service
     announcementChannel: Service
     removeLimitAccess: [ "PersonnelOfficer" ] # Fire edit
-    mode: SendToPrimary
+    mode: SendToPrimary # Fire edit
   - type: ActiveRadio
     channels:
     - Service
@@ -1925,3 +1922,38 @@
         type: StationAiFixerConsoleBoundUserInterface
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
+
+- type: entity
+  parent: BaseComputer
+  id: ComputerNukieDelivery
+  name: syndicate delivery computer
+  description: "A computer that can bluespace in certain equipment for Nuclear Operations. \nThe circuitboard is integrated into the frame and can't be recovered if deconstructed."
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: request-syndie
+    - map: ["computerLayerKeys"]
+      state: syndie_generic_keys
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  # - type: Computer
+  #   board: SyndicateCommsComputerCircuitboard
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#f71713"
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: Store
+    name: store-preset-name-nukie-delivery
+    categories:
+    - NukieDelivery

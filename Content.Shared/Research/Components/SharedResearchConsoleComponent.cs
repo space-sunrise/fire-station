@@ -10,13 +10,15 @@ namespace Content.Shared.Research.Components
     }
 
     [Serializable, NetSerializable]
-    public sealed class ConsoleUnlockTechnologyMessage(string id) : BoundUserInterfaceMessage
+    public sealed class ConsoleUnlockTechnologyMessage : BoundUserInterfaceMessage
     {
-        public string Id = id;
-    }
+        public string Id;
 
-    [Serializable, NetSerializable]
-    public sealed class ConsoleRediscoverTechnologyMessage : BoundUserInterfaceMessage;
+        public ConsoleUnlockTechnologyMessage(string id)
+        {
+            Id = id;
+        }
+    }
 
     [Serializable, NetSerializable]
     public sealed class ConsoleServerSelectionMessage : BoundUserInterfaceMessage

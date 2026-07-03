@@ -144,6 +144,7 @@
     emagStaticPacks:
     - SecurityStaticSunrise # Sunrise-Add
     - SyndicateAmmoStatic
+    - SyndicateBorgModulesEmagSunrise # Sunrise-Add
   - type: BlueprintReceiver
     whitelist:
       tags:
@@ -223,6 +224,8 @@
     - NightVisionDevice
     # Sunrise-End
   - type: EmagLatheRecipes
+    emagStaticPacks:
+    - SyndicateBorgModulesEmagSunrise # Sunrise-Add
     emagDynamicPacks:
     # - SecurityAmmo # Sunrise-edit
     - SecurityExplosives
@@ -234,7 +237,7 @@
     - MedicalCyberlimbDynamic # Sunrise-Add
     - MedicalCyberOrgansDynamic # Sunrise-Add
     - MedicalImplantDynamic # Sunrise-Add
-    - SyndicateAmmoSunrise # Sunrise-Add
+    - SyndicateAmmoDynamicSunrise # Sunrise-Add
 
 - type: entity
   id: ProtolatheHyperConvection
@@ -434,6 +437,7 @@
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SyndicateAmmoStatic
+    - SyndicateBorgModulesEmagSunrise # Sunrise-Add
   - type: MaterialStorage
     whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient
@@ -741,6 +745,17 @@
     runningState: building
     staticPacks:
     - ScpFloorTilesStatic # Fire Edit
+    #- FloorDarkTilesStatic # Fire edit
+    #- FloorSteelTilesStatic # Fire edit
+    #- FloorWhiteTilesStatic # Fire edit
+    #- FloorMaintsTilesStatic # Fire edit
+    #- FloorWoodTilesStatic # Fire edit
+    #- FloorConcreteTilesStatic # Fire edit
+    #- CircuitFloorsStatic # Fire edit
+    #- FloorMarbleTilesStatic # Fire edit
+    #- SunriseFloorTilesStatic # Sunrise-Edit # Fire edit
+    dynamicPacks:
+    - FauxTiles
   - type: MaterialStorage
     whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient
