@@ -227,7 +227,7 @@
   cost: 900
   category: cargoproduct-category-name-fun
   group: market
-# fire edit start
+# Fire edit start
 #- type: cargoProduct
 #  id: HydratedScurret
 #  icon:
@@ -237,7 +237,7 @@
 #  cost: 25000 # You will surely not regret buying this
 #  category: cargoproduct-category-name-fun
 #  group: market
-# fire edit end
+# Fire edit end
 - type: cargoProduct
   id: FunCrateGambling
   icon:
