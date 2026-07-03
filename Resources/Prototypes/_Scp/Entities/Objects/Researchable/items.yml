@@ -204,6 +204,9 @@
     tags:
     - ClothingShoesSilent
     - WhitelistChameleon
+  - type: Clothing
+    equipDelay: 3
+    unequipDelay: 1.5
 
 # Scp-035
 
