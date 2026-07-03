@@ -1,0 +1,9 @@
+- type: entity
+  parent: WeaponPistolG22Prison
+  id: WeaponPistolG22
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: WeaponPistolG22Prison
+  id: WeaponPistolG22Auto
+  categories: [ HideSpawnMenu ]
