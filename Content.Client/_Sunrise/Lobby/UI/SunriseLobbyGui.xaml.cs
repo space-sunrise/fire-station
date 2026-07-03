@@ -7,7 +7,6 @@ using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using System.Numerics;
-using Content.Client._Scp.Stylesheets.Palette;
 using Content.Client.Lobby;
 using Content.Client.Parallax.Managers;
 using Content.Client.Resources;
@@ -16,6 +15,7 @@ using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Configuration;
+using Robust.Shared.Maths;
 using Robust.Shared.Utility;
 
 namespace Content.Client._Sunrise.Lobby.UI;
@@ -48,6 +48,7 @@ public sealed partial class SunriseLobbyGui : UIScreen
     public Texture? IconExpanded;
     public Texture? IconCollapsed;
 
+    private float _bottomCenterProfileExpandedWidth = float.NaN;
     private readonly StyleBoxTexture _back;
 
     public SunriseLobbyGui()
@@ -69,7 +70,7 @@ public sealed partial class SunriseLobbyGui : UIScreen
         _back = new StyleBoxTexture
         {
             Texture = panelTex,
-            // Modulate = new Color(37, 37, 42), Fire edit
+            Modulate = new Color(37, 37, 42),
         };
         _back.SetPatchMargin(StyleBox.Margin.All, 10);
 
@@ -78,6 +79,8 @@ public sealed partial class SunriseLobbyGui : UIScreen
         RightPanel.PanelOverride = _back;
 
         LeftBottomPanel.PanelOverride = _back;
+
+        BottomCenterProfilePanel.PanelOverride = _back;
 
         LeftTopPanel.PanelOverride = _back;
 
@@ -93,6 +96,8 @@ public sealed partial class SunriseLobbyGui : UIScreen
         LoadIcons();
         SetupButtonsIcons();
         SetupButtonsBinding();
+
+        BottomCenterProfilePanel.OnResized += UpdateBottomCenterProfileWidthState;
     }
 
     private void OnServerNameChanged(string serverName)
@@ -117,19 +122,73 @@ public sealed partial class SunriseLobbyGui : UIScreen
         ChatHider.Texture = ChatContent.Visible ? IconExpanded : IconCollapsed;
         UserProfileHider.Texture = UserProfileContent.Visible ? IconExpanded : IconCollapsed;
 
-        // Fire edit start
-        ServersHubHider.Modulate = ScpPalettes.Primary.Text;
-        ContributorsHider.Modulate = ScpPalettes.Primary.Text;
-        ChangelogHider.Modulate = ScpPalettes.Primary.Text;
-        ServerInfoHider.Modulate = ScpPalettes.Primary.Text;
-        CharacterInfoHider.Modulate = ScpPalettes.Primary.Text;
-        ChatHider.Modulate = ScpPalettes.Primary.Text;
-        UserProfileHider.Modulate = ScpPalettes.Primary.Text;
-        // Fire edit end
+        ServersHubHider.Modulate = Palettes.Gold.Base;
+        ContributorsHider.Modulate = Palettes.Gold.Base;
+        ChangelogHider.Modulate = Palettes.Gold.Base;
+        ServerInfoHider.Modulate = Palettes.Gold.Base;
+        CharacterInfoHider.Modulate = Palettes.Gold.Base;
+        ChatHider.Modulate = Palettes.Gold.Base;
+        UserProfileHider.Modulate = Palettes.Gold.Base;
 
-        // Скрываем чейнджлог по умолчанию
+        // Скрываем чейнджлог по умолчанию.
         ChangelogContent.Visible = false;
         ChangelogHider.Texture = IconCollapsed;
+
+        UpdateBottomCenterProfileWidthState();
+    }
+
+    private void SetUserProfileExpanded(bool expanded)
+    {
+        UserProfileContent.Visible = expanded;
+        UserProfileHider.Texture = expanded ? IconExpanded : IconCollapsed;
+        UpdateBottomCenterProfileWidthState();
+
+        if (expanded)
+            UserProfileBody.RequestAccountBindingsRefresh();
+    }
+
+    protected override void Resized()
+    {
+        base.Resized();
+        UpdateBottomCenterProfileWidthState();
+    }
+
+    private void UpdateBottomCenterProfileWidthState()
+    {
+        if (DefaultState.Size.X <= 0f || DefaultState.Size.Y <= 0f)
+            return;
+
+        BottomCenterProfilePanel.Measure(DefaultState.Size);
+
+        var availableWidth = DefaultState.Size.X;
+        var maxWidth = BottomCenterProfilePanel.MaxWidth > 0f
+            ? BottomCenterProfilePanel.MaxWidth
+            : availableWidth;
+        var clampedWidth = MathF.Min(availableWidth, maxWidth);
+
+        if (UserProfileContent.Visible)
+        {
+            var measuredWidth = MathF.Max(BottomCenterProfilePanel.Size.X, BottomCenterProfilePanel.DesiredSize.X);
+            _bottomCenterProfileExpandedWidth = measuredWidth > 0f
+                ? Math.Clamp(measuredWidth, 0f, clampedWidth)
+                : clampedWidth;
+        }
+        else if (float.IsNaN(_bottomCenterProfileExpandedWidth))
+        {
+            var measuredWidth = MathF.Max(BottomCenterProfilePanel.Size.X, BottomCenterProfilePanel.DesiredSize.X);
+            _bottomCenterProfileExpandedWidth = measuredWidth > 0f
+                ? Math.Clamp(measuredWidth, 0f, clampedWidth)
+                : clampedWidth;
+        }
+        else
+        {
+            _bottomCenterProfileExpandedWidth = MathF.Min(_bottomCenterProfileExpandedWidth, clampedWidth);
+        }
+
+        if (Math.Abs(BottomCenterProfilePanel.MinWidth - _bottomCenterProfileExpandedWidth) >= 0.5f)
+            BottomCenterProfilePanel.MinWidth = _bottomCenterProfileExpandedWidth;
+
+        DefaultStateMainRow.Margin = new Thickness(0f, 0f, 0f, 0f);
     }
 
     #region Subscribers
@@ -139,9 +198,8 @@ public sealed partial class SunriseLobbyGui : UIScreen
         SetServersHubEnable(enable);
     }
 
-    private void OnServiceAuthEnableChanged(bool enable)
+    private void OnContributorsEnableChanged(bool enable)
     {
-        SetUserProfileEnable(enable);
         SetContributorsEnable(enable);
     }
 
@@ -153,11 +211,6 @@ public sealed partial class SunriseLobbyGui : UIScreen
     private void SetContributorsEnable(bool enable)
     {
         ContributorsBox.Visible = enable;
-    }
-
-    private void SetUserProfileEnable(bool enable)
-    {
-        UserProfileBox.Visible = enable;
     }
 
     private void OnDiscordLinkChanged(string url)
@@ -187,7 +240,7 @@ public sealed partial class SunriseLobbyGui : UIScreen
 
     private void SetLobbyOpacity(float opacity)
     {
-        _back.Modulate = ScpPalettes.Primary.Background.WithAlpha(opacity); // Fire edit
+        _back.Modulate = new Color(37, 37, 42).WithAlpha(opacity);
     }
 
     #endregion

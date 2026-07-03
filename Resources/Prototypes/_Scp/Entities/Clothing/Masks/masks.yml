@@ -20,6 +20,7 @@
         Heat: 0.95
   - type: HideLayerClothing
     slots:
+    - Hair
     - Snout
     hideOnToggle: true
 

@@ -27,7 +27,7 @@ using Robust.Shared.Audio;
 namespace Content.Client._Sunrise.MentorHelp;
 
 /// <summary>
-/// UI controller for mentor help system
+/// Контроллер интерфейса системы менторской помощи.
 /// </summary>
 [UsedImplicitly]
 public sealed class MentorHelpUIController : UIController, IOnSystemChanged<MentorHelpSystem>, IOnStateChanged<GameplayState>, IOnStateChanged<LobbyState>
@@ -317,7 +317,7 @@ public sealed class MentorHelpUIController : UIController, IOnSystemChanged<Ment
     }
 
     /// <summary>
-    /// Open the mentor help window
+    /// Открыть окно менторской помощи.
     /// </summary>
     public void Open()
     {
@@ -353,7 +353,7 @@ public sealed class MentorHelpUIController : UIController, IOnSystemChanged<Ment
     }
 
     /// <summary>
-    /// Close the mentor help window
+    /// Закрыть окно менторской помощи.
     /// </summary>
     public void Close()
     {
@@ -486,7 +486,7 @@ public sealed class MentorHelpUIController : UIController, IOnSystemChanged<Ment
 }
 
 /// <summary>
-/// Interface for mentor help UI handlers
+/// Интерфейс обработчиков окна менторской помощи.
 /// </summary>
 public interface IMentorHelpUIHandler : IDisposable
 {
@@ -550,11 +550,11 @@ public sealed class PlayerMentorHelpUIHandler : IMentorHelpUIHandler
     public void OpenTicket(int ticketId)
     {
         CurrentTicketId = ticketId;
-        // Ensure window is open
+        // Убеждаемся, что окно открыто.
         OpenWindow();
-        // Ask control to focus the ticket if possible
+        // Просим контрол сфокусировать тикет, если это возможно.
         _window?.MentorHelp.TryOpenTicket(ticketId);
-        // Also request messages from server in case they're not loaded yet
+        // Также запрашиваем сообщения с сервера на случай, если они еще не загружены.
         _mentorHelpSystem?.RequestTicketMessages(ticketId);
     }
 
@@ -598,7 +598,7 @@ public sealed class PlayerMentorHelpUIHandler : IMentorHelpUIHandler
 }
 
 /// <summary>
-/// UI handler for mentors/admins (can see and manage all tickets)
+/// Обработчик окна для менторов/админов, которые видят все тикеты и могут управлять ими.
 /// </summary>
 public sealed class MentorMentorHelpUIHandler : IMentorHelpUIHandler
 {
