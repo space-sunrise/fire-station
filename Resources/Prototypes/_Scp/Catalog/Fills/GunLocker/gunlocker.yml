@@ -174,14 +174,14 @@
         amount: 4
 
 - type: entity
-  id: GunLockerFilledAK74
+  id: GunLockerFilledAK103
   parent: GunLocker6x3
-  name: gun safe AK-74M
-  suffix: Armory, AK-74M
+  name: gun safe AK-103
+  suffix: Armory, AK-103
   components:
   - type: StorageFill
     contents:
-      - id: WeaponRifleAK74
+      - id: WeaponRifleAK103
         amount: 4
 
 - type: entity

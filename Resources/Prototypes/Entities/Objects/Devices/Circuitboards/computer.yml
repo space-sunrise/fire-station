@@ -414,6 +414,10 @@
     state: cpu_supply
   - type: ComputerBoard
     prototype: ScpComputerRadar # Fire edit
+  # Sunrise-Edit
+  - type: Tag
+    tags:
+    - RadarConsoleCircuitboard
 
 - type: entity
   parent: BaseComputerCircuitboard

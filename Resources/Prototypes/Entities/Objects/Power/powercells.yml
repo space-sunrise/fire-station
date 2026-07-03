@@ -89,6 +89,7 @@
           Neither: { visible: true, state: fo1small }
           Empty: { visible: false }
   # Fire edit end
+  # Sunrise-Edit: removed legacy PowerCellSmall tag, now relying on PowerCell whitelist
 
 - type: entity
   id: PowerCellSmallPrinted
