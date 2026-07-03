@@ -127,10 +127,10 @@
     - LockerGun6x3
 
 - type: entity
-  name: AK-74M
-  description: The AK-74M is based on the classic AK design, which is known for its reliable performance.
+  name: AK-103
+  description: A classic Kalashnikov assault rifle in a modern design chambered for 7.62x39mm cartridges.
   parent: BaseWeaponRifle
-  id: WeaponRifleAK74
+  id: WeaponRifleAK103
   components:
   - type: Sprite
     sprite: _Scp/Objects/Weapons/ak_74/big.rsi
