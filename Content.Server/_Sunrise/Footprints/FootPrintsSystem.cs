@@ -1,4 +1,4 @@
-using Content.Server.Atmos.Components;
+﻿using Content.Server.Atmos.Components;
 using Content.Server.Gravity;
 using Content.Shared._Sunrise.Footprints;
 using Content.Shared.Chemistry.Components;
@@ -57,6 +57,12 @@ public sealed class FootprintSystem : EntitySystem
     public static readonly float FootsVolume = 15f;
     public static readonly float BodySurfaceVolume = 30f;
 
+    // Dictionary to track footprints per tile to prevent overcrowding
+    private const int MaxFootprintsPerTile = 20; // Fire edit
+    private const int MaxMarksPerTile = 20; // Fire edit
+
+    private readonly HashSet<Entity<FootprintComponent>> _entities = [];
+
     #region Initialization
     /// <summary>
     /// Initializes the footprint system and sets up required queries and subscriptions.
@@ -111,6 +117,9 @@ public sealed class FootprintSystem : EntitySystem
     /// </summary>
     private void OnEntityMove(Entity<FootprintEmitterComponent> ent, ref MoveEvent args)
     {
+        if (TerminatingOrDeleted(ent))
+            return;
+
         TryEmitFootprint(ent);
     }
 
