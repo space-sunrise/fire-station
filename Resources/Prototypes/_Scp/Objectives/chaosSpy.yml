@@ -164,6 +164,6 @@
   - type: Objective
     difficulty: 1
     icon:
-      sprite: _Scp/Interface/Misc/chaos_objectives_icons.rsi
-      state: StealItemScp
+      sprite: /Textures/_Scp/Clothing/Head/Helmets/chaos.rsi
+      state: icon
   - type: ScpRaidHelpCondition
