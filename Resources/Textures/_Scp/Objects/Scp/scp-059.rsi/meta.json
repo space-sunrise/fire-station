@@ -1,0 +1,26 @@
+﻿{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "Made by peper",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "kudzu_31"
+        },
+        {
+            "name": "kudzu_21"
+        },
+        {
+            "name": "kudzu_11"
+        },
+        {
+            "name": "rock"
+        },
+        {
+            "name": "icon"
+        }
+    ]
+}

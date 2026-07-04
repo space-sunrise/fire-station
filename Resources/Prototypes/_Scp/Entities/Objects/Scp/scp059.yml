@@ -1,0 +1,225 @@
+﻿- type: entity
+  id: Scp059CrystalStructure
+  suffix: SCP-059
+  parent: BaseStructure
+  placement:
+    mode: SnapgridCenter
+    snap:
+      - Wall
+  components:
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        path:
+          "/Audio/Effects/glass_crack4.ogg"
+  - type: Physics
+    bodyType: Static
+  - type: Transform
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        hard: false
+        density: 7
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        layer:
+        - MidImpassable
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Damageable
+  - type: DamageOverlay
+    damagePopupType: SmallFloating
+    isStructure: true
+  - type: Scp
+    class: Keter
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+  - type: TriggerOnInteractHand
+  - type: TriggerOnCollide
+    fixtureID: fix1
+    ignoreOtherNonHard: true
+  - type: WhitelistTriggerCondition
+    userWhitelist:
+      components:
+      - MobState
+      - HumanoidAppearance
+      requireAll: true
+    userBlacklist:
+      components:
+      - Scp
+      - Scp059Protection
+  - type: AddSolutionOnTrigger
+    targetUser: true
+    solution: bloodstream
+    addedSolution:
+      reagents:
+      - ReagentId: Scp059Reagent
+        Quantity: 2
+  - type: SpeedModifierContacts
+    walkSpeedModifier: 0.3
+    sprintSpeedModifier: 0.3
+    affectAirborne: false
+  - type: KudzuVisuals
+  - type: Sprite
+    sprite: _Scp/Objects/Scp/scp-059.rsi
+    state: kudzu_11
+  - type: EdgeSpreader
+    id: Scp059Spread
+  - type: ActiveEdgeSpreader
+  - type: Appearance
+  - type: GrowingKudzu
+  - type: Kudzu
+    growthLevel: 1
+    growthTickChance: 0.1
+    spreadChance: 0.1
+    spriteVariants: 1
+  - type: DeleteOnTrigger
+    keysIn:
+    - timer
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+      - !type:TriggerBehavior
+        keyOut: timer
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Scp059CrystalItem:
+            min: 1
+            max: 1
+  - type: ProjectileGrenade
+    fillPrototype: Scp059CrystalProjectile
+    capacity: 20
+  - type: PointLight
+    color: LightBlue
+    radius: 3
+    energy: 4
+    netsync: false
+
+- type: entity
+  id: Scp059Rock
+  suffix: SCP-059
+  parent: BaseItemScp
+  placement:
+    mode: SnapgridCenter
+    snap:
+      - Wall
+  components:
+  - type: Item
+    size: Ginormous
+  - type: MultiHandedItem
+  - type: Sprite
+    sprite: _Scp/Objects/Scp/scp-059.rsi
+    state: rock
+  - type: RepeatingTrigger
+    keyOut: basicSpawn
+    delay: 360
+  - type: SpawnOnTrigger
+    keysIn: [ basicSpawn ]
+    useMapCoords: true
+    proto: Scp059CrystalStructure
+  - type: Scp
+    class: Keter
+  - type: HeldSpeedModifier
+    walkModifier: 0.3
+    sprintModifier: 0.3
+  - type: Physics
+    bodyType: Static
+  - type: Transform
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.45,0.25,0.45"
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+        density: 200
+  - type: Anchorable
+
+- type: entity
+  id: Scp059CrystalItem
+  suffix: SCP-059
+  parent: BaseItemScp
+  components:
+  - type: Scp
+    class: Keter
+  - type: Sprite
+    sprite: _Scp/Objects/Scp/scp-059.rsi
+    state: icon
+  - type: Extractable
+    grindableSolutionName: food
+    juiceSolution:
+      reagents:
+      - ReagentId: Scp059Reagent
+        Quantity: 2
+  - type: TriggerOnGotEquippedHand
+  - type: WhitelistTriggerCondition
+    userWhitelist:
+      components:
+      - MobState
+      - HumanoidAppearance
+      requireAll: true
+    userBlacklist:
+      components:
+      - Scp
+      - Scp059Protection
+  - type: AddSolutionOnTrigger
+    targetUser: true
+    solution: bloodstream
+    addedSolution:
+      reagents:
+      - ReagentId: Scp059Reagent
+        Quantity: 2
+  - type: PointLight
+    color: LightBlue
+    radius: 2
+    energy: 4
+    netsync: false
+
+- type: entity
+  id: Scp059CrystalProjectile
+  categories: [ HideSpawnMenu ]
+  parent: BaseBulletTrigger
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scp/scp-059.rsi
+    layers:
+    - state: icon
+  - type: Projectile
+    deleteOnCollide: false
+    damage:
+      types:
+        Cellular: 0
+  - type: TimedDespawn
+    lifetime: 0.10
+  - type: WhitelistTriggerCondition
+    userWhitelist:
+      components:
+      - MobState
+      - HumanoidAppearance
+      requireAll: true
+    userBlacklist:
+      components:
+      - Scp
+      - Scp059Protection
+  - type: AddSolutionOnTrigger
+    targetUser: true
+    solution: bloodstream
+    addedSolution:
+      reagents:
+      - ReagentId: Scp059Reagent
+        Quantity: 1
+
+- type: edgeSpreader
+  id: Scp059Spread
+  updatesPerSecond: 1
+  preventSpreadOnSpaced: true
