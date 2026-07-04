@@ -13,6 +13,13 @@ namespace Content.Server.GameTicking.Rules.Components;
 public sealed partial class ChaosSpyRuleComponent : Component
 {
     [DataField]
+    public List<EntProtoId<ChaosSpyRuleComponent>> VariantRuleProtoIds =
+    [
+        "ScpChaosHighSpy",
+        "ScpChaosLowSpy",
+    ];
+
+    [DataField]
     public FixedPoint2 StartingBalance = 20;
 
     [DataField]
@@ -28,7 +35,7 @@ public sealed partial class ChaosSpyRuleComponent : Component
     public ProtoId<CodewordFactionPrototype> CodewordsFactionProtoId = "ChaosSpies";
 
     [DataField]
-    public EntProtoId<ObjectiveComponent> ChaosRaidHelpObjectiveProtoId = "";
+    public EntProtoId<ObjectiveComponent> ChaosRaidHelpObjectiveProtoId = "ChaosSpyHelpChaosRaidObjective";
 
     [DataField]
     public EntProtoId<ChaosRaidRuleComponent> ChaosRaidRuleProtoId = "ScpChaosRaid";
@@ -37,10 +44,10 @@ public sealed partial class ChaosSpyRuleComponent : Component
     public EntProtoId<ChaosSleepSpyRuleComponent> ChaosSleepSpyRuleProtoId = "ScpChaosSleepSpy";
 
     [DataField]
-    public float ChaosRaidRuleChance = 0.05f;
+    public float ChaosRaidRuleChance = 0.10f;
 
     [DataField]
-    public bool IsModernRule;
+    public bool AddSleepSpies;
 
     [ViewVariables]
     public string[]? CodeWords;
@@ -55,5 +62,5 @@ public sealed partial class ChaosSpyRuleComponent : Component
     public SoundSpecifier GreetSoundNotification = new SoundPathSpecifier("/Audio/_Scp/Themes/The_Chaos_Insurgency_Theme.ogg");
 
     [ViewVariables]
-    public bool IsChaosRaidRule;
+    public bool HasChaosRaidRule;
 }

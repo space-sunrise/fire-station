@@ -17,6 +17,7 @@
     - map: [ "enum.DamageStateVisualLayers.Base" ]
       state: scp-173
   - type: Scp
+    name: SCP-173
     class: Euclid
   - type: Scp173
   - type: ShowBlinkable

@@ -2,6 +2,7 @@ using System.Linq;
 using System.Text;
 using Content.Server._Scp.GameTicking.Rules.Components;
 using Content.Server.Antag;
+using Content.Server.Antag.Components;
 using Content.Server.Codewords;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
@@ -15,6 +16,7 @@ using Content.Server.Roles.RoleCodeword;
 using Content.Server.Traitor.Uplink;
 using Content.Shared._Scp.Chaos;
 using Content.Shared.FixedPoint;
+using Content.Shared.GameTicking.Components;
 using Content.Shared.NPC.Systems;
 using Content.Shared.PDA;
 using Content.Shared.Roles.Components;
@@ -39,36 +41,54 @@ public sealed class ChaosSpyRuleSystem : GameRuleSystem<ChaosSpyRuleComponent>
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ChaosSpyRuleComponent, ComponentInit>(OnInit);
-
         SubscribeLocalEvent<ChaosSpyRuleComponent, AfterAntagEntitySelectedEvent>(AfterEntitySelected);
         SubscribeLocalEvent<ChaosSpyRuleComponent, ObjectivesTextPrependEvent>(OnObjectivesTextPrepend);
     }
 
-    private void OnInit(Entity<ChaosSpyRuleComponent> ent, ref ComponentInit args)
+    protected override void Started(EntityUid uid, ChaosSpyRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
-        if (!ent.Comp.IsChaosRaidRule)
-            if (_random.Prob(ent.Comp.ChaosRaidRuleChance))
-            {
-                ent.Comp.IsChaosRaidRule = true;
-                var rule = _gameTicker.AddGameRule(ent.Comp.ChaosRaidRuleProtoId);
-                _gameTicker.StartGameRule(rule);
-            }
-
-        ent.Comp.CodeWords = _codeword.GetCodewords(ent.Comp.CodewordsFactionProtoId);
-
-        if (!ent.Comp.IsModernRule)
-            return;
-
-        ent.Comp.ChaosSleepSpyRuleEnt = _gameTicker.AddGameRule(ent.Comp.ChaosSleepSpyRuleProtoId);
-        if (!TryComp<ChaosSleepSpyRuleComponent>(ent.Comp.ChaosSleepSpyRuleEnt, out var sleepSpyRuleComp))
+        if (!HasComp<AntagSelectionComponent>(uid))
         {
-            _gameTicker.EndGameRule(ent.Comp.ChaosSleepSpyRuleEnt.Value);
+            StartRandomVariant(component);
             return;
         }
 
-        sleepSpyRuleComp.CodeWords = ent.Comp.CodeWords;
-        _gameTicker.StartGameRule(ent.Comp.ChaosSleepSpyRuleEnt.Value);
+        component.HasChaosRaidRule = HasActiveChaosRaidRule();
+
+        if (!component.HasChaosRaidRule &&
+            _random.Prob(component.ChaosRaidRuleChance))
+        {
+            component.HasChaosRaidRule = true;
+            var rule = _gameTicker.AddGameRule(component.ChaosRaidRuleProtoId);
+            _gameTicker.StartGameRule(rule);
+        }
+
+        component.CodeWords = _codeword.GetCodewords(component.CodewordsFactionProtoId);
+
+        if (!component.AddSleepSpies)
+            return;
+
+        component.ChaosSleepSpyRuleEnt = _gameTicker.AddGameRule(component.ChaosSleepSpyRuleProtoId);
+        if (!TryComp<ChaosSleepSpyRuleComponent>(component.ChaosSleepSpyRuleEnt, out var sleepSpyRuleComp))
+        {
+            _gameTicker.EndGameRule(component.ChaosSleepSpyRuleEnt.Value);
+            return;
+        }
+
+        sleepSpyRuleComp.CodeWords = component.CodeWords;
+        sleepSpyRuleComp.CodeWordColor = component.CodeWordColor;
+        sleepSpyRuleComp.GreetSoundNotification = component.GreetSoundNotification;
+        _gameTicker.StartGameRule(component.ChaosSleepSpyRuleEnt.Value);
+    }
+
+    private void StartRandomVariant(ChaosSpyRuleComponent component)
+    {
+        if (component.VariantRuleProtoIds.Count == 0)
+            return;
+
+        var variant = _random.Pick(component.VariantRuleProtoIds);
+        var rule = _gameTicker.AddGameRule(variant);
+        _gameTicker.StartGameRule(rule);
     }
 
     private void AfterEntitySelected(Entity<ChaosSpyRuleComponent> ent, ref AfterAntagEntitySelectedEvent args)
@@ -78,10 +98,10 @@ public sealed class ChaosSpyRuleSystem : GameRuleSystem<ChaosSpyRuleComponent>
         if (ent.Comp.CodeWords == null)
             return;
 
-        if (!_mind.TryGetMind(spy, out var mindId, out var mind))
+        if (!_mind.TryGetMind(spy, out var mindId, out var mind) || mind == null)
             return;
 
-        var briefing = Loc.GetString("traitor-role-codewords-short", ("codewords", string.Join(", ", ent.Comp.CodeWords)));
+        var briefing = Loc.GetString("chaos-spy-role-codewords-short", ("codewords", string.Join(", ", ent.Comp.CodeWords)));
 
         var startingBalance = ent.Comp.StartingBalance;
         if (_job.MindTryGetJob(mindId, out var prototype))
@@ -96,11 +116,11 @@ public sealed class ChaosSpyRuleSystem : GameRuleSystem<ChaosSpyRuleComponent>
         var code = uplinkParams.Item1;
         briefing = uplinkParams.Item2;
 
-        if (ent.Comp.IsChaosRaidRule && mind != null)
+        if (ent.Comp.HasChaosRaidRule)
             _mind.TryAddObjective(mindId, mind, ent.Comp.ChaosRaidHelpObjectiveProtoId);
 
         _antag.SendBriefing(
-            spy, GenerateBriefind(ent.Comp.CodeWords, code, ent.Comp.Issuer), null, ent.Comp.GreetSoundNotification
+            spy, GenerateBriefind(ent.Comp.CodeWords, code, Loc.GetString(ent.Comp.Issuer)), null, ent.Comp.GreetSoundNotification
         );
 
         _role.MindHasRole<ChaosSpyRoleComponent>(mindId, out var spyRole);
@@ -131,14 +151,14 @@ public sealed class ChaosSpyRuleSystem : GameRuleSystem<ChaosSpyRuleComponent>
             {
                 briefing = string.Format("{0}\n{1}",
                     briefing,
-                    Loc.GetString("traitor-role-uplink-code-short", ("code", string.Join("-", generatedCode).Replace("sharp", "#")))
+                    Loc.GetString("chaos-spy-role-uplink-code-short", ("code", string.Join("-", generatedCode).Replace("sharp", "#")))
                 );
 
                 return (generatedCode, briefing);
             }
         }
         else if (pda == null && uplinked)
-            briefing += "\n" + Loc.GetString("traitor-role-uplink-implant-short");
+            briefing += "\n" + Loc.GetString("chaos-spy-role-uplink-implant-short");
 
         return (null, briefing);
     }
@@ -146,21 +166,27 @@ public sealed class ChaosSpyRuleSystem : GameRuleSystem<ChaosSpyRuleComponent>
     private void OnObjectivesTextPrepend(Entity<ChaosSpyRuleComponent> ent, ref ObjectivesTextPrependEvent args)
     {
         if (ent.Comp.CodeWords != null)
-            args.Text += "\n" + Loc.GetString("traitor-round-end-codewords", ("codewords", string.Join(", ", ent.Comp.CodeWords)));
+            args.Text += "\n" + Loc.GetString("chaos-spy-round-end-codewords", ("codewords", string.Join(", ", ent.Comp.CodeWords)));
     }
 
     private string GenerateBriefind(string[]? codewords, Note[]? uplinkCode, string? objectiveIssuer = null)
     {
         var sb = new StringBuilder();
-        sb.AppendLine(Loc.GetString("traitor-role-greeting", ("corporation", objectiveIssuer ?? Loc.GetString("objective-issuer-unknown"))));
+        sb.AppendLine(Loc.GetString("chaos-spy-role-greeting", ("corporation", objectiveIssuer ?? Loc.GetString("objective-issuer-unknown"))));
         if (codewords != null)
-            sb.AppendLine(Loc.GetString("traitor-role-codewords", ("codewords", string.Join(", ", codewords))));
+            sb.AppendLine(Loc.GetString("chaos-spy-role-codewords", ("codewords", string.Join(", ", codewords))));
         if (uplinkCode != null)
-            sb.AppendLine(Loc.GetString("traitor-role-uplink-code", ("code", string.Join("-", uplinkCode).Replace("sharp", "#"))));
+            sb.AppendLine(Loc.GetString("chaos-spy-role-uplink-code", ("code", string.Join("-", uplinkCode).Replace("sharp", "#"))));
         else
-            sb.AppendLine(Loc.GetString("traitor-role-uplink-implant"));
+            sb.AppendLine(Loc.GetString("chaos-spy-role-uplink-implant"));
 
 
         return sb.ToString();
+    }
+
+    private bool HasActiveChaosRaidRule()
+    {
+        var raidQuery = EntityQueryEnumerator<ActiveGameRuleComponent, ChaosRaidRuleComponent, GameRuleComponent>();
+        return raidQuery.MoveNext(out _, out _, out _);
     }
 }

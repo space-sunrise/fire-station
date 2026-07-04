@@ -209,20 +209,63 @@
   - type: GameRule
     minPlayers: 25
   - type: ChaosSpyRule
-#  - type: AntagRandomObjectives
-#    sets:
-#    - groups: ChaosRaidObjectiveGroups
-#      maxPicks: 4
-#    maxDifficulty: 3
   - type: DynamicRuleCost
     cost: 100
+
+- type: entity
+  parent: BaseGameRule
+  id: ScpChaosHighSpy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: GameRule
+    minPlayers: 25
+  - type: ChaosSpyRule
+    addSleepSpies: true
+  - type: AntagRandomObjectives
+    sets:
+    - groups: ChaosSpyObjectiveGroups
+      maxPicks: 4
+    maxDifficulty: 4
   - type: AntagSelection
-    agentName: traitor-round-end-agent-name
+    agentName: chaos-spy-round-end-agent-name
     selectionTime: IntraPlayerSpawn
     definitions:
     - prefRoles: [ ChaosSpy ]
+      min: 2
+      max: 4
+      playerRatio: 10
+      pickCommandStaff: true
+      ignoreCanBeAntag: true
+      blacklist:
+        components:
+        - AntagImmune
+        - ChaosSpySelectionBlacklist
+      lateJoinAdditional: false
+      mindRoles:
+      - MindRoleChaosSpy
+
+- type: entity
+  parent: BaseGameRule
+  id: ScpChaosLowSpy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: GameRule
+    minPlayers: 25
+  - type: ChaosSpyRule
+    addSleepSpies: true
+  - type: AntagRandomObjectives
+    sets:
+    - groups: ChaosSpyObjectiveGroups
+      maxPicks: 4
+    maxDifficulty: 4
+  - type: AntagSelection
+    agentName: chaos-spy-round-end-agent-name
+    selectionTime: IntraPlayerSpawn
+    definitions:
+    - prefRoles: [ ChaosSpy ]
+      min: 3
       max: 5
-      playerRatio: 5
+      playerRatio: 10
       pickCommandStaff: false
       blacklist:
         components:
@@ -234,50 +277,32 @@
       mindRoles:
       - MindRoleChaosSpy
 
-#- type: entity
-#  parent: ScpChaosSpy
-#  id: ScpChaosSpyModern
-#  components:
-#  - type: GameRule
-#    minPlayers: 30
-#  - type: ChaosSpyRule
-#    isModernRule: true
-#  - type: AntagSelection
-#    definitions:
-#    - prefRoles: [ ChaosSpy ]
-#      max: 3
-#      playerRatio: 5
-#      pickCommandStaff: true
-#      blacklist:
-#        components:
-#        - AntagImmune
-#        - LowPositionStaff
-#      lateJoinAdditional: false
-#      mindRoles:
-#      - MindRoleChaosSpy
-
-#- type: entity
-#  parent: BaseGameRule
-#  id: ScpChaosSleepSpy
-#  components:
-#  - type: GameRule
-#    minPlayers: 30
-#  - type: ChaosSleepSpyRule
-#  - type: AntagSelection
-#    definitions: 
-#    - prefRoles: [ ChaosSleepSpy ]
-#      max: 5
-#      playerRatio: 5
-#      pickCommandStaff: false
-#      blacklist:
-#        components:
-#        - AntagImmune
-#      whitelist:
-#        components:
-#        - LowPositionStaff
-#      lateJoinAdditional: false
-#      mindRoles:
-#      - MindRoleChaosSleepSpy
+- type: entity
+  parent: BaseGameRule
+  id: ScpChaosSleepSpy
+  components:
+  - type: GameRule
+    minPlayers: 25
+  - type: ChaosSleepSpyRule
+  - type: AntagSelection
+    selectionTime: IntraPlayerSpawn
+    removeUponFailedSpawn: false
+    definitions:
+    - prefRoles: [ ChaosSleepSpy ]
+      min: 3
+      max: 4
+      playerRatio: 10
+      pickCommandStaff: false
+      ignorePrefCheck: true
+      multiAntagSetting: NotExclusive
+      blacklist:
+        components:
+        - AntagImmune
+        - ChaosSpyRole
+      whitelist:
+        components:
+        - LowPositionStaff
+      lateJoinAdditional: false
 
 - type: entity
   id: ScpMetaGarbageSpawn

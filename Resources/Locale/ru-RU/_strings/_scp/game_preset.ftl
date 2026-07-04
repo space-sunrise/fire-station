@@ -50,5 +50,5 @@ scp-description-chaos-raid =
     { scp-description-euclid }
 scp-title-chaos-spy = Шпионы Повстанцев Хаоса
 scp-description-chaos-spy = 
-    Среди нас предатель...
+    Среди сотрудников затаились агенты Повстанцев Хаоса.
     { scp-description-euclid }

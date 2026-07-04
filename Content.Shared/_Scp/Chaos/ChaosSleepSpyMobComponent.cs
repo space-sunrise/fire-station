@@ -1,4 +1,5 @@
 using Content.Shared.Objectives.Components;
+using Content.Shared.Random;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -12,10 +13,10 @@ public sealed partial class ChaosSleepSpyMobComponent : Component
     public Color CodeWordColor = Color.FromHex("#cc3b3b");
 
     [DataField]
-    public EntProtoId<ObjectiveComponent> HelpObjectiveProtoId = "";
+    public SoundSpecifier GreetSoundNotification = new SoundPathSpecifier("/Audio/_Scp/Themes/The_Chaos_Insurgency_Theme.ogg");
 
     [DataField]
-    public SoundSpecifier GreetSoundNotification = new SoundPathSpecifier("/Audio/_Scp/Themes/The_Chaos_Insurgency_Theme.ogg");
+    public EntProtoId DefaultChaosSpyRule = "ScpChaosLowSpy";
 
     [ViewVariables]
     public string[]? CodeWords;
