@@ -113,3 +113,19 @@
   canBeAntag: false
   jobEntity: Scp106
   applyTraits: false
+
+- type: job
+  id: Scp3288Alpha
+  name: job-name-scp3288Alpha
+  description: job-description-scp3288-alpha
+  playTimeTracker: JobScp3288Alpha
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 756000 # 210h
+  weight: 1020
+#  icon: TODO
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp3288
+  applyTraits: false
