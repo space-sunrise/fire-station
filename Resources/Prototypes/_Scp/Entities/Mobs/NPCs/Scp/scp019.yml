@@ -67,7 +67,7 @@
         types:
           Slash: 3
           Structural: 25
-      attackRate: 1.3
+      attackRate: 1.5
     - type: ReplacementAccent
       accent: genericAggressive
     - type: Scp
