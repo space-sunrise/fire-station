@@ -192,6 +192,9 @@
   parent:
   - ScpComputerIFF
   - ComputerIFFSyndicate
+  components:
+  - type: Computer
+    board: ComputerIFFSyndicateCircuitboard
 
 - type: entity
   id: ScpComputerPowerMonitoring
@@ -361,6 +364,8 @@
   - ScpComputerCommunication
   - SyndicateComputerComms
   components:
+  - type: Computer
+    board: SyndicateCommsComputerCircuitboard
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
@@ -378,6 +383,8 @@
   - ScpComputerCommunication
   - CentcommComputerComms
   components:
+  - type: Computer
+    board: CentcommCommsComputerCircuitboard
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
@@ -477,6 +484,8 @@
   - ScpComputerLogisticsOrders
   - ComputerCargoOrdersEngineering
   components:
+  - type: Computer
+    board: CargoRequestEngineeringComputerCircuitboard
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
@@ -494,6 +503,8 @@
   - ScpComputerLogisticsOrders
   - ComputerCargoOrdersMedical
   components:
+  - type: Computer
+    board: CargoRequestMedicalComputerCircuitboard
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
@@ -511,6 +522,8 @@
   - ScpComputerLogisticsOrders
   - ComputerCargoOrdersScience
   components:
+  - type: Computer
+    board: CargoRequestScienceComputerCircuitboard
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
@@ -528,6 +541,8 @@
   - ScpComputerLogisticsOrders
   - ComputerCargoOrdersSecurity
   components:
+  - type: Computer
+    board: CargoRequestSecurityComputerCircuitboard
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
@@ -545,6 +560,8 @@
   - ScpComputerLogisticsOrders
   - ComputerCargoOrdersService
   components:
+  - type: Computer
+    board: CargoRequestServiceComputerCircuitboard
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
@@ -834,6 +851,9 @@
   parent:
   - ScpComputerPalletConsole
   - ComputerSaleConsole
+  components:
+  - type: Computer
+    board: ComputerSaleConsoleCircuitboard
 
 - type: entity
   id: ScpComputerFacilityBankConsole
@@ -885,6 +905,9 @@
   parent:
   - ScpComputerPalletConsole
   - ComputerBountySaleConsole
+  components:
+  - type: Computer
+    board: ComputerBountySaleConsoleCircuitboard
 
 - type: entity
   id: ScpComputerCallMtfConsole
@@ -957,24 +980,36 @@
   parent:
   - ScpComputerSaleConsole
   - ComputerServiceSaleConsole
+  components:
+  - type: Computer
+    board: ComputerServiceSaleConsoleCircuitboard
 
 - type: entity
   id: ScpComputerSecuritySaleConsole
   parent:
   - ScpComputerSaleConsole
   - ComputerSecuritySaleConsole
+  components:
+  - type: Computer
+    board: ComputerSecuritySaleConsoleCircuitboard
 
 - type: entity
   id: ScpComputerMedicalServiceSaleConsole
   parent:
   - ScpComputerSaleConsole
   - ComputerMedicalSaleConsole
+  components:
+  - type: Computer
+    board: ComputerMedicalSaleConsoleCircuitboard
 
 - type: entity
   id: ScpComputerScientificServiceSaleConsole
   parent:
   - ScpComputerSaleConsole
   - ComputerScienceSaleConsole
+  components:
+  - type: Computer
+    board: ComputerScienceSaleConsoleboard
 
 - type: entity
   id: ScpComputerShuttleRegionalAdministration
