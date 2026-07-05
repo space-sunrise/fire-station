@@ -1,0 +1,35 @@
+- type: entity
+  name: ceremonial sabre
+  parent: BaseSword
+  id: CeremonialSabre
+  description: A ceremonial weapon belonging to the Habsburg family.
+  suffix: SCP-3288
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Melee/katana.rsi
+  - type: MeleeWeapon
+    attackRate: 1.5
+    damage:
+      types:
+        Slash: 18
+    soundHit:
+        path: /Audio/Weapons/bladeslice.ogg
+  - type: Reflect
+    reflects:
+    - NonEnergy
+    reflectProb: 0.35
+    spread: 90
+  - type: Item
+    storedSprite:
+      state: storage
+      sprite: Objects/Weapons/Melee/katana_storage_64x.rsi
+    shape:
+    - 0,0,0,3
+    size: Ginormous
+  - type: DisarmMalus
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/sabre_drop.ogg
+  - type: Tag
+    tags:
+    - CaptainSabre # нужно чтобы мог обратно засунуть в ножны

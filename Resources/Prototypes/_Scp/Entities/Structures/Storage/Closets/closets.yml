@@ -108,3 +108,12 @@
   - type: EntityStorage
     closeSound:
       path: /Audio/Effects/teleport_arrival.ogg
+
+- type: entity
+  id: ScpClosetLogotype
+  parent: ScpClosetSteelBase
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: scp
+    stateDoorOpen: scp_open
+    stateDoorClosed: scp_door
