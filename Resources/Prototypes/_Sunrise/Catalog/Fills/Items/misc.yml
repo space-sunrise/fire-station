@@ -46,11 +46,11 @@
     containers:
       storagebase: !type:AllSelector
         children:
-        - id: Telebaton
+        #- id: Telebaton # Fire edit
         - id: Whistle
         - id: Handcuffs
         - id: Handcuffs
-        #- id: HoloprojectorSecurity Fire edit
+        #- id: HoloprojectorSecurity # Fire edit
 
 - type: entity
   id: ClothingShoesBootsUSSPFilled
