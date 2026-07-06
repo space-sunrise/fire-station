@@ -136,16 +136,14 @@
   id: SecurityJobCommon
   groups:
   - ClassD
-  - ScientificServiceHeadless
-  - MedicalHeadless
-  - EngineeringHeadless
   - ServiceHeadless
-  - LogisticsHeadless
   tags:
   - Maintenance
   - Checkpoint
   - Security
+  - Medical
   - Bunker
+  - Safe
 
 # Научная служба
 
