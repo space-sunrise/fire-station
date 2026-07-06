@@ -47,13 +47,17 @@
     slots:
     - Belt
   - type: Store
-    name: store-preset-name-uplink
+    name: store-preset-name-ChaosUplink
     categories:
-    - UplinkWeaponry
+    - ChaosSpyWeapon
+    - ChaosSpyWeaponAmmo
+    - ChaosSpyEquipment
+    - ChaosSpyMedkit
+    - ChaosSpyOther
     currencyWhitelist:
-    - Telecrystal
+    - SupplyPoint
     balance:
-      Telecrystal: 0
+      SupplyPoint: 0
 
 - type: entity
   parent: ScpBasePDA
