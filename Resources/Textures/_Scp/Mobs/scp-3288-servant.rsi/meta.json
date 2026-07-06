@@ -1,0 +1,23 @@
+﻿{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "atpengineer",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "knight",
+            "directions": 4
+        },
+        {
+            "name": "servant",
+            "directions": 4
+        },
+		{
+            "name": "aristocrat",
+            "directions": 4
+		}
+    ]
+}
