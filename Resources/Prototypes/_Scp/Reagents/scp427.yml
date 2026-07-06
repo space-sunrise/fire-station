@@ -26,6 +26,10 @@
             Piercing: -2
             Heat: -2
 
+      - !type:AdjustReagent
+        reagent: Scp059Reagent
+        amount: -2
+
       - !type:PopupMessage
         conditions:
         - !type:ReagentCondition
