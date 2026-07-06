@@ -92,8 +92,8 @@
           Scp059CrystalItem:
             min: 1
             max: 1
-  - type: ProjectileGrenade
-    fillPrototype: Scp059CrystalProjectile
+#  - type: ProjectileGrenade
+#    fillPrototype: Scp059CrystalProjectile
     capacity: 20
   - type: PointLight
     color: LightBlue
