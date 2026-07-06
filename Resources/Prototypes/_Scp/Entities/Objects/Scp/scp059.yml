@@ -1,6 +1,6 @@
 ﻿- type: entity
   id: Scp059CrystalStructure
-  suffix: SCP-059
+  suffix: SCP-059-1
   parent: BaseStructure
   placement:
     mode: SnapgridCenter
@@ -64,7 +64,7 @@
     affectAirborne: false
   - type: KudzuVisuals
   - type: Sprite
-    sprite: _Scp/Objects/Scp/scp-059.rsi
+    sprite: _Scp/Objects/Scp/scp-059/crystal.rsi
     state: kudzu_11
   - type: EdgeSpreader
     id: Scp059Spread
@@ -75,7 +75,7 @@
     growthLevel: 1
     growthTickChance: 0.1
     spreadChance: 0.1
-    spriteVariants: 1
+    spriteVariants: 3
   - type: DeleteOnTrigger
     keysIn:
     - timer
@@ -104,18 +104,17 @@
 - type: entity
   id: Scp059Rock
   suffix: SCP-059
-  parent: BaseItemScp
+  parent: 
+  - BaseStructure
+  - BaseScpArtifactMinor
   placement:
     mode: SnapgridCenter
     snap:
       - Wall
   components:
-  - type: Item
-    size: Ginormous
-  - type: MultiHandedItem
   - type: Sprite
-    sprite: _Scp/Objects/Scp/scp-059.rsi
-    state: rock
+    sprite: _Scp/Objects/Scp/scp-059/mineral.rsi
+    state: mineral
   - type: RepeatingTrigger
     keyOut: basicSpawn
     delay: 360
@@ -147,13 +146,13 @@
 
 - type: entity
   id: Scp059CrystalItem
-  suffix: SCP-059
+  suffix: SCP-059-1
   parent: BaseItemScp
   components:
   - type: Scp
     class: Keter
   - type: Sprite
-    sprite: _Scp/Objects/Scp/scp-059.rsi
+    sprite: _Scp/Objects/Scp/scp-059/crystal.rsi
     state: icon
   - type: Extractable
     grindableSolutionName: food
@@ -191,7 +190,7 @@
   parent: BaseBulletTrigger
   components:
   - type: Sprite
-    sprite: _Scp/Objects/Scp/scp-059.rsi
+    sprite: _Scp/Objects/Scp/scp-059/crystal.rsi
     layers:
     - state: icon
   - type: Projectile

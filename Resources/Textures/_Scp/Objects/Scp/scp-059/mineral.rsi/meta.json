@@ -1,0 +1,14 @@
+﻿{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "Made by peper",
+    "size": {
+        "x": 64,
+        "y": 96
+    },
+    "states": [
+        {
+            "name": "mineral"
+        }
+    ]
+}

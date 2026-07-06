@@ -1,7 +1,7 @@
 ﻿- type: entity
   id: Scp059Mob
   name: ???
-  suffix: SCP-059
+  suffix: SCP-059-1
   parent:
   - BaseScp
   - SimpleMobBase

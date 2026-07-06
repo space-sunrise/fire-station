@@ -7,7 +7,7 @@
   - type: Action
     useDelay: 180
     icon:
-      sprite: _Scp/Objects/Scp/scp-059.rsi
+      sprite: _Scp/Objects/Scp/scp-059/crystal.rsi
       state: kudzu_21
     itemIconStyle: BigAction
     raiseOnUser: true
