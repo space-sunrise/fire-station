@@ -270,6 +270,7 @@
       blacklist:
         components:
         - AntagImmune
+        - ChaosSpySelectionBlacklist
       whitelist:
         components:
         - LowPositionStaff
@@ -299,9 +300,7 @@
         components:
         - AntagImmune
         - ChaosSpyRole
-      whitelist:
-        components:
-        - LowPositionStaff
+        - ChaosSpySelectionBlacklist
       lateJoinAdditional: false
 
 - type: entity
