@@ -46,6 +46,18 @@
     quickEquip: false
     slots:
     - Belt
+  - type: Store
+    name: store-preset-name-ChaosUplink
+    categories:
+    - ChaosSpyWeapon
+    - ChaosSpyWeaponAmmo
+    - ChaosSpyEquipment
+    - ChaosSpyMedkit
+    - ChaosSpyOther
+    currencyWhitelist:
+    - SupplyPoint
+    balance:
+      SupplyPoint: 0
 
 - type: entity
   parent: ScpBasePDA

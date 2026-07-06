@@ -75,9 +75,8 @@
   alias:
   - chaosRaid
   name: scp-title-chaos-raid
-  showInVote: false
-  hide: true
   description: scp-description-chaos-raid
+  showInVote: true
   minPlayers: 25
   rules:
   - ScpModeEuclid
@@ -86,3 +85,19 @@
   - ScpMetaGarbageSpawn
   - FreeScpRule
   - ScpChaosRaid
+
+- type: gamePreset
+  id: ScpChaosSpy
+  alias:
+  - chaosSpy
+  name: scp-title-chaos-spy
+  description: scp-description-chaos-spy
+  showInVote: true
+  minPlayers: 25
+  rules:
+  - ScpModeEuclid
+  - SendDocumentEuclidMode
+  - BasicFoundationEventScheduler
+  - ScpMetaGarbageSpawn
+  - FreeScpRule
+  - ScpChaosSpy

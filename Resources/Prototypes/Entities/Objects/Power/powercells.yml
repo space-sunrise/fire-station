@@ -256,6 +256,12 @@
   - type: Battery
     maxCharge: 1800
     startingCharge: 1800
+  # Fire added start - для вайтлиста
+  - type: Tag
+    tags:
+    - PowerCellHyper
+    - PowerCell
+  # Fire added end
   # Fire edit start
   - type: GenericVisualizer
     visuals:

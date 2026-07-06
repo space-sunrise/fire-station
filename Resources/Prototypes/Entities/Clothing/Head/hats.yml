@@ -117,9 +117,9 @@
   description: A beret for real scientists.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_rnd.rsi
+    sprite: _Scp/Clothing/Head/Hats/beret_rnd.rsi # Fire edit
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_rnd.rsi
+    sprite: _Scp/Clothing/Head/Hats/beret_rnd.rsi # Fire edit
   - type: Tag
     tags:
     - PetWearable
@@ -442,9 +442,9 @@
   description: A stylish cap worn by the Head of Personnel. Shows paperwork who's in charge.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/hopcap.rsi
+    sprite: _Scp/Clothing/Head/Hats/hopcap.rsi # Fire edit
   - type: Clothing
-    sprite: Clothing/Head/Hats/hopcap.rsi
+    sprite: _Scp/Clothing/Head/Hats/hopcap.rsi # Fire edit
   - type: Tag
     tags:
     - PetWearable

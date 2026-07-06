@@ -95,3 +95,30 @@
   id: ChaosOther
   name: store-category-ChaosOther
   priority: 5
+
+# region Chaos Spy Uplink Categories
+
+- type: storeCategory
+  id: ChaosSpyWeapon
+  name: store-category-ChaosWeapon
+  priority: 0
+
+- type: storeCategory
+  id: ChaosSpyWeaponAmmo
+  name: store-category-ChaosWeaponAmmo
+  priority: 2
+
+- type: storeCategory
+  id: ChaosSpyEquipment
+  name: store-category-ChaosEquipment
+  priority: 2
+
+- type: storeCategory
+  id: ChaosSpyMedkit
+  name: store-category-ChaosMedkit
+  priority: 3
+
+- type: storeCategory
+  id: ChaosSpyOther
+  name: store-category-ChaosOther
+  priority: 4

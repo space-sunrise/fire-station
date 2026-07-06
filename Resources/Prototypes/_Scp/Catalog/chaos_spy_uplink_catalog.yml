@@ -1,0 +1,467 @@
+
+# region Weapon
+
+- type: listing
+  id: ChaosSpyUplinkWeaponPistolViper
+  productEntity: WeaponPistolViper
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ChaosSpyWeapon
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosSpyUplinkWeaponPistolCobra
+  productEntity: WeaponPistolCobra
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ChaosSpyWeapon
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosSpyUplinkSunriseWeaponPistolAPS
+  productEntity: SunriseWeaponPistolAPS
+  cost:
+    SupplyPoint: 4
+  categories:
+  - ChaosSpyWeapon
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosSpyUplinkWeaponPistolTec9
+  productEntity: WeaponPistolTec9
+  cost:
+    SupplyPoint: 5
+  categories:
+  - ChaosSpyWeapon
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosSpyUplinkWeaponShotgunHushpup
+  productEntity: WeaponShotgunHushpup
+  cost:
+    SupplyPoint: 8
+  categories:
+  - ChaosSpyWeapon
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosSpyUplinkFireAxeFlaming
+  productEntity: FireAxeFlaming
+  cost:
+    SupplyPoint: 6
+  categories:
+  - ChaosSpyWeapon
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosSpyUplinkSyndieBreachingHammer
+  productEntity: SyndieBreachingHammer
+  cost:
+    SupplyPoint: 6
+  categories:
+  - ChaosSpyWeapon
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosSpyUplinkWeaponAJ100
+  productEntity: WeaponAJ100
+  cost:
+    SupplyPoint: 18
+  categories:
+  - ChaosSpyWeapon
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosSpyUplinkWeaponMeleeSwitchblade
+  productEntity: WeaponMeleeSwitchblade
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ChaosSpyWeapon
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+# region Ammo
+
+- type: listing
+  id: ChaosSpyUplinkWeaponAmmoMagazinePistolHighCapacitySP
+  productEntity: MagazinePistolHighCapacitySP
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ChaosSpyWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ChaosSpyUplinkWeaponAmmoMagazinePistolHighCapacityHP
+  productEntity: MagazinePistolHighCapacityHP
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ChaosSpyWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ChaosSpyUplinkWeaponAmmoMagazinePistolHighCapacityFMJ
+  productEntity: MagazinePistolHighCapacityFMJ
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ChaosSpyWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ChaosSpyUplinkWeaponAmmoMagazinePistol40SP
+  productEntity: MagazinePistol40SP
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ChaosSpyWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ChaosSpyUplinkWeaponAmmoMagazinePistol40HP
+  productEntity: MagazinePistol40HP
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ChaosSpyWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ChaosSpyUplinkWeaponAmmoMagazinePistol40FMJ
+  productEntity: MagazinePistol40FMJ
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ChaosSpyWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ChaosSpyUplinkWeaponAmmoMagazinePistol40AP
+  productEntity: MagazinePistol40AP
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ChaosSpyWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ChaosSpyUplinkWeaponAmmoBaseMagazinePistolCaselessRifleExtended
+  productEntity: BaseMagazinePistolCaselessRifleExtended
+  cost:
+    SupplyPoint: 4
+  categories:
+  - ChaosSpyWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ChaosSpyUplinkWeaponAmmoSpeedLoaderShellShotgun
+  productEntity: SpeedLoaderShellShotgun
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ChaosSpyWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ChaosSpyUplinkWeaponAmmoSpeedLoaderShotgunIncendiary
+  productEntity: SpeedLoaderShotgunIncendiary
+  cost:
+    SupplyPoint: 4
+  categories:
+  - ChaosSpyWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ChaosSpyUplinkWeaponAmmoMagazinePistolSubMachineGunCaselessExtended
+  productEntity: MagazinePistolSubMachineGunCaselessExtended
+  cost:
+    SupplyPoint: 4
+  categories:
+  - ChaosSpyWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+# region Equipment
+
+- type: listing
+  id: ChaosSpyUplinkClothingOuterArmorChaosVest
+  productEntity: ClothingOuterArmorChaosVest
+  cost:
+    SupplyPoint: 4
+  categories:
+  - ChaosSpyEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosSpyUplinkClothingEyesGlassesThermalChaos
+  productEntity: ClothingEyesGlassesThermalChaos
+  cost:
+    SupplyPoint: 4
+  categories:
+  - ChaosSpyEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosSpyUplinkClothingEyesNVD
+  productEntity: ClothingEyesNVD
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ChaosSpyEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosSpyUplinkCrowbarRed
+  productEntity: CrowbarRed
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ChaosSpyEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+# region Medkits
+
+- type: listing
+  id: ChaosSpyUplinkMedkitChaosHypo
+  productEntity: ChaosHypo
+  cost:
+    SupplyPoint: 4
+  categories:
+  - ChaosSpyMedkit
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosSpyUplinkMedkitOxygen
+  productEntity: MedkitOxygenFilled
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ChaosSpyMedkit
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ChaosSpyUplinkMedkitBurn
+  productEntity: MedkitBurnFilled
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ChaosSpyMedkit
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ChaosSpyUplinkMedkitBrute
+  productEntity: MedkitBruteFilled
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ChaosSpyMedkit
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ChaosSpyUplinkMedkitToxin
+  productEntity: MedkitToxinFilled
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ChaosSpyMedkit
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosSpyUplinkMedkitRadiation
+  productEntity: MedkitRadiationFilled
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ChaosSpyMedkit
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosSpyUplinkMedkitCombat
+  productEntity: MedkitCombatFilled
+  cost:
+    SupplyPoint: 4
+  categories:
+  - ChaosSpyMedkit
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+# region Other
+
+- type: listing
+  id: ChaosSpyUplinkRadioJammer
+  productEntity: RadioJammer
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ChaosSpyOther
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosSpyUplinkC4
+  productEntity: C4
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ChaosSpyOther
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ChaosSpyUplinkPenExploding
+  productEntity: PenExploding
+  name: chaos-spy-catalog-exploding-pen-name
+  description: chaos-spy-catalog-exploding-pen-description
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ChaosSpyOther
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosSpyUplinkChaosAccessBreaker
+  productEntity: ChaosAccessBreaker
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ChaosSpyOther
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosSpyUplinkEncryptionKeyChaos
+  productEntity: EncryptionKeyChaos
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ChaosSpyOther
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosSpyUplinkChaosPinpointer
+  productEntity: ChaosPinpointer
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ChaosSpyOther
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChaosSpyUplinkChaosPinBall
+  productEntity: ChaosPinBall
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ChaosSpyOther
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ChaosSpyUplinkPowerCellHigh
+  productEntity: PowerCellHigh
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ChaosSpyOther
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ChaosSpyUplinkChaosSpyHypoPenNocturine
+  productEntity: ChaosSpyHypoPenNocturine
+  name: chaos-spy-catalog-hypo-pen-nocturine-name
+  description: chaos-spy-catalog-hypo-pen-nocturine-description
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ChaosSpyOther
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ChaosSpyUplinkChaosSpyHypoPenPoision
+  productEntity: ChaosSpyHypoPenPoision
+  name: chaos-spy-catalog-hypo-pen-poision-name
+  description: chaos-spy-catalog-hypo-pen-poision-description
+  cost:
+    SupplyPoint: 4
+  categories:
+  - ChaosSpyOther
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2

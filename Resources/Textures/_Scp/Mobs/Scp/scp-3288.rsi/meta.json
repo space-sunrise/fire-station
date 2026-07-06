@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "license": "CLA",
+  "copyright": "atpengineer",
+  "size": {
+    "x": 120,
+    "y": 100
+  },
+  "states": [
+        {
+            "name": "dead"
+        },
+        {
+            "name": "frenzy"
+        },
+        {
+            "name": "base"
+        },
+    {
+      "name": "sleep"
+    }
+  ]
+}
