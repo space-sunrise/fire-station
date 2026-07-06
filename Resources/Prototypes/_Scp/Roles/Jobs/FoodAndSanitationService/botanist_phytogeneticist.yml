@@ -18,6 +18,7 @@
     prototype: CannabisSeeds
   - !type:AddComponentSpecial
     components:
+    - type: LowPositionStaff
     - type: EmployeeClass
       class: C
     - type: AccessLevel

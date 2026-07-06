@@ -1,0 +1,169 @@
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseChaosSpyObjective
+  components:
+  - type: Objective
+    issuer: objective-issuer-chaos
+    difficulty: 1
+  - type: RoleRequirement
+    roles:
+    - ChaosSpyRole
+
+- type: entity
+  abstract: true
+  parent: [BaseChaosSpyObjective, BaseStealObjective]
+  id: BaseChaosSpyStealObjective
+  components:
+  - type: StealCondition
+    verifyMapExistence: false
+    descriptionText: objective-condition-chaos-spy-description
+    descriptionMultiplyText: objective-condition-chaos-spy-multiply-description
+    checkStealAreas: true
+
+- type: entity
+  parent: BaseChaosSpyStealObjective
+  id: ChaosSpyStealInfoPapersObjective
+  components:
+  - type: StealCondition
+    stealGroup: ScpInfoPapers
+    minCollectionSize: 3
+    maxCollectionSize: 6
+    verifyMapExistence: true
+  - type: Objective
+    difficulty: 1.5
+
+- type: entity
+  parent: BaseChaosSpyObjective
+  id: ChaosSpyDestroyInfoPapersObjective
+  name: Destroy Foundation documentation
+  description: Destroy Foundation documentation and make sure it cannot be recovered.
+  components:
+  - type: Objective
+    difficulty: 1.5
+  - type: ScpDestroyStealTargetsCondition
+    stealGroup: ScpInfoPapers
+    minCollectionSize: 3
+    maxCollectionSize: 6
+    objectiveText: objective-condition-chaos-spy-destroy-title
+    descriptionText: objective-condition-chaos-spy-destroy-description
+
+- type: entity
+  parent: [BaseChaosSpyObjective, BaseTargetObjective]
+  id: ChaosSpyEscapeClassDObjective
+  components:
+  - type: Objective
+    difficulty: 1.8
+    unique: false
+    icon:
+      sprite: Structures/Furniture/chairs.rsi
+      state: shuttle
+  - type: TargetObjective
+    title: objective-condition-chaos-spy-escape-class-d-title
+  - type: PickRandomPerson
+    filters:
+    - !type:ScpJobListMindFilter
+      jobs:
+      - ClassD
+      - ClassDCook
+      - ClassDJanitor
+    - !type:TargetObjectiveMindFilter
+      blacklist:
+        components:
+        - ScpEscapeTargetCondition
+  - type: ScpEscapeTargetCondition
+
+- type: entity
+  parent: [BaseChaosSpyObjective, BaseKillObjective]
+  id: ChaosSpyKillFoundationEmployeeObjective
+  description: Eliminate the assigned Foundation employee.
+  components:
+  - type: Objective
+    difficulty: 1.8
+    unique: false
+  - type: TargetObjective
+    title: objective-condition-chaos-spy-kill-foundation-title
+  - type: PickRandomPerson
+    filters:
+    - !type:AntagonistMindFilter
+      inverted: true
+    - !type:TargetObjectiveMindFilter
+      blacklist:
+        components:
+        - KillPersonCondition
+  - type: KillPersonCondition
+    requireDead: true
+
+- type: entity
+  parent: [BaseChaosSpyObjective, BaseCodeObjective]
+  id: ChaosSpyBreachScpObjective
+  name: Cause an SCP breach
+  description: Cause a SCP containment breach.
+  components:
+  - type: Objective
+    difficulty: 2
+    icon:
+      sprite: _Scp/Interface/Misc/chaos_objectives_icons.rsi
+      state: StealItemScp
+  - type: ScpBreachScpCondition
+
+- type: entity
+  parent: BaseChaosSpyStealObjective
+  id: ChaosSpyStealIdCardsObjective
+  components:
+  - type: StealCondition
+    stealGroup: IDCard
+    minCollectionSize: 2
+    maxCollectionSize: 4
+    verifyMapExistence: false
+  - type: Objective
+    difficulty: 0.7
+
+- type: entity
+  parent: [BaseChaosSpyObjective, BaseHelpProgressObjective]
+  id: ChaosSpyHelpRandomSpyObjective
+  description: Ensure another Chaos spy completes their objectives.
+  components:
+  - type: Objective
+    difficulty: 2
+  - type: TargetObjective
+    title: objective-condition-chaos-spy-help-spy-title
+  - type: PickRandomPerson
+    filters:
+    - !type:HasRoleMindFilter
+      whitelist:
+        components:
+        - ChaosSpyRole
+    - !type:ObjectiveMindFilter
+      blacklist:
+        components:
+        - HelpProgressCondition
+    - !type:TargetObjectiveMindFilter
+      blacklist:
+        components:
+        - HelpProgressCondition
+
+- type: entity
+  parent: BaseChaosSpyStealObjective
+  id: ChaosSpyStealItemScpsObjective
+  components:
+  - type: StealCondition
+    stealGroup: ItemScp
+    minCollectionSize: 2
+    maxCollectionSize: 4
+    verifyMapExistence: true
+  - type: Objective
+    difficulty: 1.5
+
+- type: entity
+  parent: BaseChaosSpyObjective
+  id: ChaosSpyHelpChaosRaidObjective
+  name: Help the Chaos raid
+  description: Help Chaos Insurgency raiders complete their raid objectives.
+  components:
+  - type: Objective
+    difficulty: 1
+    icon:
+      sprite: /Textures/_Scp/Clothing/Head/Helmets/chaos.rsi
+      state: icon
+  - type: ScpRaidHelpCondition

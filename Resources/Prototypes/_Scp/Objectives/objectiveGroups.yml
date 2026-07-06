@@ -1,3 +1,4 @@
+# region ChaosRaid
 
 - type: weightedRandom
   id: ChaosRaidObjectiveGroups
@@ -21,3 +22,47 @@
   id: ChaosRaidObjectiveGroupKill
   weights:
     KillRandomAdministrationPersonelObjective: 1
+
+# region ChaosSpy
+
+- type: weightedRandom
+  id: ChaosSpyObjectiveGroups
+  weights:
+    ChaosSpyObjectiveGroupSteal: 1
+    ChaosSpyObjectiveGroupDestroy: 0.6
+    ChaosSpyObjectiveGroupClassD: 0.8
+    ChaosSpyObjectiveGroupKill: 0.8
+    ChaosSpyObjectiveGroupSabotage: 0.8
+    ChaosSpyObjectiveGroupSocial: 0.5
+
+- type: weightedRandom
+  id: ChaosSpyObjectiveGroupSteal
+  weights:
+    ChaosSpyStealInfoPapersObjective: 1
+    ChaosSpyStealIdCardsObjective: 1
+    ChaosSpyStealItemScpsObjective: 1
+
+- type: weightedRandom
+  id: ChaosSpyObjectiveGroupDestroy
+  weights:
+    ChaosSpyDestroyInfoPapersObjective: 1
+
+- type: weightedRandom
+  id: ChaosSpyObjectiveGroupClassD
+  weights:
+    ChaosSpyEscapeClassDObjective: 1
+
+- type: weightedRandom
+  id: ChaosSpyObjectiveGroupKill
+  weights:
+    ChaosSpyKillFoundationEmployeeObjective: 1
+
+- type: weightedRandom
+  id: ChaosSpyObjectiveGroupSabotage
+  weights:
+    ChaosSpyBreachScpObjective: 1
+
+- type: weightedRandom
+  id: ChaosSpyObjectiveGroupSocial
+  weights:
+    ChaosSpyHelpRandomSpyObjective: 1

@@ -203,6 +203,107 @@
     cost: 200
 
 - type: entity
+  parent: BaseGameRule
+  id: ScpChaosSpy
+  components:
+  - type: GameRule
+    minPlayers: 25
+  - type: ChaosSpyRule
+  - type: DynamicRuleCost
+    cost: 100
+
+- type: entity
+  parent: BaseGameRule
+  id: ScpChaosHighSpy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: GameRule
+    minPlayers: 25
+  - type: ChaosSpyRule
+    addSleepSpies: true
+  - type: AntagRandomObjectives
+    sets:
+    - groups: ChaosSpyObjectiveGroups
+      maxPicks: 4
+    maxDifficulty: 4
+  - type: AntagSelection
+    agentName: chaos-spy-round-end-agent-name
+    selectionTime: IntraPlayerSpawn
+    definitions:
+    - prefRoles: [ ChaosSpy ]
+      min: 2
+      max: 4
+      playerRatio: 10
+      pickCommandStaff: true
+      ignoreCanBeAntag: true
+      blacklist:
+        components:
+        - AntagImmune
+        - ChaosSpySelectionBlacklist
+      lateJoinAdditional: false
+      mindRoles:
+      - MindRoleChaosSpy
+
+- type: entity
+  parent: BaseGameRule
+  id: ScpChaosLowSpy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: GameRule
+    minPlayers: 25
+  - type: ChaosSpyRule
+    addSleepSpies: true
+  - type: AntagRandomObjectives
+    sets:
+    - groups: ChaosSpyObjectiveGroups
+      maxPicks: 4
+    maxDifficulty: 4
+  - type: AntagSelection
+    agentName: chaos-spy-round-end-agent-name
+    selectionTime: IntraPlayerSpawn
+    definitions:
+    - prefRoles: [ ChaosSpy ]
+      min: 3
+      max: 5
+      playerRatio: 10
+      pickCommandStaff: false
+      blacklist:
+        components:
+        - AntagImmune
+        - ChaosSpySelectionBlacklist
+      whitelist:
+        components:
+        - LowPositionStaff
+      lateJoinAdditional: false
+      mindRoles:
+      - MindRoleChaosSpy
+
+- type: entity
+  parent: BaseGameRule
+  id: ScpChaosSleepSpy
+  components:
+  - type: GameRule
+    minPlayers: 25
+  - type: ChaosSleepSpyRule
+  - type: AntagSelection
+    selectionTime: IntraPlayerSpawn
+    removeUponFailedSpawn: false
+    definitions:
+    - prefRoles: [ ChaosSleepSpy ]
+      min: 3
+      max: 4
+      playerRatio: 10
+      pickCommandStaff: false
+      ignorePrefCheck: true
+      multiAntagSetting: NotExclusive
+      blacklist:
+        components:
+        - AntagImmune
+        - ChaosSpyRole
+        - ChaosSpySelectionBlacklist
+      lateJoinAdditional: false
+
+- type: entity
   id: ScpMetaGarbageSpawn
   parent: BaseGameRule
   components:

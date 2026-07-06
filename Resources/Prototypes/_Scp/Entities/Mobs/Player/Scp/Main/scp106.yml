@@ -17,6 +17,7 @@
       state: base
       loop: false
   - type: Scp
+    name: SCP-106
     class: Keter
   - type: Scp106
   - type: FearSource

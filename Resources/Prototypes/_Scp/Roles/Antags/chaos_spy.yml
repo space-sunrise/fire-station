@@ -1,0 +1,31 @@
+- type: antag
+  id: ChaosSpy
+  name: roles-antag-chaos-spy-name
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-chaos-spy-objective
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 10h
+  - !type:AgeRequirement
+    requiredAge: 20
+  - !type:AgeRequirement
+    requiredAge: 30
+    inverted: true
+  playTimeTracker: AntagChaosSpy
+
+- type: antag
+  id: ChaosSleepSpy
+  name: roles-antag-chaos-spy-name
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-chaos-spy-objective
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 10h
+  - !type:AgeRequirement
+    requiredAge: 20
+  - !type:AgeRequirement
+    requiredAge: 30
+    inverted: true
+  playTimeTracker: AntagChaosSleepSpy

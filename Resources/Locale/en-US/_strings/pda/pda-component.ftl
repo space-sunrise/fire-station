@@ -16,11 +16,11 @@ comp-pda-io-program-fallback-title = Program
 
 comp-pda-io-no-programs-available = No Programs Available
 
-pda-bound-user-interface-show-uplink-title = Open Uplink
-pda-bound-user-interface-show-uplink-description = Access your uplink
+pda-bound-user-interface-show-uplink-title = Open Terminal
+pda-bound-user-interface-show-uplink-description = Access your Terminal
 
-pda-bound-user-interface-lock-uplink-title = Lock Uplink
-pda-bound-user-interface-lock-uplink-description = Prevent anyone from accessing your uplink without the code
+pda-bound-user-interface-lock-uplink-title = Lock Terminal
+pda-bound-user-interface-lock-uplink-description = Prevent anyone from accessing your Terminal without the code
 
 comp-pda-ui-menu-title = PDA
 
