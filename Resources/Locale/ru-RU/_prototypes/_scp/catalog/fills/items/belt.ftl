@@ -38,4 +38,4 @@ ent-ClothingBeltMtfAmmoBR64 = { ent-ClothingBeltMtfAmmo }
     .desc = { ent-ClothingBeltMtfAmmo.desc }
 ent-ClothingBeltSheathFilledScp3288 = { ent-ClothingBeltSheathFilled }
     .desc = { ent-ClothingBeltSheathFilled.desc }
-	.suffix = SCP-3288
+    .suffix = SCP-3288
