@@ -59,7 +59,7 @@ public sealed partial class ChaosSpyRuleComponent : Component
     public EntityUid? ChaosSleepSpyRuleEnt;
 
     [DataField]
-    public SoundSpecifier GreetSoundNotification = new SoundPathSpecifier("/Audio/_Scp/Themes/The_Chaos_Insurgency_Theme.ogg");
+    public SoundSpecifier GreetSoundNotification = new SoundPathSpecifier("/Audio/_Scp/Themes/Chaos_Spy_Theme.ogg");
 
     [ViewVariables]
     public bool HasChaosRaidRule;

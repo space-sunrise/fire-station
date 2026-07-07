@@ -172,7 +172,7 @@ public sealed class ChaosSpyRuleSystem : GameRuleSystem<ChaosSpyRuleComponent>
     private string GenerateBriefind(string[]? codewords, Note[]? uplinkCode, string? objectiveIssuer = null)
     {
         var sb = new StringBuilder();
-        sb.AppendLine(Loc.GetString("chaos-spy-role-greeting", ("corporation", objectiveIssuer ?? Loc.GetString("objective-issuer-unknown"))));
+        sb.AppendLine(Loc.GetString("chaos-spy-role-greeting"));
         if (codewords != null)
             sb.AppendLine(Loc.GetString("chaos-spy-role-codewords", ("codewords", string.Join(", ", codewords))));
         if (uplinkCode != null)

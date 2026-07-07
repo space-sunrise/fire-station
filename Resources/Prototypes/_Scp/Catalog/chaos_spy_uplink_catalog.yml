@@ -465,3 +465,13 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 2
+
+# Not for sale
+- type: listing
+  id: ChaosSpyUplinkUplinkImplanter
+  productEntity: ChaosSpyUplinkImplanter
+  cost:
+    SupplyPoint: 1
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
