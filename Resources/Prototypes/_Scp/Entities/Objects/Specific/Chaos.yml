@@ -63,17 +63,24 @@
       types:
         Blunt: 0.5
 
-# UPLINK
+# IMPLANT ACTION
 
+- type: entity
+  parent: ActionOpenUplinkImplant
+  id: ActionOpenTerminalImplant
+  name: Open Terminal
+  description: Opens the Chaos Insurgency terminal embedded under your skin
+
+# UPLINK
 # spy
 - type: entity
   parent: BaseSubdermalImplant #StorePresetUplink
   id: ChaosSpyUplinkImplant
-  name: uplink implant
-  description: This implant lets the user access a hidden Syndicate uplink at will.
+  name: terminal implant
+  description: This implant lets the user access a hidden Chaos Insurgency terminal at will.
   components:
   - type: SubdermalImplant
-    implantAction: ActionOpenUplinkImplant
+    implantAction: ActionOpenTerminalImplant
     whitelist:
       components:
       - Hands
