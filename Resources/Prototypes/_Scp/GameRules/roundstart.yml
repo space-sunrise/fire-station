@@ -293,7 +293,7 @@
       min: 3
       max: 4
       playerRatio: 10
-      pickCommandStaff: false
+      pickCommandStaff: true
       ignorePrefCheck: true
       multiAntagSetting: NotExclusive
       blacklist:

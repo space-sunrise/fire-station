@@ -9,3 +9,5 @@ roles-antag-chaos-raider-leader-objective = { roles-antag-chaos-raider-fighter-o
 
 roles-antag-chaos-spy-name = Chaos Spy
 roles-antag-chaos-spy-objective = Complete all your objectives at any cost
+roles-antag-chaos-sleep-spy-name = Chaos Sleep Spy
+roles-antag-chaos-sleep-spy-objective = Complete all your objectives at any cost
