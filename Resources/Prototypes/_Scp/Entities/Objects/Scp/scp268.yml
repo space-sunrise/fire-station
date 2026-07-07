@@ -21,9 +21,14 @@
     requireActivated: false
   - type: ClothingAddComponents
     components:
+    - type: Pacified
     - type: Stealth
+      enabledOnDeath: false
       minVisibility: 0
       lastVisibility: 0
+    - type: StealthOnMove
+      passiveVisibilityRate: -1
+      movementVisibilityRate: 0.01
     - type: Muted # так гораздо лучше
   - type: GuideHelp
     guides:
