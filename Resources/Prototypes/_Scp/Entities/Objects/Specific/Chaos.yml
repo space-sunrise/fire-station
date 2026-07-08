@@ -70,6 +70,13 @@
   id: ActionOpenTerminalImplant
   name: Open Terminal
   description: Opens the Chaos Insurgency terminal embedded under your skin
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    priority: -20
+    icon:
+      sprite: _Scp/Objects/Devices/chaos_uplink.rsi
+      state: icon
 
 # UPLINK
 # spy
