@@ -53,7 +53,7 @@ public sealed partial class ChaosSpyRuleComponent : Component
     public string[]? CodeWords;
 
     [DataField]
-    public Color CodeWordColor = Color.FromHex("#cc3b3b");
+    public Color CodeWordColor = Color.Firebrick;
 
     [ViewVariables]
     public EntityUid? ChaosSleepSpyRuleEnt;

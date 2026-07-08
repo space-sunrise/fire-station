@@ -6,15 +6,15 @@ chaos-spy-role-greeting =
     Your objectives and codewords are listed in the character menu.
     Use the terminal to acquire everything you need to complete the mission.
 chaos-spy-role-codewords =
-    The codewords are as follows: [color=darkred]{ $codewords }[/color].
-    Codewords can be used both to identify yourself to other spies [color=#cc3b3b]and to activate "sleeper" cells of the Chaos Insurgency[/color] (however, they may not be present in the facility at all).
+    The codewords are as follows: [color=firebrick]{ $codewords }[/color].
+    Codewords can be used both to identify yourself to other spies [color=firebrick]and to activate "sleeper" cells of the Chaos Insurgency[/color] (however, they may not be present in the facility at all).
     Listen for them and keep them secret to achieve your goals.
 chaos-spy-role-uplink-code =
-    Set your PDA ringtone to [color=#cc3b3b]{ $code }[/color] to unlock or lock the terminal.
+    Set your PDA ringtone to [color=firebrick]{ $code }[/color] to unlock or lock the terminal.
     Remember to lock it and change the code, or any crew member may gain access to it!
 chaos-spy-role-uplink-implant =
-    Your [color=darkgreen]implant terminal has been activated, access it from your hotbar[/color].
-    The connection is secure, [color=#cc3b3b]unless someone removes it from your body[/color].
+    Your [color=darkgreen]implant terminal has been activated[/color], access it from your hotbar.
+    The connection is secure, [color=firebrick]unless someone removes it from your body[/color].
 
 chaos-spy-role-codewords-short =
     Codewords:
