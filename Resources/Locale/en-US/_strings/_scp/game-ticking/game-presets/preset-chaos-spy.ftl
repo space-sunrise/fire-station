@@ -5,8 +5,7 @@ chaos-spy-role-greeting =
     You are a [color=darkgreen]Chaos Insurgency Spy[/color], acting in their interests.
     Your objectives and codewords are listed in the character menu.
     Use the terminal to acquire everything you need to complete the mission.
-chaos-spy-role-codewords =
-    The codewords are as follows: [color=firebrick]{ $codewords }[/color].
+chaos-spy-role-codewords = The codewords are as follows: [color=firebrick]{ $codewords }[/color].
     Codewords can be used both to identify yourself to other spies [color=firebrick]and to activate "sleeper" cells of the Chaos Insurgency[/color] (however, they may not be present in the facility at all).
     Listen for them and keep them secret to achieve your goals.
 chaos-spy-role-uplink-code =
