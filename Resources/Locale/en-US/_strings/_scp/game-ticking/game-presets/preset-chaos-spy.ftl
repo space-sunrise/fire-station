@@ -4,7 +4,7 @@ chaos-spy-round-end-codewords = The codewords were: [color=White]{$codewords}[/c
 chaos-spy-role-greeting =
     You are a [color=darkgreen]Chaos Insurgency Spy[/color], acting in their interests.
     Your objectives and codewords are listed in the character menu.
-    Use the terminal built into your PDA to acquire everything you need to complete the mission.
+    Use the terminal to acquire everything you need to complete the mission.
 chaos-spy-role-codewords =
     The codewords are as follows:
     "[color=#cc3b3b]{ $codewords }[/color]".
