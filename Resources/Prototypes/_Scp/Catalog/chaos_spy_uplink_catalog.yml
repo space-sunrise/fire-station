@@ -270,7 +270,7 @@
     stock: 2
 
 - type: listing
-  id: UplinkClothingHandsChameleonThief
+  id: ChaosSpyUplinkClothingHandsChameleonThief
   name: uplink-clothing-chameleon-thieving-gloves-name
   description: uplink-clothing-chameleon-thieving-gloves-desc
   productEntity: ClothingHandsChameleonThief
