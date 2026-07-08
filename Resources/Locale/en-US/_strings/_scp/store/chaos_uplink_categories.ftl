@@ -5,3 +5,5 @@ store-category-ChaosWeaponAmmo = Ammunition
 store-category-ChaosEquipment = Equipment
 store-category-ChaosMedkit = Medicine
 store-category-ChaosOther = Additional
+
+store-category-ChaosWeapon = Weapons

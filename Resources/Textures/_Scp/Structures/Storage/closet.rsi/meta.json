@@ -108,6 +108,21 @@
             "directions": 4
         },
         {
+            "name": "scp",
+            "directions": 4
+        },
+        {
+            "name": "scp_door",
+            "directions": 4
+        },
+        {
+            "name": "scp_icon"
+        },
+        {
+            "name": "scp_open",
+            "directions": 4
+        },
+        {
             "name": "locked",
             "directions": 4
         },

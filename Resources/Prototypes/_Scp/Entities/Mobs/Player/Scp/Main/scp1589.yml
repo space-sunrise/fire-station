@@ -80,7 +80,7 @@
     damage:
       types:
         Blunt: 40
-        Structural: 60
+        Structural: 67
     attackRate: 0.5
     range: 2
   - type: MeleeThrowOnHit
@@ -109,7 +109,7 @@
     accent: genericAggressive
   - type: SlowAccent
   - type: TTS
-    voice: Dota2Pudge
+    voice: HeartstoneHamulRunicalTotem
   - type: TriggerOnVoice
     keyOut: StartPhrase
     defaultKeyPhrase: key-phrase-scp1589
@@ -129,6 +129,11 @@
     keysIn: [ StartPhrase ]
     keyOut: EndPhrase
     delay: 60
+  - type: PopupOnTrigger
+    keysIn: [ StartPhrase ]
+    text: scp1589-popup-triggered
+    popupType: Medium
+    userIsRecipient: false
   - type: AddComponentsOnTrigger
     keysIn: [ EndPhrase ]
     components:
@@ -158,3 +163,20 @@
     - main
     activeHandId: main
   - type: Stripping
+  - type: Prying
+    speedModifier: 2
+    pryPowered: true
+    force: true
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+  - type: FieldOfView
+    angle: 240
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepScp939
+      params:
+        volume: 3

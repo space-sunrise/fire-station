@@ -190,9 +190,9 @@
   description: A suit that protects against minor chemical spills.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/labcoat.rsi
+    sprite: _Scp/Clothing/OuterClothing/Coats/labcoat.rsi # Fire edit
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/labcoat.rsi
+    sprite: _Scp/Clothing/OuterClothing/Coats/labcoat.rsi # Fire edit
   - type: Pierceable
     level: Metal
   - type: Armor
@@ -346,9 +346,9 @@
   description: Woven with top of the line technology, this labcoat helps protect against radiation in similar way to the experimental hardsuit.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/labcoat_rd.rsi
+    sprite: _Scp/Clothing/OuterClothing/Coats/labcoat_rd.rsi # Fire edit
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/labcoat_rd.rsi
+    sprite: _Scp/Clothing/OuterClothing/Coats/labcoat_rd.rsi # Fire edit
   - type: Pierceable
     level: Metal
   - type: Armor
@@ -485,9 +485,9 @@
   description: A suit that protects against minor chemical spills. Has a purple collar and wrist trims.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/labcoat_senior_researcher.rsi
+    sprite: _Scp/Clothing/OuterClothing/Coats/labcoat_senior_researcher.rsi # Fire edit
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/labcoat_senior_researcher.rsi
+    sprite: _Scp/Clothing/OuterClothing/Coats/labcoat_senior_researcher.rsi # Fire edit
   - type: Pierceable
     level: Metal
   - type: Armor

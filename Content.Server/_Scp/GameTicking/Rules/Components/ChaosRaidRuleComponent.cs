@@ -1,11 +1,12 @@
 using Content.Server.RoundEnd;
+using Content.Server._Scp.Objectives.Systems;
 using Content.Shared.NPC.Prototypes;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Scp.GameTicking.Rules.Components;
 
-[RegisterComponent, Access(typeof(ChaosRaidRuleSystem))]
+[RegisterComponent, Access(typeof(ChaosRaidRuleSystem), typeof(ScpRaidHelpConditionSystem))]
 public sealed partial class ChaosRaidRuleComponent : Component
 {
     [DataField]

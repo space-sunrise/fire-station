@@ -75,12 +75,6 @@
   - type: NpcFactionMember
     factions:
     - Passive
-  - type: TimedDespawn
-    lifetime: 600.1
-  - type: TimedSpawner
-    prototypes:
-    - BasicScp3008Angry
-    intervalSeconds: 600
   - type: MeleeWeapon
     damage:
       types:
@@ -99,12 +93,6 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 3
     baseSprintSpeed: 3
-  - type: TimedDespawn
-    lifetime: 300.1
-  - type: TimedSpawner
-    prototypes:
-    - BasicScp3008
-    intervalSeconds: 300
   - type: AmbientSound
     volume: -7
     range: 8
@@ -128,12 +116,6 @@
   - type: NpcFactionMember
     factions:
     - Passive
-  - type: TimedDespawn
-    lifetime: 600.1
-  - type: TimedSpawner
-    prototypes:
-    - StrongScp3008Angry
-    intervalSeconds: 600
   - type: MeleeWeapon
     attackRate: 0.7
     damage:
@@ -163,12 +145,6 @@
   - type: NpcFactionMember
     factions:
     - SCPs
-  - type: TimedDespawn
-    lifetime: 300.1
-  - type: TimedSpawner
-    prototypes:
-    - StrongScp3008
-    intervalSeconds: 300
   - type: AmbientSound
     volume: -7
     range: 8
@@ -192,12 +168,6 @@
   - type: NpcFactionMember
     factions:
     - Passive
-  - type: TimedDespawn
-    lifetime: 600.1
-  - type: TimedSpawner
-    prototypes:
-    - TallScp3008Angry
-    intervalSeconds: 600
 
 
 - type: entity
@@ -229,14 +199,6 @@
   - type: NpcFactionMember
     factions:
     - SCPs
-  - type: TimedDespawn
-    lifetime: 300.1
-  - type: TimedSpawner
-    prototypes:
-    - TallScp3008
-    intervalSeconds: 300
-    minimumEntitiesSpawned: 1
-    maximumEntitiesSpawned: 1
   - type: AmbientSound
     volume: -7
     range: 8

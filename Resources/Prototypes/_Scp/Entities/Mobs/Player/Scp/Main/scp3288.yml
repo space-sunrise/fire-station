@@ -1,0 +1,127 @@
+- type: entity
+  id: Scp3288
+  suffix: SCP-3288
+  parent:
+  - BaseScp
+  - BaseMob
+  - MobDamageable
+  - MobCombat
+  - StripableInventoryBase
+  - MobBloodstream
+  - MobRespirator
+  - MobAtmosStandard
+  - MobFlammable
+  - InventoryBase
+  components:
+  - type: AutoGhostRole
+    disconnectDelay: 600
+    pollDuration: 900
+    transferDelay: 180
+  - type: Scp
+    class: Keter
+  - type: Hands
+    showInHands: false
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      9800: Critical
+      10000: Dead
+  - type: Body
+    prototype: Reptilian # чтобы мог есть сырое мясо
+  - type: Inventory
+    templateId: scp082
+  - type: FieldOfView
+    angle: 240
+  - type: Hunger
+  - type: Thirst
+  - type: ScpPossibilities
+    canEjectPilotFromMech: false
+    openContainer: false
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Scp/Mobs/Scp/scp-3288.rsi
+    layers:
+    - state: base
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: base
+      Dead:
+        Base: dead
+  - type: Appearance
+  - type: ComplexInteraction
+  - type: Buckle
+  - type: ZombieImmune
+  - type: SSDIndicator
+  - type: Stripping
+  - type: UserInterface
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 0.1
+    baseSprintSpeed: 0.1
+  - type: ScpRestriction
+    canPull: true
+  - type: Pullable
+  - type: Puller
+    needsHands: true
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      3000: 0.9
+      5500: 0.8
+      7000: 0.7
+  - type: Speech
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+  - type: MeleeWeapon
+    hidden: true
+    altDisarm: false
+    animation: WeaponArcSmash
+    wideAnimation: WeaponArcSmash
+    soundHit:
+      collection: Punch
+    damage:
+      types:
+        Blunt: 60
+    attackRate: 0.5
+    range: 2
+  - type: MeleeThrowOnHit
+    speed: 2
+    distance: 0.25
+  - type: TTS
+    voice: Dota2Pudge
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+    - ScpFear
+  - type: HoldToFace
+  - type: Bloodstream
+    bloodRefreshAmount: 5
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 1500
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.4,0.25,0.4"
+        density: 500
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Devourer
+    devourTime: 5
+    healRate: 30
+    chemical: Omnizine
+    foodPreferenceWhitelist:
+      components:
+      - MobState
