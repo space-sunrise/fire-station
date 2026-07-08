@@ -7,7 +7,7 @@ chaos-spy-role-greeting =
     Use the terminal built into your PDA to acquire everything you need to complete the mission.
 chaos-spy-role-codewords =
     The codewords are as follows:
-    [color=#cc3b3b]{ $codewords }[/color].
+    "[color=#cc3b3b]{ $codewords }[/color]".
     Codewords can be used both to identify yourself to other Chaos Insurgency spies [color=#cc3b3b]and to activate "sleeper" cells of the Chaos Insurgency[/color] (however, they may not be present in the facility at all).
     Listen for them and keep them secret to achieve your goals.
 chaos-spy-role-uplink-code =
