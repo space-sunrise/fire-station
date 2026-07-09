@@ -6,8 +6,17 @@
   - type: Sprite
     layers:
       - state: green
-      - sprite: Objects/Misc/bureaucracy.rsi
-        state: paper
+      - sprite: _Scp/Objects/Misc/bureaucracy.rsi
+        state: secret_documents
+
+- type: entity
+  name: info paper not readable
+  id: SpawnDocumentInfoNotReadable
+  parent: BaseSpawnInfoPaper
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - DocumentInfoNotReadable
 
 - type: entity
   name: info paper 035
