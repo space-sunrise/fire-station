@@ -23,7 +23,7 @@
 
 
 - type: entity
-  parent: BasePaper
+  parent: [BasePaper, BaseImportantItemContraband]
   id: UnreadableDocument
   components:
   - type: Sprite
@@ -35,7 +35,7 @@
 
 
 - type: entity
-  parent: [DocumentInfoNotReadable, PaperScpLogo]
+  parent: [UnreadableDocument, PaperScpLogo]
   abstract: true
   id: BaseDocumentInfo
   categories: [ HideSpawnMenu ]

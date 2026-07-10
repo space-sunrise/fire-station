@@ -1,7 +1,7 @@
 ent-PaperScpLogo = { ent-Paper }
     .desc = A piece of paper with the Foundation's logo.
 
-ent-DocumentInfoNotReadable = document folder
+ent-UnreadableDocument = document folder
     .desc = Super-mega-ultra secret documents that say [DATA EXPUNGED]... no, seriously, the entire sheet is filled with the phrase [DATA EXPUNGED], what the hell?
     .suffix = Not readable. Target
 
