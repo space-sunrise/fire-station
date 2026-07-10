@@ -3,7 +3,7 @@
   name: ???
   suffix: SCP-1589
   description:
-  parent: 
+  parent:
   - BaseScpFriendly
   - BaseMob
   - MobCombat
@@ -48,7 +48,7 @@
         shape:
           !type:PhysShapeAabb
           bounds: "-0.25,-0.4,0.25,0.4"
-        density: 500
+        density: 1000
         mask:
         - MobMask
         layer:

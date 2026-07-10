@@ -135,3 +135,14 @@
     - ScpResearch
     - ScpResearchAdvanced
     - ScpFear
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.30
+        density: 1000
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
