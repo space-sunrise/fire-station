@@ -1,11 +1,11 @@
 ent-PaperScpLogo = { ent-Paper }
     .desc = Лист обычной бумаги с логотипом фонда.
 
-ent-DocumentInfoNotReadable = Папка с документами
+ent-DocumentInfoNotReadable = папка с документами
     .desc = Супер-мега-ультра секретные документы в которых написано [ДАННЫЕ УДАЛЕНЫ]... нет, серьёзно, тут весь лист исписан фразой [ДАННЫЕ УДАЛЕНЫ], какого чёрта?
     .suffix = Не читаема, цель
 
-ent-BaseDocumentInfo = Документация
+ent-BaseDocumentInfo = документация
     .desc = Так что слушай меня или [ДАННЫЕ УДАЛЕНЫ] с твоей [ДАННЫЕ УДАЛЕНЫ] станет для тебя не самой плохой новостью на сегодня. Этот шпион уже прорвал нашу оборону...
 
 ent-DocumentInfoScp035 = документация о SCP-035
@@ -29,18 +29,19 @@ ent-DocumentInfoScp457 = документация о SCP-457
 ent-DocumentInfoScp939 = документация о SCP-939
     .desc = { ent-BaseDocumentInfo.desc }
 
-ent-SpawnDocumentInfoNotReadable = Спавнер нечитаемой документации
-    .desc = является целью, но не читаема.
-ent-SpawnInfoPaper035 = Спавнер { ent-DocumentInfoScp035 }
-ent-SpawnInfoPaper049 = Спавнер { ent-DocumentInfoScp049 }
-ent-SpawnInfoPaper079 = Спавнер { ent-DocumentInfoScp079 }
-ent-SpawnInfoPaper082 = Спавнер { ent-DocumentInfoScp082 }
-ent-SpawnInfoPaper096 = Спавнер { ent-DocumentInfoScp096 }
-ent-SpawnInfoPaper106 = Спавнер { ent-DocumentInfoScp106 }
-ent-SpawnInfoPaper173 = Спавнер { ent-DocumentInfoScp173 }
-ent-SpawnInfoPaper247 = Спавнер { ent-DocumentInfoScp247 }
-ent-SpawnInfoPaper457 = Спавнер { ent-DocumentInfoScp457 }
-ent-SpawnInfoPaper939 = Спавнер { ent-DocumentInfoScp939 }
+ent-SpawnUnreadableDocument = спавнер нечитаемой документации
+    .desc = Является целью, но не читаема.
+    .suffix = Не читаема, цель
+ent-SpawnInfoPaper035 = спавнер { ent-DocumentInfoScp035 }
+ent-SpawnInfoPaper049 = спавнер { ent-DocumentInfoScp049 }
+ent-SpawnInfoPaper079 = спавнер { ent-DocumentInfoScp079 }
+ent-SpawnInfoPaper082 = спавнер { ent-DocumentInfoScp082 }
+ent-SpawnInfoPaper096 = спавнер { ent-DocumentInfoScp096 }
+ent-SpawnInfoPaper106 = спавнер { ent-DocumentInfoScp106 }
+ent-SpawnInfoPaper173 = спавнер { ent-DocumentInfoScp173 }
+ent-SpawnInfoPaper247 = спавнер { ent-DocumentInfoScp247 }
+ent-SpawnInfoPaper457 = спавнер { ent-DocumentInfoScp457 }
+ent-SpawnInfoPaper939 = спавнер { ent-DocumentInfoScp939 }
 
 
 info-paper-scp-035-content =

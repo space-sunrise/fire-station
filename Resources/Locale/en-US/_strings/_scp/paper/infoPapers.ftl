@@ -1,10 +1,11 @@
 ent-PaperScpLogo = { ent-Paper }
     .desc = A piece of paper with the Foundation's logo.
 
-ent-DocumentInfoNotReadable = Document folder
+ent-DocumentInfoNotReadable = document folder
     .desc = Super-mega-ultra secret documents that say [DATA EXPUNGED]... no, seriously, the entire sheet is filled with the phrase [DATA EXPUNGED], what the hell?
+    .suffix = Not readable. Target
 
-ent-BaseDocumentInfo = Documentation
+ent-BaseDocumentInfo = documentation
     .desc = So listen up boy, or [DATA EXPUNGED] starring your [DATA EXPUNGED] will be the second worst thing that happens to you today. The spy has already breached our defenses.
 
 ent-DocumentInfoScp035 = documentation about SCP-035
@@ -28,8 +29,9 @@ ent-DocumentInfoScp457 = documentation about SCP-457
 ent-DocumentInfoScp939 = documentation about SCP-939
     .desc = { ent-BaseDocumentInfo.desc }
 
-ent-SpawnDocumentInfoNotReadable = Unreadable documentation spawner
+ent-SpawnUnreadableDocument = Unreadable documentation spawner
     .desc = An objective item, but unreadable.
+    .suffix = Not readable. Target
 ent-SpawnInfoPaper035 = spawner { ent-DocumentInfoScp035 }
 ent-SpawnInfoPaper049 = spawner { ent-DocumentInfoScp049 }
 ent-SpawnInfoPaper079 = spawner { ent-DocumentInfoScp079 }

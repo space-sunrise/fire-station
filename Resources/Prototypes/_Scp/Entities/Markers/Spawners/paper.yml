@@ -11,12 +11,12 @@
 
 - type: entity
   name: info paper not readable
-  id: SpawnDocumentInfoNotReadable
+  id: SpawnUnreadableDocument
   parent: BaseSpawnInfoPaper
   components:
   - type: ConditionalSpawner
     prototypes:
-    - DocumentInfoNotReadable
+    - UnreadableDocument
 
 - type: entity
   name: info paper 035

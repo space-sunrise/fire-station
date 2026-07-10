@@ -24,7 +24,7 @@
 
 - type: entity
   parent: BasePaper
-  id: DocumentInfoNotReadable
+  id: UnreadableDocument
   components:
   - type: Sprite
     sprite: _Scp/Objects/Misc/bureaucracy.rsi
@@ -53,7 +53,6 @@
       visible: false
   - type: Paper
     editingDisabled: True
-    content: info-paper-scp-035-content
     stampState: paper_stamp-hos
     stampedBy:
     - stampedColor: '#cc0000'
