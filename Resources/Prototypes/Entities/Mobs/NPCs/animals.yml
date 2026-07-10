@@ -2831,7 +2831,7 @@
 
 - type: entity
   name: clown spider
-  parent:
+  parent: 
   - MobSpiderAngryBase
   - BaseFriendlyScpArtifactMinor # Fire added
   id: MobClownSpider
