@@ -1752,7 +1752,7 @@
 - type: entity
   name: kobold
   id: MobKobold
-  parent:
+  parent: 
   - MobBaseKobold
   - BaseFriendlyScpArtifactMinor # Fire added
   description: Cousins to the sentient race of lizard people, kobolds blend in with their natural habitat and are as nasty as monkeys; ready to pull out your hair and stab you to death.
