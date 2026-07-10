@@ -2102,7 +2102,7 @@
 - type: entity
   name: cancer mouse
   description: Toxic. Squeak!
-  parent:
+  parent: 
   - MobMouse
   - BaseFriendlyScpArtifactMinor # Fire added
   id: MobMouseCancer
