@@ -11336,3 +11336,12 @@
   id: 485
   time: '2026-07-10T13:00:59.0000000+00:00'
   url: https://github.com/space-sunrise/project-fire/pull/928
+- author: Data Deleted
+  changes:
+  - message: "\u0441\u0446\u043F 106, 173, 1589, 082 \u0431\u043E\u043B\u044C\u0448\
+      \u0435 \u043D\u0435\u043B\u044C\u0437\u044F \u043F\u043E\u0434\u043D\u044F\u0442\
+      \u044C \u0440\u0443\u043A\u0430\u043C\u0438"
+    type: Fix
+  id: 486
+  time: '2026-07-10T13:24:22.0000000+00:00'
+  url: https://github.com/space-sunrise/project-fire/pull/1085
