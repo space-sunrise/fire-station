@@ -1,0 +1,30 @@
+- type: entity
+  id: ScpRandomVending
+  name: random vending machine spawner
+  suffix: Any
+  parent: RandomVending
+  components:
+  - type: RandomSpawner
+    prototypes:
+    - ScpVendingMachineChang
+    - VendingMachineCigs
+    - VendingMachineCoffee
+    - ScpVendingMachineColaBlack
+    - ScpVendingMachineColaRed
+    - ScpVendingMachineDiscount
+    - ScpVendingMachineDonut
+    - ScpVendingMachineSmite
+    - ScpVendingMachineSnack
+    - ScpVendingMachineSnackBlue
+    - ScpVendingMachineSnackOrange
+    - ScpVendingMachineSnackTeal
+    - ScpVendingMachineSoda
+
+- type: entityTable
+  id: ScpClothingVendorTable
+  table: !type:GroupSelector
+    children:
+    - id: ScpVendingMachineClothing
+      weight: 40
+    - id: ScpVendingMachineTheater
+      weight: 10

@@ -34,7 +34,7 @@ public sealed partial class Scp035MaskComponent : Component
     public int ReagentDestructLevel = 200;
 
     [DataField]
-    public TimeSpan NextLiquidSpawnDelay = TimeSpan.FromSeconds(60);
+    public TimeSpan NextLiquidSpawnDelay = TimeSpan.FromSeconds(300);
 
     [DataField]
     public Vector2 CorrosionBox = new (6f, 3f);

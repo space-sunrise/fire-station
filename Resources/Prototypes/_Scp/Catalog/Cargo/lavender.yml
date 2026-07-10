@@ -1,0 +1,9 @@
+- type: cargoProduct
+  id: FoodCargoLavender
+  icon:
+    sprite: _Scp/Objects/Consumable/Food/lavender.rsi
+    state: icon
+  product: CrateLavender5
+  cost: 2000
+  category: cargoproduct-category-name-food
+  group: market

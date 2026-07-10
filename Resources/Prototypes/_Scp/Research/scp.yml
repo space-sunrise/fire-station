@@ -55,6 +55,19 @@
   recipeUnlocks:
   - ClothingHeadBagScp096
 
+- type: technology
+  id: ConsciousInversion
+  name: research-technology-conscious-inversion
+  icon:
+    sprite: _Scp/Objects/Misc/sedative.rsi
+    state: canister
+  discipline: SCP
+  tier: 1
+  costList:
+    Scp: 1500
+  recipeUnlocks:
+  - SedativeCanister
+
 # Tier 2
 
 - type: technology

@@ -1,6 +1,6 @@
 ﻿- type: entity
   id: Scp101
-  parent: 
+  parent:
   - BaseItemScp
   - ClothingBeltStorageWaistbag
   - BaseBagOpenClose

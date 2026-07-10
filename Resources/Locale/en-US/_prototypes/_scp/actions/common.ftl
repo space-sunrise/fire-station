@@ -1,2 +1,5 @@
 ent-ScpTearMask = Tear Mask
-    .desc = Tear the mask that holds you back to restore your abilities
+    .desc = Tear the mask that holds you back to restore your abilities.
+
+ent-ProtectionToggleAction = Switching protection device
+    .desc = Switches protection device.

@@ -48,7 +48,7 @@
     interactSuccessSound:
       path: /Audio/Animals/fox_squeak.ogg
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-organic
+    flavorKind: scp-station-event-random-sentience-flavor-organic # Fire edit
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:
@@ -287,7 +287,7 @@
   - type: ReplacementAccent
     accent: chicken
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-organic
+    flavorKind: scp-station-event-random-sentience-flavor-organic # Fire edit
   - type: NpcFactionMember
     factions:
     - Passive
@@ -747,7 +747,7 @@
   - type: ReplacementAccent
     accent: duck
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-organic
+    flavorKind: scp-station-event-random-sentience-flavor-organic # Fire edit
   - type: NpcFactionMember
     factions:
     - Passive
@@ -1560,7 +1560,7 @@
     speechVerb: Monkey
   - type: MonkeyAccent
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-primate
+    flavorKind: scp-station-event-random-sentience-flavor-primate # Fire edit
   - type: AlwaysRevolutionaryConvertible
   - type: GhostRole
     prob: 0.05
@@ -1592,7 +1592,7 @@
   - type: NameIdentifier
     group: Monkey
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-primate
+    flavorKind: scp-station-event-random-sentience-flavor-primate # Fire edit
   - type: Speech
     speechSounds: Monkey
     speechVerb: Monkey
@@ -1737,7 +1737,7 @@
   - type: AlwaysRevolutionaryConvertible
   - type: GhostTakeoverAvailable
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-kobold
+    flavorKind: scp-station-event-random-sentience-flavor-kobold # Fire edit
   - type: GhostRole
     prob: 0.05
     makeSentient: true
@@ -1752,7 +1752,9 @@
 - type: entity
   name: kobold
   id: MobKobold
-  parent: MobBaseKobold
+  parent: 
+  - MobBaseKobold
+  - BaseFriendlyScpArtifactMinor # Fire added
   description: Cousins to the sentient race of lizard people, kobolds blend in with their natural habitat and are as nasty as monkeys; ready to pull out your hair and stab you to death.
   components:
   - type: Clumsy
@@ -2100,7 +2102,9 @@
 - type: entity
   name: cancer mouse
   description: Toxic. Squeak!
-  parent: MobMouse
+  parent: 
+  - MobMouse
+  - BaseFriendlyScpArtifactMinor # Fire added
   id: MobMouseCancer
   components:
   - type: GhostRole
@@ -2117,7 +2121,8 @@
     energy: 5
     netsync: false
   - type: RadiationSource
-    intensity: 0.3
+    intensity: 0.5
+    slope: 0.3
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:
@@ -2826,7 +2831,9 @@
 
 - type: entity
   name: clown spider
-  parent: MobSpiderAngryBase
+  parent: 
+  - MobSpiderAngryBase
+  - BaseFriendlyScpArtifactMinor # Fire added
   id: MobClownSpider
   description: Combines the two most terrifying things in existence, spiders and clowns.
   components:
@@ -3888,7 +3895,7 @@
   - type: ReplacementAccent
     accent: pig
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-organic
+    flavorKind: scp-station-event-random-sentience-flavor-organic # Fire edit
   - type: NpcFactionMember
     factions:
     - Passive

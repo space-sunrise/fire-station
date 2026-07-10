@@ -38,6 +38,7 @@
   - type: ScpShow049Hud
   - type: ScpPossibilities
     canEjectPilotFromMech: false
+    openContainer: false
   - type: FearSource
     uponSeenState: Anxiety
     uponComeCloser: Anxiety

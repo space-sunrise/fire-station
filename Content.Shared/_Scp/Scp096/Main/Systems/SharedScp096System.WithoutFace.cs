@@ -29,6 +29,8 @@ public abstract partial class SharedScp096System
     /// </summary>
     private void OnWithoutFaceStartup(Entity<ActiveScp096WithoutFaceComponent> ent, ref ComponentStartup args)
     {
+        TryBreakOutOfHold(ent.Owner);
+
         var message = Loc.GetString("scp096-face-skin-rip-full", ("name", Identity.Name(ent, EntityManager)));
         _popup.PopupPredicted(message, ent, ent);
 

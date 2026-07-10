@@ -1,0 +1,15 @@
+- type: entity
+  parent: DrinkGreenTeaGlass
+  id: DrinkLavenderTeaGlass
+  name: glass of lavender tea
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: LavenderTea
+          Quantity: 30
+  - type: Icon
+    sprite: Objects/Consumable/Drinks/cognacglass.rsi
+    state: icon

@@ -36,6 +36,11 @@
                 ]
             ]
         },
+
+        {
+            "name": "pinpointer-chaos"
+        },
+
         {
             "name": "inhand-left-base",
             "directions": 4

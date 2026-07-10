@@ -1,4 +1,5 @@
-﻿using Content.Shared.DoAfter;
+﻿using Content.Shared._Sunrise.Random;
+using Content.Shared.DoAfter;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
@@ -12,6 +13,7 @@ namespace Content.Shared._Scp.Blinking.ReducedBlinking;
 
 // TODO: Переделать на химикат и дать возможно варить, используя реагент 173 и нечто из синтезатора реагентов.
 // TODO: Добавить звук закапывания капель.
+// TODO: Анхардкод: Перенос значений в компоненты
 public abstract class SharedReducedBlinkingSystem : EntitySystem
 {
     [Dependency] private readonly SharedBlinkingSystem _blinking = default!;
@@ -19,8 +21,14 @@ public abstract class SharedReducedBlinkingSystem : EntitySystem
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly RandomPredictedSystem _random = default!;
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] protected readonly IGameTiming Timing = default!;
+
+    private const float ToleranceReduceUseLimit = 90.0f;
+    private const float MinReducedBlinkingEffectiveness = 0.15f;
+    private const float MinToleranceIncrease = 15f;
+    private const float MaxToleranceIncrease = 25f;
 
     public override void Initialize()
     {
@@ -67,20 +75,38 @@ public abstract class SharedReducedBlinkingSystem : EntitySystem
             return;
         }
 
-        blinkable.AdditionalBlinkingTime = ent.Comp.FirstBlinkingBonusTime;
-        DirtyField(target, blinkable, nameof(BlinkableComponent.AdditionalBlinkingTime));
-        _blinking.ResetBlink(target);
-        _useDelay.TryResetDelay(ent);
+        if (blinkable.ReducedBlinkingTolerance >= ToleranceReduceUseLimit)
+        {
+            _popup.PopupPredicted(Loc.GetString("eye-droplets-tolerance-too-high"), ent, ent, PopupType.LargeCaution);
+            return;
+        }
+
+        var effectiveness = GetReducedBlinkingEffectiveness(blinkable.ReducedBlinkingTolerance);
+
+        var firstBonusTime = ent.Comp.FirstBlinkingBonusTime * effectiveness;
+        var otherBonusTime = ent.Comp.OtherBlinkingBonusTime * effectiveness;
+        var bonusDuration = ent.Comp.OtherBlinkingBonusDuration * effectiveness;
 
         var comp = new ActiveReducedBlinkingUserComponent
         {
-            BlinkingBonusDuration = ent.Comp.OtherBlinkingBonusDuration,
-            FirstBonusEndTime = Timing.CurTime + ent.Comp.FirstBlinkingBonusTime,
-            AllBonusEndTime = Timing.CurTime + ent.Comp.OtherBlinkingBonusTime,
+            BlinkingIntervalBonus = bonusDuration,
+            FirstBonusEndTime = Timing.CurTime + firstBonusTime,
+            AllBonusEndTime = Timing.CurTime + otherBonusTime,
         };
 
         AddComp(target, comp, true);
         Dirty(target, comp);
+
+        blinkable.AdditionalBlinkingTime += firstBonusTime;
+        blinkable.ReducedBlinkingTolerance = MathF.Min(
+            100f,
+            blinkable.ReducedBlinkingTolerance + _random.NextFloatForEntity(target, MinToleranceIncrease, MaxToleranceIncrease));
+
+        DirtyField(target, blinkable, nameof(BlinkableComponent.AdditionalBlinkingTime));
+        DirtyField(target, blinkable, nameof(BlinkableComponent.ReducedBlinkingTolerance));
+
+        _blinking.ResetBlink(target);
+        _useDelay.TryResetDelay(ent);
 
         if (ent.Comp.UseSound != null)
             _audio.PlayPredicted(ent.Comp.UseSound, ent, target);
@@ -93,6 +119,12 @@ public abstract class SharedReducedBlinkingSystem : EntitySystem
         // Удаляем предмет, если использований не осталось
         if (ent.Comp.UsageCount <= 0 && _net.IsServer)
             QueueDel(ent);
+    }
+
+    private static float GetReducedBlinkingEffectiveness(float tolerance)
+    {
+        var normalized = Math.Clamp(tolerance / 100f, 0f, 1f);
+        return 1f - normalized * (1f - MinReducedBlinkingEffectiveness);
     }
 }
 

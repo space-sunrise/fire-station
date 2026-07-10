@@ -127,7 +127,7 @@
   - type: Input
     context: "human"
   - type: SentienceTarget # sentient PDA = pAI lite
-    flavorKind: station-event-random-sentience-flavor-mechanical
+    flavorKind: scp-station-event-random-sentience-flavor-mechanical # Fire edit
     weight: 0.001 # 1,000 PDAs = as likely to be picked as 1 regular animal
   - type: BlockMovement
     blockInteraction: false # lets the PDA toggle its own flashlight
@@ -1862,6 +1862,23 @@
   # Sunrise-End
   - type: Icon
     state: pda-seniorcourier
+
+- type: entity
+  parent: [ BaseHighlyIllegalContraband, BasePDA ]
+  id: NinjaPDA
+  name: ninja PDA
+  description: You stealthy bastard, you!
+  components:
+  - type: Pda
+    id: NinjaIDCard
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-ninja
+  - type: Icon
+    sprite: Objects/Devices/pda.rsi
+    state: pda-ninja
 
 - type: entity
   parent: [ BaseMajorContraband, SyndiPDA ]

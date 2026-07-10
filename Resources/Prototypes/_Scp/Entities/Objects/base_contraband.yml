@@ -13,3 +13,11 @@
   components:
   - type: Contraband
     severity: FoundationEnemy
+
+# important things
+- type: entity
+  id: BaseImportantItemContraband
+  abstract: true
+  components:
+  - type: Contraband
+    severity: ImportantItem

@@ -6,6 +6,11 @@
     sprite: _Scp/Clothing/Mask/gaschaos.rsi
   - type: Clothing
     sprite: _Scp/Clothing/Mask/gaschaos.rsi
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - Snout
+    hideOnToggle: true
   - type: FlashImmunity
   - type: Armor
     modifiers:
