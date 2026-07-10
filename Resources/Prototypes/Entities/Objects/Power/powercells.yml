@@ -89,6 +89,7 @@
           Neither: { visible: true, state: fo1small }
           Empty: { visible: false }
   # Fire edit end
+  # Sunrise-Edit: removed legacy PowerCellSmall tag, now relying on PowerCell whitelist
 
 - type: entity
   id: PowerCellSmallPrinted
@@ -255,6 +256,12 @@
   - type: Battery
     maxCharge: 1800
     startingCharge: 1800
+  # Fire added start - для вайтлиста
+  - type: Tag
+    tags:
+    - PowerCellHyper
+    - PowerCell
+  # Fire added end
   # Fire edit start
   - type: GenericVisualizer
     visuals:

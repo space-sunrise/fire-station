@@ -31,5 +31,5 @@
 - type: startingGear
   id: ClassDGear
   equipment:
-    jumpsuit: ClothingUniformClassD
+    jumpsuit: ClothingUniformClassDBasic
     shoes: ClothingShoesClassD

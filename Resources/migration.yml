@@ -773,6 +773,14 @@ SpacemenFigureSpawner: SpacemenFigurineSpawner90
 
 # Sunrise-Start
 # AirlockExternalGlassShuttleArrivals: AirlockExternalGlassShuttleArrivalsLocked # Fire edit
+# 2026-01-07
+HandheldHealthAnalyzerUnpowered: HandheldHealthAnalyzer
+HandheldHealthAnalyzerEmpty: HandheldHealthAnalyzer
+
+#2026-01-09
+BorgModuleAdvancedChemical: BorgModuleAdvancedTopical
+
+# region Sunrise-Start
 AirlockHatchSyndicate: AirlockHatchSyndicateLocked
 SurveillanceCameraWirelessRouterBase: SurveillanceCameraWirelessRouterConstructed
 CryogenicSleepUnitSpawner: CryogenicSleepUnitSpawnerLateJoin
@@ -997,6 +1005,69 @@ WeaponTurretVespera50mm: ShuttleGunVespera50mm
 #2026-04-06
 #AirlockExternalGlassShuttleArrivalsLocked: AirlockExternalGlassShuttleArrivalsLockedCentComm
 #AirlockExternalGlassShuttleEmergencyLocked: AirlockExternalGlassShuttleEmergencyLockedCentComm
+CriminalRecordsComputerCircuitboard: SunriseCriminalRecordsComputerCircuitboard
+#LockerPrisoner: PrisonCellLocker
+#LockerPrisoner2: PrisonCellLocker2
+#LockerPrisoner3: PrisonCellLocker3
+#LockerPrisoner4: PrisonCellLocker4
+#LockerPrisoner5: PrisonCellLocker5
+#LockerPrisoner6: PrisonCellLocker6
+#LockerPrisoner7: PrisonCellLocker7
+#LockerPrisoner8: PrisonCellLocker8
+#ComputerCriminalRecords: SunriseComputerCriminalRecords
+#2026-04-19
+AtmosDeviceFanDirectionalInvisible: AtmosDeviceFanDirectional
+#2026-04-25
+WeaponPistolG22: WeaponPistolEnforcer
+WeaponPistolG22Auto: WeaponPistolEnforcer
+MagazineGlock22: MagazinePistol
+#2026-05-10
+SunriseBorgModuleChemical: BorgModuleChemical
+HandheldMachineAnalyzer: HandheldRoboAnalyzer
+MagazineG36Extended: null
+# 2026-05-28
+Vampire: null
+MobBatVampire: null
+VampireLightning: null
+# 2026-06-01
+MobRogueSiliconScrap: MobRogueSiliconT1Scrap
+MobRogueSiliconScrapThreads: MobRogueSiliconT1ScrapThreads
+MobRogueSiliconScrapThrusters: MobRogueSiliconT1ScrapThrusters
+MobRogueSiliconScrapThrustersRanged: MobRogueSiliconT1ScrapThrustersRanged
+MobRogueSiliconScrapFlayer: MobRogueSiliconT1ScrapFlayer
+MobRogueSiliconDroneLethals: MobRogueSiliconT1DroneLethals
+MobRogueSiliconDroneNonLethals: MobRogueSiliconT1DroneNonLethals
+MobRogueSiliconDroneNonLethalsBuff: MobRogueSiliconT1DroneNonLethalsBuff
+MobRogueSiliconDroneScience: MobRogueSiliconT1DroneScience
+MobRogueSiliconDroneScienceBuff: MobRogueSiliconT1DroneScienceBuff
+MobRogueSiliconViscerator: MobRogueSiliconT1Viscerator
+MobRogueSiliconScrapAsteroid: MobRogueSiliconT1ScrapAsteroid
+MobRogueSiliconScrapThreadsAsteroid: MobRogueSiliconT1ScrapThreadsAsteroid
+MobRogueSiliconScrapThrustersAsteroid: MobRogueSiliconT1ScrapThrustersAsteroid
+MobRogueSiliconScrapThrustersRangedAsteroid: MobRogueSiliconT1ScrapThrustersRangedAsteroid
+MobRogueSiliconDerelictBorg: MobRogueSiliconT1DerelictBorg
+MobRogueSiliconDerelictBorgEngineering: MobRogueSiliconT1DerelictBorgEngineering
+MobRogueSiliconDerelictBorgJanitor: MobRogueSiliconT1DerelictBorgJanitor
+MobRogueSiliconDerelictBorgMedical: MobRogueSiliconT1DerelictBorgMedical
+MobRogueSiliconDerelictBorgMining: MobRogueSiliconT1DerelictBorgMining
+MobRogueSiliconServo: MobRogueSiliconT2Servo
+MobRogueSiliconHerder: MobRogueSiliconT2Herder
+MobRogueSiliconHunter: MobRogueSiliconT2Hunter
+MobRogueSiliconCatcher: MobRogueSiliconT2Catcher
+MobRogueSiliconDerelictBorgAssaultT1: MobRogueSiliconT2DerelictBorgAssault
+MobRogueSiliconDerelictBorgAssaultT2: MobRogueSiliconT2DerelictBorgAssaultHeavy
+MobRogueSiliconDerelictBorgSyndicateMedical: MobRogueSiliconT2DerelictBorgSyndicateMedical
+MobRogueSiliconTerminatorT3: MobRogueSiliconT3Terminator
+MobRogueSiliconTesla: MobRogueSiliconT3Tesla
+MobRogueSiliconDerelictBorgAssaultT3: MobRogueSiliconT3DerelictBorgAssault
+MobRogueSiliconDerelictBorgSyndicateSaboteur: MobRogueSiliconT3DerelictBorgSyndicateSaboteur
+MobRogueSiliconGuardian: MobRogueSiliconBossGuardian
+MobRogueSiliconGuardianLCG: MobRogueSiliconBossGuardianLCG
+SpawnMobRogueSiliconVisceratorSquad: SpawnMobRogueSiliconT1VisceratorSquad
+SpawnMobRogueSiliconGuardian: SpawnMobRogueSiliconBossGuardian
+SpawnMobRogueSiliconGuardianLCG: SpawnMobRogueSiliconBossGuardianLCG
+SpawnMobRogueSiliconTerminator: SpawnMobRogueSiliconT3Terminator
+HyposprayERT: Hypospray
 # region Sunrise-End
 
 # Санрайз насрал опять
@@ -1006,6 +1077,34 @@ CrateServicePrinterDoc: null
 CrateServicePrinterDocRestock: null
 
 # Fire added start
+
+RandomVending: ScpRandomVending
+RandomVendingDrinks: ScpRandomVendingDrinks
+RandomVendingSnacks: ScpRandomVendingSnacks
+
+VendingMachineChang: ScpVendingMachineChang
+VendingMachineColaRed: ScpVendingMachineColaRed
+VendingMachineColaBlack: ScpVendingMachineColaBlack
+VendingMachineDiscount: ScpVendingMachineDiscount
+VendingMachineDonut: ScpVendingMachineDonut
+VendingMachineSmite: ScpVendingMachineSmite
+VendingMachineSnack: ScpVendingMachineSnack
+VendingMachineSnackBlue: ScpVendingMachineSnackBlue
+VendingMachineSnackOrange: ScpVendingMachineSnackOrange
+VendingMachineSnackTeal: ScpVendingMachineSnackTeal
+VendingMachineSoda: ScpVendingMachineSoda
+VendingMachineSec: ScpVendingMachineSec
+VendingMachineClothing: ScpVendingMachineClothing
+VendingMachineTheater: ScpVendingMachineTheater
+VendingMachineDrGibb: null
+VendingMachinePwrGame: null
+VendingMachineShamblersJuice: null
+VendingMachineSnackGreen: null
+VendingMachineSovietSoda: null
+VendingMachineSpaceUp: null
+VendingMachineStarkist: null
+
+ClothingUniformClassD: ClothingUniformClassDBasic
 ClosetWallAtmospherics: null
 ClosetWallWardrobeAtmosphericsFilled: null
 WardrobeBotanist: ScpLockerBotanistPhytogeneticist
@@ -2748,5 +2847,12 @@ FloorTileItemWoodPattern: ScpFloorTileItemWoodPattern
 ClothingUniformJumpsuitBlueDirectorFormal: ClothingUniformJumpsuitDirector
 ClothingHeadHatCapDirector: ClothingHeadHatDirector
 ClothingHandsGlovesDirector: ClothingHandsGlovesDirectorSpecial
+
+# kalashnikov assault rifle rename
+GunLockerFilledAK74: GunLockerFilledAK103
+WeaponRifleAK74: WeaponRifleAK103
+
+# Временное отключение объектов
+Scp268: null # Временно отключён из-за сломанности и потому что он стал "имбовым"
 
 # Fire added end

@@ -5,7 +5,8 @@
   id: RadioHandheld
   categories: [ HideSpawnMenu ]
   components:
-  - type: TelecomExempt
+  # Sunrise-Edit
+  #- type: TelecomExempt
   - type: RadioMicrophone
     broadcastChannel: Handheld
   - type: RadioSpeaker

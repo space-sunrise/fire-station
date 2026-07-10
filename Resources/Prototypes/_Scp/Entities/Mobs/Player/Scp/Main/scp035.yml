@@ -16,6 +16,14 @@
   - type: Scp
     class: Keter
   - type: Scp035Mask
+    messages:
+    - scp-035-message-one
+    - scp-035-message-two
+    - scp-035-message-three
+    whitelistStructures:
+      tags:
+      - Window
+      - Wall
   - type: ComponentToggler
     components:
     - type: FearSource

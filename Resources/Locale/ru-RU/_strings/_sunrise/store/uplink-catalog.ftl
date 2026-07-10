@@ -55,6 +55,8 @@ uplink-pistol-magnum-magazine-name = Магазин (.45 магнум SP)
 uplink-pistol-magnum-magazine-desc = 7-зарядный однорядный магазин для пистолета. Содержит патроны SP. Совместим с "Диглом".
 uplink-pistol-magnum-magazine-ap-name = Магазин (.45 магнум бронебойные)
 uplink-pistol-magnum-magazine-ap-desc = 7-зарядный однорядный магазин для пистолета. Содержит бронебойные патроны. Совместим с "Диглом".
+uplink-pistol-stechkin-magazine-name = пистолетный магазин .40
+uplink-pistol-stechkin-magazine-desc = Пистолетный магазин на 10 патронов, совместим с пистолетами серии Стечкин.
 uplink-pistol-magazine-c40r-desc = Магазин ПП на 24 патрона. Совместим с C-40r.
 uplink-skm28-ammo-desc = Винтовочный магазин на 20 патронов. Совместим с SKM-28.
 uplink-skm24-ammo-desc = Винтовочный магазин на 30 патронов 7,62x39. Совместим с SKM-24.
@@ -91,10 +93,6 @@ uplink-thermal-desc = Идеально подходит для выявлени�
 uplink-syndie-diagnostic-hud-name = визор МЕХ-пилота синдиката
 uplink-syndie-diagnostic-hud-desc = Профессиональный визор анализирующий в реальном времени состояние МЕХа.
 uplink-clothing-backpack-syndie-name = Рюкзак Синдиката
-uplink-hardsuit-syndie-commander-name = скафандр Командира Синдиката
-uplink-hardsuit-syndie-commander-desc = Скафандр предназначеный для командиров отрядов Горлекса.
-uplink-hardsuit-syndie-medic-name = скафандр Медика Синдиката
-uplink-hardsuit-syndie-medic-desc = Скафандр предназначеный для боевых врачей отрядов Горлекса.
 uplink-hardsuit-infiltration-name = скафандр Инфильтратора Синдиката
 uplink-hardsuit-infiltration-desc = Набор с новейшими технологиями Синдиката! Стандартный кроваво-красный скафандр со встроенными новейшими разработками по активной маскировки!
 uplink-energy-dome-personal-name = Поясной Энергетический барьер
@@ -109,8 +107,12 @@ uplink-clothing-chameleon-thieving-gloves-name = Воровские перчат
 uplink-clothing-chameleon-thieving-gloves-desc = Незаметно обчищайте карманы и повышайте свой навык воровства с помощью этих новых модных перчаток, которые могут менять свой облик! Учтите что волокна остануться уникальные для этих перчаток.
 uplink-50blessing-name = Подарочный набор 50 благословений
 uplink-50blessing-desc = Для агентов, которые хотят скрыть свою личность стильно, с любовью от Егора Семёнова
+uplink-slipknotset-name = Подарочный набор масок slipknot
+uplink-slipknotset-desc = Пять масок. Пять душ. Номера 7, 8, 6, 1 и 5 в чёрной коробке - грязная ярость Айовы.
 uplink-clothing-murder-socks-name = чулочки убийцы
 uplink-clothing-murder-socks-desc = для агента что по настоящему шарит за стиль
+uplink-clothing-chameleon-silent-name = Бесшумная обувь
+uplink-clothing-chameleon-silent-desc = Специальная обувь, созданная для бесшумного передвижения. Каждый шаг растворяется в пустоте.
 uplink-syndie-maid-raid-name = рейдерка горничной
 uplink-syndie-maid-raid-desc = синдикат разработал это специально для агентов женского пола, но носят это почему-то одни мужики
 ## Weapon
@@ -183,7 +185,8 @@ uplink-reinforcement-radio-syndicate-cyborg-reaper-name = Телепорт по�
 uplink-reinforcement-radio-syndicate-cyborg-reaper-desc = Отправляет вам в поддержку борга синдиката.
 
 ## Equipment
-
+uplink-experimental-eshield-name = Экспериментальный энергощит
+uplink-experimental-eshield-desc = Ещё более экзотический энергощит, отражающий почти все лазерные лучи, а также немного защищающий от пуль и других физических атак. Имет встроенную самозаряжающеюся батарею.
 uplink-hypo-name = Горлекс гипоспрей
 uplink-hypo-desc = Химический гипоспрей, произведёный синдикатом, способный мгновенно впрыснуть до 20 ед. реагентов. Изначально пуст.
 uplink-polytrinic-acid-chemistry-bottle-name = Политриновая кислота
@@ -196,6 +199,8 @@ uplink-anomaly-auto-injector-popup-pending = Кожа не поддаётся и
 uplink-anomaly-auto-injector-popup-infected = Кожа не поддаётся инъекции!
 uplink-xeno-artifact-throwing-auto-injector-name = Метательный автоинъектор артефакта
 uplink-xeno-artifact-throwing-auto-injector-desc = Метательно-складное устройство одноразового применения. При попадании в живое существо вонзается и вживляет частицы артефакта. Не действует на синтетиков.
+uplink-roboticist-nuclear-operative-id-card-name = Оперативная ID-карта робототехника
+uplink-roboticist-nuclear-operative-id-card-desc = ID-карта робототехника со штатными доступами профессии и дополнительным доступом Синдиката.
 
 ## Mechs equipment
 
@@ -205,6 +210,8 @@ uplink-mech-equipment-tesla-cannon-name = тесла-пушка P-X
 uplink-mech-equipment-tesla-cannon-desc = Оружие для боевых мехов, стреляющее энергетическими шарами, основанное на принципе экспериментального двигателя Теслы.
 uplink-mech-equipment-shotgun-name = LBX AC 10 "Залп"
 uplink-mech-equipment-shotgun-desc = Навесной нелетальный электрошокер, позволяющий оглушить злоумышленников.
+uplink-mech-equipment-kord-name = пулемёт "Корд"
+uplink-mech-equipment-kord-desc = Громоздкий тяжелый пулемёт со скорострельностью 300 пуль в минуту. Очень эффективен против любых врагов в легкой броне.
 uplink-mech-equipment-shotgun-incendiary-name = карабин FNX-99 "Аид"
 uplink-mech-equipment-shotgun-incendiary-desc = Навесной карабин, стреляющий зажигательными патронами.
 uplink-mech-equipment-ultra-rifle-name = AC-2 "Ультра"
@@ -217,8 +224,6 @@ uplink-mech-equipment-vindictor-name = Устанавливаемый MG-100 Vin
 uplink-mech-equipment-vindictor-desc = Тяжёлое оружие массового поражения.
 uplink-mech-equipment-uvm31-name = UVM-31 "Дрейк"
 uplink-mech-equipment-uvm31-desc = Тяжёлое оружие массового поражения разработанное Cybersun на основе минигана. теперь на прочном штативе позволяющем вести огонь прямо из МЕХа!
-uplink-mech-teleporter-medium-name = Телепорт среднего меха
-uplink-mech-teleporter-medium-desc = Содержит среднебронированный мех Cybersun с AC-2 "Ультра" и ракетной установкой BRM-8.
 uplink-clothing-glasses-nvg-name = Модульные Очки
 uplink-clothing-glasses-nvg-desc = Качественно исполненные солнцезащитные очки, производства компании "Горлакс секьюрити". Использует модульные части для улучшения видимости в условиях низкой освещенности.
 
@@ -286,6 +291,9 @@ uplink-energy-dome-desc = Персональный генератор щита, 
 uplink-syndicate-teleporter-name = Ручной телепорт Синдиката
 uplink-syndicate-teleporter-desc = Экспериментальное устройство ручного телепорта. Телепортирует владельца на небольшое расстояние вперед. Будьте осторожны, чтобы не оказаться в стене.
 
+uplink-viscerator-cluster-grenade-name = Висцераторная граната
+uplink-viscerator-cluster-grenade-desc = После короткого таймера выпускает восемь висцераторов Синдиката.
+
 ## Disruption
 
 uplink-cleaner-kit-name = Набор уборщика
@@ -315,3 +323,9 @@ uplink-longbow-bundle-name = ящик BAL-15 «Лонгбоу»
 uplink-longbow-bundle-desc = Набор с комплектующими для сборки шаттл-пушки BAL-15 «Лонгбоу».
 uplink-quadling-bundle-name = ящик BAL-15-4 «Квадлинг»
 uplink-quadling-bundle-desc = Набор с комплектующими для сборки шаттл-пушки BAL-15-4 «Квадлинг».
+uplink-ecronizer-name = Экронайзер
+uplink-ecronizer-desc = Небольшое устройство, позволяющее обходить большинство сканирующих устройств и скрывать вас и ваши предметы от них.
+uplink-lube-grenade-name = Граната со смазкой
+uplink-lube-grenade-desc = Граната, создающая в зоне детонации скользкое облако смазки.
+uplink-glue-grenade-name = Граната с клеем
+uplink-glue-grenade-desc = Граната, создающая в зоне детонации липкое облако клея.

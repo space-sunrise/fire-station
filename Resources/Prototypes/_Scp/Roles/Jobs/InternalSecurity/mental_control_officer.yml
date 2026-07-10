@@ -23,6 +23,7 @@
     implants: [ MindShieldImplant ]
   - !type:AddComponentSpecial
     components:
+    - type: ChaosSpySelectionBlacklist
     - type: EmployeeClass
       class: B
     - type: AccessLevel

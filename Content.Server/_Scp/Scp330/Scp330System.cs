@@ -10,16 +10,15 @@ using Content.Shared._Scp.Scp330;
 using Content.Shared.Body.Part;
 using Content.Shared.Containers;
 using Content.Shared.Damage.Systems;
-using Content.Shared.Gibbing.Events;
 using Content.Shared.Hands.Components;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.Gibbing.Systems;
 using Content.Shared.Storage;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Random;
+using Content.Shared.Gibbing;
 
 namespace Content.Server._Scp.Scp330;
 
@@ -145,17 +144,9 @@ public sealed partial class Scp330System : SharedScp330System
             if (part.Component.PartType != BodyPartType.Hand)
                 continue;
 
-            // Отрезаем руку и бросаем под персонажа
-            _gibbing.TryGibEntityWithRef(
-                target,
-                part.Id,
-                GibType.Drop,
-                GibContentsOption.Drop,
-                ref _gibCachedEntities);
+            // Отрезаем руку
+            _gibbing.Gib(part.Id);
         }
-
-        if (_gibCachedEntities.Count <= 0)
-            return;
 
         _popup.PopupEntity(Loc.GetString("scp330-removed-hands"), target, target, PopupType.LargeCaution);
 

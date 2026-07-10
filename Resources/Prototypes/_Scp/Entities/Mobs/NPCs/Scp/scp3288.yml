@@ -1,0 +1,154 @@
+﻿- type: entity
+  parent:
+  - BaseSimpleMob
+  - MobAtmosExposed
+  - MobCombat
+  - MobBloodstream
+  - InventoryBase
+  - StripableInventoryBase
+  id: BaseMobScp3288Monster
+  name: ???
+  abstract: true
+  components:
+    - type: Pullable
+    - type: Puller
+      needsHands: true
+    - type: Speech
+    - type: TTS
+      voice: Dota2Riki
+    - type: FieldOfView
+      angle: 240
+    - type: ComplexInteraction
+    - type: Buckle
+    - type: Stripping
+    - type: StandingState
+    - type: Hands
+    - type: Body
+      prototype: Reptilian # чтобы могли есть сырое мясо
+    - type: Climbing
+    - type: Damageable
+      damageContainer: Biological
+      damageModifierSet: FleshMob
+    - type: HTN
+      rootTask:
+        task: SimpleHostileCompound
+    - type: NpcFactionMember
+      factions:
+        - SCPs
+    - type: Tag
+      tags:
+        - DoorBumpOpener
+        - CannotSuicide
+        - FootstepSound
+    - type: Sprite
+      drawdepth: Mobs
+      sprite: _Scp/Mobs/scp-3288-servant.rsi
+      state: aristocrat
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 3
+      baseSprintSpeed: 4
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        250: Dead
+    - type: Appearance
+    - type: Butcherable
+      spawned:
+        - id: FoodMeatHuman
+          amount: 3
+    - type: CombatMode
+    - type: MeleeWeapon
+      hidden: true
+      soundHit:
+        path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+      angle: 0
+      animation: WeaponArcClaw
+      damage:
+        types:
+          Slash: 10
+          Structural: 5
+    - type: Scp
+      class: Keter
+    - type: FearSource
+      uponSeenState: None
+      uponComeCloser: Anxiety
+      grainShaderStrength:
+        min: 0
+        max: 300
+      vignetteShaderStrength:
+        min: 0
+        max: 100
+    - type: Inventory
+      templateId: scp3288Servant
+    - type: RotationVisuals
+      defaultRotation: 90
+      horizontalRotation: 90
+
+- type: entity
+  parent: BaseMobScp3288Monster
+  id: Scp3288Aristocrat
+  suffix: SCP-3288 aristocrat
+  components:
+    - type: GhostRole
+      makeSentient: true
+      name: ghost-role-information-scp3288-name
+      description: ghost-role-information-scp3288-aristocrat-description
+      raffle:
+        settings: short
+      job: Scp3288Aristocrat
+    - type: GhostTakeoverAvailable
+
+- type: entity
+  parent: BaseMobScp3288Monster
+  id: Scp3288Knight
+  suffix: SCP-3288 knight
+  components:
+    - type: Sprite
+      sprite: _Scp/Mobs/scp-3288-servant.rsi
+      state: knight
+    - type: Armor
+      modifiers:
+        coefficients:
+          Blunt: 0.7
+          Slash: 0.7
+          Piercing: 0.7
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 3
+      baseSprintSpeed: 3.5
+    - type: GhostRole
+      makeSentient: true
+      name: ghost-role-information-scp3288-name
+      description: ghost-role-information-scp3288-knight-description
+      raffle:
+        settings: short
+      job: Scp3288Knight
+    - type: GhostTakeoverAvailable
+    - type: AllowSuitStorage
+    - type: Inventory
+      templateId: scp3288Knight
+    - type: Loadout
+      prototypes: [ Scp3288KnightGear ]
+
+- type: entity
+  parent: BaseMobScp3288Monster
+  id: Scp3288Servant
+  suffix: SCP-3288 servant
+  components:
+    - type: Sprite
+      sprite: _Scp/Mobs/scp-3288-servant.rsi
+      state: servant
+    - type: GhostRole
+      makeSentient: true
+      name: ghost-role-information-scp3288-name
+      description: ghost-role-information-scp3288-servant-description
+      raffle:
+        settings: short
+      job: Scp3288Servant
+    - type: GhostTakeoverAvailable
+
+- type: startingGear
+  id: Scp3288KnightGear
+  equipment:
+    belt: ClothingBeltSheathFilledScp3288
+  inhand: 
+    - ScpWoodenBuckler

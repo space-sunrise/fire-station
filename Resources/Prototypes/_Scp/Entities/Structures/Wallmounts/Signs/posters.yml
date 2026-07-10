@@ -644,7 +644,7 @@
   components:
   - type: Sprite
     state: scp012
-    
+
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterScp018
@@ -653,6 +653,15 @@
   components:
   - type: Sprite
     state: scp018
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterScp019
+  name: SCP-019 poster
+  description: Information poster for SCP-019.
+  components:
+  - type: Sprite
+    state: scp019
 
 - type: entity
   parent: PosterScpContainmentRoomBase
@@ -707,7 +716,7 @@
   components:
   - type: Sprite
     state: scp106
-    
+
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP109
@@ -716,7 +725,7 @@
   components:
   - type: Sprite
     state: scp109
-    
+
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP124
@@ -725,7 +734,7 @@
   components:
   - type: Sprite
     state: scp124
-    
+
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP127
@@ -770,7 +779,7 @@
   components:
   - type: Sprite
     state: scp247
-    
+
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP268
@@ -824,7 +833,7 @@
   components:
   - type: Sprite
     state: scp969
-    
+
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP714
@@ -860,7 +869,25 @@
   components:
   - type: Sprite
     state: scp612
-    
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP1508
+  name: SCP-1508 poster
+  description: Information poster for SCP-1508.
+  components:
+  - type: Sprite
+    state: scp1508
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP1589
+  name: SCP-1589 poster
+  description: Information poster for SCP-1589.
+  components:
+  - type: Sprite
+    state: scp1589
+
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP2022
@@ -869,6 +896,24 @@
   components:
   - type: Sprite
     state: scp2022
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP2295
+  name: SCP-2295 poster
+  description: Information poster for SCP-2295.
+  components:
+  - type: Sprite
+    state: scp2295
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP2908
+  name: SCP-2908 poster
+  description: Information poster for SCP-2908.
+  components:
+  - type: Sprite
+    state: scp2908
 
 # Длинные плакаты
 

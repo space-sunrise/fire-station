@@ -99,6 +99,8 @@
   - type: DamageOverlay
     damagePopupType: SmallFloating
     isStructure: true
+  - type: StealTarget
+    stealGroup: ItemScp
 
 - type: entity # Базовый Entity для BaseScp и BaseScpFriendly
   abstract: true
@@ -165,8 +167,16 @@
   components:
   - type: FearSource
     phobiaType: Exoremophobia
+  - type: ScpPossibilities
+    openContainerChance: 0.5
+    openContainerBlacklist:
+      components:
+      - ScpCage
   - type: WatchingTarget
   - type: ProximityReceiver
+  - type: StealTarget
+    stealGroup: Scp
+
 
 - type: entity # Для добрых SCP: 131, 999 и т.д.
   abstract: true

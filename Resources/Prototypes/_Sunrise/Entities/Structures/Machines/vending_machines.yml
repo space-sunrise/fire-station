@@ -112,7 +112,7 @@
     - state: normal-unshaded
       map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
       shader: unshaded
-  - type: StationAiWhitelist
+  #- type: StationAiWhitelist No more Fun =()
   - type: AmbientOnPowered
   - type: AmbientSound
     volume: -9
@@ -132,7 +132,7 @@
         - MachineMask
         layer:
         - MachineLayer
-        density: 190
+        density: 19000
   - type: Destructible
     thresholds:
     - trigger:
@@ -163,10 +163,12 @@
         type: StoreBoundUserInterface
   - type: ActivatableUI
     key: enum.StoreUiKey.Key
+  - type: ActivatableUIRequiresPower
   - type: WiresPanel
   - type: Wires
     layoutId: Vending
   - type: Anchorable
+    delay: 45
   - type: Electrified
     enabled: false
     usesApcPower: true
@@ -176,7 +178,7 @@
     radius: 1.5
   - type: LitOnPowered
   - type: ApcPowerReceiver
-    powerLoad: 200
+    powerLoad: 10000
   - type: StaticPrice
     price: 100
   - type: Appearance
@@ -194,6 +196,7 @@
   components:
   - type: AccessReader
     access: [["Salvage"]]
+  - type: ActivatableUIRequiresAccess
   - type: Sprite
     sprite: _Sunrise/Structures/Machines/VendingMachines/salvage.rsi
     snapCardinals: true
@@ -203,12 +206,19 @@
     - state: normal-unshaded
       map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
       shader: unshaded
+  - type: PointLight
+    radius: 1.2
+    energy: 0.6
+    castShadows: false
+    color: "#e592e7"
   - type: Store
     name: vendor-salvage-ticket-machine
     categories:
     - SalvageEquipment
+    - TicketTools
     - SalvageWeapons
-    - SalvageConsumeables
+    - TicketConsumeables
+    - SalvageAmmo
     currencyWhitelist:
     - SalvageTicket
 
@@ -219,6 +229,7 @@
   components:
   - type: AccessReader
     access: [["Mining"]]
+  - type: ActivatableUIRequiresAccess
   - type: Sprite
     sprite: _Sunrise/Structures/Machines/VendingMachines/mining.rsi
     snapCardinals: true
@@ -228,10 +239,17 @@
     - state: normal-unshaded
       map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
       shader: unshaded
+  - type: PointLight
+    radius: 1.2
+    energy: 0.6
+    castShadows: false
+    color: "#9be792"
   - type: Store
     name: vendor-mining-ticket-machine
     categories:
     - MiningEquipment
-    - MiningConsumeables
+    - TicketTools
+    - MiningMech
+    - TicketConsumeables
     currencyWhitelist:
     - SalvageTicket

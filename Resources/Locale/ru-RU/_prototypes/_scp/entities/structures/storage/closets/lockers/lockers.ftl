@@ -111,3 +111,5 @@ ent-ScpLockerThirdParty = { ent-LockerBase }
     .desc = { ent-LockerBase.desc }
 ent-ScpLockerPrisoner = шкаф заключённого
     .desc = Надёжный шкаф для личных вещей заключённого на время его пребывания в тюрьме.
+ent-ScpLockerLogotype = { ent-LockerBase }
+    .desc = { ent-LockerBase.desc }

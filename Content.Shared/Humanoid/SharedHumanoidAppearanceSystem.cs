@@ -1,6 +1,7 @@
 using System.IO;
 using System.Linq;
 using Content.Shared._Sunrise;
+using Content.Shared._Sunrise.Humanoid.Events; // Sunrise-Edit
 using Content.Shared._Sunrise.TTS;
 using System.Numerics;
 using Content.Shared._Sunrise.MarkingEffects;
@@ -510,6 +511,11 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         humanoid.Height = profile.Appearance.Height; //Sunrise
 
         Dirty(uid, humanoid);
+
+        // Sunrise added start - разрешаем fork-системам применять физические параметры из профиля
+        var profileLoaded = new HumanoidProfileLoadedEvent(profile);
+        RaiseLocalEvent(uid, ref profileLoaded);
+        // Sunrise added end
     }
 
     /// <summary>

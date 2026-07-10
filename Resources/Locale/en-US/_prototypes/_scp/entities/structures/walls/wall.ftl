@@ -80,3 +80,19 @@ ent-ScpWallScp096Containment = SCP-096 containment chamber acoustic isolation wa
     .desc = A multilayer containment wall designed to fully absorb sound and vibrational waves produced by SCP-096. Uses materials comparable to those found in anechoic chambers. Structural failure may occur when anomalous acoustic resonance exceeds design limits.
 ent-ScpWallScp096ContainmentShattered = shattered acoustic isolation debris
     .desc = Heavily damaged debris caused by prolonged exposure to acoustic resonance. Repairable. Use a screwdriver to begin repairs.
+
+
+# DIAGONAL WALLS
+
+ent-ScpWallConcreteLightContainmentDiagonal = { ent-ScpWallConcreteLightContainment }
+    .suffix = { ent-ScpWallConcreteDiagonal.suffix }
+    .desc = { ent-ScpWallConcreteLightContainment.desc }
+ent-ScpWallConcreteScienceDiagonal = { ent-ScpWallConcreteScience }
+    .suffix = { ent-ScpWallConcreteDiagonal.suffix }
+    .desc = { ent-ScpWallConcreteScience.desc }
+ent-ScpWallConcreteEngineerDiagonal = { ent-ScpWallConcreteEngineer }
+    .suffix = { ent-ScpWallConcreteDiagonal.suffix }
+    .desc = { ent-ScpWallConcreteEngineer.desc }
+ent-ScpWallConcreteMedicalDiagonal = { ent-ScpWallConcreteMedical }
+    .suffix = { ent-ScpWallConcreteDiagonal.suffix }
+    .desc = { ent-ScpWallConcreteMedical.desc }

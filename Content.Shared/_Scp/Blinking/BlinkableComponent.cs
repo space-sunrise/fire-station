@@ -34,6 +34,18 @@ public sealed partial class BlinkableComponent : Component
     public TimeSpan BlinkingIntervalVariance = TimeSpan.FromSeconds(4f);
 
     /// <summary>
+    /// Привыкание к средствам, которые помогают не моргать.
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
+    public float ReducedBlinkingTolerance = 0f;
+
+    /// <summary>
+    /// Накопительный бонус к интервалу между морганиями.
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
+    public TimeSpan BlinkingIntervalBonus;
+
+    /// <summary>
     /// Время следующего моргания.
     /// </summary>
     [ViewVariables, AutoNetworkedField, AutoPausedField]

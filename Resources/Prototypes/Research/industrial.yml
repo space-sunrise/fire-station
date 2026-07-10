@@ -19,6 +19,7 @@
   - ClothingMaskWeldingGas
   - ClothingShoesBootsJump
   - BorgModuleJetpack # Sunrise-add
+  - SunriseAdvancedSalvageMagnetMachineCircuitboard # Sunrise-Edit
 
 - type: technology
   id: SpaceScanning
@@ -47,6 +48,7 @@
   - PowerCellHigh
   - TurboItemRechargerCircuitboard
   - SMESAdvancedMachineCircuitboard
+  - SMESExtendedMachineCircuitboard # Sunrise-Edit
   - PowerCageMedium
 
 - type: technology
@@ -228,5 +230,6 @@
   recipeUnlocks:
   - PowerCellMicroreactor
   - PowerCellHyper
+  - SMESSuperExtendedMachineCircuitboard # Sunrise-Edit
   technologyPrerequisites:
   - AdvancedPowercells

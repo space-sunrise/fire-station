@@ -6,6 +6,7 @@ namespace Content.Server._Scp.Blinking.ReducedBlinking;
 
 public sealed class ReducedBlinkingSystem : SharedReducedBlinkingSystem
 {
+    [Dependency] private readonly SharedBlinkingSystem _blinking = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
 
     public override void Initialize()
@@ -59,8 +60,8 @@ public sealed class ReducedBlinkingSystem : SharedReducedBlinkingSystem
         if (!TryComp<BlinkableComponent>(ent, out var blinkable))
             return;
 
-        blinkable.BlinkingInterval += ent.Comp.BlinkingBonusDuration;
-        DirtyField(ent.Owner, blinkable, nameof(BlinkableComponent.BlinkingInterval));
+        blinkable.BlinkingIntervalBonus += ent.Comp.BlinkingIntervalBonus;
+        DirtyField(ent.Owner, blinkable, nameof(BlinkableComponent.BlinkingIntervalBonus));
     }
 
     private void OnUserShutdown(Entity<ActiveReducedBlinkingUserComponent> ent, ref ComponentShutdown _)
@@ -68,8 +69,12 @@ public sealed class ReducedBlinkingSystem : SharedReducedBlinkingSystem
         if (!TryComp<BlinkableComponent>(ent, out var blinkable))
             return;
 
-        blinkable.BlinkingInterval -= ent.Comp.BlinkingBonusDuration;
-        DirtyField(ent.Owner, blinkable, nameof(BlinkableComponent.BlinkingInterval));
+        blinkable.BlinkingIntervalBonus -= ent.Comp.BlinkingIntervalBonus;
+        if (blinkable.BlinkingIntervalBonus < TimeSpan.Zero)
+            blinkable.BlinkingIntervalBonus = TimeSpan.Zero;
+
+        DirtyField(ent.Owner, blinkable, nameof(BlinkableComponent.BlinkingIntervalBonus));
+        _blinking.ResetBlink(ent.Owner, predicted: false);
 
         _popup.PopupEntity(Loc.GetString("eye-droplets-end"), ent, ent);
     }

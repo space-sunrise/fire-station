@@ -8,6 +8,10 @@
   - MobBloodstream
   - InventoryBase
   components:
+  - type: AutoGhostRole
+    disconnectDelay: 600
+    pollDuration: 900
+    transferDelay: 180
   - type: Sprite
     noRot: true
     drawdepth: Mobs
@@ -65,6 +69,9 @@
   - type: Muted
   - type: Strippable
   - type: Stripping
+  - type: ScpPossibilities
+    canEjectPilotFromMech: false
+    openContainer: false
   - type: UserInterface
     interfaces:
       enum.StrippingUiKey.Key:

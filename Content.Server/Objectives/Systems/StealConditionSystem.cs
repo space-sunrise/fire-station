@@ -119,7 +119,7 @@ public sealed class StealConditionSystem : EntitySystem
                 _lookup.GetEntitiesInRange<TransformComponent>(xform.Coordinates, area.Range, _nearestEnts);
                 foreach (var ent in _nearestEnts)
                 {
-                    if (!_interaction.InRangeUnobstructed((uid, xform), (ent, ent.Comp), range: area.Range))
+                    if (!area.IgnoreUnobstruct && !_interaction.InRangeUnobstructed((uid, xform), (ent, ent.Comp), range: area.Range)) // Fire edit
                         continue;
 
                     CheckEntity(ent, condition, ref containerStack, ref count);

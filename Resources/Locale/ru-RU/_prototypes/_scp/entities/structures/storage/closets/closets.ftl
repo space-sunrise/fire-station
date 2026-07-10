@@ -21,3 +21,5 @@ ent-ScpClosetMaintenance = технический шкаф
 ent-ScpClosetCursed = { ent-ScpClosetSteelBase }
     .suffix = проклятый
     .desc = { ent-ScpClosetSteelBase.desc }
+ent-ScpClosetLogotype = { ent-LockerBase }
+    .desc = { ent-LockerBase.desc }

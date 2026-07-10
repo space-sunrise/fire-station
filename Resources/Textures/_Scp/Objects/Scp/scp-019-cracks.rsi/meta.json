@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "made by peper",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "DamageOverlay_250"
+    },
+    {
+      "name": "DamageOverlay_500"
+    },
+    {
+      "name": "DamageOverlay_1000"
+    },
+    {
+      "name": "DamageOverlay_1500"
+    },
+    {
+      "name": "DamageOverlay_2000"
+    }
+  ]
+}
