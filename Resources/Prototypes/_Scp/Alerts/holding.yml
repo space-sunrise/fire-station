@@ -1,0 +1,8 @@
+- type: alert
+  id: ScpHoldGrabbed
+  icons:
+  - sprite: /Textures/Objects/Misc/handcuffs.rsi
+    state: handcuff
+  name: alerts-scp-held-name
+  description: alerts-scp-held-desc
+  clickEvent: !type:ScpHoldBreakoutAlertEvent

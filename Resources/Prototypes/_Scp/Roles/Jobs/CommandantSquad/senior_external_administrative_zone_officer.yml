@@ -29,6 +29,13 @@
       class: C
     - type: AccessLevel
       level: Three
+    - type: ScpHolder
+      holdableWhitelist:
+        components:
+        - HumanoidAppearance
+      holdableBlacklist:
+        components:
+        - Scp
     - type: SpeakOnEyeStateChange # переопределение моргания с другими параметрами для охраны и МОГа
       # Часть фраз уходит, так как более разговорная. А эти парни натренированы.
       phraseOnClose:
