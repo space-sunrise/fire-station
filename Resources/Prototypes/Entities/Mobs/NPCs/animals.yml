@@ -48,7 +48,7 @@
     interactSuccessSound:
       path: /Audio/Animals/fox_squeak.ogg
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-organic
+    flavorKind: scp-station-event-random-sentience-flavor-organic # Fire edit
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:
@@ -287,7 +287,7 @@
   - type: ReplacementAccent
     accent: chicken
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-organic
+    flavorKind: scp-station-event-random-sentience-flavor-organic # Fire edit
   - type: NpcFactionMember
     factions:
     - Passive
@@ -747,7 +747,7 @@
   - type: ReplacementAccent
     accent: duck
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-organic
+    flavorKind: scp-station-event-random-sentience-flavor-organic # Fire edit
   - type: NpcFactionMember
     factions:
     - Passive
@@ -1560,7 +1560,7 @@
     speechVerb: Monkey
   - type: MonkeyAccent
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-primate
+    flavorKind: scp-station-event-random-sentience-flavor-primate # Fire edit
   - type: AlwaysRevolutionaryConvertible
   - type: GhostRole
     prob: 0.05
@@ -1592,7 +1592,7 @@
   - type: NameIdentifier
     group: Monkey
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-primate
+    flavorKind: scp-station-event-random-sentience-flavor-primate # Fire edit
   - type: Speech
     speechSounds: Monkey
     speechVerb: Monkey
@@ -1737,7 +1737,7 @@
   - type: AlwaysRevolutionaryConvertible
   - type: GhostTakeoverAvailable
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-kobold
+    flavorKind: scp-station-event-random-sentience-flavor-kobold # Fire edit
   - type: GhostRole
     prob: 0.05
     makeSentient: true
@@ -3895,7 +3895,7 @@
   - type: ReplacementAccent
     accent: pig
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-organic
+    flavorKind: scp-station-event-random-sentience-flavor-organic # Fire edit
   - type: NpcFactionMember
     factions:
     - Passive

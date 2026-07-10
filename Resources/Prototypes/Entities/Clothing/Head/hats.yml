@@ -1382,7 +1382,7 @@
     - WhitelistChameleon
     - HamsterWearable
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-inanimate
+    flavorKind: scp-station-event-random-sentience-flavor-inanimate # Fire edit
     weight: 0.0002 # 5,000 times less likely than 1 regular animal
   - type: BlockMovement
 

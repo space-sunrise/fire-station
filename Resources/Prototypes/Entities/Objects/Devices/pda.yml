@@ -127,7 +127,7 @@
   - type: Input
     context: "human"
   - type: SentienceTarget # sentient PDA = pAI lite
-    flavorKind: station-event-random-sentience-flavor-mechanical
+    flavorKind: scp-station-event-random-sentience-flavor-mechanical # Fire edit
     weight: 0.001 # 1,000 PDAs = as likely to be picked as 1 regular animal
   - type: BlockMovement
     blockInteraction: false # lets the PDA toggle its own flashlight
