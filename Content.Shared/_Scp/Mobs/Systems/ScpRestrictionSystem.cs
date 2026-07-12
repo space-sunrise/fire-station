@@ -1,4 +1,5 @@
 ﻿using Content.Shared._Scp.Mobs.Components;
+using Content.Shared._Scp.Holding.Systems;
 using Content.Shared._Scp.ScpMask;
 using Content.Shared._Sunrise.Movement.Carrying;
 using Content.Shared.Actions.Events;
@@ -19,6 +20,7 @@ namespace Content.Shared._Scp.Mobs.Systems;
 public sealed class ScpRestrictionSystem : EntitySystem
 {
     [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly SharedScpHoldingSystem _scpHolding = default!;
     [Dependency] private readonly ScpMaskSystem _scpMask = default!;
 
     public override void Initialize()
@@ -61,6 +63,11 @@ public sealed class ScpRestrictionSystem : EntitySystem
 
     private void OnBeingPulled(Entity<ScpRestrictionComponent> ent, ref BeingPulledAttemptEvent args)
     {
+        // Fire added start - let SCP hold validation pass for restricted SCP hold targets.
+        if (_scpHolding.CanRedirectPullToScpHold(args.Puller, ent))
+            return;
+        // Fire added end
+
         var canBePulled = _mobState.IsIncapacitated(ent)
                           || HasComp<SleepingComponent>(ent)
                           || _scpMask.HasScpMask(ent)

@@ -1,0 +1,1 @@
+objective-condition-chaos-spy-kill-foundation-title = Kill Foundation employee {$targetName}, {CAPITALIZE($job)}.

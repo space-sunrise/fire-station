@@ -23,6 +23,15 @@
       - ExternalAdministrativeZoneSecurityService
       includeJobName: true
       requiredGameRunLevel: InRound
+    - type: ScpHolder
+      holdableWhitelist:
+        components:
+        - Scp096
+      holdableBlacklist:
+        components:
+        - ActiveScp096Rage
+        - ActiveScp096HeatingUp
+        - ActiveScp096WithoutFace
 
 - type: startingGear
   id: ClassDBotanistGear

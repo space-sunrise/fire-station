@@ -261,6 +261,8 @@
     priority: -100
   - type: InstantAction
     event: !type:ToggleCombatActionEvent
+  - type: ScpHoldRestricted # Fire edit - block combat mode while held
+    stage: Soft
 
 - type: entity
   parent: ActionCombatModeToggle

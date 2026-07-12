@@ -16,5 +16,5 @@
   id: ScpInfoPapers
   name: steal-target-groups-info-papers
   sprite:
-    sprite: Objects/Misc/bureaucracy.rsi
-    state: paper
+    sprite: _Scp/Objects/Misc/bureaucracy.rsi
+    state: secret_documents

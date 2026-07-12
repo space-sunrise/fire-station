@@ -541,3 +541,14 @@
         hard: True
         restitution: 0
         friction: 0.4
+
+# Особый шкаф с логотипом scp
+
+- type: entity
+  id: ScpLockerLogotype
+  parent: ScpLockerBase
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: scp
+    stateDoorOpen: scp_open
+    stateDoorClosed: scp_door

@@ -1,0 +1,6 @@
+- type: codewordGenerator
+  id: ChaosSpiesCodewordGenerator
+  words:
+  - Adjectives
+  - Verbs
+  amount: 4

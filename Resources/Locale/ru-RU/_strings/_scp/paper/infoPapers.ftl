@@ -1,23 +1,48 @@
-ent-DocumentInfoScp035 = { ent-Paper }
-    .desc = { ent-Paper.desc }
-ent-DocumentInfoScp049 = { ent-Paper }
-    .desc = { ent-Paper.desc }
-ent-DocumentInfoScp079 = { ent-Paper }
-    .desc = { ent-Paper.desc }
-ent-DocumentInfoScp082 = { ent-Paper }
-    .desc = { ent-Paper.desc }
-ent-DocumentInfoScp096 = { ent-Paper }
-    .desc = { ent-Paper.desc }
-ent-DocumentInfoScp106 = { ent-Paper }
-    .desc = { ent-Paper.desc }
-ent-DocumentInfoScp173 = { ent-Paper }
-    .desc = { ent-Paper.desc }
-ent-DocumentInfoScp247 = { ent-Paper }
-    .desc = { ent-Paper.desc }
-ent-DocumentInfoScp457 = { ent-Paper }
-    .desc = { ent-Paper.desc }
-ent-DocumentInfoScp939 = { ent-Paper }
-    .desc = { ent-Paper.desc }
+ent-PaperScpLogo = { ent-Paper }
+    .desc = Лист обычной бумаги с логотипом фонда.
+
+ent-UnreadableDocument = папка с документами
+    .desc = Супер-мега-ультра секретные документы в которых написано [ДАННЫЕ УДАЛЕНЫ]... нет, серьёзно, тут весь лист исписан фразой [ДАННЫЕ УДАЛЕНЫ], какого чёрта?
+    .suffix = Не читаема, цель
+
+ent-BaseDocumentInfo = документация
+    .desc = Так что слушай меня или [ДАННЫЕ УДАЛЕНЫ] с твоей [ДАННЫЕ УДАЛЕНЫ] станет для тебя не самой плохой новостью на сегодня. Этот шпион уже прорвал нашу оборону...
+
+ent-DocumentInfoScp035 = документация о SCP-035
+    .desc = { ent-BaseDocumentInfo.desc }
+ent-DocumentInfoScp049 = документация о SCP-049
+    .desc = { ent-BaseDocumentInfo.desc }
+ent-DocumentInfoScp079 = документация о SCP-079
+    .desc = { ent-BaseDocumentInfo.desc }
+ent-DocumentInfoScp082 = документация о SCP-082
+    .desc = { ent-BaseDocumentInfo.desc }
+ent-DocumentInfoScp096 = документация о SCP-096
+    .desc = { ent-BaseDocumentInfo.desc }
+ent-DocumentInfoScp106 = документация о SCP-106
+    .desc = { ent-BaseDocumentInfo.desc }
+ent-DocumentInfoScp173 = документация о SCP-173
+    .desc = { ent-BaseDocumentInfo.desc }
+ent-DocumentInfoScp247 = документация о SCP-247
+    .desc = { ent-BaseDocumentInfo.desc }
+ent-DocumentInfoScp457 = документация о SCP-457
+    .desc = { ent-BaseDocumentInfo.desc }
+ent-DocumentInfoScp939 = документация о SCP-939
+    .desc = { ent-BaseDocumentInfo.desc }
+
+ent-SpawnUnreadableDocument = спавнер нечитаемой документации
+    .desc = Является целью, но не читаема.
+    .suffix = Не читаема, цель
+ent-SpawnInfoPaper035 = спавнер { ent-DocumentInfoScp035 }
+ent-SpawnInfoPaper049 = спавнер { ent-DocumentInfoScp049 }
+ent-SpawnInfoPaper079 = спавнер { ent-DocumentInfoScp079 }
+ent-SpawnInfoPaper082 = спавнер { ent-DocumentInfoScp082 }
+ent-SpawnInfoPaper096 = спавнер { ent-DocumentInfoScp096 }
+ent-SpawnInfoPaper106 = спавнер { ent-DocumentInfoScp106 }
+ent-SpawnInfoPaper173 = спавнер { ent-DocumentInfoScp173 }
+ent-SpawnInfoPaper247 = спавнер { ent-DocumentInfoScp247 }
+ent-SpawnInfoPaper457 = спавнер { ent-DocumentInfoScp457 }
+ent-SpawnInfoPaper939 = спавнер { ent-DocumentInfoScp939 }
+
 
 info-paper-scp-035-content =
     Объект №: SCP-035

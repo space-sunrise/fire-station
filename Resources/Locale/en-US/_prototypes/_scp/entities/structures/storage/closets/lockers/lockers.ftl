@@ -117,3 +117,5 @@ ent-LockerExternalAdministrativeZoneFieldDoctor = eaz field doctor locker
     .desc = { ent-LockerBaseSecure.desc }
 ent-LockerHeavyContainmentZoneFieldDoctor = hcz field doctor locker
     .desc = { ent-LockerBaseSecure.desc }
+ent-ScpLockerLogotype = { ent-LockerBase }
+    .desc = { ent-LockerBase.desc }

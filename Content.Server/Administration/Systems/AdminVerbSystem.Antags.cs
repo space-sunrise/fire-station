@@ -1,6 +1,7 @@
 using Content.Server._Sunrise.AssaultOps;
 using Content.Server._Sunrise.BloodCult.GameRule;
 using Content.Server._Sunrise.FleshCult.GameRule;
+using Content.Server._Sunrise.GameTicking.Rules.Components;
 using Content.Server.Administration.Commands;
 using Content.Server.Antag;
 using Content.Server.GameTicking;
@@ -17,6 +18,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Content.Shared.Roles.Components;
+using Content.Server._Scp.GameTicking.Rules.Components; // Fire edit
 
 namespace Content.Server.Administration.Systems;
 
@@ -35,10 +37,32 @@ public sealed partial class AdminVerbSystem
     private static readonly EntProtoId DefaultChangelingRule = "Changeling";
     private static readonly EntProtoId ParadoxCloneRuleId = "ParadoxCloneSpawn";
     private static readonly EntProtoId DefaultWizardRule = "Wizard";
+    private static readonly EntProtoId DefaultNinjaRule = "NinjaSpawn";
     private static readonly ProtoId<StartingGearPrototype> PirateGearId = "PirateGear";
     private static readonly EntProtoId DefaultAssaultOpsRule = "AssaultOps";
     private static readonly EntProtoId DefaultFleshCultRule = "FleshCult";
-    private static readonly EntProtoId DefaultVampireRule = "Vampire";
+    private static readonly EntProtoId DefaultSELFRule = "SiliconLiberation";
+
+    // Fire edit start
+    private static readonly EntProtoId DefaultScpChaosRaidRule = "ScpChaosRaid";
+    private static readonly EntProtoId DefaultScpChaosSpyRule = "ScpChaosHighSpy";
+    // Fire edit end
+
+    private static readonly SpriteSpecifier SelfAgentVerbIcon =
+        new SpriteSpecifier.Rsi(new ResPath("/Textures/_Sunrise/Interface/Misc/self_icon.rsi"), "icon");
+    private static readonly SpriteSpecifier AssaultOperativeVerbIcon =
+        new SpriteSpecifier.Rsi(new ResPath("/Textures/Structures/Wallmounts/posters.rsi"), "poster46_contraband");
+    private static readonly SpriteSpecifier FleshCultistVerbIcon =
+        new SpriteSpecifier.Texture(new ResPath("_Sunrise/FleshCult/Interface/Actions/fleshCultistFleshHeart.png"));
+    private static readonly SpriteSpecifier BloodCultistVerbIcon =
+        new SpriteSpecifier.Rsi(new ResPath("/Textures/Objects/Weapons/Melee/cult_dagger.rsi"), "icon");
+    
+    // Fire edit start
+    private static readonly SpriteSpecifier ChaosRaiderVerbIcon =
+        new SpriteSpecifier.Rsi(new ResPath("/Textures/_Scp/Clothing/Head/Helmets/chaos.rsi"), "icon");
+    private static readonly SpriteSpecifier ChaosSpyVerbIcon =
+        new SpriteSpecifier.Rsi(new ResPath("/Textures/_Scp/Objects/Devices/chaos_uplink.rsi"), "icon");
+    // Fire edit end
 
     // All antag verbs have names so invokeverb works.
     private void AddAntagVerbs(GetVerbsEvent<Verb> args)
@@ -214,32 +238,45 @@ public sealed partial class AdminVerbSystem
         };
         args.Verbs.Add(wizard);
 
+        var ninjaName = Loc.GetString("admin-verb-text-make-space-ninja");
+        Verb ninja = new()
+        {
+            Text = ninjaName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Weapons/Melee/energykatana.rsi"), "icon"),
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<NinjaRoleComponent>(targetPlayer, DefaultNinjaRule);
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", ninjaName, Loc.GetString("admin-verb-make-space-ninja")),
+        };
+        args.Verbs.Add(ninja);
+
         if (HasComp<HumanoidAppearanceComponent>(args.Target)) // only humanoids can be cloned
             args.Verbs.Add(paradox);
 
         // Sunrise-Start
 
-        Verb vampire = new()
+        Verb selfAgent = new()
         {
-            Text = Loc.GetString("admin-verb-text-make-vampire"),
+            Text = Loc.GetString("admin-verb-text-make-selfagent"),
             Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/Interface/Actions/actions_vampire.rsi"),
-                "unholystrength"),
+            Icon = SelfAgentVerbIcon,
             Act = () =>
             {
-                _antag.ForceMakeAntag<VampireRuleComponent>(targetPlayer, DefaultVampireRule);
+                _antag.ForceMakeAntag<SELFRuleComponent>(targetPlayer, DefaultSELFRule);
             },
             Impact = LogImpact.High,
-            Message = Loc.GetString("admin-verb-make-vampire"),
+            Message = Loc.GetString("admin-verb-make-selfagent"),
         };
-        args.Verbs.Add(vampire);
+        args.Verbs.Add(selfAgent);
 
         Verb assaultOperative = new()
         {
             Text = Loc.GetString("admin-verb-text-make-assault-operative"),
             Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/Structures/Wallmounts/posters.rsi"),
-                "poster46_contraband"),
+            Icon = AssaultOperativeVerbIcon,
             Act = () =>
             {
                 _antag.ForceMakeAntag<AssaultOpsRuleComponent>(targetPlayer, DefaultAssaultOpsRule);
@@ -253,8 +290,7 @@ public sealed partial class AdminVerbSystem
         {
             Text = "Make Flesh Cultist",
             Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Texture(
-                new ResPath("_Sunrise/FleshCult/Interface/Actions/fleshCultistFleshHeart.png")),
+            Icon = FleshCultistVerbIcon,
             Act = () =>
             {
                 _antag.ForceMakeAntag<FleshCultRuleComponent>(targetPlayer, DefaultFleshCultRule);
@@ -268,7 +304,7 @@ public sealed partial class AdminVerbSystem
         {
             Text = Loc.GetString("admin-verb-text-make-cultist"),
             Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/Objects/Weapons/Melee/cult_dagger.rsi"), "icon"),
+            Icon = BloodCultistVerbIcon,
             Act = () =>
             {
                 _antag.ForceMakeAntag<BloodCultRuleComponent>(targetPlayer, "BloodCult");
@@ -278,5 +314,35 @@ public sealed partial class AdminVerbSystem
         };
         args.Verbs.Add(bloodCultist);
         // Sunrise-End
+
+        // Fire edit start
+        Verb chaosRaider = new()
+        {
+            Text = Loc.GetString("admin-verb-text-make-chaos-raider"),
+            Category = VerbCategory.Antag,
+            Icon = ChaosRaiderVerbIcon,
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<ChaosRaidRuleComponent>(targetPlayer, DefaultScpChaosRaidRule);
+            },
+            Impact = LogImpact.High,
+            Message = Loc.GetString("admin-verb-make-chaos-raider"),
+        };
+        args.Verbs.Add(chaosRaider);
+
+        Verb chaosSpy = new()
+        {
+            Text = Loc.GetString("admin-verb-text-make-chaos-spy"),
+            Category = VerbCategory.Antag,
+            Icon = ChaosSpyVerbIcon,
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<ChaosSpyRuleComponent>(targetPlayer, DefaultScpChaosSpyRule);
+            },
+            Impact = LogImpact.High,
+            Message = Loc.GetString("admin-verb-make-chaos-spy"),
+        };
+        args.Verbs.Add(chaosSpy);
+        // Fire edit end
     }
 }

@@ -99,6 +99,7 @@ public abstract partial class SharedScp096System : EntitySystem
         InitializeTargets();
         InitializeHands();
         InitializeActions();
+        InitializeHolding();
         InitializeWithoutFace();
         InitializeAppearance();
         InitializeFace();

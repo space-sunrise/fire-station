@@ -23,3 +23,16 @@
         reagents:
         - ReagentId: Scp173Reagent
           Quantity: 50
+
+- type: entity
+  parent: PuddleTemporary
+  id: PuddleScp106Reagent200
+  suffix: Scp106Reagent (200u)
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      puddle:
+        maxVol: 1000
+        reagents:
+        - ReagentId: Scp106Reagent
+          Quantity: 200
