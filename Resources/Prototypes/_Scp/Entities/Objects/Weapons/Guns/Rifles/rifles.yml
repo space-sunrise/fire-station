@@ -212,10 +212,10 @@
     - 0,0,3,2
     sprite: _Scp/Objects/Weapons/M4/tiny.rsi
   - type: Gun
-    minAngle: 2
-    maxAngle: 25
-    angleIncrease: 1
-    angleDecay: 15
+    minAngle: 2.7
+    maxAngle: 18
+    angleIncrease: 2
+    angleDecay: 12
     fireRate: 5.5
     soundGunshot:
       path: /Audio/_Sunrise/Weapons/Guns/Rifles/g36/g36_shot.ogg
