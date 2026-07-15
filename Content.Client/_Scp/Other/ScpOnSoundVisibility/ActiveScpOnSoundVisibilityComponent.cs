@@ -1,20 +1,17 @@
-using Robust.Shared.GameStates;
+using Content.Shared._Scp.Other.ScpOnSoundVisibility;
 
-namespace Content.Shared._Scp.Other.ScpOnSoundVisibility;
+namespace Content.Client._Scp.Other.ScpOnSoundVisibility;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(raiseAfterAutoHandleState: true, fieldDeltas: true)]
+[RegisterComponent]
 public sealed partial class ActiveScpOnSoundVisibilityComponent : Component
 {
     [ViewVariables]
     public float VisibilityAcc = ScpOnSoundVisibilityComponent.InitialVisibilityAcc;
 
-    [DataField, AutoNetworkedField]
     public float HideTime = ScpOnSoundVisibilityComponent.DefaultHideTime;
 
-    [DataField, AutoNetworkedField]
     public float MinValue = ScpOnSoundVisibilityComponent.DefaultMinValue;
 
-    [DataField, AutoNetworkedField]
     public float MaxValue = ScpOnSoundVisibilityComponent.DefaultMaxValue;
 
     [ViewVariables]

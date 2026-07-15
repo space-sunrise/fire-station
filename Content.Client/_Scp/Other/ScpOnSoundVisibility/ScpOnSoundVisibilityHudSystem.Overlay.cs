@@ -21,6 +21,7 @@ public sealed partial class ScpOnSoundVisibilityHudSystem
 
     private void OnPlayerDetached(Entity<ScpOnSoundVisibilityViewerComponent> ent, ref LocalPlayerDetachedEvent args)
     {
+        ClearLocalActiveVisibility();
         RemoveOverlays();
     }
 
@@ -43,7 +44,7 @@ public sealed partial class ScpOnSoundVisibilityHudSystem
         _overlayManager.RemoveOverlay(_setAlphaOverlay);
         _overlayManager.RemoveOverlay(_resetAlphaOverlay);
 
-        CachedBaseAlphas.Clear();
+        RestoreCachedBaseAlphas();
         _overlaysPresented = false;
     }
 }

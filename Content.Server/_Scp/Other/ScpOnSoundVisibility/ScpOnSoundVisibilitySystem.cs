@@ -2,7 +2,9 @@ using Content.Server.Popups;
 using Content.Shared._Scp.Other.ScpOnSoundVisibility;
 using Content.Shared.Flash;
 using Content.Shared.Popups;
+using Robust.Server.Player;
 using Robust.Shared.Map;
+using Robust.Shared.Player;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Scp.Other.ScpOnSoundVisibility;
@@ -11,24 +13,23 @@ public sealed partial class ScpOnSoundVisibilitySystem : EntitySystem
 {
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private static readonly TimeSpan VisibilityRefreshInterval = TimeSpan.FromSeconds(0.2f);
 
     private TimeSpan _nextVisibilityRefresh = TimeSpan.Zero;
-    private readonly HashSet<EntityUid> _visibilityActiveTargets = [];
+    private readonly Dictionary<EntityUid, HashSet<EntityUid>> _viewerActiveTargets = [];
     private readonly HashSet<Entity<ScpOnSoundVisibilityComponent>> _visibilityCandidates = [];
-    private readonly List<EntityUid> _visibilityRemovalQueue = [];
-
-    private EntityQuery<ActiveScpOnSoundVisibilityComponent> _activeQuery;
+    private readonly HashSet<EntityUid> _viewerTargetsBuffer = [];
+    private readonly List<EntityUid> _staleViewers = [];
+    private readonly List<NetEntity> _netTargetsBuffer = [];
 
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<ScpOnSoundVisibilityViewerComponent, AfterFlashedEvent>(OnFlash);
-
-        _activeQuery = GetEntityQuery<ActiveScpOnSoundVisibilityComponent>();
     }
 
     private void OnFlash(Entity<ScpOnSoundVisibilityViewerComponent> ent, ref AfterFlashedEvent args)
@@ -89,74 +90,87 @@ public sealed partial class ScpOnSoundVisibilitySystem : EntitySystem
             return;
 
         _nextVisibilityRefresh = _timing.CurTime + VisibilityRefreshInterval;
-        _visibilityActiveTargets.Clear();
+        _staleViewers.Clear();
+        _staleViewers.AddRange(_viewerActiveTargets.Keys);
 
-        var scpQuery = EntityQueryEnumerator<ScpOnSoundVisibilityViewerComponent, TransformComponent>();
-        while (scpQuery.MoveNext(out var _, out var viewer, out var xform))
+        var viewerQuery = EntityQueryEnumerator<ScpOnSoundVisibilityViewerComponent, TransformComponent>();
+        while (viewerQuery.MoveNext(out var uid, out var viewer, out var xform))
         {
-            if (xform.MapID == MapId.Nullspace)
-                continue;
+            _staleViewers.Remove(uid);
 
-            _visibilityCandidates.Clear();
-            _entityLookup.GetEntitiesInRange(xform.Coordinates,
-                viewer.VisibilityActivationRange,
-                _visibilityCandidates,
-                LookupFlags.Dynamic | LookupFlags.Approximate);
-
-            foreach (var target in _visibilityCandidates)
+            if (!_player.TryGetSessionByEntity(uid, out var session))
             {
-                _visibilityActiveTargets.Add(target);
-                EnsureActiveVisibility(target);
-            }
-        }
-
-        _visibilityRemovalQueue.Clear();
-
-        var activeQuery = EntityQueryEnumerator<ActiveScpOnSoundVisibilityComponent>();
-        while (activeQuery.MoveNext(out var uid, out _))
-        {
-            if (_visibilityActiveTargets.Contains(uid))
+                _viewerActiveTargets.Remove(uid);
                 continue;
+            }
 
-            _visibilityRemovalQueue.Add(uid);
+            _viewerTargetsBuffer.Clear();
+
+            if (xform.MapID != MapId.Nullspace)
+            {
+                _visibilityCandidates.Clear();
+                _entityLookup.GetEntitiesInRange(xform.Coordinates,
+                    viewer.VisibilityActivationRange,
+                    _visibilityCandidates,
+                    LookupFlags.Dynamic | LookupFlags.Approximate);
+
+                foreach (var target in _visibilityCandidates)
+                {
+                    _viewerTargetsBuffer.Add(target);
+                }
+
+                _visibilityCandidates.Clear();
+            }
+
+            SyncViewerTargets((uid, viewer), session, _viewerTargetsBuffer);
         }
 
-        foreach (var uid in _visibilityRemovalQueue)
+        foreach (var viewer in _staleViewers)
         {
-            RemCompDeferred<ActiveScpOnSoundVisibilityComponent>(uid);
+            ClearViewerTargets(viewer);
         }
 
-        _visibilityCandidates.Clear();
-        _visibilityRemovalQueue.Clear();
+        _viewerTargetsBuffer.Clear();
+        _staleViewers.Clear();
     }
 
-    public void EnsureActiveVisibility(Entity<ScpOnSoundVisibilityComponent> ent)
+    private void SyncViewerTargets(
+        Entity<ScpOnSoundVisibilityViewerComponent> viewer,
+        ICommonSession session,
+        HashSet<EntityUid> nextTargets)
     {
-        if (!_activeQuery.TryComp(ent, out var active))
+        if (!_viewerActiveTargets.TryGetValue(viewer, out var currentTargets))
         {
-            active = AddComp<ActiveScpOnSoundVisibilityComponent>(ent);
-            active.HideTime = ent.Comp.HideTime;
-            active.MinValue = ent.Comp.MinValue;
-            active.MaxValue = ent.Comp.MaxValue;
+            currentTargets = [];
+            _viewerActiveTargets[viewer] = currentTargets;
+        }
+
+        if (currentTargets.SetEquals(nextTargets))
             return;
+
+        _netTargetsBuffer.Clear();
+        foreach (var target in nextTargets)
+        {
+            _netTargetsBuffer.Add(GetNetEntity(target));
         }
 
-        if (!MathHelper.CloseTo(active.HideTime, ent.Comp.HideTime))
-        {
-            active.HideTime = ent.Comp.HideTime;
-            DirtyField(ent, active, nameof(ActiveScpOnSoundVisibilityComponent.HideTime));
-        }
+        RaiseNetworkEvent(
+            new ScpOnSoundVisibilityTargetsEvent(GetNetEntity(viewer.Owner), _netTargetsBuffer.ToArray()),
+            session);
 
-        if (active.MinValue != ent.Comp.MinValue)
-        {
-            active.MinValue = ent.Comp.MinValue;
-            DirtyField(ent, active, nameof(ActiveScpOnSoundVisibilityComponent.MinValue));
-        }
+        currentTargets.Clear();
+        currentTargets.UnionWith(nextTargets);
+        _netTargetsBuffer.Clear();
+    }
 
-        if (active.MaxValue != ent.Comp.MaxValue)
-        {
-            active.MaxValue = ent.Comp.MaxValue;
-            DirtyField(ent, active, nameof(ActiveScpOnSoundVisibilityComponent.MaxValue));
-        }
+    private void ClearViewerTargets(EntityUid viewer)
+    {
+        if (!_viewerActiveTargets.Remove(viewer, out _))
+            return;
+
+        if (!_player.TryGetSessionByEntity(viewer, out var session))
+            return;
+
+        RaiseNetworkEvent(new ScpOnSoundVisibilityTargetsEvent(GetNetEntity(viewer), []), session);
     }
 }

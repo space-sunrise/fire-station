@@ -25,12 +25,13 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
 
     public readonly List<(Entity<SpriteComponent> Ent, float BaseAlpha)> CachedBaseAlphas = new(64);
 
     private EntityQuery<EyeComponent> _eyeQuery;
+    private EntityQuery<ScpOnSoundVisibilityComponent> _visibilityQuery;
     private EntityQuery<MovementSpeedModifierComponent> _movementSpeedQuery;
     private EntityQuery<PhysicsComponent> _physicsQuery;
     private EntityQuery<ScpOnSoundVisibilityViewerComponent> _viewerQuery;
@@ -41,6 +42,8 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
     private bool _overlaysPresented;
     private TimeSpan _nextUpdateTime;
     private readonly TimeSpan UpdateInterval = TimeSpan.FromSeconds(0.05);
+    private readonly HashSet<EntityUid> _visibilityTargetBuffer = [];
+    private readonly List<EntityUid> _visibilityRemovalQueue = [];
 
     public override void Initialize()
     {
@@ -61,7 +64,10 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
         SubscribeLocalEvent<ActiveScpOnSoundVisibilityComponent, MeleeAttackEvent>(OnMeleeAttack);
         SubscribeLocalEvent<ActiveScpOnSoundVisibilityComponent, DownedEvent>(OnDown);
 
+        SubscribeNetworkEvent<ScpOnSoundVisibilityTargetsEvent>(OnVisibilityTargets);
+
         _eyeQuery = GetEntityQuery<EyeComponent>();
+        _visibilityQuery = GetEntityQuery<ScpOnSoundVisibilityComponent>();
         _movementSpeedQuery = GetEntityQuery<MovementSpeedModifierComponent>();
         _physicsQuery = GetEntityQuery<PhysicsComponent>();
         _viewerQuery = GetEntityQuery<ScpOnSoundVisibilityViewerComponent>();
@@ -163,7 +169,7 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
         if (!IsActive)
             return false;
 
-        if (_playerManager.LocalEntity is not { } player)
+        if (_player.LocalEntity is not { } player)
             return false;
 
         if (!_eyeQuery.TryComp(player, out var eye))
@@ -307,10 +313,83 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
         return true;
     }
 
+    private void OnVisibilityTargets(ScpOnSoundVisibilityTargetsEvent ev)
+    {
+        if (_player.LocalEntity is not { Valid: true } localPlayer)
+            return;
+
+        if (GetEntity(ev.Viewer) is not { Valid: true } viewer || viewer != localPlayer)
+            return;
+
+        _visibilityTargetBuffer.Clear();
+
+        foreach (var netTarget in ev.Targets)
+        {
+            if (GetEntity(netTarget) is not { Valid: true } target)
+                continue;
+
+            if (!_visibilityQuery.TryComp(target, out var visibility))
+                continue;
+
+            _visibilityTargetBuffer.Add(target);
+            EnsureLocalActiveVisibility((target, visibility));
+        }
+
+        _visibilityRemovalQueue.Clear();
+
+        var query = EntityQueryEnumerator<ActiveScpOnSoundVisibilityComponent>();
+        while (query.MoveNext(out var uid, out _))
+        {
+            if (_visibilityTargetBuffer.Contains(uid))
+                continue;
+
+            _visibilityRemovalQueue.Add(uid);
+        }
+
+        foreach (var uid in _visibilityRemovalQueue)
+        {
+            RemComp<ActiveScpOnSoundVisibilityComponent>(uid);
+        }
+
+        _visibilityRemovalQueue.Clear();
+        _visibilityTargetBuffer.Clear();
+    }
+
+    private void EnsureLocalActiveVisibility(Entity<ScpOnSoundVisibilityComponent> ent)
+    {
+        if (!TryComp<ActiveScpOnSoundVisibilityComponent>(ent, out var active))
+        {
+            active = AddComp<ActiveScpOnSoundVisibilityComponent>(ent);
+        }
+
+        active.HideTime = ent.Comp.HideTime;
+        active.MinValue = ent.Comp.MinValue;
+        active.MaxValue = ent.Comp.MaxValue;
+    }
+
+    public void ClearLocalActiveVisibility()
+    {
+        RestoreCachedBaseAlphas();
+        _visibilityRemovalQueue.Clear();
+
+        var query = EntityQueryEnumerator<ActiveScpOnSoundVisibilityComponent>();
+        while (query.MoveNext(out var uid, out _))
+        {
+            _visibilityRemovalQueue.Add(uid);
+        }
+
+        foreach (var uid in _visibilityRemovalQueue)
+        {
+            RemComp<ActiveScpOnSoundVisibilityComponent>(uid);
+        }
+
+        _visibilityRemovalQueue.Clear();
+    }
+
     private bool TryGetLocalViewer([NotNullWhen(true)] out Entity<ScpOnSoundVisibilityViewerComponent>? ent)
     {
         ent = null;
-        var localPlayer = _playerManager.LocalEntity;
+        var localPlayer = _player.LocalEntity;
 
         if (localPlayer == null)
             return false;

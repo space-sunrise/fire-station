@@ -22,16 +22,16 @@ public sealed partial class ScpHealOnSleepComponent : Component
     public SoundSpecifier? CritSound;
 
     [DataField]
-    public TimeSpan HibernationDurationOnHibernationState = TimeSpan.FromSeconds(360);
-
-    [DataField]
-    public TimeSpan HibernationDuration = TimeSpan.FromSeconds(60);
-
-    [DataField]
     public List<MobState>? HibernationStates;
 
     [DataField]
     public DamageSpecifier? HibernationHealingRate;
+
+    [DataField]
+    public TimeSpan HibernationDurationOnHibernationState = TimeSpan.FromSeconds(360);
+
+    [DataField]
+    public TimeSpan HibernationDuration = TimeSpan.FromSeconds(60);
 
     [DataField]
     public int BaseBloodRefreshAmount = 1;
