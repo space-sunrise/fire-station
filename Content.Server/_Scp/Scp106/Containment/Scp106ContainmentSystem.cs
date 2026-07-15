@@ -1,8 +1,8 @@
 ﻿using Content.Server._Sunrise.Helpers;
-using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Scp106.Containment;
+using Content.Shared.Gibbing;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs.Systems;
 using Robust.Server.Audio;
@@ -17,10 +17,10 @@ public sealed class Scp106ContainmentSystem : SharedScp106ContainmentSystem
 {
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly MobStateSystem _mobState  = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
-    [Dependency] private readonly BodySystem _body = default!;
-    [Dependency] private readonly SunriseHelpersSystem _helpers  = default!;
+    [Dependency] private readonly GibbingSystem _gibbing = default!;
+    [Dependency] private readonly SunriseHelpersSystem _helpers = default!;
 
     private static readonly SoundSpecifier ContainSound = new SoundPathSpecifier("/Audio/_Scp/scp106_contained_sound.ogg");
 
@@ -42,7 +42,7 @@ public sealed class Scp106ContainmentSystem : SharedScp106ContainmentSystem
         if (!TryContain())
             return;
 
-        _body.GibBody(args.OtherEntity);
+        _gibbing.Gib(args.OtherEntity);
 
         _audio.PlayGlobal(ContainSound, Filter.BroadcastMap(Transform(ent).MapID), true);
         _chat.DispatchStationAnnouncement(ent, Loc.GetString("scp106-return-to-containment"));

@@ -1,5 +1,5 @@
 ﻿using System.Numerics;
-using Content.Shared._Starlight.Combat.Ranged.Pierce;
+using Content.Shared._Sunrise.Weapons.Enums;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;

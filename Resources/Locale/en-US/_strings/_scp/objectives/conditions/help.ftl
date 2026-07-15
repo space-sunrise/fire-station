@@ -1,0 +1,1 @@
+objective-condition-chaos-spy-help-spy-title = Help Chaos spy {$targetName}, {CAPITALIZE($job)} complete their objectives.

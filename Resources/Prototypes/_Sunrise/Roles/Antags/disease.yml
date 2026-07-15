@@ -64,20 +64,6 @@
         type: StoreBoundUserInterface
   - type: Visibility
     layer: 2 #ghost vis layer
-  - type: Store
-    categories:
-    - DiseaseInfectCategory
-    - DiseaseSymptomsCategory
-    - DiseaseEvolutionCategory
-    - DiseaseInfectionCategory
-    currencyWhitelist:
-    - DiseasePoints
-    balance:
-      DiseasePoints: 20
-  - type: DiseaseRole
-    actions:
-      ActionInfect: 3
-      ActionDiseaseInfo: 999
   - type: Muted
 
 - type: sickIcon

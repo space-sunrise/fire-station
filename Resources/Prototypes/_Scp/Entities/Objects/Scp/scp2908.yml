@@ -1,0 +1,40 @@
+﻿- type: entity
+  id: Scp2908
+  parent:
+  - BaseItemScp
+  - WeaponSubMachineGunPPSH
+  suffix: SCP-2908
+  components:
+  - type: Scp
+    class: Safe
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: MagazineScp2908
+        whitelist:
+          tags:
+            - MagazineSMGPPSH
+            - MagazineScp2908
+      gun_chamber:
+        whitelist:
+          components:
+            - CartridgeAmmo
+
+- type: entity
+  id: MagazineScp2908
+  name: PPSH magazine
+  suffix: SCP-2908
+  parent: MagazinePistolSubMachineGunPPSH
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      components:
+      - CartridgeAmmo
+  - type: Tag
+    tags:
+      - MagazineScp2908
+  - type: Scp
+    class: Safe

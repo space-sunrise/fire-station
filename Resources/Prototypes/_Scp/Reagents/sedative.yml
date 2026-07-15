@@ -1,0 +1,19 @@
+﻿- type: reagent
+  id: SedativeReagent
+  name: reagent-name-sedative
+  desc: reagent-desc-sedative
+  physicalDesc: reagent-physicaldesc-sedative
+  flavor: medicine
+  color: "#86caf7"
+  metabolisms:
+    Food:
+      effects:
+      - !type:SatiateHunger
+        factor: 0.5
+      - !type:CalmDownEffect
+        speedUpBy: 50
+      - !type:Vomit
+        conditions:
+        - !type:ReagentCondition
+          reagent: SedativeReagent
+          min: 10

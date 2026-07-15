@@ -60,7 +60,7 @@ public sealed class RandomSentienceRule : StationEventSystem<RandomSentienceRule
             var ghostRole = EnsureComp<GhostRoleComponent>(target);
             EnsureComp<GhostTakeoverAvailableComponent>(target);
             ghostRole.RoleName = MetaData(target).EntityName;
-            ghostRole.RoleDescription = Loc.GetString("station-event-random-sentience-role-description", ("name", ghostRole.RoleName));
+            ghostRole.RoleDescription = Loc.GetString("scp-station-event-random-sentience-role-description", ("name", ghostRole.RoleName)); // Fire edit
             groups.Add(Loc.GetString(target.Comp.FlavorKind));
         }
 

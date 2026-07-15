@@ -1,5 +1,6 @@
-﻿- type: entity
+- type: entity
   id: Scp268
+  categories: [ HideSpawnMenu ] # Fire edit
   name: irish cap
   description: A worn-out headwear. It is surprisingly difficult to focus on.
   parent: [BaseItemScp, ClothingHeadBase]

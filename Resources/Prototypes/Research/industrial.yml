@@ -19,6 +19,7 @@
   - ClothingMaskWeldingGas
   - ClothingShoesBootsJump
   - BorgModuleJetpack # Sunrise-add
+  - SunriseAdvancedSalvageMagnetMachineCircuitboard # Sunrise-Edit
 
 - type: technology
   id: SpaceScanning

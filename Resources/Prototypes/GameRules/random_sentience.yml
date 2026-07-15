@@ -15,11 +15,11 @@
 - type: localizedDataset
   id: RandomSentienceEventData
   values:
-    prefix: random-sentience-event-data-
+    prefix: scp-random-sentience-event-data- # Fire edit
     count: 6
 
 - type: localizedDataset
   id: RandomSentienceEventStrength
   values:
-    prefix: random-sentience-event-strength-
+    prefix: scp-random-sentience-event-strength- # Fire edit
     count: 8
