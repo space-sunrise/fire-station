@@ -28,3 +28,14 @@
   - type: MindRole
     subtype: role-subtype-chaos-raider-leader
     antagPrototype: ChaosRaiderLeader
+
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleChaosSpy
+  name: Chaos Spy Role
+  components:
+  - type: MindRole
+    subtype: role-subtype-chaos-spy
+    exclusiveAntag: true
+    antagPrototype: ChaosSpy
+  - type: ChaosSpyRole

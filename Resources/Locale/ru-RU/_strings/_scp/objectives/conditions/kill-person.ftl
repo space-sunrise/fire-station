@@ -1,1 +1,2 @@
 objective-condition-kill-maroon-chaos-raid-title = Ликвидируйте { $targetName }, {CAPITALIZE($job)}
+objective-condition-chaos-spy-kill-foundation-title = Убить сотрудника Фонда: { $targetName }, должность: { CAPITALIZE($job) }.

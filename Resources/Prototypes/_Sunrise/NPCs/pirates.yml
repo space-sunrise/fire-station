@@ -8,7 +8,7 @@
   - type: NameIdentifier
     group: Monkey
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-primate
+    flavorKind: scp-station-event-random-sentience-flavor-primate # Fire edit
   - type: Speech
     speechSounds: Monkey
     speechVerb: Monkey

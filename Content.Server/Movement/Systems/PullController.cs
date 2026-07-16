@@ -1,4 +1,7 @@
 using System.Numerics;
+using Content.Server._Scp.Holding;
+using Content.Shared._Scp.Holding.Components;
+using Content.Shared._Scp.Holding.Systems;
 using Content.Server.Movement.Components;
 using Content.Server.Physics.Controllers;
 using Content.Shared.ActionBlocker;
@@ -59,6 +62,7 @@ public sealed class PullController : VirtualController
     [Dependency] private readonly ActionBlockerSystem _actionBlockerSystem = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedGravitySystem _gravity = default!;
+    [Dependency] private readonly ScpHoldingSystem _scpHolding = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
 
     /// <summary>
@@ -117,6 +121,11 @@ public sealed class PullController : VirtualController
         {
             return false;
         }
+
+        // Fire edit start - route cursor-move through ScpHolding before vanilla pulling handles the same input.
+        if (_scpHolding.TryMoveHeldToCursor(player, coords))
+            return false;
+        // Fire edit end
 
         if (!_pullerQuery.TryComp(player, out var pullerComp))
             return false;

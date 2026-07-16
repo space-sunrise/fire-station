@@ -11,6 +11,8 @@
       state: scream
   - type: InstantAction
     event: !type:Scp096CryOutEvent
+  - type: ScpHoldRestricted
+    stage: Full
   - type: SafeTimeRestricted
 
 - type: entity
@@ -26,6 +28,8 @@
       state: rip
   - type: InstantAction
     event: !type:Scp096FaceSkinRipEvent
+  - type: ScpHoldRestricted
+    stage: Full
   - type: SafeTimeRestricted
 
 - type: entity
@@ -42,3 +46,5 @@
       state: sit
   - type: InstantAction
     event: !type:Scp096SitDownEvent
+  - type: ScpHoldRestricted
+    stage: Full

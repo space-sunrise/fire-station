@@ -77,7 +77,7 @@ public abstract partial class SharedHandsSystem
         if (!ContainerSystem.TryGetContainer(uid, handId, out var container))
             return false;
 
-        if (container.ContainedEntities.FirstOrNull() is not {} held)
+        if (container.ContainedEntities.FirstOrNull() is not { } held)
             return false;
 
         if (!ContainerSystem.CanRemove(held, container))
@@ -139,9 +139,13 @@ public abstract partial class SharedHandsSystem
             return false;
         // Fire added end
 
-        // if item is a fake item (like with pulling), just delete it rather than bothering with trying to drop it into the world
-        if (TryComp(entity, out VirtualItemComponent? @virtual))
-            _virtualSystem.DeleteVirtualItem((entity.Value, @virtual), ent);
+        // Fire edit start - virtual items should leave the hand through the normal removal path, not through world drop handling
+        if (TryComp(entity, out VirtualItemComponent? _))
+        {
+            DoDrop(ent, handId, doDropInteraction: false);
+            return true;
+        }
+        // Fire edit end
 
         if (TerminatingOrDeleted(entity))
             return true;

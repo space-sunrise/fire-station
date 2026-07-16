@@ -1,2 +1,5 @@
 - type: Tag
   id: ScpChaosUplink
+
+- type: Tag
+  id: ScpChaosSpyUplink

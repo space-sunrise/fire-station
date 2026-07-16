@@ -245,6 +245,8 @@
     balance:
       SupplyPoint: 0
 
+# CHAOS
+
 - type: entity
   id: StorePresetScpChaosUplink
   abstract: true

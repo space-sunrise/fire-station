@@ -87,9 +87,7 @@
     - ReinforcedMaskScp096
 
 - type: entity
-  parent: 
-  - ClothingHeadBase
-  - PowerCellSlotSmallItem
+  parent: ClothingHeadBase
   id: ClothingHeadHelmetAiPowered
   suffix: SCP-096 Item
   components:
@@ -126,6 +124,19 @@
   - type: Tag
     tags:
     - ClothingHeadHelmetAiPowered
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot { }
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        whitelist:
+          tags:
+          - PowerCellHigh
+          - PowerCellHyper
 
 # Scp-049
 
@@ -193,6 +204,9 @@
     tags:
     - ClothingShoesSilent
     - WhitelistChameleon
+  - type: Clothing
+    equipDelay: 3
+    unequipDelay: 1.5
 
 # Scp-035
 

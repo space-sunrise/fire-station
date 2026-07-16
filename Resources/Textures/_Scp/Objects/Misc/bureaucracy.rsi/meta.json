@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "SunRise (SCP: Project Fire)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "secret_documents"
+    },
+	{
+      "name": "paper_scp"
+    },
+	{
+      "name": "paper_scp_words"
+    }
+  ]
+}

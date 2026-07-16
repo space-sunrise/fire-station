@@ -12,8 +12,14 @@ job-name-scp939 = SCP-939 "With Many Voices"
 job-description-scp939 = Sightless, predatory creatures, attracting victims with the voices of previous victims. Ideal for stealth attacks in the dark.
 job-name-scp999 = SCP-999 "The Tickle Monster"
 job-description-scp999 = A friendly, gelatinous entity that causes boundless joy and laughter. Able to relieve stress and cure depression.
+job-name-scp3288-alpha = SCP-3288-Alpha "The Aristocrats"
+job-description-scp3288-alpha = A luxurious giant in the rags of the Habsburgs former glory. Arrogant, cruel, and ready to devour anyone they deem an "inferior creature."
 
 job-name-scp0192 = SCP-019-2 «The Monster Pot»
 job-description-scp0192 = An extremely aggressive creature that emerges from SCP-019.
 job-name-scp1589 = SCP-1589 «Roman Anthropophagus»
 job-description-scp1589 = An obedient and calm giant who carries out any orders.
+job-name-scp3288 = SCP-3288 "The Aristocrats"
+job-description-scp3288-servant = A lower-class individual of the realm, bound to obey their masters. Organize feasts and balls, cook human flesh, and entertain the aristocrats.
+job-description-scp3288-knight = A defender of the Habsburg dynasty. Patrol the territory, protect purebred individuals, and ruthlessly destroy outsiders.
+job-description-scp3288-aristocrat = An influential mutant with sadistic tendencies. Devour human flesh, issue orders to servants, and enjoy yourself.

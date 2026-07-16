@@ -111,3 +111,57 @@
   alwaysShowInBanPanel: true
   setPreference: false
   applyTraits: false
+
+- type: job
+  id: Scp3288Servant
+  name: job-name-scp3288
+  description: job-description-scp3288-servant
+  playTimeTracker: JobScp3288Servant
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 180000 # 50h
+  weight: 970
+  #icon: TODO
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp3288Servant
+  alwaysShowInBanPanel: true
+  setPreference: false
+  applyTraits: false
+
+- type: job
+  id: Scp3288Aristocrat
+  name: job-name-scp3288
+  description: job-description-scp3288-aristocrat
+  playTimeTracker: JobScp3288Aristocrat
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 180000 # 50h
+  weight: 975
+  #icon: TODO
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp3288Aristocrat
+  alwaysShowInBanPanel: true
+  setPreference: false
+  applyTraits: false
+
+- type: job
+  id: Scp3288Knight
+  name: job-name-scp3288
+  description: job-description-scp3288-knight
+  playTimeTracker: JobScp3288Knight
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 180000 # 50h
+  weight: 980
+  #icon: TODO
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp3288Knight
+  alwaysShowInBanPanel: true
+  setPreference: false
+  applyTraits: false

@@ -29,10 +29,15 @@
   - !type:AddComponentSpecial
     components:
     - type: CommandStaff
+    - type: ChaosSpySelectionBlacklist
     - type: EmployeeClass
       class: B
     - type: AccessLevel
       level: Four
+    - type: ScpHolder
+      holdableWhitelist:
+        components:
+        - ClassDAppearance
     - type: ScpAnnounceOnSpawn
       text: head-announce-on-spawn
       channels:
