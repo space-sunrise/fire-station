@@ -1,0 +1,49 @@
+- type: entity
+  id: Shower
+  name: shower
+  description: A wall-mounted shower head. Turn it on and you'll wash away dirt, blood, and all your worries, at least for a moment.
+  parent: BaseWallmountMetallic
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _Scp/Structures/Furniture/shower.rsi
+    layers:
+    - state: base
+    - state: water
+      map: ["toggle_layer"]
+  - type: Appearance
+  - type: ToggleableVisuals
+    spriteLayer: toggle_layer
+    layerStates:
+      toggle_layer:
+        on: water
+        off: base
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: UseDelay
+    delay: 1
+  - type: ItemToggle
+    soundActivate:
+      path: /Audio/_Scp/Effects/shower_swirling.ogg
+      volume: -10
+    soundDeactivate:
+      path: /Audio/_Scp/Effects/shower_swirling.ogg
+      volume: -10
+    soundFailToActivate:
+      path: /Audio/_Scp/Effects/shower_swirling.ogg
+      volume: -10
+  - type: ItemToggleActiveSound
+    activeSound:
+      path: /Audio/Ambience/Objects/flowing_water_open.ogg
+      params:
+        volume: 20
+        range: 10
