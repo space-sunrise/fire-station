@@ -10,13 +10,17 @@
     layers:
     - state: base
     - state: water
-      map: ["toggle_layer"]
+      map: ["enum.ToggleableVisuals.Layer"]
+      visible: false
   - type: Appearance
   - type: ToggleableVisuals
-    spriteLayer: toggle_layer
-    toggle_layer:
-      on: water
-      off: base
+    spriteLayer: enum.ToggleableVisuals.Layer
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleableVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
+          True: { visible: true }
+          False: { visible: false }
   - type: Destructible
     thresholds:
     - trigger:
@@ -33,13 +37,10 @@
   - type: ItemToggle
     soundActivate:
       path: /Audio/_Scp/Effects/shower_swirling.ogg
-      volume: -10
     soundDeactivate:
       path: /Audio/_Scp/Effects/shower_swirling.ogg
-      volume: -10
     soundFailToActivate:
       path: /Audio/_Scp/Effects/shower_swirling.ogg
-      volume: -10
   - type: ItemToggleActiveSound
     activeSound:
       path: /Audio/Ambience/Objects/flowing_water_open.ogg
