@@ -14,10 +14,9 @@
   - type: Appearance
   - type: ToggleableVisuals
     spriteLayer: toggle_layer
-    layerStates:
-      toggle_layer:
-        on: water
-        off: base
+    toggle_layer:
+      on: water
+      off: base
   - type: Destructible
     thresholds:
     - trigger:
@@ -44,6 +43,3 @@
   - type: ItemToggleActiveSound
     activeSound:
       path: /Audio/Ambience/Objects/flowing_water_open.ogg
-      params:
-        volume: 20
-        range: 10

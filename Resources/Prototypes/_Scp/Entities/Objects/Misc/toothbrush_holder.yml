@@ -23,8 +23,6 @@
       - Toothbrush
       - Spray
       - Soap
-      components:
-      - Soap
   - type: UserInterface
     interfaces:
       enum.StorageUiKey.Key:

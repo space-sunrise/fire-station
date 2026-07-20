@@ -2,4 +2,4 @@ ent-ToothbrushHolder = стаканчик банных принадлежнос�
     .desc = Небольшой стаканчик для гигиенических предметов.
 
 ent-ToothbrushHolderFilled = { ent-ToothbrushHolder }
-    .desc = { ent-ToothbrushHolder }
+    .desc = { ent-ToothbrushHolder.desc }

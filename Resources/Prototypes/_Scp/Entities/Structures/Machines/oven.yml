@@ -1,9 +1,9 @@
 ﻿- type: entity
   id: Oven
   parent: 
-  - KitchenElectricGrill
   - BaseMachinePowered
   - ConstructibleMachine
+  - KitchenElectricGrill
   name: oven
   description: It's a grill and microwave - all in one!
   components:
