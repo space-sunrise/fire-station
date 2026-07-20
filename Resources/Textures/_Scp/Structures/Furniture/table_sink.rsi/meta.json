@@ -10,6 +10,10 @@
     {
       "name": "table",
 	  "directions": 4
+    },
+    {
+      "name": "double_table",
+	  "directions": 4
     }
   ]
 }

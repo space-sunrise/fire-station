@@ -82,3 +82,22 @@
     - Table
     - ForceFixRotations
   - type: InteractionOutline
+
+- type: entity
+  parent: TableSink
+  id: TableDoubleSink
+  name: double sink counter
+  description: Wide metal counter with a built-in sinks.
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/table_sink.rsi
+    offset: 0.5,0
+    state: double_table
+  - type: SolutionContainerManager
+    solutions:
+      drainBuffer:
+        maxVol: 400 # две раковины
+      tank:
+        reagents:
+        - ReagentId: Water
+          Quantity: 700
