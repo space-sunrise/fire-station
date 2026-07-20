@@ -1,0 +1,18 @@
+﻿- type: entity
+  id: SoapBottle
+  parent:
+  - DrinkBase
+  - DrinkBaseMaterialPlastic
+  name: soap bottle
+  description: A plastic bottle with liquid soap inside.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/soap_bottle.rsi
+    state: icon
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 100
+        reagents:
+        - ReagentId: SoapReagent
+          Quantity: 100
