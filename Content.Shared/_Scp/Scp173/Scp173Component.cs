@@ -73,4 +73,10 @@ public sealed partial class Scp173Component : Component
     /// </summary>
     [ViewVariables]
     public const int ExtraMinTotalSolutionVolume = 900;
+
+    /// <summary>
+    /// Находится ли объект в камере (ВУСнут-ли)
+    /// </summary>
+    [ViewVariables]
+    public bool IsContained;
 }

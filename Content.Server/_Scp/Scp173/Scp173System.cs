@@ -83,8 +83,18 @@ public sealed partial class Scp173System : SharedScp173System
         var query = EntityQueryEnumerator<Scp173Component>();
         while (query.MoveNext(out var uid, out var scp173))
         {
+            if (IsContained(uid) && scp173.IsContained == false)
+                scp173.IsContained = true;
+
             if (!IsContained(uid))
+            {
+                if (scp173.IsContained == true)
+                {
+                    scp173.IsContained = false;
+                }
+
                 continue;
+            }
 
             scp173.ReagentVolumeAround = _helpers.GetAroundSolutionVolume(uid, Scp173Component.Reagent, LineOfSightBlockerLevel.None);
             Dirty(uid, scp173);
