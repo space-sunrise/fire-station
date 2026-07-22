@@ -1,0 +1,43 @@
+﻿- type: entity
+  id: YellowPencil
+  name: yellow pencil
+  description: A classic pencil with a yellow wooden barrel and a small red eraser.
+  parent: BaseItem
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/pencil.rsi
+    state: yellow
+  - type: Item
+    sprite: _Sunrise/Objects/Misc/pens.rsi
+    heldPrefix: pen
+    size: Tiny
+  - type: Tag
+    tags:
+    - Write
+  - type: PhysicalComposition
+    materialComposition:
+      Wood: 25
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PolygonShape
+          vertices:
+          - -0.3,0.1
+          - -0.1,0.3
+          - 0.3,-0.1
+          - 0.1,-0.3
+        density: 20
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
+
+- type: entity
+  id: WhitePencil
+  parent: YellowPencil
+  name: white pencil
+  description: A wooden pencil with a clean white barrel.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/pencil.rsi
+    state: white
