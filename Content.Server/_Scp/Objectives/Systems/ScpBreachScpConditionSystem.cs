@@ -107,7 +107,7 @@ public sealed class ScpBreachScpConditionSystem : EntitySystem
 
     private bool IsBreached(EntityUid uid)
     {
-        if (TryComp<Scp173Component>(uid, out var scp173))
+        if (TryComp<Scp173Component>(uid, out _))
             return !_scp173.IsContained(uid);
 
         if (TryComp<Scp106Component>(uid, out var scp106))

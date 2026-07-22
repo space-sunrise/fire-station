@@ -56,9 +56,12 @@ public sealed partial class Scp457Component : Component
     [DataField]
     public HashSet<string> FlammableMaterialsWhitelist = ["Wood", "Paper", "Cardboard", "Cloth"];
 
+    [ViewVariables]
     public float AppliedObjectSize = 1f;
 
+    [ViewVariables]
     public DamageSpecifier? BasePassiveDamage;
 
+    [ViewVariables]
     public float DecayTimer;
 }

@@ -20,7 +20,6 @@
     transferDelay: 180
   - type: Scp
     class: Euclid
-  - type: Scp082
   - type: Hands
     showInHands: false
   - type: MobThresholds

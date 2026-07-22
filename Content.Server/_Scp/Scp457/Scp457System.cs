@@ -13,7 +13,6 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.EntityEffects.Effects.Water;
-using Content.Shared.Interaction;
 using Content.Shared.Item;
 using Content.Shared.Materials;
 using Content.Shared.Physics;
@@ -52,7 +51,6 @@ public sealed class Scp457System : EntitySystem
         SubscribeLocalEvent<Scp457Component, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<Scp457Component, ScpIngestionConsumedEvent>(OnConsumed);
         SubscribeLocalEvent<Scp457Component, HitByWaterEvent>(OnHitByWater);
-        SubscribeLocalEvent<Scp457Component, AfterInteractEvent>(OnAfterInteract);
         SubscribeLocalEvent<Scp457Component, VentCrawlAttemptEvent>(OnVentCrawlAttempt);
         SubscribeLocalEvent<Scp457Component, StartCollideEvent>(OnStartCollide);
         SubscribeLocalEvent<Scp457Component, GetMeleeDamageEvent>(OnGetMeleeDamage);
@@ -89,7 +87,7 @@ public sealed class Scp457System : EntitySystem
 
     private void OnConsumed(Entity<Scp457Component> ent, ref ScpIngestionConsumedEvent args)
     {
-        if (args.Food is not { } food || (!CanConsume(ent, food) && !IsBurnableSolution(ent, args.ConsumedSolution)))
+        if (args.Entity is not { } food || (!CanConsume(ent, food) && !IsBurnableSolution(ent, args.ConsumedSolution)))
             return;
 
         TryChangeSize(ent, ent.Comp.ObjectSizeFlammableAdd);
@@ -98,15 +96,6 @@ public sealed class Scp457System : EntitySystem
     private void OnHitByWater(Entity<Scp457Component> ent, ref HitByWaterEvent args)
     {
         TryChangeSize(ent, -ent.Comp.ObjectSizeFlammableAdd);
-    }
-
-    private void OnAfterInteract(Entity<Scp457Component> ent, ref AfterInteractEvent args)
-    {
-        if (args.Handled || args.Target is not { } target || !args.CanReach || !CanConsume(ent, target))
-            return;
-
-        if (TryConsume(ent, target))
-            args.Handled = true;
     }
 
     private void OnVentCrawlAttempt(Entity<Scp457Component> ent, ref VentCrawlAttemptEvent args)
