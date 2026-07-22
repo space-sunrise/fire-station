@@ -83,8 +83,8 @@
 
 - type: job
   id: Scp457
-  name: job-name-Scp457
-  description: job-description-Scp457
+  name: job-name-scp457
+  description: job-description-scp457
   playTimeTracker: JobScp457
   requirements:
   - !type:OverallPlaytimeRequirement

@@ -1,4 +1,5 @@
 using Content.Server._Scp.Objectives.Components;
+using Content.Server._Scp.Scp173;
 using Content.Server.Objectives.Components;
 using Content.Server.Objectives.Systems;
 using Content.Shared._Scp.Mobs.Components;
@@ -12,6 +13,7 @@ namespace Content.Server._Scp.Objectives.Systems;
 public sealed class ScpBreachScpConditionSystem : EntitySystem
 {
     [Dependency] private readonly CodeConditionSystem _condition = default!;
+    [Dependency] private readonly Scp173System _scp173 = default!;
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
@@ -106,7 +108,7 @@ public sealed class ScpBreachScpConditionSystem : EntitySystem
     private bool IsBreached(EntityUid uid)
     {
         if (TryComp<Scp173Component>(uid, out var scp173))
-            return !scp173.IsContained;
+            return !_scp173.IsContained(uid);
 
         if (TryComp<Scp106Component>(uid, out var scp106))
             return !scp106.IsContained;
