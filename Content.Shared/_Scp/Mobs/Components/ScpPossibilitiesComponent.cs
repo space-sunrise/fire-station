@@ -1,7 +1,7 @@
 using Content.Shared.Whitelist;
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._Scp.Other.ScpPossibilities;
+namespace Content.Shared._Scp.Mobs.Components;
 
 /// <summary>
 /// Компонент, позволяющий расширить возможности сущности
