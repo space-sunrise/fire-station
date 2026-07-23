@@ -22,23 +22,26 @@ using Robust.Shared.Physics;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Scp.Scp457;
 
+// TODO: Анхардкод
 public sealed class Scp457System : EntitySystem
 {
-    private const float DecayInterval = 8f;
-
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly ScaleSpriteSystem _scaleSprite = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
     [Dependency] private readonly StackSystem _stack = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
 
     private EntityQuery<FlammableComponent> _flammableQuery;
     private EntityQuery<ReactiveComponent> _reactiveQuery;
     private EntityQuery<PhysicalCompositionComponent> _compositionQuery;
+
+    private TimeSpan DecayInterval = TimeSpan.FromSeconds(8);
 
     public override void Initialize()
     {
@@ -63,11 +66,10 @@ public sealed class Scp457System : EntitySystem
         var query = EntityQueryEnumerator<Scp457Component>();
         while (query.MoveNext(out var uid, out var scp457))
         {
-            scp457.DecayTimer -= frameTime;
-            if (scp457.DecayTimer > 0f)
+            if (scp457.NextChangeObjectSize > _timing.CurTime)
                 continue;
 
-            scp457.DecayTimer += DecayInterval;
+            scp457.NextChangeObjectSize = _timing.CurTime + DecayInterval;
             if (scp457.ObjectSize > scp457.MinimumObjectSize && scp457.ObjectSizeDecay > 0f)
                 TryChangeSize((uid, scp457), -scp457.ObjectSizeDecay);
         }
@@ -76,7 +78,7 @@ public sealed class Scp457System : EntitySystem
     private void OnMapInit(Entity<Scp457Component> ent, ref MapInitEvent args)
     {
         ent.Comp.AppliedObjectSize = ent.Comp.ObjectSize;
-        ent.Comp.DecayTimer = DecayInterval;
+        ent.Comp.NextChangeObjectSize = _timing.CurTime + DecayInterval;
 
         if (TryComp<PassiveDamageComponent>(ent, out var passiveDamage))
             ent.Comp.BasePassiveDamage = new DamageSpecifier(passiveDamage.Damage);

@@ -63,5 +63,5 @@ public sealed partial class Scp457Component : Component
     public DamageSpecifier? BasePassiveDamage;
 
     [ViewVariables]
-    public float DecayTimer;
+    public TimeSpan? NextChangeObjectSize;
 }
