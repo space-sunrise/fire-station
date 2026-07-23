@@ -2,7 +2,9 @@
 using Content.Server._Sunrise.ScaleSprite;
 using Content.Server._Sunrise.VentCraw;
 using Content.Server.Stack;
+using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Other.Events;
+using Content.Shared._Scp.Scp457;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
@@ -30,6 +32,7 @@ namespace Content.Server._Scp.Scp457;
 public sealed class Scp457System : EntitySystem
 {
     [Dependency] private readonly DamageableSystem _damageable = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly ScaleSpriteSystem _scaleSprite = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
@@ -52,6 +55,7 @@ public sealed class Scp457System : EntitySystem
         _compositionQuery = GetEntityQuery<PhysicalCompositionComponent>();
 
         SubscribeLocalEvent<Scp457Component, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<Scp457Component, Scp457AbsorbActionEvent>(OnAbsorbAction);
         SubscribeLocalEvent<Scp457Component, ScpIngestionConsumedEvent>(OnConsumed);
         SubscribeLocalEvent<Scp457Component, HitByWaterEvent>(OnHitByWater);
         SubscribeLocalEvent<Scp457Component, VentCrawlAttemptEvent>(OnVentCrawlAttempt);
@@ -93,6 +97,31 @@ public sealed class Scp457System : EntitySystem
             return;
 
         TryChangeSize(ent, ent.Comp.ObjectSizeFlammableAdd);
+    }
+
+    private void OnAbsorbAction(Entity<Scp457Component> ent, ref Scp457AbsorbActionEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        args.Handled = TryAbsorbNearby(ent);
+    }
+
+    public bool TryAbsorbNearby(Entity<Scp457Component> ent)
+    {
+        using var targets = HashSetPool<EntityUid>.Rent();
+        _lookup.GetEntitiesInRange(ent.Owner, 4f, targets.Value, LookupFlags.Uncontained);
+
+        var absorbed = false;
+        foreach (var target in targets.Value)
+        {
+            if (target == ent.Owner || !TryConsume(ent, target))
+                continue;
+
+            absorbed = true;
+        }
+
+        return absorbed;
     }
 
     private void OnHitByWater(Entity<Scp457Component> ent, ref HitByWaterEvent args)

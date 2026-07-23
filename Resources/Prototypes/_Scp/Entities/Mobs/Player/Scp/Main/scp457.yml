@@ -20,6 +20,9 @@
     class: Euclid
   - type: Scp457
   - type: VentCrawler
+  - type: ActionGrant
+    actions:
+    - Scp457Absorb
   - type: FearSource
     uponSeenState: None
     uponComeCloser: Anxiety
