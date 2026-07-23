@@ -1,0 +1,12 @@
+﻿- type: entity
+  id: Toothbrush
+  parent: BaseItem
+  name: red toothbrush
+  description: A simple red toothbrush for personal hygiene.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/toothbrush.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - Toothbrush

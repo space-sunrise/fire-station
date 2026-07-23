@@ -1,0 +1,44 @@
+﻿- type: entity
+  id: ToothbrushHolder
+  parent: BaseItem
+  name: toothbrush holder
+  description: A small holder for your bathroom essentials.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/toothbrush_holder.rsi
+    layers:
+    - state: icon
+      map: ["base"]
+    - map: ["enum.StorageFillLayers.Fill"]
+  - type: Appearance
+  - type: StorageFillVisualizer
+    maxFillLevels: 3
+    fillBaseName: item
+  - type: Storage
+    grid:
+    - 0,0,2,1
+    maxItemSize: Small
+    whitelist:
+      tags:
+      - Toothbrush
+      - Spray
+      - Soap
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: InteractionOutline
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+
+- type: entity
+  id: ToothbrushHolderFilled
+  parent: ToothbrushHolder
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: Toothbrush
+    - id: Soap
+    - id: SprayBottleSpaceCleaner
