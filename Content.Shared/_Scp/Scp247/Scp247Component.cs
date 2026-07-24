@@ -1,6 +1,4 @@
 using Robust.Shared.GameStates;
-using Robust.Shared.GameObjects;
-using Robust.Shared.Network;
 
 namespace Content.Shared._Scp.Scp247;
 
@@ -8,48 +6,22 @@ namespace Content.Shared._Scp.Scp247;
 public sealed partial class Scp247Component : Component
 {
     /// <summary>
-    /// Время непрерывного наблюдения, после которого наблюдатель видит настоящий облик SCP-247.
+    /// Время непрерывного наблюдения, после которого для наблюдателя открывается истинный облик.
     /// </summary>
-    [DataField]
-    public TimeSpan RequiredWatchTime = TimeSpan.FromSeconds(3); //TimeSpan.FromMinutes(8);
+    [DataField, AutoNetworkedField]
+    public TimeSpan RevealTime = TimeSpan.FromMinutes(8);
 
     /// <summary>
-    /// Интервал без событий наблюдения, после которого наблюдение считается прерванным.
+    /// Время без наблюдения, после которого прогресс наблюдателя сбрасывается.
     /// </summary>
-    [DataField]
-    public TimeSpan WatchGracePeriod = TimeSpan.FromSeconds(0.6f);
+    [DataField, AutoNetworkedField]
+    public TimeSpan ResetTime = TimeSpan.FromSeconds(24);
 
     /// <summary>
-    /// Состояние наблюдения SCP-247 за каждым наблюдателем на текущем клиенте или сервере.
+    /// Сущности, которых SCP-247 уже атаковал и которым разрешено причинять ему вред.
     /// </summary>
-    [NonSerialized]
-    public List<Scp247WatchState> Watchers = new();
-
-    /// <summary>
-    /// Показывать ли настоящий облик SCP-247 локальному наблюдателю.
-    /// </summary>
-    [NonSerialized]
-    public bool AngryForLocalViewer;
-
-    /// <summary>
-    /// Последнее состояние RSI, применённое локальным клиентом.
-    /// </summary>
-    [NonSerialized]
-    public string? RenderedState;
-
-    /// <summary>
-    /// Наблюдатели, которых SCP-247 уже атаковал и которым разрешено отвечать ему.
-    /// </summary>
-    [AutoNetworkedField]
-    public HashSet<NetEntity> AttackedViewers = new();
-}
-
-public sealed class Scp247WatchState(EntityUid viewer, TimeSpan startedAt, TimeSpan lastSeen)
-{
-    public readonly EntityUid Viewer = viewer;
-    public TimeSpan StartedAt = startedAt;
-    public TimeSpan LastSeen = lastSeen;
-    public bool Triggered;
+    [ViewVariables]
+    public HashSet<EntityUid> AllowedAttackers = [];
 }
 
 [RegisterComponent, NetworkedComponent]
