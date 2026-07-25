@@ -11415,3 +11415,19 @@
   id: 491
   time: '2026-07-25T14:11:53.0000000+00:00'
   url: https://github.com/space-sunrise/project-fire/pull/1095
+- author: Wardex
+  changes:
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D SCP-457 \u043D\u0430\
+      \ \u043A\u0430\u0440\u0442\u044B"
+    type: Add
+  - message: "\u041E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430 \u043C\u0435\u0445\
+      \u0430\u043D\u0438\u043A\u0430 \u0441\u0433\u043E\u0440\u0430\u043D\u0438\u044F\
+      \ SCP-457"
+    type: Tweak
+  - message: "\u0418\u0441\u043F\u0440\u0430\u0432\u043B\u0435\u043D \u0431\u0430\u0433\
+      \ \u0441 \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u0435\u043C \u0443\u0437\
+      \u043B\u0430"
+    type: Fix
+  id: 492
+  time: '2026-07-25T18:28:42.0000000+00:00'
+  url: https://github.com/space-sunrise/project-fire/pull/1094
