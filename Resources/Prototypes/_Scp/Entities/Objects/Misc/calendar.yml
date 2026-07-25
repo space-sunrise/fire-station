@@ -1,0 +1,17 @@
+﻿- type: entity
+  id: Calendar
+  parent: BaseItem
+  name: wall calendar
+  description: A paper calendar with a few dates marked.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/calendar.rsi
+    state: calendar
+  - type: Item
+    size: Normal
+  - type: Sticky
+    whitelist:
+      tags:
+      - Wall
+      - Window
+    stickDelay: 0.5

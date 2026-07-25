@@ -21,6 +21,7 @@
       - Healing
     whitelist:
       components:
+      - LightReplacer
       - Edible
       - Instrument
       - Seed
@@ -36,3 +37,4 @@
       - Bucket
       - Flashlight
       - KitchenKnife
+      - Plunger

@@ -1,0 +1,62 @@
+- type: entity
+  id: Trashbin
+  parent: BaseStructureDynamic
+  name: trash bin
+  description: A small metal trash bin. Designed to dispose of waste.
+  components:
+  - type: Sprite
+    drawdepth: SmallObjects
+    noRot: true
+    sprite: _Scp/Structures/Furniture/trashbin.rsi
+    layers:
+    - state: trashbin
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: trashbin_open
+      map: ["enum.StorageVisualLayers.Door"]
+  - type: Appearance
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.10,-0.10,0.10,0.10"
+        density: 500
+        mask:
+          - TabletopMachineMask
+  - type: InteractionOutline
+  - type: Physics
+  - type: EntityStorage
+    whitelist:
+      components:
+      - Item
+    blacklist:
+      components:
+      - Scp
+      - MobState
+  - type: PlaceableSurface
+    isPlaceable: false
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
+  - type: EntityStorageVisuals
+    stateDoorOpen: trashbin_open
+    stateDoorClosed: trashbin
+  - type: ContainerContainer
+    containers:
+      entity_storage: !type:Container

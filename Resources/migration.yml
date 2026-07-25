@@ -2852,4 +2852,7 @@ ClothingHandsGlovesDirector: ClothingHandsGlovesDirectorSpecial
 GunLockerFilledAK74: GunLockerFilledAK103
 WeaponRifleAK74: WeaponRifleAK103
 
+# Временное отключение объектов
+Scp268: null # Временно отключён из-за сломанности и потому что он стал "имбовым"
+
 # Fire added end

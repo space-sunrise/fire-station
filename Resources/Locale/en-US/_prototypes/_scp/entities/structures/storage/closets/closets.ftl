@@ -21,3 +21,6 @@ ent-ScpClosetMaintenance = maintenance closet
 ent-ScpClosetCursed = { ent-ScpClosetSteelBase }
     .suffix = cursed
     .desc = { ent-ScpClosetSteelBase.desc }
+ent-ScpClosetLogotype = { ent-LockerBase }
+    .desc = { ent-LockerBase.desc }
+

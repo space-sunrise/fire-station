@@ -37,6 +37,8 @@ public abstract partial class SharedScp096System
 
     protected virtual void OnHeatingUpStart(Entity<ActiveScp096HeatingUpComponent> ent, ref ComponentStartup args)
     {
+        TryBreakOutOfHold(ent.Owner);
+
         // Устанавливаем время окончания пред-агр состояния
         ent.Comp.RageHeatUpEnd = _timing.CurTime + ent.Comp.RageHeatUp;
 
@@ -79,6 +81,8 @@ public abstract partial class SharedScp096System
 
     protected virtual void OnRageStart(Entity<ActiveScp096RageComponent> ent, ref ComponentStartup args)
     {
+        TryBreakOutOfHold(ent.Owner);
+
         ent.Comp.RageStartTime = _timing.CurTime;
         Dirty(ent);
 

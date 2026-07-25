@@ -81,6 +81,22 @@
   applyTraits: false
   setPreference: false # TODO: Убрать после добавления каннибала
 
+- type: job
+  id: Scp247
+  name: job-name-scp247
+  description: job-description-scp247
+  playTimeTracker: JobScp247
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 720000 # 200h
+  weight: 995
+  icon: JobIconScp247
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp247
+  applyTraits: false
+
 # Keter
 - type: job
   id: Scp939
@@ -112,4 +128,20 @@
   overrideConsoleVisibility: false
   canBeAntag: false
   jobEntity: Scp106
+  applyTraits: false
+
+- type: job
+  id: Scp3288Alpha
+  name: job-name-scp3288Alpha
+  description: job-description-scp3288-alpha
+  playTimeTracker: JobScp3288Alpha
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 756000 # 210h
+  weight: 1020
+#  icon: TODO
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp3288
   applyTraits: false

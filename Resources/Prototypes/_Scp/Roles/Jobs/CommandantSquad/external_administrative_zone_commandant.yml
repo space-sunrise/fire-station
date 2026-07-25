@@ -28,6 +28,13 @@
       class: C
     - type: AccessLevel
       level: Three
+    - type: ScpHolder
+      holdableWhitelist:
+        components:
+        - HumanoidAppearance
+      holdableBlacklist:
+        components:
+        - Scp
     - type: ScpAnnounceOnSpawn
       text: squad-commander-announce-on-spawn
       channels:

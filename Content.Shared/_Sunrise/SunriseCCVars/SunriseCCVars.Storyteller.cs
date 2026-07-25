@@ -8,7 +8,7 @@ public sealed partial class SunriseCCVars
     /// Whether the dynamic storyteller system is enabled.
     /// </summary>
     public static readonly CVarDef<bool> StorytellerEnabled =
-        CVarDef.Create("storyteller.enabled", true, CVar.SERVER | CVar.ARCHIVE);
+        CVarDef.Create("storyteller.enabled", false, CVar.SERVER | CVar.ARCHIVE); // Fire edit
 
     /// <summary>
     /// How often the storyteller system evaluates the station state (in seconds).
