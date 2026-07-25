@@ -97,6 +97,22 @@
   jobEntity: Scp247
   applyTraits: false
 
+- type: job
+  id: Scp457
+  name: job-name-scp457
+  description: job-description-scp457
+  playTimeTracker: JobScp457
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 720000 # 200h
+  weight: 995
+  icon: JobIconScp457
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp457
+  applyTraits: false
+
 # Keter
 - type: job
   id: Scp939
@@ -106,7 +122,7 @@
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 720000 # 200h
-  weight: 995
+  weight: 1000
   icon: JobIconScp939
   joinNotifyCrew: false
   overrideConsoleVisibility: false
@@ -122,7 +138,7 @@
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 756000 # 210h
-  weight: 1000
+  weight: 1005
   icon: JobIconScp106
   joinNotifyCrew: false
   overrideConsoleVisibility: false

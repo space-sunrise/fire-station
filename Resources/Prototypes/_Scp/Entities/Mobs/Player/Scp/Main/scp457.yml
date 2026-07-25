@@ -18,6 +18,11 @@
       map: [ "enum.DamageStateVisualLayers.Base" ]
   - type: Scp
     class: Euclid
+  - type: Scp457
+  - type: VentCrawler
+  - type: ActionGrant
+    actions:
+    - Scp457Absorb
   - type: FearSource
     uponSeenState: None
     uponComeCloser: Anxiety
@@ -86,6 +91,7 @@
           type: Local
           messages: [ "scp-457-extinguished" ]
           probability: 0.25
+        - !type:HitByWater
   - type: Body
     prototype: Human
     requiredLegs: 2
@@ -116,7 +122,7 @@
     canExtinguish: true
     alwaysCombustible: true
     firestacksOnIgnite: 10
-    firestackFade: 0.5
+    firestackFade: -0.5
     damage:
       types:
         Cold: 0

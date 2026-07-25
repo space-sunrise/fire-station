@@ -1,3 +1,4 @@
+using Content.Shared._Scp.Mobs.Components;
 using Content.Shared._Sunrise.Random;
 using Content.Shared.Mech;
 using Content.Shared.Mech.Components;
@@ -7,9 +8,9 @@ using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Whitelist;
 
-namespace Content.Shared._Scp.Other.ScpPossibilities;
+namespace Content.Shared._Scp.Mobs.Systems;
 
-public sealed class SharedScpPossibilitiesSystem : EntitySystem
+public sealed class ScpPossibilitiesSystem : EntitySystem
 {
     [Dependency] private readonly RandomPredictedSystem _random = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
