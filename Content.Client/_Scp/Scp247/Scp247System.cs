@@ -59,11 +59,17 @@ public sealed class Scp247System : SharedScp247System
         if (_observations.Count == 0)
             return;
 
+        var observsToRemove = new List<EntityUid>();
         foreach (var (uid, observation) in _observations)
         {
             if (!TryComp<Scp247Component>(uid, out var scp247) ||
                 _timing.CurTime - observation.LastSeen >= scp247.ResetTime)
-                _observations.Remove(uid);
+                observsToRemove.Add(uid);
+        }
+
+        foreach (var uid in observsToRemove)
+        {
+            _observations.Remove(uid);
         }
     }
 
