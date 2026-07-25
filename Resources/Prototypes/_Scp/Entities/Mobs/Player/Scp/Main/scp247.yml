@@ -18,6 +18,8 @@
       map: [ "enum.DamageStateVisualLayers.Base" ]
   - type: Scp
     class: Euclid
+  - type: Scp247
+  - type: WatchingTarget
   - type: Fixtures
     fixtures:
       fix1:

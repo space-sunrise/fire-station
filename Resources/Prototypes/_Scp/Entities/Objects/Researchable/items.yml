@@ -226,6 +226,7 @@
     components:
     - type: Scp035MindProtection
     - type: Scp012Protection
+    - type: Scp247Protection
   - type: Tag
     tags:
     - ClothingHeadAwareness
