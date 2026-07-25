@@ -63,8 +63,63 @@
       types:
         Blunt: 0.5
 
-# UPLINK
+# IMPLANT ACTION
 
+- type: entity
+  parent: ActionOpenUplinkImplant
+  id: ActionOpenTerminalImplant
+  name: Open Terminal
+  description: Opens the Chaos Insurgency terminal embedded under your skin
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    priority: -20
+    icon:
+      sprite: _Scp/Objects/Devices/chaos_uplink.rsi
+      state: icon
+
+# UPLINK
+# spy
+- type: entity
+  parent: BaseSubdermalImplant #StorePresetUplink
+  id: ChaosSpyUplinkImplant
+  name: terminal implant
+  description: This implant lets the user access a hidden Chaos Insurgency terminal at will.
+  components:
+  - type: SubdermalImplant
+    implantAction: ActionOpenTerminalImplant
+    whitelist:
+      components:
+      - Hands
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: Store
+    name: store-preset-name-ChaosUplink
+    categories:
+    - ChaosSpyWeapon
+    - ChaosSpyWeaponAmmo
+    - ChaosSpyEquipment
+    - ChaosSpyMedkit
+    - ChaosSpyOther
+    currencyWhitelist:
+    - SupplyPoint
+    balance:
+      SupplyPoint: 0
+  - type: Tag
+    tags:
+    - SubdermalImplant
+
+- type: entity
+  id: ChaosSpyUplinkImplanter
+  name: uplink implanter
+  parent: [BaseImplantOnlyImplanterSyndi, BaseChaosContraband]
+  components:
+  - type: Implanter
+    implant: ChaosSpyUplinkImplant
+
+# raiders
 - type: entity
   parent: [BaseItem, BaseChaosContraband]
   id: BaseUplinkChaos

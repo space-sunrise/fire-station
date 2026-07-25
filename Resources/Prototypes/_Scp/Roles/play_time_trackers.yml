@@ -178,6 +178,9 @@
   id: JobScp208
 
 - type: playTimeTracker
+  id: JobScp247
+
+- type: playTimeTracker
   id: JobScp939
 
 - type: playTimeTracker
@@ -268,3 +271,9 @@
 
 - type: playTimeTracker
   id: AntagChaosRaiderFighter
+
+- type: playTimeTracker
+  id: AntagChaosSpy
+
+- type: playTimeTracker
+  id: AntagChaosSleepSpy

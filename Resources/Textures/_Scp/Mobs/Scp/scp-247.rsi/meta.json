@@ -12,6 +12,10 @@
       "directions": 4
     },
     {
+      "name": "angry",
+      "directions": 4
+    },
+    {
       "name": "dead"
     }
   ]

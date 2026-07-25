@@ -8,10 +8,10 @@ comp-pda-io-program-list-button = Программы
 comp-pda-io-settings-button = Настройки
 comp-pda-io-program-fallback-title = Программа
 comp-pda-io-no-programs-available = Нет доступных программ
-pda-bound-user-interface-show-uplink-title = Открыть аплинк
-pda-bound-user-interface-show-uplink-description = Получите доступ к своему аплинку
-pda-bound-user-interface-lock-uplink-title = Закрыть аплинк
-pda-bound-user-interface-lock-uplink-description = Предотвратите доступ к вашему аплинку персон без кода
+pda-bound-user-interface-show-uplink-title = Открыть Терминал
+pda-bound-user-interface-show-uplink-description = Получите доступ к своему Терминалу
+pda-bound-user-interface-lock-uplink-title = Закрыть Терминал
+pda-bound-user-interface-lock-uplink-description = Предотвратите доступ к вашему Терминалу персон без кода
 comp-pda-ui-menu-title = КПК
 comp-pda-ui-footer = Карманный Персональный Компьютер
 comp-pda-ui-station = Комплекс: [color=white]{ $station }[/color]

@@ -24,9 +24,9 @@ public sealed class UplinkSystem : EntitySystem
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly TagSystem _tagSystem = default!;
 
-    public static readonly ProtoId<CurrencyPrototype> TelecrystalCurrencyPrototype = "Telecrystal";
-    private static readonly EntProtoId FallbackUplinkImplant = "UplinkImplant";
-    private static readonly ProtoId<ListingPrototype> FallbackUplinkCatalog = "UplinkUplinkImplanter";
+    public static readonly ProtoId<CurrencyPrototype> TelecrystalCurrencyPrototype = "SupplyPoint"; // Fire edit
+    private static readonly EntProtoId FallbackUplinkImplant = "ChaosSpyUplinkImplant"; // Fire edit
+    private static readonly ProtoId<ListingPrototype> FallbackUplinkCatalog = "ChaosSpyUplinkUplinkImplanter"; // Fire edit
 
     /// <summary>
     /// Adds an uplink to the target

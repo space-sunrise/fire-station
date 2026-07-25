@@ -311,7 +311,7 @@
   description: Rather bland and inoffensive. Perfect for vanishing off the face of the universe.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/hop.rsi
+    sprite: _Scp/Clothing/Uniforms/Jumpsuit/hop.rsi # Fire edit
 
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
@@ -407,7 +407,7 @@
   description: The jumpsuit for the poor sop with a mop.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/janitor.rsi
+    sprite: _Scp/Clothing/Uniforms/Jumpsuit/janitor.rsi # Fire edit
 
 - type: entity
   parent: ClothingUniformBase
@@ -542,9 +542,9 @@
   description: It's a turtleneck worn by those with the know-how to achieve the position of Research Director. Its fabric provides minor protection from biological contaminants.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/rnd.rsi
+    sprite: _Scp/Clothing/Uniforms/Jumpsuit/rnd.rsi # Fire edit
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/rnd.rsi
+    sprite: _Scp/Clothing/Uniforms/Jumpsuit/rnd.rsi # Fire edit
 
 - type: entity
   parent: [ClothingUniformBase, ClothingUniformFoldableBase]
@@ -553,7 +553,7 @@
   description: It's made of a special fiber that increases perceived intelligence and decreases personal ethics. It has markings that denote the wearer as a scientist.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/scientist.rsi
+    sprite: _Scp/Clothing/Uniforms/Jumpsuit/scientist.rsi # Fire edit
 
 - type: entity
   parent: ClothingUniformBase
@@ -1170,9 +1170,9 @@
   description: A sign of skill and prestige within the science department.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/senior_researcher.rsi
+    sprite: _Scp/Clothing/Uniforms/Jumpsuit/senior_researcher.rsi # Fire edit
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/senior_researcher.rsi
+    sprite: _Scp/Clothing/Uniforms/Jumpsuit/senior_researcher.rsi # Fire edit
 
 - type: entity
   parent: ClothingUniformBase

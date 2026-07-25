@@ -1,2 +1,10 @@
 ent-MindRoleScp2054X = SCP-2054-X
     .desc = { ent-BaseMindRoleAntag.desc }
+ent-MindRoleChaosRaiderFighter = Chaos Raider
+    .desc = { ent-BaseMindRoleAntag.desc }
+ent-MindRoleChaosRaiderMedic = Chaos Medic
+    .desc = { ent-BaseMindRoleAntag.desc }
+ent-MindRoleChaosRaiderLeader = Chaos Leader
+    .desc = { ent-BaseMindRoleAntag.desc }
+ent-MindRoleChaosSpy = Chaos Spy
+    .desc = { ent-BaseMindRoleAntag.desc }

@@ -18,6 +18,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Content.Shared.Roles.Components;
+using Content.Server._Scp.GameTicking.Rules.Components; // Fire edit
 
 namespace Content.Server.Administration.Systems;
 
@@ -42,6 +43,11 @@ public sealed partial class AdminVerbSystem
     private static readonly EntProtoId DefaultFleshCultRule = "FleshCult";
     private static readonly EntProtoId DefaultSELFRule = "SiliconLiberation";
 
+    // Fire edit start
+    private static readonly EntProtoId DefaultScpChaosRaidRule = "ScpChaosRaid";
+    private static readonly EntProtoId DefaultScpChaosSpyRule = "ScpChaosHighSpy";
+    // Fire edit end
+
     private static readonly SpriteSpecifier SelfAgentVerbIcon =
         new SpriteSpecifier.Rsi(new ResPath("/Textures/_Sunrise/Interface/Misc/self_icon.rsi"), "icon");
     private static readonly SpriteSpecifier AssaultOperativeVerbIcon =
@@ -50,6 +56,13 @@ public sealed partial class AdminVerbSystem
         new SpriteSpecifier.Texture(new ResPath("_Sunrise/FleshCult/Interface/Actions/fleshCultistFleshHeart.png"));
     private static readonly SpriteSpecifier BloodCultistVerbIcon =
         new SpriteSpecifier.Rsi(new ResPath("/Textures/Objects/Weapons/Melee/cult_dagger.rsi"), "icon");
+    
+    // Fire edit start
+    private static readonly SpriteSpecifier ChaosRaiderVerbIcon =
+        new SpriteSpecifier.Rsi(new ResPath("/Textures/_Scp/Clothing/Head/Helmets/chaos.rsi"), "icon");
+    private static readonly SpriteSpecifier ChaosSpyVerbIcon =
+        new SpriteSpecifier.Rsi(new ResPath("/Textures/_Scp/Objects/Devices/chaos_uplink.rsi"), "icon");
+    // Fire edit end
 
     // All antag verbs have names so invokeverb works.
     private void AddAntagVerbs(GetVerbsEvent<Verb> args)
@@ -301,5 +314,35 @@ public sealed partial class AdminVerbSystem
         };
         args.Verbs.Add(bloodCultist);
         // Sunrise-End
+
+        // Fire edit start
+        Verb chaosRaider = new()
+        {
+            Text = Loc.GetString("admin-verb-text-make-chaos-raider"),
+            Category = VerbCategory.Antag,
+            Icon = ChaosRaiderVerbIcon,
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<ChaosRaidRuleComponent>(targetPlayer, DefaultScpChaosRaidRule);
+            },
+            Impact = LogImpact.High,
+            Message = Loc.GetString("admin-verb-make-chaos-raider"),
+        };
+        args.Verbs.Add(chaosRaider);
+
+        Verb chaosSpy = new()
+        {
+            Text = Loc.GetString("admin-verb-text-make-chaos-spy"),
+            Category = VerbCategory.Antag,
+            Icon = ChaosSpyVerbIcon,
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<ChaosSpyRuleComponent>(targetPlayer, DefaultScpChaosSpyRule);
+            },
+            Impact = LogImpact.High,
+            Message = Loc.GetString("admin-verb-make-chaos-spy"),
+        };
+        args.Verbs.Add(chaosSpy);
+        // Fire edit end
     }
 }

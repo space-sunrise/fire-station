@@ -116,7 +116,13 @@
   id: MagazineScp2908
 
 - type: Tag
+  id: PowerCellHyper
+
+- type: Tag
   id: LimbScp0492
+
+- type: Tag
+  id: Toothbrush
 
 - type: Tag
   id: LavenderFlower

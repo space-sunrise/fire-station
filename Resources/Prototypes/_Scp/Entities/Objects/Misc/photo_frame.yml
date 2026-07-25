@@ -1,0 +1,40 @@
+﻿- type: entity
+  parent: BaseItem
+  id: BasePhotoFrame
+  name: photo frame
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/photo_frame.rsi
+
+- type: entity
+  parent: BasePhotoFrame
+  description: A photograph of a quiet corridor with beige walls.
+  id: PhotoFrameRoom
+  components:
+  - type: Sprite
+    state: frame1
+
+- type: entity
+  parent: BasePhotoFrame
+  id: PhotoFrameDucks
+  description: A pleasant photograph of ducks waddling on green grass under a clear blue sky.
+  components:
+  - type: Sprite
+    state: frame2
+
+- type: entity
+  parent: BasePhotoFrame
+  id: PhotoFrameFlowers
+  description: A photograph of colorful flowers blooming in a field.
+  components:
+  - type: Sprite
+    state: frame3
+
+- type: entity
+  parent: BasePhotoFrame
+  id: PhotoFrameSuit
+  description: A close-up photograph of a neatly pressed red uniform.
+  components:
+  - type: Sprite
+    state: frame4
