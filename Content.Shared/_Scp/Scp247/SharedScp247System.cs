@@ -9,12 +9,16 @@ public abstract partial class SharedScp247System : EntitySystem
 {
     [Dependency] private readonly SharedPopupSystem _popup = default!;
 
+    private EntityQuery<HumanoidAppearanceComponent> _humanoid;
+
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<Scp247Component, MeleeHitEvent>(OnMeleeHit);
         SubscribeLocalEvent<Scp247Component, GettingAttackedAttemptEvent>(OnEntGettingAttackedAttempt);
+
+        _humanoid = GetEntityQuery<HumanoidAppearanceComponent>();
     }
 
     private void OnMeleeHit(Entity<Scp247Component> ent, ref MeleeHitEvent args)
@@ -27,8 +31,8 @@ public abstract partial class SharedScp247System : EntitySystem
             if (target == ent.Owner)
                 continue;
 
-            if (!HasComp<HumanoidAppearanceComponent>(target))
-                continue;
+            if (!_humanoid.HasComp(target))
+                return;
 
             ent.Comp.AllowedAttackers.Add(target);
         }
