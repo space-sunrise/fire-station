@@ -220,6 +220,8 @@
     - state: green
     - sprite: _Scp/Mobs/Scp/scp-247.rsi
       state: scp-247
-  - type: ConditionalSpawner
-    prototypes:
-    - Scp247
+  - type: SpawnPoint
+    spawn_type: Job
+    job_id: Scp247
+  - type: PreferredSpawn
+    preferredSpawnTypes: [ Job ]
