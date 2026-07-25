@@ -23,9 +23,6 @@ public sealed partial class HitByWater : EntityEffectBase<HitByWater>
     }
 }
 
-/// <summary>
-/// Вызываемое событие
-/// </summary>
 /// <param name="User">Сущность, которая облила водой целевую сущность</param>
 [ByRefEvent]
 public readonly record struct HitByWaterEvent(EntityUid? User);
