@@ -18,6 +18,27 @@
         },
         {
             "name": "dlaw"
+        },
+        {
+            "name": "anomaly"
+        },
+        {
+            "name": "cans_sci"
+        },
+        {
+            "name": "data"
+        },
+        {
+            "name": "rnd"
+        },
+        {
+            "name": "robo"
+        },
+        {
+            "name": "sci"
+        },
+        {
+            "name": "xenoarch"
         }
     ]
 }
