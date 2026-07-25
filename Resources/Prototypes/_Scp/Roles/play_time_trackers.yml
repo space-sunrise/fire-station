@@ -175,6 +175,9 @@
   id: JobScp173
 
 - type: playTimeTracker
+  id: JobScp247
+
+- type: playTimeTracker
   id: JobScp457
 
 - type: playTimeTracker

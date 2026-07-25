@@ -11403,3 +11403,15 @@
   id: 490
   time: '2026-07-22T07:52:50.0000000+00:00'
   url: https://github.com/space-sunrise/project-fire/pull/1093
+- author: Wardex
+  changes:
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D Scp 247 \u043D\u0430\
+      \ \u043A\u0430\u0440\u0442\u044B"
+    type: Add
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u0430 \u0443\u043D\u0438\
+      \u043A\u0430\u043B\u044C\u043D\u0430\u044F \u043C\u0435\u0445\u0430\u043D\u0438\
+      \u043A\u0430 \u0434\u043B\u044F Scp 247"
+    type: Add
+  id: 491
+  time: '2026-07-25T14:11:53.0000000+00:00'
+  url: https://github.com/space-sunrise/project-fire/pull/1095
