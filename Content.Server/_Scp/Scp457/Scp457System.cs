@@ -60,7 +60,6 @@ public sealed class Scp457System : EntitySystem
         SubscribeLocalEvent<Scp457Component, HitByWaterEvent>(OnHitByWater);
         SubscribeLocalEvent<Scp457Component, VentCrawlAttemptEvent>(OnVentCrawlAttempt);
         SubscribeLocalEvent<Scp457Component, StartCollideEvent>(OnStartCollide);
-        SubscribeLocalEvent<Scp457Component, GetMeleeDamageEvent>(OnGetMeleeDamage);
     }
 
     public override void Update(float frameTime)
@@ -147,11 +146,6 @@ public sealed class Scp457System : EntitySystem
         var damage = new DamageSpecifier();
         damage.DamageDict["Structural"] = ent.Comp.StructuralDamage * ent.Comp.DamageModifier;
         _damageable.TryChangeDamage((args.OtherEntity, damageable), damage, interruptsDoAfters: false, origin: ent);
-    }
-
-    private void OnGetMeleeDamage(Entity<Scp457Component> ent, ref GetMeleeDamageEvent args)
-    {
-        args.Damage = DamageSpecifier.ApplyModifier(args.Damage, ent.Comp.DamageModifier, 1f);
     }
 
     public bool CanConsume(Entity<Scp457Component> ent, EntityUid target)
