@@ -7,8 +7,6 @@ storyteller-preset-calm-description = Затишье в космосе. Расс
 storyteller-preset-insane-title = Рассказчик: Безумный
 storyteller-preset-insane-description = Абсолютный хаос. Рассказчик будет безжалостно бросать на станцию одну угрозу за другой, пуская в ход самые коварные и разрушительные события.
 
-<<<<<<< HEAD
-=======
 ui-vote-storyteller-entry = Рассказчик
 ui-vote-preset-category-title = Выбор типа игрового режима
 ui-vote-preset-category-regular = Обычные режимы
@@ -18,7 +16,6 @@ ui-vote-preset-category-win = Голосование завершено! Выб�
 ui-vote-storyteller-title = Выбор типа Рассказчика
 ui-vote-storyteller-auto-set = Доступен только один тип Рассказчика: { $type }. Голосование пропущено.
 
->>>>>>> sunrise/master
 ui-vote-storyteller-type-calm = Спокойный
 ui-vote-storyteller-type-classic = Классический
 ui-vote-storyteller-type-insane = Безумный
@@ -233,7 +230,3 @@ storyteller-history-nuke-exploded = Конец истории: ослепите�
 storyteller-metadata-traitor-assigned = Опасными агентами Синдиката оказались: {$players}.
 storyteller-metadata-thief-assigned = В роли скрытных воришек выступили: {$players}.
 storyteller-metadata-nukeops-assigned = Членами ударного отряда оперативников Синдиката оказались: {$players}.
-<<<<<<< HEAD
-
-=======
->>>>>>> sunrise/master

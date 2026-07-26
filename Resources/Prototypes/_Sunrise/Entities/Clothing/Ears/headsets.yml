@@ -24,17 +24,6 @@
     interfaces:
       enum.HeadsetUiKey.Key:
         type: HeadsetBoundUserInterface
-<<<<<<< HEAD
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-name
-        startingItem: PowerCellSmall
-        blacklist:
-          tags:
-          - PowerCage
-=======
->>>>>>> sunrise/master
 
 - type: entity
   abstract: true

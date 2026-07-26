@@ -471,11 +471,7 @@
   - type: Armor
     modifiers:
       coefficients:
-<<<<<<< HEAD
-        Blunt: 0.9  
-=======
         Blunt: 0.9
->>>>>>> sunrise/master
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9

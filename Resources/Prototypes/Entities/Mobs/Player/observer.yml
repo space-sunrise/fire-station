@@ -77,16 +77,10 @@
     interactSuccessSound:
       path: /Audio/Animals/cat_meow.ogg
   - type: Pullable
-<<<<<<< HEAD
-=======
   - type: MovementSpeedModifier
     baseSprintSpeed: 12
     baseWalkSpeed: 30
->>>>>>> sunrise/master
   # Sunrise-End
-  - type: MovementSpeedModifier # Fire Edit
-    baseSprintSpeed: 12
-    baseWalkSpeed: 20
 
 # proto for player ghosts specifically
 - type: entity

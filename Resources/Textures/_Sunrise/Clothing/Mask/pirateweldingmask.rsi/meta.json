@@ -1,12 +1,7 @@
 {
     "version": 1,
-<<<<<<<< HEAD:Resources/Textures/_Scp/Objects/Weapons/Guns/Pistols/cobra/tiny.rsi/meta.json
     "license": "CC-BY-SA-3.0",
     "copyright": "sprites made by peper",
-========
-    "license": "CC-BY-SA-4.0",
-    "copyright": "Made by Davyei (discord) for Moffstation",
->>>>>>>> sunrise/master:Resources/Textures/_Sunrise/Clothing/Mask/pirateweldingmask.rsi/meta.json
     "size": {
         "x": 32,
         "y": 32
@@ -29,10 +24,6 @@
         },
         {
             "name": "equipped-MASK-vox",
-            "directions": 4
-        },
-		{
-            "name": "equipped-SUITSTORAGE",
             "directions": 4
         }
     ]

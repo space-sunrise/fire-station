@@ -44,10 +44,7 @@
   parent: ImmovableRod
   id: ImmovableRodDespawn
   suffix: Despawn
-<<<<<<< HEAD
   categories: [ HideSpawnMenu ] # Fire
-=======
->>>>>>> sunrise/master
   components:
   - type: TimedDespawn
     lifetime: 30.0

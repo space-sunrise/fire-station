@@ -4,13 +4,8 @@ meta:
   engineVersion: 271.1.0
   forkId: ""
   forkVersion: ""
-<<<<<<< HEAD
-  time: 05/26/2026 18:32:23
-  entityCount: 475
-=======
   time: 07/17/2026 19:03:48
   entityCount: 461
->>>>>>> sunrise/master
 maps: []
 grids:
 - 44868
@@ -555,19 +550,13 @@ entities:
           moles:
             Oxygen: 21.6852
             Nitrogen: 81.57766
-<<<<<<< HEAD
-=======
         - volume: 2500
           temperature: 293.15
           moles:
-            Oxygen: 21.813705
-            Nitrogen: 82.06108
->>>>>>> sunrise/master
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
     - type: NavMap
-    - type: SecurityShuttle
     - type: ImplicitRoof
     - type: ExplosionAirtightGrid
     - type: TileHistory
@@ -2319,119 +2308,10 @@ entities:
     - type: Transform
       pos: -3.5,-7.5
       parent: 44868
-<<<<<<< HEAD
 - proto: PlastitaniumWindow
   entities:
   - uid: 1
     components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -1.5,1.5
-      parent: 44868
-  - uid: 3
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 2.5,3.5
-      parent: 44868
-  - uid: 9
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 8.5,-4.5
-      parent: 44868
-  - uid: 10
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 5.5,1.5
-      parent: 44868
-  - uid: 19
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 8.5,-5.5
-      parent: 44868
-  - uid: 20
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 6.5,1.5
-      parent: 44868
-  - uid: 22
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -3.5,1.5
-      parent: 44868
-  - uid: 23
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 8.5,-3.5
-      parent: 44868
-  - uid: 24
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 4.5,1.5
-      parent: 44868
-  - uid: 28
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -5.5,-3.5
-      parent: 44868
-  - uid: 29
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -5.5,-4.5
-      parent: 44868
-  - uid: 31
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -5.5,-5.5
-      parent: 44868
-  - uid: 32
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -2.5,1.5
-      parent: 44868
-  - uid: 33
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 1.5,3.5
-      parent: 44868
-  - uid: 34
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 0.5,3.5
-      parent: 44868
-- proto: PlastitaniumWindowDiagonalIndestructible
-  entities:
-  - uid: 14
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 3.5,3.5
-      parent: 44868
-  - uid: 21
-    components:
-    - type: Transform
-      pos: -0.5,3.5
-      parent: 44868
-=======
->>>>>>> sunrise/master
-- proto: PowerCageMedium
-  entities:
-  - uid: 7
-    components:
-    - type: Transform
       rot: -1.5707963267948966 rad
       pos: -3.7794266,-1.5318359
       parent: 44868

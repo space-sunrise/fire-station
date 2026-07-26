@@ -10,16 +10,6 @@
     state: icon_alt
   - type: Clothing
     equippedPrefix: alt
-<<<<<<< HEAD
-  # Sunrise-Start
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-name
-        startingItem: PowerCellMedium
-  # Sunrise-End
-=======
->>>>>>> sunrise/master
 
 - type: entity
   parent: ClothingHeadsetAlt

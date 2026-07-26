@@ -955,10 +955,7 @@
 - type: entity
   parent: BaseMagazinePistolHighCapacity
   id: MagazinePistolHighCapacity
-<<<<<<< HEAD
   categories: [ HideSpawnMenu ] # Fire edit
-=======
->>>>>>> sunrise/master
   name: machine pistol magazine (.35 auto)
   description: Custom 15-round double-stack magazine for the Viper pistol. Intended to hold general-purpose kinetic ammunition.
   components:

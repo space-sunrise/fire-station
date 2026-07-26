@@ -4,8 +4,6 @@
   name: advanced salvage magnet
   description: A reinforced salvage magnet with independent targeting systems.
   components:
-<<<<<<< HEAD
-=======
   - type: Sprite
     sprite: _Sunrise/Structures/Machines/salvage.rsi
     layers:
@@ -25,7 +23,6 @@
     - state: salvage-magnet-o4
       map: ["chargeState"]
       shader: unshaded
->>>>>>> sunrise/master
   - type: SalvageMagnetData
   - type: Machine
     board: SunriseAdvancedSalvageMagnetMachineCircuitboard

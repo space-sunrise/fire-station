@@ -17,8 +17,6 @@
   cost: 800
   category: cargoproduct-category-name-service
   group: market
-<<<<<<< HEAD
-=======
 
 - type: cargoProduct
   id: CrateVendingMachineRestockInstrumentsMate
@@ -29,4 +27,3 @@
   cost: 8950
   category: cargoproduct-category-name-service
   group: market
->>>>>>> sunrise/master

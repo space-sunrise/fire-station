@@ -28,11 +28,6 @@ ent-CratePirateMechYarrkeBundle = Blackmarket salvage mech bundle
 ent-CratePirateMechDollHouseBundle = Blackmarket USSP mech bundle
     .desc = Contains a set of Cybersun medium armored mechs.
     .suffix = Filled
-<<<<<<< HEAD
-ent-CrateCybersunRipleyBundle = Cybersun death bundle
-    .desc = Contains a Death Ripley MK-II mech with basic maintenance supplies.
-    .suffix = Filled
-=======
 ent-CratePirateRobotParrot = robot parrot crate
     .desc = Contains three robot parrots.
     .suffix = Pirate
@@ -188,4 +183,3 @@ ent-CrateCybersunRipleyBundle = Cybersun death bundle
 ent-CratePiratePrivateSecure = pirate private secure crate
     .desc = A secure crate with a lock tuned for pirate access.
     .suffix = Pirate, Secure
->>>>>>> sunrise/master

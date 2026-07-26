@@ -102,12 +102,9 @@ ent-LockerBrigmedicLargeFilled = { ent-LockerBrigmedicLarge }
 ent-LockerWardenLargeFilled = { ent-LockerWardenLarge }
     .desc = { ent-LockerWardenLarge.desc }
     .suffix = Заполненный
-<<<<<<< HEAD
-=======
 ent-LockerWardenLargeEShotgunFilled = { ent-LockerWardenLarge }
     .desc = { ent-LockerWardenLarge.desc }
     .suffix = Заполненный, энергодробовик
->>>>>>> sunrise/master
 ent-LockerMiningSpecialistLargeFilled = { ent-LockerMiningSpecialistLarge }
     .desc = { ent-LockerMiningSpecialistLarge.desc }
     .suffix = Заполненный

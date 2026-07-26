@@ -8,10 +8,7 @@
   - MetalRod
   categoryEntries:
   - Pipes
-<<<<<<< HEAD
-=======
   - SteelTiles
->>>>>>> sunrise/master
 
 - type: quickConstructionCategory
   id: Pipes
@@ -73,8 +70,6 @@
   - GasFilter
   - GasMixer
 
-<<<<<<< HEAD
-=======
 - type: quickConstructionCategory
   id: SteelTiles
   name: quickconstruction-category-tile
@@ -83,4 +78,3 @@
   - TileDark
   - TileWhite
   - TileSteel
->>>>>>> sunrise/master

@@ -19,14 +19,6 @@
   - 1.0
   - 1.0
   - 1.0
-<<<<<<< HEAD
-  isSubfloor: true
-  footstepSounds:
-    collection: FootstepAsteroid
-  heatCapacity: 10000
-  indestructible: true
-=======
->>>>>>> sunrise/master
 
 # Desert
 - type: tile
@@ -42,14 +34,6 @@
   - 1.0
   - 1.0
   - 1.0
-<<<<<<< HEAD
-  isSubfloor: true
-  footstepSounds:
-    collection: FootstepAsteroid
-  heatCapacity: 10000
-  indestructible: true
-=======
->>>>>>> sunrise/master
 
 - type: tile
   id: FloorLowDesert
@@ -63,14 +47,6 @@
   - 1.0
   - 1.0
   - 1.0
-<<<<<<< HEAD
-  isSubfloor: true
-  footstepSounds:
-    collection: FootstepAsteroid
-  heatCapacity: 10000
-  indestructible: true
-=======
->>>>>>> sunrise/master
 
 # Grass
 - type: tile
@@ -97,12 +73,6 @@
   baseTurf: FloorPlanetDirt
   footstepSounds:
     collection: FootstepGrass
-<<<<<<< HEAD
-  itemDrop: FloorTileItemGrass
-  heatCapacity: 10000
-  indestructible: true
-=======
->>>>>>> sunrise/master
 
 # Lava
 - type: tile
@@ -110,14 +80,6 @@
   name: tiles-basalt-floor
   parent: BaseFloorPlanet
   sprite: /Textures/Tiles/Planet/basalt.png
-<<<<<<< HEAD
-  isSubfloor: true
-  footstepSounds:
-    collection: FootstepAsteroid
-  heatCapacity: 10000
-  indestructible: true
-=======
->>>>>>> sunrise/master
 
 # Snow
 - type: tile
@@ -148,11 +110,6 @@
     West: /Textures/Tiles/Planet/Snow/snow_double_edge_west.png
   footstepSounds:
     collection: FootstepSnow
-<<<<<<< HEAD
-  heatCapacity: 10000
-  indestructible: true
-=======
->>>>>>> sunrise/master
 
 # Ice
 - type: tile
@@ -179,10 +136,5 @@
     West: /Textures/Tiles/Planet/Snow/snow_dug_double_edge_west.png
   footstepSounds:
     collection: FootstepSnow
-<<<<<<< HEAD
-  heatCapacity: 10000
-  indestructible: true
-=======
->>>>>>> sunrise/master
 
 # Wasteland

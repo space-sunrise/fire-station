@@ -8,9 +8,6 @@
     },
     "states": [
         {
-            "name": "icon"
-        },
-        {
             "name": "inhand-left",
             "directions": 4
         },
@@ -19,11 +16,7 @@
             "directions": 4
         },
         {
-            "name": "equipped-MASK",
-            "directions": 4
-        },
-        {
-            "name": "equipped-MASK-vox",
+            "name": "equipped-BELT",
             "directions": 4
         },
 		{

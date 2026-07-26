@@ -140,12 +140,8 @@
     pocket1: SecurityWhistle
     pocket2: WeaponDominator
   inhand:
-<<<<<<< HEAD
-  - ClothingHandsPowerGlovesNoUplink
-=======
   - ClothingHandsPowerGlovesUplinkNTERTAmber
   - BoxZiptie
->>>>>>> sunrise/master
   storage:
     back:
     - BoxErtBaseKit
@@ -174,15 +170,9 @@
     neck: HandheldCamera
     id: ERTSecurityPDA
     ears: ClothingHeadsetAltERT
-<<<<<<< HEAD
-    belt: ClothingBeltSecurityWebbingFilled
-    pocket1: PouchAmmoFilledPistol40
-    pocket2: ClothingHandsPowerGlovesNoUplink
-=======
     belt: ClothingBeltMilitaryWebbingERT
     pocket1: DoubleEmergencyOxygenTankFilled
     pocket2: PouchAmmoFilledPistol40
->>>>>>> sunrise/master
   inhand:
   - WeaponPistolVP78
   - BoxZiptie
@@ -194,17 +184,12 @@
     - TelescopicShield
     - ExShrapnelGrenade
     - SmokeGrenade
-<<<<<<< HEAD
-    - Bluecrystal15
-    - Crystallite20
-=======
     - SmokeGrenade
     - EmpGrenade
     - CableDetStack
     - BoxDetonator
     - MedkitCombatFilled
     - ClothingHandsPowerGlovesUplinkNTERTRed
->>>>>>> sunrise/master
 
 - type: startingGear
   id: ERTSecurityGearGamma
@@ -232,18 +217,12 @@
     - TelescopicShield
     - ExShrapnelGrenade
     - SmokeGrenade
-<<<<<<< HEAD
-    - ClothingHandsPowerGlovesNoUplink
-    - Bluecrystal25
-    - Crystallite30
-=======
     - SmokeGrenade
     - EmpGrenade
     - CableDetStack
     - BoxDetonator
     - MedkitCombatFilled
     - ClothingHandsPowerGlovesUplinkNTERTGamma
->>>>>>> sunrise/master
 
 # Chaplain
 - type: startingGear
@@ -334,13 +313,6 @@
     - RCDAmmo
     - CableApcStack
     - SheetPlasteel
-<<<<<<< HEAD
-    - SheetGlass
-    - SheetSteel
-    - PowerCellHigh
-    - Bluecrystal10
-    - Crystallite15
-=======
     - PartRodMetal
     - PowerCellNanoTrasen
     - CableMVStack
@@ -348,7 +320,6 @@
     - CableDetStack
     - MiningDrillDiamond
     - CyberGrenadeThrowerAtmos
->>>>>>> sunrise/master
 
 - type: startingGear
   id: ERTEngineerGearGamma
@@ -362,13 +333,8 @@
     id: ERTEngineerPDA
     ears: ClothingHeadsetAltERT
     belt: ClothingBeltChiefEngineerFilled
-<<<<<<< HEAD
-    pocket1: CableMVStack
-    pocket2: ClothingHandsPowerGlovesNoUplink
-=======
     pocket1: DoubleEmergencyOxygenTankFilled
     pocket2: CableHVStack
->>>>>>> sunrise/master
   inhand:
   - ClothingHandsPowerGlovesUplinkNTERTRed
   - RCDRecharging
@@ -380,18 +346,11 @@
     - PartRodMetal
     - PowerCellNanoTrasen
     - PowerCellNanoTrasen
-<<<<<<< HEAD
-    - CableHVStack
-    - Bluecrystal15
-    - Crystallite20
-
-=======
     - CableMVStack
     - BoxDetonator
     - CableDetStack
     - MiningDrillDiamond
     - CyberGrenadeThrowerAtmos
->>>>>>> sunrise/master
 # Medical
 
 - type: startingGear
@@ -411,11 +370,7 @@
     pocket1: DoubleEmergencyOxygenTankFilled
     pocket2: ClothingHandsPowerGlovesUplinkNTERTAmber
   inhand:
-<<<<<<< HEAD
-  - ClothingHandsPowerGlovesNoUplink
-=======
   - LauncherSyringeAuto
->>>>>>> sunrise/master
   - AdvancedDefibrillatorCompact
   storage:
     back:
@@ -429,14 +384,7 @@
     - DefibrillatorCompact
     - MedkitCombatFilled
     - ChemistryBottleOmnizine
-<<<<<<< HEAD
-    - ChemistryBottleEpinephrine
-    - ChemistryBottleEphedrine
-    - Bluecrystal10
-    - Crystallite15
-=======
     - CrowbarRed
->>>>>>> sunrise/master
 
 - type: startingGear
   id: ERTMedicalGearGamma
@@ -450,13 +398,8 @@
     id: ERTMedicPDA
     ears: ClothingHeadsetAltERT
     belt: ClothingBeltMedicalElite
-<<<<<<< HEAD
-    pocket1: MedipenCombatInjector
-    pocket2: ClothingHandsPowerGlovesNoUplink
-=======
     pocket1: DoubleEmergencyOxygenTankFilled
     pocket2: ClothingHandsPowerGlovesUplinkNTERTRed
->>>>>>> sunrise/master
   inhand:
   - LauncherSyringeAuto
   - AdvancedDefibrillator
@@ -472,18 +415,6 @@
     - MedkitCombatFilled
     - ChemistryBottleOmnizine
     - CrowbarRed
-<<<<<<< HEAD
-    - SawAdvanced
-    - Drill
-    - RetractorAdvanced
-    - ScalpelLaser
-    - EmergencyRollerBedSpawnFolded
-    - BoneGel
-    - BoneSetterAdvanced
-    - Bluecrystal15
-    - Crystallite20
-=======
->>>>>>> sunrise/master
 
 # Janitor
 

@@ -259,21 +259,12 @@
   desc: salvage-faction-scrappers
   entries:
       # melee
-<<<<<<< HEAD
-    - proto: MobPirateT1ExpeditionSpawner
-      cost: 3
-      prob: 0.05
-    - proto: MobPirateT1Spawner
-      cost: 5
-      prob: 0.05
-=======
     - proto: MobPirateT1Spawner
       cost: 5
       prob: 0.1
     - proto: MobPirateT1ExpeditionSpawner
       cost: 5
       prob: 0.1
->>>>>>> sunrise/master
     # range
     - proto: MobPirateT1ScrapSMG
       cost: 5
@@ -320,11 +311,7 @@
       prob: 0.03
     - proto: PirateSquadT1Random
       cost: 25
-<<<<<<< HEAD
-      prob: 0.1
-=======
       prob: 0.05
->>>>>>> sunrise/master
     # melee
     - proto: MobPirateT3Bola
       cost: 8
@@ -401,24 +388,6 @@
     # T1 add
     - proto: PirateSquadT1LMG
       cost: 20
-<<<<<<< HEAD
-      prob: 0.05
-    - proto: PirateSquadT1Breach
-      cost: 20
-      prob: 0.05
-    - proto: PirateSquadT1Assault
-      cost: 20
-      prob: 0.05
-    - proto: PirateSquadT1Heavy
-      cost: 20
-      prob: 0.05
-    - proto: PirateSquadT1Infiltrator
-      cost: 20
-      prob: 0.05
-    - proto: PirateSquadT1Monkey
-      cost: 18
-      prob: 0.05
-=======
       prob: 0.02
     - proto: PirateSquadT1Breach
       cost: 20
@@ -435,25 +404,12 @@
     - proto: PirateSquadT1Monkey
       cost: 18
       prob: 0.02
->>>>>>> sunrise/master
     - proto: PirateSquadT1Random
       cost: 20
       prob: 0.02
     # unique squads
     - proto: PirateSquadT3ShieldPhalanx
       cost: 45
-<<<<<<< HEAD
-      prob: 0.08
-    - proto: PirateSquadT3Suppressor
-      cost: 60
-      prob: 0.08
-    - proto: PirateSquadT3Universal
-      cost: 55
-      prob: 0.08
-    - proto: PirateSquadT3Random
-      cost: 65
-      prob: 0.02
-=======
       prob: 0.03
     - proto: PirateSquadT3Suppressor
       cost: 60
@@ -464,7 +420,6 @@
     - proto: PirateSquadT3Random
       cost: 65
       prob: 0.05
->>>>>>> sunrise/master
     # borgs
     - proto: MobPirateT1BorgAssault
       cost: 5
@@ -532,27 +487,6 @@
       prob: 0.03
     - proto: SovietSquadPatrol
       cost: 20
-<<<<<<< HEAD
-      prob: 0.25
-    - proto: SovietSquadInfantry
-      cost: 50
-      prob: 0.1
-    - proto: SovietSquadInfantry2
-      cost: 50
-      prob: 0.1
-    - proto: SovietSquadSmg
-      cost: 50
-      prob: 0.1
-    - proto: SovietSquadAssault
-      cost: 60
-      prob: 0.1
-    - proto: SovietSquadLmg
-      cost: 30
-      prob: 0.1
-    - proto: SovietSquadMmg
-      cost: 30
-      prob: 0.1
-=======
       prob: 0.15
     - proto: SovietSquadInfantry
       cost: 50
@@ -572,7 +506,6 @@
     - proto: SovietSquadMmg
       cost: 30
       prob: 0.05
->>>>>>> sunrise/master
     - proto: MobSovietBear
       cost: 10
       prob: 0.02
@@ -635,11 +568,7 @@
       prob: 0.05
     - proto: SovietSquadAssault
       cost: 50
-<<<<<<< HEAD
-      prob: 0.1
-=======
       prob: 0.05
->>>>>>> sunrise/master
     - proto: SovietSquadLmg
       cost: 25
       prob: 0.05
@@ -685,11 +614,7 @@
       prob: 0.2
     - proto: MobRogueSiliconT1Viscerator
       cost: 1
-<<<<<<< HEAD
-      prob: 0.1
-=======
       prob: 0.03
->>>>>>> sunrise/master
     - proto: SpawnMobRogueSiliconT1VisceratorSquad
       cost: 4
       prob: 0.2

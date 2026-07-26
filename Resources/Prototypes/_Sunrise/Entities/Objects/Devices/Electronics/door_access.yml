@@ -42,8 +42,6 @@
 
 - type: entity
   parent: DoorElectronics
-<<<<<<< HEAD
-=======
   id: DoorElectronicsPirate
   suffix: Pirate, Locked
   components:
@@ -52,7 +50,6 @@
 
 - type: entity
   parent: DoorElectronics
->>>>>>> sunrise/master
   id: DoorElectronicsInternalAffairs
   suffix: Internal Affairs, Locked
   components:

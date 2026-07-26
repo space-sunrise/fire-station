@@ -194,19 +194,6 @@
     keysExtractionMethod: Prying
     keySlots: 10
   - type: TelecomServer
-<<<<<<< HEAD
-  # Sunrise-Start
-  - type: TelecomThermal
-    maxBandwidth: 30
-    heatPerMessage: 10000
-    maxTemperature: 400
-    hysteresisTemperature: 360
-  - type: Temperature
-    specificHeat: 25
-  - type: AtmosExposed
-  # Sunrise-End
-=======
->>>>>>> sunrise/master
   - type: ContainerContainer
     containers:
       key_slots: !type:Container

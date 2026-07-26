@@ -22,8 +22,6 @@
       entity_storage: !type:AllSelector
         children:
         - id: VendingMachineRestockDonk
-<<<<<<< HEAD
-=======
 
 - type: entity
   id: CrateVendingMachineRestockInstrumentsMateFilled
@@ -37,4 +35,3 @@
         children:
         - id: VendingMachineRestockInstrumentsMate
           amount: 1
->>>>>>> sunrise/master

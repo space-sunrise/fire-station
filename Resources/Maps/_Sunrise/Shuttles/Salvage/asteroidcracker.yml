@@ -1802,16 +1802,12 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 1.5,-1.5
       parent: 1
-<<<<<<< HEAD
-- proto: SunriseAdvancedSalvageMagnet
-=======
   - uid: 238
     components:
     - type: Transform
       pos: -0.5,-3.5
       parent: 1
 - proto: RandomPosterAny
->>>>>>> sunrise/master
   entities:
   - uid: 239
     components:
