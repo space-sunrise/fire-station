@@ -32,6 +32,7 @@
       holdableWhitelist:
         components:
         - Scp096
+        - Scp082
         - ClassDAppearance
       holdableBlacklist:
         components:

@@ -34,7 +34,7 @@
     - id: ClothingBeltSecurityFilled
     - id: Flash
     - id: ClothingEyesGlassesSecurity
-    - id: ClothingHandsGlovesCombat
+    # - id: ClothingHandsGlovesCombat # Sunrise-Edit
     - id: ClothingShoesBootsJack
     - id: ClothingOuterCoatWarden
     - id: ClothingOuterWinterWarden
@@ -51,6 +51,7 @@
     - id: HandheldCriminalRecordsMonitor  # Sunrise-CriminalRecords
     - id: ClothingHandsKnuckleDustersStun # Sunrise-edit
       prob: 0.75
+
 
 - type: entityTable
   id: FillLockerWardenHarduit

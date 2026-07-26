@@ -1212,6 +1212,7 @@
       - WantedListCartridge
       - MedTekCartridge
       - AstroNavCartridge
+      - NavigatorCartridge # Sunrise-Edit
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener

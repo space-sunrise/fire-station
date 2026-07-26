@@ -1,4 +1,5 @@
-﻿using Content.Shared._Scp.Scp999;
+﻿using Content.Shared._Scp.Other.Events; // Fire edit
+using Content.Shared._Scp.Scp999; // Fire edit
 using Content.Shared.Administration.Logs;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Organ;
@@ -377,6 +378,11 @@ public sealed partial class IngestionSystem : EntitySystem
         // Everything is good to go item has been successfuly eaten
         var afterEv = new IngestedEvent(args.User, entity, split, forceFed);
         RaiseLocalEvent(food, ref afterEv);
+
+        // Fire added start - уведомляем SCP-457 о каждой успешно выпитой или съеденной порции
+        var scpIngestion = new ScpIngestionConsumedEvent(food, split);
+        RaiseLocalEvent(args.User, ref scpIngestion);
+        // Fire added end
 
         _stomach.TryTransferSolution(stomachToUse.Value.Owner, split, stomachToUse);
 

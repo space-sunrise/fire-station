@@ -1,0 +1,15 @@
+- type: entity
+  id: Scp457Absorb
+  name: Absorb fuel
+  description: Absorb all the fuel around you.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 30
+    icon:
+      sprite: _Scp/Mobs/Scp/scp-457.rsi
+      state: fireguy
+    itemIconStyle: BigAction
+    raiseOnUser: true
+  - type: InstantAction
+    event: !type:Scp457AbsorbActionEvent
