@@ -1,8 +1,6 @@
 using Content.Shared.Chat;
 using Content.Shared.Radio;
 using Content.Shared.Radio.Components;
-using Content.Shared.Radio.Components;
-using Robust.Shared.GameObjects;
 using Content.Shared.UserInterface;
 
 namespace Content.Shared._Sunrise.Radio;

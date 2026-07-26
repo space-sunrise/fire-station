@@ -21,4 +21,8 @@
   - HeadOfMedicalSector
   groups:
   - MedicalHeadless
+  #- ChiefMedicalOfficer
+  - Medical
+  #- Chemistry
+  #- Paramedic
   # Fire edit end
