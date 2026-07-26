@@ -21,6 +21,10 @@
         reagents:
         - ReagentId: Scp2022Reagent
           Quantity: 10
+  - type: Tag
+    tags:
+    - Scp2022
+    - Pill
 
 - type: entity
   parent:
@@ -46,3 +50,6 @@
   - type: GuideHelp
     guides:
     - ScpResearch
+  - type: Tag
+    tags:
+    - Scp2022

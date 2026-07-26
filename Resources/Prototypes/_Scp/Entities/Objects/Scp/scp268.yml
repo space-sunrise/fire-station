@@ -26,6 +26,9 @@
       minVisibility: 0
       lastVisibility: 0
     - type: Muted # так гораздо лучше
+  - type: Tag
+    tags:
+    - Scp268
   - type: GuideHelp
     guides:
     - ScpResearch

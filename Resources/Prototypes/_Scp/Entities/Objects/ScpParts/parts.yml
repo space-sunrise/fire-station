@@ -84,7 +84,7 @@
 
 - type: entity
   id: Scp019GlassShard
-  parent: BaseScpMaterial
+  parent: BaseScpResearchMaterial
   name: ceramic shard
   description: Ceramic shard with recognizable ancient Greek style and decor.
   components:
@@ -94,6 +94,129 @@
   - type: Tag
     tags:
     - Scp019GlassShard
+
+# Scp012
+
+- type: entity
+  id: Scp012Paper
+  parent: BaseScpResearchMaterial
+  name: old paper
+  description: Yellowed piece of paper with bloody traces.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Research/research_material.rsi
+    state: scp012-paper
+  - type: Tag
+    tags:
+    - Scp012Paper
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Ash:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Flammable
+    fireSpread: true
+    alwaysCombustible: true
+    damage:
+      types:
+        Heat: 1
+  - type: FireVisuals
+    sprite: Effects/fire.rsi
+    normalState: fire
+  - type: Appearance
+
+# Scp106
+
+- type: entity
+  id: Scp106Cloth
+  parent: BaseScpResearchMaterial
+  name: rotten cloth
+  description: Black and sticky piece of fabric that burns to the touch.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Research/research_material.rsi
+    state: scp106-cloth
+  - type: Tag
+    tags:
+    - Scp106Cloth
+  - type: Extractable
+    grindableSolutionName: food
+    juiceSolution:
+      reagents:
+      - ReagentId: Scp106Reagent
+        Quantity: 20
+
+# Scp2295
+
+- type: entity
+  id: Scp2295Fiber1
+  parent: BaseScpMaterial
+  name: colorful fiber
+  description: Colorful soft fibers with the smell of medicine and bleach, just like in hospitals.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Research/research_material.rsi
+    state: scp2295-fiber
+  - type: Tag
+    tags:
+    - Scp2295Fiber
+  - type: Healing
+    delay: 0.5
+    damageContainers:
+      - Biological
+    damage:
+      groups:
+        Brute: -6 # 2 for each type in the group
+      types:
+        Heat: -1
+        Cold: -1
+        Shock: -1
+        Caustic: -1
+    bloodlossModifier: -3
+    healingBeginSound:
+      path: "/Audio/Items/Medical/brutepack_begin.ogg"
+      params:
+        volume: 1.0
+        variation: 0.125
+    healingEndSound:
+      path: "/Audio/Items/Medical/brutepack_end.ogg"
+      params:
+        volume: 1.0
+        variation: 0.125
+  - type: Stack
+    stackType: ColorfulFiber
+    count: 1
+
+# ScpUniversalCloth
+
+- type: entity
+  id: ScpUniversalCloth
+  parent: BaseScpResearchMaterial
+  name: beige cloth
+  description: A strange-feeling beige piece of cloth.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Research/research_material.rsi
+    state: universal-cloth
+  - type: Tag
+    tags:
+    - ScpUniversalCloth
 
 # Scp096
 

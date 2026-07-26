@@ -80,6 +80,9 @@
   id: ScpMuffleCountsThisAsNone
 
 - type: Tag
+  id: ScpUniversalCloth
+
+- type: Tag
   id: Scp019Vase
 
 - type: Tag
@@ -96,6 +99,15 @@
 
 - type: Tag
   id: Scp019GlassShard
+
+- type: Tag
+  id: Scp012Paper
+
+- type: Tag
+  id: Scp106Cloth
+
+- type: Tag
+  id: Scp2295Fiber
 
 - type: Tag
   id: ReinforcedMaskScp096
@@ -117,6 +129,45 @@
 
 - type: Tag
   id: PowerCellHyper
+
+- type: Tag
+  id: Scp005
+
+- type: Tag
+  id: Scp018
+
+- type: Tag
+  id: Scp101
+
+- type: Tag
+  id: Scp109
+
+- type: Tag
+  id: Scp124
+
+- type: Tag
+  id: Scp127
+
+- type: Tag
+  id: Scp268
+
+- type: Tag
+  id: Scp427
+
+- type: Tag
+  id: Scp500
+
+- type: Tag
+  id: Scp714
+
+- type: Tag
+  id: Scp2022
+
+- type: Tag
+  id: Scp2295
+
+- type: Tag
+  id: Scp2908
 
 - type: Tag
   id: LimbScp0492

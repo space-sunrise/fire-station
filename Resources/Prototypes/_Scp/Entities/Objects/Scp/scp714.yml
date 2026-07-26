@@ -29,3 +29,6 @@
   - type: GuideHelp
     guides:
     - ScpResearch
+  - type: Tag
+    tags:
+    - Scp714

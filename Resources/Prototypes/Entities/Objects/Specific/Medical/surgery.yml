@@ -244,6 +244,21 @@
     endSound:
       path: /Audio/_Sunrise/Medical/Surgery/hemostat1.ogg
   - type: Hemostat
+  # Fire edit start - исследования сцп
+  - type: ScpInteractTool
+    delay: 30
+    cooldown: 600 # 5 минут
+    cooldownMessage: scp-interact-time-left
+    event: !type:ScpSpawnInteractDoAfterEvent
+      toSpawn: Scp2295Fiber1
+    sound: /Audio/Effects/chopstickbreak.ogg
+    whitelist:
+      tags:
+      - Scp2295
+  - type: GuideHelp
+    guides:
+    - ScpResearchAdvanced
+  # Fire edit end
 
 - type: entity
   name: advanced hemostat
@@ -273,6 +288,23 @@
   - type: SurgeryTool
     startSound:
       path: /Audio/_Sunrise/Medical/Surgery/bone_setter.ogg
+  # Fire edit start - исследования сцп
+  - type: ScpInteractTool
+    delay: 30
+    cooldown: 600 # 5 минут
+    cooldownMessage: scp-interact-time-left
+    event: !type:ScpSpawnInteractDoAfterEvent
+      toSpawn: ScpUniversalCloth
+    sound: /Audio/Effects/chopstickbreak.ogg
+    whitelist:
+      tags:
+      - Scp268
+      - Scp109
+      - Scp101
+  - type: GuideHelp
+    guides:
+    - ScpResearchAdvanced
+  # Fire edit end
 
 - type: entity
   name: advanced bone setter
@@ -320,6 +352,21 @@
     startSound:
       path: /Audio/_Sunrise/Medical/Surgery/bone_saw.ogg
   - type: BoneSaw
+  # Fire edit start - исследования сцп
+  - type: ScpInteractTool
+    delay: 5 # нужно пиздец как быстро это делать
+    cooldown: 600 # 5 минут
+    cooldownMessage: scp-interact-time-left
+    event: !type:ScpSpawnInteractDoAfterEvent
+      toSpawn: Scp106Cloth
+    sound: /Audio/Effects/chopstickbreak.ogg
+    whitelist:
+      components:
+      - Scp106
+  - type: GuideHelp
+    guides:
+    - ScpResearchAdvanced
+  # Fire edit end
 
 # No melee for regular saw because have you ever seen someone use a band saw as a weapon? It's dumb.
 
