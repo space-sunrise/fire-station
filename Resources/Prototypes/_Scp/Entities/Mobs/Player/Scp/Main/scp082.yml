@@ -86,7 +86,8 @@
       collection: Punch
     damage:
       types:
-        Blunt: 40
+        Blunt: 20
+        Structural: 40
     attackRate: 1.25
     range: 2
   - type: MeleeThrowOnHit
