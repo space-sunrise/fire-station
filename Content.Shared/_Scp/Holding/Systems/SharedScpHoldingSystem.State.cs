@@ -254,6 +254,9 @@ public abstract partial class SharedScpHoldingSystem
             handCount++;
         }
 
+        if (_holdableQuery.TryComp(target, out var holdable))
+            handCount = Math.Max(handCount, holdable.MinimumHolderCount);
+
         return handCount;
     }
 
