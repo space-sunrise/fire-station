@@ -40,3 +40,18 @@
   - type: PhysicalComposition
     materialComposition:
       Steel: 200
+  # Fire edit start - исследования сцп
+  - type: ScpInteractTool
+    delay: 30
+    cooldown: 600 # 5 минут
+    cooldownMessage: scp-interact-time-left
+    event: !type:ScpSpawnInteractDoAfterEvent
+      toSpawn: Scp012Paper
+    sound: /Audio/Effects/chopstickbreak.ogg
+    whitelist:
+      components:
+      - Scp012
+  - type: GuideHelp
+    guides:
+    - ScpResearchAdvanced
+  # Fire edit end

@@ -57,3 +57,6 @@
   - type: GuideHelp
     guides:
     - ScpResearch
+  - type: Tag
+    tags:
+    - Scp101

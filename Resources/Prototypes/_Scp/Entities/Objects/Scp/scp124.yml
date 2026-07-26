@@ -47,7 +47,6 @@
   - type: GuideHelp
     guides:
     - ScpResearch
-    - ScpResearchAdvanced
   - type: Tag
     tags:
     - Scp124

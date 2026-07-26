@@ -2015,7 +2015,7 @@
   - type: SpeakOnUIClosed
     pack: GenericVendGoodbyes
   - type: Sprite
-    sprite: Structures/Machines/VendingMachines/scidrobe.rsi
+    sprite: _Scp/Structures/Machines/VendingMachines/scidrobe.rsi # Fire edit
     layers:
     - state: "off"
       map: ["enum.VendingMachineVisualLayers.Base"]
@@ -2076,7 +2076,7 @@
   - type: SpeakOnUIClosed
     pack: GenericVendGoodbyes
   - type: Sprite
-    sprite: Structures/Machines/VendingMachines/robodrobe.rsi
+    sprite: _Scp/Structures/Machines/VendingMachines/robodrobe.rsi # Fire edit
     layers:
     - state: "off"
       map: ["enum.VendingMachineVisualLayers.Base"]

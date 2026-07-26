@@ -77,8 +77,5 @@
   parent: Lattice
   name: tiles-lattice-train
   sprite: /Textures/Tiles/latticeTrain.png
-  baseTurf: Space
-  isSubfloor: true
-  deconstructTools: [ Cutting ]
   footstepSounds:
     collection: FootstepPlating

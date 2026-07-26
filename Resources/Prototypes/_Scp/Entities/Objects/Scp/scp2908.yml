@@ -22,6 +22,9 @@
         whitelist:
           components:
             - CartridgeAmmo
+  - type: Tag
+    tags:
+    - Scp2908
 
 - type: entity
   id: MagazineScp2908

@@ -71,7 +71,7 @@
       weight: 0.1
     - id: XenoArtifactEffectCreationGasHelium
       weight: 1.0
-      
+
 
 - type: entityTable
   id: SunriseArtifactEffectsUltraFunnyTable

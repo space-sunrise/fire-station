@@ -156,7 +156,6 @@
   - 1.0
   baseTurf: ScpPlating # Fire edit
   isSubfloor: false
-  deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepTile
   itemDrop: FloorTileItemSteelMono
@@ -2024,8 +2023,8 @@
 
 - type: tile
   id: FloorMowedAstroGrass
+  parent: [ BaseStationTile, FloorGrass ]
   name: tiles-mowed-astro-grass
-  parent: FloorGrass
   sprite: /Textures/_Sunrise/Tiles/mowed_grass.png
   variants: 4
   placementVariants:
@@ -2040,8 +2039,8 @@
 
 - type: tile
   id: FloorJungleAstroGrass
+  parent: [ BaseStationTile, FloorGrassJungle ]
   name: tiles-jungle-astro-grass
-  parent: FloorGrassJungle
   baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Cutting ]
@@ -2081,8 +2080,8 @@
 
 - type: tile
   id: FloorAstroSnow
+  parent: [ BaseStationTile, FloorSnow ]
   name: tiles-astro-snow
-  parent: FloorSnow
   baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -2091,8 +2090,8 @@
 # Asteroid Sand
 - type: tile
   id: FloorAstroAsteroidSand
+  parent: [ BaseStationTile, FloorAsteroidSand ]
   name: tiles-astro-asteroid-sand
-  parent: FloorAsteroidSand
   baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]

@@ -111,8 +111,6 @@
     sprite: _Sunrise/Objects/Weapons/Guns/Pistols/glock22_metus.rsi
   - type: Tag
     tags:
-    - WeaponPistolG22
-    - Sidearm
     - LockerPistol # Fire Edit
   - type: Gun
     fireRate: 4
