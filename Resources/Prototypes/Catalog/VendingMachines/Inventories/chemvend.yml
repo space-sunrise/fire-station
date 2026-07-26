@@ -57,9 +57,12 @@
     JugBlood: 1
     JugWater: 1
     JugTrico: 1
+<<<<<<< HEAD
     JugDyloveneSunrise: 1
     JugBicaridineSunrise: 1
     JugDermalineSunrise: 1
+=======
+>>>>>>> sunrise/master
     JugPunctTranex: 1
     JugPyraDerma: 1
     JugDexPlusSaline: 1

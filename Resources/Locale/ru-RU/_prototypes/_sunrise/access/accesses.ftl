@@ -10,3 +10,7 @@ id-card-access-level-iaa = Внутренние дела
 id-card-access-level-brigmedic = Бригмедик
 id-card-access-level-cadet = Кадет
 id-card-access-level-robotics = Робототехника
+<<<<<<< HEAD
+=======
+id-card-access-level-pirate = Пиратский
+>>>>>>> sunrise/master

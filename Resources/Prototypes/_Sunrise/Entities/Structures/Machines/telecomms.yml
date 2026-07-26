@@ -38,10 +38,13 @@
   id: TelecomServerT2
   name: advanced telecommunication server
   components:
+<<<<<<< HEAD
   - type: TelecomThermal
     maxBandwidth: 60
     loadDecayRate: 1
     heatPerMessage: 15000
+=======
+>>>>>>> sunrise/master
   - type: Machine
     board: TelecomServerT2Circuitboard
 
@@ -50,9 +53,12 @@
   id: TelecomServerT3
   name: experimental telecommunication server
   components:
+<<<<<<< HEAD
   - type: TelecomThermal
     maxBandwidth: 120
     loadDecayRate: 1
     heatPerMessage: 25000
+=======
+>>>>>>> sunrise/master
   - type: Machine
     board: TelecomServerT3Circuitboard

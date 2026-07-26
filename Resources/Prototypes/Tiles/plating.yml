@@ -77,8 +77,11 @@
   parent: Lattice
   name: tiles-lattice-train
   sprite: /Textures/Tiles/latticeTrain.png
+<<<<<<< HEAD
   baseTurf: Space
   isSubfloor: true
   deconstructTools: [ Cutting ]
+=======
+>>>>>>> sunrise/master
   footstepSounds:
     collection: FootstepPlating

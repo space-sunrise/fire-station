@@ -488,7 +488,11 @@
       - !type:PopupMessage
         conditions:
         - !type:MetabolizerTypeCondition
+<<<<<<< HEAD
           type: [ Animal, Vox ]
+=======
+          type: [ Animal, Vox, Slime ] # Sunrise-edit
+>>>>>>> sunrise/master
           inverted: true
         type: Local
         visualType: MediumCaution
@@ -498,12 +502,20 @@
         probability: 0.1
         conditions:
         - !type:MetabolizerTypeCondition
+<<<<<<< HEAD
           type: [ Animal, Vox, Plant ]
+=======
+          type: [ Animal, Vox, Plant, Slime ] # Sunrise-edit
+>>>>>>> sunrise/master
           inverted: true
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition
+<<<<<<< HEAD
           type: [ Animal, Vox, Plant ]
+=======
+          type: [ Animal, Vox, Plant, Slime ] # Sunrise-edit
+>>>>>>> sunrise/master
           inverted: true
         damage:
           types:
@@ -518,7 +530,7 @@
       - !type:AdjustReagent
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Animal ]
+          type: [ Animal, Slime ] # Sunrise-edit
         reagent: Protein
         amount: 0.5
       - !type:AdjustReagent

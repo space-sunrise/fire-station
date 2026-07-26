@@ -22,3 +22,9 @@ ent-DoorElectronicsSecurityInternalAffairs = { ent-DoorElectronics }
 ent-DoorElectronicsBrigmed = { ent-DoorElectronics }
     .suffix = Brigmed, Locked
     .desc = { ent-DoorElectronics.desc }
+<<<<<<< HEAD
+=======
+ent-DoorElectronicsPirate = { ent-DoorElectronics }
+    .suffix = Pirate, Locked
+    .desc = { ent-DoorElectronics.desc }
+>>>>>>> sunrise/master

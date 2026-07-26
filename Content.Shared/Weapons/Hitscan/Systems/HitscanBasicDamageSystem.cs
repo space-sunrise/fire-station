@@ -40,11 +40,6 @@ public sealed class HitscanBasicDamageSystem : EntitySystem
         };
 
         RaiseLocalEvent(ent, ref damageEvent);
-
-        // Fire added start - чтобы знать когда по скромнику попали
-        var ev = new HitScanAttackedEvent(args.Data.Shooter, args.Data.Gun, damageDealt);
-        RaiseLocalEvent(args.Data.HitEntity.Value, ref ev);
-        // Fire added end
     }
 
     // Sunrise added start - support projectile components in hitscans

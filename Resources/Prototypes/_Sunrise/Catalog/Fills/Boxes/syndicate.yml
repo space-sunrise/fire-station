@@ -452,6 +452,19 @@
 
 - type: entity
   parent: CyberEyeThermalBox
+<<<<<<< HEAD
+=======
+  id: BoxHardsuitChameleon
+  name: chameleon hardsuit box
+  description: Contains a folded chameleon hardsuit. Packaging disintegrates when opened, leaving no evidence behind.
+  components:
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingOuterHardsuitChameleon
+
+- type: entity
+  parent: CyberEyeThermalBox
+>>>>>>> sunrise/master
   id: ChameleonSilentShoesBox
   name: chameleon silent shoes kit
   description: Contains a pair of stealth chameleon shoes. Packaging disintegrates when opened, leaving no evidence behind.

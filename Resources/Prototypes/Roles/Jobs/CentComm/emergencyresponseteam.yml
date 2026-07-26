@@ -29,7 +29,7 @@
   - CentralCommand
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, DeathRattleImplantERT ] #Sunrise-Edit
+    implants: [ MindShieldImplant, DeathRattleImplantERT, NutrimentImplant ] #Sunrise-Edit
 
 - type: startingGear
   parent: ERTLeaderGearEVA
@@ -134,7 +134,7 @@
     components:
     - type: BibleUser #Lets them heal with bibles
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, DeathRattleImplantERT ] #Sunrise-Edit
+    implants: [ MindShieldImplant, DeathRattleImplantERT, NutrimentImplant ] #Sunrise-Edit
 
 - type: startingGear
   parent: ERTChaplainGearEVA
@@ -217,7 +217,7 @@
   - CentralCommand
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, DeathRattleImplantERT ] #Sunrise-Edit
+    implants: [ MindShieldImplant, DeathRattleImplantERT, NutrimentImplant ] #Sunrise-Edit
 
 - type: startingGear
   parent: ERTEngineerGearEVA
@@ -316,7 +316,7 @@
   - CentralCommand
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, DeathRattleImplantERT ] #Sunrise-Edit
+    implants: [ MindShieldImplant, DeathRattleImplantERT, NutrimentImplant ] #Sunrise-Edit
 
 - type: startingGear
   parent: ERTSecurityGearEVA
@@ -373,7 +373,11 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTSecurity
     id: ERTSecurityPDA
+<<<<<<< HEAD
     ears: ClothingHeadsetAltCentCom
+=======
+    ears: ClothingHeadsetAltERT #Sunrise-Edit
+>>>>>>> sunrise/master
     belt: ClothingBeltMilitaryWebbingERT
     pocket2: CombatKnife
     suitstorage: WeaponRifleLecter
@@ -511,7 +515,7 @@
   - CentralCommand
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, DeathRattleImplantERT ] #Sunrise-Edit
+    implants: [ MindShieldImplant, DeathRattleImplantERT, NutrimentImplant ] #Sunrise-Edit
 
 - type: startingGear
   parent: ERTMedicalGearEVA
@@ -612,7 +616,7 @@
   - CentralCommand
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, DeathRattleImplantERT ] #Sunrise-Edit
+    implants: [ MindShieldImplant, DeathRattleImplantERT, NutrimentImplant ] #Sunrise-Edit
 
 - type: startingGear
   parent: ERTJanitorGearEVA
@@ -670,6 +674,7 @@
     neck: ClothingNeckScarfStripedPurple
     eyes: ClothingEyesGlassesSunglasses
 
+<<<<<<< HEAD
 # --- VETERAN VARIANTS (Strict requirements, for admin/event use) ---
 # Sunrise start
 - type: job
@@ -855,3 +860,5 @@
     implants: [ MindShieldImplant, DeathRattleImplantERT ] #Sunrise-Edit
 # Sunrise end
 
+=======
+>>>>>>> sunrise/master

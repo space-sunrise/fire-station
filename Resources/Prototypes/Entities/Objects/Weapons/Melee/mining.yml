@@ -318,12 +318,12 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Blunt: 4
+        Blunt: 5
         Slash: 6
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 4
+        Blunt: 5
         Slash: 6
         Structural: 30
 
@@ -338,6 +338,8 @@
     state: icon
   - type: Item
     size: Large
+    shape:
+    - 0,0,2,1
   - type: MeleeWeapon
     autoAttack: true
     angle: 0

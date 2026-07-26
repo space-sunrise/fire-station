@@ -1,6 +1,9 @@
 - type: entity
   id: ComputerShuttleSalvage
+<<<<<<< HEAD
   categories: [ HideSpawnMenu ] # Fire edit
+=======
+>>>>>>> sunrise/master
   parent: BaseComputerShuttle
   name: salvage shuttle console
   description: Used to pilot the salvage shuttle.

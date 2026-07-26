@@ -13,6 +13,7 @@
         - ReagentId: PolytrinicAcid
           Quantity: 30
 
+<<<<<<< HEAD
 - type: entity
   parent: Jug
   suffix: bicaridine
@@ -96,3 +97,5 @@
         reagents:
         - ReagentId: Saline
           Quantity: 200
+=======
+>>>>>>> sunrise/master

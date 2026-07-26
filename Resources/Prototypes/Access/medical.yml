@@ -22,3 +22,7 @@
   groups:
   - MedicalHeadless
   # Fire edit end
+  - ChiefMedicalOfficer
+  - Medical
+  - Chemistry
+  - Paramedic # Sunrise-edit

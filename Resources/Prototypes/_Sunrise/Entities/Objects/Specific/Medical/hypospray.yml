@@ -48,6 +48,7 @@
   - type: TrashOnSolutionEmpty
     solution: pen
 
+<<<<<<< HEAD
 # - type: entity # Sunrise-todo: change to jet injector
 #   parent: [ BaseItem, BaseSyndicateContraband ]
 #   id: HyposprayMedicalNoFilterBox
@@ -65,6 +66,8 @@
 #     sound:
 #       path: /Audio/Effects/unwrap.ogg
 
+=======
+>>>>>>> sunrise/master
 # Medipens
 - type: entity
   name: ephedrine injector
@@ -409,3 +412,32 @@
     allowedModes:
     - HyposprayInjectMode
     ignoreClosed: false
+
+- type: entity
+  parent: [ BaseItem, BaseSyndicateContraband ]
+  id: JetInjectorSyndicateBox
+  name: hacked jet injector
+  description: A box containing a sterile injector for rapid administration of drugs to patients. The packaging disintegrates upon opening, leaving no residue.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Sunrise/Objects/Storage/boxicons.rsi
+    state: medhypo
+  - type: SpawnItemsOnUse
+    items:
+    - id: JetInjectorSyndicate
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  parent: JetInjector
+  id: JetInjectorSyndicate
+  name: jet injector
+  description: A sterile injector for convenient administration of drugs to patients.
+  components:
+  - type: Injector
+    activeModeProtoId: SyndicateJetInjectorDynamicMode
+    allowedModes:
+    - SyndicateJetInjectorInjectMode
+    - SyndicateJetInjectorDynamicMode

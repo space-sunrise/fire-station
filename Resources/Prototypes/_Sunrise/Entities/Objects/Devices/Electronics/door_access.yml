@@ -42,6 +42,17 @@
 
 - type: entity
   parent: DoorElectronics
+<<<<<<< HEAD
+=======
+  id: DoorElectronicsPirate
+  suffix: Pirate, Locked
+  components:
+  - type: AccessReader
+    access: [["Pirate"]]
+
+- type: entity
+  parent: DoorElectronics
+>>>>>>> sunrise/master
   id: DoorElectronicsInternalAffairs
   suffix: Internal Affairs, Locked
   components:

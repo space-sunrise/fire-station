@@ -8,7 +8,6 @@
   - type: ContainerContainer
     containers:
       key_slots: !type:Container
-      cell_slot: !type:ContainerSlot {}
   - type: Headset
     toggleAction: ActionToggleHeadset
   - type: EncryptionKeyHolder
@@ -21,12 +20,11 @@
     slots:
     - ears
     sprite: Clothing/Ears/Headsets/base.rsi
-  - type: PowerCellSlot
-    cellSlotId: cell_slot
   - type: UserInterface
     interfaces:
       enum.HeadsetUiKey.Key:
         type: HeadsetBoundUserInterface
+<<<<<<< HEAD
   - type: ItemSlots
     slots:
       cell_slot:
@@ -35,6 +33,8 @@
         blacklist:
           tags:
           - PowerCage
+=======
+>>>>>>> sunrise/master
 
 - type: entity
   abstract: true
@@ -47,11 +47,6 @@
     state: icon_alt
   - type: Clothing
     equippedPrefix: alt
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-name
-        startingItem: PowerCellSmall
 
 - type: entity
   parent: ClothingHeadset
