@@ -67,7 +67,7 @@
       params:
         volume: 6
   - type: Damageable
-    damageModifierSet: HellSpawn
+    damageModifierSet: SCP-457
   - type: MobThresholds
     thresholds:
       0: Alive

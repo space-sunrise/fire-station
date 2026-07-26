@@ -1,0 +1,14 @@
+﻿- type: entity
+  id: OrganScpPredatorStomach
+  parent: OrganHumanStomach
+  components:
+  - type: Stomach
+    specialDigestible:
+      tags:
+      - Bread
+      - Fruit
+      - ReptilianFood
+      - Meat
+      - Pill
+      - Crayon
+      - Paper

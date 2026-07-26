@@ -180,3 +180,5 @@
       collection: FootstepScp939
       params:
         volume: 3
+  - type: ScpHoldable
+    minimumHolderCount: 3
