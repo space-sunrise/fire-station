@@ -250,7 +250,7 @@
     cooldown: 600 # 5 минут
     cooldownMessage: scp-interact-time-left
     event: !type:ScpSpawnInteractDoAfterEvent
-      toSpawn: Scp2295Fiber
+      toSpawn: Scp2295Fiber1
     sound: /Audio/Effects/chopstickbreak.ogg
     whitelist:
       tags:
