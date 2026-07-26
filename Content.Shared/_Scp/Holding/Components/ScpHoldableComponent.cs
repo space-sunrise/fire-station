@@ -30,6 +30,12 @@ public sealed partial class ScpHoldableComponent : Component
     public int HolderHandsRequired = 1;
 
     /// <summary>
+    /// Минимальное количество держателей, необходимое для полного удержания цели.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public int MinimumHolderCount = 2;
+
+    /// <summary>
     /// Minimum uninterrupted full hold duration before a breakout do-after may start.
     /// </summary>
     [DataField, AutoNetworkedField]

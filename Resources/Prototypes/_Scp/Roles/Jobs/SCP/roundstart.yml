@@ -71,15 +71,14 @@
   playTimeTracker: JobScp082
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 99999999999 # Временно 120h 432000
+    time: 720000 # 200h
   weight: 990
   icon: JobIconScp082
   joinNotifyCrew: false
   overrideConsoleVisibility: false
   canBeAntag: false
-  jobEntity: Scp082 # TODO: Поменять после добавления каннибала
+  jobEntity: Scp082
   applyTraits: false
-  setPreference: false # TODO: Убрать после добавления каннибала
 
 - type: job
   id: Scp247
