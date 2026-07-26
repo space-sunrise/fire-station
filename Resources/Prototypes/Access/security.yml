@@ -33,15 +33,15 @@
   - SecurityCommander
   groups:
   - SecurityHeadless
-  # Fire edit end
-  - HeadOfSecurity
+  #- HeadOfSecurity
   - Security
   - Armory
-  - Brig
-  - Detective
-  - Cryogenics
-  - Brigmedic # Sunrise-edit
-  - Cadet # Sunrise-edit
+  #- Brig
+  #- Detective
+  #- Cryogenics
+  #- Brigmedic
+  #- Cadet
+  # Fire edit end
 
 - type: accessGroup
   id: Armory
