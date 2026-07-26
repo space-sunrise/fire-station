@@ -16,6 +16,7 @@
   - type: Tag
     tags:
     - DoorBumpOpener
+    - Scp018
   - type: GuideHelp
     guides:
     - ScpResearch
@@ -59,5 +60,30 @@
       - !type:PlaySoundBehavior
         sound:
           path: /Audio/Items/snap.ogg
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Scp018Broken:
+            min: 1
+            max: 1
       - !type:DoActsBehavior
         acts: ["Destruction"]
+
+- type: entity
+  parent: BaseItem
+  categories: [ HideSpawnMenu ]
+  id: Scp018Broken
+  suffix: SCP-018
+  name: red ball
+  description: A seemingly ordinary red ball made of dense rubber. It seems to bounce slightly higher than it should.
+  components:
+  - type: Sprite
+    scale: 0.4, 0.4
+    sprite: _Scp/Objects/Scp/scp-018.rsi
+    state: broken
+  - type: Scp
+    class: Neutralized
+  - type: Item
+    size: Normal
+  - type: Tag
+    tags:
+    - Scp018

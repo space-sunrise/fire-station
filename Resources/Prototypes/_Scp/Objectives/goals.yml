@@ -37,3 +37,23 @@
   id: Scp8
   text: station-goal-scp-8
   lockBoxPrototypeId: LockboxCaptain
+
+- type: stationGoal
+  id: Scp9
+  text: station-goal-scp-9
+  lockBoxPrototypeId: LockboxCaptain
+
+- type: stationGoal
+  id: Scp10
+  text: station-goal-scp-10
+  lockBoxPrototypeId: LockboxCaptain
+
+- type: stationGoal
+  id: Scp11
+  text: station-goal-scp-11
+  lockBoxPrototypeId: LockboxCaptain
+
+- type: stationGoal
+  id: Scp12
+  text: station-goal-scp-12
+  lockBoxPrototypeId: LockboxCaptain
