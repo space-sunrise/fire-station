@@ -12,11 +12,20 @@
       "directions": 4
     },
     {
+        "name": "sleep"
+    },
+    {
+      "name": "dead"
+    },
+    {
       "name": "angry",
       "directions": 4
     },
     {
-      "name": "dead"
+        "name": "angry-sleep"
+    },
+    {
+        "name": "angry-dead"
     }
   ]
 }
