@@ -27,7 +27,7 @@
       9800: Critical
       10000: Dead
   - type: Body
-    prototype: Reptilian # чтобы мог есть сырое мясо
+    prototype: ScpPredator
   - type: Inventory
     templateId: scp082
   - type: FieldOfView

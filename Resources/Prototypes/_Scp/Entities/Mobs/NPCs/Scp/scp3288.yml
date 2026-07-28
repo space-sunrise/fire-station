@@ -24,7 +24,7 @@
     - type: StandingState
     - type: Hands
     - type: Body
-      prototype: Reptilian # чтобы могли есть сырое мясо
+      prototype: ScpPredator
     - type: Climbing
     - type: Damageable
       damageContainer: Biological

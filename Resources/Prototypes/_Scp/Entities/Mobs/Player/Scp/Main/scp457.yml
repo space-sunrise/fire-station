@@ -67,7 +67,7 @@
       params:
         volume: 6
   - type: Damageable
-    damageModifierSet: HellSpawn
+    damageModifierSet: SCP-457
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -117,6 +117,10 @@
     damage:
       types:
         Cold: -1
+        Poison: -200
+        Slash: -200
+        Piercing: -200
+        Blunt: -200
         Heat: -200
   - type: Flammable
     canExtinguish: true
