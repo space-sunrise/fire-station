@@ -125,7 +125,7 @@ public sealed class Scp457System : EntitySystem
 
     private void OnHitByWater(Entity<Scp457Component> ent, ref HitByWaterEvent args)
     {
-        TryChangeSize(ent, -ent.Comp.ObjectSizeFlammableAdd);
+        TryChangeSize(ent, -ent.Comp.ObjectWaterSizeDecrease);
     }
 
     private void OnVentCrawlAttempt(Entity<Scp457Component> ent, ref VentCrawlAttemptEvent args)
