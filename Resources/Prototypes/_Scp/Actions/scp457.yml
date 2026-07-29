@@ -24,7 +24,7 @@
     useDelay: 10
     icon:
       sprite: _Scp/Mobs/Scp/scp-457.rsi
-      state: fireguy
+      state: fire
     itemIconStyle: BigAction
     raiseOnUser: true
   - type: InstantAction
