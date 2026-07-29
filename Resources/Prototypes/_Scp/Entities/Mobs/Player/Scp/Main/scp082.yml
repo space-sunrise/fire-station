@@ -28,10 +28,10 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      9500: Critical
-      10000: Dead
+      1800: Critical
+      2000: Dead
   - type: Body
-    prototype: Human
+    prototype: ScpPredator
   - type: Inventory
     templateId: scp082
   - type: FieldOfView
@@ -45,7 +45,9 @@
     noRot: true
     drawdepth: Mobs
     sprite: _Scp/Mobs/Scp/scp-082.rsi
-    state: 082_fullbody
+    layers:
+    - state: 082_fullbody
+    - state: tuxedo # временно чтобы он не был голым
   - type: ComplexInteraction
   - type: Buckle
   - type: ZombieImmune
@@ -67,9 +69,9 @@
     needsHands: true
   - type: SlowOnDamage
     speedModifierThresholds:
-      3000: 0.9
-      5500: 0.8
-      7000: 0.7
+      1000: 0.9
+      1300: 0.8
+      1600: 0.7
   - type: Speech
   - type: Tag
     tags:
@@ -84,7 +86,8 @@
       collection: Punch
     damage:
       types:
-        Blunt: 40
+        Blunt: 20
+        Structural: 40
     attackRate: 1.25
     range: 2
   - type: MeleeThrowOnHit
@@ -123,3 +126,8 @@
         - MobMask
         layer:
         - MobLayer
+  - type: Vocal
+    sounds:
+      Male: SCP082
+      Female: SCP082
+      Unsexed: SCP082
