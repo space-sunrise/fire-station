@@ -116,7 +116,7 @@
   - type: Speech
     speechSounds: Lizard
   - type: TTS
-    voice: Neco
+    voice: dragon_knight_dragon_dota_2
   - type: PassiveDamage
     allowedStates:
     - Alive
