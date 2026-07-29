@@ -60,7 +60,7 @@ public sealed partial class Scp457Component : Component
     public HashSet<string> FlammableMaterialsWhitelist = ["Wood", "Paper", "Cardboard", "Cloth", "Carpet"];
 
     [ViewVariables]
-    public float AppliedObjectSize = 1.0f;
+    public float AppliedObjectSize = 1f;
 
     [ViewVariables]
     public DamageSpecifier? BasePassiveDamage;
