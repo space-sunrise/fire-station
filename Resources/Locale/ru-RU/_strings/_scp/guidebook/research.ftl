@@ -16,6 +16,11 @@ guide-entry-scp-scp457-containment = Содержание
 guide-entry-scp-scp457-containment-breach = Побег
 guide-entry-scp-scp457-states = Состояния
 
+guide-entry-scp-scp173-about = SCP-173 "Скульптура"
+guide-entry-scp-scp173-abilities = Способности
+guide-entry-scp-scp173-containment = Содержание
+guide-entry-scp-scp173-containment-breach = Побег
+
 guide-entry-scp-glossary = Глоссарий
 guide-entry-scp-scp-abbreviations = Сокращения отделов/служб
 guide-entry-scp-scp-basic-terms = Основные термины
