@@ -5,6 +5,11 @@
   - BaseScp
   - SimpleSpaceMobBase
   components:
+  - type: AmbientSound
+    range: 6
+    volume: -3
+    sound:
+      path: /Audio/Ambience/Objects/fireplace.ogg
   - type: AutoGhostRole
     disconnectDelay: 600
     pollDuration: 900
@@ -23,6 +28,7 @@
   - type: ActionGrant
     actions:
     - Scp457Absorb
+    - Scp457Fire
   - type: FearSource
     uponSeenState: None
     uponComeCloser: Anxiety
@@ -36,7 +42,7 @@
     states:
       Alive:
         Base: fireguy
-      Dead:
+      Critical:
         Base: fireguy_dead
   - type: Fixtures
     fixtures:
@@ -71,7 +77,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      400: Dead
+      400: Critical
   - type: Reactive
     groups:
       Flammable: [ Touch ]
@@ -109,14 +115,15 @@
   - type: Speech
     speechSounds: Lizard
   - type: TTS
-    voice: Neco
+    voice: dragon_knight_dragon_dota_2
   - type: PassiveDamage
     allowedStates:
     - Alive
+    - Critical
     damageCap: 0
     damage:
       types:
-        Cold: -1
+        Cold: -3
         Poison: -200
         Slash: -200
         Piercing: -200
@@ -151,3 +158,51 @@
     guides:
     - ScpResearch
     - ScpFear
+
+- type: entity
+  id: Scp457Flame
+  name: flame
+  components:
+  - type: Clickable
+  - type: Fixtures
+    fixtures:
+      ignition:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        hard: false
+        mask:
+        - ItemMask
+        layer:
+        - SlipLayer
+  - type: Sprite
+    sprite: _Scp/Mobs/Scp/scp-457.rsi
+    state: fire
+  - type: TimedDespawn
+    lifetime: 20
+  - type: InteractionOutline
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Damageable
+  - type: AmbientSound
+    range: 6
+    volume: -3
+    sound:
+      path: /Audio/Ambience/Objects/fireplace.ogg
+  - type: Physics
+  - type: TriggerOnCollide
+    fixtureID: ignition
+  - type: FireStackOnTrigger
+    fireStacks: 3
+    targetUser: true
+  - type: PointLight
+    radius: 2
+    energy: 4.5
+    color: "#ff8484"
+    castShadows: false

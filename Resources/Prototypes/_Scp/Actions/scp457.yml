@@ -13,3 +13,22 @@
     raiseOnUser: true
   - type: InstantAction
     event: !type:Scp457AbsorbActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: Scp457Fire
+  name: Ignite tile
+  description: Ignites the tile you are standing on.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 10
+    icon:
+      sprite: _Scp/Mobs/Scp/scp-457.rsi
+      state: fire
+    itemIconStyle: BigAction
+    raiseOnUser: true
+  - type: InstantAction
+    event: !type:InstantSpawnSpellEvent
+      prototype: Scp457Flame
+      posData: !type:TargetCasterPos

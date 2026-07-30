@@ -18,7 +18,7 @@ public sealed partial class Scp457Component : Component
     public float ObjectSizeFlammableAdd = 0.1f;
 
     [DataField]
-    public float ObjectSizeDecay = 0.02f;
+    public float ObjectSizeDecay = 0.01f;
 
     [DataField]
     public float SmallFormSize = 0.65f;
@@ -38,6 +38,9 @@ public sealed partial class Scp457Component : Component
     [DataField]
     public float DamageModifierFlammableAdd = 0.1f;
 
+	[DataField]
+    public float ObjectWaterSizeDecrease = 0.01f;
+
     [DataField]
     public float RegenerationModifierFlammableAdd = 0.1f;
 
@@ -54,7 +57,7 @@ public sealed partial class Scp457Component : Component
     public HashSet<string> ReactiveGroupsWhitelist = ["Flammable"];
 
     [DataField]
-    public HashSet<string> FlammableMaterialsWhitelist = ["Wood", "Paper", "Cardboard", "Cloth"];
+    public HashSet<string> FlammableMaterialsWhitelist = ["Wood", "Paper", "Cardboard", "Cloth", "Carpet"];
 
     [ViewVariables]
     public float AppliedObjectSize = 1f;

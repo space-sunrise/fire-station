@@ -44,7 +44,7 @@ public sealed class Scp457System : EntitySystem
     private EntityQuery<ReactiveComponent> _reactiveQuery;
     private EntityQuery<PhysicalCompositionComponent> _compositionQuery;
 
-    private TimeSpan DecayInterval = TimeSpan.FromSeconds(8);
+    private TimeSpan DecayInterval = TimeSpan.FromSeconds(12);
 
     public override void Initialize()
     {
@@ -125,7 +125,7 @@ public sealed class Scp457System : EntitySystem
 
     private void OnHitByWater(Entity<Scp457Component> ent, ref HitByWaterEvent args)
     {
-        TryChangeSize(ent, -ent.Comp.ObjectSizeFlammableAdd);
+        TryChangeSize(ent, -ent.Comp.ObjectWaterSizeDecrease);
     }
 
     private void OnVentCrawlAttempt(Entity<Scp457Component> ent, ref VentCrawlAttemptEvent args)
