@@ -17,13 +17,38 @@
   id: ScpFear
   name: guide-entry-scp-fear
   text: "/ServerInfo/_Scp/Guidebook/Fear/Fear.xml"
+  priority: -2
+
+- type: guideEntry
+  id: ScpGlossary
+  name: guide-entry-scp-glossary
+  text: "/ServerInfo/_Scp/Guidebook/Glossary/Glossary.xml"
   priority: -3
+  children:
+  - ScpBasicTerms
+  - ScpResearchableEquipment
+  - ScpAbbreviations
+
+- type: guideEntry
+  id: ScpBasicTerms
+  name: guide-entry-scp-scp-basic-terms
+  text: "/ServerInfo/_Scp/Guidebook/Glossary/BasicTerms.xml"
+
+- type: guideEntry
+  id: ScpAbbreviations
+  name: guide-entry-scp-scp-abbreviations
+  text: "/ServerInfo/_Scp/Guidebook/Glossary/Abbreviations.xml"
+
+- type: guideEntry
+  id: ScpResearchableEquipment
+  name: guide-entry-scp-scp-researchable-equipment
+  text: "/ServerInfo/_Scp/Guidebook/Glossary/ResearchableEquipment.xml"
 
 - type: guideEntry
   id: Scp096About
   name: guide-entry-scp-scp096-about
   text: "/ServerInfo/_Scp/Guidebook/Scp096/About.xml"
-  priority: -2
+  priority: -4
   children:
   - Scp096States
   - Scp096Abilities
@@ -49,3 +74,34 @@
   id: Scp096ContainmentBreach
   name: guide-entry-scp-scp096-containment-breach
   text: "/ServerInfo/_Scp/Guidebook/Scp096/ContainmentBreach.xml"
+
+- type: guideEntry
+  id: Scp457About
+  name: guide-entry-scp-scp457-about
+  text: "/ServerInfo/_Scp/Guidebook/Scp457/About.xml"
+  priority: -5
+  children:
+  - Scp457States
+  - Scp457Abilities
+  - Scp457Containment
+  - Scp457ContainmentBreach
+
+- type: guideEntry
+  id: Scp457States
+  name: guide-entry-scp-scp457-states
+  text: "/ServerInfo/_Scp/Guidebook/Scp457/States.xml"
+
+- type: guideEntry
+  id: Scp457Abilities
+  name: guide-entry-scp-scp457-abilities
+  text: "/ServerInfo/_Scp/Guidebook/Scp457/Abilities.xml"
+
+- type: guideEntry
+  id: Scp457Containment
+  name: guide-entry-scp-scp457-containment
+  text: "/ServerInfo/_Scp/Guidebook/Scp457/Containment.xml"
+
+- type: guideEntry
+  id: Scp457ContainmentBreach
+  name: guide-entry-scp-scp457-containment-breach
+  text: "/ServerInfo/_Scp/Guidebook/Scp457/ContainmentBreach.xml"
