@@ -44,7 +44,7 @@ public sealed class Scp457System : EntitySystem
     private EntityQuery<ReactiveComponent> _reactiveQuery;
     private EntityQuery<PhysicalCompositionComponent> _compositionQuery;
 
-    private TimeSpan DecayInterval = TimeSpan.FromSeconds(8);
+    private TimeSpan DecayInterval = TimeSpan.FromSeconds(12);
 
     public override void Initialize()
     {

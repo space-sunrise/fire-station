@@ -24,7 +24,6 @@
   - type: Scp
     class: Euclid
   - type: Scp457
-    objectSize: 1.3 # чтобы не слишком быстро сбегал раундстартом
   - type: VentCrawler
   - type: ActionGrant
     actions:
