@@ -32,7 +32,7 @@ scp-description-keter =
     | SCP-019: ДА
     | SCP-035: ДА
     | Безопасный: ДА
-    | Евклид: ДА
+    | Евклид: Максимум 2
     | Кетер: Максимум 1
 scp-title-thaumiel = Уровень сложности «Таумиэль»
 scp-description-thaumiel =
@@ -41,14 +41,14 @@ scp-description-thaumiel =
     | SCP-019: ДА
     | SCP-035: ДА
     | Безопасный: ДА
-    | Евклид: ДА
+    | Евклид: Максимум 3
     | Кетер: ДА
 
 scp-title-chaos-raid = Рейд Повстанцев Хаоса
-scp-description-chaos-raid = 
+scp-description-chaos-raid =
     Данная смена может оказаться для вас последней. В этой жизни.
     { scp-description-euclid }
 scp-title-chaos-spy = Шпионы Повстанцев Хаоса
-scp-description-chaos-spy = 
+scp-description-chaos-spy =
     Среди сотрудников затаились агенты Повстанцев Хаоса.
     { scp-description-euclid }
