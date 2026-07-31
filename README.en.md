@@ -17,7 +17,7 @@ With many new objects, research mechanics, new dimensions, roles, and maps, SCP:
 
 - 🇺🇸 [English](README.en.md)
 - 🇷🇺 [Русский](README.md)
-
+- 🌎 [Español latinoamericano](README.es.md)
 ---
 
 <img width="1106" height="790" alt="image" src="https://github.com/user-attachments/assets/ccf3ae59-36d5-4d6a-8473-cb590bd3b10e" />
