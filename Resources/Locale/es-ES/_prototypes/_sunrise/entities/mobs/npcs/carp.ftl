@@ -1,0 +1,20 @@
+ent-MobSharkGhost = { ent-MobShark }
+    .suffix = El papel del fantasma
+    .desc = { ent-MobShark.desc }
+ent-MobCarpServantDungeon = El sirviente carpa de la mazmorra
+    .desc = { ent-MobCarpDungeon.desc }
+ent-MobCarpServantMagic = Magikarp Servant Carpa
+    .desc = { ent-MobCarpMagic.desc }
+ent-MobCarpServantHolo = Holocarpo Carpa Sirvienta
+    .desc = { ent-MobCarpHolo.desc }
+ent-MobCarpServantRainbow = Carpa Sirviente Arcoíris
+    .desc = { ent-MobCarpRainbow.desc }
+ent-MobCarpServantDragon = Sirviente Carpa Dragón
+    .desc = { ent-MobCarpDragon.desc }
+
+ent-MobCarpHoloDragon = { ent-MobCarpHolo }
+    .desc = { ent-MobCarpHolo.desc }
+ent-MobCarpRainbowDragon = { ent-MobCarpRainbow }
+    .desc = { ent-MobCarpRainbow.desc }
+ent-MobSharkDragon = { ent-MobShark }
+    .desc = { ent-MobShark.desc }

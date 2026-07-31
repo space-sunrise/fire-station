@@ -1,0 +1,31 @@
+ent-Lighter = Mechero simple
+    .desc = Un mechero de plástico sencillo.
+ent-CheapLighter = Mechero barato
+    .desc = ¡Mechero de plástico peligrosamente barato, no te quemes el pulgar!
+ent-FlippoLighter = Mechero Flippo
+    .desc = Un mechero metálico fiable hecho para durar.
+ent-FlippoEngravedLighter = Mechero grabado Flippo
+    .desc = Un encendedor metálico fiable construido para durar. El grabado no aporta ninguna ventaja táctica.
+ent-NanotrasenFlippo = Mechero flippo "NanoTrasen"
+    .desc = Encendedor de lujo azul oscuro, dado a ejecutivos leales en lugar de un bonus. Alimentado por plasma líquido.
+ent-SyndicateFlippo = Flippo Encendedor Rojo Sangre
+    .desc = La 'elección' correcta para mecheros. Sin cobre.
+ent-DiscountDanLighter = Mechero de Discount Dan
+    .desc = El peor mechero jamás hecho. La quema es inevitable: no rellenes mientras la quemas.
+ent-CybersunFlippo = Mechero flippo "Cybersun"
+    .desc = Un mechero de agente negro con el logo y los símbolos de "CyberSun Industries".
+ent-DonkcoLighter = Flippo encendedor "Donk Co."
+    .desc = Un mechero para un traidor experimentado de Donk Co., que incluso se puede comer encendido.
+ent-CentCommFlippo = Centcom mechero flippo
+    .suffix = No mapear
+    .desc = Un mechero lujoso con relieve y dorado de jade, con un reactivo de bluespace. La cerradura solo está abierta para empleados de Centcom. El mechero más exquisito.
+ent-HonkCoFlippo = Mechero flippo "Honk Co."
+    .desc = Un mechero cómico resbaladizo de la compañía Honk escondido dentro de una cáscara de plátano real.
+ent-InterdyneFlippo = Mechero Flippo "Interdyne"
+    .desc = Un mechero azul oscuro con el logo de las clínicas Gen-Clean de Interdyne Pharmaceutics Corporation. Conviértete en el dueño de tu cigarrillo.
+ent-SpiderclanFlippo = Mechero flippo del Clan Araña
+    .desc = Jet lighter para operación en el espacio. Impresionado por una mini batería micronuclear.
+ent-WaffleCoFlippo = Mechero flippo "Waffle Co".
+    .desc = Un encendedor robusto de masa. El logo de "Waffle Co". hace girar la rueda de chispa al levantarla, para que incluso los usuarios más torpes no se quemen.
+
+

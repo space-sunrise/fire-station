@@ -1,0 +1,14 @@
+ent-BaseNinjaObjective = { ent-BaseObjective }
+    .desc = { ent-BaseObjective.desc }
+ent-DoorjackObjective = { ent-BaseNinjaObjective }
+    .desc = { ent-BaseNinjaObjective.desc }
+ent-StealResearchObjective = { ent-BaseNinjaObjective }
+    .desc = Tus guantes pueden usarse para hackear el servidor RND y robar su tecnología. Si la ciencia se está estancando, tendrás que trabajar.
+ent-SpiderChargeObjective = { ent-BaseNinjaObjective }
+    .desc = Esta bomba puede detonarse en un lugar específico. ¡Ten en cuenta que la bomba no detonará en otro lugar!
+ent-NinjaSurviveObjective = Sobrevivir
+    .desc = No vas a ser un buen ninja si mueres, ¿verdad?
+ent-TerrorObjective = Invocar Amenaza
+    .desc = Usa tus guantes en la consola de comunicaciones para atraer otra amenaza a la estación.
+ent-MassArrestObjective = Pon a todos en la lista de buscados
+    .desc = ¡Usa tus guantes para hackear la consola de Antecedentes Penales y poner a toda la comisaría en la lista de buscados!

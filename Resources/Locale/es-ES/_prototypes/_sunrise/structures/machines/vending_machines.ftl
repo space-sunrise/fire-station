@@ -1,0 +1,16 @@
+ent-VendingMachineBoxingDrobe = Vestuario de boxeo
+    .desc = Siempre hay escasez de productos.
+ent-VendingMachineMailDrobe = Guardarropa postal
+    .desc = Ni las llamaradas solares, ni los meteoritos, ni el fuego del plasma, ni el vacío del espacio impedirán que estos mensajeros completen sus rondas asignadas a tiempo.
+ent-VendingMachineMNKDrobe = Vestuario de multinacionales
+    .desc = Ropa de alta calidad de MoNoKrom.
+ent-PaintVend = KraskoMat
+    .desc = KraskoMat es tu cómplice en crímenes de color contra el aburrimiento
+ent-VendingMachineAbductorDispenser = Dispensador de Alienígenas
+    .desc = Está repartiendo algo extraño.
+ent-VendingMachineWeaponDev = Estación de Liberación
+    .desc = Te invade una abrumadora sensación de patriotismo antiguo en cuanto miras esta máquina.
+ent-VendingMachineDressCloset = Armario de gala
+    .desc = Parece perfecto.
+ent-InstrumentsMate = MuzoMat
+    .desc = Añade algo de música a tu vida.

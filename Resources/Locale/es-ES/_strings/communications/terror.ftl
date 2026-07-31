@@ -1,0 +1,13 @@
+terror-dragon = Atención, tripulación, parece que alguien de vuestra estación ha contactado inesperadamente con un pez extraño en el espacio cercano.
+terror-revenant = Atención, equipo, parece que alguien de vuestra estación ha contactado inesperadamente con una energía de otro mundo en el espacio cercano.
+terror-nukeops-infiltrator = Atención, equipo, parece que alguien de vuestra estación ha enviado inesperadamente las coordenadas del Disco de Autenticación del Espacio Cercano.
+terror-nukeops-infiltrator-dropship = Atención, equipo, parece que alguien de vuestra estación ha enviado inesperadamente una solicitud para una limpieza a fondo de la estación.
+terror-lone-operative = Atención tripulación, parece que alguien en vuestra estación ha tenido un contacto inesperado con un merodeador rojo sangre en el espacio cercano.
+terror-nukeops-operative = Atención tripulación, parece que alguien de vuestra estación ha enviado inesperadamente una declaración de guerra en el espacio cercano.
+terror-pirate = Atención, equipo, parece que alguien de vuestra comisaría ha pedido un par de préstamos inesperadamente, hipotecando la propia estación.
+terror-pirate-small = Atención a la tripulación, parece que alguien de tu estación inesperadamente emitió un par de microcréditos, hipotecando la propia estación.
+terror-abductor = Atención, equipo, parece que alguien de vuestra estación ha contactado inesperadamente con una señal extraña en el espacio cercano.
+terror-clown = Atención equipo, parece que alguien en vuestra estación ha tenido un contacto inesperado con un trío bombástico de payasos que bocinan en el espacio cercano.
+terror-ninja = Atención tripulación, parece que alguien en vuestra estación ha tenido un contacto inesperado con un clan de arañas en el espacio cercano.
+terror-rod = Atención tripulación, parece que alguien en vuestra estación ha hecho un contacto inesperado con una fuerza inamovible en el espacio cercano.
+terror-wizard = Atención, tripulación, parece que alguien en vuestra estación ha tenido un contacto inesperado con un representante de la Federación de Magos en el espacio cercano.

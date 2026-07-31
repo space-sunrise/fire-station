@@ -1,0 +1,16 @@
+ent-ClothingUniformJumpsuitRecruitNT = Petos de Recluta
+    .desc = Mono gris clásico con elementos azules. Perfecto para un asistente digno.
+ent-ClothingUniformJumpsuitRecruitSyndie = Sindicato Recluta Overole
+    .desc = Un mono gris oscuro sospechoso. Como si los pasajeros no fueran ya lo suficientemente sospechosos.
+ent-ClothingUniformJumpsuitRepairmanNT = Petos de reparador
+    .desc = Un mono que te recuerda a una especialidad del sector civil. Esperamos que no tengas que hacer el mismo trabajo que estos raros.
+ent-ClothingUniformJumpsuitRepairmanSyndie = Monos de reparador del sindicato
+    .desc = Funcional, moderno, guay. Los ingenieros de NanoTrasen sueñan con lucir tan bien como tú.
+ent-ClothingUniformJumpsuitParamedicNT = Traje de paramédico
+    .desc = Un mono azul y blanco sencillo diseñado para los paramédicos de NanoTrasen que trabajan en sectores de combate.
+ent-ClothingUniformJumpsuitParamedicSyndie = Traje de paramédicos del Sindicato
+    .desc = Por alguna razón, cuando lo llevas, te sientes muy cerca de violar la Convención de Ginebra.
+ent-ClothingUniformJumpsuitChiefEngineerNT = Mono de Ingeniero Senior
+    .desc = A menudo se bromea diciendo que el puesto de ingeniero senior en el sector de combate es donde se asciende a los ingenieros reales con mentalidad logística. Buena suerte.
+ent-ClothingUniformJumpsuitChiefEngineerSyndie = Monos de Ingeniero Senior de Syndicate
+    .desc = Un mono de aspecto villano con chaleco reflectante y camiseta roja.

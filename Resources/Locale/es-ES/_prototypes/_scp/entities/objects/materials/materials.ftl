@@ -1,0 +1,15 @@
+ent-MaterialConcrete = cemento
+    .suffix = completo
+    .desc = { ent-MaterialBase.desc }
+ent-MaterialConcrete10 = { ent-MaterialConcrete }
+    .suffix = 10
+    .desc = { ent-MaterialConcrete.desc }
+ent-MaterialConcrete1 = { ent-MaterialConcrete }
+    .suffix = uno
+    .desc = { ent-MaterialConcrete.desc }
+ent-ScpMaterialWoodPlank = { ent-MaterialWoodPlank }
+    .desc = { ent-MaterialWoodPlank.desc }
+ent-ScpMaterialWoodPlank10 = { ent-MaterialWoodPlank10 }
+    .desc = { ent-MaterialWoodPlank10.desc }
+ent-ScpMaterialWoodPlank1 = { ent-MaterialWoodPlank1 }
+    .desc = { ent-MaterialWoodPlank1.desc }

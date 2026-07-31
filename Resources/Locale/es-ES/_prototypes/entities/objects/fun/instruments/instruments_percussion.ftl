@@ -1,0 +1,14 @@
+ent-BasePercussionInstrument = { ent-BaseHandheldInstrument }
+    .desc = { ent-BaseHandheldInstrument.desc }
+ent-GlockenspielInstrument = Glockenspiel
+    .desc = { ent-BaseHandheldInstrument.desc }
+ent-MusicBoxInstrument = Caja de Música
+    .desc = Su melodía hace que no tengas miedo a los animatrónicos aterradores.
+ent-XylophoneInstrument = Xilófono
+    .desc = Glockenspiel arcoíris.
+ent-MicrophoneInstrument = Micrófono
+    .desc = Ideal para cantar a pleno pulmón.
+ent-WoodblockInstrument = Caja
+    .desc = Escucharlo el tiempo suficiente hace que su sonido te carde la cabeza.
+ent-ReverseCymbalsInstrument = Platillos inversos
+    .desc = ¿Estás seguro de que los sujetas correctamente?

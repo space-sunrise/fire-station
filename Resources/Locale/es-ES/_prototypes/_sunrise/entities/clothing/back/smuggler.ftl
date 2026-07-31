@@ -1,0 +1,12 @@
+ent-ClothingBackpackSmugglerRevolutionaryFilled = { ent-ClothingBackpackSatchelSmuggler }
+    .suffix = contrabandista, revolucionario, no mapees
+    .desc = { ent-ClothingBackpackSatchelSmuggler.desc }
+ent-RevolutionarySmugglerStash = alijo de contrabando sellado
+    .suffix = contrabandista, revolucionario, no mapees
+    .desc = { ent-ClothingBackpackSatchelSmuggler.desc }
+ent-SmugglerSunriseMaterialsParcel = conjunto de materiales
+    .suffix = contrabandista, revolucionario
+    .desc = Materiales cuidadosamente doblados para todas las ocasiones.
+ent-SmugglerSunriseForgedPartsParcel = conjunto de piezas
+    .suffix = contrabandista, revolucionario
+    .desc = Piezas cuidadosamente dobladas y empaquetadas, probablemente armaduras o armas.

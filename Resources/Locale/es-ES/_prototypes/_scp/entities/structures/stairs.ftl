@@ -1,0 +1,16 @@
+ent-StairScpConcrete = pasos
+    .suffix = Hormigón, ancho
+    .desc = { ent-Stairs.desc }
+ent-StairScpConcreteStage = { ent-Stairs }
+    .suffix = Concreto
+    .desc = { ent-Stairs.desc }
+ent-StairScpSteel = { ent-Stairs }
+    .suffix = Acero, ancho
+    .desc = { ent-Stairs.desc }
+ent-StairScpSteelStage = { ent-Stairs }
+    .suffix = Acero
+    .desc = { ent-Stairs.desc }
+ent-StairScpWood = { ent-StairWood }
+    .desc = { ent-StairWood.desc }
+ent-StairScpWoodStage = { ent-StairStageWood }
+    .desc = { ent-StairStageWood.desc }

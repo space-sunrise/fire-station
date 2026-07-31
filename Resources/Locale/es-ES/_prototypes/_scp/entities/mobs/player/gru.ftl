@@ -1,0 +1,12 @@
+ent-SpawnerSquadGRU = { spawner-squad-name } GRU-P
+    .desc = { ent-SpawnPointScpBase.desc }
+    .suffix = gru
+ent-RandomHumanoidSpawnerGRULeader = { ghost-role-information-gru-leader-name }
+    .suffix = gru
+    .desc = { ghost-role-information-gru-leader-description }
+ent-RandomHumanoidSpawnerGRUSpecialist = { ghost-role-information-gru-specialist-name }
+    .suffix = gru
+    .desc = { ghost-role-information-gru-description }
+ent-RandomHumanoidSpawnerGRUCadet = { ghost-role-information-gru-cadet-name }
+    .suffix = gru
+    .desc = { ghost-role-information-gru-description }

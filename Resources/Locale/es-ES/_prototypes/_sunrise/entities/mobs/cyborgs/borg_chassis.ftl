@@ -1,0 +1,25 @@
+ent-BorgChassisSecurity = { ent-PlayerBorgSecurityBattery }
+    .desc = { ent-PlayerBorgSecurityBattery.desc }
+ent-BorgChassisPeace = { ent-PlayerBorgPeaceBattery }
+    .desc = { ent-PlayerBorgPeaceBattery.desc }
+ent-BorgChassisClown = { ent-PlayerBorgClownBattery }
+    .desc = { ent-PlayerBorgClownBattery.desc }
+ent-BorgChassisSyndicateReaper = { ent-PlayerBorgSyndicateReaperBattery }
+    .desc = { ent-PlayerBorgSyndicateReaperBattery.desc }
+ent-BorgChassisERT = MTF Combat Cyborg
+    .desc = Un robot de combate de la Fundación SCP diseñado para apoyar a MTF en misiones de combate especialmente desafiantes.
+ent-BorgChassisSyndicateHeavy = Sindicato Ciborg de Combate Pesado
+    .desc = Una versión modernizada del ciborg de combate del Sindicato, equipado con armas pesadas y un casco resistente.
+ent-BorgChassisSyndicateSpider = saboteador ciborg del Sindicato
+    .desc = Un pequeño robot del Sindicato diseñado para el Escuadrón de Sabotaje está equipado con todo lo necesario para un sabotaje mayor.
+ent-BorgChassisSecurityCombat = { ent-PlayerBorgSecurityCombatBattery }
+    .desc = { ent-PlayerBorgSecurityCombatBattery.desc }
+
+ent-PlayerBorgChassisSyndicateSpiderBattery = { ent-BorgChassisSyndicateSpider }
+    .desc = { ent-BorgChassisSyndicateSpider.desc }
+    .suffix = Batería, herramientas
+ent-BorgChassisPirate = Ciborg de abordaje pirata
+    .desc = Una máquina robusta construida para abordaje y otros trabajos piratas.
+ent-BorgChassisPirateBattery = { ent-BorgChassisPirate }
+    .desc = { ent-BorgChassisPirate.desc }
+    .suffix = batería, módulo, pirata

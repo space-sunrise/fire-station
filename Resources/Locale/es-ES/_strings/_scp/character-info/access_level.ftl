@@ -1,0 +1,14 @@
+access-level-name-zero = Nivel 0 (Uso General)
+access-level-name-one = Nivel 1 (Para uso oficial)
+access-level-name-two = Nivel 2 (Restringido)
+access-level-name-three = Nivel 3 (Clasificado)
+access-level-name-four = Nivel 4 (Ultrasecreto)
+access-level-name-five = Nivel 5 (Thaumiel)
+access-level-name-unspecified = Nivel de acceso desconocido
+access-level-description-zero = El nivel de autorización 0 se concede a personal sin valor particular que no requiera acceso a información sobre artefactos o criaturas anómalas contenidas por la Fundación.
+access-level-description-one = El nivel de autorización 1 se concede al personal que trabaja en estrecha proximidad a objetos o entidades anómalas, pero no tiene acceso directo, indirecto o informativo a ellos, así como al personal que maneja información clasificada.
+access-level-description-two = El nivel de autorización 2 se concede al personal de seguridad e investigadores que necesitan acceso directo a información básica sobre objetos o criaturas anómalas en contención.
+access-level-description-three = El nivel de autorización 3 se concede a personal de seguridad superior y personal de investigación que necesiten acceso a información detallada sobre objetos o criaturas anómalas en contención, incluyendo su origen, circunstancias de retirada y planes a largo plazo para ellos.
+access-level-description-four = El nivel de autorización 4 se concede al personal directivo que necesita acceso a toda la información de una instalación y/o región en particular, así como a planes a largo plazo para las operaciones de la Fundación y proyectos científicos.
+access-level-description-five = El nivel de autorización 5 se concede al personal superior de la Fundación y garantiza un acceso casi completo a toda la información estratégica y clasificada.
+access-level-description-unspecified = Nivel de autorización no especificado; alcance desconocido.

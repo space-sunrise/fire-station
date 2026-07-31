@@ -1,0 +1,9 @@
+comp-gas-mixer-ui-mixer-status = Estado:
+comp-gas-mixer-ui-status-enabled = ON
+comp-gas-mixer-ui-status-disabled = FUERA
+comp-gas-mixer-ui-mixer-output-pressure = Presión de salida (kPa):
+comp-gas-mixer-ui-mixer-node-primary = Puerto principal:
+comp-gas-mixer-ui-mixer-node-side = Puerto secundario:
+comp-gas-mixer-ui-mixer-set = Instalación
+comp-gas-mixer-ui-mixer-max = Máximo
+comp-gas-mixer-ui-needs-anchor = ¡Primero lo asegurad!

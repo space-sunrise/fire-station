@@ -1,0 +1,11 @@
+ent-ClothingBackpackChameleon = Mochila
+    .desc = Lo llevas a la espalda y pones objetos dentro.
+    .suffix = camaleón
+ent-ClothingBackpackWaterTank = Depósito de agua de la mochila
+    .desc = Retiene una gran cantidad de líquido. Para salpicar, toma la boquilla con las manos.
+ent-ClothingBagPet = Bolsa para mascotas
+    .desc = Una pequeña bolsa diseñada para ser utilizada por mascotas y animales pequeños.
+ent-ClothingBackpackHarmpack = H.A.R.M.P.A.C.K.
+    .desc = Ahora puedes recargar, golpear y comer tentempiés al mismo tiempo.
+ent-XenoborgMaterialBag = Almacenamiento de silicio
+    .desc = Una versión simplificada de la bolsa bluespace: retrae materiales adecuados. No se recomienda para humanoides debido a las emisiones nocivas.

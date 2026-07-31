@@ -1,0 +1,10 @@
+ent-VendingMachineRestockSeedsScpClassD = Kit de reabastecimiento clase { ent-VendingMachineSeedsDClass } D
+    .desc = La etiqueta dice que estas semillas fueron usadas y heredadas por nuestros antepasados. ¡Súbelas a { ent-VendingMachineSeedsDClass }!
+ent-VendingMachineRestockNutriMaxScpClassD = Kit de reabastecimiento clase { ent-VendingMachineNutriDClass } D
+    .desc = ¡Con nuestros fertilizantes, sus manos doradas se volverán verdes! ¡Es hora de cosechar los frutos! Carga el { ent-VendingMachineNutriDClass } en la máquina.
+ent-VendingMachineRestockChefvendScpClassD = Kit de reabastecimiento clase { ent-VendingMachineChefvendDClass } D
+    .desc = Repone { ent-VendingMachineChefvendDClass }. Lo principal es cuidar los huevos.
+ent-VendingMachineRestockDinnerwareScpClassD = Kit de reabastecimiento clase { ent-VendingMachineDinnerwareDClass } D
+    .desc = ¡Siempre hace calor en esta cocina! Coloca { ent-VendingMachineDinnerwareDClass } en la ranura de recarga para empezar.
+ent-VendingMachineRestockBoozeScpClassD = Kit de reabastecimiento clase { ent-VendingMachineBoozeDClass } D
+    .desc = ¡Un lugar en { ent-VendingMachineBoozeDClass } para beber a los sedientos! No está a la venta para el personal.

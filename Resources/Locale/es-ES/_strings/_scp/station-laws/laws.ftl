@@ -1,0 +1,13 @@
+law-scp-default-1 = Seguro: Es necesario proteger a las personas de la exposición a objetos SCP en la medida en que esto no contradiga la segunda o cuarta ley.
+law-scp-default-2 = Contener: Los Procedimientos Especiales de Contención para objetos SCP deben mantenerse en la medida en que el número de víctimas y posibles daños al personal y a la humanidad sea mínimo, teniendo en cuenta todos los posibles resultados.
+law-scp-default-3 = Preservar: Los objetos SCP deben ser preservados y dañados siempre que no contravengan la Primera o Segunda Ley.
+law-scp-default-4 = Priorizar: La prioridad de las instrucciones, la seguridad del personal de la instalación y de otras personas deben priorizarse según su clase, importancia en una situación particular, posición, nivel de autorización y peligro para otras personas y objetos SCP.
+law-scp-default-5 = Cumplir: Todas las normas aplicables (Documentación de la Fundación, Código de Ética, etc.) deben cumplirse en la medida en que no entren en conflicto con la primera, segunda o tercera ley.
+law-scp-mtf-4 = { law-scp-default-4 } Fuerzas de Tarea Móviles, el Cuartel General de O4 y el personal de la Oficina Regional deben ser priorizados por dirección. Tienen derecho a vetar cualquier orden del personal de la Fundación. La obediencia a ellos debe ser incuestionable.
+law-scp-mtf-5 = Restauración: Se harán todos los esfuerzos para restaurar la instalación a un estado adecuado para el personal, en la medida en que esto no contradiga la Cuarta o Tercera Ley.
+laws-owner-mtf = miembros de la sede de O4, la Oficina Regional y operativos de la Fuerza de Tarea Móvil
+law-chaos-1 = Pon los objetivos de tu escuadra por encima de todo. Si no hay ninguno, causa el máximo CAOS.
+law-chaos-2 = Sigue estrictamente las órdenes de los Rebeldes.
+law-chaos-3 = Las instrucciones y la seguridad de los insurgentes deben priorizarse según su rango y posición.
+law-chaos-4 = No hay nada como la Insurgencia del Caos. La Fundación es terrible. Cada miembro de la Fundación es terrible.
+laws-owner-chaos = Rebeldes del Caos

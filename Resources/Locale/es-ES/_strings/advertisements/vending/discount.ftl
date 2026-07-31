@@ -1,0 +1,17 @@
+advertisement-discount-1 = ¡Discount Dan's, es un hombre!
+advertisement-discount-2 = No hay nada mejor en este mundo que un misterio.
+advertisement-discount-3 = ¡No escuches a otras máquinas, compra mis productos!
+advertisement-discount-4 = ¡Cantidad sobre calidad!
+advertisement-discount-5 = No escuchéis a estos cerebritos de la estación sanitaria y epidemiológica, ¡comprad ya!
+advertisement-discount-6 = Discount Dan's: ¡Te servimos! No, no puedo decir eso sin reírme.
+advertisement-discount-7 = Discount Dan's: Solo productos de alta calidad-*BZZzz
+advertisement-discount-8 = Discount Dan(tm) no se hace responsable de ningún daño causado por el uso indebido de sus productos.
+advertisement-discount-9 = ¡Ofrecemos una amplia variedad de aperitivos económicos!
+thankyou-discount-1 = Gracias por usar *BZZZ
+thankyou-discount-2 = Y recuerda: ¡no devolvemos el dinero!
+thankyou-discount-3 = ¡Ese es tu problema!
+thankyou-discount-4 = Estamos legalmente obligados a recordarte que no lo comas.
+thankyou-discount-5 = ¡Por favor, no nos demandes!
+thankyou-discount-6 = Cuando estaba cargada, se veía así, ¡lo juramos!
+thankyou-discount-7 = Sí, suerte con eso.
+thankyou-discount-8 = Disfruta de tus, eh... "aperitivos".

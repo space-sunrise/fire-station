@@ -1,0 +1,10 @@
+ent-BaseRuneAction = { ent-BaseAction }
+    .desc = { ent-BaseAction.desc }
+ent-ActionFlashRune = Runa de destello
+    .desc = Invoca una runa que cega al usarla.
+ent-ActionExplosionRune = Runa de la Explosión
+    .desc = Invoca una runa que explota al usarla.
+ent-ActionIgniteRune = Runa de Ignición
+    .desc = Invoca una runa que se enciende al usarla.
+ent-ActionStunRune = Runa aturdida
+    .desc = Invoca una runa que aturde al usarla.

@@ -1,0 +1,13 @@
+id-card-access-level-blueshield = Escudo azul
+id-card-access-level-ntrep = representante de O4
+id-card-access-level-magistrat = magistrado
+id-card-access-level-barber = peluquero
+id-card-access-level-mail = cartero
+id-card-access-level-cargo-purchase-access = Suministro: pedidos
+id-card-access-level-research-console-access = investigación científica
+id-card-access-level-mining = minero
+id-card-access-level-iaa = Asuntos internos
+id-card-access-level-brigmedic = brigamedic
+id-card-access-level-cadet = cadete
+id-card-access-level-robotics = Robótica
+id-card-access-level-pirate = pirata

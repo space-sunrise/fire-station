@@ -1,0 +1,12 @@
+ent-SpawnMobAdultSlimesBlue = Azul de Engaño de Baba
+    .desc = { ent-MarkerBase.desc }
+ent-SpawnMobAdultSlimesBlueAngry = Engendrador de Baba Azul Malvado
+    .desc = { ent-MarkerBase.desc }
+ent-SpawnMobAdultSlimesGreen = Verde Engendro de Baba
+    .desc = { ent-MarkerBase.desc }
+ent-SpawnMobAdultSlimesGreenAngry = Spawner Slime Verde Malvado
+    .desc = { ent-MarkerBase.desc }
+ent-SpawnMobAdultSlimesYellow = Amarillo Spawner Slime
+    .desc = { ent-MarkerBase.desc }
+ent-SpawnMobAdultSlimesYellowAngry = Spawner Slime Amarillo Enfadado
+    .desc = { ent-MarkerBase.desc }

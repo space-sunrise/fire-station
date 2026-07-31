@@ -1,0 +1,10 @@
+scp049-kill-action-already-dead = La criatura ya está muerta.
+scp049-kill-action-cant-kill = La criatura no puede morir.
+scp049-touch-action-success = { $performer } toca { $target }.
+scp049-self-heal = { $performer } cura sus heridas
+scp049-heal-minion = Cura heridas { $target }
+scp049-ghost-role-name = Paciente zombificado SCP-049
+scp049-ghost-role-description = Eres la víctima resucitada de SCP-049, conocida como la "Doctora de la Peste". Ahora eres su leal servidora, impulsada por un deseo irresistible de ayudar a tu amo en su "tratamiento".
+scp049-ghost-role-rules = Sigue las instrucciones de SCP-049. No ataques a otros esclavos ni a SCP-049. Tu objetivo principal es ayudar al "Doctor de la Peste" en su misión. No tienes memoria de tu vida pasada.
+scp049-missing-surgery-tool = Necesito { $instrument } para la operación.
+scp049-cannot-zombify-entity = El cuerpo { $name } resiste y no puede ser tratado

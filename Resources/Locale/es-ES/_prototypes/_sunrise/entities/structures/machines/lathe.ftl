@@ -1,0 +1,11 @@
+ent-ExosuitFabricatorHyperConvection = Fabricante de exotrajes por hiperconvección
+    .desc = Un fabricante experimental de exotrajes que utiliza tecnología de calor extremo para fabricar objetos de forma más lenta pero mucho más económica.
+ent-AutolathePrisonMetus = Autolat en prisión
+    .desc = Produce productos básicos de metal y vidrio según los estándares penitenciarios.
+ent-PirateTechFab = Pirata Phabricator
+    .desc = Produce armas, munición y equipamiento para los marginados. La versión "Optimizado al Consumo" sacrifica velocidad y variedad para ahorrar recursos.
+ent-AmmoLathe = Munición-O-Lat
+    .suffix = Cosmobatalla
+    .desc = Imprime munición y piezas de repuesto para el mantenimiento del transbordador. El "modelo optimizado para costes" tiene una velocidad de producción reducida y una elección limitada.
+ent-SewingPrinterPrison = Impresor de costura en prisión
+    .desc = Diseñado para coser textiles, mantener el orden y la identificación dentro de la prisión.

@@ -1,0 +1,1 @@
+cultshield-broken = { $name } se rompe con un chasquido

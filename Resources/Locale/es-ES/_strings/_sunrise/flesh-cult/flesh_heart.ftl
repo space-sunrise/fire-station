@@ -1,0 +1,2 @@
+flesh-heart-cant-absorb-targer = El corazón no quiere absorberlo.
+flesh-heart-activate-warning = ¡Atención! Se detectó una firma biológica anómala en la estación. Todo el personal del departamento de seguridad debe comenzar la eliminación inmediata del objetivo.

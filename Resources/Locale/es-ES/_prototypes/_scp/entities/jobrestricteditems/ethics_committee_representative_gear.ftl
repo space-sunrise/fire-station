@@ -1,0 +1,16 @@
+ent-ClothingBackpackSatchelLeatherEthicsCommitteeFilled = { ent-ClothingBackpackSatchelLeather }
+    .desc = { ent-ClothingBackpackSatchelLeather.desc }
+ent-PenEthicsCommittee = Bolígrafo del Comité de Ética
+    .desc = Todo el poder de la burocracia está en una mano.
+ent-ClothingHeadHatCapEthicsCommittee = Gorra de representante del Comité de Ética
+    .desc = ¡Límite de justicia sobre la administración!
+ent-ClothingUniformJumpsuitWithWhiteShirt = traje con camisa blanca
+    .desc = Parece estricto y oficial.
+ent-ClothingUniformJumpsuitBlackFormal = traje negro formal
+    .desc = Parece solemne, estricto y oficial.
+ent-ClothingUniformJumpskirtWithWhiteShirt = traje de falda con camisa blanca
+    .desc = Parece estricto y oficial.
+ent-ClothingOuterCoatBlackFancy = chaqueta negra
+    .desc = Elegante chaqueta negra.
+ent-ClothingOuterCoatBlackFancyOpen = chaqueta negra desabrochada
+    .desc = Elegante chaqueta desabrochada.

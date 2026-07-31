@@ -1,0 +1,10 @@
+marking-VoxBeak = Vox, Beak
+marking-VoxLArmScales = Vox, mano izquierda, escalas
+marking-VoxLHandScales = Vox, palma izquierda, escamas
+marking-VoxRArmScales = Vox, Mano Derecha, Escalas
+marking-VoxRHandScales = Vox, palma derecha, escamas
+marking-VoxLFootScales = Vox, pie izquierdo, escamas
+marking-VoxLLegScales = Vox, pie izquierdo, escamas
+marking-VoxRFootScales = Vox, pie derecho, escamas
+marking-VoxRLegScales = Vox, pierna derecha, escamas
+marking-VoxTail = Vox, Cola

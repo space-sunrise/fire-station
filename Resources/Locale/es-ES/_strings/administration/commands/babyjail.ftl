@@ -1,0 +1,16 @@
+cmd-babyjail-desc = Desactiva el modo "kindergarten", que impone restricciones más estrictas sobre quién puede conectarse al servidor.
+cmd-babyjail-help = Uso: babyjail
+babyjail-command-enabled = El modo "jardín de infancia" está activado.
+babyjail-command-disabled = El modo infantil está desactivado.
+cmd-babyjail_show_reason-desc = Activa la visualización de la razón por la que el modo infantil bloquea las conexiones de los clientes.
+cmd-babyjail_show_reason-help = Uso: babyjail_show_reason
+babyjail-command-show-reason-enabled = El modo infantil mostrará ahora la razón para bloquear la conexión a los usuarios.
+babyjail-command-show-reason-disabled = El modo infantil ya no mostrará a los usuarios la razón para bloquear la conexión.
+cmd-babyjail_max_account_age-desc = Obtiene o establece la antigüedad máxima de la cuenta en minutos para que pueda conectarse cuando el modo "kindergarten" esté activado.
+cmd-babyjail_max_account_age-help = Uso: babyjail_max_account_age <minutos>
+babyjail-command-max-account-age-is = La edad máxima para la cuenta en el modo infantil es de { $minutes } minutos.
+babyjail-command-max-account-age-set = Establece la edad máxima de la cuenta para el modo infantil en { $minutes } minutos.
+cmd-babyjail_max_overall_minutes-desc = Obtiene o establece el tiempo máximo total de juego en minutos para que la cuenta pueda conectarse cuando el modo "kindergarten" esté activado.
+cmd-babyjail_max_overall_minutes-help = Uso: babyjail_max_overall_minutes <minutos>
+babyjail-command-max-overall-minutes-is = El tiempo máximo total de juego en el modo Kindergarten es de { $minutes } minutos.
+babyjail-command-max-overall-minutes-set = Establece el tiempo máximo total de juego en el modo Infantil a { $minutes } minutos.

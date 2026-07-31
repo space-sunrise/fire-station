@@ -1,0 +1,9 @@
+energygun-examine-fire-mode = El modo de fuego está configurado en { $mode }
+energy-gun-lethal = voló
+energy-gun-disable = Desarme
+energy-gun-special = Especial
+energy-gun-shotgun-spread = Bombardeo láser amplio
+energy-gun-shotgun-spread-narrow = Punzón láser estrecho
+lasgun-fire-mode-low = Pequeño
+lasgun-fire-mode-standard = Combate
+lasgun-fire-mode-overcharge = Sobrecarga

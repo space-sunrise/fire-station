@@ -1,0 +1,12 @@
+recipe-CultGirder-name = haz rúnico
+recipe-CultGirder-description = Gran elemento estructural fabricado en metal. Hay una runa en él.
+recipe-AirlockGlassCult-name = puerta rúnica
+recipe-AirlockGlassCult-description = Extraña puerta de cristal con una runa.
+recipe-CultPylon-name = pilón
+recipe-CultPylon-description = Diseño místico.
+recipe-AltarTome-name = archivos
+recipe-AltarTome-description = Una mesa llena de manuscritos secretos y libros en idiomas desconocidos.
+recipe-CultBloodAltar-name = altar
+recipe-CultBloodAltar-description = Un altar sangriento dedicado a alguna criatura.
+recipe-CultForge-name = forjar
+recipe-CultForge-description = Una forja donde se fabrican armas impías.

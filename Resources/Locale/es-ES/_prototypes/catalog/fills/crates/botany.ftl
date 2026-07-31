@@ -1,0 +1,10 @@
+ent-CrateHydroponicsSeedsExotic = Caja de semillas exóticas
+    .desc = Un sueño hecho realidad para cualquier botánico en ejercicio. Contiene muchas semillas exóticas. Para desbloquear, necesitas el nivel de acceso a Hidroponía.
+ent-CrateHydroponicsSeedsMedicinal = Caja de semillas medicinales
+    .desc = Un sueño hecho realidad para cualquier químico aspirante. ¡El poder de la medicina está al alcance de tus dedos! Para desbloquearlo, necesitas el nivel de acceso a Hidroponía.
+ent-CrateHydroponicsTools = Caja de Equipos de Hidroponía
+    .desc = ¡Suministros para cultivar un gran jardín! Contiene varios sprays químicos para plantas, un hacha, un rastrillo, una guadaña, varios pares de guantes de cuero y un delantal botánico.
+ent-CrateHydroponicsSeeds = Caja de semillas
+    .desc = Las cosas grandes empiezan por cosas pequeñas. Contiene 12 semillas diferentes.
+ent-CrateHydroponicsTray = Caja de palés hidroponía
+    .desc = Contiene un paquete plano de bandeja hidropónica.

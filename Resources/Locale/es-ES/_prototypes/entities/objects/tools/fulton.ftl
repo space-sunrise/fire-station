@@ -1,0 +1,10 @@
+ent-FultonBeacon = Faro de Fulton
+    .desc = Un faro para recuperar objetos evacuados por los Fulton.
+ent-Fulton = Fulton
+    .desc = Se usan para evacuar contenedores, objetos o reclutar a la fuerza a tu base de operaciones.
+    .suffix = completo
+ent-Fulton1 = Fulton
+    .suffix = uno
+    .desc = { ent-Fulton.desc }
+ent-FultonEffect = Efecto Fulton
+    .desc = { "" }

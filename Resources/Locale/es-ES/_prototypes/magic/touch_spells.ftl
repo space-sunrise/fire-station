@@ -1,0 +1,12 @@
+ent-BaseEntitySpellAction = { ent-BaseAction }
+    .desc = { ent-BaseAction.desc }
+ent-BaseSmiteAction = { ent-BaseEntitySpellAction }
+    .desc = { ent-BaseEntitySpellAction.desc }
+ent-ActionSmite = Golpe
+    .desc = Da en el blanco al instante.
+ent-ActionSmiteNoReq = { ent-ActionSmite }
+    .desc = { ent-ActionSmite.desc }
+ent-ActionCluwne = La maldición del payaso
+    .desc = ¡Convierte a alguien en payaso!
+ent-ActionSlippery = Pendiente resbaladiza
+    .desc = ¡Haz que alguien resbala!

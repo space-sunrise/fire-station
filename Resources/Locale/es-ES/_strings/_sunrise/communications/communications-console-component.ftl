@@ -1,0 +1,12 @@
+comms-console-announcement-title-prison = Prisión Espacial
+comms-console-menu-relay-button = Habilitar
+comms-console-menu-relay-button-tooltip = Enciende o desactiva la transmisión de voz a los altavoces.
+comms-console-menu-relay-stop = Apaga
+comms-console-menu-relay-cooldown = Tiempo de recarga: { $time }.
+comms-console-menu-announcement-header = Alertas
+comms-console-menu-relay-header = Radiodifusión
+comms-console-menu-relay-time-left = Izquierda: { $time }
+comms-console-menu-emergency-header = Evacuación
+comms-console-menu-alert-level-header = Código de amenaza
+comms-console-relay-started = La transmisión a través de la consola de comunicación ha comenzado.
+comms-console-relay-stopped = La transmisión a través de la Consola de Comunicaciones ha sido detenida.

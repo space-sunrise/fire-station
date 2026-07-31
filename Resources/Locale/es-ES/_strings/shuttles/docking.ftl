@@ -1,0 +1,9 @@
+docking-component-dock = Muelle
+docking-component-undock = Desacoplar
+cmd-dock-desc = Intenta acoplar los dos gateways juntos. No se comprueba si esto es válido.
+cmd-dock-help = Uso: muelle <entidad de esclusa de aireuid1> <entidad de esclusa de aireuid2>
+cmd-dock-args = Número inválido de argumentos
+cmd-dock-invalid = EntidadUid inválida { $entity }
+cmd-dock-found = No se ha encontrado ningún componente de acoplamiento en { $airlock }
+cmd-dock-success = Acoplado con éxito
+cmd-dock-fail = No se puede acoplar

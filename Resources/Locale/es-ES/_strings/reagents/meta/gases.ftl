@@ -1,0 +1,14 @@
+reagent-name-oxygen = Oxígeno
+reagent-desc-oxygen = Gas oxidante e incoloro.
+reagent-name-plasma = plasma
+reagent-desc-plasma = Polen de hada cósmico-mágico y extraño. Probablemente no deberías comerlo, pero los dos sabemos que lo harás igualmente.
+reagent-name-tritium = Tritio
+reagent-desc-tritium = Polen cósmico-mágico radiactivo.
+reagent-name-carbon-dioxide = Dióxido de carbono
+reagent-desc-carbon-dioxide = No tienes ni idea de lo que es.
+reagent-name-nitrogen = Nitrógeno
+reagent-desc-nitrogen = También es un nitrógeno. Un gas incoloro, inodoro y no reactivo.
+reagent-name-nitrous-oxide = Óxido nítrico
+reagent-desc-nitrous-oxide = ¿Sabes lo raro que parece todo cuando estás cansado? Así que...
+reagent-name-frezon = Freson
+reagent-desc-frezon = Un refrigerante de alto rendimiento... y un alucinógeno.

@@ -1,0 +1,16 @@
+ent-BaseArachnidOrgan = { ent-BaseItem }
+    .desc = { ent-BaseItem.desc }
+ent-OrganArachnidStomach = estómago
+    .desc = Asqueroso. No lo soporto.
+ent-OrganArachnidLungs = pulmones
+    .desc = Filtra el ojigeno de la atmósfera... solo que con más avidez.
+ent-OrganArachnidHeart = corazón
+    .desc = Una bomba biológica miniatura repugnantemente resistente diseñada para arañas.
+ent-OrganArachnidLiver = hígado
+    .desc = Se recomienda servir con alubias, bajo Chianti.
+ent-OrganArachnidKidneys = riñones
+    .desc = Elimina las toxinas del sistema circulatorio.
+ent-OrganArachnidEyes = ojos
+    .desc = Dos ya es demasiado.
+ent-OrganArachnidTongue = idioma
+    .desc = Un músculo carnudo usado principalmente para hacer trampas.

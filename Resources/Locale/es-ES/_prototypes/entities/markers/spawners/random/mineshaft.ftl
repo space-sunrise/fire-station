@@ -1,0 +1,10 @@
+ent-RandomWoodenSupport = Haz de madera de desove
+    .desc = { ent-MarkerBase.desc }
+ent-RandomWoodenWall = Muro de madera de generador
+    .desc = { ent-MarkerBase.desc }
+ent-RandomStalagmiteOrCrystal = Estalagmita o cristal de engaño
+    .desc = { ent-MarkerBase.desc }
+ent-RandomBrownStalagmite = Estalagmita parda desovadora
+    .desc = { ent-MarkerBase.desc }
+ent-RandomGreyStalagmite = Estalagmita gris desova
+    .desc = { ent-MarkerBase.desc }

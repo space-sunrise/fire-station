@@ -1,0 +1,2 @@
+ent-BaseMagazineBoxImprovised = caja de municiones improvisada (.cualquiera)
+    .desc = Se parece sospechosamente a una caja de cargadores calibre .20 con un tosco diseño de bala en la parte superior. No se recomienda mezclar municiones.

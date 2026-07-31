@@ -1,0 +1,62 @@
+# Traitor single items
+steal-target-groups-hypospray = Hipospray
+steal-target-groups-handheld-crew-monitor = Monitor de tripulación portátil
+steal-target-groups-clothing-outer-hardsuit-rd = Traje de investigación experimental
+steal-target-groups-hand-teleporter = Teletransportador de mano
+steal-target-groups-clothing-shoes-boots-mag-adv = Botas magnéticas avanzadas
+steal-target-groups-box-folder-qm-clipboard = Tableta de aplicaciones digitales
+steal-target-groups-food-meat-corgi = carne Ian
+steal-target-groups-captain-id-card = Tarjeta de identificación del capitán
+steal-target-groups-jetpack-captain-filled = Mochila propulsora del capitán
+steal-target-groups-weapon-antique-laser = Pistola láser antigua
+steal-target-groups-nuke-disk = Disco de autenticación nuclear
+steal-target-groups-weapon-energy-magnum = Energy Magnum
+# Thief Collection
+steal-target-groups-figurines = Figurita
+steal-target-groups-heads-cloaks = Capas de las Cabezas
+steal-target-groups-heads-bedsheets = Mantas de las cabezas
+steal-target-groups-mail = Carta
+steal-target-groups-stamps = Impresión
+steal-target-groups-door-remotes = Control remoto desde las puertas de enlace
+steal-target-groups-encryption-keys = Clave de cifrado
+steal-target-groups-technology-disks = Disco de proceso
+steal-target-groups-id-cards = Tarjeta de identificación
+steal-target-groups-lamps = Lámpara
+# Thief single item
+steal-target-groups-forensic-scanner = Escáner forense
+steal-target-groups-flippo-engraved-lighter = Encendedor Detective Flippo grabado
+steal-target-groups-ammo-tech-fab-circuitboard = Cartuchos TechFab (placa de motor)
+steal-target-groups-clothing-head-hat-warden = Gorro de Supervisor
+steal-target-groups-clothing-outer-hardsuit-void-paramed = Traje de Vacío de Paramédico
+steal-target-groups-medical-tech-fab-circuitboard = Medical TechFab (Placa de máquinas)
+steal-target-groups-clothing-headset-alt-medical = Auriculares over-the-ear GW
+steal-target-groups-research-and-development-server-machine-circuitboard = Servidor RnD (placa máquina)
+steal-target-groups-fire-axe = Hacha de incendios
+steal-target-groups-ame-part-flatpack = Empaquetado DAM
+steal-target-groups-salvage-expeditions-computer-circuitboard = Consola de Expedición Scrap (Placa de Consola)
+steal-target-groups-cargo-shuttle-console-circuitboard = Consola de Control del Transbordador de Carga (Placa de Consola)
+steal-target-groups-clothing-eyes-hud-beer = Copas de cerveza
+steal-target-groups-bible = La Biblia
+steal-target-groups-wanted-list-cartridge = Cartucho de la lista de buscados
+steal-target-groups-clothing-neck-goldmedal = Medalla de Oro a la Maestría en Tripulación
+steal-target-groups-clothing-neck-clownmedal = Medalla de Payaso
+# Thief structures
+steal-target-groups-teg = Pieza del generador termoeléctrico
+steal-target-groups-freezer-heater = Máquina de calor de refrigeración o máquina de calor de calentamiento
+steal-target-groups-altar-nanotrasen = Altar del NT (cualquiera)
+steal-target-groups-nuclear-bomb = Ojiva nuclear
+steal-target-groups-fax-machine-captain = Fax de largo alcance del capitán
+steal-target-groups-chem-dispenser = Dispensador químico
+steal-target-groups-xeno-artifact = Artefacto alienígena
+steal-target-groups-booze-dispenser = Dispensador de alcohol
+steal-target-groups-plant-rd = Planta de interior Nauchruka
+steal-target-groups-toilet-golden-dirty-water = Inodoro Dorado
+# Thief Animal
+steal-target-groups-animal-named-cat = gato GW
+steal-target-groups-animal-ian = Ian
+steal-target-groups-animal-mc-griff = McGriff
+steal-target-groups-animal-walter = Walter
+steal-target-groups-animal-morty = Morty
+steal-target-groups-animal-renault = Alice
+steal-target-groups-animal-shiva = Shiva
+steal-target-groups-animal-tropico = Tropico

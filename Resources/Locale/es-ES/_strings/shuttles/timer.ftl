@@ -1,0 +1,11 @@
+shuttle-timer-eta = PRIB
+shuttle-timer-etd = OTB
+shuttle-timer-shuttle-time = Hora del transbordador
+shuttle-timer-source-time = Hora de salida
+shuttle-timer-dest-time = Hora de la cita
+shuttle-timer-shuttle-map = Mapa del transbordador
+shuttle-timer-source-map = Mapa de salidas
+shuttle-timer-dest-map = Tarjeta de Destino
+shuttle-timer-docked = Acoplado
+shuttle-timer-bye = ¡Adiós!
+shuttle-timer-kill = MATAR

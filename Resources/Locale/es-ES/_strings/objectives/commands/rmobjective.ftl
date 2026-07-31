@@ -1,0 +1,11 @@
+cmd-rmobjective-desc = Elimina el objetivo de la mente del jugador.
+cmd-rmobjective-help = rmobjective <username> <index>
+cmd-rmobjective-invalid-args = Se esperan exactamente 2 argumentos.
+cmd-rmobjective-player-not-found = No se pudieron encontrar datos de los jugadores.
+cmd-rmobjective-mind-not-found = La mente no podía ser encontrada.
+cmd-rmobjective-success = ¡Objetivo eliminado con éxito!
+cmd-rmobjective-failed = El objetivo no pudo ser eliminado. ¿Quizá el índice está fuera de rango? ¡Revisa los objetivos!
+cmd-rmobjective-invalid-index = El índice de { $index } no podía analizarse como un entero.
+cmd-rmobjective-invalid-objective-info = INVÁLIDO
+cmd-rmobjective-player-completion = <Player>
+cmd-rmobjective-index-completion = <Index>

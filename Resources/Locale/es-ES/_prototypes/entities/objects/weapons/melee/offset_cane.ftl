@@ -1,0 +1,10 @@
+ent-OffsetCane = Bastón estándar
+    .desc = Un bastón estándar, indispensable para moverse cuando las piernas no pueden soportarlo. Puede darte la sabiduría de los viejos... o quizá no.
+ent-OffsetCaneClown = Bastón arcoíris
+    .desc = Un bastón arcoíris, perfecto para payasos y para quienes aman los colores vivos en su vida.
+ent-OffsetCaneMime = Caña rayada
+    .desc = Un bastón a rayas blancas y negras, perfecto para actuaciones mudas.
+ent-OffsetCaneNT = Bastón NanoTrasen
+    .desc = Un bastón estándar de NanoTrasen con un logo de NT, preferido por quienes prefieren un aspecto más corporativo.
+ent-OffsetCaneWood = Bastón de madera
+    .desc = Un bastón de madera, una elección clásica para quienes aprecian los materiales naturales y un agarre fuerte.

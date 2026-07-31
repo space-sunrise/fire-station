@@ -1,0 +1,15 @@
+mech-verb-enter = Iniciar sesión
+mech-verb-exit = Extraed el piloto
+mech-equipment-begin-install = { CAPITALIZE($item) } se está estableciendo...
+mech-equipment-finish-install = La instalación { $item } completada
+mech-equipment-select-popup = Se ha seleccionado lo siguiente: { $item }
+mech-equipment-select-none-popup = Nada seleccionado
+mech-ui-open-verb = Panel de Control Abierto
+mech-menu-title = Panel de control de mechas
+mech-integrity-display = Integridad: { $amount }%
+mech-energy-display = Energía: { $amount }%
+mech-energy-missing = Energía: NINGUNA
+mech-slot-display = Espacios disponibles: { $amount }
+mech-no-enter = No puedes pilotarlo.
+mech-no-access = No tienes acceso a piloto.
+mech-eject-pilot-alert = { $user } saca al piloto de { $item }!

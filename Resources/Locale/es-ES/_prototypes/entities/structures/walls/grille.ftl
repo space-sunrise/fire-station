@@ -1,0 +1,12 @@
+ent-Grille = Parrilla
+    .desc = Un marco endeble hecho de varillas metálicas.
+ent-ClockworkGrille = Rejilla de bobinado
+    .desc = Un marco endeble hecho de varillas metálicas, ensamblado al estilo tradicional Ratwar.
+ent-GrilleBroken = Parrilla
+    .desc = Un marco endeble hecho de varillas metálicas. Ha sobrevivido a tiempos mejores.
+ent-ClockworkGrilleBroken = Rejilla de bobinado
+    .desc = Un marco endeble hecho de varillas metálicas, ensamblado en el estilo tradicional Ratwar. Ha sobrevivido a tiempos mejores.
+ent-GrilleDiagonal = Rejilla diagonal
+    .desc = { ent-Grille.desc }
+ent-ClockworkGrilleDiagonal = Retícula de bobinado diagonal
+    .desc = { ent-ClockworkGrille.desc }

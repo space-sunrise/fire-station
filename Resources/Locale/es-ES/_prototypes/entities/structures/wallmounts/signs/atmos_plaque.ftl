@@ -1,0 +1,10 @@
+ent-PlaqueAtmos = Placa atmosférica
+    .desc = { ent-BaseSign.desc }
+ent-PlaqueAtmosFEA = Placa del Departamento de Atmósfera de la FEA
+    .desc = Esta placa conmemora la caída de la División Atmosférica de la FEA. Dedicada a todas las personas carbonizadas, locas y frágiles que murieron a manos suyas.
+ent-PlaqueAtmosLINDA = Placa del Departamento de Atmósfera de LINDA
+    .desc = Esta placa conmemora la caída de la División Atmosférica de LINDA. Dedicada a todas las personas calcinadas, locas y frágiles que murieron a sus manos.
+ent-PlaqueAtmosZAS = Matrícula del Departamento de Atmósfera de ZAS
+    .desc = Esta placa conmemora la caída de la División Atmosférica de la ZAS. Dedicada a todas las personas calcinadas, locas y frágiles que murieron a manos suyas.
+ent-PlaqueAtmosZUM = Placa del Departamento de Atmósfera de ZUM
+    .desc = Esta placa conmemora el ascenso de la División Atmosférica de ZUM. Que lleve la antorcha que dejaron atrás las divisiones atmosféricas ZAS, LINDA y FEA.

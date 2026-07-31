@@ -1,0 +1,10 @@
+ent-Joint = Marco
+    .desc = Un enrollado de una planta seca envuelta en papel fino.
+ent-JointRainbow = Marco
+    .desc = Un enrollado de una planta seca envuelta en papel fino. El interior parece muy colorido.
+    .suffix = Cáñamo arcoíris
+ent-Blunt = Contundente
+    .desc = Un enrollado de una planta seca envuelta en una hoja de tabaco seca.
+ent-BluntRainbow = Contundente
+    .desc = Un enrollado de una planta seca envuelta en una hoja de tabaco seca. El interior parece muy colorido.
+    .suffix = Cáñamo arcoíris

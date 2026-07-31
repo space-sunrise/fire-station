@@ -1,0 +1,14 @@
+ent-BaseDefibrillator = Desfibrilador
+    .desc = ¡LIMPIO! ¡ALTA!
+ent-Defibrillator = { ent-BaseDefibrillator }
+    .desc = { ent-BaseDefibrillator.desc }
+ent-DefibrillatorEmpty = { ent-Defibrillator }
+    .suffix = vacío
+    .desc = { ent-Defibrillator.desc }
+ent-DefibrillatorOneHandedUnpowered = { ent-BaseDefibrillator }
+    .suffix = Con una mano, sin necesidad de energía
+    .desc = { ent-BaseDefibrillator.desc }
+ent-DefibrillatorCompact = Desfibrilador compacto
+    .desc = ¡Ahora en una talla divertida!
+ent-DefibrillatorSyndicate = Desfibrilador Interdyne
+    .desc = Inyecta una mezcla de omninisina, epinefrina y necrosol en el corazón, incluso en pacientes vivos. Puede usarse para ataque, golpeando a los enemigos con una fuerte carga eléctrica.

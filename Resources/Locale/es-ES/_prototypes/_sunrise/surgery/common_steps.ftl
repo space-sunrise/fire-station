@@ -1,0 +1,12 @@
+ent-SurgeryStepExposeNerves = Para abrir los nervios
+    .desc = { ent-SurgeryStepBase.desc }
+ent-SurgeryStepExposeBloodVessels = Vasos sanguíneos abiertos
+    .desc = { ent-SurgeryStepBase.desc }
+ent-SurgeryStepDeepIncision = Incisión profunda
+    .desc = { ent-SurgeryStepBase.desc }
+ent-SurgeryStepRetractSkin = Desvía la piel
+    .desc = { ent-SurgeryStepBase.desc }
+ent-SurgeryStepRetractMembrane = Quita la membrana
+    .desc = { ent-SurgeryStepRetractSkin.desc }
+ent-SurgeryStepCoagulateJellyFlow = Flujo gelatinoso coagulado
+    .desc = { ent-SurgeryStepBase.desc }

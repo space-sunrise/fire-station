@@ -1,0 +1,1 @@
+criminal-records-reason-visor = Configurado por el visor de seguridad

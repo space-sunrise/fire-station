@@ -1,0 +1,9 @@
+ent-RandomHumanoidPlanetPrisonHeadOfPrison = Papel del Alcaide de la Prisión Fantasma
+ent-RandomHumanoidPlanetPrisonInspector = Papel Inspector Fantasma de la Prisión
+ent-RandomHumanoidPlanetPrisonWorker = Papel Manitas fantasma de la prisión
+ent-RandomHumanoidPlanetPrisonEngineer = Rol Ingeniero de la prisión fantasma
+ent-RandomHumanoidPlanetPrisonScientist = Papel Científico de la prisión fantasma
+ent-RandomHumanoidPlanetPrisonDoctor = Papel Doctor de la prisión fantasma
+ent-RandomHumanoidPlanetPrisonChef = Papel Cocinero fantasma de la prisión
+ent-RandomHumanoidPlanetPrisonPrisoner = Papel de PT Prisionero Fantasma
+ent-RandomHumanoidPlanetPrisonTrainee = Papel de Aprendiz de Prisión Fantasma

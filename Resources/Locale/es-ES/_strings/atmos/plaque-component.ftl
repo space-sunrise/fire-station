@@ -1,0 +1,10 @@
+atmos-plaque-component-desc-zum = Esta placa conmemora el ascenso del departamento Atmos ZUM. Que lleven la antorcha que dejaron atrás los departamentos de Atmos ZAS, LINDA y FEA.
+atmos-plaque-component-desc-fea = Esta placa conmemora la caída de la División FEA de Atmos. Por todas las personas quemadas, mareantes y frágiles que murieron a manos suyas.
+atmos-plaque-component-desc-linda = Esta placa conmemora la caída del departamento de Atmos LINDA. Por todas las personas quemadas, mareantes y frágiles que murieron a sus manos.
+atmos-plaque-component-desc-zas = Esta placa conmemora la caída de la División Atmos ZAS. Por todas las personas quemadas, mareantes y frágiles que murieron a manos suyas.
+atmos-plaque-component-desc-unset = eh
+atmos-plaque-component-name-zum = Placa departamental Atmos ZUM
+atmos-plaque-component-name-fea = Matrícula del departamento FEA de Atmos
+atmos-plaque-component-name-linda = Matrícula departamental Atmos LINDA
+atmos-plaque-component-name-zas = Matrícula departamental Atmos ZAS
+atmos-plaque-component-name-unset = eh

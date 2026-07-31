@@ -1,0 +1,11 @@
+ent-BaseTapeCassette = Casete de audio
+    .desc = Un casete pequeño con cinta magnética.
+ent-TapeCassetteOneMinute = Casete de audio
+    .desc = Un pequeño casete con cinta magnética y un minuto de grabación.
+    .suffix = 1 minuto
+ent-TapeCassetteTwoMinutes = Casete de audio
+    .desc = Un pequeño casete con cinta magnética y dos minutos de grabación.
+    .suffix = 2 minutos
+ent-TapeCassetteThreeMinutes = Casete de audio
+    .desc = Un pequeño casete con cinta magnética y tres minutos de grabación.
+    .suffix = 3 minutos

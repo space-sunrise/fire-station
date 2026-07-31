@@ -1,0 +1,12 @@
+advertisement-smite-1 = ¡DESTERRA! ¡Destierra tu sed!
+advertisement-smite-2 = ¡Una explosión mística de limón y lima!
+advertisement-smite-3 = ¡Más de un millón de SMITE ya han vencido su sed!
+advertisement-smite-4 = ¡SIN PALABRAS! Lanza 2d8 para el SABOR.
+advertisement-smite-5 = ¡DESHACERSE! ¡Es hora de deshacerse de los documentos!
+advertisement-smite-6 = ¡Hasta el conserje está loco por él!
+advertisement-smite-7 = ¡DESAHOGO! ¡No te convertiré en un martillo!
+advertisement-smite-8 = ¡Boom limón y lima!
+thankyou-smite-1 = ¡SMITE lo arreglará todo!
+thankyou-smite-2 = ¡DEFINITIVAMENTE querías un limón con lima!
+thankyou-smite-3 = ¡La oficina ni siquiera entenderá lo que le ha golpeado!
+thankyou-smite-4 = Destierra tu sed.

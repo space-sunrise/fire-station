@@ -1,0 +1,11 @@
+admin-ui-atmos-add = Añade ambiente
+admin-ui-atmos-add-gas = Añadir gas
+admin-ui-atmos-fill-gas = Llenar de gas
+admin-ui-atmos-set-temperature = Temperatura de ajuste
+admin-ui-atmos-grid = Cuadrícula
+admin-ui-atmos-grid-current = Actualidad
+admin-ui-atmos-tile-x = TileX
+admin-ui-atmos-tile-y = TileY
+admin-ui-atmos-gas = Gas
+admin-ui-atmos-gas-amount = Cantidad
+admin-ui-atmos-temperature = Temperatura

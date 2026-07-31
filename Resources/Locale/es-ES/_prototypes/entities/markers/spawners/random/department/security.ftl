@@ -1,0 +1,15 @@
+ent-LootSpawnerSecurityBasic = Generador de botín en SB
+    .suffix = Equipamiento, sencillo
+    .desc = { ent-MarkerBase.desc }
+ent-LootSpawnerSecurity = Generador de botín en SB
+    .suffix = Equipamiento, mejorado
+    .desc = { ent-MarkerBase.desc }
+ent-LootSpawnerArmory = Generador de botín del Arsenal
+    .suffix = Armas, Armaduras
+    .desc = { ent-MarkerBase.desc }
+ent-LootSpawnerArmoryGunsOnly = Generador de botín del Arsenal
+    .suffix = Armas
+    .desc = { ent-MarkerBase.desc }
+ent-LootSpawnerArmoryArmorOnly = Generador de botín del Arsenal
+    .suffix = Blindaje
+    .desc = { ent-MarkerBase.desc }

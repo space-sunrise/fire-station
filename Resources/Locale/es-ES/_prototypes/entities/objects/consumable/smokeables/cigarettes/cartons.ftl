@@ -1,0 +1,10 @@
+ent-CigCartonGreen = Spessman's Fuma Paquete de Cigarrillos
+    .desc = Una caja de cartón que contenía 6 paquetes de cigarrillos Spessman's Smokes.
+ent-CigCartonRed = Paquete de cigarrillos DromedaryCo
+    .desc = Una caja de cartón con 6 paquetes de cigarrillos Dromedarycos.
+ent-CigCartonBlue = Paquete de cigarrillos AcmeCo
+    .desc = Una caja de cartón con 6 paquetes de cigarrillos AcmeCo.
+ent-CigCartonBlack = Paquete de cigarrillos Nomads
+    .desc = Una caja de cartón con 6 paquetes de cigarrillos Nomads.
+ent-CigCartonMixed = El paquete de cigarrillos empapado de Dan
+    .desc = Una caja de cartón con 3 paquetes de cigarrillos Dan empapados.

@@ -1,0 +1,10 @@
+ent-ClothingMaskBandOrange = pañuelo naranja
+    .desc = Pañuelo naranja para lucir genial.
+ent-ClothingMaskBandYellow = pañuelo amarillo
+    .desc = Pañuelo amarillo para lucir genial.
+ent-ClothingMaskBandCyan = pañuelo azul
+    .desc = Pañuelo azul para lucir genial.
+ent-ClothingMaskBandWhite = pañuelo blanco
+    .desc = Pañuelo blanco para lucir genial.
+ent-ClothingMaskBandPurple = pañuelo morado
+    .desc = Pañuelo morado para lucir genial.

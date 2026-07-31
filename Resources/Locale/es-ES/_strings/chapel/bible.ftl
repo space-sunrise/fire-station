@@ -1,0 +1,17 @@
+bible-heal-success-self = Golpeaste a { $target } con { $bible } y sus heridas se cierran en un destello de luz sagrada.
+bible-heal-success-others = { CAPITALIZE($user) } golpea a { $target } con { $bible }, y sus heridas se cierran en un destello de luz sagrada.
+bible-heal-success-none-self = Golpeas { $target } con { $bible }, ¡pero no hay heridas que se puedan curar!
+bible-heal-success-none-others = { CAPITALIZE($user) } { $target } golpea con { $bible }!
+bible-damage-unholy-self = Si { THE($target) } golpeas con { THE($bible) }, ¡se quema con un destello de fuego sagrado!
+bible-damage-unholy-others = { CAPITALIZE(THE($user)) } golpea a { THE($target) } con { THE($bible) } y es quemado por un destello de fuego sagrado.
+bible-heal-fail-self = Golpeas { $target } con { $bible } y { $bible }, con un triste golpe, ¡tiene un efecto impresionante!
+bible-heal-fail-others = { CAPITALIZE($user) } { $target } golpea con { $bible }, y { $bible }, con un triste golpe, ¡tiene un efecto impresionante!
+bible-sizzle = ¡El libro sisea en tus manos!
+bible-summon-verb = Invoca a un familiar
+bible-summon-verb-desc = Invoca un familiar que te ayude y adquiera inteligencia similar a la humana tras poseer un alma.
+bible-summon-requested = Tu familiar aparecerá tan pronto como aparezca un alma dispuesta.
+bible-summon-respawn-ready = { CAPITALIZE($book) } está lleno de una energía sobrenatural. El habitante de { CAPITALIZE($book) } ha regresado a casa.
+necro-heal-success-self = Si { $target } golpeas con { $bible } la { $target }piel empieza a rizarse y derretirse.
+necro-heal-success-others = { CAPITALIZE($user) } golpea { $target } con { $bible }, y la piel { $target } empieza a rizarse y derretirse.
+necro-heal-fail-self = Golpeas { $target } con tu { $bible }, pero el golpe reverbera con un triste golpe, sin alcanzar { $target }.
+necro-heal-fail-others = { CAPITALIZE($user) } golpea { $target } con { $bible }, pero el golpe reverbera con un triste golpe, sin alcanzar a { $target }.

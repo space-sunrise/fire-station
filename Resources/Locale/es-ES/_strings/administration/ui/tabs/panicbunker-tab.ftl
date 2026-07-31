@@ -1,0 +1,17 @@
+admin-ui-panic-bunker-window-title = Hopper
+admin-ui-panic-bunker-enabled = Búnker incluido
+admin-ui-panic-bunker-disabled = Hopper Off
+admin-ui-panic-bunker-tooltip = Bunker restringe a los jugadores para que no se conecten si su cuenta es demasiado nueva o si no tienen suficiente tiempo total de juego en ese servidor.
+admin-ui-panic-bunker-disable-automatically = Apagado automático
+admin-ui-panic-bunker-disable-automatically-tooltip = Cierra automáticamente el contenedor cuando el administrador se conecta.
+admin-ui-panic-bunker-enable-automatically = Encendido automático
+admin-ui-panic-bunker-enable-automatically-tooltip = Se activa automáticamente el búnker cuando los administradores no están conectados.
+admin-ui-panic-bunker-count-deadminned-admins = Considera la administración
+admin-ui-panic-bunker-count-deadminned-admins-tooltip = ¿Deberían tenerse en cuenta los administradores de deadmin al activar o desactivar automáticamente la contenedora?
+admin-ui-panic-bunker-show-reason = Mostrar Razón
+admin-ui-panic-bunker-show-reason-tooltip = Muestra al usuario por qué el tolva le bloqueó la conexión.
+admin-ui-panic-bunker-min-account-age = Min. Edad de la cuenta
+admin-ui-panic-bunker-min-overall-minutes = Minuto. Tiempo total del partido
+admin-ui-panic-bunker-is-enabled = El búnker está activado ahora mismo.
+admin-ui-panic-bunker-enabled-admin-alert = El búnker estaba encendido.
+admin-ui-panic-bunker-disabled-admin-alert = El búnker estaba apagado.

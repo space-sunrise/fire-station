@@ -1,0 +1,10 @@
+ent-BaseBlueprint = plano
+    .desc = Plano técnico de una máquina. Puede insertarse en un Autolathe.
+ent-BlueprintFulton = plano Fulton
+    .desc = Plano técnico de un dispositivo Fulton. Puede insertarse en un Autolathe.
+ent-BlueprintSeismicCharge = plano de carga sísmica
+    .desc = Plano técnico de una carga sísmica. Puede insertarse en un Autolathe.
+ent-BlueprintDoubleEmergencyTank = plano de tanque de emergencia doble
+    .desc = Plano técnico de un tanque de emergencia doble. Puede insertarse en un Autolathe.
+ent-BlueprintFlare = plano de bengala
+    .desc = Plano técnico de una bengala. Puede insertarse en un Autolathe.

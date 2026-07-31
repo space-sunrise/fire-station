@@ -1,0 +1,12 @@
+ent-Bluecrystal = Cristal de Espacio Azul
+    .desc = Parece brillar con una energía seductora.
+    .suffix = 100 a.C.
+ent-Bluecrystal1 = { ent-Bluecrystal }
+    .suffix = 1 a.C.
+    .desc = { ent-Bluecrystal.desc }
+ent-Bluecrystal10 = { ent-Bluecrystal }
+    .suffix = 10 a.C.
+    .desc = { ent-Bluecrystal.desc }
+ent-Bluecrystal25 = { ent-Bluecrystal }
+    .suffix = 25 a.C.
+    .desc = { ent-Bluecrystal.desc }

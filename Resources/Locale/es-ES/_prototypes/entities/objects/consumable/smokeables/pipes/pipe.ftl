@@ -1,0 +1,11 @@
+ent-SmokingPipe = Pipa para fumar
+    .desc = Igual que mi abuelo fumaba.
+ent-SmokingPipeFilledTobacco = Pipa para fumar
+    .desc = { ent-SmokingPipe.desc }
+    .suffix = Tabaco
+ent-SmokingPipeFilledCannabis = Pipa para fumar
+    .desc = { ent-SmokingPipe.desc }
+    .suffix = Cáñamo
+ent-SmokingPipeFilledCannabisRainbow = Pipa para fumar
+    .desc = Igual que mi abuelo fumaba.
+    .suffix = Cáñamo arcoíris

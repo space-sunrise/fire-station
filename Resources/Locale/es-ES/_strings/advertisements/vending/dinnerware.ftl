@@ -1,0 +1,10 @@
+advertisement-dinnerware-1 = ¡Mm, comida!
+advertisement-dinnerware-2 = Comida y accesorios para la comida.
+advertisement-dinnerware-3 = ¡Toma los platos!
+advertisement-dinnerware-4 = ¿Te gustan los surebets?
+advertisement-dinnerware-5 = Me gustan los tenedores.
+advertisement-dinnerware-6 = Oooh, platos.
+advertisement-dinnerware-7 = Realmente no los necesitas...
+advertisement-dinnerware-8 = ¡Tómalo si quieres!
+advertisement-dinnerware-9 = Estamos absolutamente seguros de que los vasos de precipitados son imprescindibles.
+advertisement-dinnerware-10 = ¿POR QUÉ HAY TANTAS TAZAS DIFERENTES AQUÍ?

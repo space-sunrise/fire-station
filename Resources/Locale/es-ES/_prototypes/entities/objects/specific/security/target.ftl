@@ -1,0 +1,10 @@
+ent-BaseTarget = { ent-BaseStructureDynamic }
+    .desc = { ent-BaseStructureDynamic.desc }
+ent-TargetHuman = Objetivo humano
+    .desc = Blanco para disparar. Representa a una persona.
+ent-TargetSyndicate = Sindicato Objetivo
+    .desc = Un objetivo para disparar. Representa a un agente del Sindicato.
+ent-TargetClown = Payaso de Blanco
+    .desc = Objetivo para disparar. Representa a un payaso.
+ent-TargetStrange = Objetivo extraño
+    .desc = Un blanco para disparar. No está del todo claro qué se representa, pero es muy, muy duradero.

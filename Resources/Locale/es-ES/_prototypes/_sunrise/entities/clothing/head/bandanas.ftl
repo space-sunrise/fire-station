@@ -1,0 +1,12 @@
+ent-ClothingHeadBandOrange = pañuelo naranja
+    .desc = { ent-ClothingHeadBandBase.desc }
+ent-ClothingHeadBandYellow = pañuelo amarillo
+    .desc = { ent-ClothingHeadBandBase.desc }
+ent-ClothingHeadBandCyan = pañuelo azul
+    .desc = { ent-ClothingHeadBandBase.desc }
+ent-ClothingHeadBandWhite = pañuelo blanco
+    .desc = { ent-ClothingHeadBandBase.desc }
+ent-ClothingHeadBandPurple = pañuelo morado
+    .desc = { ent-ClothingHeadBandBase.desc }
+ent-ClothingHeadBandRandomColorSpawner = pañuelo (color aleatorio)
+    .desc = Pañuelo de color aleatorio.

@@ -1,0 +1,14 @@
+ent-ResearchDisk = disco de puntos de investigación (1000)
+    .desc = Disco para el servidor de I+D que contiene 1000 puntos.
+ent-ResearchDisk5000 = disco de puntos de investigación (5000)
+    .desc = Disco para el servidor de I+D que contiene 5000 puntos.
+ent-ResearchDisk10000 = disco de puntos de investigación (10000)
+    .desc = Disco para el servidor de I+D que contiene 10 000 puntos.
+ent-ResearchDiskDebug = disco de puntos de investigación
+    .desc = Disco para el servidor de I+D que contiene una cantidad ilimitada de puntos.
+    .suffix = DEPURAR, NO MAPEAR
+ent-TechnologyDisk = disco tecnológico
+    .desc = Disco para el servidor de I+D que contiene tecnología de investigación.
+ent-TechnologyDiskRare = { ent-TechnologyDisk }
+    .suffix = Raro
+    .desc = { ent-TechnologyDisk.desc }

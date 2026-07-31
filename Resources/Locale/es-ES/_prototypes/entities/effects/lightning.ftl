@@ -1,0 +1,14 @@
+ent-BaseLightning = Cremallera
+    .desc = { "" }
+ent-Lightning = Cremallera
+    .desc = { ent-BaseLightning.desc }
+ent-LightningRevenant = Terrible rayo
+    .desc = { ent-BaseLightning.desc }
+ent-ChargedLightning = Rayo cargado
+    .desc = { ent-BaseLightning.desc }
+ent-Spark = Cremallera
+    .desc = { ent-BaseLightning.desc }
+ent-SuperchargedLightning = Rayo súper cargado
+    .desc = { ent-ChargedLightning.desc }
+ent-HyperchargedLightning = Rayo hipercargado
+    .desc = { ent-ChargedLightning.desc }

@@ -1,0 +1,1 @@
+chem-master-window-too-many-pills-text = No puedes decidir cuántas pastillas tomar.

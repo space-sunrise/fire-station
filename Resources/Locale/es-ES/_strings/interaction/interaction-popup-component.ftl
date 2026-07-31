@@ -1,0 +1,95 @@
+### Interaction Popup component
+
+
+## Petting animals
+
+petting-success-generic = Te acaricias { $target } cabeza.
+petting-success-soft-floofy = Acaricias { $target } { POSS-ADJ($target) } cabeza suave y esponjosa.
+petting-success-bingus = Acaricias { $target } { POSS-ADJ($target) } pequeña cabeza arrugada.
+petting-success-bird = Acaricias { $target } { POSS-ADJ($target) } adorable cabeza emplumada.
+petting-success-carp = Acaricias { $target } en { POSS-ADJ($target) } pequeña cabeza de pez.
+petting-success-cat = Acaricias { $target } { POSS-ADJ($target) } cabecita y peluda.
+petting-success-corrupted-corgi = En un arrebato de arrogancia, te acaricias { $target } { POSS-ADJ($target) } maldita cabeza.
+petting-success-crab = Acaricias { $target } { POSS-ADJ($target) } cabeza pequeña y suave.
+petting-success-dehydrated-carp = Acaricias { $target } { POSS-ADJ($target) } cabeza seca. ¡Parece que ahora { CAPITALIZE(OBJECT($target)) } gustas!
+petting-success-dog = Acaricias { $target } { POSS-ADJ($target) } cabeza suave y esponjosa.
+petting-success-frog = Acaricias { $target } { POSS-ADJ($target) } cabecita resbaladiza.
+petting-success-goat = Acaricias { $target } { POSS-ADJ($target) } cabeza esponjosa y con cuernos.
+petting-success-goose = Contra todo pronóstico, logras acariciar { $target } { POSS-ADJ($target) } pequeña cabeza aterradora.
+petting-success-kangaroo = Acaricias { $target } cabeza { POSS-ADJ($target) } rebote.
+petting-success-possum = Te { $target } acaricias en { POSS-ADJ($target) } cabeza horrible.
+petting-success-pig = Te acaricias { $target } { POSS-ADJ($target) } cabeza peluda.
+petting-success-raccoon = Acaricias { $target } cabeza { POSS-ADJ($target) } basura.
+petting-success-reptile = Acaricias { $target } { POSS-ADJ($target) } pequeña cabeza escamosa.
+petting-success-sloth = Acaricias { $target } en { POSS-ADJ($target) } cabeza lenta.
+petting-success-space-cat = Acaricias { $target } { POSS-ADJ($target) } casco de cristal abovedado.
+petting-success-tarantula = Acaricias { $target } { POSS-ADJ($target) } cabecita peluda.
+petting-success-holo = Acaricias { POSS-ADJ($target) }{ $target } cabeza metálica con pinchos.
+petting-success-dragon = Esquivando colmillos, garras y llamas, acaricias { $target } { POSS-ADJ($target) } enorme cabeza escamosa.
+petting-success-hamster = Acaricias { $target } { POSS-ADJ($target) } cabecita y peluda.
+petting-success-bear = Acaricias { $target } { POSS-ADJ($target) } cabeza misteriosa con timidez.
+petting-success-slimes = Acaricias { $target } superficie gelatinosa { POSS-ADJ($target) }.
+petting-success-snake = Acaricias { $target } { POSS-ADJ($target) } gran cabeza escamosa.
+petting-success-monkey = Acaricias { $target } { POSS-ADJ($target) } cabecita traviesa.
+petting-success-nymph = Acaricias { $target } en { POSS-ADJ($target) } pequeña cabeza de madera.
+petting-failure-generic = Intentas acariciar a { $target }, pero { $target } te esquiva con cautela.
+petting-failure-bat = Intentas acariciar { $target }, pero { $target } es muy difícil de atrapar.
+petting-failure-carp = Intentas acariciar { $target }, pero { POSS-ADJ($target) } dientes afilados te hacen cambiar de opinión.
+petting-failure-corrupted-corgi = Intentas acariciar { $target }, pero decides que es mejor no hacerlo.
+petting-failure-crab = Intentas acariciar a { $target }, pero { $target } chasquea las garras en tu dirección.
+petting-failure-dehydrated-carp = Acaricias { $target } en { POSS-ADJ($target) } cabeza pequeña y seca.
+petting-failure-goat = Intentas acariciar a { $target }, pero { $target } se niega tercamente.
+petting-failure-goose = Intentas acariciar a { $target }, pero { $target } es demasiado terrible.
+petting-failure-possum = Intentas acariciar { $target }, pero ellos sisean y gruñen hacia ti.
+petting-failure-sloth = Intentas acariciar { $target }, pero { $target } esquiva a una velocidad increíble.
+petting-failure-pig = Intentas acariciar a { $target }, pero te enfrentas a gruñidos y chillidos molestos.
+petting-failure-holo = Intentas acariciar { $target }, pero { $target } casi te atraviesa la mano con pinchos.
+petting-failure-raccoon = Intentas acariciar a { $target }, pero { $target } es un mapache de ti.
+petting-failure-dragon = Levantas la mano, pero { $target } suelta un rugido y decides que no quieres convertirte en comida para carpas.
+petting-failure-hamster = Intentas acariciar a { $target }, pero { $target } intenta morderte el dedo, y solo tus reflejos rapidísimos te salvan de una herida casi mortal.
+petting-failure-bear = Piensas en acariciar a { $target }, pero { $target } gruñe, haciéndote pensar de nuevo.
+petting-failure-dog = Intentas acariciar a { $target }, pero { SUBJECT($target) } te gruñe.
+
+## Knocking on windows
+
+petting-failure-monkey = Intentas acariciar { $target }, pero casi te muerde los dedos { $target } dedos.
+petting-failure-nymph = Intentas acariciar { $target }, pero { POSS-ADJ($target) } aparta sus ramas.
+petting-failure-shadow = Extiendes la mano para acariciar { $target }, pero tu mano atraviesa la fría oscuridad de { POSS-ADJ($target) } cuerpo.
+petting-success-honkbot = Acaricias { $target } su resbaladiza cabeza metálica.
+petting-success-mimebot = Acariciaste { $target } { POSS-ADJ($target) } cabeza fría de metal.
+petting-success-cleanbot = Acaricias { $target } su cabeza metálica húmeda.
+petting-success-medibot = Acaricias { $target } su cabeza metálica estéril.
+petting-success-firebot = Acaricias { THE($target) } su { POSS-ADJ($target) } cálida cabeza metálica.
+petting-success-generic-cyborg = Acaricias { $target } { POSS-ADJ($target) } cabeza metálica.
+petting-success-salvage-cyborg = Acaricias { $target } { POSS-ADJ($target) } cabeza metálica sucia.
+petting-success-engineer-cyborg = Acaricias { $target } { POSS-ADJ($target) } cabeza metálica reflectante.
+petting-success-janitor-cyborg = Acaricias { $target } { POSS-ADJ($target) } cabeza metálica húmeda.
+petting-success-medical-cyborg = Acaricias { $target } { POSS-ADJ($target) } cabeza metálica estéril.
+petting-success-service-cyborg = Acaricias { $target } { POSS-ADJ($target) } cabeza de metal inteligente.
+petting-success-syndicate-cyborg = Acaricias { $target } { POSS-ADJ($target) } cabeza metálica de aspecto amenazante.
+petting-success-derelict-cyborg = Acaricias { THE($target) } { POSS-ADJ($target) } cabeza metálica oxidada.
+petting-failure-honkbot = Intentas acariciar a { $target }, pero { $target } se burla y esquiva.
+petting-success-station-ai = Planchas { THE($target) } en { POSS-ADJ($target) } pantalla cuadrada y fría.
+petting-success-recycler = Planchas { $target } sobre { POSS-ADJ($target) } suelo de acero algo aterrador.
+petting-failure-cleanbot = Estás buscando acariciar a { $target }, ¡pero { $target } es limpiar!
+petting-failure-mimebot = Intentas acariciar { $target }, pero { $target } está imitando.
+petting-failure-medibot = Intentas acariciar { $target }, pero { $target }casi te apuñala la mano con una jeringuilla.
+petting-failure-firebot = Intentas acariciar a { THE($target) }, pero { SUBJECT($target) } te echa un chorro en la cara antes de que puedas acercarte más.
+petting-failure-generic-cyborg = Contactas con { $target } de mascotas, pero { $target } está ocupado enumerando las leyes.
+petting-failure-salvage-cyborg = Intentas acariciar { $target }, pero { $target } es perforar.
+petting-failure-engineer-cyborg = Intentas acariciar a { $target }, ¡pero { $target } lo está arreglando!
+petting-failure-janitor-cyborg = Estás buscando acariciar a { $target }, ¡pero { $target } es limpiar!
+petting-failure-medical-cyborg = Buscas acariciar { $target }, pero { $target } se dedica a salvar vidas.
+petting-failure-service-cyborg = Contactas con { $target } de mascotas, pero { $target } está ocupado con el mantenimiento del equipo.
+petting-failure-syndicate-cyborg = Intentas acariciar a { $target }, pero la naturaleza traicionera de la { $target } te hace cambiar de opinión.
+petting-failure-derelict-cyborg = Intentas acariciar a { THE(target) }, pero { POSS-ADJ(target) } exterior oxidado y dentado te hace cambiar de opinión.
+petting-failure-station-ai = Intentas acariciar { THE($target) }, pero una descarga aparta tu mano.
+petting-success-station-ai-others = { CAPITALIZE(THE($user)) } trazos { THE($target) } en { POSS-ADJ($target) } pantalla cuadrada y fría.
+hugging-success-generic = Abrazas { $target }.
+hugging-success-generic-others = { CAPITALIZE($user) } abrazos { $target }.
+fence-rattle-success = *bdzyn*
+hugging-success-generic-target = { CAPITALIZE($user) } te abraza.
+petting-success-tesla = Acaricias { $target }, rompiendo las leyes de la naturaleza y la física en el camino.
+petting-failure-tesla = Extiendes la mano para acariciar { $target }, pero el shock te obliga a retirarla.
+petting-success-mail-teleporter = Te planchas { THE($target) } sobre la { POSS-ADJ($target) } de un ejecutivo, una superficie fría.
+petting-failure-mail-teleporter = Estás contactando con { THE($target) } de mascotas, pero { SUBJECT($target) } { CONJUGATE-BE($target) } ocupado clasificando el correo.

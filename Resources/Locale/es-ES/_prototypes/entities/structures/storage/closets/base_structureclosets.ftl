@@ -1,0 +1,10 @@
+ent-ClosetBase = Vestuario
+    .desc = Almacenamiento estándar.
+ent-ClosetSteelBase = { ent-ClosetBase }
+    .desc = { ent-ClosetBase.desc }
+ent-BaseWallCloset = Armario de pared
+    .desc = Almacenamiento estándar, ahora también en la pared.
+ent-BaseWallLocker = { ent-BaseWallCloset }
+    .desc = { ent-BaseWallCloset.desc }
+ent-SuitStorageBase = Almacenamiento de trajes espaciales
+    .desc = Una inusual instalación de almacenamiento de alta tecnología diseñada para guardar trajes espaciales.

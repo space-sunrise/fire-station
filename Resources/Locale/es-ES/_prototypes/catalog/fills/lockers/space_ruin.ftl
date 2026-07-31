@@ -1,0 +1,9 @@
+ent-LockerOldAISat = Vestuario
+    .suffix = Traje espacial Hollow Hollow Fonda SKI
+    .desc = { ent-LockerSyndicate.desc }
+ent-LockerSyndicateShipGearBasic = { ent-LockerSyndicate }
+    .suffix = Equipo de la nave base, aleatorio
+    .desc = { ent-LockerSyndicate.desc }
+ent-LockerSyndicateShipGearBasicChameleonKit = { ent-LockerSyndicateShipGearBasic }
+    .suffix = Equipo base de la nave, Aleatorio, Set Camaleón
+    .desc = { ent-LockerSyndicateShipGearBasic.desc }

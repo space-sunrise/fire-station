@@ -1,0 +1,17 @@
+general-station-record-console-window-title = consola de registro de personal
+general-station-record-console-select-record-info = Selecciona una entrada a la izquierda.
+general-station-record-console-empty-state = ¡No se han encontrado registros!
+general-station-record-console-no-record-found = No se encontraron registros del empleado seleccionado.
+general-station-record-console-record-age = EDAD: { $age }
+general-station-record-console-record-title = Posición: { $job }
+general-station-record-console-record-species = Visualización: { $species }
+general-station-record-console-record-gender = Género: { $gender }
+general-station-record-console-record-fingerprint = Huellas dactilares: { $fingerprint }
+general-station-record-console-record-dna = ADN: { $dna }
+general-station-record-for-filter-line-placeholder = Introduce tu mensaje...
+general-station-record-name-filter = Nombre del empleado
+general-station-record-prints-filter = Huellas dactilares
+general-station-record-dna-filter = ADN
+general-station-record-console-search-records = Búsqueda
+general-station-record-console-reset-filters = Reinicio
+general-station-record-console-delete = Borrar

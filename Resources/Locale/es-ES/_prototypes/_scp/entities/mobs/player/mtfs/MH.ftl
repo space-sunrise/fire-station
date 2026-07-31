@@ -1,0 +1,15 @@
+ent-RandomHumanoidSpawnerMHLeader = { ghost-role-information-mtf-leader-MH-name }
+    .suffix = DM | Beta-7
+    .desc = { ghost-role-information-mtf-leader-description }
+ent-RandomHumanoidSpawnerMHSpecialist = { ghost-role-information-mtf-specialist-MH-name }
+    .suffix = DM | Beta-7
+    .desc = { ghost-role-information-mtf-specialist-description }
+ent-RandomHumanoidSpawnerMHCadet = { ghost-role-information-mtf-cadet-MH-name }
+    .suffix = DM | Beta-7
+    .desc = { ghost-role-information-mtf-cadet-description }
+ent-SpawnerMTFSquadMH = { spawner-squad-name } MTF Beta-7
+    .desc = { ent-SpawnerMTFSquadHD.desc }
+    .suffix = Beta-7
+ent-SpawnerMTFSquadMHSpawnOnTrigger = { ent-SpawnerMTFSquadMH }
+    .desc = { ent-SpawnerMTFSquadMH.desc }
+    .suffix = { ent-SpawnerMTFSquadMH.suffix }, { spawner-on-trigger-suffix }

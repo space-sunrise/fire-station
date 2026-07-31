@@ -1,0 +1,16 @@
+ent-BaseGameRuleShortDelay = { ent-BaseGameRule }
+    .desc = { ent-BaseGameRule.desc }
+ent-SendDocumentNeutralizedMode = { ent-BaseGameRuleShortDelay }
+    .desc = { ent-BaseGameRuleShortDelay.desc }
+ent-SendDocumentSafeMode = { ent-BaseGameRuleShortDelay }
+    .desc = { ent-BaseGameRuleShortDelay.desc }
+ent-SendDocumentEuclidMode = { ent-BaseGameRuleShortDelay }
+    .desc = { ent-BaseGameRuleShortDelay.desc }
+ent-SendDocumentKeterMode = { ent-BaseGameRuleShortDelay }
+    .desc = { ent-BaseGameRuleShortDelay.desc }
+ent-SendDocumentThaumielMode = { ent-BaseGameRuleShortDelay }
+    .desc = { ent-BaseGameRuleShortDelay.desc }
+ent-SendDocumentMetaGarbageSuccessful = { ent-BaseGameRuleShortDelay }
+    .desc = { ent-BaseGameRuleShortDelay.desc }
+ent-SendDocumentMetaGarbageFailed = { ent-BaseGameRuleShortDelay }
+    .desc = { ent-BaseGameRuleShortDelay.desc }

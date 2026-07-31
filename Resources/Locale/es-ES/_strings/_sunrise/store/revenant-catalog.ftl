@@ -1,0 +1,2 @@
+revenant-lock-name = Sobrecarga de puerta de enlace
+revenant-lock-desc = Sobrecarga los portales cercanos, obligándolos a cambiar a modo de fuga. Cuando lo usas, te vuelves vulnerable a ataques durante mucho tiempo.

@@ -1,0 +1,16 @@
+ent-ActionToggleNinjaGloves = Guantes Ninja Switch
+    .desc = Incluye todas las características de los guantes. Al hacer clic, el botón izquierdo puede: romper una puerta, absorber energía, aturdir a un enemigo, hackear algunos dispositivos.
+ent-ActionCreateThrowingStar = Crea Shuriken
+    .desc = Dirige la energía del traje para crear un shuriken que inflige daño adicional a la resistencia.
+ent-ActionCreateSmokeGrenade = Granada de humo de la embarcación
+    .desc = Dirige la energía del traje para crear una granada de humo y así una huida táctica.
+ent-ActionCreateFlashbangGrenade = Fabrica una granada aturdidora
+    .desc = Dirige la energía del traje para crear una granada aturdidora para distracción táctica.
+ent-ActionRecallKatana = Invoca una katana
+    .desc = Teletransporta la katana de energía atada a este traje a su dueño, el coste depende de la distancia.
+ent-ActionNinjaEmp = Pulso electromagnético
+    .desc = Desactiva la electrónica cercana con un pulso electromagnético.
+ent-ActionTogglePhaseCloak = Recubrimiento de fase
+    .desc = Activa la invisibilidad de tu traje. Recuerda que si te golpean, todas las habilidades se desactivarán durante 5 segundos, ¡incluido el sudario!
+ent-ActionEnergyKatanaDash = Katana Dash
+    .desc = Telepórtate a cualquier lugar que puedas ver si tienes tu katana de energía en la mano.

@@ -1,0 +1,16 @@
+ent-Soap = jabón
+    .desc = Una pastilla de jabón barata. No huele.
+ent-SoapNT = jabón
+    .desc = Una pastilla de jabón de la marca SCP. Huele a plasma.
+ent-SoapDeluxe = jabón
+    .desc = Una pastilla de jabón de la prestigiosa marca Waffle Co. Huele a fresas.
+ent-SoapSyndie = jabón
+    .desc = Una pastilla de jabón poco fiable. Huele a miedo.
+ent-SoapletSyndie = jabón pequeño
+    .desc = Una pequeña pastilla de jabón Syndicate.
+ent-SoapHomemade = jabón
+    .desc = Una pastilla de jabón casera. Huele... uf....
+ent-SoapOmega = jabón omega
+    .desc = El jabón más perfecto que conoce la humanidad. Huele a bluespace.
+ent-SoapBorg = jabón
+    .desc = Una pastilla de jabón de la marca SCP. Huele a plasma y maquinaria.

@@ -1,0 +1,15 @@
+construction-category-all = Eso es todo
+construction-category-furniture = Mobiliario
+construction-category-storage = Bóvedas
+construction-category-tools = Herramientas
+construction-category-materials = Materiales
+construction-category-structures = Estructuras
+construction-category-machines = Equipamiento
+construction-category-weapons = Armas
+construction-category-tiles = Azulejos
+construction-category-utilities = Servicios públicos
+construction-category-misc = Miscelánea
+construction-category-clothing = Ropa
+construction-category-favorites = Favoritos
+construction-add-favorite-button = Añadir a favoritos
+construction-remove-from-favorite-button = Eliminar de favoritos

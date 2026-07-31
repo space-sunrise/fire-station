@@ -1,0 +1,10 @@
+department-Cargo = Departamento de Suministros
+department-Civilian = Departamento de Servicios
+department-Command = Mando
+department-CentralCommand = Mando Central
+department-Engineering = Departamento de Ingeniería
+department-Medical = Departamento Médico
+department-Security = servicio de seguridad
+department-Science = Departamento Científico
+department-Silicon = Siliconas
+department-Specific = Otros

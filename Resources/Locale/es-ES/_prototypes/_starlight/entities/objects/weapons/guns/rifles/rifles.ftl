@@ -1,0 +1,12 @@
+ent-WeaponGunLaserCarbineSemi = carabina láser IR-30
+    .desc = Carabina láser semiautomática y utiliza cargadores con cartuchos especiales como fuente de energía.
+ent-WeaponGunLaserCarbineAutomatic = carabina láser IR-60
+    .desc = Una carabina láser que dispara en ráfagas y utiliza cargadores con cartuchos especiales como fuente de energía.
+ent-WeaponRifleLeikha = Leyha
+    .desc = Fusil de asalto militar de primera clase. Este ejemplo se actualizó reemplazando el receptor e instalando una mira. Utiliza cartuchos de 5,56 mm.
+ent-WeaponRifleLarker = Larcker
+    .desc = Un rifle Marksman con mira para combate a media distancia, basado en la plataforma Lecter. Con recámara en .308.
+ent-WeaponRifleARG = ARG
+    .desc = Un antiguo rifle de asalto estándar galáctico utilizado por varios grupos paramilitares y antiguas milicias hasta el día de hoy. Utiliza munición de rifle calibre .30.
+ent-WeaponRifleM52 = Aussec Armory M-52
+    .desc = Uno de los rifles de asalto pesados menos populares. Tiene una potencia de fuego impresionante.

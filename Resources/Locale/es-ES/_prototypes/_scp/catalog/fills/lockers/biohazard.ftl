@@ -1,0 +1,9 @@
+ent-ScpClosetL3Filled = { ent-ScpClosetL3 }
+    .suffix = Lleno, estándar
+    .desc = { ent-ScpClosetL3.desc }
+ent-ScpClosetL3VirologyFilled = { ent-ScpClosetL3Virology }
+    .suffix = Lleno, Virología
+    .desc = { ent-ScpClosetL3Virology.desc }
+ent-ScpClosetL3SecurityFilled = { ent-ScpClosetL3Security }
+    .suffix = Lleno, sábado
+    .desc = { ent-ScpClosetL3Security.desc }

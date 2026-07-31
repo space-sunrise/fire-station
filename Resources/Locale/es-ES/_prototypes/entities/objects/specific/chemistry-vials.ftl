@@ -1,0 +1,16 @@
+ent-BaseChemistryEmptyVial = Tubo de ensayo
+    .desc = Un pequeño tubo de ensayo.
+ent-VestineChemistryVial = Tubo de ensayo Westin
+    .desc = { ent-BaseChemistryEmptyVial.desc }
+    .suffix = Westin
+ent-RadiumChemistryVial = { ent-BaseChemistryEmptyVial }
+    .suffix = Radio
+    .desc = { ent-BaseChemistryEmptyVial.desc }
+ent-ChlorineChemistryVial = { ent-BaseChemistryEmptyVial }
+    .suffix = Cloro
+    .desc = { ent-BaseChemistryEmptyVial.desc }
+ent-PlasmaChemistryVial = { ent-BaseChemistryEmptyVial }
+    .suffix = plasma
+    .desc = { ent-BaseChemistryEmptyVial.desc }
+ent-BorgVial = Tubo integrado
+    .desc = Compartimento interno instalado en el cyborg. Diseñado para 30 unidades de cualquier líquido.

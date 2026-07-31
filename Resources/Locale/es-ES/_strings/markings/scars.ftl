@@ -1,0 +1,10 @@
+marking-ScarEyeRight-scar_eye_right = Cicatriz en el ojo (derecha)
+marking-ScarEyeLeft-scar_eye_left = Cicatriz en el ojo (izquierda)
+marking-ScarEyeRight = Cicatriz en el ojo (derecha)
+marking-ScarTopSurgeryShort-scar_top_surgery_short = Cicatriz quirúrgica (corta)
+marking-ScarTopSurgeryLong-scar_top_surgery_long = Cicatriz quirúrgica (larga)
+marking-ScarEyeLeft = Cicatriz en el ojo (izquierda)
+marking-ScarTopSurgeryShort = Cicatriz quirúrgica (corta)
+marking-ScarTopSurgeryLong = Cicatriz quirúrgica (larga)
+marking-ScarChest-scar_chest = Cicatriz en el pecho
+marking-ScarChest = Cicatriz en el pecho

@@ -1,0 +1,12 @@
+ent-Spear = Lanza
+    .desc = Un verdadero clásico. Asesinato a un precio asequible del 200.000 a.C.
+ent-SpearReinforced = Lanza reforzada
+    .desc = Una lanza con un fragmento de cristal blindado como punta.
+ent-SpearPlasma = Lanza de Plasma
+    .desc = Una lanza con un fragmento de vidrio de plasma como punta.
+ent-SpearUranium = Lanza de uranio
+    .desc = Una lanza con un fragmento de vidrio de uranio como punta.
+ent-SpearBone = Lanza de Hueso
+    .desc = Una lanza hecha de huesos.
+ent-SpearSharkMinnow = Lanza con diente de tiburón
+    .desc = Una lanza con un diente de tiburón como punta.

@@ -1,0 +1,10 @@
+ent-BaseMobClown = Payaso Anómalo
+    .desc = Una masa resbaladiza de carne ridícula, animada por una energía vibrante.
+ent-MobClownJared = { ent-BaseMobClown }
+    .desc = { ent-BaseMobClown.desc }
+ent-MobClownGolem = { ent-BaseMobClown }
+    .desc = { ent-BaseMobClown.desc }
+ent-MobClownClamp = { ent-BaseMobClown }
+    .desc = { ent-BaseMobClown.desc }
+ent-MobClownLover = { ent-BaseMobClown }
+    .desc = { ent-BaseMobClown.desc }

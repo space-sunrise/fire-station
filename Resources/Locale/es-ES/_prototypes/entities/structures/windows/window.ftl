@@ -1,0 +1,15 @@
+ent-Window = ventana
+    .desc = Tenga cuidado de no equivocarse.
+ent-TintedWindow = Ventana tintada
+    .desc = { ent-Window.desc }
+ent-WindowRCDResistant = { ent-Window }
+    .desc = { ent-Window.desc }
+ent-WindowDirectional = ventana direccional
+    .desc = Tenga cuidado de no equivocarse.
+ent-WindowDirectionalRCDResistant = { ent-WindowDirectional }
+    .desc = { ent-WindowDirectional.desc }
+ent-WindowFrostedDirectional = Ventana mate direccional
+    .desc = Tenga cuidado de no equivocarse.
+ent-WindowDiagonal = { ent-Window }
+    .suffix = diagonal
+    .desc = { ent-Window.desc }

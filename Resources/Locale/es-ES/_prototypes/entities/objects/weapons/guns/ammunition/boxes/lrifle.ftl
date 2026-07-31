@@ -1,0 +1,12 @@
+ent-BoxLRifleBase = Caja de cartuchos (7,62mm)
+    .desc = { ent-BaseItem.desc }
+    .suffix = { "" }
+ent-BoxLRifleBigBox = Caja de cartuchos (7,62mm)
+    .desc = { ent-BoxLRifleBase.desc }
+    .suffix = { "" }
+ent-BoxLRifleBox = Caja de cartuchos (7,62mm)
+    .desc = { ent-BoxLRifleBase.desc }
+    .suffix = { "" }
+ent-BoxLRifleBoxPractice = Caja de cartuchos (7,62mm de entrenamiento)
+    .desc = { ent-BoxLRifleBase.desc }
+    .suffix = { "" }

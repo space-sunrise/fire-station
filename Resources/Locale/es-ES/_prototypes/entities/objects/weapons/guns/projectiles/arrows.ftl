@@ -1,0 +1,14 @@
+ent-BaseArrow = { ent-BaseItem }
+    .desc = { ent-BaseItem.desc }
+ent-ArrowRegular = Flecha
+    .desc = Sientes el poder de la estepa dentro de ti.
+ent-ArrowImprovised = Flecha de Fragmento de Cristal
+    .desc = Una de las camisas grises favoritas.
+ent-ArrowImprovisedPlasma = Flecha de fragmento de vidrio de plasma
+    .desc = Una de las camisas grises favoritas. ¡Ahora con letalidad aumentada!
+ent-ArrowImprovisedUranium = trinos de un fragmento de vidrio de uranio
+    .desc = La carcasa favorita de las camisas grises. ¡Ahora con la adición de radiación!
+ent-ArrowImprovisedCarp = Flecha del diente de la carpa
+    .desc = Una flecha favorita de los Salvados. Matar enemigos con los dientes de sus familias.
+ent-ArrowCard = Boom del cartón
+    .desc = No te va a matar, por mucho que lo intentes.

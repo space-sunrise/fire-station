@@ -1,0 +1,16 @@
+comp-space-heater-ui-title = Unidad de control de temperatura
+comp-space-heater-ui-thermostat = Termostato:
+comp-space-heater-ui-mode = Modo
+comp-space-heater-ui-status-disabled = FUERA
+comp-space-heater-ui-status-enabled = ON
+comp-space-heater-ui-increase-temperature-range = +
+comp-space-heater-ui-decrease-temperature-range = -
+comp-space-heater-mode-Auto = AUTOMÁTICO
+comp-space-heater-mode-Heat = Calefacción
+comp-space-heater-mode-Cool = Refrigeración
+comp-space-heater-ui-power-consumption = Nivel de poder:
+comp-space-heater-ui-Low-power-consumption = Bajo
+comp-space-heater-ui-Medium-power-consumption = Medio
+comp-space-heater-ui-High-power-consumption = Alto
+comp-space-heater-device-name = Termostato
+comp-space-heater-unanchored = { CAPITALIZE($device) } no está arreglado.

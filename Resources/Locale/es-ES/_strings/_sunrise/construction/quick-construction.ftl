@@ -1,0 +1,15 @@
+quickconstruction-category-pipes = Tuberías
+quickconstruction-category-atmos-pipes = Tuberías atmosféricas
+quickconstruction-category-disposal-pipes = Tuberías de reciclaje
+quickconstruction-category-atmospherics = Ventilación
+quickconstruction-category-tile = Azulejos
+quickconstruction-category-railing = barandilla
+quickconstruction-category-steel = Acero
+quickconstruction-category-metal-rod = Varas
+quickconstruction-category-glass = Vidrio
+quickconstruction-category-reinforced-glass = Vidrio reforzado
+quickconstruction-category-uranium-glass = Vidrio de uranio
+quickconstruction-category-reinforced-uranium-glass = Vidrio de uranio reforzado
+quickconstruction-category-plasma-glass = Plasma Glass
+quickconstruction-category-reinforced-plasma-glass = Vidrio de plasma reforzado
+quickconstruction-category-clockwork-glass = Cristal del reloj

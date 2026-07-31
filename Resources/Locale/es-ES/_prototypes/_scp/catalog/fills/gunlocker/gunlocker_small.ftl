@@ -1,0 +1,9 @@
+ent-GunLockerSmallFilledG22 = { ent-GunLockerSmall }
+    .suffix = Lleno, Glock-22 Auto, OCH
+    .desc = { ent-GunLockerSmall.desc }
+ent-GunLockerSmallFilledM1984 = { ent-GunLockerSmall }
+    .suffix = Llenado, M1984, Oficina del Comandante
+    .desc = { ent-GunLockerSmall.desc }
+ent-GunLockerSmallFilledACP14 = { ent-GunLockerSmall }
+    .suffix = Lleno, ACP-14, OSN
+    .desc = { ent-GunLockerSmall.desc }

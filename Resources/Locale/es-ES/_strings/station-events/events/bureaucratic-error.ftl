@@ -1,0 +1,2 @@
+station-event-bureaucratic-error-announcement = Como resultado de un reciente error burocrático de la División de Recursos Orgánicos, el complejo puede provocar una escasez de personal en algunas divisiones y un exceso de personal en otras.
+station-event-clerical-error-announcement = Un pequeño error administrativo en la División de Recursos Orgánicos provocó la destrucción irreversible de los registros de algunos empleados del complejo.

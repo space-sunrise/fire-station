@@ -1,0 +1,14 @@
+ent-BaseCargoPallet = Palé de carga
+    .desc = Un elemento común en la logística y el transporte de carga. Un recordatorio apenas perceptible de dónde poner las cajas durante el transporte para evitar moratones en la pierna inferior.
+ent-CargoPallet = Palé de carga
+    .desc = Un elemento común en la logística y el transporte de carga. Un recordatorio apenas perceptible de dónde poner las cajas durante el transporte para evitar moratones en la pierna inferior.
+ent-CargoPalletSell = Palé para la venta de mercancías
+    .desc = Identifica los artículos elegibles para la venta.
+ent-CargoPalletBuy = Palé para la compra de mercancías
+    .desc = Determina dónde aparecerán los artículos pedidos tras la compra.
+ent-ContrabandPalletSell = Palé para la venta de contrabando
+    .desc = Identifica artículos de contrabando aceptables para la venta.
+    .suffix = Finanzas, Servicio de Seguridad
+ent-SecurityPalletBuy = Compra de palés (Seguridad)
+    .desc = Diseñado para la compra de objetos de contrabando menores relacionados con el servicio de seguridad.
+    .suffix = Finanzas, Servicio de Seguridad

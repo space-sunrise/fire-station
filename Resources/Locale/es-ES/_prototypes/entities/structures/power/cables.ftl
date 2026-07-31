@@ -1,0 +1,17 @@
+ent-CableBase = { "" }
+    .desc = { "" }
+ent-CableHV = BB Cable
+    .desc = Cable naranja de alta tensión.
+ent-CableHVUncuttable = { ent-CableHV }
+    .suffix = Imposible de cortar
+    .desc = { ent-CableHV.desc }
+ent-CableMV = SV Cable
+    .desc = Cable de media tensión.
+ent-CableMVUncuttable = { ent-CableMV }
+    .suffix = Imposible de cortar
+    .desc = { ent-CableMV.desc }
+ent-CableApcExtension = NV Cable
+    .desc = Cable usado para conectar dispositivos a la pintura.
+ent-CableApcExtensionUncuttable = { ent-CableApcExtension }
+    .suffix = Imposible de cortar
+    .desc = { ent-CableApcExtension.desc }

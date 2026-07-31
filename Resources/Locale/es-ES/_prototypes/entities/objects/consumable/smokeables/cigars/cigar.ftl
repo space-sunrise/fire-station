@@ -1,0 +1,10 @@
+ent-Cigar = Cigarro
+    .desc = Un rollo de tabaco marrón y... bueno, no estás del todo seguro.
+ent-CigarSpent = { ent-Cigar }
+    .suffix = Colilla de cigarrillo
+    .desc = { ent-Cigar.desc }
+ent-CigarGold = Cigarro Havana Premium
+    .desc = Un puro reservado solo para los mejores de los mejores.
+ent-CigarGoldSpent = { ent-CigarGold }
+    .suffix = Colilla de cigarrillo
+    .desc = { ent-CigarGold.desc }

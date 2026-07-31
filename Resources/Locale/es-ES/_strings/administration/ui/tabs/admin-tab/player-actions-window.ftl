@@ -1,0 +1,10 @@
+admin-player-actions-window-title = Acciones del jugador
+admin-player-actions-window-ban = Panel de Prohibición
+admin-player-actions-window-admin-ghost = Administrador fantasma
+admin-player-actions-window-teleport = Teletransportarse
+admin-player-actions-window-permissions = Panel de acceso
+admin-player-actions-window-announce = Haz un anuncio
+admin-player-actions-window-shuttle = Llamar/revocar el transbordador
+admin-player-actions-window-admin-logs = Registros administrativos
+admin-player-actions-window-admin-notes = Notas administrativas
+admin-player-actions-window-admin-fax = Admin Fax

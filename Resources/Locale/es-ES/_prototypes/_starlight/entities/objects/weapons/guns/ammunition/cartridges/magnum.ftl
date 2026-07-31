@@ -1,0 +1,2 @@
+ent-CartridgeMagnumImprovised = cartucho casero (.45 magnum)
+    .desc = Un cartucho de revólver casero lleno hasta el borde de fósforo para obtener mayor "poder". Todavía no es tan bueno como un cartucho magnum normal.

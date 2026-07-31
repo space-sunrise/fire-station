@@ -1,0 +1,14 @@
+ent-BaseLandMine = { "" }
+    .desc = { "" }
+ent-LandMineKickUnarmed = Mina extraña
+    .desc = { ent-BaseLandMine.desc }
+ent-LandMineKick = Mina extraña
+    .desc = { ent-BaseLandMine.desc }
+ent-LandMineModularUnarmed = Mina modular
+    .desc = Este malo puede estar lleno de cualquier cosa. O de un claxon de bicicleta.
+ent-LandMineModular = Mina modular
+    .desc = Este malo puede ocultar muchos peligros. O un claxon de bicicleta.
+ent-LandMineExplosiveUnarmed = Mina explosiva
+    .desc = { ent-BaseLandMine.desc }
+ent-LandMineExplosive = Mina explosiva
+    .desc = { ent-BaseLandMine.desc }

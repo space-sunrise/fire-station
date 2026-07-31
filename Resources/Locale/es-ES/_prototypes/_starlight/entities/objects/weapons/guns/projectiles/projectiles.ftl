@@ -1,0 +1,12 @@
+ent-BaseBulletStarlight = Viñeta básica
+    .desc = Si ves esto, ¡probablemente estés muerto!
+ent-BulletAdvTaser = Descarga de Taser
+    .desc = { ent-BaseBulletStarlight.desc }
+ent-BaseBulletRubber = { ent-BaseBulletStarlight }
+    .desc = { ent-BaseBulletStarlight.desc }
+ent-BulletEnergyCrossbow = { ent-BaseBullet }
+    .desc = { ent-BaseBullet.desc }
+ent-BulletMiniEnergyCrossbow = { ent-BulletEnergyCrossbow }
+    .desc = { ent-BulletEnergyCrossbow.desc }
+ent-BulletGrenadeCleanadeSyndicate = clinada de proyectiles malvados
+    .desc = Sindicar el proyectil de clinade con espuma limpiadora agresiva.

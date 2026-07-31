@@ -1,0 +1,14 @@
+reagent-name-thermite = Termitas
+reagent-desc-thermite = Una mezcla que se calienta muchísimo al encenderse.
+reagent-name-napalm = Napalm
+reagent-desc-napalm = Un poco inflamable.
+reagent-name-phlogiston = Flogisto
+reagent-desc-phlogiston = Te prenderá fuego y te hará arder.
+reagent-name-chlorine-trifluoride = Trifluoruro de cloro
+reagent-desc-chlorine-trifluoride = De verdad, DE VERDAD no quieres tener estas cosas cerca de ti.
+reagent-name-foaming-agent = Agente espumante
+reagent-desc-foaming-agent = Hace una espuma similar a la necesaria para granates con espuma metálica.
+reagent-name-welding-fuel = Combustible para soldadura
+reagent-desc-welding-fuel = Es utilizado por soldadores para la soldadura.
+reagent-name-fluorosurfactant = Fluorosurfactante
+reagent-desc-fluorosurfactant = Ácido sulfónico perfluorado, que forma espuma cuando se mezcla con agua.

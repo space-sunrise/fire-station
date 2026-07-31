@@ -1,0 +1,12 @@
+ent-ClothingHeadHelmetEVA = Casco EVA
+    .desc = Un buen casco viejo diseñado para actividades extravehiculares. Conocido por causar paranoia en el personal de seguridad.
+ent-ClothingHeadHelmetEVALarge = Casco EVA
+    .desc = Un buen casco viejo diseñado para actividades extravehiculares.
+ent-ClothingHeadHelmetSyndicate = Casco del Sindicato EVA
+    .desc = Casco EVA sencillo y elegante. Diseñado para la frescura espacial más modesta.
+ent-ClothingHeadHelmetCosmonaut = Casco de astronauta
+    .desc = Diseño antiguo, producción moderna.
+ent-ClothingHeadHelmetAncient = Casco de Vacío de la NTSRA
+    .desc = Un antiguo casco espacial encargado por Centcom y la NTSRA, la agencia de investigación espacial de la Fundación.
+ent-ClothingHeadHelmetVoidParamed = Casco de Vacío de Paramédico
+    .desc = Un casco vacío diseñado para paramédicos.

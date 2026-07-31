@@ -1,0 +1,12 @@
+access-system-accesses-delay-basic-text = Se registró un cambio en el nivel de amenaza. El sistema automático de reasignación de accesos se encuentra activo.
+access-system-accesses-delay-scpNone = { access-system-accesses-delay-basic-text } Todos los accesos de emergencia se revocarán en { $time } segundos.
+access-system-accesses-delay-scpGreen = { access-system-accesses-delay-basic-text } El personal de seguridad y el personal médico recibirán acceso ampliado en { $time } segundos.
+access-system-accesses-delay-scpBlue = { access-system-accesses-delay-basic-text } El personal de seguridad recibirá acceso ampliado en { $time } segundos.
+access-system-accesses-delay-scpOrange = { access-system-accesses-delay-scpBlue }
+access-system-accesses-delay-scpGray = { access-system-accesses-delay-scpBlue }
+access-system-accesses-delay-scpYellow = { access-system-accesses-delay-scpBlue }
+access-system-accesses-delay-scpRed = { access-system-accesses-delay-scpBlue }
+access-system-accesses-delay-scpPurple = { access-system-accesses-delay-basic-text } El personal de seguridad y el personal de investigación recibirán acceso ampliado en { $time } segundos.
+access-system-accesses-delay-scpBlack = { access-system-accesses-delay-basic-text } El personal de seguridad y la Administración del Complejo recibirán acceso ampliado en { $time } segundos.
+access-system-accesses-delay-scpDelta = { access-system-accesses-delay-basic-text } Los accesos de emergencia se habilitarán en { $time } segundos.
+access-system-accesses-delay-scpColdSilver = { access-system-accesses-delay-basic-text } La Administración del Complejo recibirá acceso especial en { $time } segundos.

@@ -1,0 +1,1 @@
+reagent-effect-guidebook-deconvert-cultist = Desconvierte al cultista

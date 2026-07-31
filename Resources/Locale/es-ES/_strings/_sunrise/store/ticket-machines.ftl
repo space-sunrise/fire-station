@@ -1,0 +1,14 @@
+vendor-salvage-ticket-machine = Máquina expendedor de billetes para recicladores
+vendor-mining-ticket-machine = Máquina expendedor de billetes para mineros
+store-category-salvage-equipment = Equipamiento
+store-category-ticket-tools = Herramientas
+store-category-ticket-consumeables = Consumibles
+store-category-salvage-ammo = Munición
+store-category-salvage-tools = Herramientas
+store-category-salvage-mech = Mechs
+store-category-salvage-weapons = Armas
+store-category-salvage-consumeables = Consumibles
+store-category-mining-equipment = Equipamiento
+store-category-mining-tools = Herramientas
+store-category-mining-mech = Mechs
+store-category-mining-consumeables = Consumibles

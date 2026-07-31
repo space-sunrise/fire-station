@@ -1,0 +1,9 @@
+ent-WarpPoint = Punto de Teletransportación
+    .desc = { ent-MarkerBase.desc }
+ent-WarpPointBeacon = Punto de Teletransporte (Baliza)
+    .desc = { ent-WarpPoint.desc }
+ent-GhostWarpPoint = Punto de Teletransporte Fantasma
+    .desc = { ent-MarkerBase.desc }
+ent-WarpPointBombing = Punto de Teletransportación
+    .suffix = Objetivo de explosión de bomba ninja
+    .desc = { ent-WarpPoint.desc }

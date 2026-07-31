@@ -1,0 +1,14 @@
+ent-BaseToilet = Taza del inodoro
+    .desc = HT-451, un dispositivo rotatorio de eliminación de residuos de par pequeño y pequeño. Este parece increíblemente limpio.
+ent-ToiletEmpty = Váter
+    .desc = HT-451, un dispositivo de eliminación de residuos finos basado en el par. Este parece increíblemente limpio.
+    .suffix = vacío
+ent-ToiletDirtyWater = { ent-ToiletEmpty }
+    .desc = { ent-ToiletEmpty.desc }
+    .suffix = agua sucia
+ent-ToiletGoldenEmpty = Inodoro Dorado
+    .desc = El HT-451G es la versión dorada del dispositivo. En el lateral, se indica que está hecho del oro mercuriano más puro y tiene un asiento de cuero auténtico.
+    .suffix = vacío
+ent-ToiletGoldenDirtyWater = { ent-ToiletGoldenEmpty }
+    .suffix = Agua Sucia, objetivo de robo
+    .desc = { ent-ToiletGoldenEmpty.desc }

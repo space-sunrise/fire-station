@@ -1,0 +1,16 @@
+ent-MechArmorThin = Armadura Mecha (Delgado)
+    .desc = Placas mínimas que reducen ligeramente el daño.
+ent-MechArmorLight = Armadura Mecha (Ligera)
+    .desc = Armadura ligera: Absorbe moderadamente daño físico y térmico.
+ent-MechArmorMediumNT = Armadura Mecha (Alta Velocidad Media)
+    .desc = Armadura media de alta velocidad: buena contra armas ligeras, mantiene un poco de calor.
+ent-MechArmorHeavyNT = Armadura Mecha (NT pesado)
+    .desc = Armadura pesada de alta velocidad: alta protección física, protección térmica media.
+ent-MechArmorMediumSyndi = Armadura Mech (Sindicato Medio)
+    .desc = Armadura Sindicato Media: Buena defensa, mejorada contra balas y cuchillas.
+ent-MechArmorHeavySyndi = Armadura Mecha (Sindicato Pesado)
+    .desc = Armadura pesada de Sindicato: Fuerte contra daño físico, moderada contra calor.
+ent-BorgArmorSilicon = Placa de Armadura Borg
+    .desc = Armadura Borg estándar.
+ent-BorgArmorSiliconMk2 = Placa de blindaje Borg Mk2
+    .desc = La armadura predeterminada de los Borg es ligeramente mejor que la predeterminada.

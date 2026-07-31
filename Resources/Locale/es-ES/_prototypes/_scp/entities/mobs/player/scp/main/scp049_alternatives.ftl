@@ -1,0 +1,9 @@
+ent-Scp049AlternativeCanon = ???
+    .desc = Nuestro viejo Doctor con una nueva apariencia.
+    .suffix = SCP-049 "Canónico" - Admems
+ent-Scp049AlternativeRobotic = ???
+    .desc = Nuestro viejo Doctor con una nueva apariencia.
+    .suffix = SCP-049 "Robótico" - Admems
+ent-Scp049AlternativeOldFashioned = ???
+    .desc = Nuestro viejo Doctor con una nueva apariencia.
+    .suffix = SCP-049 "Anticuado" - Admems

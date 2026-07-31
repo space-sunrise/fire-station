@@ -1,0 +1,12 @@
+ent-MachineParticleAcceleratorEndCapCircuitboard = placa del extremo del acelerador de partículas
+    .desc = { ent-BaseMachineCircuitboard.desc }
+ent-MachineParticleAcceleratorFuelChamberCircuitboard = placa de la cámara de combustible del acelerador de partículas
+    .desc = { ent-BaseMachineCircuitboard.desc }
+ent-MachineParticleAcceleratorPowerBoxCircuitboard = placa de alimentación del acelerador de partículas
+    .desc = { ent-BaseMachineCircuitboard.desc }
+ent-MachineParticleAcceleratorEmitterStarboardCircuitboard = placa del emisor de estribor del acelerador de partículas
+    .desc = Placa de máquina para el emisor de estribor del acelerador de partículas.
+ent-MachineParticleAcceleratorEmitterForeCircuitboard = placa del emisor central del acelerador de partículas
+    .desc = Placa de máquina para el emisor central del acelerador de partículas.
+ent-MachineParticleAcceleratorEmitterPortCircuitboard = placa del emisor de babor del acelerador de partículas
+    .desc = Placa de máquina para el emisor de babor del acelerador de partículas.

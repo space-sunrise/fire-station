@@ -1,0 +1,10 @@
+ent-HoloparasiteInjector = Inyector de holoparásito
+    .desc = Una obra de arte compleja basada en nanomáquinas, que permite al usuario convertirse en portador de un holoparásito.
+ent-HoloClownInjector = Inyector Golohlone
+    .desc = Una obra de arte compleja basada en nanomáquinas, que permite al usuario convertirse en portador de holoclones.
+ent-MagicalLamp = lámpara mágica
+    .desc = La Federación de Magos tuvo que recortar costes de alguna manera tras el escándalo con los bienes de los Djinn.
+ent-BoxHoloparasite = Caja de Holoparásitos
+    .desc = Una caja que contiene un inyector holoparásito
+ent-BoxHoloclown = Caja Holoclone
+    .desc = Caja que contiene un inyector holoclone

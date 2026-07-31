@@ -1,0 +1,10 @@
+ent-OrganScp096Lungs = { ent-OrganHumanLungs }
+    .desc = { ent-OrganHumanLungs.desc }
+ent-OrganScp096Heart = { ent-OrganHumanHeart }
+    .desc = { ent-OrganHumanHeart.desc }
+ent-OrganScp096Stomach = { ent-OrganHumanStomach }
+    .desc = { ent-OrganHumanStomach.desc }
+ent-OrganScp096Liver = { ent-OrganHumanLiver }
+    .desc = { ent-OrganHumanLiver.desc }
+ent-OrganScp096Kidneys = { ent-OrganHumanKidneys }
+    .desc = { ent-OrganHumanKidneys.desc }

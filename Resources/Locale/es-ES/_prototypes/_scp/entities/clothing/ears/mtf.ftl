@@ -1,0 +1,9 @@
+ent-ClothingHeadsetAltMTF = auriculares
+    .desc = Dispositivo de comunicación compacto con un canal de comunicación cifrado. Proporciona una transmisión de datos estable en condiciones difíciles.
+    .suffix = DM
+ent-ClothingHeadsetAltMTFRRH = auriculares
+    .desc = Dispositivo de comunicación compacto con un canal de comunicación cifrado. Dispone de módulos adicionales cuyo origen no se indica en la documentación.
+    .suffix = DM
+ent-ClothingHeadsetAltMTFLLH = auriculares
+    .desc = Dispositivo de comunicación compacto con un canal de comunicación cifrado. El estuche está decorado con moderación, pero el diseño contiene elementos notables que indican el estatus especial del usuario.
+    .suffix = DM

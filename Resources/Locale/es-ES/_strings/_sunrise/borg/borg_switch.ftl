@@ -1,0 +1,1 @@
+borg-switch-type-notify = La unidad { $name } se transformó en { $type }

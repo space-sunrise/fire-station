@@ -1,0 +1,14 @@
+ent-PlasticFlapsBase = { ent-BaseStructureDynamic }
+    .desc = { ent-BaseStructureDynamic.desc }
+ent-PlasticFlapsClear = Cortinas de plástico
+    .desc = Cortinas de plástico pesadas. No puedes pasar por ellas. Ni hablar.
+    .suffix = Transparente
+ent-PlasticFlapsOpaque = Cortinas de plástico
+    .desc = Cortinas de plástico pesadas. No puedes pasar por ellas. Ni hablar.
+    .suffix = opaco
+ent-PlasticFlapsAirtightClear = Cortinas de plástico selladas
+    .desc = Cortinas pesadas, reforzadas y selladas de plástico. No puedes pasar por ellas. Ni de broma
+    .suffix = Sellado transparente
+ent-PlasticFlapsAirtightOpaque = Cortinas de plástico selladas
+    .desc = Cortinas pesadas, reforzadas y selladas de plástico. No puedes pasar por ellas. Ni de broma
+    .suffix = Opaco hermético

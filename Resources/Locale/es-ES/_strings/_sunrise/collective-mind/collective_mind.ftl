@@ -1,0 +1,14 @@
+collective-mind-chat-wrap-message = [bold]{ $channel }: { $message }[/bold]
+collective-mind-chat-wrap-message-with-author = [bold]{ $channel } ({ $source }): { $message }[/bold]
+collective-mind-chat-wrap-message-admin = { $source } ({ $channel }): { $message }
+collective-mind-flesh-cult = Carne
+collective-mind-xeno = xeno
+collective-mind-blob = Blob
+collective-mind-dioneas = Dionaea
+collective-mind-arachnids = Arácnidos
+collective-mind-carp = Carpa
+collective-mind-zombie = Zombis
+collective-mind-changeling = Genestealer
+collective-mind-blood-cult = Culto a la Sangre
+collective-mind-abductor = Secuestradores
+collective-mind-pirate = Piratas

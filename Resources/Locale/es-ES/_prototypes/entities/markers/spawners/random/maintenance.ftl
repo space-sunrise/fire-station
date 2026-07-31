@@ -1,0 +1,15 @@
+ent-MaintenanceFluffSpawner = Túneles de Tecnología Minera Generadora
+    .suffix = Miscelánea + Ropa
+    .desc = { ent-MarkerBase.desc }
+ent-MaintenanceToolSpawner = Túneles de Tecnología Minera Generadora
+    .suffix = Herramientas+Baterías+Materiales
+    .desc = { ent-MarkerBase.desc }
+ent-MaintenanceWeaponSpawner = Túneles de Tecnología Minera Generadora
+    .suffix = Chatarra+Armas
+    .desc = { ent-MarkerBase.desc }
+ent-MaintenancePlantSpawner = Túneles de Tecnología Minera Generadora
+    .suffix = Plantas
+    .desc = { ent-MarkerBase.desc }
+ent-MaintenanceInsulsSpawner = Túneles de Tecnología Minera Generadora
+    .suffix = Guantes aislantes, seguros
+    .desc = { ent-MarkerBase.desc }

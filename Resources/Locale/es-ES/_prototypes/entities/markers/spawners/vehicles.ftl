@@ -1,0 +1,12 @@
+ent-SpawnVehicleSecway = Secuay desovero
+    .desc = { ent-MarkerBase.desc }
+ent-SpawnVehicleJanicart = Máquina de Spawner Sweeper
+    .desc = { ent-MarkerBase.desc }
+ent-SpawnVehicleATV = ATV generador
+    .desc = { ent-MarkerBase.desc }
+ent-SpawnVehicleMotobike = Motocicleta Spawner
+    .desc = { ent-MarkerBase.desc }
+ent-SpawnVehicleWheelchair = Generador de Sillas de Ruedas
+    .desc = { ent-MarkerBase.desc }
+ent-SpawnVehicleWheelchairFolded = Generador de Sillas de Ruedas [Doblado]
+    .desc = { ent-MarkerBase.desc }

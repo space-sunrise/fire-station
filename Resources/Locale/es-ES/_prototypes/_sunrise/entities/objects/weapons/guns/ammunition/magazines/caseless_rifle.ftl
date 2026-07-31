@@ -1,0 +1,9 @@
+ent-BaseMagazinePistolCaselessRifleExtended = Cargador extendido para pistola (.25 sin vaina)
+    .desc = { ent-BaseMagazinePistolCaselessRifle.desc }
+ent-MagazineCannonBallMini = Un caso de balas de cañón
+    .desc = Una maleta para guardar ordenadamente balas de cañón de una bala de cañón alimentada por cinta de pirata.
+ent-MagazineCannonBallGrapeshotMini = Maleta de perdigones
+    .suffix = Admemes
+    .desc = Una maleta para guardar cuidadosamente perdigones de una bala de cañón pirata con alimentación de cinta.
+ent-MagazinePistolSubMachineGunCaselessExtended = Cargador extendido (.25 sin vaina)
+    .desc = { ent-BaseMagazineLightRifle.desc }

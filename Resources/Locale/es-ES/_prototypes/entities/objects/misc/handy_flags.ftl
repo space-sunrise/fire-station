@@ -1,0 +1,10 @@
+ent-BlankHandyFlag = Bandera de manual en blanco
+    .desc = Un trozo de tela blanca enrollado en un palo.
+ent-NTHandyFlag = Bandera manual de la Fundación
+    .desc = ¡Gloria a la Fundación! Espera, ¿de verdad hicieron una bandera manual para la corporación?
+ent-SyndieHandyFlag = Manual del Sindicato Bandera
+    .desc = Por los verdaderos patriotas y rebeldes. ¡Muerte a los cimientos!
+ent-LGBTQHandyFlag = Bandera de mano multicolor
+    .desc = Un trozo de tela multicolor enrollado en un palo.
+ent-PirateHandyFlag = Bandera de la Mano Pirata
+    .desc = Tómalo en tus manos y demuestra a estas carpas que no estás bromeando.

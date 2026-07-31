@@ -1,0 +1,16 @@
+ent-ActionRevertPolymorph = Regresar
+    .desc = Vuelve a tu formulario original.
+ent-BaseActionPolymorph = { ent-BaseAction }
+    .desc = { ent-BaseAction.desc }
+ent-ActionPolymorphWizardSpider = Polimorfismo en Spider
+    .desc = Te convierte en una araña.
+ent-ActionPolymorphWizardRod = La forma de la varita
+    .desc = ¡DZYN!
+ent-ActionPolymorphJaunt = Paseo Etéreo
+    .desc = ¡Piérdete en el Plano Etéreo para escapar rápido!
+ent-ActionPolymorphJauntII = Paseo por el Éter II
+    .desc = ¡Disuelve en el plano etérico para escapar aún más rápido!
+ent-ActionPolymorphJauntIII = Aether Walk III
+    .desc = ¿Eres siquiera tangible?
+ent-ActionPolymorph = { "" }
+    .desc = { "" }

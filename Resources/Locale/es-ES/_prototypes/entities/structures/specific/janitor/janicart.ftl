@@ -1,0 +1,9 @@
+ent-MopBucket = Cubo de fregona
+    .desc = Contiene agua y lágrimas de conserje.
+ent-MopBucketFull = Cubo de fregona
+    .suffix = completo
+    .desc = { ent-MopBucket.desc }
+ent-MopBucketCubeWrapped = cubo de cubo de fregador
+    .desc = Desplegal para conseguir un cubo de cubo para fregonas.
+ent-JanitorialTrolley = Tranvía limpiador
+    .desc = Estos son el alfa y el omega de la sanidad.

@@ -1,0 +1,10 @@
+ent-BaseXenoArtifactItem = Artefacto alienígena
+    .desc = Un extraño dispositivo alienígena.
+ent-ComplexXenoArtifactItem = { ent-BaseXenoArtifactItem }
+    .suffix = Difícil
+    .desc = { ent-BaseXenoArtifactItem.desc }
+ent-ArtifactFragment = Fragmento de artefacto
+    .desc = Un trozo roto de artefacto. Quizá puedas repararlo si encuentras más.
+ent-ArtifactFragment1 = { ent-ArtifactFragment }
+    .suffix = uno
+    .desc = { ent-ArtifactFragment.desc }

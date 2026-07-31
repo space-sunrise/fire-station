@@ -1,0 +1,11 @@
+ent-BikeHorn = Bocina de bicicleta
+    .desc = Claxon de la moto. ¡Claxon!
+ent-CluwneHorn = Bocina de bicicleta rota
+    .desc = Un claxon roto sacado de una bicicleta.
+ent-GoldenBikeHorn = Cuerno de Oro
+    .desc = Una sorpresa de Happy Honk, reza a los dioses por una recompensa.
+    .suffix = No mapear
+ent-BananiumHorn = Cuerno de Bananio
+    .desc = Un cuerno hecho de bananio.
+ent-PushHorn = Cuerno de mano
+    .desc = Este potente claxon de bici seguro que disipará todos los ceños fruncidos.

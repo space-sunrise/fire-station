@@ -1,0 +1,10 @@
+verb-trigger-timer-set = { $time } segundos
+verb-trigger-timer-set-current = { $time } segundos (actual)
+verb-trigger-timer-cycle = Conmutación con retardo cíclico
+examine-trigger-timer = El temporizador está configurado a { $time } segundos.
+popup-trigger-timer-set = El temporizador está configurado a { $time } segundos.
+verb-start-detonation = Inicio de la detonación
+verb-toggle-start-on-stick = Activación automática con interruptor
+popup-start-on-stick-off = El dispositivo NO se activará automáticamente tras la instalación
+popup-start-on-stick-on = El dispositivo se activará automáticamente tras la instalación
+trigger-activated = Has activado { $device }.

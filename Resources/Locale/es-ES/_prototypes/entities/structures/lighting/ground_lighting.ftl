@@ -1,0 +1,11 @@
+ent-LightPostSmall = Farola
+    .desc = Lámpara siempre funcional.
+    .suffix = Siempre con potencia
+ent-PoweredLightPostSmallEmpty = Farola
+    .desc = Lámpara.
+    .suffix = vacío
+ent-PoweredLightPostSmall = Farola
+    .desc = Luminaria. Consume energía y emite luz si está equipado con una lámpara de tubo.
+ent-PoweredLEDLightPostSmall = Farola
+    .desc = Luminaria. Consume energía y emite luz si está equipado con una lámpara de tubo.
+    .suffix = LED

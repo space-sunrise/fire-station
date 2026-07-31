@@ -1,0 +1,15 @@
+ent-FaxMachineBase = Fax
+    .desc = Una tecnología ingeniosa que te permite copiar o enviar documentos.
+ent-FaxMachineCentcom = Centcom Fax de Larga Distancia
+    .suffix = Centcom
+    .desc = { ent-FaxMachineBase.desc }
+ent-FaxMachineSyndie = Fax de largo alcance del Sindicato
+    .suffix = sindicato
+    .desc = { ent-FaxMachineBase.desc }
+ent-FaxMachineCaptain = Fax de largo alcance del capitán
+    .suffix = NuclearCodes
+    .desc = { ent-FaxMachineBase.desc }
+ent-HandheldFaxBase = Fax portátil
+    .desc = Fax portátil.
+ent-HandheldFax = Fax portátil
+    .desc = Una máquina de fax portátil hecha específicamente para representantes corporativos.

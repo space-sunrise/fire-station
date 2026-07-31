@@ -1,0 +1,9 @@
+advertisement-nutrimax-1 = ¡Nos encantan las plantas!
+advertisement-nutrimax-2 = ¿Quizá tú mismo lo aceptes?
+advertisement-nutrimax-3 = Los botones más verdes del mundo.
+advertisement-nutrimax-4 = Nos encantan las plantas grandes.
+advertisement-nutrimax-5 = Tierra blanda...
+advertisement-nutrimax-6 = ¡Ahora con cubos!
+advertisement-nutrimax-7 = ¡Cuanto más grande sea la planta, mejor!
+thankyou-nutrimax-1 = ¡Es hora de plantar!
+thankyou-nutrimax-2 = ¡Cavad en la tierra!

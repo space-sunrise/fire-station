@@ -1,0 +1,12 @@
+ent-BaseDecoy = { ent-BaseItem }
+    .desc = { ent-BaseItem.desc }
+ent-BalloonOperative = Operador inflable
+    .desc = Al observar más de cerca, se reveló que este operativo del Sindicato era en realidad un globo.
+ent-BalloonAgent = Agente inflable
+    .desc = Al observar más de cerca, se reveló que este agente del Sindicato era en realidad un globo.
+ent-BalloonElite = Operador Inflable Elite
+    .desc = Al mirar más de cerca, se reveló que este operativo de élite del Sindicato era en realidad un globo.
+ent-BalloonJuggernaut = Gigante inflable
+    .desc = Al mirar más de cerca, resultó que este gigante del Sindicato es en realidad un globo.
+ent-BalloonCommander = Comandante Inflable
+    .desc = Al mirar más de cerca, resultó que este comandante del Sindicato era en realidad un globo negro.

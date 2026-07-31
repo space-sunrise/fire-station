@@ -1,0 +1,11 @@
+ent-ClothingShoesBase = { ent-Clothing }
+    .desc = { ent-Clothing.desc }
+ent-ClothingShoesBaseButcherable = { ent-ClothingShoesBase }
+    .desc = { ent-ClothingShoesBase.desc }
+ent-ClothingShoesMilitaryBase = { ent-ClothingShoesBase }
+    .desc = { ent-ClothingShoesBase.desc }
+ent-ClothingShoesBootsSecFilled = { "" }
+    .suffix = Lleno
+    .desc = { "" }
+ent-ClothingShoesBaseWinterBoots = { ent-ClothingShoesBaseButcherable }
+    .desc = Botas de piel que te ayudarán a sobrevivir incluso a los inviernos más duros.

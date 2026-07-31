@@ -1,0 +1,14 @@
+ent-ScpPlasticFlapsBase = { ent-PlasticFlapsBase }
+    .desc = { ent-PlasticFlapsBase.desc }
+ent-ScpPlasticFlapsClear = cortinas de plastico
+    .desc = Cortinas de plástico resistentes y pesadas. ¿Pasar por ellos? De ninguna manera.
+    .suffix = Transparente
+ent-ScpPlasticFlapsOpaque = cortinas de plastico
+    .desc = Cortinas de plástico resistentes y pesadas. ¿Pasar por ellos? De ninguna manera.
+    .suffix = opaco
+ent-ScpPlasticFlapsAirtightClear = cortinas de plastico selladas
+    .desc = Cortinas de plástico selladas duraderas, un poco más resistentes de lo habitual. ¿Pasar por ellos? ¡Ja! Ni lo sueñes.
+    .suffix = Sellado, Transparente
+ent-ScpPlasticFlapsAirtightOpaque = cortinas de plastico selladas
+    .desc = Cortinas de plástico selladas duraderas, un poco más resistentes de lo habitual. ¿Pasar por ellos? ¡Ja! Ni lo sueñes.
+    .suffix = Sellado, opaco

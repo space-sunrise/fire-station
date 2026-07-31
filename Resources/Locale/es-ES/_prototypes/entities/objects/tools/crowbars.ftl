@@ -1,0 +1,12 @@
+ent-BaseCrowbar = Desguace
+    .desc = { ent-BaseItem.desc }
+ent-Crowbar = { ent-BaseCrowbar }
+    .desc = Una herramienta multifuncional para romper puertas y combatir invasores interdimensionales.
+ent-CrowbarRed = Desguace de emergencia
+    .desc = Un desecho de bolsillo diseñado para forzar puertas y cerraduras cortafuegos durante cortes de luz.
+ent-CrowbarGreen = { ent-BaseCrowbar }
+    .desc = Herramienta multifuncional para forzar puertas y combatir invasores interdimensionales, fabricada en un Autolathe.
+ent-CrowbarOrange = { ent-BaseCrowbar }
+    .desc = Una herramienta multifuncional para romper puertas y combatir invasores interdimensionales, que se encuentra en cajas de herramientas.
+ent-CrowbarYellow = { ent-BaseCrowbar }
+    .desc = Palanca de bolsillo diseñada para romper puertas y cerraduras cortafuegos durante cortes de luz, emitida por ingeniería.

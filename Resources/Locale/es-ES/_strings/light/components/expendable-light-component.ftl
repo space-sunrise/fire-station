@@ -1,0 +1,11 @@
+expendable-light-start-verb = Ignite
+expendable-light-spent-flare-name = Bengalada quemada
+expendable-light-spent-flare-desc = Parece que esta bengala se ha quemado. Vaya faena.
+expendable-light-burnt-torch-name = Antorcha Encendida
+expendable-light-burnt-torch-desc = Parece que esta linterna se ha quemado. Vaya faena.
+expendable-light-spent-green-glowstick-name = Luz Química Verde Extinguida
+expendable-light-spent-red-glowstick-name = luz química roja extinguida
+expendable-light-spent-purple-glowstick-name = Luz química púrpura extinguida
+expendable-light-spent-yellow-glowstick-name = Luz química amarilla extinguida
+expendable-light-spent-blue-glowstick-name = luz química azul extinguida
+expendable-light-spent-glowstick-desc = Parece que esta luz química se ha apagado. Qué trágico.

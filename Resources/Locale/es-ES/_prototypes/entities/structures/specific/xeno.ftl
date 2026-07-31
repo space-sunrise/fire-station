@@ -1,0 +1,10 @@
+ent-XenoWardingTower = Torre de Guardia Xeno
+    .desc = { "" }
+ent-CarpStatue = Estatua de la carpa
+    .desc = Una estatua de una de las valientes carpas, gracias a la cual estamos donde estamos. ¡Con dientes de verdad!
+ent-CarpStatueEmpty = { ent-CarpStatue }
+    .desc = Un trozo de metal precioso que pronto se convertiría en una magnífica estatua de carpa.
+    .suffix = Vacío
+ent-CarpStatueEyes = { ent-CarpStatue }
+    .desc = Una estatua de una de las valientes carpas que nos llevaron hasta donde estamos hoy. Esta carpa necesita un dentista...
+    .suffix = ojos

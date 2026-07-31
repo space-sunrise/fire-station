@@ -1,0 +1,14 @@
+ent-WindoorAssembly = marco de ventana corredera
+    .desc = Se abre, se cierra y ¡puedes ver a través de él!
+ent-WindoorAssemblySecure = marco de ventana corrediza blindada
+    .desc = Se abre, se cierra y se puede ver a través de él. Parece sólido.
+ent-WindoorAssemblyClockwork = Marco corredizo de ventana de bobinado
+    .desc = Se abre, se cierra y se puede ver a través de él. Parece sólido.
+ent-WindoorAssemblyPlasma = marco de ventana corrediza de plasma
+    .desc = Se abre, se cierra y puedes ver a través de él. Parece morado, no, rosa. Espera...
+ent-WindoorAssemblySecurePlasma = marco de ventana blindado corredizo de plasma
+    .desc = Se abre, se cierra y puedes ver a través de él. Parece sólido y morado--, no, morado. Espera...
+ent-WindoorAssemblyUranium = marco de ventana corrediza de uranio
+    .desc = Se abre, se cierra y se puede ver a través de él. Parece de un verde enfermizo...
+ent-WindoorAssemblySecureUranium = marco de ventana blindado corredizo de uranio
+    .desc = Se abre, se cierra y se puede ver a través de él. ¡Parece sólido y verde esmeralda radiactivo!

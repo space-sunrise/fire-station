@@ -1,0 +1,12 @@
+ent-ClothingNeckShoulderPatchWhite = banda de hombro blanca
+    .desc = Una herramienta sencilla y cómoda para grupos.
+ent-ClothingNeckShoulderPatchRed = banda de hombro roja
+    .desc = Una herramienta sencilla y cómoda para grupos.
+ent-ClothingNeckShoulderPatchBlue = banda de hombro azul
+    .desc = Una herramienta sencilla y cómoda para grupos.
+ent-ClothingNeckShoulderPatchGreen = banda de hombro verde
+    .desc = Una herramienta sencilla y cómoda para grupos.
+ent-ClothingNeckShoulderPatchYellow = banda de hombro amarilla
+    .desc = Una herramienta sencilla y cómoda para grupos.
+ent-BoxCardboardShoulderPatches = caja de diademas de colores
+    .desc = Contiene las herramientas más simples y convenientes para grupos.

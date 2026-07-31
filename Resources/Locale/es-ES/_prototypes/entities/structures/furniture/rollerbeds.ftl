@@ -1,0 +1,15 @@
+ent-RollerBed = Gurney
+    .desc = Se utiliza para transportar pacientes sin causar daños.
+ent-RollerBedSpawnFolded = { ent-RollerBed }
+    .suffix = Folded
+    .desc = { ent-RollerBed.desc }
+ent-CheapRollerBed = Gurney
+    .desc = Camilla destartalada. Usada para transportar pacientes.
+ent-CheapRollerBedSpawnFolded = { ent-CheapRollerBed }
+    .suffix = Folded
+    .desc = { ent-CheapRollerBed.desc }
+ent-EmergencyRollerBed = Gurney
+    .desc = Una camilla robusta que se usa en situaciones de emergencia.
+ent-EmergencyRollerBedSpawnFolded = { ent-EmergencyRollerBed }
+    .suffix = Folded
+    .desc = { ent-EmergencyRollerBed.desc }

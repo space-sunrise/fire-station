@@ -1,0 +1,12 @@
+lathe-category-mechs-vim = VIM
+lathe-category-mechs-honker = H.O.N.K.
+lathe-category-mechs-hamptr = H.A.M.T.R.
+lathe-category-mechs-ripley = Ripley AVP
+lathe-category-mechs-ripleymkii = Ripley MK-II
+lathe-category-mechs-clarke = Clark
+lathe-category-mechs-gygax = Gigax
+lathe-category-mechs-durand = Durand
+lathe-category-mechs-phazon = Phazon
+lathe-category-mechs-equipment = Equipamiento de los mecanoides
+lathe-category-mechs-weapons = Armamento mecanoide
+lathe-category-scp = SCP

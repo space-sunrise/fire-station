@@ -1,0 +1,16 @@
+ent-ClothingNeckBronzeheart = Medalla del Corazón de Bronce
+    .desc = Otorgado a los miembros de la tripulación por su valentía frente al peligro.
+ent-ClothingNeckGoldmedal = Medalla de Oro a la Maestría en Tripulación
+    .desc = Otorgado a los miembros de la tripulación que han demostrado excelentes habilidades para trabajar en equipo.
+ent-ClothingNeckCargomedal = Medalla del Oficial de Suministros
+    .desc = Se otorga al mejor empleado del departamento de suministros.
+ent-ClothingNeckEngineermedal = Medalla del Ingeniero
+    .desc = Se otorga al mejor empleado del departamento de ingeniería.
+ent-ClothingNeckMedicalmedal = Medalla del Trabajador Médico
+    .desc = Se otorga al mejor empleado del departamento médico.
+ent-ClothingNeckSciencemedal = Medalla del Investigador
+    .desc = Se otorga al mejor empleado del departamento científico.
+ent-ClothingNeckSecuritymedal = Medalla de Servicio de Seguridad
+    .desc = Se otorga al mejor empleado del departamento de servicios de seguridad.
+ent-ClothingNeckClownmedal = Medalla de Payaso
+    .desc = Premiado al mejor chiste del universo. ¡CLAXON!

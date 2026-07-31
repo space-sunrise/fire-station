@@ -1,0 +1,15 @@
+ent-BaseWeaponPistol = Pistola estándar
+    .desc = Atrévete: lanza en picado, apunta y dispara.
+ent-WeaponPistolViper = Viper
+    .desc = Una pistola pequeña, fácil de ocultar, pero de baja potencia. Equipada con receptor totalmente automático. Utiliza cartuchos calibre .35 para auto.
+    .suffix = pistola
+ent-WeaponPistolEchis = Efa
+    .desc = Viper para ciborgs. En movimiento, crea munición calibre .35 a partir del fabricador de munición semicargable incorporado.
+ent-WeaponPistolCobra = Cobra
+    .desc = Una pistola de agentes robustos y agresivos, con silenciador integrado. Utiliza cartuchos calibre .25 sin vaina.
+    .suffix = pistola
+ent-WeaponPistolMk58 = MK 58
+    .desc = Una pistola barata y común fabricada por una filial de NanoTrasen. Utiliza cartuchos calibre .35 para auto.
+    .suffix = pistola
+ent-WeaponPistolN1984 = N1984
+    .desc = Un arma de repuesto para cualquier oficial que se precie. Disponible en calibre .45 magnum, el más piadoso.

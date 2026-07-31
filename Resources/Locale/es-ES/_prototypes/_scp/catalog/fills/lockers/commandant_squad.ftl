@@ -1,0 +1,12 @@
+ent-LockerExternalAdministrativeZoneCommandantFilled = { ent-LockerExternalAdministrativeZoneCommandant }
+    .suffix = Lleno
+    .desc = { ent-LockerExternalAdministrativeZoneCommandant.desc }
+ent-LockerExternalAdministrativeZoneOfficerFilled = { ent-LockerExternalAdministrativeZoneOfficer }
+    .suffix = Lleno
+    .desc = { ent-LockerExternalAdministrativeZoneOfficer.desc }
+ent-ScpLockerAmnesticologistFilled = { ent-ScpLockerAmnesticologist }
+    .suffix = Médico de campo, lleno
+    .desc = { ent-ScpLockerAmnesticologist.desc }
+ent-ScpLockerCommandantSquadFilledWardrobe = { ent-ScpLockerCommandantSquad }
+    .suffix = Lleno, guardarropa
+    .desc = { ent-ScpLockerCommandantSquad.desc }

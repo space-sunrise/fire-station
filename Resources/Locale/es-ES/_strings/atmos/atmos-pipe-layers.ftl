@@ -1,0 +1,9 @@
+atmos-pipe-layers-component-layer-primary = Principales
+atmos-pipe-layers-component-layer-secondary = Secundaria
+atmos-pipe-layers-component-layer-tertiary = Terciario
+atmos-pipe-layers-component-change-layer = El escenario ha sido cambiado a { $layerName }.
+atmos-pipe-layers-component-current-layer = Está en la configuración { $layerName }.
+atmos-pipe-layers-component-select-layer = Configuración { $layerName }
+atmos-pipe-layers-component-tool-missing = Requiere { INDEFINITE($toolName) } { $toolName }
+atmos-pipe-layers-component-pipes-are-covered = Tuberías cerradas
+atmos-pipe-layers-component-cannot-adjust-pipes = Las tuberías deben abrirse antes de poder ajustarse.

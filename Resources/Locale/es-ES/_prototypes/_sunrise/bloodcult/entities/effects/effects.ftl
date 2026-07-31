@@ -1,0 +1,10 @@
+ent-CultTileSpawnEffect = Chispas
+    .desc = { "" }
+ent-CultTeleportInEffect = Teletransportación: apariencia
+    .desc = { "" }
+ent-CultTeleportOutEffect = Teletransportación: desaparecer
+    .desc = { "" }
+ent-CultWallGlow = Resplandor de la pared
+    .desc = { "" }
+ent-CultAirlockGlow = Resplandor de puerta de enlace
+    .desc = { "" }

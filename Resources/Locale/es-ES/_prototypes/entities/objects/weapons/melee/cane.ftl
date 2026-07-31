@@ -1,0 +1,13 @@
+ent-Cane = Bastón
+    .desc = Bastón de madera.
+ent-CaneBlade = Un bastón con una hoja
+    .desc = Una hoja afilada con un mango en forma de bastón.
+ent-CaneSheath = { ent-Cane }
+    .suffix = vacío
+    .desc = { ent-Cane.desc }
+ent-CaneSheathFilled = { ent-CaneSheath }
+    .suffix = completo
+    .desc = { ent-CaneSheath.desc }
+ent-CaneShotgun = { ent-Cane }
+    .suffix = Escopeta
+    .desc = { ent-Cane.desc }

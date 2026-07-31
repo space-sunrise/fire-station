@@ -1,0 +1,11 @@
+sofia-installed = Se detectó actividad neuronal.
+sofia-off = No se detectó actividad neuronal.
+sofia-still-searching = El proceso de descodificación neuronal sintética está en marcha...
+sofia-searching = Comienza el proceso de descodificación neuronal sintética...
+sofia-role-name = Cerebro Robótico del Sindicato
+sofia-role-description = Sirve a los miembros del sindicato.
+sofia-wipe-device-verb-text = Borrar el cerebro
+sofia-wiped-device = La actividad neural se detuvo.
+sofia-stop-searching-verb-text = Deja de buscar
+sofia-stopped-searching = El descodificamiento neural se termina.
+sofia-slot-component-slot-name-brain = cerebro

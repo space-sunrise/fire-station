@@ -1,0 +1,9 @@
+ent-WeaponMechDebugBallistic = Debag Beng
+    .suffix = Armas mecánicas, DEPURACIÓN, Balística
+    .desc = { ent-BaseMechWeaponRange.desc }
+ent-WeaponMechDebugLaser = Depuración de Pow
+    .desc = Un arma que utiliza luz amplificada por radiación estimulada.
+    .suffix = Armas Mech, DEBUG, Láser
+ent-WeaponMechDebugDisabler = Depurar Tiu
+    .desc = Un arma de defensa personal que agota objetivos orgánicos, debilitándolos hasta que son destruidos.
+    .suffix = Armas Mech, DEBUG, Aturdidor

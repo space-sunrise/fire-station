@@ -1,0 +1,12 @@
+ent-ClothingFleshSpiderLegs = Patas de araña hechas de carne
+    .desc = La carne de las patas de araña.
+    .suffix = El culto de la carne
+ent-ClothingOuterArmorFlesh = Armadura de carne
+    .desc = Armadura de carne
+    .suffix = El culto de la carne
+ent-ClothingOuterHeavyArmorFlesh = armadura pesada hecha de carne
+    .desc = armadura pesada hecha de carne
+    .suffix = El culto de la carne
+ent-ClothingHeadHelmetHeavyArmorFlesh = Casco de Carne Pesada
+    .desc = Casco de Carne Pesada
+    .suffix = El culto de la carne

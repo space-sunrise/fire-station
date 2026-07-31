@@ -1,0 +1,14 @@
+ent-StatueFurukai = Estatua de Furukai
+    .desc = { ent-BaseStructure.desc }
+ent-StatueDude = Estatua de Dude
+    .desc = { ent-BaseStructure.desc }
+ent-StatueFrank = Estatua de Frank
+    .desc = { ent-BaseStructure.desc }
+ent-StatueMooniverse = Estatua del Looneverso
+    .desc = { ent-BaseStructure.desc }
+ent-StatueRib = Estatua de Riba
+    .desc = { ent-BaseStructure.desc }
+ent-StatueAngel = Estatua del ángel
+    .desc = { ent-BaseStructure.desc }
+ent-StatueAngelPray = Estatua de un ángel orante
+    .desc = { ent-BaseStructure.desc }

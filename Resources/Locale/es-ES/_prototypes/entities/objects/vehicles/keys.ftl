@@ -1,0 +1,12 @@
+ent-VehicleKeyJanicart = Llave de máquina de limpieza
+    .desc = Diseño interesante.
+ent-VehicleKeySecway = Sequey Key
+    .desc = Claves del futuro.
+ent-VehicleKeyATV = Llave de ATV
+    .desc = ¿De qué forma es la llave de un ATV? Por supuesto, ¡cuadrada!
+ent-VehicleKeySkeleton = Llave Maestra del Vehículo
+    .desc = Desbloquea cualquier vehículo.
+ent-VehicleKeySyndicateSegway = Llave Segway del Sindicato
+    .desc = El patrón está inspirado en el icónico diseño emaga.
+ent-VehicleKeySkeletonMotorcycle = Llave Esqueleto de la Moto
+    .desc = Un precioso ramo de llaves decorado con una calavera.

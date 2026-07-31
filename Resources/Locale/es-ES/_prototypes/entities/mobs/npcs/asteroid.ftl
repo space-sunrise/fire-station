@@ -1,0 +1,24 @@
+ent-BaseMobAsteroid = { ent-BaseMob }
+    .desc = { ent-BaseMob.desc }
+ent-MobGoliath = Goliath
+    .desc = Un monstruo enorme que usa largos tentáculos para atrapar a su presa. No se recomienda atacarlo bajo ninguna circunstancia.
+ent-ActionGoliathTentacle = [color=red]Tentacle Strike[/color]
+    .desc = ¡Usa tus tentáculos para atrapar y aturdir a tu objetivo!
+ent-GoliathTentacle = Tentáculo
+    .desc = { "" }
+ent-BaseEffectGoliathTentacleSpawn = Tentáculo
+    .desc = { "" }
+ent-EffectGoliathTentacleSpawn = Tentáculo
+    .desc = { ent-BaseEffectGoliathTentacleSpawn.desc }
+ent-EffectGoliathTentacleRetract = { ent-BaseEffectGoliathTentacleSpawn }
+    .desc = { ent-BaseEffectGoliathTentacleSpawn.desc }
+ent-MobHivelord = Señor del Enjambre
+    .desc = Una criatura verdaderamente alienígena que es una masa de material orgánico desconocido que está en constante cambio. Cuando es atacado, partes se separan de ella y atacan junto con el original.
+ent-MobHivelordBrood = Prole del Señor del Enjambre
+    .desc = Un fragmento del señor original del enjambre que lo sostiene. Uno no es una gran amenaza, pero...
+ent-FoodHivelordRemains = Restos del Señor del Enjambre
+    .desc = Todo lo que queda del señor del enjambre parece ser lo que le permite arrancarse partes de sí mismo sin ser dañado... sus propiedades curativas pronto desaparecerán si no se usan rápido. Intenta no pensar en lo que comes.
+ent-FoodHivelordRemainsInert = Restos inactivos del Señor del Enjambre
+    .desc = Todo lo que queda del señor del enjambre... Ahora todo está realmente perdido.
+ent-MobBasilisk = Basilisco
+    .desc = Una bestia territorial cubierta por una gruesa carcasa que absorbe energía. Su mirada hace que las víctimas se congelen desde dentro.

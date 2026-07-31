@@ -1,0 +1,9 @@
+ent-SpawnVendingMachineRestockFoodDrink = Kit de Reabastecimiento de Torgomat de Generador
+    .suffix = Comida o bebida
+    .desc = { ent-MarkerBase.desc }
+ent-SpawnVendingMachineRestockFood = Kit de Reabastecimiento de Torgomat de Generador
+    .suffix = Gastronomía
+    .desc = { ent-MarkerBase.desc }
+ent-SpawnVendingMachineRestockDrink = Kit de Reabastecimiento de Torgomat de Generador
+    .suffix = Bebidas
+    .desc = { ent-MarkerBase.desc }

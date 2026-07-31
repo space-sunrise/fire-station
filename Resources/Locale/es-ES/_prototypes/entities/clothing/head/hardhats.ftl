@@ -1,0 +1,16 @@
+ent-ClothingHeadHatHardhatBase = { ent-ClothingHeadBase }
+    .desc = { ent-ClothingHeadBase.desc }
+ent-ClothingHeadHatHardhatBlue = Casco de trabajo azul
+    .desc = Casco pintado de azul usado en condiciones de trabajo peligrosas para proteger la cabeza. Tiene una linterna incorporada.
+ent-ClothingHeadHatHardhatOrange = Casco de trabajo naranja
+    .desc = Casco pintado de naranja usado en condiciones de trabajo peligrosas para proteger la cabeza. Tiene linterna incorporada.
+ent-ClothingHeadHatHardhatRed = Casco Duro de Trabajo Rojo,
+    .desc = Casco pintado de rojo usado en condiciones de trabajo peligrosas para proteger la cabeza. Tiene linterna incorporada.
+ent-ClothingHeadHatHardhatWhite = Casco de trabajo blanco
+    .desc = Casco pintado de blanco usado en condiciones de trabajo peligrosas para proteger la cabeza. Tiene linterna incorporada.
+ent-ClothingHeadHatHardhatYellow = Casco amarillo de trabajo,
+    .desc = Casco pintado de amarillo usado en condiciones de trabajo peligrosas para proteger la cabeza. Tiene linterna incorporada.
+ent-ClothingHeadHatHardhatYellowDark = Casco de trabajo amarillo oscuro
+    .desc = Casco amarillo oscuro usado en condiciones de trabajo peligrosas para proteger la cabeza. Equipado con linterna incorporada.
+ent-ClothingHeadHatHardhatArmored = Casco blindado de trabajo
+    .desc = Casco de trabajo blindado. Ofrece lo mejor de ambos mundos en cuanto a protección y practicidad, perfecto para el ingeniero de primera línea.

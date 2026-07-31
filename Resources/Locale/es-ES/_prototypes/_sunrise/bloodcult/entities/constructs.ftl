@@ -1,0 +1,12 @@
+ent-BaseConstruct = { "" }
+    .desc = { "" }
+ent-JuggernautConstruct = gigante
+    .desc = Armadura revivida, agarrando con fuerza un martillo pesado. Claramente tienen un poder aplastante.
+ent-ArtificerConstruct = artesano
+    .desc = Un cuerpo oscuro al que se adjuntan todo tipo de herramientas manipuladoras. En el medio del cuerpo hay un ojo mágico rojo.
+ent-WraithConstruct = fantasma
+    .desc = Un dron oscuro de aspecto pequeño con un ojo de botón mágico rojo, cubierto con una túnica andrajosa. Parece translúcido
+ent-ReaperConstruct = segador
+    .desc = Un abejorro volador demasiado grande, del tamaño de un husky sano. Tiene mandíbulas aterradoras...
+ent-ConstructShell = construir caparazón
+    .desc = Un marco utilizado por los cultistas para crear construcciones especializadas.

@@ -1,0 +1,1 @@
+spam-mute-text = { $target } se muerde la lengua con prisa

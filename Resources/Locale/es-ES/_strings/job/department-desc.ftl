@@ -1,0 +1,10 @@
+department-Cargo-description = Completa solicitudes, gana créditos espaciales y entrega suministros útiles a la tripulación.
+department-Civilian-description = Realizar pequeñas tareas útiles para mantener el funcionamiento normal y bien alimentado de la estación.
+department-Command-description = Gestiona a tu equipo y mantenlo funcionando eficientemente.
+department-CentralCommand-description = Gestiona a tu equipo y supervisa su rendimiento.
+department-Engineering-description = Mantener la disponibilidad de electricidad y la integridad de la estación.
+department-Medical-description = Mantén a tu tripulación sana.
+department-Security-description = Mantén la estación ordenada.
+department-Science-description = Estudiar artefactos y anomalías, y proporcionar a los miembros de la tripulación nuevos dispositivos avanzados.
+department-Silicon-description = Cumple tus leyes y sirve a la tripulación.
+department-Specific-description = Puestos que no están disponibles en todas las estaciones.

@@ -1,0 +1,14 @@
+ent-SupermatterCrystal = cristal de supermateria
+    .desc = Cristal extrañamente transparente e iridiscente.
+ent-Cascad1 = cascada
+    .desc = Consecuencias de una falla en cascada de un cristal de supermateria.
+ent-Cascad2 = { ent-Cascad1 }
+    .desc = { ent-Cascad1.desc }
+ent-Cascad3 = { ent-Cascad1 }
+    .desc = { ent-Cascad1.desc }
+ent-Cascad4 = { ent-Cascad1 }
+    .desc = { ent-Cascad1.desc }
+ent-Cascad5 = { ent-Cascad1 }
+    .desc = { ent-Cascad1.desc }
+ent-Cascad6 = { ent-Cascad1 }
+    .desc = { ent-Cascad1.desc }

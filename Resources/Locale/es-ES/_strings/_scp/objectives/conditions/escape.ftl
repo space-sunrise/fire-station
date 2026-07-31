@@ -1,0 +1,1 @@
+objective-condition-chaos-spy-escape-class-d-title = Retira discretamente Clase D: { $targetName }, Posición: { CAPITALIZE($job) }.

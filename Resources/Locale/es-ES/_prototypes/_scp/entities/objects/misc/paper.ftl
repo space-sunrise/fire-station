@@ -1,0 +1,17 @@
+ent-BoxFolderClipboardWhite = tableta blanca
+    .desc = Armas en manos de los combatientes de primera línea de la Fundación SCP.
+ent-BoxFolderScpBase = { ent-BoxBase }
+    .suffix = SCP
+    .desc = { ent-BoxBase.desc }
+ent-BoxFolderSafe = Carpeta "segura"
+    .desc = Una carpeta que contiene información sobre un objeto seguro.
+ent-BoxFolderEuclid = carpeta de clase Euclid
+    .desc = Carpeta que contiene información sobre un objeto de clase Euclid.
+ent-BoxFolderKeter = Carpeta "Keter"
+    .desc = Una carpeta que contiene información sobre un objeto de clase Keter.
+ent-BoxFolderBlueScp = carpeta azul
+    .desc = Carpeta azul normal.
+ent-BoxFolderScp = carpeta SCP
+    .desc = Carpeta con el emblema de la Fundación SCP.
+ent-BoxFolderWhiteBlack = carpeta en blanco y negro
+    .desc = Carpeta elegante con contorno negro.

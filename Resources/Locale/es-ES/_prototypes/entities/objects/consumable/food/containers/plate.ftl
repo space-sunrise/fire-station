@@ -1,0 +1,16 @@
+ent-FoodPlate = Placa grande
+    .desc = Un plato grande, ideal para el pan.
+ent-FoodPlateTrash = Placa rota
+    .desc = Un plato grande, roto e inútil.
+ent-FoodPlateSmall = Placa Pequeña
+    .desc = Un plato pequeño. Frágil.
+ent-FoodPlateSmallTrash = Placa rota
+    .desc = Un plato roto. Inútil.
+ent-FoodPlatePlastic = Placa de plástico
+    .desc = Plato grande de plástico azul, ideal para tarta de cumpleaños.
+ent-FoodPlateSmallPlastic = Placa de plástico
+    .desc = Plato de plástico azul, ideal para trozos de tarta de cumpleaños.
+ent-FoodPlateTin = Pie Rameper
+    .desc = Un molde barato de papel de aluminio para tartas.
+ent-FoodPlateMuffinTin = Molde para magdalenas
+    .desc = Moho barato para muffins de papel de aluminio.

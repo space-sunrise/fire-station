@@ -1,0 +1,16 @@
+ent-CarvedPumpkin = Calabaza tallada
+    .desc = Decoración tradicional de miedo.
+ent-PumpkinLantern = Linterna Calabaza
+    .desc = Una calabaza tallada que emite un resplandor inquietante.
+ent-CarvedPumpkinSmall = { ent-CarvedPumpkin }
+    .suffix = Pequeño
+    .desc = { ent-CarvedPumpkin.desc }
+ent-CarvedPumpkinLarge = { ent-CarvedPumpkin }
+    .suffix = Grande
+    .desc = { ent-CarvedPumpkin.desc }
+ent-PumpkinLanternSmall = { ent-PumpkinLantern }
+    .suffix = Pequeño
+    .desc = { ent-PumpkinLantern.desc }
+ent-PumpkinLanternLarge = { ent-PumpkinLantern }
+    .suffix = Grande
+    .desc = { ent-PumpkinLantern.desc }

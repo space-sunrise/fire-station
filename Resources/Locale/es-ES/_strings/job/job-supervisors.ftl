@@ -1,0 +1,15 @@
+job-supervisors-centcom = Mando Central
+job-supervisors-captain = Al capitán
+job-supervisors-hop = Jefe de Estado Mayor
+job-supervisors-hos = Jefe del Servicio de Seguridad
+job-supervisors-ce = Ingeniero Senior
+job-supervisors-cmo = Médico jefe
+job-supervisors-qm = Intendente
+job-supervisors-rd = Supervisor académico
+job-supervisors-service = cocineros, frikis, camareros y el jefe de personal
+job-supervisors-engineering = Ingenieros, técnicos atmosféricos e ingeniero senior
+job-supervisors-medicine = Médicos, químicos y el médico jefe
+job-supervisors-security = Oficiales, el Supervisor y el Jefe de Seguridad
+job-supervisors-science = científicos, supervisor científico
+job-supervisors-hire = a sus empleadores
+job-supervisors-everyone = En general, todos

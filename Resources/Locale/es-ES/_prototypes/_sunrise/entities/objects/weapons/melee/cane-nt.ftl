@@ -1,0 +1,3 @@
+ent-CaneNT = Bastón de Paseo Exquisito
+    .suffix = No mapear
+    .desc = Un bastón con un grabado especial. Parece muy adecuado para repeler ataques...

@@ -1,0 +1,10 @@
+ent-ScpClosetGastronomicSpecialist = gabinete especializado en gastronomía
+    .desc = Un armario para guardar la ropa y las ratoneras de los trabajadores de la alimentación.
+ent-ScpClosetJanitor = armario del conserje
+    .desc = Armario para guardar ropa y equipos de limpieza.
+ent-ScpClosetLegal = gabinete legal
+    .desc = Armario para guardar vestimentas judiciales y artículos afines.
+ent-ScpClosetScience = gabinete científico
+    .desc = Has leído un par de artículos de divulgación científica, ahora es el momento de hablar de verdad.
+ent-ScpClosetPrison = armario de la prisión
+    .desc = Contiene una selección de linda ropa naranja para las personas que disfrutan su tiempo en el calabozo.

@@ -1,0 +1,14 @@
+names-hologram-dataset-1 = Apollo
+names-hologram-dataset-2 = Fecha
+names-hologram-dataset-3 = GLIMMER
+names-hologram-dataset-4 = El Roy
+names-hologram-dataset-5 = Hefesto
+names-hologram-dataset-6 = Holo-IA
+names-hologram-dataset-7 = Holo-Amigo
+names-hologram-dataset-8 = Holograma
+names-hologram-dataset-9 = Odiseo
+names-hologram-dataset-10 = Perséfone
+names-hologram-dataset-11 = Petra
+names-hologram-dataset-12 = CPU
+names-hologram-dataset-13 = Prometheus
+names-hologram-dataset-14 = Teseo

@@ -1,0 +1,9 @@
+animations-flip = Volteretas
+animations-jump = Salto
+animations-dance = Danza
+animations-lay = Túmbate/levántate
+animations-fall-on-neck = Cae sobre el cuello
+animations-msg-flip = Haciendo volteretas
+animations-msg-jump = Saltos
+animations-msg-dance = Baile
+animations-msg-fall-on-neck = cae sobre el cuello

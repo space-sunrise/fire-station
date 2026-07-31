@@ -1,0 +1,14 @@
+ent-WeaponImprovisedPneumaticCannon = Cañón de aire improvisado
+    .desc = Está hecho de tubos, bridas y una pistola de aire. No acepta cilindros sin suficiente gas.
+ent-LauncherCreamPie = Pyrogun
+    .desc = Para obtener resultados óptimos, carga con tartas de nata.
+ent-BorgLauncherCreamPie = Experimental Pyrogun
+    .desc = ¡Entrega una generosa ración de nata directamente al equipo! Con el tiempo hornea tartas automáticamente.
+ent-LauncherSyringe = Pistola de jeringuillas
+    .desc = Carga con jeringuillas envenenadas para disfrutar al máximo.
+ent-WeaponImprovisedPneumaticCannonGun = { ent-WeaponImprovisedPneumaticCannon }
+    .suffix = Armas
+    .desc = { ent-WeaponImprovisedPneumaticCannon.desc }
+ent-WeaponImprovisedPneumaticCannonAdmeme = { ent-WeaponImprovisedPneumaticCannonGun }
+    .suffix = Admemes
+    .desc = { ent-WeaponImprovisedPneumaticCannonGun.desc }

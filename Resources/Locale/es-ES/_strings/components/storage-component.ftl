@@ -1,0 +1,12 @@
+comp-storage-no-item-size = No
+comp-storage-cant-insert = No se puede situar.
+comp-storage-too-big = ¡Demasiado grande!
+comp-storage-insufficient-capacity = Capacidad insuficiente.
+comp-storage-invalid-container = ¡Esto no encaja aquí!
+comp-storage-anchored-failure = No se puede colocar un objeto fijado.
+comp-storage-cant-drop = ¡No puedes soltar { $entity }!
+comp-storage-window-title = Almacenamiento de objetos
+comp-storage-window-weight = { $weight }/{ $maxWeight }, Max. Tamaño: { $size }
+comp-storage-window-slots = Espacios: { $itemCount }/{ $maxCount }, máximo. Tamaño: { $size }
+comp-storage-verb-open-storage = Bóveda Abierta
+comp-storage-verb-close-storage = Bóveda cerrada

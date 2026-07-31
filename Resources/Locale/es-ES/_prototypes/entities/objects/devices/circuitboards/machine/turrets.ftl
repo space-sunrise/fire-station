@@ -1,0 +1,9 @@
+ent-WeaponEnergyTurretStationMachineCircuitboardBase = PCB de máquina de torreta de seguridad
+    .desc = PCB de máquina para la torreta de intrusión.
+ent-WeaponEnergyTurretAIMachineCircuitboard = PCB AI de torreta intencionada
+    .desc = Una placa de circuito para la torreta de seguridad de IA.
+ent-WeaponEnergyTurretSecurityMachineCircuitboard = { ent-WeaponEnergyTurretStationMachineCircuitboardBase }
+    .suffix = SB
+    .desc = { ent-WeaponEnergyTurretStationMachineCircuitboardBase.desc }
+ent-WeaponEnergyTurretStationMachineCircuitboard = PCB de torreta de seguridad
+    .desc = Una placa de circuito para la torreta de seguridad.

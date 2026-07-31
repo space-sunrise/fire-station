@@ -1,0 +1,15 @@
+ent-InflatableWallStack = Barricada hinchable
+    .desc = Una membrana plegada que se expande rápidamente en una gran forma cúbica cuando se activa.
+    .suffix = completo
+ent-InflatableDoorStack = Puerta hinchable
+    .desc = Una membrana plegada que se expande rápidamente en una gran forma cúbica cuando se activa.
+    .suffix = completo
+ent-InflatableWallStack5 = { ent-InflatableWallStack }
+    .suffix = 5
+    .desc = { ent-InflatableWallStack.desc }
+ent-InflatableWallStack1 = { ent-InflatableWallStack }
+    .suffix = 1
+    .desc = { ent-InflatableWallStack.desc }
+ent-InflatableDoorStack1 = { ent-InflatableDoorStack }
+    .suffix = 1
+    .desc = { ent-InflatableDoorStack.desc }

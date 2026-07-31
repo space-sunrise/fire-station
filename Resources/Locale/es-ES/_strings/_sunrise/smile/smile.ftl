@@ -1,0 +1,1 @@
+smile-affection-popup = { $slime } { $target } abraza

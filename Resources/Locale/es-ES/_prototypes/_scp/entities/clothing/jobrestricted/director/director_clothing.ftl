@@ -1,0 +1,11 @@
+ent-ClothingHeadHatDirector = sombrero de director complejo
+    .desc = Sombrero en estilo blanco y negro. Luz hecha para la oscuridad.
+ent-ClothingUniformJumpsuitDirector = traje de director
+    .desc = Traje para ocasiones especiales
+ent-ClothingOuterCoatDirectorTrench = discurso complejo del director
+    .desc = Una capa de aleación especial que brinda protección y estilo adicionales a los hombres poderosos.
+ent-ClothingHandsGlovesDirectorSpecial = guantes duros del director complejo
+    .desc = Ideal para trabajar con papeles y resolver cuestiones burocráticas.
+ent-ClothingBackpackSatchelLeatherDirectorFilled = bolso director de cuero
+    .desc = Este es un bolso especial hecho exclusivamente para el trabajo.
+    .suffix = Completado

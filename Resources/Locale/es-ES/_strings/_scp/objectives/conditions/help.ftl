@@ -1,0 +1,1 @@
+objective-condition-chaos-spy-help-spy-title = Ayuda al espía de la insurgencia del caos { $targetName } posición: { CAPITALIZE($job) } para cumplir sus objetivos.

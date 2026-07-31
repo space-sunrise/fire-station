@@ -1,0 +1,16 @@
+ent-BaseHandcuffs = Esposas
+    .desc = Se usaba para disuadir a criminales y otros imbéciles
+ent-Handcuffs = Esposas
+    .desc = Se usaba para disuadir a criminales y otros imbéciles.
+ent-Cablecuffs = Esposas caseras
+    .desc = Esposas caseras hechas con cables de repuesto.
+ent-Zipties = Traviesas
+    .desc = Duradores bridas de plástico de un solo uso, ideales para disuadir a presos violentos.
+ent-BaseHandcuffsBroken = { ent-BaseItem }
+    .desc = { ent-BaseItem.desc }
+ent-ZiptiesBroken = Sujetadores rasgados
+    .desc = Estas bridas parecen que intentaban juntar el cable equivocado.
+ent-CablecuffsBroken = Esposas caseras rasgadas
+    .desc = Los cables están rotos en varios puntos y no parecen adecuados.
+ent-ClothingOuterStraightjacket = camisa de fuerza
+    .desc = Se utiliza para disuadir a quienes intentan hacerse daño a sí mismos o a otros.

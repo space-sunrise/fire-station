@@ -1,0 +1,9 @@
+ent-ArcadeBase = Máquina tragaperras
+    .desc = Máquina tragaperras.
+ent-SpaceVillainArcade = Máquina tragaperras "Villano del espacio"
+    .desc = { ent-ArcadeBase.desc }
+ent-SpaceVillainArcadeFilled = { ent-SpaceVillainArcade }
+    .suffix = Lleno
+    .desc = { ent-SpaceVillainArcade.desc }
+ent-BlockGameArcade = NT Blocks Máquina Tragaperras
+    .desc = Una máquina tragaperras con un juego extrañamente familiar.

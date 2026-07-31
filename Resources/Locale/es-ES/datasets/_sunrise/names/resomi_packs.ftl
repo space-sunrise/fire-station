@@ -1,0 +1,14 @@
+names-resomi-packs-dataset-1 = Packa Aviator
+names-resomi-packs-dataset-2 = Pájaros carpinteros de pared de pared
+names-resomi-packs-dataset-3 = Protector del casco de la mochila
+names-resomi-packs-dataset-4 = Mochila de Garra de Hierro
+names-resomi-packs-dataset-5 = Guardián de la Manada
+names-resomi-packs-dataset-6 = Paquete de Velocistas
+names-resomi-packs-dataset-7 = Garra de Plasma de Enjambre
+names-resomi-packs-dataset-8 = Mochila de Patas de Hierro
+names-resomi-packs-dataset-9 = Steel Nest Pack
+names-resomi-packs-dataset-10 = Pluma de Plata de la bandada
+names-resomi-packs-dataset-11 = Bandada de Garras de Minero
+names-resomi-packs-dataset-12 = Cazador de Manada
+names-resomi-packs-dataset-13 = Bandada de Plumas Oscuras
+names-resomi-packs-dataset-14 = Nido de Mantenimiento de Enjambre

@@ -1,0 +1,10 @@
+ent-MindRoleTerminator = El papel del Terminator
+    .desc = { ent-BaseMindRoleAntag.desc }
+ent-MindRoleFugitive = El papel del fugitivo
+    .desc = { ent-BaseMindRoleAntag.desc }
+ent-MindRolePlanetPrisoner = El papel del prisionero
+    .desc = { ent-BaseMindRoleAntag.desc }
+ent-MindRoleLoneAbductor = El papel de un secuestrador solitario
+    .desc = { ent-BaseMindRoleAntag.desc }
+ent-AbductorVictimRole = Víctima del secuestrador
+    .desc = { ent-BaseMindRoleAntag.desc }

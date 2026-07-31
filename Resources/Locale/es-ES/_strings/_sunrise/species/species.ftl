@@ -1,0 +1,10 @@
+species-name-felinid = Felínidos
+species-name-swine = Trottin
+species-name-tajaran = Tayaran
+species-name-predator = Yautja
+species-name-xeno = Xenomorfo
+species-name-demon = Arcanos
+species-name-resomi = Rezomi
+species-name-abductor = Abductor
+species-name-milira = Milira
+species-name-vulpkanin = VULPKANIN

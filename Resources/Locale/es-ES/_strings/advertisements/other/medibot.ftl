@@ -1,0 +1,17 @@
+advertisement-medibot-1 = ¿Y qué es esta enfermería? Todos caen como moscas muertas.
+advertisement-medibot-2 = Sabía que debería haberme convertido en cirujano plástico.
+advertisement-medibot-3 = Siempre hay un truco, y el catch-22 es el mejor de todos.
+advertisement-medibot-4 = Una manzana para cenar, y no me necesitan.
+advertisement-medibot-5 = ¡No soy como los demás!
+advertisement-medibot-6 = Tú.
+advertisement-medibot-7 = ¿Por qué seguimos aquí? ¿Solo para sufrir?
+advertisement-medibot-8 = I... Nunca he perdido a un paciente antes. Hoy, quiero decir.
+advertisement-medibot-9 = Entro en lexorin.
+advertisement-medibot-10 = ¡Que tengas un buen día!
+advertisement-medibot-11 = ¡Espero que no tengas que volver!
+advertisement-medibot-12 = No olvides cepillarte los dientes.
+advertisement-medibot-13 = Ojalá tuviera manos.
+advertisement-medibot-14 = ¡Estoy aquí para ayudarte!
+advertisement-medibot-15 = ¡Pide a tu médico un piruleta!
+advertisement-medibot-16 = ¡Que te mejores pronto!
+advertisement-medibot-17 = Una manzana para cenar, ¡y no necesitas médico!

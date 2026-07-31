@@ -1,0 +1,9 @@
+ent-MobDebugCounter = Contador de depuración
+    .desc = Sabe contar
+    .suffix = IA, DEPURACIÓN
+ent-MobDebugRandomCounter = Depurar contador aleatorio
+    .desc = Es capaz de generar números aleatorios
+    .suffix = IA, DEPURACIÓN
+ent-MobDebugRandomLess = Depurar reductor aleatorio
+    .desc = Sabe cómo reducir números aleatorios
+    .suffix = IA, DEPURACIÓN

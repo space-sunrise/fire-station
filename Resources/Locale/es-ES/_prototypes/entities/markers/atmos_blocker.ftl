@@ -1,0 +1,17 @@
+ent-AtmosFixBlockerMarker = Marca de parche Atmos
+    .desc = Vacío, 20°C
+ent-AtmosFixOxygenMarker = Marca de parche Atmos
+    .desc = Oxígeno presurizado del productor de gas, 20°C
+ent-AtmosFixNitrogenMarker = Marca de parche Atmos
+    .desc = Nitrógeno bajo presurización gaseosa, 20°C
+ent-AtmosFixPlasmaMarker = Marca de parche Atmos
+    .desc = Plasma presurizado de productor de gas, 20°C
+ent-AtmosFixInstantPlasmaFireMarker = Etiqueta de Fuego de Plasma de Destello
+    .desc = DISPARO INSTANTÁNEO DE PLASMA
+ent-AtmosFixFreezerMarker = etiqueta de atmósfera de congelador
+    .desc = Cambia la temperatura del aire a 235K, para un congelador con poco espacio para ajustarse.
+ent-AtmosFixVoxMarker = { ent-AtmosFixNitrogenMarker }
+    .desc = Nitrógeno @ 101 kPa, 20°C
+    .suffix = Atmósfera Vox
+ent-AtmosFixAirMarker = Marcador de Aire para la Reparación de la Atmósfera
+    .desc = Osígeno (21%) y nitrógeno (79%) bajo presión del productor de gas, 20°C

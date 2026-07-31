@@ -1,0 +1,13 @@
+ent-WeaponMeleeMoltenAmputator = Guadaña Fundida
+    .desc = ¿Cómo es que sigue sin endurecerse? Se necesita dos manos para usarlo
+ent-WeaponArcMoltenAmputator = { ent-WeaponArcStatic }
+    .desc = { ent-WeaponArcStatic.desc }
+ent-WeaponProjectileMoltenAmputator = { ent-BaseBullet }
+    .desc = { ent-BaseBullet.desc }
+ent-WeaponMeleeMoltenCollider = Colisionador de Fusión
+    .desc = ¿Cómo es que todavía no está congelado?
+ent-WeaponArcMeleeMoltenCollider = { ent-WeaponArcStatic }
+    .desc = { ent-WeaponArcStatic.desc }
+ent-WeaponMeleeMoltenColliderDEBUG = { ent-WeaponMeleeMoltenCollider }
+    .suffix = Depurar
+    .desc = { ent-WeaponMeleeMoltenCollider.desc }

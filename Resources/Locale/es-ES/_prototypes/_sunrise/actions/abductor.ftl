@@ -1,0 +1,12 @@
+ent-ActionExitConsole = Salir de la consola
+    .desc = Deja la consola.
+ent-ActionSendYourself = Teletransportarse
+    .desc = Teletranspórtate.
+ent-ActionGizmoMark = Bandera
+    .desc = Utilice el artilugio de bolsillo para marcar al agente.
+ent-ActionSendAgent = enviar un agente
+    .desc = Teletransporta al agente desde la plataforma de teletransportación.
+ent-AbductorVestToggleStealth = Alternar invisibilidad
+    .desc = Activa/desactiva la invisibilidad del traje. ¡No olvides configurar el modo sigiloso!
+ent-ActionReturnToShip = Regresar
+    .desc = Regreso al barco.

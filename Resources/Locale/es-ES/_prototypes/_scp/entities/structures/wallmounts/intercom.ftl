@@ -1,0 +1,9 @@
+ent-IntercomHeavyContainmentSecurityService = { ent-Intercom }
+    .desc = Intercomunicador. Estaba reforzado con metal de cascos de seguridad, lo que dificultaba su apertura.
+    .suffix = zona de contención pesada
+ent-IntercomExternalAdministrativeZoneSecurityService = { ent-IntercomHeavyContainmentSecurityService }
+    .desc = { ent-IntercomHeavyContainmentSecurityService.desc }
+    .suffix = zona administrativa externa
+ent-IntercomMasterZoneSecurityService = { ent-IntercomHeavyContainmentSecurityService }
+    .desc = Intercomunicador. Estaba reforzado con el metal de los cascos de los jefes de seguridad del complejo, por lo que abrirlo no fue tan fácil.
+    .suffix = maestro del sistema de seguridad del complejo

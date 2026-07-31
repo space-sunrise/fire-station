@@ -1,0 +1,11 @@
+xenoarch-trigger-tip-electrovae = Electroway
+xenoarch-trigger-tip-bz = BZ
+xenoarch-trigger-tip-charged-electrovae = Eléctrico cargado
+xenoarch-trigger-tip-halon = Galon
+xenoarch-trigger-tip-healium = Hillium
+xenoarch-trigger-tip-nitrium = Nitrium
+xenoarch-trigger-tip-pluoxium = Pluoxio
+xenoarch-trigger-tip-hydrogen = Hidrógeno
+xenoarch-trigger-tip-zauker = Saucker
+xenoarch-trigger-tip-proto-nitrate = Proto-Nitrato
+xenoarch-trigger-tip-helium = Helio

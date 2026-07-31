@@ -1,0 +1,16 @@
+ent-ClothingHeadHatBeretCE = contrata a un ingeniero senior
+    .desc = Contrata a la persona que construye una meta para usted en cada turno.
+ent-ClothingHeadHatBeretParamedic = lleva un paramédico
+    .desc = Se necesita para un paramédico.
+ent-ClothingHeadHatBeretChemistry = toma un químico
+    .desc = Toma para un químico.
+ent-ClothingHeadHatBeretPatologoanatom = lleva al patólogo
+    .desc = Toma para el patólogo.
+ent-ClothingHeadHatBeretAtmos = lleva técnico atmosférico
+    .desc = Se lleva al que definitivamente no permitirá que el plasma entre en la distribución.
+ent-ClothingHeadHatBeretSalvageMercBrown = boina carroñera marrón
+    .desc = Boina marrón.
+ent-ClothingHeadHatBeretSalvageMercGreen = boina carroñera verde
+    .desc = Boina verde.
+ent-ClothingHeadHatBeretSalvageMercPurple = boina carroñera morada
+    .desc = Boina morada.

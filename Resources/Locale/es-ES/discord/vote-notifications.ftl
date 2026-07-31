@@ -1,0 +1,11 @@
+custom-vote-webhook-name = Se ha realizado la votación de los usuarios
+custom-vote-webhook-footer = Saquero: { $serverName }, ronda: { $roundId } { $runLevel }
+custom-vote-webhook-cancelled = **Voto cancelado**
+custom-vote-webhook-option-pending = Por determinar
+custom-vote-webhook-option-cancelled = No aplicable
+votekick-webhook-name = Se celebró una votación para el expulso
+votekick-webhook-description = Iniciador: { $initiator }; Objetivo: { $target }
+votekick-webhook-cancelled-admin-online = **Votación cancelada debido a los administradores online**
+votekick-webhook-cancelled-admin-target = **Votación cancelada porque objetivo es un administrador**
+votekick-webhook-cancelled-antag-target = **Voto cancelado porque el objetivo es antagonista**
+votekick-ban-reason = "Votación para la expulsión: { $reason }"

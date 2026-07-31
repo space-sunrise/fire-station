@@ -1,0 +1,12 @@
+ent-Crystallite = cristalita
+    .desc = Parece brillar con una energía seductora.
+    .suffix = 100 K
+ent-Crystallite1 = { ent-Crystallite }
+    .suffix = 1 K
+    .desc = { ent-Crystallite.desc }
+ent-Crystallite25 = { ent-Crystallite }
+    .suffix = 25 K
+    .desc = { ent-Crystallite.desc }
+ent-Crystallite50 = { ent-Crystallite }
+    .suffix = 50 K
+    .desc = { ent-Crystallite.desc }

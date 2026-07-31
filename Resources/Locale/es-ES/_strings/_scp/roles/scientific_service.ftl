@@ -1,0 +1,9 @@
+job-name-lead-researcher = Investigador Senior
+job-description-lead-researcher = Las tareas del investigador principal incluyen el estudio de objetos anómalos de nivel medio y alto de peligro, asistiendo a los especialistas en contención en el desarrollo de condiciones más eficaces para la contención de objetos SCP.
+job-name-anomarchology-researcher = Investigador
+job-description-anomarchology-researcher = Las tareas de los investigadores ordinarios incluyen el estudio de objetos anómalos, el desarrollo de nuevos equipos y la asistencia al personal senior en proyectos más importantes e importantes.
+job-name-production-specialist = Especialista en producción
+job-description-production-specialist = Un empleado de producción especializado en la creación de mecanismos complejos. Produce materiales y cosas en autolats/protolats, y también diseña nuevos equipos.
+job-name-junior-researcher = Asistente de Laboratorio Practicante
+job-description-junior-researcher = Un investigador novato asignado a uno de los empleados.
+job-supervisors-scientific-service-director = Investigador Jefe

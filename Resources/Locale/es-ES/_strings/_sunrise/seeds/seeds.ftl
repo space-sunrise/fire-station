@@ -1,0 +1,16 @@
+seeds-plaststeelcap-name = Sombrerero de acero de plástico
+seeds-plaststeelcap-display-name = Sombrerero de acero de plástico
+seeds-glasscap-name = Sombrerero de Cristal
+seeds-glasscap-display-name = Sombrerero de Cristal
+seeds-cannabis-vita-name = Cannabis Vita
+seeds-cannabis-vita-display-name = Cannabis Vita
+seeds-barrelmelon-name = Bochkodynya
+seeds-barrelmelon-display-name = Bochkodynya
+seeds-lanternfruit-name = Fruto de la Linterna
+seeds-lanternfruit-display-name = Fruto de la Linterna
+seeds-redrose-name = Rosa Roja
+seeds-redrose-display-name = Rosa Roja
+seeds-whiterose-name = Rosa Blanca
+seeds-whiterose-display-name = Rosa Blanca
+seeds-sunflower-name = Girasol
+seeds-sunflower-display-name = Girasol

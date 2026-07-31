@@ -1,0 +1,15 @@
+humanoid-profile-editor-body-type-label = Físico:
+body-normal = Estándar
+body-slim-f = Delgado
+body-slim-m = Delgado
+body-fat-f = Completo
+body-fat-m = Completo
+body-giga-f = Musculoso
+body-giga-m = Musculoso
+body-distrofik-f = Exhausto
+body-distrofik-m = Exhausto
+body-curved-small-muzzle = Patas curvas (hocico pequeño)
+body-straight-small-muzzle = Piernas rectas (bozal pequeño)
+body-curved-big-muzzle = Patas curvas (bozal grande)
+body-straight-big-muzzle = Piernas rectas (bozal grande)
+body-curved = Patas curvas

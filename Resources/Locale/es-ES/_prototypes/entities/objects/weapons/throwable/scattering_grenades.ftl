@@ -1,0 +1,15 @@
+ent-ScatteringGrenadeBase = { ent-BaseItem }
+    .desc = { ent-BaseItem.desc }
+ent-ClusterBang = Granada aturdidora de racimo
+    .desc = Solo se puede usar con granadas aturdidoras. Explota varias veces.
+ent-ClusterBangFull = Granada aturdidora de racimo
+    .suffix = completo
+    .desc = Lanza tres granadas aturdidores cuando se acaba el temporizador.
+ent-ClusterGrenade = Granada de racimo
+    .desc = ¿Para qué usar una granada cuando puedes usar tres a la vez?
+ent-ClusterBananaPeel = Cáscara de plátano en racimo
+    .desc = Tras aterrizar, se desintegra en 6 cálices explosivas de plátano, ¡la diversión está garantizada!
+ent-SlipocalypseClusterSoap = Jabón en racimo resbaladizo
+    .desc = Tras aterrizar, esparce pequeños trozos de jabón del Sindicato a su alrededor.
+ent-GrenadeFoamDart = granate de poliestireno
+    .desc = Libera una nube de molestos dardos de espuma, lo que provoca debate sobre si hubo un impacto.

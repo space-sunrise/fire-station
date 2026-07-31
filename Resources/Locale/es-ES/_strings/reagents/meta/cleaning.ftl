@@ -1,0 +1,10 @@
+reagent-name-bleach = Lejía
+reagent-desc-bleach = En términos comunes, lejía. Un limpiador potente que puede limpiar suelos igual que un limpiador de espacios, así como desinfectar ropa. Extremadamente tóxico si se ingiere.
+reagent-name-space-cleaner = Purificador Espacial
+reagent-desc-space-cleaner = Es capaz de limpiar casi cualquier superficie de todo lo que pueda mancharla. El limpiador seguramente agradecerá el aditivo.
+reagent-name-soap = Jabón
+reagent-desc-soap = Si fuera tú, no me lavaría la boca con ella.
+reagent-name-space-lube = Lubricante Espacial
+reagent-desc-space-lube = La grasa espacial es un lubricante de alto rendimiento diseñado para atender equipos mecánicos excepcionalmente complejos (y desde luego no se usa para que las personas resbalen).
+reagent-name-space-glue = Pegamento Espacial
+reagent-desc-space-glue = El adhesivo espacial es un adhesivo de alto rendimiento diseñado para dar servicio a equipos mecánicos excepcionalmente complejos (y desde luego no se usa para pegar personas al suelo).

@@ -1,0 +1,14 @@
+ent-ArtificerCreateSoulStone = Crea una piedra del alma.
+    .desc = Este hechizo llega al reino de tu dios e invoca uno de los fragmentos legendarios a través del tiempo y el espacio.
+ent-ArtificerCreateConstructShell = Crea un shell de construcción.
+    .desc = Este hechizo llega al reino de tu dios e invoca uno de los fragmentos legendarios a través del tiempo y el espacio.
+ent-ArtificerConvertCultistFloor = Crea un piso cultista.
+    .desc = Este hechizo convierte el suelo debajo de ti en un suelo de culto.
+ent-ArtificerCreateCultistWall = Crea un muro de adoración.
+    .desc = Este hechizo construye un muro de culto.
+ent-ArtificerCreateCultistAirlock = Crea una puerta de enlace de culto.
+    .desc = Este hechizo erige una puerta de culto.
+ent-WraithPhase = Cambio de fase
+    .desc = Este hechizo te permite atravesar paredes, similar al vuelo etéreo de un mago.
+ent-JuggernautCreateWall = Escudo
+    .desc = Este hechizo crea un campo de fuerza temporal e invisible para protegerte a ti y a tus aliados del fuego de supresión.

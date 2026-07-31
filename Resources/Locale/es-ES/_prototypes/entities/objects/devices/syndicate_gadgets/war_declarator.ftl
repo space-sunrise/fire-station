@@ -1,0 +1,2 @@
+ent-NukeOpsDeclarationOfWar = Declarador de guerra
+    .desc = Se utiliza para enviar un anuncio sobre el inicio de hostilidades, lo que retrasará la salida de tu lanzadera mientras te preparas para un ataque. Un movimiento tan audaz atraerá la atención de poderosos patrocinadores del Sindicato, que proporcionarán a tu equipo una enorme cantidad de telecristales extra. La guerra debe declararse al inicio de la operación, de lo contrario tus patrocinadores perderán el interés.

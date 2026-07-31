@@ -1,0 +1,16 @@
+ent-FoodNoodlesBase = { ent-FoodInjectableBase }
+    .desc = ¡Eso sí que es una pasta estupenda!
+ent-FoodNoodlesBoiled = Espaguetis hervidos
+    .desc = Un plato sencillo de fideos, aquí se necesitan más ingredientes.
+ent-FoodNoodles = Espaguetis
+    .desc = Espaguetis con tomates machacados. ¡Igual que cocinaba tu malvado padre!
+ent-FoodNoodlesCopy = Copiar y pegar
+    .desc = Quizá no deberías probarlo, a menudo oyes a la gente decir lo malo que es...
+ent-FoodNoodlesMeatball = Espaguetis con albóndigas
+    .desc = ¡Eso sí que son albóndigas geniales!
+ent-FoodNoodlesSpesslaw = Zakonpasta
+    .desc = Un plato favorito de los abogados.
+ent-FoodNoodlesChowmein = Chow Mein
+    .desc = Una mezcla estupenda de fideos y verduras asadas.
+ent-FoodNoodlesButter = Fideos cremosos
+    .desc = Fideos cubiertos de mantequilla. Sencillos y resbaladizos, pero deliciosos.

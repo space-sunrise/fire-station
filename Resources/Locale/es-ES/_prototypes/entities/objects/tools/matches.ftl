@@ -1,0 +1,13 @@
+ent-SmallboxItem = { ent-BaseItem }
+    .desc = { ent-BaseItem.desc }
+ent-Matchstick = Partido
+    .desc = Una combinación sencilla usada para encender buenas mezclas para fumar.
+ent-MatchstickSpent = { ent-Matchstick }
+    .suffix = Usados
+    .desc = { ent-Matchstick.desc }
+ent-Matchbox = Caja de fósforos
+    .desc = Una pequeña caja de fósforos casi-per-no-todo-plasma-premium.
+ent-GorlexMatchbox = Caja de fósforos "Gorlex"
+    .desc = Una caja neumática de fósforos inspirada en el equipo de los Gorlex Marauders. Contiene 24 fósforos.
+ent-GorlexMatchstick = Partido
+    .desc = Una fósforo militar solía prender fuego a exquisitas mezclas de humo y a civiles al mismo tiempo.

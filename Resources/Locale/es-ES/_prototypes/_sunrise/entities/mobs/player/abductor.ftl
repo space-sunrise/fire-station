@@ -1,0 +1,14 @@
+ent-MobAbductor = Urist MacAbductor
+    .desc = { ent-BaseMobAbductor.desc }
+ent-MobAbductorScientist = Científico Abductor
+    .desc = { ent-MobAbductor.desc }
+ent-MobAbductorAgent = Agente secuestrador
+    .desc = { ent-MobAbductor.desc }
+ent-SpawnPointAbductorAgent = Agente Abductor de Spawner
+    .desc = { ent-MarkerBase.desc }
+ent-AbductorAgentSpawner = { ent-BaseAntagSpawner }
+    .desc = { ent-BaseAntagSpawner.desc }
+ent-SpawnPointAbductorScientist = Científico abductor de engendros
+    .desc = { ent-MarkerBase.desc }
+ent-AbductorScientistSpawner = { ent-BaseAntagSpawner }
+    .desc = { ent-BaseAntagSpawner.desc }

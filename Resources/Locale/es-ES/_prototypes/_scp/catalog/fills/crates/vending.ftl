@@ -1,0 +1,10 @@
+ent-CrateVendingMachineRestockSeedsScpClassDFilled = Caja de recarga Clase { ent-VendingMachineSeedsDClass } D
+    .desc = Contiene un conjunto de reabastecimiento del { ent-VendingMachineSeedsDClass } Torgomat.
+ent-CrateVendingMachineRestockNutriMaxScpClassDFilled = Caja de recarga Clase { ent-VendingMachineNutriDClass } D
+    .desc = Contiene un conjunto de reabastecimiento del { ent-VendingMachineNutriDClass } Torgomat.
+ent-CrateVendingMachineRestockChefvendScpClassDFilled = Caja de recarga Clase { ent-VendingMachineChefvendDClass } D
+    .desc = Contiene un conjunto de reabastecimiento del { ent-VendingMachineChefvendDClass } Torgomat.
+ent-CrateVendingMachineRestockDinnerwareScpClassDFilled = Caja de recarga Clase { ent-VendingMachineDinnerwareDClass } D
+    .desc = Contiene un conjunto de reabastecimiento del { ent-VendingMachineDinnerwareDClass } Torgomat.
+ent-CrateVendingMachineRestockBoozeScpClassDFilled = Caja de recarga Clase { ent-VendingMachineBoozeDClass } D
+    .desc = Contiene un conjunto de reabastecimiento del { ent-VendingMachineBoozeDClass } Torgomat.

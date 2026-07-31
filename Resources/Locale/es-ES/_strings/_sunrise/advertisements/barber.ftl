@@ -1,0 +1,10 @@
+advertisement-barber-1 = ¿Te gusta un estilo nuevo? No hay problema, ¡la máquina está en marcha!
+advertisement-barber-2 = ¿Quieres ser como una estrella? ¡Nuestras tijeras conocen el secreto!
+advertisement-barber-3 = Un pequeño deslizamiento y sales en la portada de una revista.
+advertisement-barber-4 = ¡Sin movimientos innecesarios, solo estilo!
+advertisement-barber-5 = ¿Qué peinado tienes hoy? ¡Elige, estoy lista!
+advertisement-barber-6 = Corte de pelo calvo: sin pelo, sin preocupaciones, ¡y siempre estás listo para sorpresas!
+advertisement-barber-7 = Tu peinado está en buenas manos.
+advertisement-barber-8 = Corte de pelo calvo: rápido, con estilo y sin problemas para peinarlo.
+advertisement-barber-9 = ¡Calvo es la elección de los hombres de verdad y de quienes han perdido su cepillo de pelo!
+advertisement-barber-10 = Tu estilo es nuestra prioridad.

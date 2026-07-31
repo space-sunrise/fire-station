@@ -1,0 +1,2 @@
+objective-condition-steal-nuclear-bomb = bomba nuclear
+objective-description-steal-supermatter-sliver = Usa cualquier herramienta de corte adecuada. Un bisturí es lo mejor. Y trata de no morir por intoxicación por radiación.

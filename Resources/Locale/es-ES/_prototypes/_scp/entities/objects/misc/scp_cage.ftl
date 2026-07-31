@@ -1,0 +1,16 @@
+ent-BaseCrateScpCage = { ent-BaseStructureDynamic }
+    .desc = { ent-BaseStructureDynamic.desc }
+ent-CrateScpCageFolded = jaula plegada "Pandora"
+    .desc = { ent-CrateScpCage.desc }
+    .suffix = Complicado
+ent-CrateScpCage = hangar "pandora"
+    .desc = Un contenedor de transporte SCP multifuncional, plegable y con cerradura que combina portabilidad con la máxima protección contra influencias anómalas. Se puede enrollar y desplegar con un destornillador.
+ent-CrateScpCageScp173 = { ent-CrateScpCage }
+    .desc = { ent-CrateScpCage.desc }
+    .suffix = SCP-173
+ent-CrateScpBrokenCage173 = { ent-CrateScpCage }
+    .desc = Hangar "Pandora" sin puertas.
+    .suffix = SCP-173
+ent-CrateScpCageDoor173 = Puertas de jaula Pandora
+    .desc = La puerta del contenedor Pandora, derribada con extrema crueldad. Alguien trabajó duro para sacarlos de sus casillas.
+    .suffix = SCP-173

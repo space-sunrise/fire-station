@@ -1,0 +1,66 @@
+ent-SovietSoldierPoolLootSpawner = Generador de botín para soldados soviéticos
+    .desc = Accidentalmente aparece una pieza del equipo del soldado soviético.
+ent-SovietMedicalSupplySpawner = Generador de suministros médicos
+    .desc = Aparece aleatoriamente un artículo de suministros médicos del Set de Máquinas Expendedoras Médicas de Seguridad.
+ent-SovietMedicalSupplyRandomSpawner = Generador aleatorio de suministros médicos
+    .desc = Decide accidentalmente si aparecerá el artículo médico de un soldado soviético.
+
+ent-SovietMarineWebbingBox = Set de trajes de la USSP
+    .desc = Contenedor de Kit de Equipo Marino de la USSP.
+ent-SovietLightWebbingBox = Set de trajes de la USSP
+    .desc = Un contenedor con un conjunto ligero de equipo USSP.
+ent-SovietMessengerGiftBox = Un conjunto de equipo para un soldado soviético
+    .desc = Un contenedor con un conjunto de equipos para la expedición soviética.
+
+ent-ClothingBeltWebbingSovietTier1SKM24SL = Desembarcando a un soldado soviético
+ent-ClothingBeltWebbingSovietTier1PPSHSL = Desembarcando a un soldado soviético
+ent-ClothingBeltWebbingSovietTier1SKM24 = Desembarcando a un soldado soviético
+ent-ClothingBeltWebbingSovietTier1Pistol = Desembarcando a un soldado soviético
+ent-ClothingBeltWebbingSovietTier2Revolver = Desembarcando a un soldado soviético
+ent-ClothingBeltWebbingMercenaryTier1Mosin = Desembarcando a un soldado soviético
+ent-ClothingBeltWebbingMercenaryTier2Shotgun = Desembarcando a un soldado soviético
+ent-ClothingBeltBandolierT1MMGSoviet = Bandolera del Soldado Soviético
+ent-ClothingBeltBandolierT1LMGSoviet = Bandolera del Soldado Soviético
+ent-ClothingBeltBandolierT1SovietMMG2 = Bandolera del Soldado Soviético
+ent-ClothingBeltBandolierT2PPSH = Bandolera del Soldado Soviético
+ent-ClothingBeltMedSovietTier1Medic = Cinturón médico de un soldado soviético
+ent-ClothingBeltMedSovietTier3Pistol = Cinturón médico de un soldado soviético
+ent-ClothingBeltMercenaryTier3Medic = Cinturón de asalto del sanitario soviético
+ent-ClothingBeltMercenaryTier3Assault = Cinturón de asalto de un soldado soviético
+
+ent-ClothingBackpackDuffelMercenaryTier1Medic = Bolso soviético
+ent-ClothingBackpackDuffelMercenaryTier1Pistol = Bolso soviético
+ent-ClothingBackpackDuffelMercenaryTier1MMG = Bolso soviético
+ent-ClothingBackpackDuffelMercenaryTier1MMG2 = Bolso soviético
+ent-ClothingBackpackDuffelMercenaryTier1LMG = Bolso soviético
+ent-ClothingBackpackDuffelMercenaryTier1Mosin = Bolso soviético
+ent-ClothingBackpackDuffelMercenaryTier2Revolver = Bolso soviético
+ent-ClothingBackpackDuffelMercenaryTier2Shotgun = Bolso soviético
+ent-ClothingBackpackDuffelMercenaryTier3Medic = Bolso soviético
+ent-ClothingBackpackDuffelMercenaryTier3Assault = Bolso soviético
+ent-ClothingBackpackDuffelMercenaryTier4Captain = Bolso soviético
+ent-ClothingBackOreCrateTier2Gygax = Bolso soviético
+
+ent-ClothingHandsBlackShotgunSoviet = Guantes
+ent-ClothingHandsBlackPistolSovietFlak = Guantes
+ent-ClothingHandsSovietFlakDP28 = Guantes
+ent-ClothingHandsSovietFlakPKM = Guantes
+ent-ClothingHandsSovietFlakRPD = Guantes
+ent-ClothingHandsFinkaSovietFlak = Guantes
+ent-ClothingHandsFinkaSovietNoOuter = Guantes
+ent-ClothingHandsMercMosinSovietNoOuter = Guantes
+ent-ClothingHandsMp38SovietNoOuter = Guantes
+ent-ClothingHandsBottleSovietNoOuter = Guantes
+ent-ClothingHandsSKM24GSovietNoOuter = Guantes
+ent-ClothingHandsSKM24GSovietUSSPLight = Guantes
+ent-ClothingHandsPythonGSovietUSSPLight = Guantes
+ent-ClothingHandsSKM24BSovietFlak = Guantes
+ent-ClothingHandsSKM24BSovietWinter = Guantes
+ent-ClothingHandsMercRevolversSovietHoSTrench = Guantes
+ent-ClothingHandsBlackShotgunSovietUSSPHeavy = Guantes
+ent-ClothingHandsPPSHSoviet = Guantes
+ent-ClothingHandsPPSHSovietFlak = Guantes
+ent-ClothingHandsPPSHSovietNoOuter = Guantes
+ent-ClothingHandsDragunovSovietUSSPHeavy = Guantes
+ent-ClothingHandsType88SovietUSSPHeavy = Guantes
+

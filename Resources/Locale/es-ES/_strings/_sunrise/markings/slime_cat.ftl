@@ -1,0 +1,17 @@
+marking-SlimeCatEars = Orejas de gato hechas de moco
+marking-SlimeCatTail = Cola de Gato hecha de baba
+marking-SlimeCatTail-slime_tail_cat_wag = Cola de Gato hecha de baba
+marking-SlimeCatEars-ears_slime_cat_outer = Oreja externa
+marking-SlimeCatEars-ears_slime_cat_inner = Oído interno
+marking-SlimeCatTailStripes = Cola de gato slime (rayada)
+marking-SlimeCatTailStripes-slime_tail_cat_wag_stripes_prime = Bandas principales
+marking-SlimeCatTailStripes-slime_tail_cat_wag_stripes_second = Carriles secundarios
+marking-SlimeCatEarsStubby = Orejas mucosas cortas
+marking-SlimeCatEarsStubby-ears_slime_stubby_outer = Oreja externa
+marking-SlimeCatEarsStubby-ears_slime_stubby_inner = Oído interno
+marking-SlimeCatEarsCurled = Orejas mucosas curvadas
+marking-SlimeCatEarsCurled-ears_slime_curled_outer = Oreja externa
+marking-SlimeCatEarsCurled-ears_slime_curled_inner = Oído interno
+marking-SlimeCatEarsTorn = Orejas mucosas divididas
+marking-SlimeCatEarsTorn-ears_slime_torn_outer = Oreja externa
+marking-SlimeCatEarsTorn-ears_slime_torn_inner = Oído interno

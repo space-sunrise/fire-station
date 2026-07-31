@@ -1,0 +1,17 @@
+spooky-speaker-generic-1 = ... UU
+spooky-speaker-generic-2 = ... ¿Alguien me oye...?
+spooky-speaker-generic-3 = ... Únete a nosotros...
+spooky-speaker-generic-4 = ... Juega con nosotros...
+spooky-speaker-generic-5 = KkkhhhkKkhkhkKk
+spooky-speaker-generic-6 = Khhggkkghkkkk
+spooky-speaker-generic-7 = khhkkkkKhkkHq
+spooky-speaker-generic-8 = ...
+spooky-speaker-generic-9 = ... ¿P-p-hola...?
+spooky-speaker-generic-10 = Bzzt
+spooky-speaker-generic-11 = Hitos
+spooky-speaker-generic-12 = ¡TIEMBLAD, MORTALES!
+spooky-speaker-generic-13 = 4444444444
+spooky-speaker-generic-14 = ... Te encontré...
+spooky-speaker-recycler-1 = TENGO HAMBRE
+spooky-speaker-recycler-2 = ¡MÁS! ¡DAME MÁS!
+spooky-speaker-recycler-3 = DAME DE COMER

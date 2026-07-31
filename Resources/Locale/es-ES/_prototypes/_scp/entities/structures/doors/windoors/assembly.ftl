@@ -1,0 +1,12 @@
+ent-ScpWindoorAssembly = marco de ventana corredera
+    .desc = ¡Se abre, se cierra y puedes ver a través de él!
+ent-ScpWindoorAssemblySecure = marco de ventana corrediza blindada
+    .desc = ¡Se abre, se cierra y puedes ver a través de él! Parece fuerte.
+ent-ScpWindoorAssemblyPlasma = marco de ventana corrediza de plasma
+    .desc = ¡Se abre, se cierra y puedes ver a través de él! Parece morado, no, rosa. Espera...
+ent-ScpWindoorAssemblySecurePlasma = marco de ventana blindado corredizo de plasma
+    .desc = ¡Se abre, se cierra y puedes ver a través de él! Se ve fuerte y morado, no, rosa. Espera...
+ent-ScpWindoorAssemblyUranium = marco de ventana corrediza de uranio
+    .desc = ¡Se abre, se cierra y puedes ver a través de él! Tiene un aspecto repugnantemente verde...
+ent-ScpWindoorAssemblySecureUranium = marco de ventana blindado corredizo de uranio
+    .desc = ¡Se abre, se cierra y puedes ver a través de él! ¡Parece un verde lima fuerte y radiactivo!

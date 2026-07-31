@@ -1,0 +1,9 @@
+ent-ClothingHandsGlovesSecurity = guantes de seguridad negros
+    .desc = Los guantes negros normales no te salvarán de freírte.
+    .suffix = Seguridad SCP
+ent-ClothingHandsGlovesWinterSecurity = guantes de seguridad de invierno
+    .desc = Unos guantes negros de invierno que no te salvarán de freírte.
+    .suffix = Seguridad SCP
+ent-ClothingHandsGlovesColorBlackAlt = { ent-ClothingHandsGlovesColorBlack }
+    .desc = { ent-ClothingHandsGlovesColorBlack.desc }
+    .suffix = Seguridad SCP

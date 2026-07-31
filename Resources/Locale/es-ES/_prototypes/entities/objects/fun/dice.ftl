@@ -1,0 +1,16 @@
+ent-BaseDice = { ent-BaseItem }
+    .desc = { ent-BaseItem.desc }
+ent-PercentileDie = Porcentaje de hueso
+    .desc = Hueso con 10 lados. Adecuado para lanzar a d100 mejor que esta bola de golf.
+ent-d20Dice = D20
+    .desc = Una ficha con 20 caras. La ficha preferida para tirar en el Maestro de Juego.
+ent-d12Dice = D12
+    .desc = Un hueso con 12 lados. Un aura de desprecio lo rodea.
+ent-d10Dice = D10
+    .desc = Hueso con 10 lados. Conveniente para los intereses.
+ent-d8Dice = D8
+    .desc = Hueso con 8 lados. Parece... Suerte.
+ent-d6Dice = D6
+    .desc = Hueso con 6 caras. Estándar y en buen estado.
+ent-d4Dice = D4
+    .desc = Dado de cuatro caras. El abrojo de los jugadores de rol.

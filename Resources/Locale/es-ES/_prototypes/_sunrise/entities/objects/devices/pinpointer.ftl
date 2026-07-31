@@ -1,0 +1,9 @@
+ent-PinpointerPirate = Localizador de freelancers
+    .desc = Un rastreador portátil que lleva a tu lanzadera.
+    .suffix = pirata
+ent-PinpointerSmugglerRevolutionaryStash = Puntiero
+    .desc = Un rastreador portátil que te lleva a donde hay algo divertido.
+    .suffix = Revolución
+ent-PinpointerSmugglerStash = Puntiero
+    .desc = Un rastreador portátil que lleva a donde está el contrabando.
+    .suffix = Admem

@@ -1,0 +1,1 @@
+cant-perform-operation-on-yourself = ¡No puedes hacerte la operación a ti mismo!

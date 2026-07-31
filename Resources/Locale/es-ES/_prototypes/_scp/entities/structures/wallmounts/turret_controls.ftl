@@ -1,0 +1,11 @@
+ent-ScpWeaponEnergyTurretStationControlPanelBase = { ent-WeaponEnergyTurretStationControlPanelBase }
+    .desc = { ent-WeaponEnergyTurretStationControlPanelBase.desc }
+ent-ScpWeaponEnergyTurretAIControlPanel = { ent-ScpWeaponEnergyTurretStationControlPanelBase }
+    .suffix = IA
+    .desc = { ent-ScpWeaponEnergyTurretStationControlPanelBase.desc }
+ent-ScpWeaponEnergyTurretSecurityControlPanel = { ent-ScpWeaponEnergyTurretStationControlPanelBase }
+    .suffix = Seguridad
+    .desc = { ent-ScpWeaponEnergyTurretStationControlPanelBase.desc }
+ent-ScpWeaponEnergyTurretAdministrationControlPanel = { ent-ScpWeaponEnergyTurretStationControlPanelBase }
+    .suffix = administración
+    .desc = { ent-ScpWeaponEnergyTurretStationControlPanelBase.desc }

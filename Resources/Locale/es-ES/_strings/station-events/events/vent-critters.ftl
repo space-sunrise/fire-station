@@ -1,0 +1,1 @@
+station-event-vent-creatures-start-announcement = Atención. Se ha encontrado una gran acumulación de formas de vida no identificadas en los sistemas de ventilación. Las criaturas pueden suponer un peligro para el personal de la instalación.

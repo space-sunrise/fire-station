@@ -1,0 +1,10 @@
+comp-gas-filter-ui-filter-status = Estado:
+comp-gas-filter-ui-status-enabled = ON
+comp-gas-filter-ui-status-disabled = FUERA
+comp-gas-filter-ui-filter-transfer-rate = Velocidad de avance (L/S):
+comp-gas-filter-ui-filter-set-rate = Instalación
+comp-gas-filter-ui-filter-gas-current = Ahora filtrado:
+comp-gas-filter-ui-filter-gas-select = Selecciona el gas a filtrar:
+comp-gas-filter-ui-filter-gas-confirm = Gas selecto
+comp-gas-filter-ui-filter-gas-none = No
+comp-gas-filter-ui-needs-anchor = ¡Primero lo asegurad!

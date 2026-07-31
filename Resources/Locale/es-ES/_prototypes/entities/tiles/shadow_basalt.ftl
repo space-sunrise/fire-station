@@ -1,0 +1,13 @@
+ent-ShadowBasaltOne = Piedra Sombría
+    .desc = Grietas brillantes en la realidad. Eso es normal, supongo.
+ent-ShadowBasaltTwo = { ent-ShadowBasaltOne }
+    .desc = { ent-ShadowBasaltOne.desc }
+ent-ShadowBasaltThree = { ent-ShadowBasaltOne }
+    .desc = { ent-ShadowBasaltOne.desc }
+ent-ShadowBasaltFour = { ent-ShadowBasaltOne }
+    .desc = { ent-ShadowBasaltOne.desc }
+ent-ShadowBasaltFive = { ent-ShadowBasaltOne }
+    .desc = { ent-ShadowBasaltOne.desc }
+ent-ShadowBasaltRandom = { ent-ShadowBasaltOne }
+    .suffix = Aleatorio
+    .desc = { ent-ShadowBasaltOne.desc }

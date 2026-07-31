@@ -1,0 +1,15 @@
+ent-WeaponShotgunSPAS12 = LAW-12
+    .desc = Escopeta semiautomática de policía. Puede usar una amplia gama de munición de rifle calibre .50.
+ent-WeaponShotgunSPAS12Rubber = { ent-WeaponShotgunSPAS12 }
+    .suffix = Shotgun, traumático
+    .desc = { ent-WeaponShotgunSPAS12.desc }
+ent-WeaponShotgunTrenchgun4034 = Trenchgun L-4034
+    .desc = Una escopeta barata de seis tiros. Muy utilizada para caza, defensa del hogar y servicio policial. Utiliza munición calibre 12.
+ent-WeaponShotgunTrenchgun4034Sawn = Escopeta de cañón de trinchera L-4034
+    .desc = Una escopeta barata de seis tiros. Ahora es una escopeta compacta a costa de munición. Usa balas calibre 12.
+ent-WeaponShotgunTrenchgun4034SawnEmpty = Escopeta de cañón de trinchera L-4034
+    .desc = { ent-WeaponShotgunTrenchgun4034Sawn.desc }
+    .suffix = Vacío
+ent-WeaponShotgunMinotaurAdmeme = Escopeta AS-12 "Hasta la vista"
+    .desc = Suave, potente, extremadamente ilegal. Una escopeta totalmente automática disponible en el mercado y que utiliza cargadores estándar de tambor calibre 12. Una propiedad de Admeme-Marauders que puede combinarse con otro AS-12 para maximizar la carnicería.
+    .suffix = Admem

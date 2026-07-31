@@ -1,0 +1,16 @@
+ent-EncryptionKeyLaw = Clave de cifrado del Departamento Legal
+    .desc = Una clave de cifrado usada por las personas más meticulosas.
+ent-EncryptionKeyBlueShield = Clave de Cifrado Blue Shield
+    .desc = { ent-EncryptionKey.desc }
+ent-EncryptionKeyUSSP = Clave de cifrado SSSP
+    .desc = Una llave de cifrado gastada en el tiempo. Más te vale no saber de qué hablan.
+ent-EncryptionKeyUSSPSec = Clave de cifrado SSP de los oficiales
+    .desc = Una llave de cifrado gastada en el tiempo. Más te vale no saber de qué hablan.
+ent-EncryptionKeyUSSPCom = Clave de cifrado SSP de comandos
+    .desc = Una llave de cifrado gastada en el tiempo. Más te vale no saber de qué hablan.
+ent-EncryptionKeySyndieMaster = Clave de cifrado maestra roja
+    .desc = La clave del Sindicato para comunicarse con aliados y escuchar los canales de otras personas. Avisados; ¡por lo tanto, armados!
+ent-EncryptionKeyDeathSquad = Clave de cifrado del Escuadrón de la Muerte
+    .desc = Una clave de cifrado usada por un escuadrón desconocido, tiene gotas secas de sangre.
+ent-EncryptionKeyERT = Clave de cifrado del Escuadrón de Respuesta Rápida
+    .desc = Una clave de cifrado utilizada por el Escuadrón de Respuesta Rápida para transmitir información rápidamente.

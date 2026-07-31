@@ -1,0 +1,14 @@
+ent-IngotBase = { ent-BaseItem }
+    .desc = Una barra de metal pesado con el logo de la Fundación grabado en relieve.
+ent-IngotGold = Barra de oro
+    .suffix = completo
+    .desc = { ent-IngotBase.desc }
+ent-IngotGold1 = Barra de oro
+    .suffix = uno
+    .desc = { ent-IngotGold.desc }
+ent-IngotSilver = Barra de plata
+    .suffix = completo
+    .desc = { ent-IngotBase.desc }
+ent-IngotSilver1 = Barra de plata
+    .suffix = uno
+    .desc = { ent-IngotSilver.desc }

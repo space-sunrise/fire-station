@@ -1,0 +1,9 @@
+ent-ScpAirlockShuttle = puerta de enlace de atraque
+    .desc = Requerido para conectar dos naves espaciales juntas.
+    .suffix = Atraque
+ent-ScpAirlockGlassShuttle = puerta de enlace de atraque
+    .desc = Requerido para conectar dos naves espaciales juntas.
+    .suffix = Atraque, Vidrio
+ent-ScpAirlockShuttleAssembly = marco de esclusa de aire de acoplamiento
+    .desc = Se necesitaba una estructura inacabada para conectar dos naves espaciales.
+    .suffix = Atraque

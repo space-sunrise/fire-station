@@ -1,0 +1,14 @@
+ent-ClothingOuterHardsuitEVA = traje espacial eva
+    .desc = Un traje espacial ligero capaz de proteger al usuario del vacío del espacio durante una emergencia.
+ent-ClothingOuterEVASuitSyndicate = Traje espacial EVA del Sindicato
+    .desc = Tiene una etiqueta en la parte trasera que dice: "¡Definitivamente no es propiedad de una corporación enemiga, honestamente!"
+ent-ClothingOuterSuitEmergency = Traje espacial de emergencia EVA
+    .desc = Un traje de emergencia EVA con casco incorporado. Es terriblemente lento y no tiene protección térmica, pero es suficiente para ganar tiempo en el duro vacío del espacio.
+ent-ClothingOuterHardsuitEVAPrisoner = Traje de prisión EVA
+    .desc = Un traje espacial ligero capaz de proteger a un prisionero del vacío del espacio durante una emergencia.
+ent-ClothingOuterHardsuitAncientEVA = Traje vacío de la Fundación SKI
+    .desc = Un antiguo traje espacial diseñado por la agencia de investigación espacial de la Fundación. Está elaborado con el máximo cuidado y ofrece mejor movilidad que la mayoría de los trajes espaciales modernos.
+ent-ClothingOuterHardsuitVoidParamed = Traje de Vacío de Paramédico
+    .desc = Un traje vacío diseñado para paramédicos.
+ent-ClothingOuterSoftsuitCBURN = CBURN EVA
+    .desc = Pesado, duradero y relleno con capas de duracloth, el biotraje EVA se utiliza para operaciones especiales de limpieza.

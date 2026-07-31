@@ -1,0 +1,10 @@
+ent-APCElectronics = Astilla de pintura
+    .desc = Una astilla usada en la creación de pintura.
+ent-WallmountSubstationElectronics = Chip de la subestación de pared
+    .desc = Un chip utilizado en la creación de una subestación montada en la pared.
+ent-WallmountGeneratorElectronics = Chip generador de pared
+    .desc = Un chip utilizado en la creación de un generador de pared.
+ent-WallmountGeneratorAPUElectronics = Chip APU montado en la pared
+    .desc = Un chip utilizado en la creación de una APU montada en la pared.
+ent-SolarTrackerElectronics = Solar Tracker Chip
+    .desc = Rastrea la posición del sol y rota automáticamente los paneles solares, lo que aumenta considerablemente su eficiencia.

@@ -1,0 +1,9 @@
+ent-DrinkSpaceGlue = Tubo de pegamento espacial
+    .desc = Un adhesivo de alto rendimiento diseñado para el mantenimiento de equipos mecánicos extremadamente complejos. ¡NO BEBAS!
+ent-DrinkSpaceLube = Tubo de grasa espacial
+    .desc = Un lubricante de alto rendimiento diseñado para el mantenimiento de equipos mecánicos extremadamente complejos.
+ent-BottomlessLube = Vaso sin fondo con grasa
+    .desc = Este vidrio anómalo produce lubricante cósmico sin cesar y, por tanto, debe ser cuidadosamente protegido para evitar caer en manos equivocadas.
+    .suffix = Depurar
+ent-DrinkMopwataBottleRandom = Delicioso Shvaboda
+    .desc = Una botella marrón turbia con una etiqueta desvaída que muestra una fregona. Está llena de turbio... vintage.

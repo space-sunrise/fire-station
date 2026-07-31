@@ -1,0 +1,10 @@
+ent-HotPotato = Papas calientes
+    .desc = Una vez activada, no podrás lanzar esta bomba de relojería; ¡golpea a alguien más para salvarte! ¡No te quemes las manos!
+ent-HotPotatoEffect = { "" }
+    .desc = { "" }
+ent-TrashBananaPeelExplosive = Piel de plátano
+    .suffix = Explosivos
+    .desc = { ent-TrashBananaPeel.desc }
+ent-TrashBananaPeelExplosiveUnarmed = Plátano
+    .desc = Algo va mal con este plátano.
+    .suffix = No activado

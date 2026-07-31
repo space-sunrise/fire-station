@@ -1,0 +1,15 @@
+ent-MagazineSRifleBase = Cargador (rifle .20)
+    .desc = { ent-BaseItem.desc }
+    .suffix = { "" }
+ent-MagazineSRifle = Cargador (rifle .20)
+    .desc = { ent-MagazineSRifleBase.desc }
+    .suffix = { "" }
+ent-MagazineSRifleFlash = Cargador (rifle .20, cegador)
+    .desc = { ent-MagazineSRifleBase.desc }
+    .suffix = { "" }
+ent-MagazineSRifleHV = Cargador (rifle .20, alta velocidad)
+    .desc = { ent-MagazineSRifleBase.desc }
+    .suffix = { "" }
+ent-MagazineSRiflePractice = Cargador (rifle .20, entrenamiento)
+    .desc = { ent-MagazineSRifleBase.desc }
+    .suffix = { "" }

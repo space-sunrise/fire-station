@@ -1,0 +1,39 @@
+
+ent-ClothingHeadHatCapPrisonDoctor = gorra de médico de prisión
+    .desc = Pesado, puro, su portador está acostumbrado a decidir quién vive y quién no.
+ent-ClothingHeadHatCapPrisonChef = gorra de chef de prisión
+    .desc = Viejo, pero bien cuidado, pertenece a aquellos que lograron sobrevivir alimentando a los monstruos y al mismo tiempo dominando incluso las ollas.
+ent-ClothingHeadHatCapPrisonEngineer = gorra de ingeniero penitenciario
+    .desc = Robusto y preciso, apto para quienes, por 220ª vez, mantienen en orden el sistema de alimentación mientras otros se vuelven locos.
+ent-ClothingHeadHatCapPrisonScientist = gorra de científico de prisión
+    .desc = Cubierto de manchas de reactivo y de un olor extraño, y en la franja descolorida donde antes había marcas de autorización, ahora sólo quedan rastros de quienes cruzaron los límites de la ciencia.
+ent-ClothingHeadHatCapPrisonWorker = gorra de manitas de prisión
+    .desc = La tela estaba oscurecida por el polvo de mineral y en los bordes había rastros de quemaduras, como si la hubieran usado quienes estaban más cerca de lo que no debería haber respirado.
+ent-ClothingHeadHatCapPrisonTrainee = gorra de interno de prisión
+    .desc = Elegante gorra naranja para un interno de prisión.
+
+ent-ClothingHeadHatBeretPrisonDoctor = lleva al medico de la prision
+    .desc = Suave, reservada, como su dueña, acostumbrada a los cuerpos fríos y a la cálida indiferencia.
+ent-ClothingHeadHatBeretPrisonChef = se lleva al cocinero de la prisión
+    .desc = Se sienta apretado, traicionando a alguien que ha aprendido a mantener el orden incluso entre prisioneros y cuchillos.
+ent-ClothingHeadHatBeretPrisonEngineer = se enfrenta a un ingeniero de prisiones
+    .desc = Suavemente ambientado, práctico, indicando alguien que conoce de memoria la distribución de la prisión.
+ent-ClothingHeadHatBeretPrisonScientist = toma prisión científico
+    .desc = Limpio pero aburrido, pertenece a aquellos que han entendido demasiado y ahora simplemente fingen trabajar.
+ent-ClothingHeadHatBeretPrisonWorker = recoge a un personal de mantenimiento de la prisión
+    .desc = Distorsionado, pero lucido con orgullo, porque su portador ha trabajado para muchos más de una vez.
+ent-ClothingHeadHatBeretPrisonTrainee = se enfrenta a un interno de prisión
+    .desc = Fresco y nuevo, aún sin ser consciente de la carga del largo servicio, marcado en naranja, que muestra el camino hacia el futuro.
+
+ent-ClothingHeadCapPrisonDoctor = gorra de médico de prisión
+    .desc = Sencillo y limpio, pero agrietado por el lavado, como símbolo de quienes curan a los rotos por el sistema.
+ent-ClothingHeadCapPrisonChef = gorro de cocinero de prisión
+    .desc = La tela barata, empapada de hollín y sudor, pertenece a quienes alimentan la prisión y apenas viven de sus olores.
+ent-ClothingHeadCapPrisonEngineer = gorra de ingeniero de prisión
+    .desc = Aceitado y quemado, indica quienes intentan arreglar la prisión mientras otros deciden a quién culpar.
+ent-ClothingHeadCapPrisonScientist = gorra de científico de prisión
+    .desc = Llevado bajo, como señal de alguien que lleva muestras y no hace descubrimientos.
+ent-ClothingHeadCapPrisonWorker = gorra de personal de mantenimiento de prisión
+    .desc = Tosco y desgastado, siempre cubierto de tierra, lo usan los que son los primeros en la cola para recibir el pedido y los últimos en la salida.
+ent-ClothingHeadCapPrisonTrainee = gorra de interno de prisión
+    .desc = Sencillo y limpio, pero nuevo, un símbolo para quienes recién comienzan en el sistema penitenciario.

@@ -1,0 +1,14 @@
+advertisement-lawdrobe-1 = ¡PROTESTA! ¡Consigue el estado de derecho para ti!
+advertisement-lawdrobe-2 = ¡Molesta a los guardias hasta que empiecen a seguir tus propias reglas!
+advertisement-lawdrobe-3 = ¿Acabas de tener un caso nuevo? ¡Ve a sacarlos de la cárcel!
+advertisement-lawdrobe-4 = ¡Cena un donut y no necesitas el Departamento de Seguridad!
+advertisement-lawdrobe-5 = ¡Nadie está por encima de la ley!
+advertisement-lawdrobe-6 = No, agente, no consiento el registro.
+advertisement-lawdrobe-7 = ¡Una inyección de drogas espaciales no deja pruebas!
+advertisement-lawdrobe-8 = ¿Usted o algún ser querido sufrió por la Fundación? ¡Qué pena!
+advertisement-lawdrobe-9 = ¡El caso está cerrado! ¡El acusado va demasiado elegantemente vestido!
+thankyou-lawdrobe-1 = ¡Con ese disfraz puedes ganar cualquier caso!
+thankyou-lawdrobe-2 = ¡Consigue uno también para tu cliente!
+thankyou-lawdrobe-3 = ¡Ganes o pierdas, te pagarán de todas formas!
+thankyou-lawdrobe-4 = Recuerda: ¡solo es ilegal si te pillan!
+thankyou-lawdrobe-5 = ¡PROTESTA! ¡Este traje es demasiado guay para el juicio!

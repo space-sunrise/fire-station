@@ -1,0 +1,1 @@
+radial-ui-close = Menú cerrado

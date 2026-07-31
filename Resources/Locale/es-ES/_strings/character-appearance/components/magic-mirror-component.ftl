@@ -1,0 +1,12 @@
+magic-mirror-component-activate-user-has-no-hair = ¡No puedes tener pelo!
+magic-mirror-window-title = Espejo mágico
+magic-mirror-add-slot-self = Te pones pelo a ti mismo.
+magic-mirror-remove-slot-self = Eliminas parte del pelo.
+magic-mirror-change-slot-self = Cambias tu peinado.
+magic-mirror-change-color-self = Cambias el color de tu pelo.
+magic-mirror-add-slot-target = { $user } te da pelo a ti.
+magic-mirror-remove-slot-target = { $user } quita algo de vello.
+magic-mirror-change-slot-target = { $user } cambia tu peinado.
+magic-mirror-change-color-target = { $user } cambia el color de tu pelo.
+magic-mirror-blocked-by-hat-self = Antes de cambiar tu peinado, tienes que quitarte el sombrero.
+magic-mirror-blocked-by-hat-self-target = Intentas cambiarte el peinado, pero la ropa del objetivo se interpone.

@@ -1,0 +1,15 @@
+ent-AnimalRandomSpawner = Generador de animales aleatorios
+    .desc = { ent-MarkerBase.desc }
+ent-CarpSpawnerMundane = Generador de Carpas NPC
+    .suffix = 100
+    .desc = { ent-MarkerBase.desc }
+ent-HatSpawner = Generador de Sombreros Aleatorios
+    .desc = { ent-MarkerBase.desc }
+ent-SnakeSpawnerMundane = Generador de NPCs serpientes
+    .suffix = 100
+    .desc = { ent-MarkerBase.desc }
+ent-SpaceTickSpawnerNPC = Tick Espacial Generador de NPC
+    .suffix = 100
+    .desc = { ent-MarkerBase.desc }
+ent-XenoAISpawner = Generador de NPCs Xenomorfos
+    .desc = { ent-MarkerBase.desc }

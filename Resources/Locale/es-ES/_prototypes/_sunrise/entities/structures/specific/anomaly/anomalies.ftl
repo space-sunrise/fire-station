@@ -1,0 +1,3 @@
+ent-AnomalyClown = { ent-BaseAnomaly }
+    .suffix = Payaso
+    .desc = Por lo demás, es una máquina ordinaria que parece distorsionar el propio espacio dentro de sí misma. Sientes que las criaturas de dentro vienen a hacerte reír a toda costa...

@@ -1,0 +1,13 @@
+marking-PredatorDreadlocksShort1 = Rastas cortas
+marking-PredatorDreadlocksShort2 = Rastas cortas (viola)
+marking-PredatorDreadlocksShoulderLength = Rastas hasta los hombros
+marking-PredatorDreadLong = Rastas largas
+marking-PredatorDreadlocksTailDown = Cola de caballo baja
+marking-PredatorDreadlocksTailUp = Cola de caballo alta
+marking-PredatorBodySpots = Manchas
+marking-PredatorBodyStripes = Rayas
+marking-PredatorArmsSpots = Manchas
+marking-PredatorArmsStripes = Rayas
+marking-PredatorLegsStripes = Rayas
+marking-PredatorRings1 = Anillos
+marking-PredatorRings2 = Anillos (viola)

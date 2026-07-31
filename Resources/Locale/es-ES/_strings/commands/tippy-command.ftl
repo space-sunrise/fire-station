@@ -1,0 +1,11 @@
+cmd-tippy-desc = Entrega un mensaje en nombre de Tippy el Payaso.
+cmd-tippy-help = Uso: tippy <usuario | todos> <message> [prototipo de entidad] [tiempo de habla] [tiempo de deslizamiento] [intervalo de arrastre]
+cmd-tippy-auto-1 = <user | all>
+cmd-tippy-auto-2 = Texto
+cmd-tippy-auto-3 = Prototipo de la entidad
+cmd-tippy-auto-4 = Hora del mensaje, en segundos
+cmd-tippy-auto-5 = Tiempo de animación, en segundos
+cmd-tippy-auto-6 = Intervalo de salto, en segundos
+cmd-tippy-error-no-user = Usuario no encontrado.
+cmd-tippy-error-no-prototype = No se encontró ningún prototipo: { $proto }
+cmd-tip-desc = Aparición aleatoria de consejos de partida.

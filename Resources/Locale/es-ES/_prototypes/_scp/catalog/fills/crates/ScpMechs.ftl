@@ -1,0 +1,9 @@
+ent-CrateAdministrationScpGygaxBundle = conjunto gigax
+    .desc = Contiene un conjunto de mecanismos con armadura ligera de Fundación SCP.
+    .suffix = Lleno
+ent-CrateAdministrationMarauderBundle = establecer "Merodeador"
+    .desc = Contiene una selección de mecanismos de la Fundación SCP fuertemente blindados.
+    .suffix = Lleno
+ent-CrateAdministrationSeraphBundle = establecer "serafines"
+    .desc = Contiene una selección de mecanismos de élite de la Fundación SCP fuertemente blindados.
+    .suffix = Lleno

@@ -1,0 +1,11 @@
+ent-FireAxeCabinet = Armario de hacha contra incendios
+    .desc = Un pequeño cartel dice "Solo emergencias" y contiene instrucciones para el uso seguro del hacha. Sí, por supuesto.
+ent-FireAxeCabinetOpen = { ent-FireAxeCabinet }
+    .suffix = Abierto
+    .desc = { ent-FireAxeCabinet.desc }
+ent-FireAxeCabinetFilled = { ent-FireAxeCabinet }
+    .suffix = Lleno
+    .desc = { ent-FireAxeCabinet.desc }
+ent-FireAxeCabinetFilledOpen = { ent-FireAxeCabinetFilled }
+    .suffix = Abierto, lleno
+    .desc = { ent-FireAxeCabinetFilled.desc }

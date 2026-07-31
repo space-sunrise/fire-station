@@ -1,0 +1,15 @@
+ent-ScpRandomPosterAny = { ent-RandomPosterAny }
+    .desc = { ent-RandomPosterAny.desc }
+    .suffix = SCP
+ent-ScpRandomPosterContraband = { ent-RandomPosterContraband }
+    .desc = { ent-RandomPosterContraband.desc }
+    .suffix = SCP
+ent-ScpRandomPosterLegit = { ent-RandomPosterLegit }
+    .desc = { ent-RandomPosterLegit.desc }
+    .suffix = SCP
+ent-ScpRandomPosterDClass = cartel aleatorio de generador de jardín de infantes
+    .desc = { ent-MarkerBase.desc }
+    .suffix = SCP
+ent-ScpRandomPosterScp049 = cartel aleatorio del generador 049
+    .desc = { ent-MarkerBase.desc }
+    .suffix = SCP | KS-049

@@ -1,0 +1,15 @@
+ent-CartridgeClRifleBase = Cartucho (rifle .25)
+    .desc = { ent-BaseCartridge.desc }
+    .suffix = { "" }
+ent-CartridgeClRifle = Cartucho (.25 sin vaina)
+    .desc = { ent-CartridgeClRifleBase.desc }
+    .suffix = { "" }
+ent-CartridgeClRifleFlash = Cartucho (cartucho aturdidor sin vaina .25)
+    .desc = { ent-CartridgeClRifleBase.desc }
+    .suffix = { "" }
+ent-CartridgeClRifleHV = Chuck (.25 sin casquillo de alta velocidad)
+    .desc = { ent-CartridgeClRifleBase.desc }
+    .suffix = { "" }
+ent-CartridgeClRiflePractice = Cartucho (entrenamiento sin vaina .25)
+    .desc = { ent-CartridgeClRifleBase.desc }
+    .suffix = { "" }

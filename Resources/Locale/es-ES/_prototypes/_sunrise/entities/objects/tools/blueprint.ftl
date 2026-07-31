@@ -1,0 +1,14 @@
+ent-TechnologyDiskBlueprint = Disco de proceso
+    .desc = Disco para el servidor RND que contiene la tecnología investigada.
+ent-BlueprintMagAsh12Slug = Bala de extracción para cargador ASh-12
+    .desc = Un dibujo con un diagrama del cargador ASh-12 con balas. Puede insertarse en el autolat y el TechFab de seguridad.
+ent-BlueprintMagAsh12Beanbag = Dibujo traumático de revista ASh-12
+    .desc = Dibujando con un diagrama del cargador ASh-12 con cartuchos traumáticos. Puede insertarse en el autolat y el TechFab de seguridad.
+ent-BlueprintMagAsh12Flare = dibujo de la bengala del cargador ASh-12
+    .desc = Dibujando con un diagrama del cargador ASh-12 con bengalas. Puede insertarse en el autolat y en el TechFab de seguridad.
+ent-BlueprintImplanterExtractor = { ent-TechnologyDiskBlueprint }
+    .desc = Dibujar con diagrama extractor
+ent-BlueprintProtoAdrenalImplant = Plano del Implante de Protoadrenalina
+    .desc = Dibujando con un diagrama de un implante de protoadrenalina. Se puede insertar en el autolat.
+ent-BlueprintFishXenoReaper = Plano para Xenoborg el Segador
+    .desc = Un plano con un diagrama del tren de aterrizaje vacío de un Segador Xenoborg. Puede insertarse en el Núcleo Madre.

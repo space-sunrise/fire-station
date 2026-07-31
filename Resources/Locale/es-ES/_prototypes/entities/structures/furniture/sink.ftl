@@ -1,0 +1,15 @@
+ent-SinkEmpty = Fregadera
+    .desc = Los grifos se apretaron con la máxima fuerza, pero, como puedes ver, siguen goteando.
+    .suffix = vacío
+ent-Sink = Fregadera
+    .desc = { ent-SinkEmpty.desc }
+    .suffix = AGUA
+ent-SinkWide = Lavabo ancho
+    .desc = { ent-Sink.desc }
+    .suffix = AGUA
+ent-SinkStemless = Fregadera
+    .desc = { ent-SinkEmpty.desc }
+    .suffix = vacío
+ent-SinkStemlessWater = Fregadera
+    .desc = { ent-SinkStemless.desc }
+    .suffix = AGUA

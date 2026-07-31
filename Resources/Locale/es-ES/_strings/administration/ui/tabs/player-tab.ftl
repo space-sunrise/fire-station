@@ -1,0 +1,19 @@
+player-tab-player-count = Jugadores: { $count }
+player-tab-username = Usuario
+player-tab-character = Carácter
+player-tab-job = Posición
+player-tab-antagonist = Antag
+player-tab-roletype = Tipo de rol
+player-tab-playtime = Tiempo
+player-tab-show-disconnected = Espectáculo desconectado
+player-tab-overlay = Superposición
+player-tab-entry-tooltip = El tiempo del partido se muestra como días:horas:minutos.
+player-tab-filter-line-edit-placeholder = Filtro
+player-tab-is-antag-yes = si
+player-tab-character-name-antag-symbol = { $symbol } { $name }
+player-tab-antag-prefix = 🗡
+player-tab-is-antag-no = No
+# Sunrise-Sponsors
+player-tab-sponsor = Patrocinador
+player-tab-objectives = Objetivos
+player-tab-objectives-button = Objetivos

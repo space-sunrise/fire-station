@@ -1,0 +1,17 @@
+marking-UndergarmentTopTanktop = Camiseta
+marking-UndergarmentTopBinder = Apretado
+marking-UndergarmentTopBra = Sujetador clásico
+marking-UndergarmentTopSportsbra = Sujetador deportivo
+marking-UndergarmentBottomBoxers = Boxeadores
+marking-UndergarmentBottomBriefs = Informes
+marking-UndergarmentBottomSatin = Lencería de satén
+marking-UndergarmentTopTanktopVox = Camiseta
+marking-UndergarmentTopBinderVox = Apretado
+marking-UndergarmentTopBraVox = Sujetador clásico
+marking-UndergarmentTopSportsbraVox = Sujetador deportivo
+marking-UndergarmentBottomBoxersVox = Boxeadores
+marking-UndergarmentBottomBriefsVox = Informes
+marking-UndergarmentBottomSatinVox = Lencería de satén
+marking-UndergarmentBottomBoxersReptilian = Boxeadores
+marking-UndergarmentBottomBriefsReptilian = Informes
+marking-UndergarmentBottomSatinReptilian = Lencería de satén

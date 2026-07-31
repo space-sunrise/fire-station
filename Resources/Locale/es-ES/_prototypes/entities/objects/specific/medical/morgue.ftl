@@ -1,0 +1,9 @@
+ent-BodyBag = Body Bag
+    .desc = Una bolsa de plástico diseñada para almacenar y transportar cadáveres, y evitar que se pudran.
+ent-BodyBagFolded = Body Bag
+    .desc = Una bolsa de plástico diseñada para almacenar y transportar cadáveres, y evitar que se pudran.
+    .suffix = Folded
+ent-Ash = Cenizas
+    .desc = Antes era algo, pero ahora ya no.
+ent-Ectoplasm = Ectoplasma
+    .desc = En esta forma, es mucho menos letal.

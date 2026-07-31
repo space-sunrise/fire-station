@@ -1,0 +1,17 @@
+elevator-manage-floors-desc = Controla los pisos del ascensor especificado: agregar, eliminar, mover o enumerar.
+elevator-manage-floors-help = Uso: { $command } <elevator_id> <action> [floor_name] [dirección]\nAcciones: <floor_name>añadir, <floor_name>eliminar, mover <floor_name> <direction>, lista\nIndicaciones para moverse: arriba, abajo o número de índice
+elevator-manage-floors-not-found = ID del ascensor '{ $elevatorId }' no encontrado.
+elevator-manage-floors-floor-exists = El piso { $floorName } ya existe en el ascensor { $elevatorId }.
+elevator-manage-floors-added = Se añadió una planta de '{ $floorName }' al ascensor '{ $elevatorId }'. Plantas actuales: { $floors }
+elevator-manage-floors-floor-not-exists = La planta '{ $floorName }' no existe en el ascensor '{ $elevatorId }'.
+elevator-manage-floors-cannot-remove-current = No es posible eliminar el '{ $floorName }' actual de planta del ascensor '{ $elevatorId }'.
+elevator-manage-floors-removed = Se ha retirado el { $floorName } de planta del ascensor { $elevatorId }. Plantas actuales: { $floors }
+elevator-manage-floors-list = Plantas de ascensor '{ $elevatorId }': { $floors }. Planta actual: { $currentFloor }
+elevator-manage-floors-move-help = Para la acción de 'mover', especifica el nombre del suelo y la dirección: { $command } <elevator_id> mover <floor_name> <direction>\nDirecciones: arriba, abajo o número de índice (basado en 0)
+elevator-manage-floors-already-top = La planta de '{ $floorName }' ya está arriba.
+elevator-manage-floors-already-bottom = La planta '{ $floorName }' ya está abajo.
+elevator-manage-floors-invalid-index = Índice inválido '{ $index }'. Debe estar entre 0 y { $maxIndex }.
+elevator-manage-floors-unknown-direction = Dirección desconocida '{ $direction }'. Usa 'arriba', 'abajo' o un número de índice válido.
+elevator-manage-floors-moved = Han movido el piso { $floorName } a la posición { $newIndex }. Pisos actuales: { $floors }
+elevator-manage-floors-unknown-action = Acción desconocida '{ $action }'. Acciones válidas: añadir, eliminar, mover, listar.
+elevator-manage-floors-args-error = Se esperan al menos 2 argumentos: id_ascensor y acción.

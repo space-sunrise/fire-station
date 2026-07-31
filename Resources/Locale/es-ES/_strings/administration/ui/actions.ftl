@@ -1,0 +1,13 @@
+admin-player-actions-reason = Causa
+admin-player-actions-bans = Lista de prohibiciones
+admin-player-actions-notes = Notas
+admin-player-actions-kick = Patada
+admin-player-actions-ban = Prohibición
+admin-player-actions-ahelp = PM
+admin-player-actions-respawn = Reaparición
+admin-player-actions-spawn = Aparición aquí
+admin-player-spawn-failed = No pude encontrar las coordenadas adecuadas
+admin-player-actions-player-panel = Panel Abierto de Jugador
+admin-player-actions-clone = Clon
+admin-player-actions-follow = Sigue
+admin-player-actions-confirm = ¿Estás seguro?

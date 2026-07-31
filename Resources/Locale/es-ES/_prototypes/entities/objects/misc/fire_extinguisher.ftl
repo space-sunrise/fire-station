@@ -1,0 +1,10 @@
+ent-FireExtinguisher = Extintor
+    .desc = Apaga incendios.
+ent-BorgFireExtinguisher = Mochila propulsora maniobrable
+    .desc = Según la tecnología de extintores, el jetpack maniobrable es... sí, es solo un extintor más grande.
+ent-ExtinguisherSpray = Chorro extintor
+    .desc = { ent-Vapor.desc }
+ent-FireExtinguisherMini = Extintor de bolsillo
+    .desc = Un modelo de extintor ligero y compacto en una carcasa de fibra de vidrio. Contiene menos agua que su hermano mayor.
+ent-SelfRechargingFireExtinguisher = Extintor autocargable
+    .desc = Apaga incendios. Se llena lentamente de agua.

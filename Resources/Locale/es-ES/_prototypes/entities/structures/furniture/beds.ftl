@@ -1,0 +1,12 @@
+ent-Bed = Cama
+    .desc = Puedes tumbarte sobre ella o dormir con el sueño.
+ent-MedicalBed = Cama de hospital
+    .desc = Cama de hospital para rehabilitación del paciente. Descansar en ella proporciona una curación lenta.
+ent-DogBed = Cama para perros
+    .desc = Cama para perro cómoda. Incluso puedes sujetar a tu mascota por si la gravedad está apagada.
+ent-Mattress = Colchón
+    .desc = Supongo que es mejor dormir sobre ella que en el suelo.
+ent-WebBed = Cama de arañas
+    .desc = No puedes apartarte.
+ent-PsychBed = El sofá del psicólogo
+    .desc = Cama tapizada para proporcionar asistencia psicológica a los pacientes.

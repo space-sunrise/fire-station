@@ -1,0 +1,13 @@
+ent-BaseNuclearBomb = Ojiva nuclear
+    .desc = Probablemente no deberías quedarte aquí para comprobar si está funcionando.
+ent-NuclearBomb = { ent-BaseNuclearBomb }
+    .desc = { ent-BaseNuclearBomb.desc }
+ent-NuclearBombUnanchored = { ent-NuclearBomb }
+    .suffix = No fijo
+    .desc = { ent-NuclearBomb.desc }
+ent-NuclearBombDisarmed = { ent-BaseNuclearBomb }
+    .desc = Obviamente, no puede estar armada dada la falta de núcleo.
+    .suffix = Desarmado
+ent-NuclearBombKeg = Ojiva nuclear
+    .desc = Probablemente no deberías quedarte aquí para comprobar si está funcionando. Hay un grifo en el lateral.
+    .suffix = Barril

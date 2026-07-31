@@ -1,0 +1,10 @@
+ent-CrateSyndicateBullfrogBundle = caja "Zhábyk"
+    .desc = Un kit con componentes para montar la lanzadera EXP-3600g “Zhabyk”.
+ent-CrateSyndicateShuttleBundle = Caja del kit de lanzadera Syndicate
+    .desc = Un juego que contiene componentes para ensamblar una lanzadera de sindicato, excepto la placa de la consola de la lanzadera.
+ent-CrateSyndicateFriendshipBundle = Caja de set "Amistad"
+    .desc = Un kit con componentes para montar el cañón lanzadera BAL-20 “Friendship”.
+ent-CrateSyndicateLongbowBundle = conjunto de cajas "Arco largo"
+    .desc = Kit con componentes para el montaje del cañón lanzadera BAL-15 Longbow.
+ent-CrateSyndicateQuadlingBundle = Caja de juego de quadling
+    .desc = Kit con componentes para el montaje del cañón lanzadera Quadling BAL-15-4.

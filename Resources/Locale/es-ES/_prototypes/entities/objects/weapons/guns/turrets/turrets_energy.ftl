@@ -1,0 +1,12 @@
+ent-WeaponEnergyTurretStationBase = Torreta de seguridad
+    .desc = Un sistema de armas autónomo de alta tecnología diseñado para proteger contra accesos no autorizados a áreas restringidas.
+ent-WeaponEnergyTurretAI = Torreta de Seguridad de IA
+    .desc = Un sistema de armas autónomo de alta tecnología bajo el control directo de la inteligencia artificial local.
+ent-WeaponEnergyTurretSecurity = { ent-WeaponEnergyTurretStationBase }
+    .suffix = SB
+    .desc = { ent-WeaponEnergyTurretStationBase.desc }
+ent-WeaponEnergyTurretCommand = { ent-WeaponEnergyTurretStationBase }
+    .suffix = Mando
+    .desc = { ent-WeaponEnergyTurretStationBase.desc }
+ent-WeaponEnergyTurretStation = Torreta de seguridad
+    .desc = Un sistema de armas autónomo de alta tecnología diseñado para proteger contra accesos no autorizados a áreas restringidas.

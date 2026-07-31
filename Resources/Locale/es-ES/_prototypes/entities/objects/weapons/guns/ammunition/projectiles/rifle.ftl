@@ -1,0 +1,10 @@
+ent-BulletRifle = Bala (rifle 0.20)
+    .desc = { ent-BaseBullet.desc }
+ent-BulletRiflePractice = Bala (entrenamiento de rifle 0.20)
+    .desc = { ent-BaseBulletPractice.desc }
+ent-BulletRifleIncendiary = Bala (fusil incendiario 0.20)
+    .desc = { ent-BaseBulletIncendiary.desc }
+ent-BulletRifleUranium = Bala (Uranio de fusil 0.20)
+    .desc = { ent-BaseBulletUranium.desc }
+ent-BulletRifleTraceImprovised = Bala casera (5,56mm)
+    .desc = Una bala rugosa de 5,56 mm capaz de atravesar la cobertura o rebotar en ella.

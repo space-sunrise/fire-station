@@ -1,0 +1,16 @@
+cargoproduct-category-name-armory = Armería
+cargoproduct-category-name-atmospherics = ATMOSFÉRICA
+cargoproduct-category-name-cargo = Suministro
+cargoproduct-category-name-circuitboards = Placas y circuitos
+cargoproduct-category-name-emergency = Equipamiento de emergencia
+cargoproduct-category-name-engineering = Ingeniería
+cargoproduct-category-name-food = Gastronomía
+cargoproduct-category-name-fun = Entretenimiento
+cargoproduct-category-name-hydroponics = Hidroponía
+cargoproduct-category-name-livestock = Ganadería
+cargoproduct-category-name-materials = Materiales
+cargoproduct-category-name-medical = Medicina
+cargoproduct-category-name-science = Ciencia
+cargoproduct-category-name-security = Seguridad
+cargoproduct-category-name-service = Servicio
+cargoproduct-category-name-shuttle = lanzadera

@@ -1,0 +1,10 @@
+examine-trigger-voice = La pantalla dice: "{ $keyphrase }"
+trigger-voice-uninitialized = La pantalla muestra: No inicializado...
+verb-trigger-voice-record = Grabación
+verb-trigger-voice-stop = ¡Para
+verb-trigger-voice-clear = Registro de borrado
+popup-trigger-voice-start-recording = Empieza a grabar
+popup-trigger-voice-stop-recording = Fin del tronco
+popup-trigger-voice-record-failed-too-long = Mensaje demasiado largo, inténtalo de nuevo
+popup-trigger-voice-record-failed-too-short = Mensaje demasiado corto, inténtalo de nuevo
+popup-trigger-voice-recorded = Grabación exitosa

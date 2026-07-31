@@ -1,0 +1,10 @@
+admin-solutions-window-title = Edición de soluciones - { $targetName }
+admin-solutions-window-solution-label = Solución objetivo:
+admin-solutions-window-add-new-button = Añadir un nuevo reactivo
+admin-solutions-window-volume-label = Unidades de volumen { $currentVolume }/{ $maxVolume }
+admin-solutions-window-capacity-label = Capacidad (u):
+admin-solutions-window-specific-heat-label = Capacidad calorífica específica: { $specificHeat } J/(K*u)
+admin-solutions-window-heat-capacity-label = Capacidad calorífica: { $heatCapacity } J/Q
+admin-solutions-window-temperature-label = Temperatura (K):
+admin-solutions-window-thermal-energy-label = Energía térmica (J):
+admin-solutions-window-thermals = Propiedades térmicas

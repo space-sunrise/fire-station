@@ -1,0 +1,10 @@
+ent-BaseWeaponLightMachineGun = Ametralladora Estándar
+    .desc = Atrévete: lanza en picado, apunta y dispara.
+ent-WeaponLightMachineGunL6 = L6 SAW
+    .desc = Desarrollado por Waffle Corporation. La L6 es una ametralladora ligera utilizada a menudo por los saqueadores Gorlex. El cañón voluminoso e incómodo, pero pesado y la alta capacidad de munición la convierten en un excelente medio para suprimir al enemigo con fuego intenso. Utiliza cinturones de munición 5,56x45 mm.
+    .suffix = Ametralladora
+ent-WeaponLightMachineGunL6Max = { ent-WeaponLightMachineGunL6 }
+    .desc = { ent-WeaponLightMachineGunL6.desc }
+    .suffix = Ametralladora
+ent-WeaponLightMachineGunL6C = L6C ROW
+    .desc = Sierra L6 para cíborgs. En movimiento, crea cartuchos de calibre 5,56x45 mm a partir del fabricante de munición semicargable incorporado.

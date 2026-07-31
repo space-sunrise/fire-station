@@ -1,0 +1,1 @@
+ahelp-antispam-ban-reason = Has sido expulsado por el sistema automático anti-spam en Ahelp. Si crees que ha ocurrido un error, puedes apelar la prohibición en el servidor de Discord del proyecto.

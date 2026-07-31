@@ -1,0 +1,11 @@
+ent-HeadOfPrisonPDA-desc = Tiene la apariencia de un instrumento de poder prestigioso, pero un poco rayado por las constantes llamadas urgentes.
+ent-PrisonInspectorPDA-desc = Cortado con pequeñas abolladuras y arañazos, pero conserva su aspecto oficial.
+ent-PrisonPilotPDA-desc = Brillante y tecnológica, como si acabara de ser sacado de la cabina.
+ent-PrisonEngineerPDA-desc = Pesada y quemada en los bordes, absorbía el calor de los cierres y uniones de soldadura del bloque penitenciario.
+ent-PrisonScientistPDA-desc = Desvanecidos por el tiempo, con rastros de productos químicos y esquinas quemadas nacidas de la prisa tras puertas cerradas.
+ent-PrisonDoctorPDA-desc = Estéril en apariencia, pero con bordes gastados, pues guardaba más de una historia de dolor y salvación.
+ent-PrisonChefPDA-desc = Destartalada y manchada de especias, refleja la dura vida cotidiana de la cocina dentro de las paredes de la prisión.
+ent-PrisonWorkerPDA-desc = Desgastada y cubierta de arañazos, muestra rastros de un trabajo duro y monótono.
+ent-PrisonTraineePDA-desc = Nuevo y limpio, aún aprendiendo lo básico, marcado en naranja que muestra el camino de crecimiento.
+ent-PlanetPrisonerPDA-desc = Funciones mínimas. Máxima supervisión.
+ent-FugitivePrisonerPDA-desc = Una pantalla tenue y un botón hundido, la apariencia delata el pasado que le dejó huella.

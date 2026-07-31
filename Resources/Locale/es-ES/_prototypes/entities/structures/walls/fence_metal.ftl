@@ -1,0 +1,15 @@
+ent-BaseFenceMetal = Malla de eslabón
+    .desc = Una valla metálica que separe algo probablemente sea muy importante.
+ent-FenceMetalBroken = Malla de eslabones rotos
+    .desc = Alguien estaba muy enfadado con un objeto inanimado.
+ent-FenceMetalStraight = { ent-BaseFenceMetal }
+    .suffix = Directo
+    .desc = { ent-BaseFenceMetal.desc }
+ent-FenceMetalCorner = { ent-BaseFenceMetal }
+    .suffix = Ángulo
+    .desc = { ent-BaseFenceMetal.desc }
+ent-FenceMetalEnd = { ent-BaseFenceMetal }
+    .suffix = Fin
+    .desc = { ent-BaseFenceMetal.desc }
+ent-FenceMetalGate = Puerta de red de eslabones de cadena
+    .desc = Puedes usar la puerta en vez de trepar por encima de ella, si eres un COBARDE.

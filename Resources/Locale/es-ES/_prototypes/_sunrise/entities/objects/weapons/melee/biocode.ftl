@@ -1,0 +1,15 @@
+ent-EnergySwordDoubleBiocode = { ent-EnergySwordDouble }
+    .suffix = BIOCODIGO
+    .desc = { ent-EnergySwordDouble.desc }
+ent-EnergySwordBiocode = { ent-EnergySword }
+    .suffix = BIOCODIGO
+    .desc = { ent-EnergySword.desc }
+ent-FireAxeFlamingBiocode = { ent-FireAxeFlaming }
+    .suffix = BIOCODIGO
+    .desc = { ent-FireAxeFlaming.desc }
+ent-EnergyDaggerBiocode = { ent-EnergyDagger }
+    .suffix = BIOCODIGO
+    .desc = { ent-EnergyDagger.desc }
+ent-SyndicateRapierBiocode = { ent-SyndicateRapier }
+    .suffix = BIOCODIGO
+    .desc = { ent-SyndicateRapier.desc }

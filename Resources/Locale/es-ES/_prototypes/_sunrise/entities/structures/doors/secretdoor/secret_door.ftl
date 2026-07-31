@@ -1,0 +1,9 @@
+ent-BaseReinforcedSecretDoor = muralla fortificada
+    .desc = Mantiene el aire en el interior y a los asistentes en el exterior.
+    .suffix = puerta secreta
+ent-ReinforcedSecretDoorAssembly = Marco de puerta secreta reforzado
+    .desc = Todavía no se abre ni cierra. Pero definitivamente puede aplastarte.
+ent-ReinforcedSecretDoor = muralla fortificada
+    .desc = { ent-BaseSecretDoor.desc }
+ent-BaseReinforcedSecretDoorAssembly = Marco de puerta oculta reforzado
+    .desc = Se abre, se cierra y puede aplastarte.

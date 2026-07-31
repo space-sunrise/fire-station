@@ -1,0 +1,10 @@
+ent-HolosignWetFloor = Cartel de "suelo mojado"
+    .desc = Las palabras parpadean como si no significaran nada.
+ent-HoloFan = Barrera atmosférica
+    .desc = Una barrera de luz sólida que bloquea el aire, y nada más.
+ent-HoloPeel = Piel desnuda
+    .desc = ¡Cáscara de plátano de luz sólida resbaladiza, ten cuidado!
+ent-HolosignSecurity = Barrera Holográfica
+    .desc = Una barrera de luz sólida, bloqueando el movimiento, pero bastante frágil.
+ent-HolosignForcefield = Campo de Fuerza Holográfico
+    .desc = Un campo de contención temporal poderoso que no pasará por alto nada, ni siquiera Tesla o la Singularidad.

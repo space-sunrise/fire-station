@@ -1,0 +1,12 @@
+lathe-category-surgery = Cirugía
+lathe-category-cyberlimbs = Miembros
+lathe-category-reports = Informes
+lathe-category-statements = Conclusiones
+lathe-category-inquiries-and-appeals = Solicitudes y peticiones
+lathe-category-complaints = Quejas
+lathe-category-permissions = Permisos
+lathe-category-orders-and-instructions = Órdenes e instrucciones
+lathe-category-orders = Pedidos
+lathe-category-evidence = Testimonios
+lathe-category-conclusions-and-decisions = Conclusiones y decisiones
+lathe-category-error = Error

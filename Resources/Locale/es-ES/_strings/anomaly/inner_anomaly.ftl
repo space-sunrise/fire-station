@@ -1,0 +1,16 @@
+inner-anomaly-start-message-pyro = Sientes una llama insaniente dentro de ti. Te has convertido en portador de una anomalía piroclástica.
+inner-anomaly-start-message-shock = ¡Relámpagos revolotean en tus dedos! Te has convertido en portador de una anomalía eléctrica.
+inner-anomaly-start-message-shadow = Una oscuridad impenetrable rezuma de ti... Te has convertido en portador de una anomalía de sombra.
+inner-anomaly-start-message-frost = El frío helado te une los huesos. Te has convertido en portador de una anomalía de hielo.
+inner-anomaly-start-message-flora = ¡Las hojas y las flores están atravesando tu piel! Te has convertido en portadora de una anomalía florística.
+inner-anomaly-start-message-bluespace = ¡Tus pensamientos van a mil por ahí! Te has convertido en portador de la anomalía del espacio azul.
+inner-anomaly-start-message-flesh = Tu cuerpo crece rápidamente. Te has convertido en portador de la carne de la anomalía.
+inner-anomaly-start-message-grav = Todo se vuelve antinaturalmente pesado y ligero al mismo tiempo... Te has convertido en portador de una anomalía gravitatoria.
+inner-anomaly-start-message-tech = ¡Tu cabeza zumba con un flujo caótico de información! Te has convertido en portador de una anomalía tecnológica.
+inner-anomaly-start-message-rock = ¡Los cristales crecen a través de tus huesos! Te has convertido en portador de una anomalía de piedra.
+inner-anomaly-start-message-santa = You're becoming obsessed with the Christmas spirit! You became the host of a Christmas anomaly.
+inner-anomaly-end-message = La actividad anómala dentro de ti desaparece sin dejar rastro....
+inner-anomaly-severity-info-50 = Sientes que la anomalía está ocupando más de la mitad de tu cuerpo.
+inner-anomaly-severity-info-75 = Sientes que la anomalía ha envuelto la mayor parte de tu cuerpo.
+inner-anomaly-severity-info-90 = Sientes que la anomalía casi se ha apoderado de tu cuerpo.
+inner-anomaly-severity-info-100 = La anomalía dentro de ti crece incontrolablemente, causando un dolor inmenso y destrozándote.

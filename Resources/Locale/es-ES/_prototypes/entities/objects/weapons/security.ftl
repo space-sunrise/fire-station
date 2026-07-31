@@ -1,0 +1,11 @@
+ent-Stunbaton = Bastón aturdidor
+    .desc = Un bastón aturdidor para inmovilizar a las personas. Infligir daño de forma excesiva con este objeto se considera de mala educación.
+ent-Truncheon = Bastón
+    .desc = Un bastón resistente con un núcleo de acero diseñado para causar dolor.
+ent-Flash = Flash
+    .desc = Una luz ultra brillante con botón de encendido provoca entumecimiento y pérdida de visión a corto plazo. Inútil cuando se quema.
+ent-SciFlash = Flash
+    .desc = { ent-Flash.desc }
+    .suffix = 2 cargos
+ent-PortableFlasher = Flash portátil
+    .desc = Bombilla súper brillante con disparador remoto, útil para crear una zona, solo para SB.

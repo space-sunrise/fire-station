@@ -1,0 +1,12 @@
+employee-class-name-a = Clase "A"
+employee-class-name-b = Clase "B"
+employee-class-name-c = Clase "C"
+employee-class-name-d = Clase "D"
+employee-class-name-e = Clase "E"
+employee-class-name-unspecified = Clase desconocida
+employee-class-description-a = La Clase "A" se asigna al personal considerado vital para las operaciones estratégicas de la Fundación y, por tanto, tiene prohibido cualquier acceso directo a objetos anómalos.
+employee-class-description-b = La clase "B" se asigna al personal considerado esencial para las operaciones locales de la Fundación. Solo se les permite acceder a objetos, entidades y fenómenos anómalos que hayan sido puestos en cuarentena y sometidos a medidas para bloquear posibles influencias mentales o meméticas.
+employee-class-description-c = La Clase "C" se asigna al personal con acceso directo a la mayoría de las anomalías que no representen peligro ni muestran hostilidad. El personal de Clase C que haya tenido contacto directo con posibles fuentes de influencia mental o memética puede estar sujeto a cuarentena obligatoria o evaluación psiquiátrica, a discreción del servicio de seguridad.
+employee-class-description-d = La Clase "D" se asigna al personal prescindible utilizado para trabajar con anomalías extremadamente peligrosas. Tienen prohibido cualquier contacto con personal de Clase A o B.
+employee-class-description-e = La Clase "E" es una designación temporal otorgada a agentes de campo y personal implicados en la contención si están expuestos a efectos potencialmente peligrosos durante la contención de una nueva instalación.
+employee-class-description-unspecified = La clase no ha sido declarada, su impacto es desconocido.

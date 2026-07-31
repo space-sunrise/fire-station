@@ -1,0 +1,9 @@
+ent-MobScp106Monster = sombra algo
+    .desc = Una acumulación de miedo convertido en odio surgió de una grieta gigante para llenar esta dimensión.
+    .suffix = Monstruo SCP-106
+ent-Scp106Portal = Grieta de la realidad
+    .desc = El horror inimaginable del otro lado sacude incluso la posible idea de la existencia de uno mismo dentro de él.
+    .suffix = Portal SCP-106
+ent-MobScp106BigMonster = Cosa de sombra gigante
+    .desc = { ent-MobScp106Monster.desc }
+    .suffix = { ent-MobScp106Monster.suffix }

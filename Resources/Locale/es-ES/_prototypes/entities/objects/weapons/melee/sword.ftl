@@ -1,0 +1,16 @@
+ent-BaseSword = { ent-BaseItem }
+    .desc = { ent-BaseItem.desc }
+ent-Cutlass = Sable de abordaje
+    .desc = Una hoja curva astutamente que a menudo se ve en las manos y ganchos de piratas espaciales.
+ent-Machete = Machete
+    .desc = Una hoja grande y de aspecto ominoso.
+ent-CaptainSabre = Sable del capitán
+    .desc = Un arma ceremonial perteneciente al capitán de la estación.
+ent-Katana = Katana
+    .desc = Una obra antigua hecha de plastal no tan antiguo.
+ent-EnergyKatana = Energokatana
+    .desc = Una katana dotada de una energía intensa.
+ent-Claymore = Claymore
+    .desc = Una antigua espada militar.
+ent-Throngler = Nagibator
+    .desc = ¿Por qué hiciste esto?

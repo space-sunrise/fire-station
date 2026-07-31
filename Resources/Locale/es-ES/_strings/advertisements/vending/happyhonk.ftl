@@ -1,0 +1,14 @@
+advertisement-happyhonk-1 = ¡Toca el claxon! ¡Toca el claxon! ¿Por qué no pides el almuerzo de Happy Honk esta noche?
+advertisement-happyhonk-2 = Los payasos merecen un abrazo, si ves alguno de ellos, asegúrate de expresar tu agradecimiento.
+advertisement-happyhonk-3 = Si encuentras un bocino dorado, reza a los dioses: tienes suerte.
+advertisement-happyhonk-4 = Feliz almuerzo de Honk, incluso el jefe médico lo agradecerá, cuando pases a un banquete, no olvides recoger un juguete.
+advertisement-happyhonk-5 = ¿Qué es blanco y negro y rojo? Mimo, y murió por un golpe en la cabeza con un objeto contundente.
+advertisement-happyhonk-6 = ¿Cuántos agentes de seguridad necesitas para arrestarte? Tres: uno para matarte a golpes, uno para esposarte y uno para arrastrar tu cuerpo al túnel.
+advertisement-happyhonk-7 = Happy Honk no se hace responsable de la calidad de los productos que se colocan en nuestras fiambreras de Happy Honk.
+advertisement-happyhonk-8 = ¿Por qué no pides nuestro almuerzo Mime Happy Honk de edición limitada?
+advertisement-happyhonk-9 = Happy Honk es una marca registrada de "Honk! co.", y somos mucho más guays que "Robust Nukie Food Corp."
+advertisement-happyhonk-10 = ¡Nuestras cenas Happy Honk seguro que te darán una gran sorpresa!
+thankyou-happyhonk-1 = ¡CLAXON!
+thankyou-happyhonk-2 = ¡Claxon, claxon!
+thankyou-happyhonk-3 = ¡Comparte la diversión! ¡Claxon!
+thankyou-happyhonk-4 = ¡Ve y descuarta a alguien! ¡Bocina!

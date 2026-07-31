@@ -1,0 +1,10 @@
+ent-BaseMechAction = { ent-BaseAction }
+    .desc = { ent-BaseAction.desc }
+ent-ActionMechCycleEquipment = Equipos de maniobras
+    .desc = Cambia el equipo seleccionado.
+ent-ActionMechOpenUI = Control Panel
+    .desc = Abre el panel de control de mechas.
+ent-ActionMechEject = Salir
+    .desc = Deja caer al piloto del mecha.
+ent-ActionMechLights = Luz
+    .desc = Activa la iluminación del mecha.

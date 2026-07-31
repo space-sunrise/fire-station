@@ -1,0 +1,11 @@
+advertisement-magivend-1 = ¡Lanza hechizos de la forma correcta con MagoMath!
+advertisement-magivend-2 = ¡Conviértete tú en Houdini! ¡Usa MagoMat!
+advertisement-magivend-3 = AOLDAOYV
+advertisement-magivend-4 = FOLADIOFLD
+advertisement-magivend-5 = >MFW
+advertisement-magivend-6 = ¡CLAXON!
+advertisement-magivend-7 = EI NATH
+advertisement-magivend-8 = ¡Destruid la estación!
+advertisement-magivend-9 = ¡Equipo para Manipular el Espacio y el Tiempo!
+advertisement-magivend-10 = ¡1234 LOCOS, JAJA!
+advertisement-magivend-11 = ¡NAR'CIE, DESPIERTA!

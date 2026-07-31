@@ -1,0 +1,1 @@
+razor-window-title = Cambiar de peinado

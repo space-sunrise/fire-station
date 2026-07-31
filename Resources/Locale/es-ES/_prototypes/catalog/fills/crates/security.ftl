@@ -1,0 +1,16 @@
+ent-CrateSecurityArmor = Caja de blindaje antibalas
+    .desc = Tres chalecos antibalas universales con buena protección. Para abrirlo, necesitas un nivel de acceso del Servicio de Seguridad.
+ent-CrateSecurityHelmet = Caja de casco
+    .desc = Contiene tres Brain Buckets estándar. Requiere Nivel de Acceso de Seguridad para desbloquearse.
+ent-CrateSecurityNonlethal = Caja de Equipo No Letal
+    .desc = Armas no letales. Para desbloquearla, necesitas un nivel de acceso del Servicio de Seguridad.
+ent-CrateSecuritySupplies = Caja de Suministros de Seguridad
+    .desc = Contiene varios suministros para el equipo de seguridad de la estación. Requiere un nivel de acceso de seguridad para desbloquearlo.
+ent-CrateRestraints = Caja de esposas
+    .desc = Contiene dos cajas de esposas y bridas. Se requiere acceso de seguridad para abrir.
+ent-CrateSecurityBiosuit = Caja de trajes bioprotectores SB
+    .desc = Contiene 2 trajes de biohazard para asegurar que ninguna infestación te distraiga de cumplir con tu deber. Requiere acceso de seguridad para desbloquearlo.
+ent-CrateSecurityTrackingMindshieldImplants = Caja implantadora
+    .desc = { ent-CrateSecgear.desc }
+ent-CrateSecNonlethalThrowables = Cajón de armas arrojadizas no letal
+    .desc = Contiene una caja de granadas aturdidoras, una granada de gas lacrimógeno y cuatro bolas. Se requiere acceso a seguridad para abrirse.

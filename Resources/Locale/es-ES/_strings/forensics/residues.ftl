@@ -1,0 +1,9 @@
+forensic-residue = { LOC($adjective) } residuos
+forensic-residue-colored = { LOC($adjective) } { LOC($color) } residuos
+residue-unknown = Desconocido
+residue-slippery = pegajoso
+residue-green = Verde
+residue-blue = Azul
+residue-red = rojo
+residue-grey = Grey
+residue-brown = Brown

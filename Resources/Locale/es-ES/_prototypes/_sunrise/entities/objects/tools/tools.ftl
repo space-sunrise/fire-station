@@ -1,0 +1,13 @@
+ent-RCDAdvancedSunrise = DCS avanzado
+    .desc = Bluespace es un DCS mejorado que regenera cargas de forma pasiva.
+    .suffix = Ingeniero Senior, Carga de Automóviles
+ent-WirecutterAbductor = Alicates abductors
+    .desc = { ent-BaseItem.desc }
+ent-ScrewdriverAbductor = Destornillador de los secuestradores
+    .desc = { ent-BaseItem.desc }
+ent-WrenchAbductor = Llave Abductor
+    .desc = { ent-Wrench.desc }
+ent-MultitoolAbductor = Secuestradores multiherramienta
+    .desc = { ent-Multitool.desc }
+ent-HandHeldMassScannerPirate = Mapa Holográfico Pirata
+    .desc = Un escáner de masas portátil disfrazado de un mapa pirata brillante.

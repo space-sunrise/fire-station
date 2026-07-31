@@ -1,0 +1,9 @@
+objective-condition-steal-title-no-owner = Roba { $itemName }.
+objective-condition-steal-title-alive-no-owner = Roba { $itemName }.
+objective-condition-steal-title = Robar { $itemName }, propietario: { $owner }.
+objective-condition-steal-description = Necesitamos que robes { $itemName }. No te pillen.
+objective-condition-steal-station = Estación
+objective-condition-steal-Ian = Jefes de Personal de Corgi
+objective-condition-thief-description = ¡{ CAPITALIZE($itemName) } será una gran incorporación a mi colección!
+objective-condition-thief-animal-description = { CAPITALIZE($itemName) } será una gran incorporación a mi colección! Lo principal está vivo.
+objective-condition-thief-multiply-description = Necesito recoger { $count } { $itemName } y llevármelo conmigo.

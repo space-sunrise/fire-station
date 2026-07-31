@@ -1,0 +1,15 @@
+ent-RandomHumanoidSpawnerNTFLeader = { ghost-role-information-mtf-leader-NTF-name }
+    .suffix = DM | Épsilon-11
+    .desc = { ghost-role-information-mtf-leader-description }
+ent-RandomHumanoidSpawnerNTFSpecialist = { ghost-role-information-mtf-specialist-NTF-name }
+    .suffix = DM | Épsilon-11
+    .desc = { ghost-role-information-mtf-specialist-description }
+ent-RandomHumanoidSpawnerNTFCadet = { ghost-role-information-mtf-cadet-NTF-name }
+    .suffix = DM | Épsilon-11
+    .desc = { ghost-role-information-mtf-cadet-description }
+ent-SpawnerMTFSquadNTF = { spawner-squad-name } MTF Epsilon-11
+    .desc = { ent-SpawnerMTFSquadHD.desc }
+    .suffix = Épsilon-11
+ent-SpawnerMTFSquadNTFSpawnOnTrigger = { ent-SpawnerMTFSquadNTF }
+    .desc = { ent-SpawnerMTFSquadNTF.desc }
+    .suffix = { ent-SpawnerMTFSquadNTF.suffix }, { spawner-on-trigger-suffix }

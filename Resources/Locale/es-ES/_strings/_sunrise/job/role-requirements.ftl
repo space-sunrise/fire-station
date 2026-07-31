@@ -1,0 +1,1 @@
+role-timer-discord = Para interpretar este rol, necesitas [color=yellow]get un role[/color] de Discord.

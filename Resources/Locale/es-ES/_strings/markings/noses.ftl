@@ -1,0 +1,10 @@
+marking-HumanNoseSchnozz = Shnobel
+marking-HumanNoseSchnozz-schnozz = Nariz
+marking-HumanNoseNubby = Nariz con bultos
+marking-HumanNoseNubby-nubby = Nariz
+marking-HumanNoseDroop = Nariz con joroba
+marking-HumanNoseDroop-droop = Nariz
+marking-HumanNoseBlob = Nariz pineal
+marking-HumanNoseBlob-blob = Nariz
+marking-HumanNoseUppie = Nariz alta
+marking-HumanNoseUppie-uppie = Nariz

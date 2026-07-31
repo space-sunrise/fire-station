@@ -1,0 +1,17 @@
+marking-CatTail = Cola de Gato
+marking-CatTail-tail_cat_wag = Principales
+marking-CatTailStripes = Cola de Gato (Rayada)
+marking-CatTailStripes-tail_cat_wag_stripes_prime = Bandas principales
+marking-CatTailStripes-tail_cat_wag_stripes_second = Carriles secundarios
+marking-CatEars = orejas de gato
+marking-CatEars-ears_cat_outer = Oreja externa
+marking-CatEars-ears_cat_inner = Oído interno
+marking-CatEarsStubby = Orejas cortas
+marking-CatEarsStubby-ears_stubby_outer = Oreja externa
+marking-CatEarsStubby-ears_stubby_inner = Oído interno
+marking-CatEarsCurled = Orejas enrugadas
+marking-CatEarsCurled-ears_curled_outer = Oreja externa
+marking-CatEarsCurled-ears_curled_inner = Oído interno
+marking-CatEarsTorn = Orejas abiertas
+marking-CatEarsTorn-ears_torn_outer = Oreja externa
+marking-CatEarsTorn-ears_torn_inner = Oído interno

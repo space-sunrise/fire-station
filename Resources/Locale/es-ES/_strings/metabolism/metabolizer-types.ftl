@@ -1,0 +1,11 @@
+metabolizer-type-animal = Animal
+metabolizer-type-bloodsucker = Chupasangre
+metabolizer-type-dragon = Dragon
+metabolizer-type-human = Hombre
+metabolizer-type-slime = Slimmolud
+metabolizer-type-vox = Vox
+metabolizer-type-rat = Rata
+metabolizer-type-plant = Planta
+metabolizer-type-dwarf = Enano
+metabolizer-type-moth = Nian
+metabolizer-type-arachnid = Arácnido

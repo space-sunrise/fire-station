@@ -1,0 +1,44 @@
+# Sunrise-Edit - Guidebook status effects keys Russian
+
+entity-effect-status-effect-Stun = Aturdimiento
+entity-effect-status-effect-KnockedDown = Propinas
+entity-effect-status-effect-Jitter = Temblando
+entity-effect-status-effect-TemporaryBlindness = Ceguera
+entity-effect-status-effect-SeeingRainbows = Alucinaciones
+entity-effect-status-effect-Muted = Silencio
+entity-effect-status-effect-Stutter = Tartamudez
+entity-effect-status-effect-ForcedSleep = Inconsciencia
+entity-effect-status-effect-Drunk = Intoxicación
+entity-effect-status-effect-PressureImmunity = Inmunidad a la presión arterial
+entity-effect-status-effect-Pacified = Pacifismo
+entity-effect-status-effect-RatvarianLanguage = Lengua ratvariana
+entity-effect-status-effect-StaminaModifier = Cambio en la resistencia
+entity-effect-status-effect-RadiationProtection = Protección radiológica
+entity-effect-status-effect-Drowsiness = somnolencia
+entity-effect-status-effect-Adrenaline = adrenalina
+entity-effect-status-effect-ShockProtection = Protección contra descargas eléctricas
+
+ent-StatusEffectDrunk = Intoxicación
+    .desc = { ent-MobStatusEffectDebuff.desc }
+ent-StatusEffectWoozy = mareos
+    .desc = { ent-MobStatusEffectDebuff.desc }
+ent-StatusEffectPainNumbness = Entumecimiento del dolor
+    .desc = { ent-MobStatusEffectDebuff.desc }
+ent-StatusEffectAnticoagulant = Anticoagulante
+    .desc = { ent-MobStatusEffectDebuff.desc }
+ent-StatusEffectHemorrhage = sangrado
+    .desc = { ent-MobStatusEffectDebuff.desc }
+ent-StatusEffectDesoxyStamina = 2x resistencia máxima
+    .desc = { ent-MobStatusEffectDebuff.desc }
+ent-StatusEffectStimulantsStamina = 1,5x Resistencia Máxima
+    .desc = { ent-MobStatusEffectDebuff.desc }
+ent-StatusEffectStutter = Tartamudez
+    .desc = { ent-MobStatusEffectDebuff.desc }
+ent-StatusEffectSlurred = Habla arrastrada
+    .desc = { ent-MobStatusEffectDebuff.desc }
+ent-StatusEffectScrambled = Habla confundida
+    .desc = { ent-MobStatusEffectDebuff.desc }
+ent-StatusEffectOwO = Acento OWO
+    .desc = { ent-MobStatusEffectDebuff.desc }
+ent-StatusEffectBark = Acento ladrante
+    .desc = { ent-MobStatusEffectDebuff.desc }

@@ -1,0 +1,17 @@
+ent-BaseHandheldStationMap = Mapa del complejo
+    .desc = Muestra un diagrama del complejo actual.
+ent-HandheldStationMap = { ent-BaseHandheldStationMap }
+    .desc = { ent-BaseHandheldStationMap.desc }
+    .suffix = Manual, cargado
+ent-HandheldStationMapEmpty = { ent-HandheldStationMap }
+    .suffix = Manual, vacío
+    .desc = { ent-HandheldStationMap.desc }
+ent-HandheldStationMapUnpowered = { ent-BaseHandheldStationMap }
+    .desc = { ent-BaseHandheldStationMap.desc }
+    .suffix = Manual, no requiere alimentación
+ent-HandheldStationMapStatic = { ent-BaseHandheldStationMap }
+    .desc = { ent-BaseHandheldStationMap.desc }
+    .suffix = Manual, opera fuera de la estación
+ent-HandheldStationMapNukeops = Mapa de la estación objetivo
+    .desc = Muestra un diagrama de la estación objetivo.
+    .suffix = Manual, Operativos Nucleares

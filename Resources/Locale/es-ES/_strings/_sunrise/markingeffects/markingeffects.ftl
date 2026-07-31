@@ -1,0 +1,14 @@
+marking-effect-type-color = Sin efecto
+marking-effect-color-color-base = Color
+marking-effect-type-gradient = Pendiente
+marking-effect-gradient-color-base = Inicio
+marking-effect-gradient-color-gradient = Fin
+marking-effect-gradient-parameter-offset = Posición
+marking-effect-gradient-parameter-size = Tamaño
+marking-effect-gradient-parameter-rotation = Rotación
+marking-effect-gradient-parameter-pixelation = Pixelación
+marking-effect-gradient-parameter-mirror = Reflexión de efectos
+marking-effect-type-roughgradient = Pendiente desigual
+marking-effect-roughgradient-color-base = Inicio
+marking-effect-roughgradient-color-gradient = Fin
+marking-effect-roughgradient-parameter-horizontal = Horizontal

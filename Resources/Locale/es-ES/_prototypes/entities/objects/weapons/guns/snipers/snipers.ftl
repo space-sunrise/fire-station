@@ -1,0 +1,16 @@
+ent-BaseWeaponSniper = Fusil estándar
+    .desc = Atrévete: lanza en picado, apunta y dispara.
+ent-WeaponSniperMosin = Kardashev-Mosin
+    .desc = Armas de caza, o guerra de trincheras interminable. Utiliza cartuchos de rifle 7.62x54R.
+    .suffix = fusil
+ent-WeaponSniperHristov = Hristov
+    .desc = Fusil de francotirador portátil de gran calibre. Dispara potentes cartuchos perforantes antimaterial de calibre 15 mm.
+    .suffix = fusil
+ent-Musket = Mosquete
+    .desc = Debería haber estado en el museo mucho antes de que nacieras. Usa cartuchos de antimateria de 15mm.
+    .suffix = fusil
+ent-WeaponPistolFlintlock = Pistola de chispa
+    .desc = Compañero de pirata. ¡Yarrr! Usa munición .45 magnum.
+ent-WeaponPistolFlintlockEmpty = { ent-WeaponPistolFlintlock }
+    .suffix = vacío
+    .desc = { ent-WeaponPistolFlintlock.desc }

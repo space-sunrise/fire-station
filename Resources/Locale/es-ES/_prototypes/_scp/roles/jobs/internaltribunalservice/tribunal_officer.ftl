@@ -1,0 +1,9 @@
+ent-TribunalOfficerPDA = PDA del funcionario del tribunal
+    .desc = El mejor amigo de la documentación de la Fundación SCP.
+ent-TribunalOfficerIDCard = Tarjeta de identificación de funcionario del tribunal
+    .desc = { ent-IDCardStandard.desc }
+ent-RubberStampTribunalOfficer = sello de oficial del tribunal
+    .desc = { ent-RubberStampBase.desc }
+ent-BriefcaseTribunalOfficerFilled = { ent-BriefcaseBrown }
+    .suffix = { job-name-tribunal-officer }
+    .desc = { ent-BriefcaseBrown.desc }

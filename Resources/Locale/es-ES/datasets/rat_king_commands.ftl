@@ -1,0 +1,11 @@
+rat-king-command-stay-1 = ¡Siéntate!
+rat-king-command-stay-2 = ¡Para!
+rat-king-command-stay-3 = ¡Quieto!
+rat-king-command-follow-1 = ¡Saque!
+rat-king-command-follow-2 = ¡Sígueme!
+rat-king-command-cheese-1 = ¡Atacad!
+rat-king-command-cheese-2 = ¡Cara!
+rat-king-command-cheese-3 = ¡Mata!
+rat-king-command-cheese-4 = ¡Con su queso!
+rat-king-command-loose-1 = ¡Descansen!
+rat-king-command-loose-2 = ¡Suéltame!

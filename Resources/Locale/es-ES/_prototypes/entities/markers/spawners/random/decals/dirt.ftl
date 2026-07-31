@@ -1,0 +1,17 @@
+ent-DecalSpawnerDirtBase = { ent-DecalSpawnerBase }
+    .desc = { ent-DecalSpawnerBase.desc }
+ent-DecalSpawnerDirtSingle = { ent-DecalSpawnerDirtBase }
+    .suffix = Tierra, radio 0
+    .desc = { ent-DecalSpawnerDirtBase.desc }
+ent-DecalSpawnerDirtNear = { ent-DecalSpawnerDirtBase }
+    .suffix = Tierra, radio de 1,5
+    .desc = { ent-DecalSpawnerDirtBase.desc }
+ent-DecalSpawnerDirtWide = { ent-DecalSpawnerDirtBase }
+    .suffix = Tierra, radio 3
+    .desc = { ent-DecalSpawnerDirtBase.desc }
+ent-DecalSpawnerDirtMonospace = { ent-DecalSpawnerDirtBase }
+    .suffix = Tierra, Monoespacio, 1 radio
+    .desc = { ent-DecalSpawnerDirtBase.desc }
+ent-DecalSpawnerBurns = { ent-DecalSpawnerDirtMonospace }
+    .suffix = Hollín, 1 radio
+    .desc = { ent-DecalSpawnerDirtMonospace.desc }

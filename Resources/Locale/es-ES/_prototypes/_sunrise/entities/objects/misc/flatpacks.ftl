@@ -1,0 +1,10 @@
+ent-CopyMachineFlatpack = Impresora de documentos empaquetados
+    .desc = Un paquete que puede usarse para crear una impresora de documentos.
+ent-ShuttleSecurityFlatpack = Consola de lanzadera SB llena
+    .desc = Un paquete que puede usarse para crear una consola.
+ent-ShuttleGunKineticFlatpack = PTK-800 "Desmaterializador de Materia" empaquetado
+    .desc = Un paquete que puede usarse para ensamblar el PTK-800 "Desmaterializador de Materia".
+ent-SlopDispenserFlatpack = Dispensador de pasta nutricional envasada
+    .desc = Un paquete que puede usarse para montar un dispensador de pasta nutritiva.
+ent-MechMiningPodFlatpack = Cápsula de mineros llena
+    .desc = Un paquete con el que puedes montar un hogar de minero.

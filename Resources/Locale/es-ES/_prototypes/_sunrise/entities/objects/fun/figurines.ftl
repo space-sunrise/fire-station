@@ -1,0 +1,12 @@
+ent-ToyFigurineBlueshield = Figura de oficial del Escudo Azul
+    .desc = Una figurita que representa a un oficial del escudo azul, dispuesto a proteger al personal de mando a cualquier precio.
+ent-ToyFigurineEnforcementofficer = Figurita de oficial de la ISN
+    .desc = Una figurita que representa a un oficial del SNI dispuesto a cumplir la voluntad del Departamento de Supervisión Interna o del Sistema Judicial NanoTrasen a cualquier precio.
+ent-ToyFigurineBrigmedic = Figurilla de Brigmedic
+    .desc = Una figura que representa a un brigadier. Parece que es mejor morir que explicarle de dónde vienen tus heridas.
+ent-ToyFigurineCburn = Figurita de caza RChBZZ
+    .desc = Una figura que representa a los defensores de la estación de... ¿virus?
+ent-ToyFigurineDeathsquad = Figurita del Escuadrón de la Muerte
+    .desc = Una figurita que representa... ¿Quién es?
+ent-ToyFigurineErt = Figurilla de líder de OBR
+    .desc = Una figura que representa a los defensores de la estación de... No sé, por si acaso.

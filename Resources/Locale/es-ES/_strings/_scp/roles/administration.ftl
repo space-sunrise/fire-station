@@ -1,0 +1,16 @@
+job-name-director = Director de la instalación
+job-description-director = Gestor de obra. Gestiona la instalación y es el empleado de mayor rango. Responsable de la operación continua y segura, la contención de anomalías y la organización del proyecto.
+job-name-scientific-service-director = Investigador Jefe
+job-description-scientific-service-director = Sus tareas incluyen supervisar el trabajo eficaz, productivo y seguro del servicio de investigación de la instalación.
+job-name-security-commander = Jefe del Servicio de Seguridad
+job-description-security-commander = El jefe del servicio de seguridad es el comandante supremo del servicio. Sus tareas incluyen organizar operaciones y procedimientos para garantizar la seguridad en la instalación, compilar patrullas y permitir que los experimentos se realicen cumpliendo con todas las condiciones de seguridad.
+job-name-chief-technical-specialist = Ingeniero Jefe
+job-description-chief-technical-specialist = Ingeniero principal con muchos años de experiencia. Responsable de coordinar todo el servicio.
+job-name-personnel-officer = Responsable de RRHH
+job-description-personnel-officer = Supervisa el rendimiento del departamento de servicio, así como es responsable del acceso y archivo del personal.
+job-name-head-of-medical-sector = Médico jefe
+job-description-head-of-medical-sector = El médico jefe es responsable de la calidad del servicio médico, así como de las infracciones cometidas en el curso de las actividades médicas. El médico jefe es el especialista médico más competente de la instalación, que domina todos los asuntos y tiene una idea de procedimientos y medicamentos.
+job-name-senior-logistics-officer = Intendente
+job-description-senior-logistics-officer = Responsable de dotar a la instalación de los materiales necesarios.
+job-supervisors-O5-command = Gabinete de Supervisores O5
+job-supervisors-director = Al Director de la instalación

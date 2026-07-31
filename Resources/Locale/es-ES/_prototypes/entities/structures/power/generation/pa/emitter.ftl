@@ -1,0 +1,15 @@
+ent-ParticleAcceleratorEmitterPort = Emisor disuasorio izquierdo UCH
+    .desc = Lanza partículas Alfa, no te pongas delante de él.
+ent-ParticleAcceleratorEmitterFore = Emisor central de contención
+    .desc = Lanza partículas Alfa, no te pongas delante de él.
+ent-ParticleAcceleratorEmitterStarboard = Emisor de retención UCH derecho
+    .desc = Lanza partículas Alfa, no te pongas delante de él.
+ent-ParticleAcceleratorEmitterPortUnfinished = Emisor disuasorio izquierdo UCH
+    .desc = Lanza partículas Alfa, no te pongas delante de él. Parece inacabado.
+    .suffix = Inacabado, Left
+ent-ParticleAcceleratorEmitterForeUnfinished = Emisor central de contención
+    .desc = Lanza partículas Alfa, no te pongas delante de él. Parece inacabado.
+    .suffix = Inacabado, Central
+ent-ParticleAcceleratorEmitterStarboardUnfinished = Emisor de retención UCH derecho
+    .desc = Lanza partículas Alfa, no te pongas delante de él. Parece inacabado.
+    .suffix = Inconcluso, ¿verdad?

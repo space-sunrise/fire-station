@@ -1,0 +1,16 @@
+ent-CrateArmoryShotgunTrenchgun4034Sawn = caja con Trenchgun4034
+    .desc = Contiene tres escopetas Trenchgun4034 con tres bolsas de munición. Requiere acceso a la armería para abrir.
+ent-CrateArmoryCombatShotgun = caja de escopeta de combate
+    .desc = Contiene dos escopetas de combate con dos bandoleras y cuatro cajas de perdigones. Requiere acceso a la armería para abrir.
+ent-CrateArmoryShotgunAmmo = caja con cartuchos de escopeta
+    .desc = Contiene cuatro cajas de cartuchos de escopeta. Requiere acceso a la armería para abrir.
+ent-CrateArmoryMP5 = caja MP5
+    .desc = Contiene dos metralletas MP5 con dos cargadores. Requiere acceso a la armería para abrir.
+ent-CrateArmoryIK30 = caja con IK-30
+    .desc = Contiene dos carabinas de cartucho láser semiautomáticas IK-30. Requiere acceso a la armería para abrir.
+ent-CrateArmoryIK30Magazines = caja con cargadores IK-30
+    .desc = Contiene 6 cargadores para armas láser. Requiere acceso a la armería para abrir.
+ent-CrateArmoryM16A4 = caja con M16A4
+    .desc = Contiene tres rifles de asalto M16A4. Requiere acceso a la armería para abrir.
+ent-CrateArmoryMP7 = caja MP7
+    .desc = Contiene dos metralletas MP7 con dos cargadores. Requiere acceso a la armería para abrir.

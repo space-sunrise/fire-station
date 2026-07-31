@@ -1,0 +1,9 @@
+ent-AntiAnomalyZone = Zona antianómala
+    .desc = Las anomalías no aparecerán en un radio de 10 bloques desde este punto.
+    .suffix = Radio 10
+ent-AntiAnomalyZone20 = { ent-AntiAnomalyZone }
+    .desc = Las anomalías no aparecerán en un radio de 20 manzanas desde este punto.
+    .suffix = Radio 20
+ent-AntiAnomalyZone50 = { ent-AntiAnomalyZone }
+    .desc = No aparecerán anomalías dentro de las 50 manzanas de este punto.
+    .suffix = Radio 50

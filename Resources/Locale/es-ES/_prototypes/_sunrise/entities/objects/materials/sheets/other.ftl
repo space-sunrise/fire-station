@@ -1,0 +1,11 @@
+ent-SheetOfficePaperBase = { ent-BaseItem }
+    .desc = Una hoja de papel impresa usada para documentos e impresoras.
+ent-SheetOfficePaper = Papel impreso
+    .suffix = completo
+    .desc = { ent-SheetOfficePaperBase.desc }
+ent-SheetOfficePaper1 = Papel impreso
+    .suffix = uno
+    .desc = { ent-SheetOfficePaper.desc }
+ent-OfficePaper = Pila de papel impreso
+    .desc = Una pila de hojas de papel impreso para imprentas y documentos.
+stack-office-paper = Pila de papel impreso

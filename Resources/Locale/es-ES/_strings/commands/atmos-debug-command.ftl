@@ -1,0 +1,14 @@
+cmd-atvrange-desc = Establece el rango de depuración atmosférica (como dos números de coma flotante: inicio [rojo] y final [azul])
+cmd-atvrange-help = Uso: { $command } <inicio> <fin>
+cmd-atvrange-error-start = Valor equivocado para empezar
+cmd-atvrange-error-end = Valor incorrecto para el final
+cmd-atvrange-error-zero = La escala no puede ser cero, ya que esto resultaría en una división por cero en AtmosDebugOverlay.
+cmd-atvmode-desc = Activa el modo de depuración de atmósfera. Esto reiniciará automáticamente la escala.
+cmd-atvmode-help = Uso: { $command } <Número total de moléculas/moléculas de gas/temperatura> [<ID de gas (para moléculas de gas)>]
+cmd-atvmode-error-invalid = Modo inválido
+cmd-atvmode-error-target-gas = El gas objetivo debe especificarse para este modo.
+cmd-atvmode-error-out-of-range = La identificación del gas no es reconocida o está fuera de alcance.
+cmd-atvmode-error-info = No se requiere información adicional para este modo.
+cmd-atvcbm-desc = Cambia el esquema de colores de rojo/verde/azul a escala de grises
+cmd-atvcbm-help = Uso: { $command } <verdadero/falso>
+cmd-atvcbm-error = Bandera inválida

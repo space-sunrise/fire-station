@@ -1,0 +1,10 @@
+ent-ClothingBackpackSyndieAJ100Filled = equipo AJ-100
+    .desc = Incluye la metralleta AJ-100 y dos cargadores de munición.
+ent-ClothingBackpackSyndieDL6902Filled = Equipo DL-6902
+    .desc = Incluye una ametralladora DL-6902 y un cargador de municiones.
+ent-ClothingBackpackSyndieSIAR52Filled = Equipo SIAR-52
+    .desc = Incluye una ametralladora SIAR-52 y dos cargadores de munición.
+ent-ClothingBackpackIAAFilled = { ent-ClothingBackpack }
+    .desc = { ent-ClothingBackpack.desc }
+ent-ClothingBackpackPsychologistFilled = { ent-ClothingBackpackMedical }
+    .desc = { ent-ClothingBackpackMedical.desc }

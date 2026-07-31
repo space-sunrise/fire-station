@@ -1,0 +1,12 @@
+ent-BaseBigBox = Caja de cartón
+    .desc = ¿Eh? Solo una caja...
+ent-StealthBox = { ent-BaseBigBox }
+    .desc = { ent-BaseBigBox.desc }
+    .suffix = Invisibilidad
+ent-BigBox = { ent-BaseBigBox }
+    .desc = { ent-BaseBigBox.desc }
+ent-GhostBox = Ghost Box
+    .desc = Cuidado
+ent-BigBoxSyndicateBundle = { ent-BaseBigBox }
+    .desc = { ent-BaseBigBox.desc }
+    .suffix = Sindicato, lleno

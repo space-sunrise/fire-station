@@ -1,0 +1,15 @@
+ent-ClothingUniformNTF = uniforme del grupo de trabajo móvil
+    .desc = El uniforme táctico estándar es azul oscuro con inserciones de armadura e insignias de unidad.
+    .suffix = DM
+ent-ClothingUniformRRH = uniforme del grupo de trabajo móvil
+    .desc = El uniforme es de un tono escarlata intenso, confeccionado con tela gruesa y reforzado con elementos protectores.
+    .suffix = DM
+ent-ClothingUniformLLH = uniforme del grupo de trabajo móvil
+    .desc = El uniforme es estrictamente negro, complementado con los símbolos del Comité de Ética y las insignias del servicio de seguridad.
+    .suffix = DM
+ent-ClothingUniformMH = uniforme del grupo de trabajo móvil
+    .desc = El uniforme es de un color protector gris verdoso, con restos de tratamiento permanente con compuestos químicos.
+    .suffix = DM
+ent-ClothingUniformHD = uniforme militar del grupo de trabajo móvil
+    .desc = Pesado uniforme de camuflaje urbano con armadura reforzada e insignias de escuadrón.
+    .suffix = DM

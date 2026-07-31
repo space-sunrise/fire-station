@@ -1,0 +1,12 @@
+ent-SMESExtended = SIEC ampliado
+    .desc = Estación de almacenamiento de energía magnética superconductora de mayor capacidad.
+    .suffix = Hyper, 32MW
+ent-SMESSuperExtended = SIES superextendido
+    .desc = Estación de acumulación de energía magnética superconductora de máxima capacidad.
+    .suffix = Super Hyper, 64MW
+ent-SMESExtendedEmpty = { ent-SMESExtended }
+    .suffix = vacío
+    .desc = { ent-SMESExtended.desc }
+ent-SMESSuperExtendedEmpty = { ent-SMESSuperExtended }
+    .suffix = vacío
+    .desc = { ent-SMESSuperExtended.desc }

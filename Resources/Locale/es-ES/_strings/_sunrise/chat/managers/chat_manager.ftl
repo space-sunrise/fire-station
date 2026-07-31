@@ -1,0 +1,17 @@
+chat-speech-verb-felinid-1 = "ronronea"
+chat-speech-verb-felinid-2 = "maullidos"
+chat-speech-verb-felinid-3 = "maullidos"
+chat-speech-verb-felinid-4 = "ronronea"
+chat-speech-verb-name-felinid = "Maullidos"
+chat-speech-verb-vulpkanin-1 = "gruñe"
+chat-speech-verb-vulpkanin-2 = "ladridos"
+chat-speech-verb-vulpkanin-3 = "gruñe"
+chat-speech-verb-vulpkanin-4 = "ladridos"
+chat-speech-verb-vulpkanin-5 = "chirriidos"
+chat-speech-verb-name-vulpkanin = "gruñido"
+chat-speech-verb-name-swine = "gruñidos"
+chat-speech-verb-swine-1 = "chillidos"
+chat-speech-verb-swine-2 = "gruñe"
+chat-speech-verb-name-resomi = Rezomi
+chat-speech-verb-resomi-1 = crujidos
+chat-speech-verb-resomi-2 = Tweets

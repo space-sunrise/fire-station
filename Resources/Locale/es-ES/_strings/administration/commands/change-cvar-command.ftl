@@ -1,0 +1,13 @@
+cmd-changecvar-no-arguments = Debes especificar una variable de consola.
+cmd-changecvar-cvar-not-registered = La variable de consola no { $cvar } registrada.
+cmd-changecvar-cvar-not-allowed = No puedes cambiar esta variable de consola.
+cmd-changecvar-value-out-of-range = Un valor fuera del rango válido. Un rango de { $min } a { $max }.
+cmd-changecvar-desc = Cambia el valor de la variable de consola.
+cmd-changecvar-help = Uso: changecvar <cvar | ? | buscar> <valor>
+cmd-changecvar-available-cvars = Lista de variables disponibles para consola:
+cmd-changecvar-no-cvars = No se han encontrado variables de consola que se permitan modificar.
+cmd-changecvar-success = La { $cvar } de la variable de consola cambió de "{ $old }" a "{ $value }".
+cmd-changecvar-search-no-arguments = Debes especificar una consulta de búsqueda.
+cmd-changecvar-search-no-matches = No se encontraron variables de consola que coincidieran con la consulta de búsqueda.
+cmd-changecvar-search-matches = Encontré { $count } variables de consola que coinciden con la consulta de búsqueda:
+cmd-changecvar-arg-name = <nombre | | buscar>

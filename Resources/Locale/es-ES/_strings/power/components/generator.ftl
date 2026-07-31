@@ -1,0 +1,36 @@
+generator-clogged = { $generator } se apaga de golpe!
+portable-generator-verb-start = Arranca el generador
+portable-generator-verb-start-msg-unreliable = Arrancando el generador. Esto puede requerir varios intentos.
+portable-generator-verb-start-msg-reliable = Arranca el generador.
+portable-generator-verb-start-msg-unanchored = ¡Hay que arreglar el generador!
+portable-generator-verb-stop = Generador de parada
+portable-generator-start-fail = Tiras del cable, pero no arranca.
+portable-generator-start-success = Tiras del cable y cobra vida.
+portable-generator-ui-title = Generador portátil
+portable-generator-ui-status-stopped = Detenido:
+portable-generator-ui-status-starting = Inicios:
+portable-generator-ui-status-running = Obras:
+portable-generator-ui-start = Comienzo
+portable-generator-ui-stop = ¡Para
+portable-generator-ui-target-power-label = Int. Poderoso. (kW):
+portable-generator-ui-efficiency-label = Eficiencia:
+portable-generator-ui-fuel-use-label = Consumo de combustible:
+portable-generator-ui-fuel-left-label = Balance de combustible:
+portable-generator-ui-clogged = ¡Contaminación encontrada en el depósito de combustible!
+portable-generator-ui-eject = EXTRACTO
+portable-generator-ui-eta = (~{ $minutes } minutos)
+portable-generator-ui-unanchored = No fijo
+portable-generator-ui-current-output = Salida actual: { $voltage }
+portable-generator-ui-network-stats = Red eléctrica:
+portable-generator-ui-network-stats-value = { POWERWATTS($supply) } / { POWERWATTS($load) }
+portable-generator-ui-network-stats-not-connected = No conectado
+power-switchable-generator-examine = La energía generada se dirige a { $voltage }.
+power-switchable-generator-switched = ¡La salida está cambiada a { $voltage }!
+power-switchable-voltage =
+    { $voltage ->
+        [HV] [color=orange]BB[/color]
+        [MV] [color=yellow]SV[/color]
+       *[LV] [color=green]NV[/color]
+    }
+power-switchable-switch-voltage = Cambiar a { $voltage }
+fuel-generator-verb-disable-on = ¡Apaga primero el generador!

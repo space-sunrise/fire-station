@@ -1,0 +1,12 @@
+ent-ShardBase = { ent-BaseItem }
+    .desc = Esto es un fragmento de algún material desconocido.
+ent-ShardGlass = Fragmento de Cristal
+    .desc = Un pequeño trozo de cristal.
+ent-ShardGlassReinforced = Fragmento de Cristal Antibalas
+    .desc = Un pequeño trozo de cristal reforzado.
+ent-ShardGlassPlasma = Fragmento de Vidrio de Plasma
+    .desc = Un pequeño trozo de cristal de plasma.
+ent-ShardGlassUranium = Fragmento de Vidrio de Uranio
+    .desc = Un pequeño trozo de vidrio de uranio.
+ent-ShardGlassClockwork = Fragmento de Cristal Enrollado
+    .desc = Un pequeño trozo de cristal intercalado con latón.

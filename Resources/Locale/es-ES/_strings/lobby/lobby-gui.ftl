@@ -1,0 +1,10 @@
+ui-lobby-welcome = Bienvenido a { $name }
+ui-lobby-title = Vestíbulo: { $serverName }
+ui-lobby-ahelp-button = AHelp
+ui-lobby-options-button = Escenarios
+ui-lobby-leave-button = Desconectarse
+ui-lobby-replays-button = Repeticiones
+ui-lobby-observe-button = Observa
+ui-lobby-ready-up-button = Preparación
+ui-lobby-online-players-block = Jugadores actuales
+ui-lobby-server-info-block = Información del servidor

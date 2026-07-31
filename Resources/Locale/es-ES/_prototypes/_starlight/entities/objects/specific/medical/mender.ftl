@@ -1,0 +1,12 @@
+ent-BaseAutoMender = automando
+    .desc = Dispositivo utilizado para tratar a pacientes que sufren lesiones mecánicas, quemaduras o ambos tipos.
+ent-AutoMenderBrute = automancer por daños mecánicos
+    .desc = Dispositivo utilizado para tratar a pacientes que sufren lesiones mecánicas. Gracias al efecto específico de pequeñas dosis de medicamento en las zonas dañadas, se puede aumentar la eficacia del tratamiento. Para el trabajo utiliza bicaridina.
+ent-AutoMenderBruteFilled = { ent-AutoMenderBrute }
+    .suffix = Lleno
+    .desc = { ent-AutoMenderBrute.desc }
+ent-AutoMenderBurn = reparador automático para quemaduras
+    .desc = Dispositivo utilizado para tratar pacientes con quemaduras de todo tipo. Gracias al efecto específico de pequeñas dosis de medicamento en las zonas dañadas, se puede aumentar la eficacia del tratamiento. Para el trabajo utiliza dermaline.
+ent-AutoMenderBurnFilled = { ent-AutoMenderBurn }
+    .suffix = Lleno
+    .desc = { ent-AutoMenderBurn.desc }

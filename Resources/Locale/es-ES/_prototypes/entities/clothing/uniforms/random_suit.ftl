@@ -1,0 +1,15 @@
+ent-ClothingUniformRandom = { ent-ClothingUniformBase }
+    .desc = Generados por una red neuronal basada en las últimas tendencias de la moda.
+    .suffix = Vista aleatoria
+ent-ClothingRandomSpawner = Disfraz casual y brillante
+    .desc = { ent-ClothingUniformRandom.desc }
+ent-ClothingUniformRandomArmless = Traje llamativo con chaqueta sin mangas
+    .desc = { ent-ClothingUniformRandom.desc }
+ent-ClothingUniformRandomStandard = disfraz brillante
+    .desc = { ent-ClothingUniformRandom.desc }
+ent-ClothingUniformRandomBra = Traje brillante con sujetador
+    .desc = { ent-ClothingUniformRandom.desc }
+ent-ClothingUniformRandomShorts = Pantalones brillantes
+    .desc = { ent-ClothingUniformRandom.desc }
+ent-ClothingUniformRandomShirt = disfraz brillante
+    .desc = { ent-ClothingUniformRandom.desc }

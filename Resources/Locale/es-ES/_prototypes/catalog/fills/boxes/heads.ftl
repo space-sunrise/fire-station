@@ -1,0 +1,19 @@
+ent-BoxCaptainCircuitboards = Bolsa de tabla de puente
+    .desc = Un juego de tablas para el puente.
+ent-BoxCECircuitboards = Bolsa de Ingeniería
+    .desc = Un conjunto de tablas para ingeniería.
+ent-BoxCMOCircuitboards = Bolsa de Junta Médica
+    .desc = Un conjunto de exámenes para medicina.
+ent-BoxHoPCircuitboards = Bolsa de la Junta del Jefe del Personal
+    .desc = Un conjunto de tarjetas para consolas de servicio y identificadores.
+ent-BoxHoSCircuitboards = Bolsa de la Junta de Seguridad
+    .desc = Un conjunto de tablas para el servicio de seguridad.
+ent-BoxQMCircuitboards = Bolsa de carga
+    .desc = Un juego de tarjetas para carga y reciclaje.
+ent-BoxRDCircuitboards = Bolso del Consejo Científico
+    .desc = Un conjunto de exámenes para ciencia e investigación.
+
+ent-BoxHoPStamps = Caja de Sellos del Jefe del Personal
+    .desc = Conjunto de sellos de servicio del jefe de personal.
+ent-BoxQMStamps = Caja de Sellos del Intendente
+    .desc = Un juego de los sellos de servicio del intendente.

@@ -1,0 +1,14 @@
+ent-BaseSMES = SIEC
+    .desc = Estación de Almacenamiento de Energía Magnética Superconductora (SMES) de gran capacidad.
+ent-SMESBasic = { ent-BaseSMES }
+    .suffix = Básico, 8MJ
+    .desc = { ent-BaseSMES.desc }
+ent-SMESBasicEmpty = { ent-SMESBasic }
+    .suffix = vacío
+    .desc = { ent-SMESBasic.desc }
+ent-SMESAdvanced = SIES avanzado
+    .desc = Un dispositivo de almacenamiento de energía magnética superconductora (SMES) aún más potente.
+    .suffix = Avanzado, 16 MJ
+ent-SMESAdvancedEmpty = { ent-SMESAdvanced }
+    .suffix = vacío
+    .desc = { ent-SMESAdvanced.desc }

@@ -1,0 +1,1 @@
+station-event-kudzu-growth-start-announcement = Atención tripulación, hemos descubierto un Invasor Biológico Tipo 2 en la estación, que supone una amenaza potencialmente seria para el rendimiento de la tripulación. Les aconsejamos destruirlo lo antes posible.

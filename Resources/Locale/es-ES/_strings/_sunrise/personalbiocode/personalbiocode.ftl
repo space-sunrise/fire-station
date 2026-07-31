@@ -1,0 +1,1 @@
+biocode-equip-failure = Tu ADN no reconocido, acceso denegado

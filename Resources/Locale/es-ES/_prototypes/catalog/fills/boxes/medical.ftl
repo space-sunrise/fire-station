@@ -1,0 +1,16 @@
+ent-BoxSyringe = Caja de jeringuillas
+    .desc = Una caja llena de jeringuillas.
+ent-BoxPillCanister = Caja de pastillas
+    .desc = Una caja entera de botes para pastillas.
+ent-BoxBottle = Caja de botellas
+    .desc = Una caja llena de botellas.
+ent-BoxSterileMask = Caja de mascarillas médicas
+    .desc = Contiene mascarillas médicas estériles.
+ent-BoxLatexGloves = Caja de guantes de látex
+    .desc = Contiene guantes de látex estériles.
+ent-BoxNitrileGloves = Caja de guantes de nitrilo
+    .desc = Contiene guantes estériles de nitrilo. Mejor que el látex.
+ent-BoxBodyBag = Caja de bolsas para cadáveres
+    .desc = Contiene bolsas para cadáveres.
+ent-BoxVial = Caja de tubos
+    .desc = Una caja llena de tubos de ensayo.

@@ -1,0 +1,15 @@
+advertisement-cigs-1 = Los cigarrillos espaciales saben bien, como deberían ser.
+advertisement-cigs-2 = Prefiero morir antes que irme.
+advertisement-cigs-3 = ¡Da una calada!
+advertisement-cigs-4 = No te creas la investigación: ¡fuma!
+advertisement-cigs-5 = ¡Seguro que no te hace daño!
+advertisement-cigs-6 = ¡No creas a los científicos!
+advertisement-cigs-7 = ¡Por tu salud!
+advertisement-cigs-8 = ¡No dejes de fumar, compra más!
+advertisement-cigs-9 = Paraíso de la nicotina.
+advertisement-cigs-10 = Los mejores cigarrillos desde 2150.
+advertisement-cigs-11 = Cigarrillos con muchos premios.
+advertisement-cigs-12 = ¡Aquí puedes distraerte del trabajo!
+thankyou-cigs-1 = Lo he hecho: ¡fuma con valentía!
+thankyou-cigs-2 = ¡Lo más probable es que no te arrepientas!
+thankyou-cigs-3 = ¡Y antes de que te des cuenta, te volverás adicto!

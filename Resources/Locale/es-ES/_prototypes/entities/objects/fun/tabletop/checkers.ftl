@@ -1,0 +1,12 @@
+ent-CheckerBoard = Tablero de damas
+    .desc = Tablero de damas. ¡Damas incluidas!
+ent-CheckerBoardTabletop = Damas
+    .desc = { "" }
+ent-CheckerPieceWhite = Cuadros blancos
+    .desc = { ent-BaseTabletopPiece.desc }
+ent-CheckerCrownWhite = Dama Blanca
+    .desc = { ent-BaseTabletopPiece.desc }
+ent-CheckerPieceBlack = Cuadros negros
+    .desc = { ent-BaseTabletopPiece.desc }
+ent-CheckerCrownBlack = Dama Negra
+    .desc = { ent-BaseTabletopPiece.desc }

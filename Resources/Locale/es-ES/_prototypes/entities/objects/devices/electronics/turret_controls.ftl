@@ -1,0 +1,11 @@
+ent-WeaponEnergyTurretStationControlPanelElectronicsBase = Electrónica del Panel de Control de la Torreta
+    .desc = Una placa electrónica utilizada en el panel de control de la torreta de intrusión.
+ent-WeaponEnergyTurretSecurityControlPanelElectronics = { ent-WeaponEnergyTurretStationControlPanelElectronicsBase }
+    .desc = { ent-WeaponEnergyTurretStationControlPanelElectronicsBase.desc }
+    .suffix = servicio de seguridad
+ent-WeaponEnergyTurretAIControlPanelElectronics = Electrónica del Panel de Control de Torretas de Intrusións con IA
+    .desc = Una placa electrónica utilizada en el panel de control de la torreta de intrusión IA.
+    .suffix = IA, Sintéticos
+ent-WeaponEnergyTurretCommandControlPanelElectronics = Electrónica del Panel de Control de la Torreta de Mando
+    .desc = Una placa electrónica utilizada en el panel de control de la Torreta de Seguridad de Mando.
+    .suffix = Mando

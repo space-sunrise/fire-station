@@ -1,0 +1,14 @@
+ent-WeaponSniperDragunov = Dragunov
+    .desc = Conocido por su precisión, el rifle de francotirador semiautomático está completamente diseñado para disparos a larga distancia. Utiliza cartuchos de rifle calibre 7,62x54R.
+ent-WeaponRifleBR64 = BR-64
+    .desc = El San Cristo Arms BR-64 es el fusil de batalla principal del Cuerpo de Marines. Es conocido por su capacidad estable para funcionar bien a casi todas las distancias y su poder de detención a corta distancia. Lo utilizan principalmente personas que prefieren una forma redonda más grande que mediana. Está cargado con munición .45 magnum.
+ent-WeaponRifleBauer127 = fusil de cerrojo Bauer SR-127
+    .desc = Bauer SR-127 - Fusil de francotirador portátil de gran calibre. Dispara potentes cartuchos perforantes de antimaterial de calibre 15 mm.
+ent-WeaponRifleType88AMR = Tipo 88
+    .desc = El rifle estándar SSSP de antimateria. Normalmente utiliza cartuchos perforantes de 15 mm en un cargador de 7 disparos.
+ent-WeaponSniperGarand = M1 Garand
+    .desc = El Carlford-1 es un clásico convertido fabricado por Carl Ford Armories, adaptado a las condiciones modernas. La mayoría de las diferencias notables son modificaciones menores en los raíles, aparte de eso.
+ent-WeaponSniperRepeater = Palanca N2524
+    .desc = Una escopeta civil de palanca adorada por los vaqueros espaciales por su fiabilidad y letalidad potente. Utiliza munición .45 magnum.
+ent-WeaponSniperMosinLubed = Kardashev-Mosin
+    .desc = Un fusil reliquia Kardashev-Mosin que ha pasado por cientos de guerras, pero sigue siendo mortal. Recién reabierto, muy lubricado, ¡listo para una nueva guerra! Usa cartuchos calibre .30.

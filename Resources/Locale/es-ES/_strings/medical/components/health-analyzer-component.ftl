@@ -1,0 +1,22 @@
+health-analyzer-window-no-patient-data-text = No hay datos sobre el paciente.
+health-analyzer-window-entity-unknown-text = Desconocido
+health-analyzer-window-entity-unknown-species-text = No un humanoide
+health-analyzer-window-entity-unknown-value-text = N/A
+health-analyzer-window-entity-alive-text = Viva
+health-analyzer-window-entity-dead-text = Fallecido
+health-analyzer-window-entity-critical-text = Estado crítico
+health-analyzer-window-entity-temperature-text = Temperatura:
+health-analyzer-window-entity-blood-level-text = Nivel en sangre:
+health-analyzer-window-entity-hunger-level-text = Hambre:
+health-analyzer-window-entity-thirst-level-text = Sed:
+health-analyzer-window-entity-status-text = Estado:
+health-analyzer-window-entity-damage-total-text = Daños generales:
+health-analyzer-window-damage-group-text = { $damageGroup }: { $amount }
+health-analyzer-window-damage-type-text = { $damageType }: { $amount }
+health-analyzer-window-entity-unrevivable-text = ¡Se ha descubierto [color=red]A composición corporal única! ¡El paciente no puede ser reanimado por medios convencionales[/color]
+health-analyzer-window-entity-bleeding-text = ¡El paciente está sangrando!
+health-analyzer-window-scan-mode-text = Modo de escaneo:
+health-analyzer-window-scan-mode-active = ACTIVOS
+health-analyzer-window-scan-mode-inactive = INACTIVO
+health-analyzer-window-malnutrition = Desnutrición severa
+health-analyzer-popup-scan-target = { CAPITALIZE($user) } está intentando escanearte.

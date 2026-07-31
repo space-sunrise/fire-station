@@ -1,0 +1,8 @@
+marking-TattooVoxHiveChest-hive_s = Vox, Pecho, Tatuaje (Colmena)
+marking-TattooVoxHiveChest = Vox, Pecho, Tatuaje (Colmena)
+marking-TattooVoxNightlingChest-nightling_s = Vox, Pecho, Tatuaje (Caballero)
+marking-TattooVoxNightlingChest = Vox, Pecho, Tatuaje (Caballero)
+marking-TattooVoxHeartLeftArm-heart_l_arm = Vox, brazo izquierdo, tatuaje (corazón)
+marking-TattooVoxHeartLeftArm = Vox, brazo izquierdo, tatuaje (corazón)
+marking-TattooVoxHeartRightArm-heart_r_arm = Vox, brazo derecho, tatuaje (corazón)
+marking-TattooVoxHeartRightArm = Vox, brazo derecho, tatuaje (corazón)

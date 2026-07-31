@@ -1,0 +1,6 @@
+quick-dialog-ui-integer = Integer..
+quick-dialog-ui-float = Float..
+quick-dialog-ui-short-text = Texto corto...
+quick-dialog-ui-long-text = Texto largo...
+quick-dialog-ui-ok = Vale
+quick-dialog-ui-cancel = Cancelación

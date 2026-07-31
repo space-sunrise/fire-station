@@ -1,0 +1,14 @@
+ent-BasePortal = Portal de Espacio Azul
+    .desc = ¡Parece una aventura de 5 minutos!
+ent-PortalRed = { ent-BasePortal }
+    .desc = Este es más bien como un portal de espacio rojo.
+ent-PortalBlue = { ent-BasePortal }
+    .desc = { ent-BasePortal.desc }
+ent-PortalArtifact = { ent-BasePortal }
+    .desc = { ent-BasePortal.desc }
+ent-PortalGatewayBlue = { ent-BasePortal }
+    .desc = { ent-BasePortal.desc }
+ent-PortalGatewayOrange = { ent-BasePortal }
+    .desc = { ent-BasePortal.desc }
+ent-ShadowPortal = Grieta de las Sombras
+    .desc = Parece inestable.

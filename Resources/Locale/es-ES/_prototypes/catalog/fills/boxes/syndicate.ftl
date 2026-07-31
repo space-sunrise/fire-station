@@ -1,0 +1,11 @@
+ent-ElectricalDisruptionKit = Kit de corte de luz
+    .suffix = Lleno
+    .desc = { ent-BoxCardboard.desc }
+ent-ChemicalSynthesisKit = Kit de síntesis química
+    .desc = ¡Un kit de inicio para químicos principiantes que incluye toxinas y vestidos para todas tus necesidades criminales!
+ent-ThrowingKnivesKit = Juego de cuchillos arrojadizos
+    .desc = Un juego de 4 cuchillos arrojadizos característicos del Sindicato, perfectos para atravesar el cuerpo de la víctima.
+ent-BoxDeathRattleImplants = Caja Implantadora Asesina
+    .desc = Seis implantes de Deathrattle para todo el escuadrón.
+ent-CombatBakeryKit = Paquete de Batalla Baker
+    .desc = Un conjunto de armas secretas para hornear.

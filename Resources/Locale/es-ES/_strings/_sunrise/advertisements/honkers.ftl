@@ -1,0 +1,10 @@
+advertisement-honkers-1 = ¿Necesitas granadas para asustar, no para explotar? Tengo una solución para ti... ¡PUF!
+advertisement-honkers-2 = ¿Un operativo nuclear? Sí, claro... Bueno, casi. ¡Y lo pruebas en público!
+advertisement-honkers-3 = ¿Holoparásito? ¡Más bien un holoFARCE! ¡Pero divertido!
+advertisement-honkers-4 = ¿Buscando anomalías? Tengo falsas, pero convincentes: ¡hasta los científicos se romperán la cabeza!
+advertisement-honkers-5 = ¿Por qué granadas de verdad si hay estas? Hay mucho ruido, pero no hay ningún daño. ¡Seguro y divertido!
+advertisement-honkers-6 = Un disfraz falso de operador es para quienes quieren parecer peligrosos, pero en realidad... ¡un payaso!
+advertisement-honkers-7 = ¡No hay holoparásitos reales, solo una ilusión de alta calidad! ¿Y qué, qué son los accesorios?
+advertisement-honkers-8 = ¡Las anomalías son tan falsas que empezarás a creer en ellas tú mismo! ¡Engaño al más alto nivel!
+advertisement-honkers-9 = ¡Eh, payaso! ¡Estas cosas solo harán explotar tus chistes, no tus amigos!
+advertisement-honkers-10 = El disfraz de Operador está diseñado no solo para ser temido, sino también para ser objeto de risas. ¡Un auténtico éxito de la temporada!

@@ -1,0 +1,1 @@
+station-event-breaker-flip-announcement = Basándonos en { $data }, hemos decidido desactivar parte de la pintura para evitar daños en el equipo. Por favor, contacte con el departamento de ingeniería para volver a activarlos.

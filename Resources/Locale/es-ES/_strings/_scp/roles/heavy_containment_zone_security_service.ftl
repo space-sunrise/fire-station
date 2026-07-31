@@ -1,0 +1,9 @@
+job-name-heavy-containment-zone-commandant = Comandante de las Fuerzas Especiales
+job-description-heavy-containment-zone-commandant = Comandante de Unidad de Fuerzas Especiales. Es responsable de la seguridad de las instalaciones y coordina operaciones de contra-instalación en un escenario NOSE.
+job-name-senior-heavy-containment-zone-officer = Oficial Superior de las Fuerzas Especiales
+job-description-senior-heavy-containment-zone-officer = Oficial superior del destacamento de fuerzas especiales. No es el primer día en el servicio en el destacamento, sabe cómo trabajar en situaciones críticas como en las normales.
+job-name-heavy-containment-zone-officer = Oficial de Fuerzas Especiales
+job-description-heavy-containment-zone-officer = Oficial del Destacamento de Fuerzas Especiales. Garantiza la seguridad de las instalaciones, así como las contrarresta en el escenario LEUS.
+job-name-junior-heavy-containment-zone-officer = Oficial Junior de las Fuerzas Especiales
+job-description-junior-heavy-containment-zone-officer = Solo un oficial subalterno de una unidad de fuerzas especiales que ha ingresado en el servicio. Ayuda a los oficiales superiores a vigilar objetos en el complejo.
+job-supervisors-heavy-containment-zone-commandant = Al comandante de las Fuerzas Especiales

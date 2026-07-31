@@ -1,0 +1,13 @@
+ent-BaseWeaponSubMachineGun = PP estándar
+    .desc = Atrévete: lanza en picado, apunta y dispara.
+ent-WeaponSubMachineGunAtreides = Atreides
+    .desc = ¡Ple-ke-ke-ke-ke! Usa munición automática calibre .35.
+    .suffix = Subfusil
+ent-WeaponSubMachineGunC20r = C-20r
+    .desc = Un arma usada a menudo por infames operativos nucleares. Utiliza munición automática calibre .35.
+    .suffix = Subfusil
+ent-WeaponSubMachineGunDrozd = Zorzal
+    .desc = Una subametralladora moderna fabricada por la División de Armas Pequeñas NanoTrasen. Tiene una cadencia de fuego excepcionalmente alta en modo ráfaga, útil para mantener posiciones defensivas o combatir a media distancia. El característico acabado plástico rojo del casco indica que el arma pertenece al arsenal del Servicio de Seguridad. Utiliza cargadores de SMG .35.
+ent-WeaponSubMachineGunWt550 = WT550
+    .desc = Excelente subfusil, fabricada por la División de Armas Pequeñas de NanoTrasen. Utiliza cartuchos automáticos calibre .35.
+    .suffix = Subfusil

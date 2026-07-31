@@ -1,0 +1,16 @@
+ent-CrateArmorySMG = Cajas para subfusiles
+    .desc = Contiene dos subfusiles potentes y cuatro cargadores. Para desbloquear, necesitas acceso a la Armería.
+ent-CrateArmoryShotgun = Caja de escopeta
+    .desc = Cuando necesitas llenar al enemigo con plomo. Contiene dos escopetas de Enforcer y algunas balas normales de fusil. Para abrirla, necesitas acceso a la Armería.
+ent-CrateTrackingImplants = Implantes de seguimiento
+    .desc = Contiene múltiples implantes de seguimiento. Adecuado para presos que quieres liberar pero que quieres vigilar.
+ent-CrateTrainingBombs = Bombas de entrenamiento
+    .desc = Contiene tres bombas de entrenamiento de bajo rendimiento para entrenar al personal de seguridad en desactivar y destruir munición de forma segura. El traje de materiales peligrosos EOD no está incluido. Requiere acceso al arsenal para abrirse.
+ent-CrateArmoryLaser = Caja de rifle láser
+    .desc = Contiene tres rifles láser estándar. Requiere acceso a la Armería para abrirse.
+ent-CrateArmoryPistols = Caja de pistola
+    .desc = Contiene dos pistolas estándar de Fundación con cuatro cargadores. Requiere acceso a la Armería para abrirse.
+ent-CrateSecurityRiot = Caja de cambios de control antidisturbios
+    .desc = Contiene dos juegos de equipo de control antidisturbios: chaleco antibalas, cascos, escudos, porras y balas de goma. Munición adicional incluida. Requiere acceso al arsenal para abrirse.
+ent-CrateArmoryRifle = Rifle Box
+    .desc = Contiene dos potentes fusiles de asalto con cuatro cargadores. Requiere acceso al arsenal para abrirse.

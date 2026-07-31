@@ -1,0 +1,10 @@
+ent-ClothingHeadHatAnimalCat = Sombrero de Gato Gris
+    .desc = Un gato gris bonito y esponjoso en tu cabeza.
+ent-ClothingHeadHatAnimalCatBrown = Sombrero de gato marrón
+    .desc = Un gato marrón bonito y esponjoso en tu cabeza.
+ent-ClothingHeadHatAnimalCatBlack = Sombrero de Gato Negro
+    .desc = Un gato negro mono y esponjoso en tu cabeza.
+ent-ClothingHeadHatAnimalHeadslime = Sombrero de Baba
+    .desc = Mucosidad verde y pegajosa que te pones en la cabeza.
+ent-ClothingHeadHatAnimalMonkey = Sombrero de Mono
+    .desc = Esta es la cabeza de un mono. Tiene un agujero en la boca para comer plátanos.

@@ -1,0 +1,10 @@
+ent-BaseMagazineBoxCaselessRifle = Caja de cartuchos (.25 sin vaina)
+    .desc = { ent-BaseItem.desc }
+ent-MagazineBoxCaselessRifle = Caja de cartuchos (.25 sin vaina)
+    .desc = { ent-BaseMagazineBoxCaselessRifle.desc }
+ent-MagazineBoxCaselessRiflePractice = Caja de cartuchos (entrenamiento sin vaina .25)
+    .desc = { ent-BaseMagazineBoxCaselessRifle.desc }
+ent-MagazineBoxCaselessRifle10x24 = Caja de cartuchos (.25 sin vaina)
+    .desc = { ent-BaseMagazineBoxCaselessRifle.desc }
+ent-MagazineBoxCaselessRifleBig = Caja de cartuchos (.25 sin vaina)
+    .desc = { ent-BaseMagazineBoxCaselessRifle.desc }

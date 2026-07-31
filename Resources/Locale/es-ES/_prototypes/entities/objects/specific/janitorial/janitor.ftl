@@ -1,0 +1,17 @@
+ent-MopItem = Fregona
+    .desc = Una fregona que no se puede parar, un equipo de limpieza de vísceras te espera.
+ent-AdvMopItem = Trapeador avanzado
+    .desc = Fregona motorizada con depósito ampliado y capacidad para limpiar varios charcos al mismo tiempo. Sistema automático anti-payaso no incluido.
+ent-WetFloorSign = Cartel de "suelo mojado"
+    .desc = ¡Precaución! ¡Suelo mojado!
+ent-WetFloorSignMineExplosive = { ent-WetFloorSign }
+    .desc = { ent-WetFloorSign.desc }
+    .suffix = Explosivos
+ent-Plunger = Desatascador
+    .desc = Desatascador con ventosa de plástico roja y mango de madera. Se usa para despejar obstrucciones.
+ent-GoldenPlunger = Émbolo de oro
+    .desc = Un émbolo con una válvula de plástico cubierta con una fina capa de oro, que se entrega en agradecimiento por muchos años de servicio. Todavía se utiliza para desatascar la alcantarilla.
+ent-RagItem = Rag
+    .desc = Presumiblemente para eliminar el desastre.
+ent-WireBrush = Cepillo de alambre
+    .desc = Cepillo de acero con cerdas rígidas, ideal para raspar incluso las zonas más persistentes de óxido.

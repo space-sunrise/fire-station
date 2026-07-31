@@ -1,0 +1,16 @@
+ent-PackPaperRolling = Paquete de papel de cigarrillos
+    .desc = Un montón de hojas finas de papel que se usan para hacer cigarrillos para enrollar tu propio cigarrillo.
+ent-PackPaperRollingFilters = Paquete de papel de cigarrillo con filtros
+    .desc = Un paquete de filtros y hojas finas de papel para hacer cigarrillos para enrollar.
+ent-PaperRolling = Papel de cigarrillo
+    .desc = Una hoja fina de papel usada para hacer cigarrillos para enrollar tu propio cuerpo.
+    .suffix = completo
+ent-PaperRolling1 = { ent-PaperRolling }
+    .desc = { ent-PaperRolling.desc }
+    .suffix = uno
+ent-CigaretteFilter = Filtro de cigarrillos
+    .desc = Una tira de papel grueso usada como filtro para enrollar tus propios cigarrillos.
+    .suffix = completo
+ent-CigaretteFilter1 = { ent-CigaretteFilter }
+    .desc = { ent-CigaretteFilter.desc }
+    .suffix = uno

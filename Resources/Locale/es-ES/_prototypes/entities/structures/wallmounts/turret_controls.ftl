@@ -1,0 +1,14 @@
+ent-WeaponEnergyTurretControlPanelFrame = Montaje del Panel de Control de la Torreta de Intrusión
+    .desc = Conjunto de pared incompleto para el panel de control de la torreta de intrusión.
+ent-WeaponEnergyTurretStationControlPanelBase = Panel de control de torreta de intrusión
+    .desc = Interfaz montada en la pared para la configuración remota de los parámetros operativos de torretas de seguridad enlazadas.
+ent-WeaponEnergyTurretAIControlPanel = Panel de Control de Torreta de Intención de IA
+    .desc = Una interfaz montada en la pared que permite a la IA local ajustar los parámetros operativos de las torretas de seguridad enlazadas.
+ent-WeaponEnergyTurretSecurityControlPanel = { ent-WeaponEnergyTurretStationControlPanelBase }
+    .suffix = SB
+    .desc = { ent-WeaponEnergyTurretStationControlPanelBase.desc }
+ent-WeaponEnergyTurretCommandControlPanel = { ent-WeaponEnergyTurretStationControlPanelBase }
+    .suffix = Mando
+    .desc = { ent-WeaponEnergyTurretStationControlPanelBase.desc }
+ent-WeaponEnergyTurretStationControlPanel = { ent-WeaponEnergyTurretStationControlPanelBase }
+    .desc = { ent-WeaponEnergyTurretStationControlPanelBase.desc }

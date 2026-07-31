@@ -1,0 +1,19 @@
+ent-BaseNightVisionDevice = NVD
+    .desc = { ent-BaseItem.desc }
+ent-ClothingEyesNVD = NVG
+    .desc = Dispositivo de visión nocturna. Proporciona una visibilidad mejorada en condiciones de poca luz.
+ent-ClothingEyesNVDSec = NVG SB
+    .desc = Dispositivo de visión nocturna. Proporciona una visibilidad mejorada en condiciones de poca luz. Tiene seguridad Hud incorporada para detectar delincuentes.
+    .suffix = Seguridad
+ent-ClothingEyesNVDMedSec = NVD Med-Okhranny
+    .desc = Dispositivo de visión nocturna. Proporciona una visibilidad mejorada en condiciones de poca luz. Tiene un Hud de seguridad incorporado y un analizador humanoide.
+    .suffix = Med-Okhranny
+ent-ClothingEyesNVDSyndicate = Sindicar NVG
+    .desc = Este dispositivo de visión nocturna de calidad de Gorlax Security utiliza lentes rojas para mejorar la visibilidad en condiciones de poca luz.
+    .suffix = sindicato
+ent-ClothingEyesNVDHandcrafted = NVG casero
+    .desc = Dispositivo de visión nocturna. Proporciona una visibilidad mejorada en condiciones de poca luz. Hecho con los dones de los técnicos, una máscara de soldador y magia de gran marea.
+    .suffix = artesanía
+
+ent-NVDHandcraftedParts = preparación de dispositivos de visión nocturna artesanales
+    .desc = Casco de soldadura con piezas electrónicas y cableado adjuntos. Parece inacabado.

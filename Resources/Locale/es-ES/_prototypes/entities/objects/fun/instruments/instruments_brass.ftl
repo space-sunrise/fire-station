@@ -1,0 +1,10 @@
+ent-BaseBrassInstrument = { ent-BaseHandheldInstrument }
+    .desc = { ent-BaseHandheldInstrument.desc }
+ent-TrumpetInstrument = trompeta
+    .desc = El instrumento favorito de los músicos de jazz y de los estudiantes de secundaria con exceso de confianza.
+ent-TromboneInstrument = trombón
+    .desc = Un popular instrumento de viento con vara deslizante.
+ent-FrenchHornInstrument = corno francés
+    .desc = Para tocarlo es necesario introducir una mano en el pabellón y amortiguar parcialmente el sonido.
+ent-EuphoniumInstrument = bombardino
+    .desc = Instrumento de viento con registro de barítono y un complejo sistema de tubos.

@@ -1,0 +1,10 @@
+ent-BaseShowcaseRobot = Maqueta de un robot de seguridad
+    .desc = Este es un modelo de masa dimensional de un antiguo robot de seguridad.
+ent-ShowcaseRobot = Maqueta de un robot de seguridad
+    .desc = Este es un modelo de masa dimensional de un antiguo robot de seguridad.
+ent-ShowcaseRobotWhite = Maqueta de robot blanco
+    .desc = Este es un modelo en masa de un robot antiguo.
+ent-ShowcaseRobotAntique = Maqueta de cargador robot
+    .desc = Este es un modelo en masa de un antiguo robot cargador.
+ent-ShowcaseRobotMarauder = Modelo Marauder
+    .desc = Este es un modelo de dimensión masiva del Marauder, pintado de verde.

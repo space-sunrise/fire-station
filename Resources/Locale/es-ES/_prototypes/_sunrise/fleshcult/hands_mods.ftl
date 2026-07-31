@@ -1,0 +1,12 @@
+ent-FleshClaw = Garra de Carne
+    .desc = Puede abrir tanto puertas como personas.
+    .suffix = El culto de la carne
+ent-FleshFist = Puño de Carne
+    .desc = El fisting cuesta trescientos dólares
+    .suffix = El culto de la carne
+ent-FleshBlade = Hoja de Carne
+    .desc = Casi como un ladrón de genes, solo que mejor.
+    .suffix = El culto de la carne
+ent-FleshSpikeHandGun = Pistola con pinchos
+    .suffix = El culto de la carne
+    .desc = { ent-BaseItem.desc }

@@ -1,0 +1,10 @@
+ent-MobGuardianBase = BasicSentinel
+    .desc = Guardian
+ent-MobHoloparasiteGuardian = Holoparásito
+    .desc = Un torbellino hipnotizante de patrones de luz brillante teje una apariencia sorprendente pero extrañamente familiar. Se mantiene orgulloso, sintonizando con la vida de su portador para sostenerse.
+ent-MobIfritGuardian = Ifrit
+    .desc = Un genio corrupto, arrancado de Fitra para servir al mago en sus necesidades más básicas. Se muestra malvado, sintonizando con la vida de su dueño para sostenerse.
+ent-MobHoloClownGuardian = Goloklone
+    .desc = Un hipnótico torbellino de patrones de luz brillante teje una asombrosa apariencia azulada de un payaso de origen dudoso.
+ent-ActionToggleGuardian = Guardián de Invocación/Llamada
+    .desc = Invoca o llama al Guardián de vuelta a tu cuerpo.

@@ -1,0 +1,1 @@
+pacificator-window-title = Generador de pacifismo

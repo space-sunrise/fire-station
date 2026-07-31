@@ -1,0 +1,16 @@
+ent-UniformDressMaidBlue = Vestido azul de criada
+    .desc = ¡Me siento como una heroína de anime!
+ent-UniformDressMaidLong = Vestido largo de criada
+    .desc = Para los conocedores de vestidos clásicos y la practicidad.
+ent-UniformDressMaidPink = vestido rosa de criada
+    .desc = ¡Me siento como una heroína de anime!
+ent-UniformDressSexy = Vestimenta seductora
+    .desc = Un centímetro de tela suelta y ya te están sentando en el Servicio de Seguridad.
+ent-UniformDressSuccubusBlack = Vestido negro de súcubo
+    .desc = Magia infernal emana de este vestido... ¡Alas - como regalo!
+ent-UniformDressSuccubusWhite = Vestido de súcubo blanco
+    .desc = Magia infernal emana de este vestido... ¡Alas - como regalo!
+ent-UniformDressTango = Vestido de tango
+    .desc = ¡Siente el ritmo mientras giras con "La cumparsita"!
+ent-UniformDressXeno = Vestido xeno
+    .desc = Elegancia y horror a la vez.

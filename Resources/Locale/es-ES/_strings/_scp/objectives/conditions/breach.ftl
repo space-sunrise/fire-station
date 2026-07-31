@@ -1,0 +1,2 @@
+objective-condition-chaos-spy-breach-title = Organiza la NUS de la instalación {$targetName}.
+objective-condition-chaos-spy-breach-description = Sacar {$targetName} de contención sin que la Fundación se dé cuenta.
