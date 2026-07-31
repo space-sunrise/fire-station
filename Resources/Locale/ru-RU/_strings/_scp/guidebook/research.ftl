@@ -21,6 +21,11 @@ guide-entry-scp-scp173-abilities = Способности
 guide-entry-scp-scp173-containment = Содержание
 guide-entry-scp-scp173-containment-breach = Побег
 
+guide-entry-scp-scp082-about = SCP-082 "Каннибал Фернанд"
+guide-entry-scp-scp082-abilities = Способности
+guide-entry-scp-scp082-containment = Содержание
+guide-entry-scp-scp082-containment-breach = Побег
+
 guide-entry-scp-glossary = Глоссарий
 guide-entry-scp-scp-abbreviations = Сокращения отделов/служб
 guide-entry-scp-scp-basic-terms = Основные термины

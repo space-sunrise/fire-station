@@ -130,3 +130,28 @@
   id: Scp173ContainmentBreach
   name: guide-entry-scp-scp173-containment-breach
   text: "/ServerInfo/_Scp/Guidebook/Scp173/ContainmentBreach.xml"
+
+- type: guideEntry
+  id: Scp082About
+  name: guide-entry-scp-scp082-about
+  text: "/ServerInfo/_Scp/Guidebook/Scp082/About.xml"
+  priority: -8
+  children:
+  - Scp082Abilities
+  - Scp082Containment
+  - Scp082ContainmentBreach
+
+- type: guideEntry
+  id: Scp082Abilities
+  name: guide-entry-scp-scp082-abilities
+  text: "/ServerInfo/_Scp/Guidebook/Scp082/Abilities.xml"
+
+- type: guideEntry
+  id: Scp082Containment
+  name: guide-entry-scp-scp082-containment
+  text: "/ServerInfo/_Scp/Guidebook/Scp082/Containment.xml"
+
+- type: guideEntry
+  id: Scp082ContainmentBreach
+  name: guide-entry-scp-scp082-containment-breach
+  text: "/ServerInfo/_Scp/Guidebook/Scp082/ContainmentBreach.xml"
