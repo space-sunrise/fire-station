@@ -26,6 +26,11 @@ guide-entry-scp-scp082-abilities = Способности
 guide-entry-scp-scp082-containment = Содержание
 guide-entry-scp-scp082-containment-breach = Побег
 
+guide-entry-scp-scp106-about = SCP-106 "Старик"
+guide-entry-scp-scp106-abilities = Способности
+guide-entry-scp-scp106-containment = Содержание
+guide-entry-scp-scp106-containment-breach = Побег
+
 guide-entry-scp-glossary = Глоссарий
 guide-entry-scp-scp-abbreviations = Сокращения отделов/служб
 guide-entry-scp-scp-basic-terms = Основные термины
