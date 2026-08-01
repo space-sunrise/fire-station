@@ -77,9 +77,9 @@
   description: An extremely robust helmet, commonly used by paramilitary forces. This one has the Nanotrasen logo emblazoned on the top.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Helmets/swat.rsi
+    sprite: _Scp/Clothing/Head/newswathelmet.rsi # Fire Edit
   - type: Clothing
-    sprite: Clothing/Head/Helmets/swat.rsi
+    sprite: _Scp/Clothing/Head/newswathelmet.rsi # Fire Edit
   - type: Pierceable
     level: Metal
   - type: Armor #This is intentionally not spaceproof, when the time comes to port the values from SS13 this should be buffed from what it was.
