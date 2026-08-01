@@ -17,13 +17,38 @@
   id: ScpFear
   name: guide-entry-scp-fear
   text: "/ServerInfo/_Scp/Guidebook/Fear/Fear.xml"
+  priority: -2
+
+- type: guideEntry
+  id: ScpGlossary
+  name: guide-entry-scp-glossary
+  text: "/ServerInfo/_Scp/Guidebook/Glossary/Glossary.xml"
   priority: -3
+  children:
+  - ScpBasicTerms
+  - ScpResearchableEquipment
+  - ScpAbbreviations
+
+- type: guideEntry
+  id: ScpBasicTerms
+  name: guide-entry-scp-scp-basic-terms
+  text: "/ServerInfo/_Scp/Guidebook/Glossary/BasicTerms.xml"
+
+- type: guideEntry
+  id: ScpAbbreviations
+  name: guide-entry-scp-scp-abbreviations
+  text: "/ServerInfo/_Scp/Guidebook/Glossary/Abbreviations.xml"
+
+- type: guideEntry
+  id: ScpResearchableEquipment
+  name: guide-entry-scp-scp-researchable-equipment
+  text: "/ServerInfo/_Scp/Guidebook/Glossary/ResearchableEquipment.xml"
 
 - type: guideEntry
   id: Scp096About
   name: guide-entry-scp-scp096-about
   text: "/ServerInfo/_Scp/Guidebook/Scp096/About.xml"
-  priority: -2
+  priority: -4
   children:
   - Scp096States
   - Scp096Abilities
@@ -49,3 +74,109 @@
   id: Scp096ContainmentBreach
   name: guide-entry-scp-scp096-containment-breach
   text: "/ServerInfo/_Scp/Guidebook/Scp096/ContainmentBreach.xml"
+
+- type: guideEntry
+  id: Scp457About
+  name: guide-entry-scp-scp457-about
+  text: "/ServerInfo/_Scp/Guidebook/Scp457/About.xml"
+  priority: -5
+  children:
+  - Scp457States
+  - Scp457Abilities
+  - Scp457Containment
+  - Scp457ContainmentBreach
+
+- type: guideEntry
+  id: Scp457States
+  name: guide-entry-scp-scp457-states
+  text: "/ServerInfo/_Scp/Guidebook/Scp457/States.xml"
+
+- type: guideEntry
+  id: Scp457Abilities
+  name: guide-entry-scp-scp457-abilities
+  text: "/ServerInfo/_Scp/Guidebook/Scp457/Abilities.xml"
+
+- type: guideEntry
+  id: Scp457Containment
+  name: guide-entry-scp-scp457-containment
+  text: "/ServerInfo/_Scp/Guidebook/Scp457/Containment.xml"
+
+- type: guideEntry
+  id: Scp457ContainmentBreach
+  name: guide-entry-scp-scp457-containment-breach
+  text: "/ServerInfo/_Scp/Guidebook/Scp457/ContainmentBreach.xml"
+
+- type: guideEntry
+  id: Scp173About
+  name: guide-entry-scp-scp173-about
+  text: "/ServerInfo/_Scp/Guidebook/Scp173/About.xml"
+  priority: -7
+  children:
+  - Scp173Abilities
+  - Scp173Containment
+  - Scp173ContainmentBreach
+
+- type: guideEntry
+  id: Scp173Abilities
+  name: guide-entry-scp-scp173-abilities
+  text: "/ServerInfo/_Scp/Guidebook/Scp173/Abilities.xml"
+
+- type: guideEntry
+  id: Scp173Containment
+  name: guide-entry-scp-scp173-containment
+  text: "/ServerInfo/_Scp/Guidebook/Scp173/Containment.xml"
+
+- type: guideEntry
+  id: Scp173ContainmentBreach
+  name: guide-entry-scp-scp173-containment-breach
+  text: "/ServerInfo/_Scp/Guidebook/Scp173/ContainmentBreach.xml"
+
+- type: guideEntry
+  id: Scp082About
+  name: guide-entry-scp-scp082-about
+  text: "/ServerInfo/_Scp/Guidebook/Scp082/About.xml"
+  priority: -8
+  children:
+  - Scp082Abilities
+  - Scp082Containment
+  - Scp082ContainmentBreach
+
+- type: guideEntry
+  id: Scp082Abilities
+  name: guide-entry-scp-scp082-abilities
+  text: "/ServerInfo/_Scp/Guidebook/Scp082/Abilities.xml"
+
+- type: guideEntry
+  id: Scp082Containment
+  name: guide-entry-scp-scp082-containment
+  text: "/ServerInfo/_Scp/Guidebook/Scp082/Containment.xml"
+
+- type: guideEntry
+  id: Scp082ContainmentBreach
+  name: guide-entry-scp-scp082-containment-breach
+  text: "/ServerInfo/_Scp/Guidebook/Scp082/ContainmentBreach.xml"
+
+- type: guideEntry
+  id: Scp106About
+  name: guide-entry-scp-scp106-about
+  text: "/ServerInfo/_Scp/Guidebook/Scp106/About.xml"
+  priority: -9
+  children:
+  - Scp106Abilities
+  - Scp106Containment
+  - Scp106ContainmentBreach
+
+- type: guideEntry
+  id: Scp106Abilities
+  name: guide-entry-scp-scp106-abilities
+  text: "/ServerInfo/_Scp/Guidebook/Scp106/Abilities.xml"
+
+- type: guideEntry
+  id: Scp106Containment
+  name: guide-entry-scp-scp106-containment
+  text: "/ServerInfo/_Scp/Guidebook/Scp106/Containment.xml"
+
+- type: guideEntry
+  id: Scp106ContainmentBreach
+  name: guide-entry-scp-scp106-containment-breach
+  text: "/ServerInfo/_Scp/Guidebook/Scp106/ContainmentBreach.xml"
