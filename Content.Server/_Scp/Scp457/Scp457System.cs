@@ -45,7 +45,7 @@ public sealed class Scp457System : EntitySystem
     private EntityQuery<ReactiveComponent> _reactiveQuery;
     private EntityQuery<PhysicalCompositionComponent> _compositionQuery;
 
-    private TimeSpan DecayInterval = TimeSpan.FromSeconds(20);
+    private TimeSpan DecayInterval = TimeSpan.FromSeconds(18);
 
     public override void Initialize()
     {
@@ -273,7 +273,10 @@ public sealed class Scp457System : EntitySystem
         if (!fixtures.Fixtures.TryGetValue(component.BodyFixtureId, out var fixture))
             return;
 
-        var collisionMask = component.ObjectSize <= component.SmallFormSize
+		var isSafeTime = TryComp<SafeTimeComponent>(ent.Owner, out var safeTime) && 
+						_timing.CurTime < safeTime.TimeEnd;
+
+        var collisionMask = (component.ObjectSize <= component.SmallFormSize && !isSafeTime)
             ? (int)CollisionGroup.SmallMobMask
             : (int)CollisionGroup.MobMask;
         if (fixture.CollisionMask == collisionMask)
