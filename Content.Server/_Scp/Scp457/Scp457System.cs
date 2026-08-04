@@ -134,6 +134,7 @@ public sealed class Scp457System : EntitySystem
         if (ent.Comp.ObjectSize > ent.Comp.SmallFormSize)
             args.Cancel();
 
+        // TODO: Переделать и починить сам метод под IsInSafeTime в системе SafeTime
 		if (TryComp<SafeTimeComponent>(ent.Owner, out var safeTime) && 
 			_timing.CurTime < safeTime.TimeEnd)
 			args.Cancel();
@@ -273,6 +274,7 @@ public sealed class Scp457System : EntitySystem
         if (!fixtures.Fixtures.TryGetValue(component.BodyFixtureId, out var fixture))
             return;
 
+        // TODO: Переделать и починить сам метод под IsInSafeTime в системе SafeTime
 		var isSafeTime = TryComp<SafeTimeComponent>(ent.Owner, out var safeTime) && 
 						_timing.CurTime < safeTime.TimeEnd;
 
