@@ -419,9 +419,9 @@
   description: A elite issue Security gas mask.
   components:
   - type: Sprite
-    sprite: Clothing/Mask/swat.rsi
+    sprite: _Scp/Clothing/Mask/swatmask.rsi # Fire Edit
   - type: Clothing
-    sprite: Clothing/Mask/swat.rsi
+    sprite: _Scp/Clothing/Mask/swatmask.rsi # Fire Edit
   - type: Tag
     tags:
     - WhitelistChameleon

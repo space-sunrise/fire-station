@@ -123,18 +123,18 @@
   id: WeaponSubMachineGunMP7
   components:
   - type: Sprite
-    sprite: _Sunrise/Objects/Weapons/Guns/SMGs/mp7/big.rsi
+    sprite: _Scp/Objects/Weapons/mp7/big.rsi # Fire Edit
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
   - type: Clothing
-    sprite: _Sunrise/Objects/Weapons/Guns/SMGs/mp7/tiny.rsi
+    sprite: _Scp/Objects/Weapons/mp7/tiny.rsi # Fire Edit
   - type: Item
     size: Large
     storedOffset: 0,-2
-    sprite: _Sunrise/Objects/Weapons/Guns/SMGs/mp7/tiny.rsi
+    sprite: _Scp/Objects/Weapons/mp7/tiny.rsi # Fire Edit
   - type: GunWieldBonus
     minAngle: -5
     maxAngle: -17

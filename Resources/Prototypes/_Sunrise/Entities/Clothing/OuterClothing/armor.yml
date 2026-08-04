@@ -36,9 +36,9 @@
   description: NT's unsuccessful attempt to create universal and expensive protection. It provides excellent protection against many types of damage, but it also slows down extremely much.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Armor/heavy.rsi
+    sprite: _Scp/Clothing/OuterClothing/Armor/SWAT.rsi # Fire Edit
   - type: Clothing
-    sprite: Clothing/OuterClothing/Armor/heavy.rsi
+    sprite: _Scp/Clothing/OuterClothing/Armor/SWAT.rsi # Fire Edit
     equipSound: /Audio/Items/belt_equip.ogg
     unequipSound: /Audio/Items/belt_equip.ogg
     equipDelay: 10
