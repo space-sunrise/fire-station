@@ -27,7 +27,7 @@ public sealed partial class Scp457Component : Component
     public float StructuralBreakSize = 1.5f;
 
     [DataField]
-    public float StructuralDamage = 100f;
+    public float StructuralDamage = 50f;
 
     [DataField]
     public float DamageModifier = 1f;
