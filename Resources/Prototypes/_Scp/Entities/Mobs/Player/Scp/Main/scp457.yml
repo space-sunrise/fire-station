@@ -6,7 +6,6 @@
   - SimpleSpaceMobBase
   components:
   - type: SafeTime
-    time: 100
   - type: AmbientSound
     range: 6
     volume: -3
