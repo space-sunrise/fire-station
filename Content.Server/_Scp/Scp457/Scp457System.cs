@@ -25,6 +25,7 @@ using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using Content.Shared._Scp.SafeTime;
 
 namespace Content.Server._Scp.Scp457;
 
@@ -132,7 +133,11 @@ public sealed class Scp457System : EntitySystem
     {
         if (ent.Comp.ObjectSize > ent.Comp.SmallFormSize)
             args.Cancel();
-    }
+
+		if (TryComp<SafeTimeComponent>(ent.Owner, out var safeTime) && 
+			_timing.CurTime < safeTime.TimeEnd)
+			args.Cancel();
+}
 
     private void OnStartCollide(Entity<Scp457Component> ent, ref StartCollideEvent args)
     {

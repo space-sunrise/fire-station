@@ -5,6 +5,7 @@
   - BaseScp
   - SimpleSpaceMobBase
   components:
+  - type: SafeTime
   - type: AmbientSound
     range: 6
     volume: -3

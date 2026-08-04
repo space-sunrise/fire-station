@@ -21,7 +21,7 @@ public sealed partial class Scp457Component : Component
     public float ObjectSizeDecay = 0.01f;
 
     [DataField]
-    public float SmallFormSize = 0.65f;
+    public float SmallFormSize = 0.5f;
 
     [DataField]
     public float StructuralBreakSize = 1.5f;
