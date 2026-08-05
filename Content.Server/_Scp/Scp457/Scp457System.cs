@@ -228,7 +228,7 @@ public sealed class Scp457System : EntitySystem
 
     private void TryChangeSize(Entity<Scp457Component> ent, float delta)
     {
-        if (_safeTime.IsInSafeTime(ent.Owner, false, false))
+        if (_safeTime.IsInSafeTime(ent.Owner, true, false))
             return;
 
         var component = ent.Comp;

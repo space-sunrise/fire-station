@@ -13,6 +13,7 @@
     raiseOnUser: true
   - type: InstantAction
     event: !type:Scp457AbsorbActionEvent
+  - type: SafeTimeRestricted
 
 - type: entity
   parent: BaseAction
@@ -32,3 +33,4 @@
     event: !type:InstantSpawnSpellEvent
       prototype: Scp457Flame
       posData: !type:TargetCasterPos
+  - type: SafeTimeRestricted
