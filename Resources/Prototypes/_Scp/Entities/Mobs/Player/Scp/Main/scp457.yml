@@ -21,6 +21,7 @@
     - state: fireguy
       shader: unshaded
       map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: SafeTime
   - type: Scp
     class: Euclid
   - type: Scp457
