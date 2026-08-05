@@ -3,6 +3,7 @@ using Content.Server._Sunrise.ScaleSprite;
 using Content.Server._Sunrise.VentCraw;
 using Content.Server.Stack;
 using Content.Shared._Scp.Helpers;
+using Content.Shared._Scp.Mobs.Components;
 using Content.Shared._Scp.Other.Events;
 using Content.Shared._Scp.Scp457;
 using Content.Shared.Atmos.Components;
@@ -43,6 +44,7 @@ public sealed class Scp457System : EntitySystem
     private EntityQuery<FlammableComponent> _flammableQuery;
     private EntityQuery<ReactiveComponent> _reactiveQuery;
     private EntityQuery<PhysicalCompositionComponent> _compositionQuery;
+    private EntityQuery<ScpComponent> _scpQuery;
 
     private TimeSpan DecayInterval = TimeSpan.FromSeconds(12);
 
@@ -53,6 +55,7 @@ public sealed class Scp457System : EntitySystem
         _flammableQuery = GetEntityQuery<FlammableComponent>();
         _reactiveQuery = GetEntityQuery<ReactiveComponent>();
         _compositionQuery = GetEntityQuery<PhysicalCompositionComponent>();
+        _scpQuery = GetEntityQuery<ScpComponent>();
 
         SubscribeLocalEvent<Scp457Component, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<Scp457Component, Scp457AbsorbActionEvent>(OnAbsorbAction);
@@ -151,6 +154,9 @@ public sealed class Scp457System : EntitySystem
     public bool CanConsume(Entity<Scp457Component> ent, EntityUid target)
     {
         if (!Exists(target) || !HasComp<ItemComponent>(target))
+            return false;
+
+        if (_scpQuery.HasComp(target)) // Что бы не кушал другие объекты (нп. 999, 1508, 2295, 131)
             return false;
 
         if (_flammableQuery.HasComponent(target))
