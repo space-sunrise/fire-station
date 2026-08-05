@@ -4,6 +4,7 @@ using Content.Server._Sunrise.VentCraw;
 using Content.Server.Stack;
 using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Other.Events;
+using Content.Shared._Scp.SafeTime;
 using Content.Shared._Scp.Scp457;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Chemistry.Components;
@@ -19,7 +20,6 @@ using Content.Shared.Item;
 using Content.Shared.Materials;
 using Content.Shared.Physics;
 using Content.Shared.Stacks;
-using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
@@ -34,6 +34,7 @@ public sealed class Scp457System : EntitySystem
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    [Dependency] private readonly SharedSafeTimeSystem _safeTime = default!;
     [Dependency] private readonly ScaleSpriteSystem _scaleSprite = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
     [Dependency] private readonly StackSystem _stack = default!;
@@ -44,7 +45,7 @@ public sealed class Scp457System : EntitySystem
     private EntityQuery<ReactiveComponent> _reactiveQuery;
     private EntityQuery<PhysicalCompositionComponent> _compositionQuery;
 
-    private TimeSpan DecayInterval = TimeSpan.FromSeconds(12);
+    private TimeSpan DecayInterval = TimeSpan.FromSeconds(18);
 
     public override void Initialize()
     {
@@ -227,6 +228,9 @@ public sealed class Scp457System : EntitySystem
 
     private void TryChangeSize(Entity<Scp457Component> ent, float delta)
     {
+        if (_safeTime.IsInSafeTime(ent.Owner, true, false))
+            return;
+
         var component = ent.Comp;
         var oldSize = component.ObjectSize;
         var newSize = Math.Clamp(oldSize + delta, component.MinimumObjectSize, component.ObjectSizeLimit);
