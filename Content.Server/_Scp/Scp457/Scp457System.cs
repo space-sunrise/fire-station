@@ -25,7 +25,6 @@ using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
-using Content.Shared._Scp.SafeTime;
 
 namespace Content.Server._Scp.Scp457;
 
@@ -45,7 +44,7 @@ public sealed class Scp457System : EntitySystem
     private EntityQuery<ReactiveComponent> _reactiveQuery;
     private EntityQuery<PhysicalCompositionComponent> _compositionQuery;
 
-    private TimeSpan DecayInterval = TimeSpan.FromSeconds(18);
+    private TimeSpan DecayInterval = TimeSpan.FromSeconds(12);
 
     public override void Initialize()
     {
@@ -133,12 +132,7 @@ public sealed class Scp457System : EntitySystem
     {
         if (ent.Comp.ObjectSize > ent.Comp.SmallFormSize)
             args.Cancel();
-
-        // TODO: Переделать и починить сам метод под IsInSafeTime в системе SafeTime
-		if (TryComp<SafeTimeComponent>(ent.Owner, out var safeTime) && 
-			_timing.CurTime < safeTime.TimeEnd)
-			args.Cancel();
-}
+    }
 
     private void OnStartCollide(Entity<Scp457Component> ent, ref StartCollideEvent args)
     {
@@ -274,11 +268,7 @@ public sealed class Scp457System : EntitySystem
         if (!fixtures.Fixtures.TryGetValue(component.BodyFixtureId, out var fixture))
             return;
 
-        // TODO: Переделать и починить сам метод под IsInSafeTime в системе SafeTime
-		var isSafeTime = TryComp<SafeTimeComponent>(ent.Owner, out var safeTime) && 
-						_timing.CurTime < safeTime.TimeEnd;
-
-        var collisionMask = (component.ObjectSize <= component.SmallFormSize && !isSafeTime)
+        var collisionMask = component.ObjectSize <= component.SmallFormSize
             ? (int)CollisionGroup.SmallMobMask
             : (int)CollisionGroup.MobMask;
         if (fixture.CollisionMask == collisionMask)
