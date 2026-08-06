@@ -5,7 +5,7 @@ using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using DrawDepth = Content.Shared.DrawDepth.DrawDepth;
 
-namespace Content.Client._Scp.Shaders.Bloom;
+namespace Content.Client._Scp.Shaders.ConeLighting;
 
 public sealed class ConeLightingOverlay : Overlay
 {
@@ -30,10 +30,10 @@ public sealed class ConeLightingOverlay : Overlay
         _shader = prototypeManager.Index(shader).InstanceUnique();
         ZIndex = (int) DrawDepth.Effects;
 
-        _maskTexture = spriteSystem.Frame0(BloomOverlayVisualsComponent.Cone);
+        _maskTexture = spriteSystem.Frame0(ConeLightingOverlayVisualsComponent.Cone);
 
-        var xOffset = BloomOverlayVisualsComponent.ConeOffset.X - (_maskTexture.Width / 2f) / EyeManager.PixelsPerMeter;
-        var yOffset = BloomOverlayVisualsComponent.ConeOffset.Y - (_maskTexture.Height / 2f) / EyeManager.PixelsPerMeter;
+        var xOffset = ConeLightingOverlayVisualsComponent.ConeOffset.X - (_maskTexture.Width / 2f) / EyeManager.PixelsPerMeter;
+        var yOffset = ConeLightingOverlayVisualsComponent.ConeOffset.Y - (_maskTexture.Height / 2f) / EyeManager.PixelsPerMeter;
         _maskOffset = new Vector2(xOffset, yOffset);
     }
 
@@ -53,8 +53,8 @@ public sealed class ConeLightingOverlay : Overlay
         var bounds = args.WorldAABB.Enlarged(5f);
 
         _shader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
-        _shader.SetParameter("base_haze", BloomOverlayVisualsComponent.DefaultConeBaseHaze);
-        _shader.SetParameter("hueta_divisor", BloomOverlayVisualsComponent.DefaultConeHuetaDivisor / Strength);
+        _shader.SetParameter("base_haze", ConeLightingOverlayVisualsComponent.DefaultConeBaseHaze);
+        _shader.SetParameter("hueta_divisor", ConeLightingOverlayVisualsComponent.DefaultConeHuetaDivisor / Strength);
         handle.UseShader(_shader);
 
         foreach (var (xform, matrix, worldPos, color) in Entities)

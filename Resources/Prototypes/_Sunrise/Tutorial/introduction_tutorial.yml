@@ -146,7 +146,7 @@
 - type: tutorialStep
   id: IntroTutExamineClothingVendor
   parent: IntroductionTutorialStepBase
-  target: VendingMachineClothing
+  target: ScpVendingMachineClothing # Fire edit
   bubble:
     text: intro-tut-examine-clothing-vendor-bubble
     attachToTarget: true
@@ -162,13 +162,13 @@
   observeRange: 12
   conditions:
   - !type:ExamineListenedCondition
-    target: VendingMachineClothing
+    target: ScpVendingMachineClothing # Fire edit
 
 #  6. Open the clothing vending machine
 - type: tutorialStep
   id: IntroTutOpenClothingVendor
   parent: IntroductionTutorialStepBase
-  target: VendingMachineClothing
+  target: ScpVendingMachineClothing # Fire edit
   bubble:
     text: intro-tut-open-clothing-vendor-bubble
     attachToTarget: true
@@ -177,13 +177,13 @@
   observeRange: 12
   conditions:
   - !type:BuiOpenListenedCondition
-    target: VendingMachineClothing
+    target: ScpVendingMachineClothing # Fire edit
 
 #  7. Take any clothing from the vending machine
 - type: tutorialStep
   id: IntroTutTakeClothing
   parent: IntroductionTutorialBeretStepBase
-  target: VendingMachineClothing
+  target: ScpVendingMachineClothing # Fire edit
   bubble:
     text: intro-tut-take-clothing-bubble
     attachToTarget: true
@@ -199,7 +199,7 @@
   observeRange: 12
   conditions:
   - !type:VendingMachineTakeListenedCondition
-    target: VendingMachineClothing
+    target: ScpVendingMachineClothing # Fire edit
     itemTarget: ClothingHeadHatBeret
 
 #  8. Explain inventory
@@ -264,7 +264,7 @@
 - type: tutorialStep
   id: IntroTutPointClothingVendor
   parent: IntroductionTutorialStepBase
-  target: VendingMachineClothing
+  target: ScpVendingMachineClothing # Fire edit
   bubble:
     text: intro-tut-point-clothing-vendor-bubble
     attachToTarget: true
@@ -307,7 +307,7 @@
 - type: tutorialStep
   id: IntroTutSitChair
   parent: IntroductionTutorialSeatStepBase
-  target: Chair
+  target: ScpChair # Fire edit
   bubble:
     text: intro-tut-sit-chair-bubble
     attachToTarget: true
@@ -316,13 +316,13 @@
   observeRange: 12
   conditions:
   - !type:SitListenedCondition
-    target: Chair
+    target: ScpChair # Fire edit
 
 # 15. Stand up from the chair
 - type: tutorialStep
   id: IntroTutStandFromChair
   parent: IntroductionTutorialSeatStepBase
-  target: Chair
+  target: ScpChair # Fire edit
   bubble:
     text: intro-tut-stand-from-chair-bubble
     attachToTarget: true
@@ -337,7 +337,7 @@
 - type: tutorialStep
   id: IntroTutPullChair
   parent: IntroductionTutorialStepBase
-  target: Chair
+  target: ScpChair # Fire edit
   bubble:
     text: intro-tut-pull-chair-bubble
     attachToTarget: true
@@ -346,13 +346,13 @@
   observeRange: 12
   conditions:
   - !type:PullingCondition
-    target: Chair
+    target: ScpChair # Fire edit
 
 # 17. Release the chair
 - type: tutorialStep
   id: IntroTutReleaseChair
   parent: IntroductionTutorialStepBase
-  target: Chair
+  target: ScpChair # Fire edit
   bubble:
     text: intro-tut-release-chair-bubble
     attachToTarget: true
@@ -361,7 +361,7 @@
   observeRange: 12
   conditions:
   - !type:PullingCondition
-    target: Chair
+    target: ScpChair # Fire edit
     inverted: true
 
 # 18. Lie down and stand up

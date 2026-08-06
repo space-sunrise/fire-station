@@ -37,19 +37,16 @@
                                  ToolTip="{Loc ui-options-field-of-view-opacity-tooltip}"/>
 
                 <!-- Эффект свечения -->
-                <CheckBox Name="LightBloomEnable"
-                          Text="{Loc ui-options-light-bloom-enable}"
-                          ToolTip="{Loc ui-options-light-bloom-enable-tooltip}"/>
                 <CheckBox Name="LightBloomConeEnable"
                           Text="{Loc ui-options-light-bloom-cone-enable}"
                           ToolTip="{Loc ui-options-light-bloom-cone-enable-tooltip}"/>
                 <ui:OptionSlider Name="LightBloomConeOpacity"
                                  Title="{Loc ui-options-light-bloom-cone-opacity}"
                                  ToolTip="{Loc ui-options-light-bloom-cone-opacity-tooltip}"/>
-                <CheckBox Name="LightBloomOptimizations"
+                <CheckBox Name="LightBloomConeOptimizations"
                           Text="{Loc ui-options-light-bloom-optimizations}"
                           ToolTip="{Loc ui-options-light-bloom-optimizations-tooltip}"/>
-                <ui:OptionSlider Name="LightBloomStrength"
+                <ui:OptionSlider Name="LightBloomConeStrength"
                                  Title="{Loc ui-options-light-bloom-strength}"
                                  ToolTip="{Loc ui-options-light-bloom-strength-tooltip}"/>
 

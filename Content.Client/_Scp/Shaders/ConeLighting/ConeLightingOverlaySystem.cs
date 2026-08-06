@@ -6,13 +6,13 @@ using Robust.Client.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
 
-namespace Content.Client._Scp.Shaders.Bloom;
+namespace Content.Client._Scp.Shaders.ConeLighting;
 
 /// <summary>
-/// Система, управляющая эффектом свечения.
-/// Высчитывает, какие сущности будут иметь эффект и передает в оверлеи.
+/// Система, управляющая эффектом свечения конусов.
+/// Высчитывает, какие сущности будут иметь эффект и передает в оверлей.
 /// </summary>
-public sealed class LightingOverlaySystem : EntitySystem
+public sealed class ConeLightingOverlaySystem : EntitySystem
 {
     [Dependency] private readonly IOverlayManager _overlayManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
@@ -26,14 +26,10 @@ public sealed class LightingOverlaySystem : EntitySystem
     private EntityQuery<TransformComponent> _transformQuery;
 
     private ConeLightingOverlay _cone = default!;
-    private PointLightingOverlay _point = default!;
 
     private static readonly ProtoId<ShaderPrototype> Shader = "LightingOverlay";
 
-    private bool _allEnabled;
-    private bool _coneEnabled;
     private bool _optimizationsEnabled;
-
     private float _coneOpacity;
     private float _strength;
 
@@ -44,17 +40,15 @@ public sealed class LightingOverlaySystem : EntitySystem
         base.Initialize();
 
         _cone = new ConeLightingOverlay(_prototypeManager, _sprite, Shader);
-        _point = new PointLightingOverlay(_prototypeManager, _sprite, Shader);
 
         _transformQuery = GetEntityQuery<TransformComponent>();
         _eyeQuery = GetEntityQuery<EyeComponent>();
 
         _configSub = _cfg.SubscribeMultiple()
-            .OnValueChanged(ScpCCVars.LightBloomEnable, OnAllEnabledChanged, true)
             .OnValueChanged(ScpCCVars.LightBloomConeEnable, OnConeEnabledChanged, true)
             .OnValueChanged(ScpCCVars.LightBloomConeOpacity, x => _coneOpacity = x, true)
-            .OnValueChanged(ScpCCVars.LightBloomOptimizations, b => _optimizationsEnabled = b, true)
-            .OnValueChanged(ScpCCVars.LightBloomStrength, OnStrengthChanged, true);
+            .OnValueChanged(ScpCCVars.LightBloomConeOptimizations, b => _optimizationsEnabled = b, true)
+            .OnValueChanged(ScpCCVars.LightBloomConeStrength, OnStrengthChanged, true);
     }
 
     public override void FrameUpdate(float frameTime)
@@ -64,17 +58,13 @@ public sealed class LightingOverlaySystem : EntitySystem
         if (_player.LocalEntity == null)
             return;
 
-        if (!_allEnabled)
-            return;
-
         _cone.Entities.Clear();
-        _point.Entities.Clear();
 
         var drawFov = _eyeQuery.TryComp(_player.LocalEntity.Value, out var eye) && eye.DrawFov;
 
         // Просчитываем, какие сущности будут иметь эффект свечения и будет ли это видно игроку.
         // Если сущность проходит проверки -> добавляем ее в список и отправляем список в оверлеи.
-        var query = AllEntityQuery<BloomOverlayVisualsComponent, PointLightComponent, TransformComponent>();
+        var query = AllEntityQuery<ConeLightingOverlayVisualsComponent, PointLightComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out _, out var pointLight, out var xform))
         {
             if (!pointLight.Enabled)
@@ -91,7 +81,6 @@ public sealed class LightingOverlaySystem : EntitySystem
 
             var color = pointLight.Color;
             _cone.Entities.Add((xform, worldMatrix, worldPos, color.WithAlpha(color.A * _coneOpacity)));
-            _point.Entities.Add((xform, worldMatrix, worldPos, pointLight.Color));
         }
     }
 
@@ -102,26 +91,12 @@ public sealed class LightingOverlaySystem : EntitySystem
         _overlayManager.RemoveOverlay(_cone);
         _cone.Dispose();
 
-        _overlayManager.RemoveOverlay(_point);
-        _point.Dispose();
-
         _configSub.Dispose();
-    }
-
-    private void OnAllEnabledChanged(bool value)
-    {
-        _allEnabled = value;
-        _cone.Enabled = value && _coneEnabled;
-        _point.Enabled = value;
-
-        ToggleOverlay(_cone.Enabled, _cone);
-        ToggleOverlay(_point.Enabled, _point);
     }
 
     private void OnConeEnabledChanged(bool value)
     {
-        _coneEnabled = value;
-        _cone.Enabled = value && _allEnabled;
+        _cone.Enabled = value;
 
         ToggleOverlay(_cone.Enabled, _cone);
     }
@@ -131,7 +106,6 @@ public sealed class LightingOverlaySystem : EntitySystem
         _strength = Math.Clamp(value, 0.1f, 1f);
 
         _cone.Strength = _strength;
-        _point.Strength = _strength;
     }
 
     private void ToggleOverlay(bool value, Overlay overlay)
