@@ -1,5 +1,5 @@
+using Content.Shared.Damage;
 using Robust.Shared.GameStates;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared._Scp.Scp082;
 
@@ -84,6 +84,27 @@ public sealed partial class Scp082Component : Component
         "scp082-rage-popup-1",
         "scp082-rage-popup-2",
         "scp082-rage-popup-3"
+    };
+
+    [DataField]
+    public DamageSpecifier CriticalStateHealingRate = new()
+    {
+        DamageDict = new()
+        {
+            { "Blunt", -20f },
+            { "Slash", -20f },
+            { "Piercing", -20f },
+            { "Heat", -20f },
+            { "Shock", -20f },
+            { "Bloodloss", -20f},
+            { "Genetic", -20f },
+            { "Toxin", -20f },
+            { "Airloss", -20f },
+            { "Asphyxiation", -20f },
+            { "Poison", -20f },
+            { "Radiation", -20f },
+            { "Cellular", -20f}
+        }
     };
 
     [ViewVariables]

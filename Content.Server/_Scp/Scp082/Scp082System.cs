@@ -7,7 +7,9 @@ using Content.Shared._Scp.Scp082;
 using Content.Shared._Scp.Shaders.Highlighting;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Events;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Humanoid;
+using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Robust.Shared.Random;
@@ -23,6 +25,7 @@ public sealed class Scp082System : SharedScp082System
     [Dependency] private readonly MetabolizerSystem _metabolizer = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
@@ -33,6 +36,7 @@ public sealed class Scp082System : SharedScp082System
         base.Initialize();
         SubscribeLocalEvent<Scp082Component, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<Scp082Component, ScpIngestionConsumedEvent>(OnIngestionConsumed);
+        SubscribeLocalEvent<Scp082Component, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<Scp082Component, ComponentShutdown>(OnShutdown);
     }
 
@@ -43,9 +47,9 @@ public sealed class Scp082System : SharedScp082System
         var query = EntityQueryEnumerator<Scp082Component>();
         while (query.MoveNext(out var uid, out var component))
         {
-            if (_mobState.IsDead(uid))
+            if (_mobState.IsCritical(uid))
             {
-                ClearHighlights(uid);
+                _damageable.TryChangeDamage(uid, component.CriticalStateHealingRate * frameTime);
                 continue;
             }
 
@@ -105,6 +109,12 @@ public sealed class Scp082System : SharedScp082System
 
         SetHunger(entity.Owner, entity.Comp, entity.Comp.Hunger - hungerRestore);
         Dirty(entity);
+    }
+
+    private void OnMobStateChanged(Entity<Scp082Component> ent, ref MobStateChangedEvent args)
+    {
+        if (args.NewMobState == MobState.Dead)
+            ClearHighlights(ent);
     }
 
     private void SetHunger(EntityUid uid, Scp082Component component, float hunger)
