@@ -200,11 +200,11 @@
     minAngle: -5
     maxAngle: -18
   - type: Gun
-    minAngle: 7
-    maxAngle: 30
+    minAngle: 4 #Fire Edit
+    maxAngle: 16 #Fire Edit
     angleIncrease: 1.9
     angleDecay: 18.5
-    fireRate: 6
+    fireRate: 5 #Fire Edit
     burstFireRate: 8
     selectedMode: FullAuto
     availableModes:
