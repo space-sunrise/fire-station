@@ -5,6 +5,7 @@ using Content.Shared.Roles.Jobs;
 using Robust.Shared.GameObjects;
 using System.Diagnostics.CodeAnalysis;
 using Content.Server._Sunrise.TraitorTarget;
+using Content.Shared._Scp.Other.ClassDAppearance;
 
 namespace Content.Server.Objectives.Systems;
 
@@ -59,7 +60,12 @@ public sealed class TargetObjectiveSystem : EntitySystem
         var targetName = "Unknown";
         if (TryComp<MindComponent>(target, out var mind) && mind.CharacterName != null)
         {
-            targetName = mind.CharacterName;
+            // Fire edit start
+            if (HasComp<ClassDAppearanceComponent>(target))
+                targetName = Name(target);
+            else
+                targetName = mind.CharacterName;
+            // Fire edit end
         }
 
         var jobName = _job.MindTryGetJobName(target);
