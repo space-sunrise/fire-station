@@ -58,15 +58,16 @@ public sealed class TargetObjectiveSystem : EntitySystem
     private string GetTitle(EntityUid target, string title)
     {
         var targetName = "Unknown";
-        if (TryComp<MindComponent>(target, out var mind) && mind.CharacterName != null)
+        // Fire edit start
+        if (!HasComp<ClassDAppearanceComponent>(target) && TryComp<MindComponent>(target, out var mind) && mind.CharacterName != null)
         {
-            // Fire edit start
-            if (HasComp<ClassDAppearanceComponent>(target))
-                targetName = Name(target);
-            else
-                targetName = mind.CharacterName;
-            // Fire edit end
+            targetName = mind.CharacterName;
         }
+        else
+        {
+            targetName = Name(target);
+        }
+        // Fire edit end
 
         var jobName = _job.MindTryGetJobName(target);
         return Loc.GetString(title, ("targetName", targetName), ("job", jobName));
