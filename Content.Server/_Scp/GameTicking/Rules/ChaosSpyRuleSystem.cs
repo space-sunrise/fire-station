@@ -47,6 +47,8 @@ public sealed class ChaosSpyRuleSystem : GameRuleSystem<ChaosSpyRuleComponent>
 
     protected override void Started(EntityUid uid, ChaosSpyRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
+        base.Started(uid, component, gameRule, args);
+
         if (!HasComp<AntagSelectionComponent>(uid))
         {
             StartRandomVariant(component);
@@ -62,8 +64,6 @@ public sealed class ChaosSpyRuleSystem : GameRuleSystem<ChaosSpyRuleComponent>
             var rule = _gameTicker.AddGameRule(component.ChaosRaidRuleProtoId);
             _gameTicker.StartGameRule(rule);
         }
-
-        component.CodeWords = _codeword.GetCodewords(component.CodewordsFactionProtoId);
 
         if (!component.AddSleepSpies)
             return;
@@ -95,8 +95,9 @@ public sealed class ChaosSpyRuleSystem : GameRuleSystem<ChaosSpyRuleComponent>
     {
         var spy = args.EntityUid;
 
+        // Функция "AfterEntitySelected" срабатывает быстрее Started, по этому задаем CodeWords тут.
         if (ent.Comp.CodeWords == null)
-            return;
+            ent.Comp.CodeWords = _codeword.GetCodewords(ent.Comp.CodewordsFactionProtoId);
 
         if (!_mind.TryGetMind(spy, out var mindId, out var mind) || mind == null)
             return;
