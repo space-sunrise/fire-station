@@ -200,8 +200,8 @@
     minAngle: -3 #Fire Edit
     maxAngle: -10 #Fire Edit
   - type: Gun
-    minAngle: 6 #Fire Edit
-    maxAngle: 20 #Fire Edit
+    minAngle: 7 #Fire Edit
+    maxAngle: 25 #Fire Edit
     angleIncrease: 1.9
     angleDecay: 18.5
     fireRate: 5 #Fire Edit
