@@ -37,6 +37,7 @@ public sealed class ChaosSpyRuleSystem : GameRuleSystem<ChaosSpyRuleComponent>
     [Dependency] private readonly UplinkSystem _uplink = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly EntityManager _entities = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -69,15 +70,11 @@ public sealed class ChaosSpyRuleSystem : GameRuleSystem<ChaosSpyRuleComponent>
             return;
 
         component.ChaosSleepSpyRuleEnt = _gameTicker.AddGameRule(component.ChaosSleepSpyRuleProtoId);
-        if (!TryComp<ChaosSleepSpyRuleComponent>(component.ChaosSleepSpyRuleEnt, out var sleepSpyRuleComp))
+        if (!TryComp<ChaosSleepSpyRuleComponent>(component.ChaosSleepSpyRuleEnt, out _))
         {
             _gameTicker.EndGameRule(component.ChaosSleepSpyRuleEnt.Value);
             return;
         }
-
-        sleepSpyRuleComp.CodeWords = component.CodeWords;
-        sleepSpyRuleComp.CodeWordColor = component.CodeWordColor;
-        sleepSpyRuleComp.GreetSoundNotification = component.GreetSoundNotification;
         _gameTicker.StartGameRule(component.ChaosSleepSpyRuleEnt.Value);
     }
 
@@ -94,6 +91,8 @@ public sealed class ChaosSpyRuleSystem : GameRuleSystem<ChaosSpyRuleComponent>
     private void AfterEntitySelected(Entity<ChaosSpyRuleComponent> ent, ref AfterAntagEntitySelectedEvent args)
     {
         var spy = args.EntityUid;
+        var isSleepSpy = _entities.TryGetComponent(spy, out ChaosSleepSpyMobComponent? _);
+
 
         // Функция "AfterEntitySelected" срабатывает быстрее Started, по этому задаем CodeWords тут.
         if (ent.Comp.CodeWords == null)
@@ -120,8 +119,14 @@ public sealed class ChaosSpyRuleSystem : GameRuleSystem<ChaosSpyRuleComponent>
         if (ent.Comp.HasChaosRaidRule)
             _mind.TryAddObjective(mindId, mind, ent.Comp.ChaosRaidHelpObjectiveProtoId);
 
+        var greetSoundNotification =
+            isSleepSpy ? ent.Comp.GreetSoundNotificationSleepSpy : ent.Comp.GreetSoundNotification;
+
         _antag.SendBriefing(
-            spy, GenerateBriefind(ent.Comp.CodeWords, code, Loc.GetString(ent.Comp.Issuer)), null, ent.Comp.GreetSoundNotification
+            spy,
+            GenerateBriefing(ent.Comp.CodeWords, code, isSleepSpy, Loc.GetString(ent.Comp.Issuer)),
+            null,
+            greetSoundNotification
         );
 
         _role.MindHasRole<ChaosSpyRoleComponent>(mindId, out var spyRole);
@@ -170,17 +175,22 @@ public sealed class ChaosSpyRuleSystem : GameRuleSystem<ChaosSpyRuleComponent>
             args.Text += "\n" + Loc.GetString("chaos-spy-round-end-codewords", ("codewords", string.Join(", ", ent.Comp.CodeWords)));
     }
 
-    private string GenerateBriefind(string[]? codewords, Note[]? uplinkCode, string? objectiveIssuer = null)
+    private string GenerateBriefing(string[]? codewords, Note[]? uplinkCode,bool isSleepSpy , string? objectiveIssuer = null)
     {
         var sb = new StringBuilder();
-        sb.AppendLine(Loc.GetString("chaos-spy-role-greeting"));
+
+        if(isSleepSpy)
+            sb.AppendLine(Loc.GetString("chaos-sleep-spy-role-greeting"));
+        else
+            sb.AppendLine(Loc.GetString("chaos-spy-role-greeting"));
+
         if (codewords != null)
             sb.AppendLine(Loc.GetString("chaos-spy-role-codewords", ("codewords", string.Join(", ", codewords))));
+
         if (uplinkCode != null)
             sb.AppendLine(Loc.GetString("chaos-spy-role-uplink-code", ("code", string.Join("-", uplinkCode).Replace("sharp", "#"))));
         else
             sb.AppendLine(Loc.GetString("chaos-spy-role-uplink-implant"));
-
 
         return sb.ToString();
     }

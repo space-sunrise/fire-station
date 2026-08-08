@@ -46,6 +46,7 @@ public sealed partial class AdminVerbSystem
     // Fire edit start
     private static readonly EntProtoId DefaultScpChaosRaidRule = "ScpChaosRaid";
     private static readonly EntProtoId DefaultScpChaosSpyRule = "ScpChaosHighSpy";
+    private static readonly EntProtoId DefaultScpSleepChaosSpyRule = "ScpChaosSleepSpy";
     // Fire edit end
 
     private static readonly SpriteSpecifier SelfAgentVerbIcon =
@@ -56,12 +57,14 @@ public sealed partial class AdminVerbSystem
         new SpriteSpecifier.Texture(new ResPath("_Sunrise/FleshCult/Interface/Actions/fleshCultistFleshHeart.png"));
     private static readonly SpriteSpecifier BloodCultistVerbIcon =
         new SpriteSpecifier.Rsi(new ResPath("/Textures/Objects/Weapons/Melee/cult_dagger.rsi"), "icon");
-    
+
     // Fire edit start
     private static readonly SpriteSpecifier ChaosRaiderVerbIcon =
         new SpriteSpecifier.Rsi(new ResPath("/Textures/_Scp/Clothing/Head/Helmets/chaos.rsi"), "icon");
     private static readonly SpriteSpecifier ChaosSpyVerbIcon =
         new SpriteSpecifier.Rsi(new ResPath("/Textures/_Scp/Objects/Devices/chaos_uplink.rsi"), "icon");
+    private static readonly SpriteSpecifier SleepChaosSpyVerbIcon =
+        new SpriteSpecifier.Rsi(new ResPath("Clothing/Head/Hats/pyjamasyndicatered.rsi"), "icon");
     // Fire edit end
 
     // All antag verbs have names so invokeverb works.
@@ -343,6 +346,20 @@ public sealed partial class AdminVerbSystem
             Message = Loc.GetString("admin-verb-make-chaos-spy"),
         };
         args.Verbs.Add(chaosSpy);
+
+        Verb sleepChaosSpy = new()
+        {
+            Text = Loc.GetString("admin-verb-text-make-chaos-sleep-spy"),
+            Category = VerbCategory.Antag,
+            Icon = SleepChaosSpyVerbIcon,
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<ChaosSleepSpyRuleComponent>(targetPlayer, DefaultScpSleepChaosSpyRule);
+            },
+            Impact = LogImpact.High,
+            Message = Loc.GetString("admin-verb-make-chaos-sleep-spy"),
+        };
+        args.Verbs.Add(sleepChaosSpy);
         // Fire edit end
     }
 }
