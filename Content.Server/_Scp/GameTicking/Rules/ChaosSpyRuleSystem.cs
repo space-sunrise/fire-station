@@ -37,7 +37,6 @@ public sealed class ChaosSpyRuleSystem : GameRuleSystem<ChaosSpyRuleComponent>
     [Dependency] private readonly UplinkSystem _uplink = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly EntityManager _entities = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -91,7 +90,7 @@ public sealed class ChaosSpyRuleSystem : GameRuleSystem<ChaosSpyRuleComponent>
     private void AfterEntitySelected(Entity<ChaosSpyRuleComponent> ent, ref AfterAntagEntitySelectedEvent args)
     {
         var spy = args.EntityUid;
-        var isSleepSpy = _entities.TryGetComponent(spy, out ChaosSleepSpyMobComponent? _);
+        var isSleepSpy = HasComp<ChaosSleepSpyMobComponent>(spy);
 
 
         // Функция "AfterEntitySelected" срабатывает быстрее Started, по этому задаем CodeWords тут.
