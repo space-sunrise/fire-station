@@ -26,7 +26,7 @@ public sealed class ScpActivateSleepSpyConditionSystem : EntitySystem
 
         SubscribeLocalEvent<ScpActivateSleepSpyConditionComponent, ObjectiveAssignedEvent>(OnAssigned);
         SubscribeLocalEvent<ScpActivateSleepSpyConditionComponent, ObjectiveAfterAssignEvent>(OnAfterAssign);
-        SubscribeLocalEvent<ScpActivateSleepSpyConditionComponent, ObjectiveGetProgressEvent>(OnGetProgress);
+        SubscribeLocalEvent<ScpActivateSleepSpyConditionComponent, ObjectiveGetProgressEvent>(OnGetProgress, after: [typeof(CodeConditionSystem)]);
     }
 
     private void OnAssigned(Entity<ScpActivateSleepSpyConditionComponent> ent, ref ObjectiveAssignedEvent args)
