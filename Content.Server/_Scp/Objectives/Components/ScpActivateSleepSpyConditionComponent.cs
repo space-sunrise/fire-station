@@ -5,7 +5,7 @@ namespace Content.Server._Scp.Objectives.Components;
 [RegisterComponent, Access(typeof(ScpActivateSleepSpyConditionSystem))]
 public sealed partial class ScpActivateSleepSpyConditionComponent : Component
 {
-    /// <summary>Target that active spy going to activate.</summary>
+    /// <summary>The sleep spy target that an active Chaos Spy must activate.</summary>
     [ViewVariables]
     public EntityUid? Target;
 }
