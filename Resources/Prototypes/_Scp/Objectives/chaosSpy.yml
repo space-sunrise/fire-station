@@ -150,7 +150,7 @@
   parent: [BaseChaosSpyObjective, BaseCodeObjective]
   id: ChaosSpyActivateSleepSpyObjective
   name: activate "sleeper" cells
-  description: activate "sleeper" cells of the Chaos Insurgency.
+  description: Activate "sleeper" cells of the Chaos Insurgency.
   components:
   - type: Objective
     difficulty: 1.1

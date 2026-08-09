@@ -18,6 +18,7 @@ public sealed partial class ChaosSleepSpyMobComponent : Component
     [DataField]
     public EntProtoId DefaultChaosSpyRule = "ScpChaosLowSpy";
 
+    /// <summary>Whether this sleep spy has already been assigned as an activation target.</summary>
     [ViewVariables]
     public bool IsAssigned;
 

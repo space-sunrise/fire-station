@@ -10,6 +10,7 @@ using Content.Server.Roles.RoleCodeword;
 using Content.Shared._Scp.Chaos;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Mind;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Roles.RoleCodeword;
 using Content.Shared.Speech;
 using Content.Shared.Speech.Components;
@@ -24,6 +25,7 @@ public sealed class ChaosSleepSpyRuleSystem : GameRuleSystem<ChaosSleepSpyRuleCo
     [Dependency] private readonly ObjectivesSystem _objectives = default!;
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
 
     public override void Initialize()
     {
@@ -72,6 +74,9 @@ public sealed class ChaosSleepSpyRuleSystem : GameRuleSystem<ChaosSleepSpyRuleCo
         while (query.MoveNext(out var uid, out var comp))
         {
             if (!_mind.TryGetMind(uid, out var thisMindId, out var mindComp))
+                continue;
+
+            if(_mobState.IsDead(uid))
                 continue;
 
             var count = mindComp.Objectives.Count;
