@@ -19,5 +19,8 @@ public sealed partial class ChaosSleepSpyMobComponent : Component
     public EntProtoId DefaultChaosSpyRule = "ScpChaosLowSpy";
 
     [ViewVariables]
+    public bool IsAssigned;
+
+    [ViewVariables]
     public string[]? CodeWords;
 }
