@@ -58,14 +58,14 @@
     interactSuccessSound:
       path: /Audio/Animals/cat_hiss.ogg
   - type: NoSlip
-  - type: NpcFactionMember
-    factions:
-    - Xeno
-  - type: InputMover
-  - type: MobMover
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+      - SCPs
+  - type: InputMover
+  - type: MobMover
   - type: GhostRole
     makeSentient: true
     name: scp247-ghost-role-name

@@ -179,6 +179,21 @@
     guides:
     - ScpResearch
     - ScpResearchAdvanced
+  - type: HTN
+    constantlyReplan: true
+    rootTask:
+      task: Scp999Compound
+    blackboard:
+      VisionRadius: !type:Single
+        7
+      AggroVisionRadius: !type:Single
+        5
+      FollowRange: !type:Single
+        4
+      MeleeRange: !type:Single
+        1
+  - type: InputMover
+  - type: MobMover
 
 - type: speechSounds
   id: Scp999Speech
