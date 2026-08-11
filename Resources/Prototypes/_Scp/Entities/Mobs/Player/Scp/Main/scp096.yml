@@ -220,21 +220,6 @@
     - ScpResearch
     - ScpResearchAdvanced
     - ScpFear
-  - type: HTN
-    constantlyReplan: true
-    rootTask:
-      task: Scp096Compound
-    blackboard:
-      VisionRadius: !type:Single
-        9
-      AggroVisionRadius: !type:Single
-        9
-      FollowRange: !type:Single
-        9
-      MeleeRange: !type:Single
-        2
-  - type: InputMover
-  - type: MobMover
 
 - type: entity
   id: Scp096Face
