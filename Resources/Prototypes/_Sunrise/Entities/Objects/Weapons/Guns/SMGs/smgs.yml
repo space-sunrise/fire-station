@@ -204,7 +204,7 @@
     maxAngle: 20 #Fire Edit
     angleIncrease: 1.9
     angleDecay: 18.5
-    fireRate: 5 #Fire Edit
+    fireRate: 6.2 #Fire Edit
     burstFireRate: 8
     selectedMode: FullAuto
     availableModes:
