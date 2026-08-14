@@ -188,10 +188,7 @@
 
 - type: entity # Для человекоподобных SCP: 007, 527 и т.д.
   abstract: true
-  parent: 
-  - BaseScpFriendly
-  - InventoryBase
-  - StripableInventoryBase
+  parent: BaseScpFriendly
   id: BaseScpFriendlySapient
   components:
   - type: CanJump

@@ -31,6 +31,7 @@
         { "name": "939", "directions": 4 },
         { "name": "969", "directions": 4 },
         { "name": "999", "directions": 4 },
+		{ "name": "2020", "directions": 4 },
 		{ "name": "2022", "directions": 4 },
 		{ "name": "2908", "directions": 4 },
 

@@ -239,7 +239,16 @@
   components:
   - type: Sprite
     state: 999
-    
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp2020
+  name: SCP-2020 sign
+  description: Points in a direction you shouldn't go without a clear understanding of where it leads.
+  components:
+  - type: Sprite
+    state: 2020
+
 - type: entity
   parent: BaseSignDirectionalScp
   id: SignDirectionalScp2022

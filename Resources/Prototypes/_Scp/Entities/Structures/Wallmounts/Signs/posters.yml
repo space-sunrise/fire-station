@@ -908,6 +908,15 @@
 
 - type: entity
   parent: PosterScpContainmentRoomBase
+  id: PosterSCP2020
+  name: SCP-2020 poster
+  description: Information poster for SCP-2020.
+  components:
+  - type: Sprite
+    state: scp2020
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
   id: PosterSCP2022
   name: SCP-2022 poster
   description: Information poster for SCP-2022.

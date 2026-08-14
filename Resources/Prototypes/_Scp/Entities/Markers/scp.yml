@@ -225,6 +225,20 @@
     - Scp007
 
 - type: entity
+  name: SCP-2020 spawner
+  id: SpawnScp2020
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/Mobs/Scp/scp-2020.rsi
+      state: scp-2020
+  - type: ConditionalSpawner
+    prototypes:
+    - Scp2020
+
+- type: entity
   name: SCP-457 spawner
   id: SpawnScp457
   parent: MarkerBase
@@ -255,3 +269,22 @@
     job_id: Scp247
   - type: PreferredSpawn
     preferredSpawnTypes: [ Job ]
+
+# Рандомная выдача одного из нескольких сцп похожих характеристик
+
+- type: entity
+  name: random friendly sapient SCP spawner
+  id: SpawnScp
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/Mobs/Scp/scp-527.rsi # TODO: анимка где показываются несколько разумных сцп
+      state: scp-527
+  - type: RandomSpawner
+    prototypes:
+      - Scp527
+      - Scp007
+      - Scp2020
+    offset: 0.0

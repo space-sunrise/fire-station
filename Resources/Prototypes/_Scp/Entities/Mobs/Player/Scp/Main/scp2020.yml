@@ -1,22 +1,19 @@
 ﻿- type: entity
-  id: Scp527
+  id: Scp2020
   name: ???
-  suffix: SCP-527
+  suffix: SCP-2020
   parent:
   - BaseScpFriendlySapient
   - MobCombat
   - MobBloodstream
-  - InventoryBase
-  - StripableInventoryBase
   components:
   - type: SlowOnDamage
     speedModifierThresholds:
-      80: 0.9
-      130: 0.8
-      160: 0.7
+      100: 0.9
+      150: 0.8
+      180: 0.7
   - type: TTS
-    voice: ChocolateFabricWonka
-  - type: Mood
+    voice: meepo_dota_2
   - type: Blinkable
   - type: AutoGhostRole
     disconnectDelay: 600
@@ -24,9 +21,9 @@
     transferDelay: 180
   - type: Sprite
     drawdepth: Mobs
-    sprite: _Scp/Mobs/Scp/scp-527.rsi
+    sprite: _Scp/Mobs/Scp/scp-2020.rsi
     layers:
-    - state: scp-527
+    - state: scp-2020
     - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
       sprite: Objects/Misc/handcuffs.rsi
       state: body-overlay-2
@@ -47,36 +44,20 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      200: Dead
+      250: Dead # его тело крепче человеческого
   - type: GhostRole
     makeSentient: true
-    name: ghost-role-information-scp527-name
-    description: ghost-role-information-scp527-description
+    name: ghost-role-information-scp2020-name
+    description: ghost-role-information-scp2020-description
     raffle:
       settings: short
-    job: Scp527
+    job: Scp2020
   - type: GhostTakeoverAvailable
   - type: GuideHelp
     guides:
     - ScpResearch
-  - type: Loadout
-    prototypes: [ Scp527Gear ]
   - type: Thirst
   - type: Hunger
   - type: Cuffable
-
-- type: startingGear
-  id: Scp527Gear
-  equipment:
-    id: KeyCardPassEmpty
-    gloves: ClothingHandsGlovesColorBlack
-    shoes: ClothingShoesBootsLaceup
-    jumpsuit: ClothingUniformJumpsuitLawyerBlack
-    head: ClothingHeadHatTophat
-    belt: ClothingBeltStorageWaistbag
-    pants: ClothingPantsManHearts
-    socks: ClothingKneeWhite
-    pocket1: LuxuryPen
-    pocket2: Scp527PaperCollection
-  inhand:
-  - OffsetCaneWood
+  - type: Damageable
+    damageModifierSet: SCP-2020

@@ -24,6 +24,19 @@
     Radiation: 0.0
 
 - type: damageModifierSet
+  id: SCP-2020
+  coefficients:
+    Blunt: 1.0
+    Slash: 0.6
+    Piercing: 0.8
+    Cold: 1.0
+    Caustic: 1.0
+    Heat: 1.0
+    Poison: 1.0
+    Cellular: 1.0
+    Radiation: 1.0
+
+- type: damageModifierSet
   id: Scp096FaceSet
   coefficients:
     Blunt: 1.0

@@ -6,6 +6,8 @@
   - BaseScpFriendlySapient
   - MobCombat
   - MobBloodstream
+  - InventoryBase
+  - StripableInventoryBase
   components:
   - type: SlowOnDamage
     speedModifierThresholds:
