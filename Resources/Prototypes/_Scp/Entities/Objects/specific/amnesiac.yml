@@ -7,7 +7,7 @@
     currentLabel: reagent-amnesiac-raw-name
   - type: SolutionContainerManager
     solutions:
-      beaker:
+      drink:
         reagents:
         - ReagentId: RawAmnesiac
           Quantity: 50

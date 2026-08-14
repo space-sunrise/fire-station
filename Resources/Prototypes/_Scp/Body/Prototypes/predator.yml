@@ -1,0 +1,54 @@
+﻿# для гуамноидных СЦП которые могут питаться сырым мясом (082, 3288)
+- type: body
+  id: ScpPredator
+  name: "scppredator"
+  root: torso
+  slots:
+    head:
+      part: HeadHuman
+      connections:
+      - torso
+      organs:
+        brain: OrganHumanBrain
+        eyes: OrganHumanEyes
+        tongue: OrganHumanTongue # Sunrise-edit
+        eye_implant: null
+    torso:
+      part: TorsoHuman
+      connections:
+      - right arm # STARLIGHT-SURGERY EDITED, be careful to not delete this
+      - left arm
+      - right leg
+      - left leg
+      organs:
+        heart: OrganHumanHeart
+        lungs: OrganHumanLungs
+        stomach: OrganScpPredatorStomach
+        liver: OrganHumanLiver
+        kidneys: OrganHumanKidneys
+        cavity: null # Sunrise-edit
+    right arm:
+      part: RightArmHuman
+      connections:
+      - right hand
+    left arm:
+      part: LeftArmHuman
+      connections:
+      - left hand
+    right hand:
+      part: RightHandHuman
+    left hand:
+      part: LeftHandHuman
+    right leg:
+      part: RightLegHuman
+      connections:
+      - right foot
+    left leg:
+      part: LeftLegHuman
+      connections:
+      - left foot
+    right foot:
+      part: RightFootHuman
+    left foot:
+      part: LeftFootHuman
+

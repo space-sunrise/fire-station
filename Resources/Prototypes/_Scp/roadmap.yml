@@ -101,7 +101,7 @@
     - id: scp082
       name: roadmap-scp082-name
       desc: roadmap-scp082-description
-      state: Planned
+      state: Complete
     - id: scp062-fr
       name: roadmap-scp062-fr-name
       desc: roadmap-scp062-fr-description

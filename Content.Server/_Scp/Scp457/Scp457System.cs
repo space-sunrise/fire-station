@@ -3,7 +3,9 @@ using Content.Server._Sunrise.ScaleSprite;
 using Content.Server._Sunrise.VentCraw;
 using Content.Server.Stack;
 using Content.Shared._Scp.Helpers;
+using Content.Shared._Scp.Mobs.Components;
 using Content.Shared._Scp.Other.Events;
+using Content.Shared._Scp.SafeTime;
 using Content.Shared._Scp.Scp457;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Chemistry.Components;
@@ -19,7 +21,6 @@ using Content.Shared.Item;
 using Content.Shared.Materials;
 using Content.Shared.Physics;
 using Content.Shared.Stacks;
-using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
@@ -34,6 +35,7 @@ public sealed class Scp457System : EntitySystem
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    [Dependency] private readonly SharedSafeTimeSystem _safeTime = default!;
     [Dependency] private readonly ScaleSpriteSystem _scaleSprite = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
     [Dependency] private readonly StackSystem _stack = default!;
@@ -43,8 +45,9 @@ public sealed class Scp457System : EntitySystem
     private EntityQuery<FlammableComponent> _flammableQuery;
     private EntityQuery<ReactiveComponent> _reactiveQuery;
     private EntityQuery<PhysicalCompositionComponent> _compositionQuery;
+    private EntityQuery<ScpComponent> _scpQuery;
 
-    private TimeSpan DecayInterval = TimeSpan.FromSeconds(8);
+    private TimeSpan DecayInterval = TimeSpan.FromSeconds(18);
 
     public override void Initialize()
     {
@@ -53,6 +56,7 @@ public sealed class Scp457System : EntitySystem
         _flammableQuery = GetEntityQuery<FlammableComponent>();
         _reactiveQuery = GetEntityQuery<ReactiveComponent>();
         _compositionQuery = GetEntityQuery<PhysicalCompositionComponent>();
+        _scpQuery = GetEntityQuery<ScpComponent>();
 
         SubscribeLocalEvent<Scp457Component, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<Scp457Component, Scp457AbsorbActionEvent>(OnAbsorbAction);
@@ -125,7 +129,7 @@ public sealed class Scp457System : EntitySystem
 
     private void OnHitByWater(Entity<Scp457Component> ent, ref HitByWaterEvent args)
     {
-        TryChangeSize(ent, -ent.Comp.ObjectSizeFlammableAdd);
+        TryChangeSize(ent, -ent.Comp.ObjectWaterSizeDecrease);
     }
 
     private void OnVentCrawlAttempt(Entity<Scp457Component> ent, ref VentCrawlAttemptEvent args)
@@ -151,6 +155,9 @@ public sealed class Scp457System : EntitySystem
     public bool CanConsume(Entity<Scp457Component> ent, EntityUid target)
     {
         if (!Exists(target) || !HasComp<ItemComponent>(target))
+            return false;
+
+        if (_scpQuery.HasComp(target)) // Что бы не кушал другие объекты (нп. 999, 1508, 2295, 131)
             return false;
 
         if (_flammableQuery.HasComponent(target))
@@ -227,6 +234,9 @@ public sealed class Scp457System : EntitySystem
 
     private void TryChangeSize(Entity<Scp457Component> ent, float delta)
     {
+        if (_safeTime.IsInSafeTime(ent.Owner, true, false))
+            return;
+
         var component = ent.Comp;
         var oldSize = component.ObjectSize;
         var newSize = Math.Clamp(oldSize + delta, component.MinimumObjectSize, component.ObjectSizeLimit);

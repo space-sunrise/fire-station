@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-3.0",
-  "copyright": "Taken from ss13 SCP",
+  "copyright": "Made by olya0523 (oliavkochka) & Taken from ss13 SCP",
   "size": {
     "x": 32,
     "y": 32
@@ -12,11 +12,20 @@
       "directions": 4
     },
     {
+        "name": "sleep"
+    },
+    {
+      "name": "dead"
+    },
+    {
       "name": "angry",
       "directions": 4
     },
     {
-      "name": "dead"
+        "name": "angry-sleep"
+    },
+    {
+        "name": "angry-dead"
     }
   ]
 }
