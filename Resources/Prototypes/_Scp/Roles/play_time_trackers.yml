@@ -216,6 +216,9 @@
 - type: playTimeTracker
   id: JobScp3288Aristocrat
 
+- type: playTimeTracker
+  id: JobScp4449
+
 # Отряды МОГ
 
 - type: playTimeTracker

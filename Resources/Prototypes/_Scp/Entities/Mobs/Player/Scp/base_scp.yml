@@ -211,10 +211,8 @@
       enum.StoreUiKey.Key:
         type: StoreBoundUserInterface
   - type: Buckle
+  - type: Strippable
   - type: Stripping
-  - type: Body
-    prototype: Human
-    requiredLegs: 2
   - type: FieldOfView
     angle: 240
   - type: Crawler
@@ -250,22 +248,5 @@
     - LoveEffect
     - Flip
   - type: Climbing
-  - type: Paws
-    screamInterval: 3
-    thresholdDamage: 5
-    coughInterval: 5
-    emotesTakeDamage:
-    - Pain
   - type: DamageForceSay
   - type: Blindable
-  - type: Fear
-    phobias:
-    - Exoremophobia
-    - Necrophobia
-  - type: ProximityTarget
-  - type: ComponentToggler
-    components:
-    - type: FearSource
-      phobiaType: Necrophobia
-      uponComeCloser: None
-    - type: WatchingTarget

@@ -72,6 +72,24 @@
   setPreference: false
   applyTraits: false
 
+- type: job
+  id: Scp4449
+  name: job-name-scp4449
+  description: job-description-scp4449
+  playTimeTracker: JobScp4449
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 108000 # 30h
+  weight: 965
+  #icon: TODO
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp4449
+  alwaysShowInBanPanel: true
+  setPreference: false
+  applyTraits: false
+
 # Евклид
 
 - type: job

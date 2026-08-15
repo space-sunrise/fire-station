@@ -61,3 +61,23 @@
   - type: Cuffable
   - type: Damageable
     damageModifierSet: SCP-2020
+  - type: Body
+    prototype: Human
+    requiredLegs: 2
+  - type: Paws
+    screamInterval: 3
+    thresholdDamage: 5
+    coughInterval: 5
+    emotesTakeDamage:
+    - Pain
+  - type: Fear
+    phobias:
+    - Exoremophobia
+    - Necrophobia
+  - type: ProximityTarget
+  - type: ComponentToggler
+    components:
+    - type: FearSource
+      phobiaType: Necrophobia
+      uponComeCloser: None
+    - type: WatchingTarget

@@ -942,6 +942,15 @@
   - type: Sprite
     state: scp2908
 
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP4449
+  name: SCP-4449 poster
+  description: Information poster for SCP-4449.
+  components:
+  - type: Sprite
+    state: scp4449
+
 # Длинные плакаты
 
 - type: entity

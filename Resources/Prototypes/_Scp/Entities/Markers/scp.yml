@@ -239,6 +239,20 @@
     - Scp2020
 
 - type: entity
+  name: SCP-4449 spawner
+  id: SpawnScp4449
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/Mobs/Scp/scp-4449.rsi
+      state: scp-4449
+  - type: ConditionalSpawner
+    prototypes:
+    - Scp4449
+
+- type: entity
   name: SCP-457 spawner
   id: SpawnScp457
   parent: MarkerBase
@@ -287,4 +301,5 @@
       - Scp527
       - Scp007
       - Scp2020
+      - Scp4449
     offset: 0.0

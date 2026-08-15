@@ -33,3 +33,5 @@ job-name-scp3288 = SCP-3288 "The Aristocrats"
 job-description-scp3288-servant = A lower-class individual of the realm, bound to obey their masters. Organize feasts and balls, cook human flesh, and entertain the aristocrats.
 job-description-scp3288-knight = A defender of the Habsburg dynasty. Patrol the territory, protect purebred individuals, and ruthlessly destroy outsiders.
 job-description-scp3288-aristocrat = An influential mutant with sadistic tendencies. Devour human flesh, issue orders to servants, and enjoy yourself.
+job-name-scp4449 = SCP-4449 «Daisuke Kawamoto, Legendary Slayer of Evil»
+job-description-scp4449 = A samurai scarecrow that embodies the spirit of a brave Japanese warrior.
