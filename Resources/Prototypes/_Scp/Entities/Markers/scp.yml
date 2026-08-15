@@ -253,6 +253,20 @@
     - Scp4449
 
 - type: entity
+  name: SCP-492 spawner
+  id: SpawnScp492
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/Mobs/Scp/scp-492.rsi
+      state: scp-492
+  - type: ConditionalSpawner
+    prototypes:
+    - Scp492
+
+- type: entity
   name: SCP-457 spawner
   id: SpawnScp457
   parent: MarkerBase
@@ -302,4 +316,5 @@
       - Scp007
       - Scp2020
       - Scp4449
+      - Scp492
     offset: 0.0

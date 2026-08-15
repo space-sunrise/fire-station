@@ -827,6 +827,15 @@
 
 - type: entity
   parent: PosterScpContainmentRoomBase
+  id: PosterSCP492
+  name: SCP-492 poster
+  description: Information poster for SCP-492.
+  components:
+  - type: Sprite
+    state: scp492
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
   id: PosterSCP500
   name: SCP-500 poster
   description: Information poster for SCP-500.
