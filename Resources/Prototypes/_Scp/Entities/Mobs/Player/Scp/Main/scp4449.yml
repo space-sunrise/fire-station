@@ -63,8 +63,8 @@
   - type: JumpAbility
     action: ActionScp4449Jump
     collideKnockdown: 0
-    jumpDistance: 1
-    jumpThrowSpeed: 20
+    jumpDistance: 0.5
+    jumpThrowSpeed: 25
     jumpSound: /Audio/Effects/Footsteps/wood3.ogg
   - type: Body
     prototype: Primate
@@ -85,7 +85,7 @@
         layer:
         - MobLayer
   - type: DamageOnHighSpeedImpact
-    minimumSpeed: 20
+    minimumSpeed: 30
 
 - type: startingGear
   id: Scp4449Gear
