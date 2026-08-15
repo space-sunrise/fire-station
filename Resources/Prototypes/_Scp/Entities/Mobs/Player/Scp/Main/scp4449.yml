@@ -11,7 +11,7 @@
   - type: Hands
     showInHands: false
   - type: TTS
-    voice: meepo_dota_2
+    voice: anti_mage_dota_2
   - type: AutoGhostRole
     disconnectDelay: 600
     pollDuration: 900
