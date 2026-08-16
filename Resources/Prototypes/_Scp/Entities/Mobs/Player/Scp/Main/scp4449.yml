@@ -26,8 +26,8 @@
     factions:
     - SimpleNeutral
   - type: MovementSpeedModifier
-    baseWalkSpeed: 0.05
-    baseSprintSpeed: 0.1 # передвигается способкой
+    baseWalkSpeed: 0.25
+    baseSprintSpeed: 0.5 # в основном передвигается способкой (прыжками)
   - type: GhostPanelAntagonistMarker
     name: ghost-panel-antagonist-scp-minor-name
     description: ghost-panel-antagonist-scp-minor-description
