@@ -88,25 +88,11 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 3
     baseSprintSpeed: 5.5
-  - type: Devourer
-    devourTime: 10
-    healRate: 20
-    chemical: Omnizine
-    foodPreferenceWhitelist:
-      components:
-      - MobState
   - type: MeleeThrowOnHit # подтягивает к себе при ударе
     speed: 5
     distance: -1
     stunTime: 0.1
     activateOnThrown: true
-  - type: Stealth
-    mirage: false
-    enabledOnDeath: false
-    minVisibility: 0.1
-    lastVisibility: 1
-  - type: StealthOnMove
-    passiveVisibilityRate: -0.01
   - type: UseDelay
     delay: 10
   - type: UseDelayOnMeleeHit

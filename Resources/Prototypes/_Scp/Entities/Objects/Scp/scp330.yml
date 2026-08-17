@@ -18,6 +18,8 @@
         reagents:
         - ReagentId: Scp330Nothing
           Quantity: 10
+  - type: Scp
+    class: Safe
   - type: Tag
     tags:
     - Scp330Candy
