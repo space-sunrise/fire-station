@@ -12,11 +12,9 @@
   id: Scp999FollowNearbyCompound
   branches:
   - tasks:
-
     - !type:HTNPrimitiveTask
       operator: !type:UtilityOperator
         proto: NearbyHumanoidTarget
-
     - !type:HTNPrimitiveTask
       operator: !type:MoveToOperator
         pathfindInPlanning: true
@@ -24,7 +22,6 @@
         targetKey: TargetCoordinates
         pathfindKey: TargetPathfind
         rangeKey: MeleeRange
-
     - !type:HTNPrimitiveTask
       operator: !type:SetFloatOperator
         targetKey: IdleTime
@@ -35,7 +32,6 @@
       preconditions:
       - !type:KeyExistsPrecondition
         key: IdleTime
-
     - !type:HTNPrimitiveTask
       operator: !type:MoveToOperator
         pathfindInPlanning: true
@@ -43,19 +39,16 @@
         targetKey: TargetCoordinates
         pathfindKey: TargetPathfind
         rangeKey: FollowRange
-
     - !type:HTNPrimitiveTask
       operator: !type:SetFloatOperator
         targetKey: SpeakDelay
         amount: 5.0
-
     - !type:HTNPrimitiveTask
       operator: !type:WaitOperator
         key: SpeakDelay
       preconditions:
       - !type:KeyExistsPrecondition
         key: SpeakDelay
-
     - !type:HTNPrimitiveTask
       operator: !type:SpeakOperator
         speech: !type:LocalizedSetSpeakOperatorSpeech
