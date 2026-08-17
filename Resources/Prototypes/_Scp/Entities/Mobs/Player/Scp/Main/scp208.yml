@@ -1,0 +1,144 @@
+﻿- type: entity
+  id: Scp208
+  suffix: SCP-208
+  name: ???
+  parent:
+  - BaseScpFriendly
+  - MobCombat
+  - MobBloodstream
+  - InventoryBase
+  - StripableInventoryBase
+  components:
+  - type: Appearance
+  - type: Crawler
+  - type: Emoting
+  - type: BodyEmotes
+    soundsId: GeneralBodyEmotes
+  - type: Mood
+  - type: Blinkable
+  - type: AutoGhostRole
+    disconnectDelay: 600
+    pollDuration: 900
+    transferDelay: 180
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Mobs/Scp/scp-208.rsi
+    layers:
+    - state: scp-208
+    - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+      sprite: Objects/Misc/handcuffs.rsi
+      state: body-overlay-2
+      color: "#ffffff"
+      visible: false
+  - type: Scp
+    class: Safe
+  - type: ScpRestriction
+    canBeDisarmed: true
+    canStandingState: true
+    canPull: true
+    canMobCollide: true
+    canBePulled: true
+  - type: ScpPossibilities
+    canEjectPilotFromMech: false
+    openContainer: false
+  - type: Inventory
+    templateId: scp208
+  - type: FieldOfView
+    angle: 240
+  - type: Hands
+  - type: Body
+    prototype: Human
+  - type: ComplexInteraction
+  - type: Buckle
+  - type: Stripping
+  - type: StandingState
+  - type: Pacified
+  - type: UserInterface
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 5
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      400: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      200: 0.9
+      300: 0.8
+      350: 0.7
+  - type: Pullable
+  - type: Puller
+    needsHands: true
+  - type: Speech
+  - type: TTS
+    voice: Kopatich
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+  - type: Perishable
+  - type: HoldToFace
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: CanJump
+    isOnlyEmotion: false
+  - type: CanFall
+  - type: Fear
+    phobias:
+    - Exoremophobia
+  - type: ProximityTarget
+  - type: ComponentToggler
+    components:
+    - type: FearSource
+      phobiaType: Necrophobia
+      uponComeCloser: None
+    - type: WatchingTarget
+  - type: Tag
+    tags:
+    - Scp208
+    - FootstepSound
+    - CannotSuicide
+    - DoorBumpOpener
+  - type: ActiveTimerTrigger
+  - type: SmokeOnTrigger
+    duration: 3
+    spreadAmount: 5
+    smokePrototype: Scp208Foam
+  - type: RepeatingTrigger
+  - type: GhostRole
+    makeSentient: true
+    name: ghost-role-information-scp208-name
+    description: ghost-role-information-scp208-description
+    raffle:
+      settings: short
+    job: Scp208
+  - type: GhostTakeoverAvailable
+  - type: GhostPanelAntagonistMarker
+    name: ghost-panel-antagonist-scp-minor-name
+    description: ghost-panel-antagonist-scp-minor-description
+  - type: Loadout
+    prototypes: [ Scp208Gear ]
+  - type: ActionGrant
+    actions:
+    - Scp208Shield
+  - type: StatusEffects
+    allowed:
+    - SlowedDown
+    - Stutter
+    - ForcedSleep
+    - Pacified
+    - RadiationProtection
+    - Drowsiness
+    - Jumping
+  - type: Climbing
+  - type: Cuffable
+
+- type: startingGear
+  id: Scp208Gear
+  equipment:
+    neck: KeyCardHospitalIntern

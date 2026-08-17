@@ -155,6 +155,22 @@
     - Scp131B
 
 - type: entity
+  name: SCP-208 spawner
+  suffix: 50%
+  id: SpawnScp208
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/Mobs/Scp/scp-208.rsi
+      state: scp-208
+  - type: RandomSpawner
+    prototypes:
+      - Scp208
+    chance: .50
+
+- type: entity
   name: SCP-2295 spawner
   id: SpawnScp2295
   parent: MarkerBase
