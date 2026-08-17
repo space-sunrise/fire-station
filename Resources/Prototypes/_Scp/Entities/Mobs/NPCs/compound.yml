@@ -1,0 +1,72 @@
+- type: htnCompound
+  id: Scp999Compound
+  branches:
+  - tasks:
+    - !type:HTNCompoundTask
+      task: Scp999FollowNearbyCompound
+  - tasks:
+    - !type:HTNCompoundTask
+      task: IdleCompound
+
+- type: htnCompound
+  id: Scp999FollowNearbyCompound
+  branches:
+  - tasks:
+    - !type:HTNPrimitiveTask
+      operator: !type:UtilityOperator
+        proto: NearbyHumanoidTarget
+    - !type:HTNPrimitiveTask
+      operator: !type:MoveToOperator
+        pathfindInPlanning: true
+        removeKeyOnFinish: false
+        targetKey: TargetCoordinates
+        pathfindKey: TargetPathfind
+        rangeKey: MeleeRange
+    - !type:HTNPrimitiveTask
+      operator: !type:SetFloatOperator
+        targetKey: IdleTime
+        amount: 1
+    - !type:HTNPrimitiveTask
+      operator: !type:WaitOperator
+        key: IdleTime
+      preconditions:
+      - !type:KeyExistsPrecondition
+        key: IdleTime
+    - !type:HTNPrimitiveTask
+      operator: !type:MoveToOperator
+        pathfindInPlanning: true
+        removeKeyOnFinish: false
+        targetKey: TargetCoordinates
+        pathfindKey: TargetPathfind
+        rangeKey: FollowRange
+    - !type:HTNPrimitiveTask
+      operator: !type:SetFloatOperator
+        targetKey: SpeakDelay
+        amount: 5.0
+    - !type:HTNPrimitiveTask
+      operator: !type:WaitOperator
+        key: SpeakDelay
+      preconditions:
+      - !type:KeyExistsPrecondition
+        key: SpeakDelay
+    - !type:HTNPrimitiveTask
+      operator: !type:SpeakOperator
+        speech: !type:LocalizedSetSpeakOperatorSpeech
+          lineSet: HugBotFinishes # особой разницы нет что он говорит т.к. у него акцент
+        hidden: true
+
+- type: utilityQuery
+  id: NearbyHumanoidTarget
+  query:
+  - !type:ComponentQuery
+    components:
+    - type: HumanoidAppearance
+      species: Human
+  considerations:
+  - !type:TargetDistanceCon
+    curve: !type:PresetCurve
+      preset: TargetDistance
+  - !type:TargetAccessibleCon
+    curve: !type:BoolCurve
+  - !type:TargetInLOSOrCurrentCon
+    curve: !type:BoolCurve

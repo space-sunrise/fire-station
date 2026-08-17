@@ -80,6 +80,21 @@
   - type: GuideHelp
     guides:
     - ScpResearch
+  - type: HTN
+    constantlyReplan: true
+    rootTask:
+      task: HugBotCompound
+    blackboard:
+      VisionRadius: !type:Single
+        7
+      AggroVisionRadius: !type:Single
+        5
+      FollowRange: !type:Single
+        4
+      MeleeRange: !type:Single
+        2
+  - type: InputMover
+  - type: MobMover
 
 - type: entity
   id: Scp131B
