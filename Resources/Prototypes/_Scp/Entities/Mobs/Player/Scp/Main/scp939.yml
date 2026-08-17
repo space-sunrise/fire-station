@@ -17,11 +17,64 @@
     drawdepth: Mobs
     sprite: _Scp/Mobs/Scp/scp-939.rsi
     layers:
-    - map: [ "enum.Scp939Layers.Base" ]
+    - map: [ "base" ]
       state: alive
+  - type: GenericVisualizer
+    visuals:
+      enum.MobStateVisuals.State:
+        base:
+          Dead: { state: dead }
+          Critical: { state: dead }
+          Alive: { state: alive }
+      enum.ScpHealOnSleepVisuals.Sleeping:
+        base:
+          True: { state: asleep }
+  - type: ActiveListener
+    range: 20
   - type: Scp
     class: Keter
   - type: Scp939
+  - type: ScpOnSoundVisibilityViewer
+    poorEyesOnFlash: true
+    onFlashMessage: scp939-flashed
+    protections:
+      components:
+      - Scp939Protection
+  - type: ScpHealOnSleep
+    actionProto: Scp939SleepAction
+    hibernationHealingRate:
+      types:
+        Blunt: -20
+        Slash: -20
+        Piercing: -20
+        Heat: -20
+        Shock: -20
+        Bloodloss: -20
+        Genetic: -20
+        Toxin: -20
+        Airloss: -20
+        Asphyxiation: -20
+        Poison: -20
+        Radiation: -20
+        Cellular: -20
+    hibernationStates:
+    - Critical
+  - type: ScpRememberPhrase
+    actionProto: Scp939MimicAction
+  - type: ScpTriggerOnActionListener
+  - type: SmokeOnTrigger
+    keysIn:
+    - scpSmokeTrigger
+    solution:
+      reagents:
+        - ReagentId: АМН-С227
+          Quantity: 40
+    spreadAmount: 10
+    smokePrototype: АМН-С227Smoke
+  - type: ScpMaskChecker
+  - type: ActionGrant
+    actions:
+    - Scp939SmokeAction
   - type: MeleeWeapon
     altDisarm: false
     soundHit:

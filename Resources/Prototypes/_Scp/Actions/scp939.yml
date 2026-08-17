@@ -1,37 +1,17 @@
 ﻿- type: entity
-  id: Scp939Mimic
+  parent: RememberPhraseAction
+  id: Scp939MimicAction
   name: Voice Mimicry
   description: Allows SCP-939 to mimic voices to lure prey.
-  components:
-  - type: Action
-    useDelay: 5
-    icon:
-      sprite: _Scp/Actions/scp-939.rsi
-      state: mimic
-  - type: InstantAction
-    event: !type:Scp939MimicActionEvent
 
 - type: entity
-  id: Scp939Smoke
+  parent: ScpSmokeAction
+  id: Scp939SmokeAction
   name: Amnestic Gas
   description: Releases a cloud of amnestic gas to disorient victims.
-  components:
-  - type: Action
-    useDelay: 300
-    icon:
-      sprite: _Scp/Actions/scp-939.rsi
-      state: smaug
-  - type: InstantAction
-    event: !type:Scp939GasAction
 
 - type: entity
-  id: Scp939Sleep
+  parent: ScpSleepAction
+  id: Scp939SleepAction
   name: Regenerative Slumber
   description: Allows SCP-939 to enter a deep sleep for rapid healing.
-  components:
-  - type: Action
-    icon:
-      sprite: _Scp/Actions/scp-939.rsi
-      state: sleep
-  - type: InstantAction
-    event: !type:Scp939SleepAction

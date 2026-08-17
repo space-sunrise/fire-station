@@ -1,25 +1,25 @@
-using Content.Shared._Scp.Scp939;
+using Content.Shared._Scp.Other.ScpOnSoundVisibility;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
 
-namespace Content.Client._Scp.Scp939;
+namespace Content.Client._Scp.Other.ScpOnSoundVisibility;
 
-public sealed class Scp939SetAlphaOverlay : Overlay
+public sealed class ScpOnSoundVisibilitySetAlphaOverlay : Overlay
 {
     [Dependency] private readonly IEntityManager _ent = default!;
 
-    private readonly Scp939HudSystem _hud;
+    private readonly ScpOnSoundVisibilityHudSystem _hud;
     private readonly TransformSystem _transform;
     private readonly SpriteSystem _sprite;
 
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowEntities;
 
-    public Scp939SetAlphaOverlay()
+    public ScpOnSoundVisibilitySetAlphaOverlay()
     {
         IoCManager.InjectDependencies(this);
 
-        _hud = _ent.System<Scp939HudSystem>();
+        _hud = _ent.System<ScpOnSoundVisibilityHudSystem>();
         _transform = _ent.System<TransformSystem>();
         _sprite = _ent.System<SpriteSystem>();
     }
@@ -33,7 +33,7 @@ public sealed class Scp939SetAlphaOverlay : Overlay
     {
         _hud.CachedBaseAlphas.Clear();
 
-        var query = _ent.EntityQueryEnumerator<ActiveScp939VisibilityComponent, SpriteComponent, TransformComponent>();
+        var query = _ent.EntityQueryEnumerator<ActiveScpOnSoundVisibilityComponent, SpriteComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var visibility, out var sprite, out var xform))
         {
             if (xform.MapID != args.MapId || !sprite.Visible)
@@ -43,7 +43,7 @@ public sealed class Scp939SetAlphaOverlay : Overlay
             if (!args.WorldBounds.Contains(worldPosition))
                 continue;
 
-            var targetAlpha = Scp939HudSystem.GetVisibility((uid, visibility));
+            var targetAlpha = ScpOnSoundVisibilityHudSystem.GetVisibility((uid, visibility));
             if (MathF.Abs(sprite.Color.A - targetAlpha) <= 0.01f)
                 continue;
 
