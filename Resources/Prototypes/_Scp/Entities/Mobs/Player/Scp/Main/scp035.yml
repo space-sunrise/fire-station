@@ -3,6 +3,8 @@
   id: ClothingMaskScp035
   suffix: SCP-035
   components:
+  - type: TTS
+    voice: dragon_knight_dragon_dota_2
   - type: Sprite
     sprite: _Scp/Objects/Scp/scp-035.rsi
     layers:
