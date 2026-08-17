@@ -327,10 +327,14 @@
     - sprite: _Scp/Mobs/Scp/scp-527.rsi # TODO: анимка где показываются несколько разумных сцп
       state: scp-527
   - type: RandomSpawner
+    rarePrototypes:
+      - Scp208
+    rareChance: 0.1
     prototypes:
       - Scp527
       - Scp007
       - Scp2020
       - Scp4449
       - Scp492
+    chance: 0.9
     offset: 0.0

@@ -782,6 +782,15 @@
 
 - type: entity
   parent: PosterScpContainmentRoomBase
+  id: PosterScp208
+  name: SCP-208 poster
+  description: Information poster for SCP-208.
+  components:
+  - type: Sprite
+    state: scp208
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
   id: PosterSCP247
   name: SCP-247 poster
   description: Information poster for SCP-247.
