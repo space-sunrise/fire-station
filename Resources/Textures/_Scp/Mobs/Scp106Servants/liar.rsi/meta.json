@@ -1,0 +1,17 @@
+{
+    "version": 1,
+    "size":
+    {
+        "x": 32,
+        "y": 32
+    },
+    "license": "CLA",
+    "copyright": "peper",
+    "states":
+    [
+        {
+            "name": "icon",
+            "directions": 4
+        }
+    ]
+}

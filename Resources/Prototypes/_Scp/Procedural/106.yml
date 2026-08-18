@@ -26,7 +26,9 @@
     children:
     - id: CableApcExtension
       amount: 1
-    - id: ScpAirlockGlass
+    - id: ScpWoodDoor
+      amount: 1
+    - id: ScpMetalDoor
       amount: 1
 
 - type: entityTable
@@ -48,8 +50,16 @@
   table: !type:GroupSelector
     children:
     - id: MobScp106Monster
-      amount: 2
-    - id: MobScp106BigMonster
+      amount: 1
+    - id: Scp106MonsterFakeHuman
+      amount: 1
+    - id: Scp106MonsterLimbless
+      amount: 1
+    - id: Scp106MonsterLiar
+      amount: 1
+    - id: Scp106MonsterBehemoth
+      amount: 1
+    - id: Scp106MonsterRespirator
       amount: 1
 
 - type: entityTable
@@ -68,32 +78,31 @@
     - Wow
     - SpaceShip
     - Tall
-    fallbackTile: FloorConcreteSmooth
+    fallbackTile: FloorGrayConcreteSmooth
     roomWhitelist:
       tags:
       - SnowyLabs
-      - BackroomsMineshaft
 
   - !type:CorridorDunGen
     width: 3
-    tile: FloorConcreteSmooth
+    tile: FloorGrayConcreteSmooth
 
   - !type:RoomEntranceDunGen
-    tile: FloorConcreteSmooth
+    tile: FloorGrayConcreteSmooth
     contents: BackroomsEntrance
 
   - !type:WallMountDunGen
     contents: BackroomsWalls
-    tile: FloorConcreteSmooth
+    tile: FloorGrayConcreteSmooth
 
   - !type:BoundaryWallDunGen
-    wall: WallBrick106
-    cornerWall: WallBrick106
-    tile: FloorConcreteSmooth
+    wall: ScpWallFlesh106
+    cornerWall: ScpWallFlesh106
+    tile: FloorGrayConcreteSmooth
 
   - !type:JunctionDunGen
     width: 1
-    tile: FloorConcreteSmooth
+    tile: FloorGrayConcreteSmooth
     contents: BaseAirlockScp
 
   - !type:AutoCablingDunGen
@@ -112,10 +121,13 @@
   - !type:LimitedEntityDunGen
     entity: StairsDown106
 
+  - !type:LimitedEntityDunGen
+    entity: PuddleScp106Reagent200
+
   - !type:MobsDunGen
-    minCount: 4
+    minCount: 5
     maxCount: 9
-    contents: VGRoidExteriorDungeonsMobs
+    contents: BackroomsMobs
 
   # TODO: Add Mobs/Items.
   # For items -> LimitedEntityDunGen
