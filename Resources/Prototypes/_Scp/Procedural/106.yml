@@ -114,6 +114,15 @@
       amount: 1
 
 - type: entityTable
+  id: BackroomsFloorLights
+  table: !type:GroupSelector
+    children:
+    - id: CultTorch
+      amount: 1
+    - id: AlwaysPoweredlightRed
+      amount: 1
+
+- type: entityTable
   id: BackroomsWalls
   table: !type:GroupSelector
     children:
@@ -147,7 +156,6 @@
   table: !type:GroupSelector
     children:
     - id: CableApcExtension
-    - id: ScpAirlockMaint
 
 - type: dungeonConfig
   id: BackroomsBase
@@ -163,12 +171,23 @@
       tags:
       - BackroomsMineshaft
 
-  - !type:CorridorDunGen
+#  - !type:CorridorDunGen
+#    width: 3
+#    tile: ScpFloorFlesh106
+
+  - !type:WormCorridorDunGen
     width: 3
     tile: ScpFloorFlesh106
+    maxAngleChange: 0
+    count: 1
+    length: 3
 
   - !type:CorridorClutterDunGen
     contents: BackroomsCorridorEntities
+    chance: 0.01
+
+  - !type:CorridorClutterDunGen
+    contents: BackroomsFloorLights
     chance: 0.01
 
   - !type:RoomEntranceDunGen
