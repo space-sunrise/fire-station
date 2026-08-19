@@ -127,6 +127,7 @@
 - type: entity
   parent: ClothingOuterHardsuitBrigmedicSunrise
   id: ClothingOuterHardsuitPilot
+  categories: [ HideSpawnMenu ] # Fire edit
   name: security pilot's hardsuit
   description: A lightweight version of the Security Service spacesuit, it provides good mobility but less protection.
   components:
