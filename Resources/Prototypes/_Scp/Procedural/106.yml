@@ -20,6 +20,71 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
 
+- type: entity
+  parent: BaseItem
+  id: FakeItemScp106
+  categories: [HideSpawnMenu]
+  components:
+  - type: Sprite
+    sprite: _Sunrise/Objects/Weapons/Guns/SMGs/p90.rsi
+    layers:
+    - state: base
+    - state: mag-5
+  - type: TriggerOnGotEquippedHand
+  - type: FlashOnTrigger
+  - type: DeleteOnTrigger
+  - type: KnockdownOnTrigger
+    knockdownAmount: 2
+    targetUser: true
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/_Scp/Scp106/laugh.ogg
+    positional: true
+    targetUser: false
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+
+- type: entity
+  parent: BaseStructure
+  id: FakeStairsScp106
+  categories: [HideSpawnMenu]
+  components:
+  - type: Sprite
+    sprite: Structures/stairs.rsi
+    state: stairs_steel
+    drawdepth: FloorObjects
+    offset: 0,0.25
+  - type: Physics
+    bodyType: Static
+  - type: InteractionOutline
+  - type: Fixtures
+    fixtures:
+      fix1:
+        hard: false
+        shape:
+          !type:PhysShapeCircle
+          radius: 5
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+  - type: TriggerOnInteractHand
+  - type: KnockdownOnTrigger
+    knockdownAmount: 2
+    targetUser: true
+  - type: DeleteOnTrigger
+  - type: RepulseAttractOnTrigger
+    speed: 50
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/_Scp/Scp106/laugh.ogg
+    positional: true
+    targetUser: false
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+
 - type: entityTable
   id: BackroomsEntrance
   table: !type:GroupSelector
@@ -31,6 +96,21 @@
     - id: ScpMetalDoor
       amount: 1
     - id: ScpAirlockLogotype
+      amount: 1
+
+- type: entityTable
+  id: BackroomsCorridorEntities
+  table: !type:GroupSelector
+    children:
+    - id: ScpChairWood
+      amount: 1
+    - id: ScpMobRandomClassDCorpse
+      amount: 1
+    - id: PuddleScp106Reagent200
+      amount: 1
+    - id: Shiv
+      amount: 1
+    - id: FakeItemScp106
       amount: 1
 
 - type: entityTable
@@ -78,31 +158,35 @@
     - Wow
     - SpaceShip
     - Tall
-    fallbackTile: FloorGrayConcreteSmooth
+    fallbackTile: ScpFloorFlesh106
     roomWhitelist:
       tags:
-      - SnowyLabs
+      - BackroomsMineshaft
 
   - !type:CorridorDunGen
     width: 3
-    tile: FloorGrayConcreteSmooth
+    tile: ScpFloorFlesh106
+
+  - !type:CorridorClutterDunGen
+    contents: BackroomsCorridorEntities
+    chance: 0.01
 
   - !type:RoomEntranceDunGen
-    tile: FloorGrayConcreteSmooth
+    tile: ScpFloorFlesh106
     contents: BackroomsEntrance
 
   - !type:WallMountDunGen
     contents: BackroomsWalls
-    tile: FloorGrayConcreteSmooth
+    tile: ScpFloorFlesh106
 
   - !type:BoundaryWallDunGen
     wall: ScpWallFlesh106
     cornerWall: ScpWallFlesh106
-    tile: FloorGrayConcreteSmooth
+    tile: ScpFloorFlesh106
 
   - !type:JunctionDunGen
     width: 1
-    tile: FloorGrayConcreteSmooth
+    tile: ScpFloorFlesh106
     contents: BaseAirlockScp
 
   - !type:AutoCablingDunGen
@@ -116,14 +200,18 @@
     limit: 4
 
   - !type:LimitedEntityDunGen
+    entity: FakeStairsScp106
+    limit: 2
+
+  - !type:LimitedEntityDunGen
     entity: StairsUp106
 
   - !type:LimitedEntityDunGen
     entity: StairsDown106
 
-  - !type:LimitedEntityDunGen
-    entity: Scp106MonsterFakeOldMan
-    limit: 1
+#  - !type:LimitedEntityDunGen
+#    entity: Scp106MonsterFakeOldMan
+#    limit: 1
 
   - !type:LimitedEntityDunGen
     entity: PuddleScp106Reagent200

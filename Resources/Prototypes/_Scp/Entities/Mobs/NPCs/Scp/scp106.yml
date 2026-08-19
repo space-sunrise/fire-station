@@ -135,7 +135,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      200: Dead
+      100: Dead
   - type: GuideHelp
     guides:
     - ScpFear
@@ -223,7 +223,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      70: Dead
+      50: Dead
   - type: GuideHelp
     guides:
     - ScpFear
@@ -276,7 +276,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      100: Dead
+      50: Dead
   - type: Inventory
     prototype: Human
   - type: GuideHelp
@@ -343,6 +343,7 @@
 - type: entity
   parent: BaseMobScp106Monster
   id: Scp106MonsterFakeOldMan
+  categories: [HideSpawnMenu] # хммм
   components:
   - type: Sprite
     sprite: _Scp/Mobs/Scp/scp-106.rsi
