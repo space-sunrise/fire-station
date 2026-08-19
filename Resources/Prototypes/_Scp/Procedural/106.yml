@@ -119,7 +119,20 @@
     children:
     - id: CultTorch
       amount: 1
+    - id: Torch
+      amount: 1
+    - id: CableApcExtension
+      amount: 1
+
+- type: entityTable
+  id: BackroomsLights
+  table: !type:GroupSelector
+    children:
     - id: AlwaysPoweredlightRed
+      amount: 1
+    - id: CableApcExtension
+      amount: 1
+    - id: PuddleScp106Reagent200
       amount: 1
 
 - type: entityTable
@@ -130,9 +143,6 @@
       amount: 1
       prob: 0.05
     - id: RandomPainting
-      amount: 1
-      prob: 0.05
-    - id: IntercomCommon
       amount: 1
       prob: 0.05
 
@@ -193,6 +203,10 @@
   - !type:RoomEntranceDunGen
     tile: ScpFloorFlesh106
     contents: BackroomsEntrance
+
+  - !type:EntranceFlankDunGen
+    tile: ScpFloorFlesh106
+    contents: BackroomsLights
 
   - !type:WallMountDunGen
     contents: BackroomsWalls

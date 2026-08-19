@@ -135,7 +135,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      100: Dead
+      70: Dead
   - type: GuideHelp
     guides:
     - ScpFear
