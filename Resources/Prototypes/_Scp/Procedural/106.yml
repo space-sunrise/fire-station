@@ -30,6 +30,8 @@
       amount: 1
     - id: ScpMetalDoor
       amount: 1
+    - id: ScpAirlockLogotype
+      amount: 1
 
 - type: entityTable
   id: BackroomsWalls
@@ -49,8 +51,6 @@
   id: BackroomsMobs
   table: !type:GroupSelector
     children:
-    - id: MobScp106Monster
-      amount: 1
     - id: Scp106MonsterFakeHuman
       amount: 1
     - id: Scp106MonsterLimbless
@@ -122,7 +122,23 @@
     entity: StairsDown106
 
   - !type:LimitedEntityDunGen
+    entity: Scp106MonsterFakeOldMan
+    limit: 1
+
+  - !type:LimitedEntityDunGen
     entity: PuddleScp106Reagent200
+
+  - !type:LimitedEntityDunGen
+    entity: ScpMobRandomCommandantCorpseSpawner
+    limit: 2
+
+  - !type:LimitedEntityDunGen
+    entity: ScpMobRandomSPSCorpse
+    limit: 2
+
+  - !type:LimitedEntityDunGen
+    entity: ScpMobRandomClassDCorpse
+    limit: 1
 
   - !type:MobsDunGen
     minCount: 5

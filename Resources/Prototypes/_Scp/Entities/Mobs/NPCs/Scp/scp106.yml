@@ -40,7 +40,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      200: Dead
+      100: Dead
   - type: Appearance
   - type: Butcherable
     spawned:
@@ -135,7 +135,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      300: Dead
+      200: Dead
   - type: GuideHelp
     guides:
     - ScpFear
@@ -223,7 +223,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      250: Dead
+      70: Dead
   - type: GuideHelp
     guides:
     - ScpFear
@@ -276,7 +276,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      200: Dead
+      100: Dead
   - type: Inventory
     prototype: Human
   - type: GuideHelp
@@ -339,3 +339,96 @@
     - AnomarchologyResearcherGear
     - ServicePersonnelGear
     - GeneralTechnicalSpecialistGear
+
+- type: entity
+  parent: BaseMobScp106Monster
+  id: Scp106MonsterFakeOldMan
+  components:
+  - type: Sprite
+    sprite: _Scp/Mobs/Scp/scp-106.rsi
+    state: base
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+  - type: AmbientSound
+    enabled: true
+    volume: -10
+    range: 3
+    sound:
+      path: /Audio/_Scp/Scp106/breath.ogg
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+    - ScpFear
+  - type: HTN
+    constantlyReplan: true
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      VisionRadius: !type:Single
+        99
+      AggroVisionRadius: !type:Single
+        99
+      FollowRange: !type:Single
+        99
+      MeleeRange: !type:Single
+        1
+  - type: InputMover
+  - type: MobMover
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 2
+  - type: ScpRestriction
+    canStandingState: true
+  - type: Speech
+  - type: Vocal
+    sounds:
+      Male: SCP106
+      Female: SCP106
+      Unsexed: SCP106
+  - type: Emoting
+  - type: EmitEmotesPeriodically
+    emotes:
+    - Laugh
+    cooldownVariations: 10
+    mode: Random
+  - type: FearSource
+    uponSeenState: Fear
+    uponComeCloser: Fear
+    grainShaderStrength:
+      min: 0
+      max: 1000
+    vignetteShaderStrength:
+      min: 0
+      max: 400
+  - type: MeleeWeapon
+    bluntStaminaDamageFactor: 1.0
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcPunch
+    soundHit: /Audio/_Scp/Scp106/hit.ogg
+    damage:
+      types:
+        Cellular: 10
+  - type: AnyDamageSound
+    sound:
+      collection: HurtScp106
+      params:
+        maxDistance: 8
+  - type: SpeedModifierContactCapClothing
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 1000
+        mask:
+        - SmallMobMask
+        layer:
+        - MobLayer
+  - type: NPCUseActionWhenTargetInRange
+    actions:
+    - actionId: Scp106PuddleSpawnAction
+      minRange: 0
+      maxRange: 6
