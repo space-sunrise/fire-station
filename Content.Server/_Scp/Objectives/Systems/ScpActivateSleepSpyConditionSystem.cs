@@ -16,7 +16,6 @@ public sealed class ScpActivateSleepSpyConditionSystem : EntitySystem
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedJobSystem _job = default!;
-    [Dependency] private readonly ILocalizationManager _loc = default!;
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
@@ -49,7 +48,9 @@ public sealed class ScpActivateSleepSpyConditionSystem : EntitySystem
         if (candidates.Count >= 1)
         {
             ent.Comp.Target = _random.Pick(candidates);
-            Comp<ChaosSleepSpyMobComponent>(ent.Comp.Target.Value).IsAssigned = true;
+            TryComp<ChaosSleepSpyMobComponent>(ent.Comp.Target.Value, out var sleepSpyComp);
+            if(sleepSpyComp != null)
+                sleepSpyComp.IsAssigned = true;
         }
         else
             args.Cancelled = true;
@@ -71,8 +72,8 @@ public sealed class ScpActivateSleepSpyConditionSystem : EntitySystem
         if (!_job.TryGetDepartment(jobPrototype.ID, out var departmentPrototype))
             return;
 
-        _metaData.SetEntityName(ent, _loc.GetString("objective-condition-chaos-spy-activate-sleep-spy-title"), args.Meta);
-        _metaData.SetEntityDescription(ent, _loc.GetString("objective-condition-chaos-spy-activate-sleep-spy-description", ("department", _loc.GetString(departmentPrototype.Name))), args.Meta);
+        _metaData.SetEntityName(ent, Loc.GetString("objective-condition-chaos-spy-activate-sleep-spy-title"), args.Meta);
+        _metaData.SetEntityDescription(ent, Loc.GetString("objective-condition-chaos-spy-activate-sleep-spy-description", ("department", Loc.GetString(departmentPrototype.Name))), args.Meta);
     }
 
     private void OnGetProgress(Entity<ScpActivateSleepSpyConditionComponent> ent, ref ObjectiveGetProgressEvent args)
