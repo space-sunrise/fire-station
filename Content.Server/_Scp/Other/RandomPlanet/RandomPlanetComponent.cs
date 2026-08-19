@@ -42,7 +42,7 @@ public sealed partial class StationPlanetData
     /// Если указано будет выбрана случайная погода
     /// </summary>
     [DataField]
-    public List<ProtoId<WeatherPrototype>>? Weather;
+    public List<EntProtoId<WeatherStatusEffectComponent>>? Weather;
 
     /// <summary>
     /// Зерна генерации биомов.

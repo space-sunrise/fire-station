@@ -4,7 +4,7 @@ notekeeper-program-name = Заметки
 nano-task-program-name = Задачи
 news-read-program-name = Новости комплекса
 crew-manifest-program-name = Манифест экипажа
-messenger-program-name = RobustChat
+messenger-program-name = РобастЧат
 crew-manifest-cartridge-loading = Загрузка...
 net-probe-program-name = Зонд сетей
 net-probe-scan = Просканирован { $device }!
@@ -22,11 +22,9 @@ log-probe-printout-device = Просканированное устройств�
 log-probe-printout-header = Последние логи:
 log-probe-printout-entry = #{ $number } / { $time } / { $accessor }
 astro-nav-program-name = АстроНав
-
 navigator-program-name = Навигатор
 navigator-cartridge-loading = Загрузка карты...
-
-photo-program-name = FlashSnap
+photo-program-name = ФлешСнэп
 
 med-tek-program-name = МедТек
 # Wanted list cartridge

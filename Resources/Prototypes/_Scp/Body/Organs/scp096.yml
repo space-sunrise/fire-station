@@ -1,4 +1,44 @@
 ﻿- type: entity
+  id: OrganScp096RightArm
+  parent: OrganBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Organ
+    category: ArmRight
+
+- type: entity
+  id: OrganScp096LeftArm
+  parent: OrganBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Organ
+    category: ArmLeft
+
+- type: entity
+  id: OrganScp096RightHand
+  parent: OrganBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Organ
+    category: HandRight
+  - type: HandOrgan
+    handID: right
+    data:
+      location: Right
+
+- type: entity
+  id: OrganScp096LeftHand
+  parent: OrganBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Organ
+    category: HandLeft
+  - type: HandOrgan
+    handID: left
+    data:
+      location: Left
+
+- type: entity
   id: OrganScp096Lungs
   parent: OrganHumanLungs
   components:

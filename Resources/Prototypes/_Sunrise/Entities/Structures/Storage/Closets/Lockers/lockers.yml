@@ -341,7 +341,7 @@
         - id: HandheldHealthAnalyzer
         - id: BoxForensicPad
         - id: ClothingHeadsetMedical
-        - id: HeadSkeleton
+        - id: OrganSkeletonPersonHead
         - id: ClothingHeadHatPatologonatHat
         - id: Scalpel
         - id: ClothingHandsGlovesNitrile

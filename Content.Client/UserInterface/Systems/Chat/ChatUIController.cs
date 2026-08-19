@@ -25,8 +25,6 @@ using Content.Shared.Chat;
 using Content.Shared.GameTicking;
 using Content.Shared.Decals;
 using Content.Shared.Damage.ForceSay;
-using Content.Shared.Decals;
-using Content.Shared.Examine;
 using Content.Shared.Input;
 using Content.Shared.Radio;
 using Content.Shared.Roles.RoleCodeword;

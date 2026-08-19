@@ -139,8 +139,8 @@
     stock: 1
     
 - type: listing
-  id: ChaosUplinkWeaponMP7
-  productEntity: WeaponSubMachineGunMP7
+  id: ChaosUplinkWeaponMP5
+  productEntity: WeaponSubMachineGunMP5
   cost:
     SupplyPoint: 5
   categories:

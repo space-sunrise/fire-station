@@ -150,7 +150,7 @@ public sealed partial class Scp049System
         if (HasComp<ScpComponent>(minionEntity))
             return false;
 
-        if (!HasComp<HumanoidAppearanceComponent>(minionEntity))
+        if (!HasComp<HumanoidProfileComponent>(minionEntity))
             return false;
 
         MakeMinion(minionEntity, scpEntity);

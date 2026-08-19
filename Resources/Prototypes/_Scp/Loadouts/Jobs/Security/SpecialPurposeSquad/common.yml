@@ -60,7 +60,7 @@
 - type: loadout
   id: ScpLoadoutWeaponShotgunSPAS12
   equipment:
-    suitstorage: WeaponShotgunSPAS12
+    suitstorage: WeaponShotgunCombat
 
 # Пистолет
 - type: loadout

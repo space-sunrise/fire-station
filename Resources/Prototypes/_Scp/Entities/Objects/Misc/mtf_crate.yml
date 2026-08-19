@@ -224,7 +224,7 @@
     - 0,3,3,6
   - type: StorageFill
     contents:
-      - id: WeaponRifleG36
+      - id: WeaponRifleLeikha
       - id: ClothingBeltMtfAmmoG36
 
 - type: entity

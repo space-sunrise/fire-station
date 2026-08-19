@@ -11,12 +11,6 @@
     - MagazineBoxMagnumHP
     - MagazineBoxMagnumFMJ
     - MagazineBoxMagnumRubber
-    - MagazineMagnumRubber
-    - MagazineMagnum
-    - MagazineMagnumFMJ
-    - MagazineMagnumHP
-    - MagazineMagnumEmpty
-    - MagazineMagnumPractice
     # Pistol
     - MagazineBoxPistolSP
     - MagazineBoxPistolHP
@@ -202,12 +196,16 @@
   id: SecurityDynamicSunrise
   recipes:
     - ComputerGunneryCircuitboard
-    - WeaponEnergyGun
     - WeaponMiniEnergyGun
+    - WeaponEnergyGunPistol
+    - WeaponLaserSvalinn
+    - SunriseWeaponLaserCarbineBattery
+    - WeaponLaserLNT620
     - WeaponIonCarbine
     - WeaponDecloner
     - ScanGateMachineCircuitboard
     - MagazineBatteryLr30
+    - MagazineBatteryLr60
     - WeaponSunriseLaserPistol
     - FlareGunSecurityUpgrade
 # Sunrise-TODO: Нужен ребаланс с учетом типов боеприпасов
@@ -219,7 +217,6 @@
 #    - MagazineAR18Extended
 #    - MagazineM28Extended
 #   - MagazineBauer127Extended
-#    - MagazineBR64Extended
 #    - MagazineDragunovExtended
     - ShellBlastArtillery
     - ShellEMPArtillery
@@ -227,7 +224,6 @@
     - ShellFragArtillery
     - MagazineBauer127
 #    - MagazineBauer127Penetrator
-    - RifleHeavyMagazineArtillery
     - MagazineBoxBelt127Artillery
 #    - MagazineBauer127Blast
     - MagazineBauer127Frag
@@ -243,6 +239,7 @@
     - WeaponTemperatureGun
     #- ModularReceiverAuto
     - LecterUpgrade
+    - LecterMk3Upgrade
     - DrozdUpgrade
   #####################BOX#######################
   # Light Rifle
@@ -285,8 +282,6 @@
     - SpeedLoaderMagnumIncendiary
     - SpeedLoaderMagnumUranium
     - SpeedLoaderMagnumAP
-    - MagazineMagnumUranium
-    - MagazineMagnumAP
   # Pistol
     - MagazinePistolIncendiary
     - MagazinePistolUranium
@@ -424,7 +419,6 @@
   - MagazineBoxBelt127Frag
   - MagazineBoxBelt127Blast
   - MagazineBoxBelt127Emp
-  - RifleHeavyMagazineArtillery
   - ShuttleGunQuadlingCircuitboard
   - ShuttleGunTeslaHyperionCircuitboard
   - ShuttleGunBullfrogCircuitboard
@@ -446,6 +440,7 @@
   - MagazineLightRifleAP
   - SpeedLoaderMagnumAP
   - MagazineMagnumAP
+  - MagazineMagnumUranium
   - MagazinePistolAP
   - MagazinePistol40AP
   - MagazinePistolHighCapacityAP

@@ -14,7 +14,7 @@
 
 - type: entity
   id: ChemistryVialAmnesiacA
-  parent: BaseChemistryEmptyVial
+  parent: ChemistryEmptyVial
   suffix: Amnesiac A
   components:
   - type: Label
@@ -29,7 +29,7 @@
 
 - type: entity
   id: ChemistryVialAmnesiacB
-  parent: BaseChemistryEmptyVial
+  parent: ChemistryEmptyVial
   suffix: Amnesiac B
   components:
   - type: Label
@@ -44,7 +44,7 @@
 
 - type: entity
   id: ChemistryVialAmnesiacC
-  parent: BaseChemistryEmptyVial
+  parent: ChemistryEmptyVial
   suffix: Amnesiac C
   components:
   - type: Label
@@ -59,7 +59,7 @@
 
 - type: entity
   id: ChemistryVialAmnesiacD
-  parent: BaseChemistryEmptyVial
+  parent: ChemistryEmptyVial
   suffix: Amnesiac D
   components:
   - type: Label
@@ -74,7 +74,7 @@
 
 - type: entity
   id: ChemistryVialMnesticW
-  parent: BaseChemistryEmptyVial
+  parent: ChemistryEmptyVial
   suffix: Mnestic W
   components:
   - type: Label
@@ -89,7 +89,7 @@
 
 - type: entity
   id: ChemistryVialMnesticX
-  parent: BaseChemistryEmptyVial
+  parent: ChemistryEmptyVial
   suffix: Mnestic X
   components:
   - type: Label
