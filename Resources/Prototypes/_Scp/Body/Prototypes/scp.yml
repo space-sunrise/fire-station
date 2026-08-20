@@ -1,6 +1,6 @@
 - type: entity
-  id: AppearanceScp096
-  name: scp 096 appearance
+  id: AppearanceScpHands
+  name: scp hands appearance
   categories: [ HideSpawnMenu ]
   components:
   - type: InitialBody
@@ -9,8 +9,3 @@
       ArmRight: OrganScpRightArm
       HandLeft: OrganScpLeftHand
       HandRight: OrganScpRightHand
-      Lungs: OrganScp096Lungs
-      Heart: OrganScp096Heart
-      Stomach: OrganScp096Stomach
-      Liver: OrganScp096Liver
-      Kidneys: OrganScp096Kidneys

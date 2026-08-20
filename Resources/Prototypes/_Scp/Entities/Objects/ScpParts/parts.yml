@@ -181,9 +181,10 @@
     damageContainers:
       - Biological
     damage:
-      groups:
-        Brute: -6 # 2 for each type in the group
       types:
+        Blunt: -6
+        Slash: -6
+        Piercing: -6
         Heat: -1
         Cold: -1
         Shock: -1

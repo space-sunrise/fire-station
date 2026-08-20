@@ -13,8 +13,8 @@
     stock: 1
 
 - type: listing
-  id: ChaosUplinkWeaponAKMU
-  productEntity: WeaponRifleAKMU
+  id: ChaosUplinkWeaponRifleSKM24
+  productEntity: WeaponRifleSKM24
   cost:
     SupplyPoint: 5
   categories:
@@ -57,8 +57,8 @@
     stock: 1
 
 - type: listing
-  id: ChaosUplinkWeaponFamas
-  productEntity: WeaponRifleFamas
+  id: ChaosUplinkWeaponLecter
+  productEntity: WeaponRifleLecter
   cost:
     SupplyPoint: 15
   categories:

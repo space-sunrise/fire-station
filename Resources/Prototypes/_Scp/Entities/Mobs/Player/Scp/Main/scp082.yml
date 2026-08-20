@@ -47,7 +47,6 @@
       Dead:
         Base: 082-dead
         BaseUnshaded: tuxedo-dead # временно, что бы не был голым
-  - type: Body
   - type: Inventory
     templateId: scp082
   - type: FieldOfView

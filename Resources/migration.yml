@@ -1226,6 +1226,8 @@ CrateServicePrinterDoc: null
 CrateServicePrinterDocRestock: null
 
 # Fire added start
+ScpUplinkMtfStorageCrateRifleAR18: null
+ChaosSpyUplinkWeaponPistolTec9: null
 GunLockerFilledMP7: GunLockerFilledMP5
 
 LeftFootSkeleton: null

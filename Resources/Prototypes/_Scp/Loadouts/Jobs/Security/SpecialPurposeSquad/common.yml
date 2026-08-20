@@ -50,12 +50,6 @@
     back:
     - RadioHandheldHeavyContainmentSecurityServiceEnabled
 
-# Пистолет-пулемет
-- type: loadout
-  id: ScpLoadoutWeaponSubMachineGunMP5
-  equipment:
-    suitstorage: WeaponSubMachineGunMP5
-
 # Дробовик
 - type: loadout
   id: ScpLoadoutWeaponShotgunSPAS12

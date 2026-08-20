@@ -1,59 +1,15 @@
 ﻿- type: entity
-  id: OrganScp096RightArm
-  parent: OrganBase
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Organ
-    category: ArmRight
-
-- type: entity
-  id: OrganScp096LeftArm
-  parent: OrganBase
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Organ
-    category: ArmLeft
-
-- type: entity
-  id: OrganScp096RightHand
-  parent: OrganBase
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Organ
-    category: HandRight
-  - type: HandOrgan
-    handID: right
-    data:
-      location: Right
-
-- type: entity
-  id: OrganScp096LeftHand
-  parent: OrganBase
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Organ
-    category: HandLeft
-  - type: HandOrgan
-    handID: left
-    data:
-      location: Left
-
-- type: entity
   id: OrganScp096Lungs
   parent: OrganHumanLungs
   components:
   - type: Metabolizer
     metabolizerTypes: [ Scp096 ]
-    groups:
-    - id: Gas
-      rateModifier: 100.0
 
 - type: entity
   id: OrganScp096Heart
   parent: OrganHumanHeart
   components:
   - type: Metabolizer
-    groups: null
     metabolizerTypes: [ Scp096 ]
 
 - type: entity
@@ -62,7 +18,6 @@
   components:
   - type: Metabolizer
     metabolizerTypes: [ Scp096 ]
-    groups: null
 
 - type: entity
   id: OrganScp096Liver
@@ -70,7 +25,6 @@
   components:
   - type: Metabolizer
     metabolizerTypes: [ Scp096 ]
-    groups: null
 
 - type: entity
   id: OrganScp096Kidneys

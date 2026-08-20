@@ -86,7 +86,7 @@
     gloves: ClothingHandsGlovesColorBlackAlt
     shoes: ClothingShoesBootsSecurityGuard
     back: ClothingBackpackSecurity
-    suitstorage: WeaponSubMachineGunMP7
+    suitstorage: WeaponSubMachineGunMP5
     id: KeyCardLightContainmentZoneSecurityCommandant
     ears: ClothingHeadsetAltExternalAdministrativeZoneSecurityService
     belt: ScpClothingBeltSecurityWebbingFilled
