@@ -132,6 +132,7 @@
 
 - type: entity
   id: GunSafeEnergyPistolDominator
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: GunSafeBaseSecure
   name: safe
   suffix: Mini energy guns

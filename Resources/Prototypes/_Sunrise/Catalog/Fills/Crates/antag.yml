@@ -138,6 +138,7 @@
 
 - type: entity
   id: CratePirateChestSun
+  categories: [ HideSpawnMenu ] # Fire edit
   suffix: Filled, Weapons
   parent: CratePirate
   components:
