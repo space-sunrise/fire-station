@@ -76731,7 +76731,15 @@ entities:
       parent: 2
     - type: ApcPowerReceiver
       powerLoad: 0
-  - uid: 5281
+  - uid: 12698
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 60.5,9.5
+      parent: 2
+    - type: ApcPowerReceiver
+      powerLoad: 0
+  - uid: 12699
     components:
     - type: Transform
       pos: 62.5,16.5
@@ -76988,8 +76996,7 @@ entities:
       parent: 2
     - type: ApcPowerReceiver
       powerLoad: 0
-    - type: Timer
-  - uid: 7568
+  - uid: 12733
     components:
     - type: Transform
       rot: 3.141592653589793 rad

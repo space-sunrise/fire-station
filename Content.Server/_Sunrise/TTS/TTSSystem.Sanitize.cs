@@ -9,6 +9,12 @@ namespace Content.Server._Sunrise.TTS;
 // ReSharper disable once InconsistentNaming
 public sealed partial class TTSSystem
 {
+    private static readonly Regex AllowedCharactersRegex = new(@"[^a-zA-Zа-яА-ЯёЁ0-9,\-+?!. ]");
+    private static readonly Regex LatinCharactersRegex = new(@"[a-zA-Z]", RegexOptions.Multiline | RegexOptions.IgnoreCase);
+    private static readonly Regex WordRegex = new(@"(?<![a-zA-Zа-яёА-ЯЁ])[a-zA-Zа-яёА-ЯЁ]+?(?![a-zA-Zа-яёА-ЯЁ])", RegexOptions.Multiline | RegexOptions.IgnoreCase);
+    private static readonly Regex DecimalSeparatorRegex = new(@"(?<=[1-90])(\.|,)(?=[1-90])");
+    private static readonly Regex NumberRegex = new(@"\d+");
+
     private void OnTransformSpeech(TransformSpeechEvent args)
     {
         if (!_isEnabled) return;
@@ -18,13 +24,11 @@ public sealed partial class TTSSystem
     private string Sanitize(string text)
     {
         text = text.Trim();
-        text = Regex.Replace(text, @"[^a-zA-Zа-яА-ЯёЁ0-9,\-+?!. ]", "");
-        text = Regex.Replace(text, @"[a-zA-Z]", ReplaceLat2Cyr, RegexOptions.Multiline | RegexOptions.IgnoreCase);
-        text = Regex.Replace(text, @"(?<![a-zA-Zа-яёА-ЯЁ])[a-zA-Zа-яёА-ЯЁ]+?(?![a-zA-Zа-яёА-ЯЁ])", ReplaceMatchedWord, RegexOptions.Multiline | RegexOptions.IgnoreCase);
-        // fire edit start
-        text = Regex.Replace(text, @"(?<=[0-9])(\.|,)(?=[0-9])", " целых ");
-        // fire edit end
-        text = Regex.Replace(text, @"\d+", ReplaceWord2Num);
+        text = AllowedCharactersRegex.Replace(text, "");
+        text = LatinCharactersRegex.Replace(text, ReplaceLat2Cyr);
+        text = WordRegex.Replace(text, ReplaceMatchedWord);
+        text = DecimalSeparatorRegex.Replace(text, " целых ");
+        text = NumberRegex.Replace(text, ReplaceWord2Num);
         text = text.Trim();
         return text;
     }
@@ -192,24 +196,36 @@ public sealed partial class TTSSystem
             {"сцп173", "эс си пи сто семьдесят три"},
             {"сцп096", "эс си пи ноль девять шесть"},
             {"сцп939", "эс си пи девять три девять"},
+            {"сцп247", "эс си пи два четыре семь"},
+            {"сцп082", "эс си пи ноль восемь два"},
+            {"сцп457", "эс си пи четыре пять семь"},
             {"сцп-106", "эс си пи сто шесть"},
             {"сцп-049", "эс си пи ноль сорок девять"},
             {"сцп-999", "эс си пи девять девять девять"},
             {"сцп-173", "эс си пи сто семьдесят три"},
             {"сцп-096", "эс си пи ноль девять шесть"},
             {"сцп-939", "эс си пи девять три девять"},
+            {"сцп-247", "эс си пи два четыре семь"},
+            {"сцп-082", "эс си пи ноль восемь два"},
+            {"сцп-457", "эс си пи четыре пять семь"},
             {"scp-106", "эс си пи сто шесть"},
             {"scp-049", "эс си пи ноль сорок девять"},
             {"scp-999", "эс си пи девять девять девять"},
             {"scp-173", "эс си пи сто семьдесят три"},
             {"scp-096", "эс си пи ноль девять шесть"},
             {"scp-939", "эс си пи девять три девять"},
+            {"scp-247", "эс си пи два четыре семь"},
+            {"scp-082", "эс си пи ноль восемь два"},
+            {"scp-457", "эс си пи четыре пять семь"},
             {"scp106", "эс си пи сто шесть"},
             {"scp049", "эс си пи ноль сорок девять"},
             {"scp999", "эс си пи девять девять девять"},
             {"scp173", "эс си пи сто семьдесят три"},
             {"scp096", "эс си пи ноль девять шесть"},
             {"scp939", "эс си пи девять три девять"},
+            {"scp247", "эс си пи два четыре семь"},
+            {"scp082", "эс си пи ноль восемь два"},
+            {"scp457", "эс си пи четыре пять семь"},
             // Fire edit end
         };
 

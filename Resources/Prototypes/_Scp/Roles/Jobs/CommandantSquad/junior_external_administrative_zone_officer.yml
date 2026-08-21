@@ -30,7 +30,7 @@
     - type: ScpHolder
       holdableWhitelist:
         components:
-        - HumanoidAppearance
+        - HumanoidProfile
       holdableBlacklist:
         components:
         - Scp

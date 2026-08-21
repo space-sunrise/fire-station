@@ -8,6 +8,7 @@
   - MobRespirator
   - InventoryBase
   - StripableInventoryBase
+  - AppearanceScpHands
   components:
   - type: AutoGhostRole
     disconnectDelay: 600
@@ -59,7 +60,6 @@
     angle: 240
   - type: Hands
   - type: Body
-    prototype: Human
   - type: ComplexInteraction
   - type: Buckle
   - type: Stripping

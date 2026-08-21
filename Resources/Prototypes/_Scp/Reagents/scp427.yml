@@ -6,7 +6,7 @@
   flavor: medicine
   color: "#FFCC00"
   metabolisms:
-    Medicine:
+    Bloodstream:
       metabolismRate: 0.5
       effects:
       - !type:HealthChange
@@ -25,7 +25,6 @@
             Poison: -2
             Piercing: -2
             Heat: -2
-
       - !type:PopupMessage
         conditions:
         - !type:ReagentCondition
@@ -36,7 +35,6 @@
         messages: ["reagent-effect-scp427-warning"]
         probability: 1
         type: Local
-
       - !type:Polymorph
         prototype: Scp427Polymorph
         conditions:

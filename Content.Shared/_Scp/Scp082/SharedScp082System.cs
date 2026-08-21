@@ -1,6 +1,4 @@
 using Content.Shared.Body.Components;
-using Content.Shared.Body.Events;
-using Content.Shared.Body.Systems;
 using Content.Shared.Damage;
 using Content.Shared.Nutrition;
 using Content.Shared.Tag;
@@ -8,20 +6,19 @@ using Content.Shared.Whitelist;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Prototypes;
 using Content.Shared._Scp.Holding;
+using Content.Shared.Body;
 
 namespace Content.Shared._Scp.Scp082;
 
 // TODO: Анхардкод
 public abstract class SharedScp082System : EntitySystem
 {
-    [Dependency] private readonly SharedBodySystem _body = default!;
-    [Dependency] private readonly StomachSystem _stomach = default!;
+    [Dependency] private readonly BodySystem _body = default!;
 
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<Scp082Component, GetMeleeDamageEvent>(OnGetMeleeDamage);
-        SubscribeLocalEvent<Scp082Component, BodyInitEvent>(OnBodyInit);
         SubscribeLocalEvent<Scp082Component, BeforeIngestedEvent>(OnBeforeIngested);
         SubscribeLocalEvent<Scp082Component, ScpHoldAttemptEvent>(OnScpHoldAttempt);
     }
@@ -45,18 +42,13 @@ public abstract class SharedScp082System : EntitySystem
             args.Cancelled = true;
     }
 
-    protected virtual void OnBodyInit(Entity<Scp082Component> entity, ref BodyInitEvent args)
+    protected void UpdateDigestibility(Entity<Scp082Component> ent)
     {
-        UpdateDigestibility(entity);
-    }
-
-    protected void UpdateDigestibility(Entity<Scp082Component> entity)
-    {
-        if (!_body.TryGetBodyOrganEntityComps<StomachComponent>(entity.Owner, out var stomachs))
+        if (!_body.TryGetOrganWithComponent<StomachComponent>(ent.Owner, out var stomachs))
             return;
 
         EntityWhitelist whitelist;
-        if (entity.Comp.Hunger < entity.Comp.HumanoidFoodHungerThreshold)
+        if (ent.Comp.Hunger < ent.Comp.HumanoidFoodHungerThreshold)
         {
             var tags = new List<ProtoId<TagPrototype>>();
             tags.Add("Meat");
@@ -67,9 +59,6 @@ public abstract class SharedScp082System : EntitySystem
             whitelist = new EntityWhitelist { Components = new[] { "Edible" } };
         }
 
-        foreach (var stomach in stomachs)
-        {
-            _stomach.SetSpecialDigestible(stomach.Comp1, whitelist);
-        }
+        stomachs.Comp.SpecialDigestible = whitelist;
     }
 }

@@ -43,7 +43,7 @@
     - whitelist:
         components:
         - MobState
-        - HumanoidAppearance
+        - HumanoidProfile
         requireAll: true
       damage:
         types:
@@ -95,8 +95,11 @@
     soundHit:
       collection: MetalThud
     damage:
-      groups:
-        Brute: 10
+      types:
+        Heat: 10
+        Shock: 10
+        Cold: 10
+        Caustic: 10
   - type: Muted
   - type: SafeTime
     addWidget: false
