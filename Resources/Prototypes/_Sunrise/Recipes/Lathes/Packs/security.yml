@@ -4,28 +4,19 @@
     ######################BOX#######################
     # Light Rifle
     - MagazineBoxLightRifleSP
-    - MagazineBoxLightRifleHP
-    - MagazineBoxLightRifleFMJ
     # Magnum
     - MagazineBoxMagnumSP
     - MagazineBoxMagnumHP
-    - MagazineBoxMagnumFMJ
     - MagazineBoxMagnumRubber
     # Pistol
     - MagazineBoxPistolSP
     - MagazineBoxPistolHP
-    - MagazineBoxPistolFMJ
     - MagazineBoxPistolRubber
     - MagazineBoxPistol40SP
     - MagazineBoxPistol40HP
-    - MagazineBoxPistol40FMJ
     # Rifle
     - MagazineBoxRifleSP
-    - MagazineBoxRifleHP
-    - MagazineBoxRifleFMJ
     # Rifle Heavy
-    - MagazineBoxHeavyRifleFMJ
-    - MagazineBoxHeavyRifleHP
     - MagazineBoxHeavyRifleSP
     - MagazineBoxHeavyRiflePractice
     # Shotgun
@@ -36,49 +27,36 @@
     #####################MAGAZINE#######################
     # LMG
     - MagazineLightRifleBeltBoxSP
-    - MagazineLightRifleBeltBoxHP
-    - MagazineLightRifleBeltBoxFMJ
     - MagazineLightRifleBeltBoxEmpty
     # Light Rifle
     - MagazineLightRifleSP
-    - MagazineLightRifleHP
-    - MagazineLightRifleFMJ
     - MagazineLightRifleEmpty
     # Magnum
     - SpeedLoaderMagnumSP
     - SpeedLoaderMagnumHP
-    - SpeedLoaderMagnumFMJ
     - SpeedLoaderMagnumRubber
     - SpeedLoaderMagnumEmpty
     # Pistol
     - MagazinePistolSP
     - MagazinePistolHP
-    - MagazinePistolFMJ
     - MagazinePistolRubber
     - MagazinePistolEmpty
     - MagazinePistol40SP
     - MagazinePistol40HP
-    - MagazinePistol40FMJ
     - MagazinePistol40Empty
     # SMG
     - MagazineP90 # Fire Edit
     - MagazinePistolSubMachineGunSP
     - MagazinePistolSubMachineGunHP
-    - MagazinePistolSubMachineGunFMJ
     - MagazinePistolSubMachineGunEmpty
     # SMG Top Mounted
-    - MagazinePistolSubMachineGunTopMounted # FMJ
     - MagazinePistolSubMachineGunTopMountedSP
     - MagazinePistolSubMachineGunTopMountedHP
     - MagazinePistolSubMachineGunTopMountedEmpty
     # Rifle
     - MagazineRifleSP
-    - MagazineRifleHP
-    - MagazineRifleFMJ
     - MagazineRifleEmpty
     # Rifle Heavy
-    - MagazineRifleHeavyFMJ
-    - MagazineRifleHeavyHP
     - MagazineRifleHeavySP
     - MagazineRifleHeavyEmpty
     # Shotgun Speedloader
@@ -97,7 +75,6 @@
     ######################BOX#######################
     # Light Rifle
     - MagazineBoxLightRifleSP
-    - MagazineBoxLightRifleHP
     - MagazineBoxLightRifleFMJ
     # Magnum
     - MagazineBoxMagnumSP
@@ -114,11 +91,9 @@
     - MagazineBoxPistol40FMJ
     # Rifle
     - MagazineBoxRifleSP
-    - MagazineBoxRifleHP
     - MagazineBoxRifleFMJ
     # Rifle Heavy
     - MagazineBoxHeavyRifleFMJ
-    - MagazineBoxHeavyRifleHP
     - MagazineBoxHeavyRifleSP
     - MagazineBoxHeavyRiflePractice
     # Shotgun
@@ -131,12 +106,10 @@
     #####################MAGAZINE#######################
     # LMG
     - MagazineLightRifleBeltBoxSP
-    - MagazineLightRifleBeltBoxHP
     - MagazineLightRifleBeltBoxFMJ
     - MagazineLightRifleBeltBoxEmpty
     # Light Rifle
     - MagazineLightRifleSP
-    - MagazineLightRifleHP
     - MagazineLightRifleFMJ
     - MagazineLightRifleEmpty
     # Magnum
@@ -172,7 +145,6 @@
     - MagazineRifleBoxEmpty
     # Rifle Heavy
     - MagazineRifleHeavyFMJ
-    - MagazineRifleHeavyHP
     - MagazineRifleHeavySP
     - MagazineRifleHeavyEmpty
     # Shotgun Speedloader
@@ -195,6 +167,22 @@
 - type: latheRecipePack
   id: SecurityDynamicSunrise
   recipes:
+    # FMJ ammunition
+    - MagazineBoxLightRifleFMJ
+    - MagazineBoxMagnumFMJ
+    - MagazineBoxPistolFMJ
+    - MagazineBoxPistol40FMJ
+    - MagazineBoxRifleFMJ
+    - MagazineBoxHeavyRifleFMJ
+    - MagazineLightRifleBeltBoxFMJ
+    - MagazineLightRifleFMJ
+    - SpeedLoaderMagnumFMJ
+    - MagazinePistolFMJ
+    - MagazinePistol40FMJ
+    - MagazinePistolSubMachineGunFMJ
+    - MagazinePistolSubMachineGunTopMounted
+    - MagazineRifleFMJ
+    - MagazineRifleHeavyFMJ
     - ComputerGunneryCircuitboard
     - WeaponMiniEnergyGun
     - WeaponEnergyGunPistol
@@ -307,7 +295,6 @@
     - MagazineRifleHeavyUranium
     - RifleHeavyMagazineEmpty
     - RifleHeavyMagazineFMJ
-    - RifleHeavyMagazineHP
     - RifleHeavyMagazineSP
     - RifleHeavyMagazineAP
     - RifleHeavyMagazineIncendiary
@@ -361,7 +348,6 @@
     #####################MAGAZINE#######################
     # Light Rifle
     - MagazineLightRifleSP
-    - MagazineLightRifleHP
     - MagazineLightRifleFMJ
     # SMG
     - MagazinePistolSubMachineGunSP
@@ -373,7 +359,6 @@
     - MagazinePistolSubMachineGunTopMountedHP
     # Rifle
     - MagazineRifleSP
-    - MagazineRifleHP
     - MagazineRifleFMJ
     # Shotgun Speedloader
     - SpeedLoaderShellShotgun
@@ -396,7 +381,6 @@
     # .308 Cannon
     - RifleHeavyMagazineEmpty
     - RifleHeavyMagazineFMJ
-    - RifleHeavyMagazineHP
     - RifleHeavyMagazineSP
     # Structure
     - PowerCageRechargerCircuitboard
@@ -450,7 +434,6 @@
   - MagazineRifleHeavyAP
   # Rifle Heavy
   - MagazineRifleHeavyFMJ
-  - MagazineRifleHeavyHP
   - MagazineRifleHeavySP
   # Magnum
   - SpeedLoaderMagnumSP
@@ -469,7 +452,6 @@
   - MagazinePistolHighCapacityFMJ
   # LMG
   - MagazineLightRifleBeltBoxSP
-  - MagazineLightRifleBeltBoxHP
   - MagazineLightRifleBeltBoxFMJ
 
 - type: latheRecipePack

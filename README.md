@@ -2,9 +2,16 @@
 
 # 🔥 SCP: Project Fire - SS14 + SCP 🔥
 
-![GitHub commit activity](https://img.shields.io/github/commit-activity/y/space-sunrise/fire-station)
-![GitHub Issues](https://img.shields.io/github/issues/space-sunrise/fire-station)
-![GitHub Pull Requests](https://img.shields.io/github/issues-pr-closed/space-sunrise/fire-station)
+🌐 **Read this in other languages:**
+
+- 🇺🇸 [English](README.en.md)
+- 🇷🇺 [Русский](README.md)
+
+[![Discord](https://img.shields.io/discord/831352358520725506?label=Discord&logo=discord&logoColor=white)](https://discord.gg/m4xAE2rxQx)
+[![Wiki](https://img.shields.io/badge/Wiki-SS14%20SUNRISE-blue)](https://fire.makura.wiki)
+[![Steam](https://img.shields.io/badge/Steam-SS14%20SUNRISE-blue)](https://store.steampowered.com/app/4813970/Stellar_Stories/)
+[![GitHub](https://img.shields.io/github/stars/makura-games/sunrise-station?style=social)](https://github.com/makura-games/project-fire)
+![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/makura-games/project-fire?utm_source=oss&utm_medium=github&utm_campaign=makura-games%2Fproject-fire&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
 </div>
 
 ---
@@ -12,11 +19,6 @@
 **SCP: Project Fire - первый проект в Space Station 14, перенесший тематику Фонда SCP в рамки станции.** Первый запуск проекта состоялся в далеком 2023ем году. А текущий перезапуск 2.0 перевернул положение дел, расширив механики SCP в десятки раз. <br>
 
 Множество новых объектов, механики исследования, новые измерения, роли и карты. SCP: Project Fire уникальный проект, аналогов которому не существует.
-
-🌐 **Read this in other languages:**
-
-- 🇺🇸 [English](README.en.md)
-- 🇷🇺 [Русский](README.md)
 
 ---
 
@@ -48,11 +50,11 @@
 
 ## ♻ Запуск локального сервера ♻
 
-Следуйте [этому руководству](https://github.com/space-sunrise/fire-station/discussions/345) и у вас все получится
+Следуйте [этому руководству](https://github.com/makura-games/project-fire/discussions/345) и у вас все получится
 
 ## 📄 Документация 📄
 
-У нас имеется своя документация, включающая дизайн-документы механик -> [читать тут](https://github.com/space-sunrise/fire-station/discussions/categories/%D0%B3%D0%B5%D0%B9%D0%BC%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD)
+У нас имеется своя документация, включающая дизайн-документы механик -> [читать тут](https://github.com/makura-games/project-fire/discussions/categories/%D0%B3%D0%B5%D0%B9%D0%BC%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD)
 
 ## 📉 Активность проекта 📉
 
@@ -60,13 +62,15 @@
 
 ---
 
-<div class="header" align="center">
+**Stellar Stories** — уникальная ролевая игра, вдохновленная культовой классикой **Space Station 13** и ставшая следующим шагом в развитии **Space Station 14**. Вас ждут веселье и хаос в самых разных сеттингах: от космической станции и Фонда SCP до Средневековья и морских баталий.
 
-[![Discord](https://img.shields.io/discord/1051873590301184031?label=Discord&logo=discord&logoColor=white)](https://discord.gg/m4xAE2rxQx)
-[![Wiki](https://img.shields.io/badge/Wiki-Fire%20Station%20Wiki-red)](https://fire.station.wiki.shizainc.com/) <br>
-[![GitHub](https://img.shields.io/github/stars/space-sunrise/fire-station?style=social)](https://github.com/space-sunrise/fire-station)
-![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/space-sunrise/fire-station?utm_source=oss&utm_medium=github&utm_campaign=space-sunrise%2Ffire-station&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
-</div>
+На первый взгляд игра может показаться сложной — и это действительно так. Но мы поможем тебе освоиться и найти в ней свое место.
+
+Игра работает на базе открытого игрового движка [Robust Toolbox](https://github.com/space-wizards/RobustToolbox), разработанного на C#.
+
+## Документация
+
+На [сайте с документацией Space Station 14](https://docs.spacestation14.io/) имеется вся необходимая информация о контенте SS14, движке, дизайне игры и многом другом. Наша игра наследует большую часть подобных моментов из Space Station 14, поэтому вы можете смело обращаться к нему. Там также представлено множество полезных материалов для начинающих разработчиков.
 
 ---
 
@@ -88,11 +92,11 @@
 <details>
 <summary><a href="#"><img src="https://img.shields.io/badge/licence-CC_3.0_BY--SA-lightblue?style=for-the-badge" alt="Creative Commons 3.0 BY-SA"></a></summary>
 
->Все остальные ассеты которые не являються ассетами Sunrise, не относящиеся к коду, включая иконки и звуковые файлы, лицензированы по лицензии [Creative Commons 3.0 BY-SA](https://creativecommons.org/licenses/by-sa/3.0/), если иное не указано в папке или файле.
+>Все остальные ассеты которые не являются ассетами Sunrise, не относящиеся к коду, включая иконки и звуковые файлы, лицензированы по лицензии [Creative Commons 3.0 BY-SA](https://creativecommons.org/licenses/by-sa/3.0/), если иное не указано в папке или файле.
 </details>
 
 <details>
 <summary><a href="#"><img src="https://img.shields.io/badge/licence-CLA-orange?style=for-the-badge" alt="CLA"></a></summary>
 
->Весь код, относящийся к Sunrise или SCP: Project Fire(Fire Station), а также ассеты Sunrise или SCP: Project Fire(Fire Station), защищены лицензией [CLA](https://github.com/space-sunrise/space-station-14/blob/master/CLA.txt).
+>Весь код а так-же ассеты MakuraGames Studio, защищены лицензией [CLA](https://github.com/makura-games/project-fire/blob/master/CLA.txt).
 </details>

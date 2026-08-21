@@ -1396,17 +1396,6 @@
     stock: 5
 
 - type: listing
-  id: ScpUplinkMagazineBoxRifleHP
-  productEntity: MagazineBoxRifleHP
-  cost:
-    SupplyPoint: 2
-  categories:
-  - ScpAmmo
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 5
-
-- type: listing
   id: ScpUplinkMagazineBoxHeavyRifleFMJ
   productEntity: MagazineBoxHeavyRifleFMJ
   cost:
@@ -1416,17 +1405,6 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 8
-
-- type: listing
-  id: ScpUplinkMagazineBoxHeavyRifleHP
-  productEntity: MagazineBoxHeavyRifleHP
-  cost:
-    SupplyPoint: 2
-  categories:
-  - ScpAmmo
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 5
 
 - type: listing
   id: ScpUplinkMagazineBoxHeavyRifleAP
