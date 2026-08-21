@@ -69,3 +69,9 @@
       path: /Audio/Effects/door_open.ogg
       params:
         volume: -1
+  - type: DamageVisuals
+    damageOverlay:
+      sprite: _Scp/Effects/DamageOverlay/cracks.rsi
+    thresholds: [5, 10, 20]
+    damageDivisor: 2
+    trackAllDamage: true
