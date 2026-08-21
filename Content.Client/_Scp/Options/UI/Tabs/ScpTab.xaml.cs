@@ -43,11 +43,10 @@ public sealed partial class ScpTab : Control
             FieldOfViewComponent.MinBlurScale, FieldOfViewComponent.MaxBlurScale);
 
         // Эффект свечения
-        Control.AddOptionCheckBox(ScpCCVars.LightBloomEnable, LightBloomEnable);
         Control.AddOptionCheckBox(ScpCCVars.LightBloomConeEnable, LightBloomConeEnable);
         Control.AddOptionPercentSlider(ScpCCVars.LightBloomConeOpacity, LightBloomConeOpacity);
-        Control.AddOptionCheckBox(ScpCCVars.LightBloomOptimizations, LightBloomOptimizations);
-        Control.AddOptionPercentSlider(ScpCCVars.LightBloomStrength, LightBloomStrength);
+        Control.AddOptionCheckBox(ScpCCVars.LightBloomConeOptimizations, LightBloomConeOptimizations);
+        Control.AddOptionPercentSlider(ScpCCVars.LightBloomConeStrength, LightBloomConeStrength);
 
         // Режим совместимости
         Control.AddOptionCheckBox(ScpCCVars.CompatibilityModeShowWarning, CompatibilityModeShowWarning);
@@ -92,7 +91,6 @@ public sealed partial class ScpTab : Control
     {
         ToggleGrain();
         ToggleSinCity();
-        ToggleBloom();
         ToggleBloomCone();
         ToggleEcho();
         ToggleFovBlur();
@@ -105,7 +103,6 @@ public sealed partial class ScpTab : Control
 
         GrainToggleOverlayCheckBox.OnToggled += ToggleGrain;
         SinCityToggleOverlayCheckBox.OnToggled += ToggleSinCity;
-        LightBloomEnable.OnToggled += ToggleBloom;
         LightBloomConeEnable.OnToggled += ToggleBloomCone;
         EchoEnabled.OnToggled += ToggleEcho;
         FieldOfViewBlurEnabled.OnToggled += ToggleFovBlur;
@@ -118,7 +115,6 @@ public sealed partial class ScpTab : Control
 
         GrainToggleOverlayCheckBox.OnToggled -= ToggleGrain;
         SinCityToggleOverlayCheckBox.OnToggled -= ToggleSinCity;
-        LightBloomEnable.OnToggled -= ToggleBloom;
         LightBloomConeEnable.OnToggled -= ToggleBloomCone;
         EchoEnabled.OnToggled -= ToggleEcho;
         FieldOfViewBlurEnabled.OnToggled -= ToggleFovBlur;
@@ -134,19 +130,9 @@ public sealed partial class ScpTab : Control
         SinCityStrengthSlider.Visible = SinCityToggleOverlayCheckBox.Pressed;
     }
 
-    private void ToggleBloom(BaseButton.ButtonToggledEventArgs value = default!)
-    {
-        var enabled = LightBloomEnable.Pressed;
-        LightBloomConeEnable.Visible = enabled;
-        LightBloomOptimizations.Visible = enabled;
-        LightBloomStrength.Visible = enabled;
-
-        ToggleBloomCone();
-    }
-
     private void ToggleBloomCone(BaseButton.ButtonToggledEventArgs value = default!)
     {
-        LightBloomConeOpacity.Visible = LightBloomConeEnable.Pressed && LightBloomEnable.Pressed;
+        LightBloomConeOpacity.Visible = LightBloomConeEnable.Pressed;
     }
 
     private void ToggleEcho(BaseButton.ButtonToggledEventArgs value = default!)

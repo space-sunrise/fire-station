@@ -32,7 +32,7 @@
     - type: ScpHolder
       holdableWhitelist:
         components:
-        - HumanoidAppearance
+        - HumanoidProfile
       holdableBlacklist:
         components:
         - Scp
@@ -82,7 +82,7 @@
     gloves: ClothingHandsGlovesSecurity
     shoes: ClothingShoesBootsSecurityGuard
     back: ClothingBackpackSecurity
-    suitstorage: WeaponSubMachineGunMP7
+    suitstorage: WeaponSubMachineGunMP5
     id: KeyCardSeniorLightContainmentZoneSecurityOfficer
     ears: ClothingHeadsetExternalAdministrativeZoneSecurityService
     belt: ScpClothingBeltSecurityWebbingFilled

@@ -1,11 +1,13 @@
 using System.Linq;
 using Content.Server._Scp.GameTicking.Rules.Components;
 using Content.Server.Antag;
+using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Mind;
 using Content.Server.Roles.RoleCodeword;
 using Content.Shared._Scp.Chaos;
+using Content.Shared.GameTicking.Components;
 using Content.Shared.Roles.RoleCodeword;
 using Content.Shared.Speech;
 using Content.Shared.Speech.Components;
@@ -18,6 +20,7 @@ public sealed class ChaosSleepSpyRuleSystem : GameRuleSystem<ChaosSleepSpyRuleCo
     [Dependency] private readonly RoleCodewordSystem _roleCodeword = default!;
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
     [Dependency] private readonly MindSystem _mind = default!;
+    [Dependency] private readonly GameTicker _gameTicker = default!;
 
     public override void Initialize()
     {
@@ -29,8 +32,22 @@ public sealed class ChaosSleepSpyRuleSystem : GameRuleSystem<ChaosSleepSpyRuleCo
 
     private void AfterEntitySelected(Entity<ChaosSleepSpyRuleComponent> ent, ref AfterAntagEntitySelectedEvent args)
     {
-        if (ent.Comp.CodeWords == null)
+        var activeChaosSpyRule = GetActiveChaosSpyRuleComponent();
+        if (activeChaosSpyRule == null)
+        {
+            Log.Warning("Can not add chaos sleep spy because there are no active chaos spy rules.");
+            _gameTicker.EndGameRule(ent);
             return;
+        }
+
+        if (activeChaosSpyRule.CodeWords == null)
+        {
+            Log.Warning("Can not add chaos sleep spy because there are no code words in ChaosSpyRuleComponent.");
+            _gameTicker.EndGameRule(ent);
+            return;
+        }
+
+        ent.Comp.CodeWords = activeChaosSpyRule.CodeWords;
 
         EnsureComp<ActiveListenerComponent>(args.EntityUid);
 
@@ -38,7 +55,7 @@ public sealed class ChaosSleepSpyRuleSystem : GameRuleSystem<ChaosSleepSpyRuleCo
             return;
 
         var codewordComp = EnsureComp<RoleCodewordComponent>(mindId);
-        _roleCodeword.SetRoleCodewords((mindId, codewordComp), "spy", ent.Comp.CodeWords.ToList(), ent.Comp.CodeWordColor);
+        _roleCodeword.SetRoleCodewords((mindId, codewordComp), "spy", ent.Comp.CodeWords.ToList(), activeChaosSpyRule.CodeWordColor);
 
         var sleepSpyMobComp = EnsureComp<ChaosSleepSpyMobComponent>(args.EntityUid);
         sleepSpyMobComp.CodeWords = ent.Comp.CodeWords;
@@ -67,5 +84,18 @@ public sealed class ChaosSleepSpyRuleSystem : GameRuleSystem<ChaosSleepSpyRuleCo
         _antag.ForceMakeAntag<ChaosSpyRuleComponent>(actorComp.PlayerSession, ent.Comp.DefaultChaosSpyRule);
         RemCompDeferred<ActiveListenerComponent>(ent);
         RemCompDeferred<ChaosSleepSpyMobComponent>(ent);
+    }
+
+    private ChaosSpyRuleComponent? GetActiveChaosSpyRuleComponent()
+    {
+        var spyRuleQuery = EntityQueryEnumerator<ActiveGameRuleComponent, ChaosSpyRuleComponent, GameRuleComponent>();
+        while (spyRuleQuery.MoveNext(out _, out var chaosComp, out _))
+        {
+            if (chaosComp.CodeWords == null)
+                continue;
+
+            return chaosComp;
+        }
+        return null;
     }
 }

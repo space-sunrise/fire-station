@@ -1,13 +1,13 @@
 using Content.Server._Scp.Shaders.Highlighting;
-using Content.Server.Body.Components;
-using Content.Server.Body.Systems;
 using Content.Server.Popups;
 using Content.Shared._Scp.Other.Events;
 using Content.Shared._Scp.Scp082;
 using Content.Shared._Scp.Shaders.Highlighting;
+using Content.Shared.Body;
 using Content.Shared.Body.Components;
-using Content.Shared.Body.Events;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Humanoid;
+using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Robust.Shared.Random;
@@ -20,9 +20,9 @@ public sealed class Scp082System : SharedScp082System
     [Dependency] private readonly HighlightSystem _highlight = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly BodySystem _body = default!;
-    [Dependency] private readonly MetabolizerSystem _metabolizer = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
@@ -33,6 +33,7 @@ public sealed class Scp082System : SharedScp082System
         base.Initialize();
         SubscribeLocalEvent<Scp082Component, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<Scp082Component, ScpIngestionConsumedEvent>(OnIngestionConsumed);
+        SubscribeLocalEvent<Scp082Component, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<Scp082Component, ComponentShutdown>(OnShutdown);
     }
 
@@ -43,9 +44,9 @@ public sealed class Scp082System : SharedScp082System
         var query = EntityQueryEnumerator<Scp082Component>();
         while (query.MoveNext(out var uid, out var component))
         {
-            if (_mobState.IsDead(uid))
+            if (_mobState.IsCritical(uid))
             {
-                ClearHighlights(uid);
+                _damageable.TryChangeDamage(uid, component.CriticalStateHealingRate * frameTime);
                 continue;
             }
 
@@ -79,22 +80,8 @@ public sealed class Scp082System : SharedScp082System
         entity.Comp.NextAngerPopup = _timing.CurTime;
         Dirty(entity);
 
-    }
-
-    protected override void OnBodyInit(Entity<Scp082Component> entity, ref BodyInitEvent args)
-    {
-        base.OnBodyInit(entity, ref args);
-
-        if (!_body.TryGetBodyOrganEntityComps<StomachComponent>(entity.Owner, out var stomachs))
+        if (!_body.TryGetOrganWithComponent<StomachComponent>(entity.Owner, out var stomach))
             return;
-
-        foreach (var stomach in stomachs)
-        {
-            if (!TryComp<MetabolizerComponent>(stomach.Owner, out var metabolizer))
-                continue;
-
-            _metabolizer.TryAddMetabolizerType(metabolizer, "Animal");
-        }
     }
 
     private void OnIngestionConsumed(Entity<Scp082Component> entity, ref ScpIngestionConsumedEvent args)
@@ -105,6 +92,12 @@ public sealed class Scp082System : SharedScp082System
 
         SetHunger(entity.Owner, entity.Comp, entity.Comp.Hunger - hungerRestore);
         Dirty(entity);
+    }
+
+    private void OnMobStateChanged(Entity<Scp082Component> ent, ref MobStateChangedEvent args)
+    {
+        if (args.NewMobState == MobState.Dead)
+            ClearHighlights(ent);
     }
 
     private void SetHunger(EntityUid uid, Scp082Component component, float hunger)
@@ -159,7 +152,7 @@ public sealed class Scp082System : SharedScp082System
 
         foreach (var target in nearbyEntities)
         {
-            if (target == uid || !HasComp<HumanoidAppearanceComponent>(target))
+            if (target == uid || !HasComp<HumanoidProfileComponent>(target))
                 continue;
 
             nextTargets.Add(target);

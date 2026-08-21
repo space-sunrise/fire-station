@@ -13,6 +13,7 @@
   - MobAtmosStandard
   - MobFlammable
   - InventoryBase
+  - AppearanceScpPredator
   components:
   - type: AutoGhostRole
     disconnectDelay: 600
@@ -23,15 +24,29 @@
   - type: Scp082
   - type: ScpHoldable
     minimumHolderCount: 3
+  - type: Stomach
+    specialDigestible:
+      tags:
+      - Meat
   - type: Hands
     showInHands: false
+  - type: Appearance
   - type: MobThresholds
     thresholds:
       0: Alive
       1800: Critical
       2000: Dead
-  - type: Body
-    prototype: ScpPredator
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: 082_fullbody
+        BaseUnshaded: tuxedo # временно, что бы не был голым
+      Critical:
+        Base: 082-dead
+        BaseUnshaded: tuxedo-dead # временно, что бы не был голым
+      Dead:
+        Base: 082-dead
+        BaseUnshaded: tuxedo-dead # временно, что бы не был голым
   - type: Inventory
     templateId: scp082
   - type: FieldOfView
@@ -46,8 +61,10 @@
     drawdepth: Mobs
     sprite: _Scp/Mobs/Scp/scp-082.rsi
     layers:
-    - state: 082_fullbody
-    - state: tuxedo # временно чтобы он не был голым
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: 082_fullbody
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: tuxedo
   - type: ComplexInteraction
   - type: Buckle
   - type: ZombieImmune

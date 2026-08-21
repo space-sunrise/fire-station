@@ -61,6 +61,9 @@ public sealed partial class ChaosSpyRuleComponent : Component
     [DataField]
     public SoundSpecifier GreetSoundNotification = new SoundPathSpecifier("/Audio/_Scp/Themes/Chaos_Spy_Theme.ogg");
 
+    [DataField]
+    public SoundSpecifier GreetSoundNotificationSleepSpy = new SoundPathSpecifier("/Audio/_Scp/Themes/Chaos_Sleep_Spy_Theme.ogg");
+
     [ViewVariables]
     public bool HasChaosRaidRule;
 }

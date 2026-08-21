@@ -11,6 +11,7 @@
   special:
   - !type:AddComponentSpecial
     components:
+    - type: ChaosSpySelectionBlacklist
     - type: ClassDAppearance
     - type: EmployeeClass
       class: D
