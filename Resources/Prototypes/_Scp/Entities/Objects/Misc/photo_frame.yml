@@ -3,6 +3,7 @@
   id: BasePhotoFrame
   name: photo frame
   abstract: true
+  suffix: Decorative
   components:
   - type: Sprite
     sprite: _Scp/Objects/Misc/photo_frame.rsi
