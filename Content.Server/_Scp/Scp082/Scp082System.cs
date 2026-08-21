@@ -1,12 +1,10 @@
 using Content.Server._Scp.Shaders.Highlighting;
-using Content.Server.Body.Components;
-using Content.Server.Body.Systems;
 using Content.Server.Popups;
 using Content.Shared._Scp.Other.Events;
 using Content.Shared._Scp.Scp082;
 using Content.Shared._Scp.Shaders.Highlighting;
+using Content.Shared.Body;
 using Content.Shared.Body.Components;
-using Content.Shared.Body.Events;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs;
@@ -22,7 +20,6 @@ public sealed class Scp082System : SharedScp082System
     [Dependency] private readonly HighlightSystem _highlight = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly BodySystem _body = default!;
-    [Dependency] private readonly MetabolizerSystem _metabolizer = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
@@ -83,22 +80,8 @@ public sealed class Scp082System : SharedScp082System
         entity.Comp.NextAngerPopup = _timing.CurTime;
         Dirty(entity);
 
-    }
-
-    protected override void OnBodyInit(Entity<Scp082Component> entity, ref BodyInitEvent args)
-    {
-        base.OnBodyInit(entity, ref args);
-
-        if (!_body.TryGetBodyOrganEntityComps<StomachComponent>(entity.Owner, out var stomachs))
+        if (!_body.TryGetOrganWithComponent<StomachComponent>(entity.Owner, out var stomach))
             return;
-
-        foreach (var stomach in stomachs)
-        {
-            if (!TryComp<MetabolizerComponent>(stomach.Owner, out var metabolizer))
-                continue;
-
-            _metabolizer.TryAddMetabolizerType(metabolizer, "Animal");
-        }
     }
 
     private void OnIngestionConsumed(Entity<Scp082Component> entity, ref ScpIngestionConsumedEvent args)
@@ -169,7 +152,7 @@ public sealed class Scp082System : SharedScp082System
 
         foreach (var target in nearbyEntities)
         {
-            if (target == uid || !HasComp<HumanoidAppearanceComponent>(target))
+            if (target == uid || !HasComp<HumanoidProfileComponent>(target))
                 continue;
 
             nextTargets.Add(target);

@@ -1,0 +1,1360 @@
+# Miscellaneous
+- type: loadoutGroup
+  id: Trinkets
+  name: loadout-group-trinkets
+  minLimit: 0
+  maxLimit: 3
+  loadouts:
+  - FlowerWreath
+  - Hairflower
+  - Headphones
+  - PlushieLizard
+  - PlushieSpaceLizard
+  - ThreeCandles
+  - Lighter
+  - CigPackGreen
+  - CigPackRed
+  - CigPackBlue
+  - CigPackBlack
+  - CigarCase
+  - CigarGold
+  - BoxFolderBaseThreePapers
+  - BoxFolderPlasticClipboardThreePapers
+  - BoxFolderClipboardThreePapers
+  - ClothingNeckLGBTPin
+  - ClothingNeckAllyPin
+  - ClothingNeckAromanticPin
+  - ClothingNeckAsexualPin
+  - ClothingNeckAroacePin
+  - ClothingNeckBisexualPin
+  - ClothingNeckGayPin
+  - ClothingNeckIntersexPin
+  - ClothingNeckLesbianPin
+  - ClothingNeckNonBinaryPin
+  - ClothingNeckPansexualPin
+  - ClothingNeckPluralPin
+  - ClothingNeckOmnisexualPin
+  - ClothingNeckGenderqueerPin
+  - ClothingNeckGenderfluidPin
+  - ClothingNeckTransPin
+  - ClothingNeckAutismPin
+  - ClothingNeckGoldAutismPin
+  - OffsetCane
+  - OffsetCaneWood
+  - OffsetCaneClown
+  - OffsetCaneMime
+  - OffsetCaneNT
+  - Cane
+  - TowelColorWhite
+
+- type: loadoutGroup
+  id: Glasses
+  name: loadout-group-glasses
+  minLimit: 0
+  loadouts:
+  - Glasses
+  - GlassesJamjar
+  - GlassesJensen
+
+- type: loadoutGroup
+  id: GroupTankHarness
+  name: loadout-group-tank-harness
+  minLimit: 1
+  hidden: true
+  loadouts:
+  - LoadoutTankHarness
+
+- type: loadoutGroup
+  id: Survival
+  name: loadout-group-survival-basic
+  minLimit: 3
+  hidden: true
+  loadouts:
+  - EmergencyNitrogen
+  - EmergencyOxygen
+  - LoadoutSpeciesVoxNitrogen
+
+# nitrogen or oxygen tank, depending on what your species needs
+- type: loadoutGroup
+  id: GroupEVATank
+  name: loadout-group-EVA-tank
+  hidden: true
+  loadouts:
+  - LoadoutSpeciesEVANitrogen
+  - LoadoutSpeciesEVAOxygen
+
+# vox get a nitrogen tank, other species get nothing
+- type: loadoutGroup
+  id: GroupEVATankVox
+  name: loadout-group-vox-tank
+  hidden: true
+  loadouts:
+  - LoadoutSpeciesVoxNitrogen
+
+- type: loadoutGroup
+  id: GroupPocketTankDouble
+  name: loadout-group-pocket-tank-double
+  hidden: true
+  loadouts:
+  - LoadoutSpeciesPocketDoubleNitrogen
+  - LoadoutSpeciesPocketDoubleOxygen
+
+# Command
+- type: loadoutGroup
+  id: CaptainHead
+  name: loadout-group-head # Fire edit
+  minLimit: 0
+  loadouts:
+  - CaptainHead
+  - CaptainCap
+
+- type: loadoutGroup
+  id: CaptainJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - CaptainJumpsuit
+  - CaptainJumpskirt
+  - CaptainFormalSuit
+  - CaptainFormalSkirt
+
+- type: loadoutGroup
+  id: CaptainNeck
+  name: loadout-group-neck # Fire edit
+  minLimit: 0
+  loadouts:
+  - CaptainCloak
+  - CaptainCloakFormal
+  - CaptainMantle
+
+- type: loadoutGroup
+  id: CaptainBackpack
+  name: loadout-group-backpack # Fire edit
+  loadouts:
+  - CaptainBackpack
+  - CaptainSatchel
+  - CaptainDuffel
+
+- type: loadoutGroup
+  id: CaptainOuterClothing
+  name: loadout-group-outer-clothing # Fire edit
+  loadouts:
+  - CaptainOuterArmor
+  - CaptainWintercoat
+
+#- type: loadoutGroup
+#  id: CaptainJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts: []
+
+- type: loadoutGroup
+  id: HoPHead
+  name: loadout-group-head # Fire edit
+  minLimit: 0
+  loadouts:
+  - HoPHead
+
+- type: loadoutGroup
+  id: HoPJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - HoPJumpsuit
+  - HoPJumpskirt
+
+- type: loadoutGroup
+  id: HoPNeck
+  name: loadout-group-neck # Fire edit
+  minLimit: 0
+  loadouts:
+  - HoPCloak
+  - HoPMantle
+
+- type: loadoutGroup
+  id: HoPBackpack
+  name: loadout-group-backpack # Fire edit
+  loadouts:
+  - CommonBackpack
+  - CommonSatchel
+  - CommonDuffel
+  - HoPBackpackIan
+
+- type: loadoutGroup
+  id: HoPOuterClothing
+  name: loadout-group-outer-clothing # Fire edit
+  minLimit: 0
+  loadouts:
+  - HoPWintercoat
+
+#- type: loadoutGroup
+#  id: HoPJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts: []
+
+# Civilian
+- type: loadoutGroup
+  id: PassengerJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - GreyJumpsuit
+  - GreyJumpskirt
+  - AncientJumpsuit
+  - RainbowJumpsuit
+  - RainbowJumpskirt
+
+- type: loadoutGroup
+  id: PassengerFace
+  name: loadout-group-mask # Fire edit
+  minLimit: 0
+  loadouts:
+  - PassengerFace
+
+- type: loadoutGroup
+  id: PassengerGloves
+  name: loadout-group-gloves # Fire edit
+  minLimit: 0
+  loadouts:
+  - PassengerGloves
+
+- type: loadoutGroup
+  id: CommonBackpack
+  name: loadout-group-backpack # Fire edit
+  loadouts:
+  - CommonBackpack
+  - CommonSatchel
+  - CommonDuffel
+
+- type: loadoutGroup
+  id: PassengerNeck
+  name: loadout-group-neck # Fire edit
+  minLimit: 0
+  loadouts:
+  - Mantle
+
+- type: loadoutGroup
+  id: PassengerOuterClothing
+  name: loadout-group-outer-clothing # Fire edit
+  minLimit: 0
+  loadouts:
+  - PassengerWintercoat
+
+- type: loadoutGroup
+  id: PassengerShoes
+  name: loadout-group-shoes # Fire edit
+  loadouts:
+  - BlackShoes
+  - WinterBoots
+
+#- type: loadoutGroup
+#  id: PassengerJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts: []
+
+- type: loadoutGroup
+  id: BartenderHead
+  name: loadout-group-head # Fire edit
+  minLimit: 0
+  loadouts:
+  - BartenderHead
+  - BartenderBowler
+
+- type: loadoutGroup
+  id: BartenderJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - BartenderJumpsuit
+  - BartenderJumpskirt
+  - BartenderJumpsuitPurple
+
+- type: loadoutGroup
+  id: BartenderOuterClothing
+  name: loadout-group-outer-clothing # Fire edit
+  minLimit: 0
+  loadouts:
+  - BartenderVest
+  - BartenderApron
+  - BartenderWintercoat
+
+- type: loadoutGroup
+  id: BartenderJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - BartenderGoldenShaker
+
+#- type: loadoutGroup
+#  id: ServiceWorkerJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+- type: loadoutGroup
+  id: ChefHead
+  name: loadout-group-head # Fire edit
+  minLimit: 0
+  loadouts:
+  - ChefHead
+
+- type: loadoutGroup
+  id: ChefMask
+  name: loadout-group-mask # Fire edit
+  minLimit: 0
+  loadouts:
+  - ChefMask
+
+- type: loadoutGroup
+  id: ChefJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - ChefJumpsuit
+  - ChefJumpskirt
+
+- type: loadoutGroup
+  id: ChefOuterClothing
+  name: loadout-group-outer-clothing # Fire edit
+  minLimit: 0
+  loadouts:
+  - ChefApron
+  - ChefJacket
+  - ChefWintercoat
+
+#- type: loadoutGroup
+#  id: ChefJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+- type: loadoutGroup
+  id: LibrarianJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - LibrarianJumpsuit
+  - LibrarianJumpskirt
+  - CuratorJumpsuit
+  - CuratorJumpskirt
+
+#- type: loadoutGroup
+#  id: LibrarianJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+- type: loadoutGroup
+  id: LawyerJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - LawyerJumpsuit
+  - LawyerJumpskirt
+  - LawyerJumpsuitBlue
+  - LawyerJumpskirtBlue
+  - LawyerJumpsuitPurple
+  - LawyerJumpskirtPurple
+  - LawyerJumpsuitRed
+  - LawyerJumpskirtRed
+  - LawyerJumpsuitGood
+  - LawyerJumpskirtGood
+
+- type: loadoutGroup
+  id: LawyerNeck
+  name: loadout-group-neck # Fire edit
+  minLimit: 0
+  loadouts:
+  - LawyerNeck
+
+#- type: loadoutGroup
+#  id: LawyerJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+- type: loadoutGroup
+  id: ChaplainHead
+  name: loadout-group-head # Fire edit
+  minLimit: 0
+  loadouts:
+  - ChaplainHead
+  - ChaplainNunHood
+  - ChaplainPlagueHat
+  - ChaplainWitchHat
+  - ChaplainWitchHatAlt
+
+- type: loadoutGroup
+  id: ChaplainMask
+  name: loadout-group-mask # Fire edit
+  minLimit: 0
+  loadouts:
+  - ChaplainMask
+
+- type: loadoutGroup
+  id: ChaplainJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - ChaplainJumpsuit
+  - ChaplainJumpskirt
+  - ChaplainRobesLight
+  - ChaplainRobesDark
+
+- type: loadoutGroup
+  id: ChaplainOuterClothing
+  name: loadout-group-outer-clothing # Fire edit
+  minLimit: 0
+  loadouts:
+  - ChaplainPlagueSuit
+  - ChaplainNunRobe
+  - ChaplainBlackHoodie
+  - ChaplainHoodie
+
+- type: loadoutGroup
+  id: ChaplainNeck
+  name: loadout-group-neck # Fire edit
+  minLimit: 0
+  loadouts:
+  - ChaplainNeck
+
+#- type: loadoutGroup
+#  id: ChaplainJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+- type: loadoutGroup
+  id: ChaplainBible
+  name: loadout-group-chaplain-bible
+  minLimit: 1
+  loadouts:
+  - Bible
+  - BibleNanoTrasen
+  - BibleDruid
+  - BibleHonk
+  - BibleRatvar
+  - BibleNarsie
+  - BibleJunkariat # Sunrise-Edit
+
+- type: loadoutGroup
+  id: JanitorHead
+  name: loadout-group-head # Fire edit
+  minLimit: 0
+  loadouts:
+  - JanitorHead
+
+- type: loadoutGroup
+  id: JanitorJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - JanitorJumpsuit
+  - JanitorJumpskirt
+
+- type: loadoutGroup
+  id: JanitorGloves
+  name: loadout-group-gloves # Fire edit
+  minLimit: 0
+  loadouts:
+  - JanitorRubberGloves
+  - OrangeGloves
+  - PurpleGloves
+
+- type: loadoutGroup
+  id: JanitorOuterClothing
+  name: loadout-group-outer-clothing # Fire edit
+  minLimit: 0
+  loadouts:
+  - JanitorWintercoat
+
+- type: loadoutGroup
+  id: JanitorJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - JanitorGoldenPlunger
+
+- type: loadoutGroup
+  id: BotanistHead
+  name: loadout-group-head # Fire edit
+  minLimit: 0
+  loadouts:
+  - BotanistHead
+  - BotanistBandana
+
+- type: loadoutGroup
+  id: BotanistJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - BotanistJumpsuit
+  - BotanistJumpskirt
+  - BotanistOveralls
+
+- type: loadoutGroup
+  id: BotanistBackpack
+  name: loadout-group-backpack # Fire edit
+  loadouts:
+  - BotanistBackpack
+  - BotanistSatchel
+  - BotanistDuffel
+
+- type: loadoutGroup
+  id: BotanistOuterClothing
+  name: loadout-group-outer-clothing # Fire edit
+  minLimit: 0
+  loadouts:
+  - BotanistApron
+  - BotanistWintercoat
+
+#- type: loadoutGroup
+#  id: BotanistJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+- type: loadoutGroup
+  id: ClownHead
+  name: loadout-group-head # Fire edit
+  minLimit: 0
+  loadouts:
+  - JesterHat
+  - JesterAltHat
+
+- type: loadoutGroup
+  id: ClownJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - ClownSuit
+  - ClownSkirt
+  - JesterSuit
+  - JesterAltSuit
+
+- type: loadoutGroup
+  id: ClownBackpack
+  name: loadout-group-backpack # Fire edit
+  loadouts:
+  - ClownBackpack
+  - ClownSatchel
+  - ClownDuffel
+
+- type: loadoutGroup
+  id: ClownOuterClothing
+  name: loadout-group-outer-clothing # Fire edit
+  minLimit: 0
+  loadouts:
+  - ClownRobes
+  - ClownWintercoat
+
+- type: loadoutGroup
+  id: ClownShoes
+  name: loadout-group-shoes # Fire edit
+  loadouts:
+  - ClownShoes
+  - JesterShoes
+
+- type: loadoutGroup
+  id: SurvivalClown
+  name: loadout-group-survival-clown
+  minLimit: 2
+  hidden: true
+  loadouts:
+  - EmergencyNitrogenClown
+  - EmergencyOxygenClown
+  - LoadoutSpeciesVoxNitrogen
+
+- type: loadoutGroup
+  id: ClownJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - FlowerWaterClown
+
+- type: loadoutGroup
+  id: MimeHead
+  name: loadout-group-head # Fire edit
+  minLimit: 0
+  loadouts:
+  - MimeHead
+  - MimeFrenchBeret
+  - MimeCap
+
+- type: loadoutGroup
+  id: MimeMask
+  name: loadout-group-mask # Fire edit
+  loadouts:
+  - MimeMask
+  - MimeMaskSad
+  - MimeMaskScared
+
+- type: loadoutGroup
+  id: MimeJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - MimeJumpsuit
+  - MimeJumpskirt
+
+- type: loadoutGroup
+  id: MimeBackpack
+  name: loadout-group-backpack # Fire edit
+  loadouts:
+  - MimeBackpack
+  - MimeSatchel
+  - MimeDuffel
+
+- type: loadoutGroup
+  id: MimeOuterClothing
+  name: loadout-group-outer-clothing # Fire edit
+  minLimit: 0
+  loadouts:
+  - MimeWintercoat
+
+- type: loadoutGroup
+  id: MimeBelt
+  name: loadout-group-belt # Fire edit
+  loadouts:
+  - MimeSuspendersRed
+  - MimeSuspendersBlack
+
+- type: loadoutGroup
+  id: SurvivalMime
+  name: loadout-group-survival-mime
+  minLimit: 2
+  hidden: true
+  loadouts:
+  - EmergencyNitrogenMime
+  - EmergencyOxygenMime
+  - EmergencySpeciesMothMime
+  - LoadoutSpeciesVoxNitrogen
+
+#- type: loadoutGroup
+#  id: MimeJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+- type: loadoutGroup
+  id: MusicianJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - MusicianJumpsuit
+  - MusicianJumpskirt
+
+- type: loadoutGroup
+  id: MusicianOuterClothing
+  name: loadout-group-outer-clothing # Fire edit
+  minLimit: 0
+  loadouts:
+  - MusicianWintercoat
+
+- type: loadoutGroup
+  id: Instruments
+  name: loadout-group-instruments
+  minLimit: 0
+  maxLimit: 2
+  loadouts:
+  - Glockenspiel
+  - MusicBox
+  - Xylophone
+  - Microphone
+  - Synthesizer
+  - Kalimba
+  - Woodblock
+  - ElectricGuitar
+  - BassGuitar
+  - RockGuitar
+  - AcousticGuitar
+  - Banjo
+  - Violin
+  - Viola
+  - Cello
+  - Trumpet
+  - Trombone
+  - FrenchHorn
+  - Euphonium
+  - Saxophone
+  - Accordion
+  - Harmonica
+  - Clarinet
+  - Flute
+  - Recorder
+  - PanFlute
+  - Ocarina
+  - Bagpipe
+
+#- type: loadoutGroup
+#  id: MusicianJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+# Cargo
+- type: loadoutGroup
+  id: QuartermasterHead
+  name: loadout-group-head # Fire edit
+  minLimit: 0
+  loadouts:
+  - QuartermasterHead
+  - QuartermasterBeret
+
+- type: loadoutGroup
+  id: QuartermasterJumpsuit
+  name: loadout-group-jumpsuit  # Fire edit
+  loadouts:
+  - QuartermasterJumpsuit
+  - QuartermasterJumpskirt
+  - QuartermasterTurtleneck
+  - QuartermasterTurtleneckSkirt
+  - QuartermasterFormalSuit
+
+- type: loadoutGroup
+  id: QuartermasterNeck
+  name: loadout-group-neck # Fire edit
+  minLimit: 0
+  loadouts:
+  - QuartermasterCloak
+  - QuartermasterMantle
+
+- type: loadoutGroup
+  id: QuartermasterOuterClothing
+  name: loadout-group-outer-clothing # Fire edit
+  minLimit: 0
+  loadouts:
+  - QuartermasterWintercoat
+
+- type: loadoutGroup
+  id: QuartermasterShoes
+  name: loadout-group-shoes # Fire edit
+  loadouts:
+  - BrownShoes
+  - CargoWinterBoots
+
+#- type: loadoutGroup
+#  id: QuartermasterJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+- type: loadoutGroup
+  id: CargoTechnicianHead
+  name: loadout-group-head # Fire edit
+  minLimit: 0
+  loadouts:
+  - CargoTechnicianHead
+
+- type: loadoutGroup
+  id: CargoTechnicianJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - CargoTechnicianJumpsuit
+  - CargoTechnicianJumpskirt
+
+- type: loadoutGroup
+  id: CargoTechnicianBackpack
+  name: loadout-group-backpack # Fire edit
+  loadouts:
+  - CargoTechnicianBackpack
+  - CargoTechnicianSatchel
+  - CargoTechnicianDuffel
+
+- type: loadoutGroup
+  id: CargoTechnicianOuterClothing
+  name: loadout-group-outer-clothing # Fire edit
+  minLimit: 0
+  loadouts:
+  - CargoTechnicianWintercoat
+
+- type: loadoutGroup
+  id: CargoTechnicianShoes
+  name: loadout-group-shoes # Fire edit
+  loadouts:
+  - BlackShoes
+  - CargoWinterBoots
+
+- type: loadoutGroup
+  id: CargoTechnicianID
+  name: loadout-group-cargo-technician-id
+  loadouts:
+  - CargoTechnicianPDA
+  - SeniorCourierPDA
+
+#- type: loadoutGroup
+#  id: CargoTechnicianJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+- type: loadoutGroup
+  id: SalvageSpecialistBackpack
+  name: loadout-group-backpack # Fire edit
+  loadouts:
+  - SalvageSpecialistBackpack
+  - SalvageSpecialistSatchel
+  - SalvageSpecialistDuffel
+
+- type: loadoutGroup
+  id: SalvageSpecialistOuterClothing
+  name: loadout-group-outer-clothing # Fire edit
+  minLimit: 0
+  loadouts:
+  - SalvageSpecialistWintercoat
+
+- type: loadoutGroup
+  id: SalvageSpecialistShoes
+  name: loadout-group-shoes # Fire edit
+  loadouts:
+  - SalvageBoots
+  - CargoWinterBoots
+
+#- type: loadoutGroup
+#  id: SalvageSpecialistJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+# Engineering
+- type: loadoutGroup
+  id: ChiefEngineerJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - ChiefEngineerJumpsuit
+  - ChiefEngineerJumpskirt
+  - ChiefEngineerTurtleneck
+  - ChiefEngineerTurtleneckSkirt
+
+- type: loadoutGroup
+  id: ChiefEngineerNeck
+  name: loadout-group-neck # Fire edit
+  minLimit: 0
+  loadouts:
+  - ChiefEngineerCloak
+  - ChiefEngineerMantle
+  - ChiefEngineerScarf
+
+- type: loadoutGroup
+  id: ChiefEngineerOuterClothing
+  name: loadout-group-outer-clothing # Fire edit
+  minLimit: 0
+  loadouts:
+  - ChiefEngineerWintercoat
+
+- type: loadoutGroup
+  id: ChiefEngineerShoes
+  name: loadout-group-shoes # Fire edit
+  loadouts:
+  - BrownShoes
+  - EngineeringWinterBoots
+
+#- type: loadoutGroup
+#  id: ChiefEngineerJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+- type: loadoutGroup
+  id: TechnicalAssistantJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - YellowJumpsuit
+  - YellowJumpskirt
+
+#- type: loadoutGroup
+#  id: TechnicalAssistantJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+- type: loadoutGroup
+  id: StationEngineerHead
+  name: loadout-group-head # Fire edit
+  minLimit: 0
+  loadouts:
+  - StationEngineerHardhatYellow
+  - StationEngineerHardhatOrange
+  - StationEngineerHardhatRed
+
+- type: loadoutGroup
+  id: StationEngineerJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - StationEngineerJumpsuit
+  - StationEngineerJumpskirt
+  - StationEngineerHazardsuit
+
+- type: loadoutGroup
+  id: StationEngineerBackpack
+  name: loadout-group-backpack # Fire edit
+  loadouts:
+  - StationEngineerBackpack
+  - StationEngineerSatchel
+  - StationEngineerDuffel
+
+- type: loadoutGroup
+  id: StationEngineerOuterClothing
+  name: loadout-group-outer-clothing # Fire edit
+  minLimit: 0
+  loadouts:
+  - StationEngineerOuterVest
+  - StationEngineerWintercoat
+- type: loadoutGroup
+  id: StationEngineerShoes
+  name: loadout-group-shoes # Fire edit
+  loadouts:
+  - WorkBoots
+  - EngineeringWinterBoots
+
+- type: loadoutGroup
+  id: StationEngineerID
+  name: loadout-group-station-engineer-id
+  loadouts:
+  - StationEngineerPDA
+  - SeniorEngineerPDA
+
+#- type: loadoutGroup
+#  id: StationEngineerJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+- type: loadoutGroup
+  id: AtmosphericTechnicianJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - AtmosphericTechnicianJumpsuit
+  - AtmosphericTechnicianJumpskirt
+  - AtmosphericTechnicianJumpsuitCasual
+
+- type: loadoutGroup
+  id: AtmosphericTechnicianOuterClothing
+  name: loadout-group-outer-clothing # Fire edit
+  minLimit: 0
+  loadouts:
+  - AtmosphericTechnicianWintercoat
+
+- type: loadoutGroup
+  id: AtmosphericTechnicianBackpack
+  name: loadout-group-backpack # Fire edit
+  loadouts:
+  - AtmosphericTechnicianBackpack
+  - AtmosphericTechnicianSatchel
+  - AtmosphericTechnicianDuffel
+
+- type: loadoutGroup
+  id: AtmosphericTechnicianShoes
+  name: loadout-group-shoes # Fire edit
+  loadouts:
+  - WhiteShoes
+  - EngineeringWinterBoots
+
+#- type: loadoutGroup
+#  id: AtmosphericTechnicianJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+- type: loadoutGroup
+  id: SurvivalExtended
+  name: loadout-group-survival-extended
+  minLimit: 2
+  hidden: true
+  loadouts:
+  - EmergencyNitrogenExtended
+  - EmergencyOxygenExtended
+  - LoadoutSpeciesVoxNitrogen
+
+# Science
+- type: loadoutGroup
+  id: ResearchDirectorNeck
+  name: loadout-group-neck # Fire edit
+  minLimit: 0
+  loadouts:
+  - ResearchDirectorMantle
+  - ResearchDirectorCloak
+
+- type: loadoutGroup
+  id: ResearchDirectorJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - ResearchDirectorJumpsuit
+  - ResearchDirectorJumpskirt
+
+- type: loadoutGroup
+  id: ResearchDirectorOuterClothing
+  name: loadout-group-outer-clothing # Fire edit
+  minLimit: 0
+  loadouts:
+  - ResearchDirectorLabCoat
+  - ResearchDirectorWintercoat
+
+- type: loadoutGroup
+  id: ResearchDirectorShoes
+  name: loadout-group-shoes # Fire edit
+  loadouts:
+  - BrownShoes
+  - ScienceWinterBoots
+
+#- type: loadoutGroup
+#  id: ResearchDirectorJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+- type: loadoutGroup
+  id: ScientistHead
+  name: loadout-group-scientist-head
+  minLimit: 0
+  loadouts:
+  - RoboticistCap
+  - SkullBandana
+  - ScientificBeret
+
+- type: loadoutGroup
+  id: ScientistNeck
+  name: loadout-group-neck # Fire edit
+  minLimit: 0
+  loadouts:
+  - ScientistTie
+
+- type: loadoutGroup
+  id: ScientistJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - ScientistJumpsuit
+  - ScientistJumpskirt
+
+- type: loadoutGroup
+  id: ScientistBackpack
+  name: loadout-group-backpack # Fire edit
+  loadouts:
+  - ScientistBackpack
+  - ScientistSatchel
+  - ScientistDuffel
+
+- type: loadoutGroup
+  id: ScientistOuterClothing
+  name: loadout-group-outer-clothing # Fire edit
+  minLimit: 0
+  loadouts:
+  - RegularLabCoat
+  - ScienceLabCoat
+  - ScienceWintercoat
+
+- type: loadoutGroup
+  id: ScientistShoes
+  name: loadout-group-shoes # Fire edit
+  loadouts:
+  - WhiteShoes
+  - BlackShoes
+  - ScienceWinterBoots
+
+- type: loadoutGroup
+  id: ScientistGloves
+  name: loadout-group-gloves # Fire edit
+  minLimit: 0
+  loadouts:
+  - LatexGloves
+  - PurpleGloves
+
+- type: loadoutGroup
+  id: ScientistPDA
+  name: loadout-group-scientist-id
+  loadouts:
+  - ScientistPDA
+  - SeniorResearcherPDA
+
+#- type: loadoutGroup
+#  id: ScientistJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+- type: loadoutGroup
+  id: ResearchAssistantJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - WhiteJumpsuit
+  - WhiteJumpskirt
+
+#- type: loadoutGroup
+#  id: ResearchAssistantJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+# Security
+- type: loadoutGroup
+  id: HeadofSecurityHead
+  name: loadout-group-head # Fire edit
+  minLimit: 0
+  loadouts:
+  - HeadofSecurityHead
+  - HeadofSecurityBeret
+
+- type: loadoutGroup
+  id: HeadofSecurityJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - HeadofSecurityJumpsuit
+  - HeadofSecurityJumpskirt
+  - HeadofSecurityTurtleneck
+  - HeadofSecurityTurtleneckSkirt
+  - HeadofSecurityFormalSuit
+  - HeadofSecurityFormalSkirt
+
+- type: loadoutGroup
+  id: HeadofSecurityNeck
+  name: loadout-group-neck # Fire edit
+  minLimit: 0
+  loadouts:
+  - HeadofSecurityCloak
+  - HeadofSecurityMantle
+
+- type: loadoutGroup
+  id: HeadofSecurityOuterClothing
+  name: loadout-group-outer-clothing # Fire edit
+  loadouts:
+  - HeadofSecurityCoat
+  - HeadofSecurityWinterCoat
+
+- type: loadoutGroup
+  id: HeadofSecurityJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - SecStar
+
+- type: loadoutGroup
+  id: WardenHead
+  name: loadout-group-head # Fire edit
+  minLimit: 0
+  loadouts:
+  - WardenHead
+  - WardenBeret
+
+- type: loadoutGroup
+  id: WardenJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - WardenJumpsuit
+  - WardenJumpskirt
+
+- type: loadoutGroup
+  id: WardenOuterClothing
+  name: loadout-group-outer-clothing # Fire edit
+  loadouts:
+  - WardenCoat
+  - WardenArmoredWinterCoat
+
+- type: loadoutGroup
+  id: WardenJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - SecStar
+
+- type: loadoutGroup
+  id: SecurityHead
+  name: loadout-group-security-head
+  loadouts:
+  - SecurityHelmet
+  - SecurityBeret
+  - SecurityHat
+  - TrooperHat
+
+- type: loadoutGroup
+  id: SecurityJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - SecurityJumpsuit
+  - SecurityJumpskirt
+  - SecurityJumpsuitGrey
+  - SecurityJumpskirtGrey
+  - TrooperUniform
+
+- type: loadoutGroup
+  id: SecurityBackpack
+  name: loadout-group-backpack
+  loadouts:
+  - SecurityBackpack
+  - SecuritySatchel
+  - SecurityDuffel
+
+- type: loadoutGroup
+  id: SecurityBelt
+  name: loadout-group-belt
+  loadouts:
+  - SecurityBelt
+  - SecurityWebbing
+
+- type: loadoutGroup
+  id: SecurityOuterClothing
+  name: loadout-group-security-outerclothing
+  loadouts:
+  - ArmorVest
+  - ArmorVestSlim
+  - SecurityOfficerWintercoat
+
+- type: loadoutGroup
+  id: SecurityShoes
+  name: loadout-group-shoes # Fire edit
+  loadouts:
+  - JackBoots
+  - SecurityWinterBoots
+
+- type: loadoutGroup
+  id: SecurityPDA
+  name: loadout-group-security-id
+  loadouts:
+  - SecurityPDA
+  - SeniorOfficerPDA
+
+- type: loadoutGroup
+  id: SecurityJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - SecStar
+
+- type: loadoutGroup
+  id: DetectiveHead
+  name: loadout-group-head # Fire edit
+  minLimit: 0
+  loadouts:
+  - DetectiveFedora
+  - DetectiveFedoraGrey
+
+- type: loadoutGroup
+  id: DetectiveNeck
+  name: loadout-group-neck # Fire edit
+  minLimit: 0
+  loadouts:
+  - DetectiveTie
+
+- type: loadoutGroup
+  id: DetectiveJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - DetectiveJumpsuit
+  - DetectiveJumpskirt
+  - NoirJumpsuit
+  - NoirJumpskirt
+
+- type: loadoutGroup
+  id: DetectiveOuterClothing
+  name: loadout-group-outer-clothing # Fire edit
+  loadouts:
+  - DetectiveArmorVest
+  - DetectiveCoat
+  - DetectiveCoatGrey
+
+- type: loadoutGroup
+  id: DetectiveJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - SecStar
+
+- type: loadoutGroup
+  id: SecurityCadetJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - RedJumpsuit
+  - RedJumpskirt
+
+#- type: loadoutGroup
+#  id: SecurityCadetJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+- type: loadoutGroup
+  id: SurvivalSecurity
+  name: loadout-group-survival-security
+  minLimit: 2
+  hidden: true
+  loadouts:
+  - EmergencyNitrogenSecurity
+  - EmergencyOxygenSecurity
+  - LoadoutSpeciesVoxNitrogen
+
+# Wildcards
+- type: loadoutGroup
+  id: ReporterJumpsuit
+  name: loadout-group-reporter-jumpsuit
+  loadouts:
+  - ReporterJumpsuit
+  - JournalistJumpsuit
+
+- type: loadoutGroup
+  id: ReporterHead
+  name: loadout-group-reporter-head
+  minLimit: 0
+  loadouts:
+  - ReporterPressFedora
+
+- type: loadoutGroup
+  id: ReporterOuterClothing
+  name: loadout-group-reporter-outerclothing
+  minLimit: 0
+  loadouts:
+  - ReporterPressVest
+
+#- type: loadoutGroup
+#  id: ReporterJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+- type: loadoutGroup
+  id: PsychologistJumpsuit
+  name: loadout-group-jumpsuit # Fire edit
+  loadouts:
+  - PsychologistJumpsuit
+  - PsychologistJumpskirt
+
+#- type: loadoutGroup
+#  id: PsychologistJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+# Other
+- type: loadoutGroup
+  id: SurvivalSyndicate
+  name: loadout-group-survival-syndicate
+  minLimit: 2
+  hidden: true
+  loadouts:
+  - EmergencyNitrogenSyndicate
+  - EmergencyOxygenSyndicate
+  - LoadoutSpeciesVoxNitrogen
+
+- type: loadoutGroup
+  id: SurvivalMilitaryDouble
+  name: loadout-group-survival-military
+  minLimit: 2
+  hidden: true
+  loadouts:
+  - EmergencyNitrogenMilitaryDouble
+  - EmergencyOxygenMilitaryDouble
+
+- type: loadoutGroup
+  id: GroupSpeciesBreathTool
+  name: loadout-group-breath-tool
+  minLimit: 1
+  maxLimit: 1
+  hidden: true
+  loadouts:
+  - LoadoutSpeciesBreathTool
+
+- type: loadoutGroup
+  id: GroupSpeciesBreathToolMedical
+  name: loadout-group-breath-tool
+  minLimit: 1
+  maxLimit: 1
+  hidden: true
+  loadouts:
+  - LoadoutSpeciesBreathToolMedical
+
+- type: loadoutGroup
+  id: GroupSpeciesBreathToolSecurity
+  name: loadout-group-breath-tool
+  minLimit: 1
+  maxLimit: 1
+  hidden: true
+  loadouts:
+  - LoadoutSpeciesBreathToolSecurity
+

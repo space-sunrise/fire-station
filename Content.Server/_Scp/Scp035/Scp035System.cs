@@ -35,6 +35,7 @@ using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Content.Shared.Whitelist;
+using Content.Shared.Chemistry.EntitySystems;
 
 namespace Content.Server._Scp.Scp035;
 
@@ -49,12 +50,12 @@ public sealed class Scp035System : SharedScp035System
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedPuddleSystem _puddle = default!;
+    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly GhostSystem _ghost = default!;
     [Dependency] private readonly TileSystem _tile = default!;
-    [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
@@ -183,10 +184,11 @@ public sealed class Scp035System : SharedScp035System
         var puddles = _lookup.GetEntitiesInRange<PuddleComponent>(coords, entity.Comp.ReagentRangeAvailable).ToList();
         foreach (var puddle in puddles)
         {
-            if (!puddle.Comp.Solution.HasValue)
+            if (!_solutionContainer.TryGetSolution(puddle.Owner, entity.Comp.ReagentName, out _, out var solution) ||
+                solution == null)
                 continue;
 
-            var allReagents = puddle.Comp.Solution.Value.Comp.Solution.GetReagentPrototypes(_prototypeManager);
+            var allReagents = solution.GetReagentPrototypes(_prototypeManager);
             total = allReagents.Where(reagent => reagent.Key.ID == entity.Comp.ReagentName).Aggregate(total, (current, reagent) => current + reagent.Value);
         }
 

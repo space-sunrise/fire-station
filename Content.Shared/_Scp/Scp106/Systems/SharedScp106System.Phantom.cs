@@ -1,5 +1,4 @@
-﻿using Content.Shared._Scp.Other.BunkerMarker;
-using Content.Shared._Scp.Scp106.Components;
+﻿using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Watching;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
@@ -15,7 +14,6 @@ public abstract partial class SharedScp106System
 {
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
-    [Dependency] private readonly BunkerMarkerSystem  _bunkerMarker  = default!;
 
     private void InitializePhantom()
     {

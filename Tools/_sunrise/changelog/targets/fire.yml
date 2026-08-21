@@ -1,0 +1,2 @@
+changelog_file: Resources/Changelog/ChangelogFire.yml
+webhook_secret: CHANGELOG_DISCORD_WEBHOOK_FIRE

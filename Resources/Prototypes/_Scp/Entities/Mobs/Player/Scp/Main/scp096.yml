@@ -6,6 +6,7 @@
   - MobCombat
   - MobBloodstream
   - StripableInventoryBase
+  - AppearanceScp096
   components:
   - type: AutoGhostRole
     disconnectDelay: 600
@@ -74,6 +75,7 @@
     canBeDisarmed: true
     canTakeStaminaDamage: true
     canStandingState: true
+  - type: Body
   - type: FearSource
     uponSeenState: Fear
   - type: WatchingTarget
@@ -148,8 +150,6 @@
   - type: MeleeThrowOnHit
     speed: 2
     distance: 0.25
-  - type: Body
-    prototype: Scp096
   - type: Inventory
     templateId: scp096
   - type: Blindable

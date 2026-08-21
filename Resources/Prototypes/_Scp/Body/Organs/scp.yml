@@ -1,0 +1,41 @@
+# Используется для общих элементов, которым не нужны отдельные спрайты конечностей/частей тел
+
+- type: entity
+  id: OrganScpRightArm
+  parent: OrganBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Organ
+    category: ArmRight
+
+- type: entity
+  id: OrganScpLeftArm
+  parent: OrganBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Organ
+    category: ArmLeft
+
+- type: entity
+  id: OrganScpRightHand
+  parent: OrganBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Organ
+    category: HandRight
+  - type: HandOrgan
+    handID: right
+    data:
+      location: Right
+
+- type: entity
+  id: OrganScpLeftHand
+  parent: OrganBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Organ
+    category: HandLeft
+  - type: HandOrgan
+    handID: left
+    data:
+      location: Left

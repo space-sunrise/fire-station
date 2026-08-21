@@ -18,7 +18,7 @@ public sealed class ArtifactScp106TeleportSystem : BaseXAESystem<ArtifactScp106T
                 if (_random.Prob(0.5f))
                     _scp106.SendToStation(ent);
                 else
-                    _scp106.SendToBackrooms(ent);
+                    _ = _scp106.SendToBackrooms(ent);
 
                 break;
             case ArtifactScp106TeleportMode.Station:
@@ -27,7 +27,7 @@ public sealed class ArtifactScp106TeleportSystem : BaseXAESystem<ArtifactScp106T
                 break;
 
             case ArtifactScp106TeleportMode.Dimension:
-                _scp106.SendToBackrooms(ent);
+                _ = _scp106.SendToBackrooms(ent);
 
                 break;
         }

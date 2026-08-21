@@ -13,7 +13,7 @@
   meltingPoint: 0.0
   friction: 0.4
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
         - !type:HealthChange
           damage:
