@@ -1,5 +1,6 @@
 using Content.Shared._Scp.Other.DamageOnCollide;
 using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
 using Robust.Shared.GameObjects;
 
@@ -53,6 +54,7 @@ public sealed class Scp173CollisionDamageTest
         var server = pair.Server;
         var entMan = server.EntMan;
         var damageOnCollide = server.System<ScpDamageOnCollideSystem>();
+        var damageableSys = server.System<DamageableSystem>();
         var map = await pair.CreateTestMap();
 
         EntityUid scp = default;
@@ -76,9 +78,9 @@ public sealed class Scp173CollisionDamageTest
 
             Assert.Multiple(() =>
             {
-                Assert.That(storageDamageable.Damage.GetTotal(), Is.EqualTo(FixedPoint2.Zero));
-                Assert.That(vendingDamageable.Damage.GetTotal(), Is.EqualTo(FixedPoint2.Zero));
-                Assert.That(neutralDamageable.Damage.GetTotal(), Is.EqualTo(FixedPoint2.Zero));
+                Assert.That(damageableSys.GetTotalDamage((storageTarget, storageDamageable)), Is.EqualTo(FixedPoint2.Zero));
+                Assert.That(damageableSys.GetTotalDamage((vendingTarget, vendingDamageable)), Is.EqualTo(FixedPoint2.Zero));
+                Assert.That(damageableSys.GetTotalDamage((neutralTarget, neutralDamageable)), Is.EqualTo(FixedPoint2.Zero));
             });
 
             Assert.That(damageOnCollide.TryApplyDamage(scp, storageTarget, requireVelocity: false), Is.True);
@@ -87,9 +89,9 @@ public sealed class Scp173CollisionDamageTest
 
             Assert.Multiple(() =>
             {
-                Assert.That(storageDamageable.Damage.GetTotal(), Is.GreaterThan(FixedPoint2.Zero));
-                Assert.That(vendingDamageable.Damage.GetTotal(), Is.GreaterThan(FixedPoint2.Zero));
-                Assert.That(neutralDamageable.Damage.GetTotal(), Is.EqualTo(FixedPoint2.Zero));
+                Assert.That(damageableSys.GetTotalDamage((storageTarget, storageDamageable)), Is.EqualTo(FixedPoint2.Zero));
+                Assert.That(damageableSys.GetTotalDamage((vendingTarget, vendingDamageable)), Is.EqualTo(FixedPoint2.Zero));
+                Assert.That(damageableSys.GetTotalDamage((neutralTarget, neutralDamageable)), Is.EqualTo(FixedPoint2.Zero));
             });
         });
 

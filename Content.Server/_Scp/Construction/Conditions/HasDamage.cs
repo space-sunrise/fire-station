@@ -1,6 +1,5 @@
 ﻿using Content.Shared.Construction;
-using Content.Shared.Damage;
-using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using JetBrains.Annotations;
@@ -53,9 +52,8 @@ public sealed partial class HasDamage : IGraphCondition
     private static bool HasAnyDamage(EntityUid uid, IEntityManager? entityManager = null)
     {
         entityManager ??= IoCManager.Resolve<IEntityManager>();
-        if (!entityManager.TryGetComponent<DamageableComponent>(uid, out var damageable))
-            return false;
+        var damageableSystem = entityManager.System<DamageableSystem>();
 
-        return damageable.TotalDamage != FixedPoint2.Zero;
+        return damageableSystem.GetTotalDamage(uid) != FixedPoint2.Zero;
     }
 }

@@ -12,7 +12,7 @@
   id: ScpLoadoutGroupCommandantSquadWeaponPrimary
   name: loadout-group-weapon
   loadouts:
-  - ScpLoadoutWeaponSubMachineGunMP7
+  - ScpLoadoutWeaponSubMachineGunMP5
   - ScpLoadoutWeaponShotgunRiot
 
 - type: loadoutGroup

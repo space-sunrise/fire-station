@@ -6,6 +6,7 @@
   - MobBloodstream
   - InventoryBase
   - StripableInventoryBase
+  - AppearanceScpPredator
   id: BaseMobScp3288Monster
   name: ???
   abstract: true
@@ -24,7 +25,6 @@
     - type: StandingState
     - type: Hands
     - type: Body
-      prototype: ScpPredator
     - type: Climbing
     - type: Damageable
       damageContainer: Biological
@@ -150,5 +150,5 @@
   id: Scp3288KnightGear
   equipment:
     belt: ClothingBeltSheathFilledScp3288
-  inhand: 
+  inhand:
     - ScpWoodenBuckler

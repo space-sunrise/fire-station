@@ -40,16 +40,18 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      300: Dead
+      400: Dead
   - type: MeleeWeapon
     altDisarm: false
-    angle: 0
+    angle: 45
     animation: WeaponArcBite
     soundHit:
       path: /Audio/Effects/bite.ogg
     damage:
       types:
         Piercing: 25
+        Structural: 35
+    attackRate: 1.5
   - type: InteractionPopup
     successChance: 0.2
     interactSuccessString: scp247-pet-success
@@ -58,14 +60,14 @@
     interactSuccessSound:
       path: /Audio/Animals/cat_hiss.ogg
   - type: NoSlip
-  - type: NpcFactionMember
-    factions:
-    - Xeno
-  - type: InputMover
-  - type: MobMover
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+      - SCPs
+  - type: InputMover
+  - type: MobMover
   - type: GhostRole
     makeSentient: true
     name: scp247-ghost-role-name
@@ -80,3 +82,17 @@
     guides:
     - ScpResearch
     - ScpFear
+  - type: JumpAbility
+    jumpDistance: 4
+    jumpSound: /Audio/Animals/cat_hiss.ogg
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 5.5
+  - type: MeleeThrowOnHit # подтягивает к себе при ударе
+    speed: 5
+    distance: -1
+    stunTime: 0.1
+    activateOnThrown: true
+  - type: UseDelay
+    delay: 10
+  - type: UseDelayOnMeleeHit

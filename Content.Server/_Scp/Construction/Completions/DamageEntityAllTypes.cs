@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Construction;
 using Content.Shared.Damage;
-using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Medical.Healing;
 using JetBrains.Annotations;
@@ -25,12 +25,11 @@ public sealed partial class DamageEntityAllTypes : IGraphAction
     private bool TryGetDamage(EntityUid uid, IEntityManager entityManager, [NotNullWhen(true)] out DamageSpecifier? damageSpecifier)
     {
         damageSpecifier = null;
-
-        if (!entityManager.TryGetComponent<DamageableComponent>(uid, out var damageable))
-            return false;
+        var damageableSystem = entityManager.System<DamageableSystem>();
 
         damageSpecifier = new DamageSpecifier();
-        foreach (var key in damageable.Damage.DamageDict.Keys)
+        var damageableDict = damageableSystem.GetAllDamage(uid);
+        foreach (var key in damageableDict.DamageDict.Keys)
         {
             damageSpecifier.DamageDict[key] = Amount;
         }

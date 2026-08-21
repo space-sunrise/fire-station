@@ -1,55 +1,16 @@
-﻿# TODO: Больше разных различий в теле и органах
-
-- type: body
-  id: Scp096
-  name: "scp096"
-  root: torso
-  slots:
-    head:
-      part: HeadHuman
-      connections:
-      - torso
-      organs:
-        brain: OrganHumanBrain
-        eyes: OrganHumanEyes
-        tongue: OrganHumanTongue # Sunrise-edit
-        eye_implant: null
-    torso:
-      part: TorsoHuman
-      connections:
-      - right arm # STARLIGHT-SURGERY EDITED, be careful to not delete this
-      - left arm
-      - right leg
-      - left leg
-      organs:
-        heart: OrganScp096Heart
-        lungs: OrganScp096Lungs
-        stomach: OrganScp096Stomach
-        liver: OrganScp096Liver
-        kidneys: OrganScp096Kidneys
-        cavity: null # Sunrise-edit
-    right arm:
-      part: RightArmHuman
-      connections:
-      - right hand
-    left arm:
-      part: LeftArmHuman
-      connections:
-      - left hand
-    right hand:
-      part: RightHandHuman
-    left hand:
-      part: LeftHandHuman
-    right leg:
-      part: RightLegHuman
-      connections:
-      - right foot
-    left leg:
-      part: LeftLegHuman
-      connections:
-      - left foot
-    right foot:
-      part: RightFootHuman
-    left foot:
-      part: LeftFootHuman
-
+- type: entity
+  id: AppearanceScp096
+  name: scp 096 appearance
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InitialBody
+    organs:
+      ArmLeft: OrganScpLeftArm
+      ArmRight: OrganScpRightArm
+      HandLeft: OrganScpLeftHand
+      HandRight: OrganScpRightHand
+      Lungs: OrganScp096Lungs
+      Heart: OrganScp096Heart
+      Stomach: OrganScp096Stomach
+      Liver: OrganScp096Liver
+      Kidneys: OrganScp096Kidneys

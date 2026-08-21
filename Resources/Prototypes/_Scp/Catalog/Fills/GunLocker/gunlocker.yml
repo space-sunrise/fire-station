@@ -1,6 +1,6 @@
 - type: entity
   id: GunLockerFilledSPAS12
-  parent: GunLocker5x2
+  parent: GunLocker5x1
   name: gun safe SPAS12
   suffix: Armory, SPAS12
   components:
@@ -20,7 +20,7 @@
       shader: unshaded
   - type: StorageFill
     contents:
-      - id: WeaponShotgunSPAS12
+      - id: WeaponShotgunCombat
         amount: 4
 
 - type: entity
@@ -99,31 +99,6 @@
         amount: 4
 
 - type: entity
-  id: GunLockerFilledMP7
-  parent: GunLocker3x3
-  name: gun safe MP7
-  suffix: Armory, MP7
-  components:
-  - type: Sprite
-    sprite: _Scp/Structures/Storage/GunLocker/gunlocker/base.rsi
-    noRot: true
-    layers:
-    - state: locker
-      map: ["enum.StorageVisualLayers.Base"]
-    - state: gun-0
-      sprite: _Scp/Structures/Storage/GunLocker/gunlocker/mp7.rsi
-      map: ["enum.StorageFillLayers.Fill"]
-    - state: locker_door
-      map: ["enum.StorageVisualLayers.Door"]
-    - state: locked
-      map: ["enum.LockVisualLayers.Lock"]
-      shader: unshaded
-  - type: StorageFill
-    contents:
-      - id: WeaponSubMachineGunMP7
-        amount: 4
-
-- type: entity
   id: GunLockerFilledM16A4
   parent: GunLocker6x3
   name: gun safe M16A4
@@ -170,7 +145,7 @@
       shader: unshaded
   - type: StorageFill
     contents:
-      - id: WeaponRifleG36
+      - id: WeaponRifleLeikha
         amount: 4
 
 - type: entity

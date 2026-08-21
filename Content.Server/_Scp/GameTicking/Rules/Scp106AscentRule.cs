@@ -97,7 +97,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         SubscribeLocalEvent<Scp106PortalSpawnerComponent, ComponentShutdown>(OnSpawnerShutdown);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Clear());
 
-        SubscribeLocalEvent<HumanoidAppearanceComponent, PlayerAttachedEvent>(OnPlayerAttached);
+        SubscribeLocalEvent<HumanoidProfileComponent, PlayerAttachedEvent>(OnPlayerAttached);
     }
 
     private void Clear()
@@ -185,7 +185,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
 
         RaiseNetworkEvent(new NetworkAmbientMusicEvent(ShiftStartedMusic));
 
-        var statusEffectQuery = EntityQueryEnumerator<HumanoidAppearanceComponent, StatusEffectsComponent>();
+        var statusEffectQuery = EntityQueryEnumerator<HumanoidProfileComponent, StatusEffectsComponent>();
         while (statusEffectQuery.MoveNext(out var human, out _, out _))
         {
             _stun.TryAddParalyzeDuration(human, AscentStunTime);
@@ -341,7 +341,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
     /// Обработка новозашедших/перезашедших игроков
     /// </summary>
     /// TODO: Реализовать получше, но оно в принципе работает
-    private void OnPlayerAttached(Entity<HumanoidAppearanceComponent> ent, ref PlayerAttachedEvent args)
+    private void OnPlayerAttached(Entity<HumanoidProfileComponent> ent, ref PlayerAttachedEvent args)
     {
         if (!IsConnectedRecently(args.Player.ConnectedTime))
             return;

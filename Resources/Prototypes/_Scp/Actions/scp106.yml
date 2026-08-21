@@ -70,7 +70,7 @@
     canTargetSelf: false
     whitelist:
       components:
-      - HumanoidAppearance
+      - HumanoidProfile
 
 - type: entity
   id: Scp106LeavePhantom

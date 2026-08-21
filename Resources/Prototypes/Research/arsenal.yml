@@ -65,10 +65,7 @@
   - WeaponLaserCarbine
   # Sunrise-Start
   - WeaponMechCombatFiredartLaser
-  - WeaponEnergyGun
-  - WeaponMiniEnergyGun
   - WeaponSunriseLaserPistol
-  - MagazineBatteryLr30
   # Sunrise-End
 
 - type: technology
@@ -110,7 +107,6 @@
   - MagazinePistolSubMachineGunUranium
   - MagazineLightRifleUranium
   - SpeedLoaderMagnumUranium
-  - MagazineMagnumUranium
   - MagazineBoxPistolUranium
   - MagazineBoxMagnumUranium
   - MagazineBoxLightRifleUranium
@@ -245,9 +241,7 @@
   - ShellFragArtillery # Sunrise-Add
   - RifleHeavyMagazineEmpty # Sunrise-Add
   - RifleHeavyMagazineFMJ # Sunrise-Add
-  - RifleHeavyMagazineHP # Sunrise-Add
   - RifleHeavyMagazineSP # Sunrise-Add
-  - RifleHeavyMagazineArtillery # Sunrise-Add
   - ShuttleGunSvalinnMachineGunCircuitboard
   - ShuttleGunPerforatorCircuitboard
   - ShuttleGunFriendshipCircuitboard

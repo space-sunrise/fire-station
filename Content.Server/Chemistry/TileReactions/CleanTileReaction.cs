@@ -58,13 +58,13 @@ public sealed partial class CleanTileReaction : ITileReaction
         foreach (var entity in entities)
         {
             if (!puddleQuery.TryGetComponent(entity, out var puddle) ||
-                !solutionContainerSystem.TryGetSolution(entity, puddle.SolutionName, out var puddleSolution, out _))
+                !solutionContainerSystem.TryGetSolution(entity, puddle.SolutionName, out var puddleSolution, out var solution))
             {
                 continue;
             }
 
             // Fire added start - для удваивания количества вещества 173 от чистящего реагента
-            if (DoubleScp173Reagent && puddleSolution.Value.Comp.Solution.TryGetReagent(new ReagentId(Scp173Component.Reagent, null), out var quantity))
+            if (DoubleScp173Reagent && solution.TryGetReagent(new ReagentId(Scp173Component.Reagent, null), out var quantity))
             {
                 var tempSol = new Solution();
                 tempSol.AddReagent(Scp173Component.Reagent, quantity.Quantity);

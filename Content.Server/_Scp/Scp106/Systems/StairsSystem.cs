@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
 using Content.Server._Scp.Scp106.Components;
-using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Procedural;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared.Atmos;
+using Content.Shared.Atmos.Components;
 using Content.Shared.Gravity;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs.Components;
@@ -92,8 +92,9 @@ public sealed class StairsSystem : EntitySystem
         _atmosphere.SetMapAtmosphere(map, false, mixture);
 
         var gridComp = EnsureComp<MapGridComponent>(map);
+        ProtoId<DungeonConfigPrototype> toIndex = "Backrooms";
 
-        await _dungeon.GenerateDungeonAsync(_prototype.Index<DungeonConfigPrototype>("Backrooms"), map, gridComp, Vector2i.Zero, _random.Next());
+        await _dungeon.GenerateDungeonAsync(_prototype.Index<DungeonConfigPrototype>(toIndex), map, gridComp, Vector2i.Zero, _random.Next());
 
         return mapId;
     }
@@ -124,7 +125,7 @@ public sealed class StairsSystem : EntitySystem
             if (xform.MapID != mapId)
                 continue;
 
-            if (!_tag.HasTag(tag, "UpStairs106"))
+            if (!_tag.HasTag(tag, new ProtoId<TagPrototype>("UpStairs106")))
                 continue;
 
             return (uid, stair);
