@@ -35,17 +35,6 @@
     stock: 1
 
 - type: listing
-  id: ChaosSpyUplinkWeaponPistolTec9
-  productEntity: WeaponPistolTec9
-  cost:
-    SupplyPoint: 5
-  categories:
-  - ChaosSpyWeapon
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 1
-
-- type: listing
   id: ChaosSpyUplinkWeaponShotgunHushpup
   productEntity: WeaponShotgunHushpup
   cost:

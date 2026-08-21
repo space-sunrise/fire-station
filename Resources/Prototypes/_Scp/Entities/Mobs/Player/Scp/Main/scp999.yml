@@ -86,8 +86,6 @@
         volume: 3
   - type: Damageable
     damageModifierSet: SCP-999
-  - type: Body
-    prototype: Human # TODO: Кастомное тело
   - type: InteractionPopup
     interactDelay: 0.5
     interactSuccessSpawn: EffectHearts
@@ -122,12 +120,16 @@
     actionTime: 5
     affectionPopupText: "smile-affection-popup"
     damageSpecifier:
-      groups:
-        Burn: -45
-        Brute: -45
-        Toxin: -8
       types:
-        Bloodloss: -25
+        Blunt: -45
+        Slash: -45
+        Piercing: -45
+        Heat: -45
+        Shock: -45
+        Cold: -45
+        Caustic: -45
+        Poison: -8
+        Radiation: -8
     messages:
     - goodfeeling-artifact-1
     - goodfeeling-artifact-2

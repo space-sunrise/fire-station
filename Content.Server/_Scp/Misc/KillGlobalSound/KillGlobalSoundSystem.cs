@@ -30,10 +30,10 @@ public sealed class KillGlobalSoundSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<HumanoidAppearanceComponent, MobStateChangedEvent>(OnMobStateChanged);
+        SubscribeLocalEvent<HumanoidProfileComponent, MobStateChangedEvent>(OnMobStateChanged);
     }
 
-    private void OnMobStateChanged(Entity<HumanoidAppearanceComponent> ent, ref MobStateChangedEvent args)
+    private void OnMobStateChanged(Entity<HumanoidProfileComponent> ent, ref MobStateChangedEvent args)
     {
         if (args.NewMobState != MobState.Dead)
             return;

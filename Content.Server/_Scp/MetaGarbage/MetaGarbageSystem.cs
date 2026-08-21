@@ -223,7 +223,7 @@ public sealed partial class MetaGarbageSystem : EntitySystem
         // Собираем данные о реагента
         foreach (var container in solutionContainer.Containers)
         {
-            if (!_solution.TryGetSolution((uid, solutionContainer), container, out var targetSolution))
+            if (!_solution.TryGetSolution((uid, solutionContainer), container, out var targetSolutionEnt, out var targetSolution))
                 continue;
 
             // Проверяем наличие специальных реагентов, количество которых мы хотим сократить
@@ -231,7 +231,7 @@ public sealed partial class MetaGarbageSystem : EntitySystem
             {
                 var reagent = new ReagentId(reagentProto, null);
 
-                if (!targetSolution.Value.Comp.Solution.TryGetReagent(reagent, out _))
+                if (!targetSolution.TryGetReagent(reagent, out _))
                     continue;
 
                 // Если не повезло - даем сигнал, что сущность не нужно сохранять
@@ -239,7 +239,7 @@ public sealed partial class MetaGarbageSystem : EntitySystem
                     return false;
             }
 
-            var solution = targetSolution.Value.Comp.Solution;
+            var solution = targetSolutionEnt.Value.Comp.Solution;
             var liquidData = new MetaGarbageSolutionProxy(ReagentToProxy(solution.Contents));
             data[container] = liquidData;
         }

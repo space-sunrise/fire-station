@@ -12,7 +12,7 @@
   absorbCooldownPerUnit: 0.4
   viscosity: 0.3
   metabolisms:
-    Drink:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:
@@ -41,8 +41,6 @@
         sprintSpeedModifier: 0.8
       - !type:ModifyBleed
         amount: 0.3
-    Poison:
-      effects:
       - !type:HealthChange
         damage:
           types:

@@ -4,7 +4,6 @@ using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Interaction;
-using Content.Shared.Kitchen;
 using Content.Shared.Popups;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -21,6 +20,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Content.Shared.Kitchen.Components;
 
 namespace Content.Server._Scp.Research.ReagentSynthesizer;
 
@@ -72,7 +72,7 @@ public sealed class ReagentSynthesizerSystem : EntitySystem
             synthesizer.AudioStream = _audioSystem.Stop(synthesizer.AudioStream);
             RemCompDeferred<ActiveReagentSynthesizerComponent>(uid);
 
-            var container = _itemSlotsSystem.GetItemOrNull(uid, SharedReagentGrinder.BeakerSlotId);
+            var container = _itemSlotsSystem.GetItemOrNull(uid, ReagentGrinderComponent.BeakerSlotId);
 
             if (!container.HasValue)
                 continue;
@@ -104,7 +104,7 @@ public sealed class ReagentSynthesizerSystem : EntitySystem
     private void OnInteractUsing(Entity<ReagentSynthesizerComponent> entity, ref InteractUsingEvent args)
     {
         var heldEnt = args.Used;
-        var inputContainer = _containerSystem.EnsureContainer<ContainerSlot>(entity.Owner, SharedReagentGrinder.BeakerSlotId);
+        var inputContainer = _containerSystem.EnsureContainer<ContainerSlot>(entity.Owner, ReagentGrinderComponent.BeakerSlotId);
 
         if (!HasComp<FitsInDispenserComponent>(heldEnt))
         {
@@ -124,8 +124,8 @@ public sealed class ReagentSynthesizerSystem : EntitySystem
 
     private void DoWork(Entity<ReagentSynthesizerComponent> synthesizer)
     {
-        var container = _containerSystem.EnsureContainer<ContainerSlot>(synthesizer, SharedReagentGrinder.BeakerSlotId);
-        var containerUid = _itemSlotsSystem.GetItemOrNull(synthesizer, SharedReagentGrinder.BeakerSlotId);
+        var container = _containerSystem.EnsureContainer<ContainerSlot>(synthesizer, ReagentGrinderComponent.BeakerSlotId);
+        var containerUid = _itemSlotsSystem.GetItemOrNull(synthesizer, ReagentGrinderComponent.BeakerSlotId);
 
         if (container.ContainedEntities.Count <= 0)
             return;

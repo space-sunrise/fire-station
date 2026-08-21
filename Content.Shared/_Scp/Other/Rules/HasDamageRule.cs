@@ -1,5 +1,5 @@
-﻿using Content.Shared.Damage;
-using Content.Shared.Damage.Components;
+﻿using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Random.Rules;
 using JetBrains.Annotations;
@@ -24,9 +24,11 @@ public sealed partial class HasDamageRule : RulesRule
 
     private static bool HasAnyDamage(EntityUid uid, EntityManager entManager)
     {
+        var damageableSystem = entManager.System<DamageableSystem>();
+
         if (!entManager.TryGetComponent<DamageableComponent>(uid, out var damageable))
             return false;
 
-        return damageable.TotalDamage != FixedPoint2.Zero;
+        return damageableSystem.GetTotalDamage((uid, damageable)) != FixedPoint2.Zero;
     }
 }

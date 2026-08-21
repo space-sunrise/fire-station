@@ -4,13 +4,10 @@ using Content.Shared.Timing;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Interaction;
-using Content.Shared.Interaction.Events;
 using Robust.Shared.Physics.Components;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
-using Robust.Shared.Audio;
 using Robust.Shared.Map;
-using Robust.Shared.Maths;
 using Robust.Shared.Timing;
 using Content.Server.Doors.Systems;
 
@@ -18,7 +15,6 @@ namespace Content.Server._Scp.ComplexElevator;
 
 public sealed class ComplexElevatorSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly DoorSystem _doorSystem = default!;
@@ -140,7 +136,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
     {
         if (!TryFindElevator(ent.Comp.ElevatorId, out var elevator))
             return;
-            
+
         HandleButtonPress(ent, elevator.Value);
         args.Handled = true;
     }

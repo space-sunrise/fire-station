@@ -43,7 +43,7 @@ public sealed class SpawnInPlayerInventoryRule : StationEventSystem<SpawnInPlaye
             return;
         }
 
-        var query = EntityQueryEnumerator<HumanoidAppearanceComponent, InventoryComponent, TransformComponent>();
+        var query = EntityQueryEnumerator<HumanoidProfileComponent, InventoryComponent, TransformComponent>();
         while (query.MoveNext(out var target, out _, out var inventory, out var xform))
         {
             if (!RobustRandom.Prob(component.Probability))

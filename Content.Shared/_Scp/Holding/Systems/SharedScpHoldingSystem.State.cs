@@ -1,7 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared._Scp.Holding.Components;
-using Content.Shared.Body.Part;
-using Content.Shared.Body.Systems;
+using Content.Shared.Hands.EntitySystems;
 
 namespace Content.Shared._Scp.Holding.Systems;
 
@@ -10,8 +9,6 @@ public abstract partial class SharedScpHoldingSystem
     /*
      * State-local dependencies, caches, held lifecycle, holder membership, and full-hold transitions.
      */
-
-    [Dependency] private readonly SharedBodySystem _body = default!;
 
     private readonly List<EntityUid> _holdersToRemove = [];
     private readonly List<EntityUid> _holderCooldownsToApply = [];
@@ -248,11 +245,7 @@ public abstract partial class SharedScpHoldingSystem
 
     private int GetRequiredHolderCount(EntityUid target)
     {
-        var handCount = 0;
-        foreach (var _ in _body.GetBodyChildrenOfType(target, BodyPartType.Hand))
-        {
-            handCount++;
-        }
+        var handCount = _hands.GetEmptyHandCount(target);
 
         if (_holdableQuery.TryComp(target, out var holdable))
             handCount = Math.Max(handCount, holdable.MinimumHolderCount);

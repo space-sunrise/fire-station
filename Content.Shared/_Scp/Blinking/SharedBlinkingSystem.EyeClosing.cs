@@ -1,3 +1,4 @@
+using Content.Shared._Sunrise.Humanoid;
 using Content.Shared.Actions;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Eye.Blinding.Systems;
@@ -12,6 +13,7 @@ public abstract partial class SharedBlinkingSystem
 {
     [Dependency] private readonly BlindableSystem _blindable = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
+    [Dependency] private readonly SunriseHumanoidBodySystem _sunriseBody = default!;
 
     private void InitializeEyeClosing()
     {
@@ -19,8 +21,8 @@ public abstract partial class SharedBlinkingSystem
         SubscribeLocalEvent<BlinkableComponent, ToggleEyesActionEvent>(OnToggleAction);
         SubscribeLocalEvent<BlinkableComponent, CanSeeAttemptEvent>(OnTrySee);
 
-        SubscribeLocalEvent<HumanoidAppearanceComponent, EntityClosedEyesEvent>(OnHumanoidClosedEyes);
-        SubscribeLocalEvent<HumanoidAppearanceComponent, EntityOpenedEyesEvent>(OnHumanoidOpenedEyes);
+        SubscribeLocalEvent<HumanoidProfileComponent, EntityClosedEyesEvent>(OnHumanoidClosedEyes);
+        SubscribeLocalEvent<HumanoidProfileComponent, EntityOpenedEyesEvent>(OnHumanoidOpenedEyes);
 
         SubscribeLocalEvent<BlinkableComponent, SleepStateChangedEvent>(OnWakeUp);
         SubscribeLocalEvent<BlinkableComponent, TryingToSleepEvent>(OnTryingSleep);
@@ -41,11 +43,7 @@ public abstract partial class SharedBlinkingSystem
         if (ent.Comp.CachedEyesColor == null)
             return;
 
-        if (!TryComp<HumanoidAppearanceComponent>(ent, out var humanoidAppearanceComponent))
-            return;
-
-        humanoidAppearanceComponent.EyeColor = ent.Comp.CachedEyesColor.Value;
-        Dirty(ent.Owner, humanoidAppearanceComponent);
+        _sunriseBody.SetEyeColor(ent, ent.Comp.CachedEyesColor.Value);
     }
 
     private void OnToggleAction(Entity<BlinkableComponent> ent, ref ToggleEyesActionEvent args)
@@ -99,20 +97,19 @@ public abstract partial class SharedBlinkingSystem
     /// <summary>
     /// Создает эффект закрытия глаз на спрайте, путем смены цвета глаз на цвет кожи, но чуть более темный
     /// </summary>
-    private void OnHumanoidClosedEyes(Entity<HumanoidAppearanceComponent> ent, ref EntityClosedEyesEvent args)
+    private void OnHumanoidClosedEyes(Entity<HumanoidProfileComponent> ent, ref EntityClosedEyesEvent args)
     {
         if (!BlinkableQuery.TryComp(ent, out var blinkableComponent))
             return;
 
-        blinkableComponent.CachedEyesColor = ent.Comp.EyeColor;
-        ent.Comp.EyeColor = DarkenSkinColor(ent.Comp.SkinColor);
-        Dirty(ent);
+        blinkableComponent.CachedEyesColor = _sunriseBody.GetEyeColor(ent);
+        _sunriseBody.SetEyeColor(ent, DarkenSkinColor(_sunriseBody.GetSkinColor(ent)));
     }
 
     /// <summary>
     /// Возвращает цвет глаз на исходный, когда они открываются
     /// </summary>
-    private void OnHumanoidOpenedEyes(Entity<HumanoidAppearanceComponent> ent, ref EntityOpenedEyesEvent args)
+    private void OnHumanoidOpenedEyes(Entity<HumanoidProfileComponent> ent, ref EntityOpenedEyesEvent args)
     {
         if (!BlinkableQuery.TryComp(ent, out var blinkableComponent))
             return;
@@ -120,8 +117,7 @@ public abstract partial class SharedBlinkingSystem
         if (blinkableComponent.CachedEyesColor == null)
             return;
 
-        ent.Comp.EyeColor = blinkableComponent.CachedEyesColor.Value;
-        Dirty(ent);
+        _sunriseBody.SetEyeColor(ent, blinkableComponent.CachedEyesColor.Value);
     }
 
     private void OnFlashAttempt(Entity<BlinkableComponent> ent, ref FlashAttemptEvent args)

@@ -40,31 +40,46 @@
 
 - type: cargoProduct
   id: MaterialPlasteel
+  name: cargoproduct-name-material-plasteel
+  description: cargoproduct-description-material-plasteel
   icon:
     sprite: _Scp/Objects/Materials/Sheets/metal.rsi # Fire Edit
     state: plasteel_3
-  product: CrateMaterialPlasteel
+  product: SheetPlasteel
+  container:
+    entity: WrappedParcel
+    containerId: contents
   cost: 1600
   category: cargoproduct-category-name-materials
   group: market
 
 - type: cargoProduct
   id: MaterialGold
+  name: cargoproduct-name-material-gold
+  description: cargoproduct-description-material-gold
   icon:
     sprite: _Scp/Objects/Materials/ingots.rsi # Fire Edit
     state: gold_3
-  product: CrateMaterialGold
-  cost: 12000 # Fire edit
+  product: IngotGold
+  container:
+    entity: WrappedParcel
+    containerId: contents
+  cost: 12000
   category: cargoproduct-category-name-materials
   group: market
 
 - type: cargoProduct
   id: MaterialSilver
+  name: cargoproduct-name-material-silver
+  description: cargoproduct-description-material-silver
   icon:
     sprite: _Scp/Objects/Materials/ingots.rsi # Fire Edit
     state: silver_3
-  product: CrateMaterialSilver
-  cost: 10000 # Fire edit
+  product: IngotSilver
+  container:
+    entity: WrappedParcel
+    containerId: contents
+  cost: 10000
   category: cargoproduct-category-name-materials
   group: market
 

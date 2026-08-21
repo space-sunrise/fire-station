@@ -45,7 +45,7 @@ public sealed partial class FearSystem
     /// </summary>
     private void OnMobStateChanged(MobStateChangedEvent ev)
     {
-        if (!HasComp<HumanoidAppearanceComponent>(ev.Target))
+        if (!HasComp<HumanoidProfileComponent>(ev.Target))
             return;
 
         var activated = ev.NewMobState == MobState.Dead;

@@ -3,7 +3,7 @@
   name: species-name-dwarf
   roundStart: false # Fire Edit
   prototype: MobDwarf
-  bodyTypes:
+  bodyTypes: # Sunrise-Edit
   - HumanNormal
   - HumanSlimFemale
   - HumanSlimMale
@@ -13,17 +13,8 @@
   - HumanFatMale
   - HumanDistrofikFemale
   - HumanDistrofikMale
-  markingLimits: MobHumanMarkingLimits
-  dollPrototype: MobDwarfDummy
+  dollPrototype: AppearanceDwarf
   skinColoration: HumanToned
-  defaultHeight: 0.75
-  defaultWidth: 1
-  maxHeight: 0.9 # Fire edit
-  maxWidth: 1.1
-  minHeight: 0.7
-  minWidth: 0.8
-  minHeightCm: 130
-  maxHeightCm: 150 # Fire edit
   # Sunrise-Edit
   buttScan:
     sprite: /Textures/_Sunrise/CopyMachine/butts_scans.rsi

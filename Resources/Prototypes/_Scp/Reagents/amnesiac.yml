@@ -28,7 +28,7 @@
         - !type:InternalsCondition
           inverted: true
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:PopupMessage
         type: Local
@@ -39,8 +39,6 @@
         - !type:ReagentCondition
           reagent: AmnesiacA
           min: 5
-    Narcotic:
-      effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectForcedSleeping
         time: 5
@@ -59,7 +57,7 @@
   color: "#383e28"
   physicalDesc: reagent-physical-desc-viscous
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:PopupMessage
         type: Local
@@ -70,8 +68,6 @@
         - !type:ReagentCondition
           reagent: AmnesiacB
           min: 5
-    Narcotic:
-      effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectForcedSleeping
         time: 7
@@ -90,7 +86,7 @@
   color: "#383e28"
   physicalDesc: reagent-physical-desc-viscous
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:PopupMessage
         type: Local
@@ -109,8 +105,6 @@
         - !type:ReagentCondition
           reagent: AmnesiacC
           min: 1
-    Narcotic:
-      effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectForcedSleeping
         time: 9
@@ -137,7 +131,7 @@
   color: "#383e28"
   physicalDesc: reagent-physical-desc-viscous
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:PopupMessage
         type: Local
@@ -156,8 +150,6 @@
         - !type:ReagentCondition
           reagent: AmnesiacD
           min: 1
-    Narcotic:
-      effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectForcedSleeping
         time: 12
@@ -184,7 +176,7 @@
   color: "#383e28"
   physicalDesc: reagent-physical-desc-exotic-smelling
   metabolisms:
-    Narcotic:
+    Bloodstream:
       effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectForcedSleeping
@@ -205,7 +197,7 @@
   color: "#787e6b"
   physicalDesc: reagent-physical-desc-nothing
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:PopupMessage
         type: Local
@@ -226,7 +218,7 @@
   color: "#828875"
   physicalDesc: reagent-physical-desc-nothing
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:PopupMessage
         type: Local
