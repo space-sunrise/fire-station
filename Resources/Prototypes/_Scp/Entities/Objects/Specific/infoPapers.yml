@@ -1,0 +1,139 @@
+- type: entity
+  parent: Paper
+  id: PaperScpLogo
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: paper_scp
+    - state: paper_scp_words
+      map: [ "enum.PaperVisualLayers.Writing" ]
+      visible: false
+    - state: paper_stamp-generic
+      map: [ "enum.PaperVisualLayers.Stamp" ]
+      sprite: Objects/Misc/bureaucracy.rsi
+      visible: false
+  - type: PaperVisuals
+    headerImagePath: "/Textures/_Scp/Interface/Paper/paper_heading_scp_logo.svg.96dpi.png"
+    backgroundImagePath: "/Textures/_Scp/Interface/Paper/paper_background_scp_documents.svg.96dpi.png"
+    backgroundModulate: "#cccccc"
+    contentImageModulate: "#cccccc"
+    backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
+    contentMargin: 16.0, 16.0, 16.0, 16.0
+
+
+- type: entity
+  parent: [BasePaper, BaseImportantItemContraband]
+  id: UnreadableDocument
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: secret_documents
+  - type: StealTarget
+    stealGroup: ScpInfoPapers
+
+
+- type: entity
+  parent: [UnreadableDocument, PaperScpLogo]
+  abstract: true
+  id: BaseDocumentInfo
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: secret_documents
+    - state: secret_documents
+      map: [ "enum.PaperVisualLayers.Writing" ]
+      visible: false
+    - state: paper_stamp-generic
+      map: [ "enum.PaperVisualLayers.Stamp" ]
+      sprite: Objects/Misc/bureaucracy.rsi
+      visible: false
+  - type: Paper
+    editingDisabled: True
+    stampState: paper_stamp-hos
+    stampedBy:
+    - stampedColor: '#cc0000'
+      stampedName: stamp-component-stamped-name-regional-command
+
+- type: entity
+  name: paper
+  parent: BaseDocumentInfo
+  id: DocumentInfoScp035
+  components:
+  - type: Paper
+    content: info-paper-scp-035-content
+
+- type: entity
+  name: paper
+  parent: BaseDocumentInfo
+  id: DocumentInfoScp049
+  components:
+  - type: Paper
+    content: info-paper-scp-049-content
+
+- type: entity
+  name: paper
+  parent: BaseDocumentInfo
+  id: DocumentInfoScp079
+  components:
+  - type: Paper
+    content: info-paper-scp-079-content
+
+- type: entity
+  name: paper
+  parent: BaseDocumentInfo
+  id: DocumentInfoScp082
+  components:
+  - type: Paper
+    content: info-paper-scp-082-content
+
+- type: entity
+  name: paper
+  parent: BaseDocumentInfo
+  id: DocumentInfoScp096
+  components:
+  - type: Paper
+    content: info-paper-scp-096-content
+
+- type: entity
+  name: paper
+  parent: BaseDocumentInfo
+  id: DocumentInfoScp106
+  components:
+  - type: Paper
+    content: info-paper-scp-106-content
+
+- type: entity
+  name: paper
+  parent: BaseDocumentInfo
+  id: DocumentInfoScp173
+  components:
+  - type: Paper
+    content: info-paper-scp-173-content
+
+- type: entity
+  name: paper
+  parent: BaseDocumentInfo
+  id: DocumentInfoScp247
+  components:
+  - type: Paper
+    content: info-paper-scp-247-content
+
+- type: entity
+  name: paper
+  parent: BaseDocumentInfo
+  id: DocumentInfoScp457
+  components:
+  - type: Paper
+    content: info-paper-scp-457-content
+
+- type: entity
+  name: paper
+  parent: BaseDocumentInfo
+  id: DocumentInfoScp939
+  components:
+  - type: Paper
+    content: info-paper-scp-939-content

@@ -1,6 +1,9 @@
 reagent-name-scp096-tears = L-096 substrate
 reagent-desc-scp096-tears = A colorless liquid secreted by SCP-096 during stress response. Analysis partially matches human tears, contains unidentified protein component.
 
+reagent-scp-106-name = SCP-106-Q rot
+reagent-scp106-desc = A viscous, foul-smelling black fluid constantly secreted by SCP-106. Analysis revealed it contains human blood, feces, rot, and other organic components, including reagents of unknown origin.
+
 reagent-name-scp096-blood = hemosubstrate 096-K
 reagent-desc-scp096-blood = Dense dark liquid extracted from SCP-096 biomass. Shows stable composition with anomalous deviations in cellular morphology.
 

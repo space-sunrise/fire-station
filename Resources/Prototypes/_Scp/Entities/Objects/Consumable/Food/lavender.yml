@@ -1,0 +1,25 @@
+- type: entity
+  name: lavender flower
+  parent: FoodPoppy
+  id: FoodLavender
+  description: A lovely purple flower with a charming, soothing scent.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - leafy
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: LavenderTea
+          Quantity: 10
+  - type: Sprite
+    sprite: _Scp/Objects/Consumable/Food/lavender.rsi
+    state: icon
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Flower
+    - LavenderFlower

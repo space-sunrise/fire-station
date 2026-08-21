@@ -3,6 +3,7 @@
   name: random vending machine spawner
   suffix: Any
   parent: MarkerBase
+  abstract: true # Fire edit
   components:
   - type: Sprite
     layers:
@@ -61,4 +62,4 @@
       state: clothing
   - type: EntityTableSpawner
     table: !type:NestedSelector
-      tableId: ClothingVendorTable
+      tableId: ScpClothingVendorTable #ClothingVendorTable # Fire edit

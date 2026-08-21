@@ -17,11 +17,11 @@ public sealed class DogVisionOverlay : Overlay
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
     private readonly ShaderInstance _dogVisionShader;
-
+    private readonly string _dogVision = "DogVision";
     public DogVisionOverlay()
     {
         IoCManager.InjectDependencies(this);
-        _dogVisionShader = _prototypeManager.Index<ShaderPrototype>("DogVision").Instance().Duplicate();
+        _dogVisionShader = _prototypeManager.Index<ShaderPrototype>(_dogVision).Instance().Duplicate();
     }
 
     protected override void Draw(in OverlayDrawArgs args)
@@ -29,7 +29,7 @@ public sealed class DogVisionOverlay : Overlay
         if (ScreenTexture == null)
             return;
 
-        if (_playerManager.LocalPlayer?.ControlledEntity is not { Valid: true } player)
+        if (_playerManager.LocalSession?.AttachedEntity is not { Valid: true } player)
             return;
 
         if (!_entityManager.HasComponent<DogVisionComponent>(player))

@@ -9,7 +9,7 @@ namespace Content.Shared._Scp.Scp939;
 public sealed partial class Scp939Component : Component
 {
     [DataField]
-    public Solution SmokeSolution = new("АМН-С227", 40);
+    public Solution SmokeSolution = new([new("АМН-С227", 40)]);
 
     [DataField]
     public float SmokeDuration = 30.0f;
@@ -42,9 +42,6 @@ public sealed partial class Scp939Component : Component
             { "Heat", -20f },
             { "Shock", -20f },
             { "Bloodloss", -20f},
-            { "Genetic", -20f },
-            { "Toxin", -20f },
-            { "Airloss", -20f },
             { "Asphyxiation", -20f },
             { "Poison", -20f },
             { "Radiation", -20f },

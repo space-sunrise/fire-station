@@ -20,6 +20,10 @@
     - Scp6
     - Scp7
     - Scp8
+    - Scp9
+    - Scp10
+    - Scp11
+    - Scp12
 
 - type: entity
   id: BaseStationRegionalAdministration

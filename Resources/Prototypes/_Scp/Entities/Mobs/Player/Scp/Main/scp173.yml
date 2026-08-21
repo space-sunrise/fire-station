@@ -17,6 +17,7 @@
     - map: [ "enum.DamageStateVisualLayers.Base" ]
       state: scp-173
   - type: Scp
+    name: SCP-173
     class: Euclid
   - type: Scp173
   - type: ScpRestrictMovementOnVisibility
@@ -53,11 +54,12 @@
     - whitelist:
         components:
         - MobState
-        - HumanoidAppearance
+        - HumanoidProfile
         requireAll: true
       damage:
         types:
           Blunt: 200
+      ignoreResistances: true
       targetSound:
         collection: Scp173NeckSnap
       useVariance: false
@@ -70,6 +72,7 @@
       damage:
         types:
           Blunt: 100
+      ignoreResistances: true
       targetSound:
         path: /Audio/_Scp/Scp173/smash.ogg
         params:
@@ -103,8 +106,11 @@
     soundHit:
       collection: MetalThud
     damage:
-      groups:
-        Brute: 10
+      types:
+        Heat: 10
+        Shock: 10
+        Cold: 10
+        Caustic: 10
   - type: Muted
   - type: SafeTime
     addWidget: false
@@ -137,3 +143,14 @@
     - ScpResearch
     - ScpResearchAdvanced
     - ScpFear
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.30
+        density: 1000
+        mask:
+        - MobMask
+        layer:
+        - MobLayer

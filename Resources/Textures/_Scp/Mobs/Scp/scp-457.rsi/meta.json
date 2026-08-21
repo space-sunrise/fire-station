@@ -7,6 +7,18 @@
     "y": 32
   },
   "states": [
+        {
+            "name": "fire",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
     {
       "name": "fireguy",
       "directions": 4,

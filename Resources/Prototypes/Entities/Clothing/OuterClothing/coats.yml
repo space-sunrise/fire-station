@@ -17,9 +17,9 @@
   # SUNRISE EDIT
 
 - type: entity
-  parent: [ ClothingOuterBaseMedium, ClothingOuterStorageBase, AllowSuitStorageClothing, BaseSecurityContraband ]
+  parent: [ ClothingOuterArmorBase, ClothingOuterStorageBase, AllowSuitStorageClothing, BaseSecurityContraband ]
   id: ClothingOuterCoatDetective
-  name: detective trenchcoat
+  name: detective armored trenchcoat
   description: An 18th-century multi-purpose trenchcoat. Someone who wears this means serious business.
   components:
   - type: Sprite
@@ -36,7 +36,7 @@
 - type: entity
   parent: [ClothingOuterCoatDetectiveLoadout]
   id: ClothingOuterCoatDetectiveLoadoutGrey
-  name: noir trenchcoat
+  name: noir armored trenchcoat
   description: Ah, your trusty coat. There's a few tears here and there, giving it a more timely look. Or at least, that's what you told yourself when you found out gettin' it repaired would set you back 200 spesos.
   components:
   - type: Sprite
@@ -190,9 +190,9 @@
   description: A suit that protects against minor chemical spills.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/labcoat.rsi
+    sprite: _Scp/Clothing/OuterClothing/Coats/labcoat.rsi # Fire edit
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/labcoat.rsi
+    sprite: _Scp/Clothing/OuterClothing/Coats/labcoat.rsi # Fire edit
   - type: Pierceable
     level: Metal
   - type: Armor
@@ -346,9 +346,9 @@
   description: Woven with top of the line technology, this labcoat helps protect against radiation in similar way to the experimental hardsuit.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/labcoat_rd.rsi
+    sprite: _Scp/Clothing/OuterClothing/Coats/labcoat_rd.rsi # Fire edit
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/labcoat_rd.rsi
+    sprite: _Scp/Clothing/OuterClothing/Coats/labcoat_rd.rsi # Fire edit
   - type: Pierceable
     level: Metal
   - type: Armor
@@ -380,9 +380,9 @@
   description: A sturdy, utilitarian jacket designed to protect a warden from any brig-bound threats.
   components:
   - type: Sprite
-    sprite: _Sunrise/Clothing/OuterClothing/Coats/warden.rsi #Sunrise-Edit
+    sprite: _Scp/Clothing/OuterClothing/Coats/sec_normalcoat.rsi #Fire Edit
   - type: Clothing
-    sprite: _Sunrise/Clothing/OuterClothing/Coats/warden.rsi #Sunrise-Edit
+    sprite: _Scp/Clothing/OuterClothing/Coats/sec_normalcoat.rsi #Fire Edit
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -485,9 +485,9 @@
   description: A suit that protects against minor chemical spills. Has a purple collar and wrist trims.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/labcoat_senior_researcher.rsi
+    sprite: _Scp/Clothing/OuterClothing/Coats/labcoat_senior_researcher.rsi # Fire edit
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/labcoat_senior_researcher.rsi
+    sprite: _Scp/Clothing/OuterClothing/Coats/labcoat_senior_researcher.rsi # Fire edit
   - type: Pierceable
     level: Metal
   - type: Armor

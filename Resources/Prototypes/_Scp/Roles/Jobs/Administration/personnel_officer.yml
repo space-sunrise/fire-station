@@ -32,6 +32,7 @@
   - !type:AddComponentSpecial
     components:
     - type: CommandStaff
+    - type: ChaosSpySelectionBlacklist
     - type: EmployeeClass
       class: C
     - type: AccessLevel

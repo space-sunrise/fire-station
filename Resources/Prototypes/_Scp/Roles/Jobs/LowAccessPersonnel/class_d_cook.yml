@@ -14,6 +14,7 @@
   special:
   - !type:AddComponentSpecial
     components:
+    - type: ChaosSpySelectionBlacklist
     - type: ClassDAppearance
     - type: EmployeeClass
       class: D
@@ -23,12 +24,21 @@
       - ExternalAdministrativeZoneSecurityService
       includeJobName: true
       requiredGameRunLevel: InRound
+    - type: ScpHolder
+      holdableWhitelist:
+        components:
+        - Scp096
+      holdableBlacklist:
+        components:
+        - ActiveScp096Rage
+        - ActiveScp096HeatingUp
+        - ActiveScp096WithoutFace
 
 - type: startingGear
   id: ClassDCookGear
   equipment:
     head: ClothingHeadHatChef
-    jumpsuit: ClothingUniformClassD
+    jumpsuit: ClothingUniformClassDBasic
     outerClothing: ClothingOuterApronChef
     belt: ClothingBeltChefFilled
     gloves: ClothingHandsGlovesColorWhite

@@ -13,13 +13,13 @@ public abstract partial class SharedScp106System
         // Abilities in that store - I love lambdas >:)
 
         // TODO: Проверка на хендхелд и кенселед
-        SubscribeLocalEvent((Entity<Scp106Component> ent, ref Scp106BoughtPhantomAction args) =>
-            _actions.AddAction(ent, args.BoughtAction));
         SubscribeLocalEvent((Entity<Scp106Component> ent, ref Scp106BoughtBareBladeAction args) =>
             _actions.AddAction(ent, args.BoughtAction));
         SubscribeLocalEvent((Entity<Scp106Component> ent, ref Scp106BoughtCreatePortal args) =>
             _actions.AddAction(ent, args.BoughtAction));
         SubscribeLocalEvent((Entity<Scp106Component> ent, ref Scp106BoughtTerrify args) =>
+            _actions.AddAction(ent, args.BoughtAction));
+        SubscribeLocalEvent((Entity<Scp106Component> ent, ref Scp106BoughtPuddle args) =>
             _actions.AddAction(ent, args.BoughtAction));
 
         SubscribeLocalEvent<Scp106Component, Scp106OnUpgradePhantomAction>(OnUpgradePhantomAction);

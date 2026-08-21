@@ -77,9 +77,9 @@
   description: An extremely robust helmet, commonly used by paramilitary forces. This one has the Nanotrasen logo emblazoned on the top.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Helmets/swat.rsi
+    sprite: _Scp/Clothing/Head/newswathelmet.rsi # Fire Edit
   - type: Clothing
-    sprite: Clothing/Head/Helmets/swat.rsi
+    sprite: _Scp/Clothing/Head/newswathelmet.rsi # Fire Edit
   - type: Pierceable
     level: Metal
   - type: Armor #This is intentionally not spaceproof, when the time comes to port the values from SS13 this should be buffed from what it was.
@@ -375,7 +375,6 @@
     tags:
     - WhitelistChameleon
     - FireHelmet
-    - CorgiWearable
     - FullCovered # INTERACTIONS
   # Sunrise - Start
     - Helmet
@@ -604,6 +603,11 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellSmall
+        # Sunrise-Start
+        whitelist:
+          tags:
+          - PowerCell
+        # Sunrise-End
   - type: PowerCellDraw
     drawRate: 2
   - type: ToggleCellDraw
@@ -623,6 +627,11 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
+        # Sunrise-Start
+        whitelist:
+          tags:
+          - PowerCell
+        # Sunrise-End
   - type: HideLayerClothing
     layers:
       Hair: HEAD

@@ -7,3 +7,8 @@
 - type: contrabandSeverity
   id: FoundationEnemy
   examineText: contraband-examine-text-FoundationEnemy
+
+# This is important item for Foundation
+- type: contrabandSeverity
+  id: ImportantItem
+  examineText: contraband-examine-text-ImportantItem

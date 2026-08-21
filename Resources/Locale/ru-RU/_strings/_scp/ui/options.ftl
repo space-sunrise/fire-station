@@ -43,11 +43,6 @@ ui-options-field-of-view-opacity-tooltip =
     Определяет прозрачность (темноту) пространства за спиной персонажа
     Чем больше, тем темнее будет пространство.
 
-ui-options-light-bloom-enable = Свечение (bloom)
-ui-options-light-bloom-enable-tooltip =
-    Определяет, будет ли использован эффект свечения?
-    На слабых системах включение эффекта вызовет потери производительности.
-
 ui-options-light-bloom-cone-enable = Конус свечения
 ui-options-light-bloom-cone-enable-tooltip =
     Определяет, будет ли рисоваться конус от источника света?
@@ -57,17 +52,12 @@ ui-options-light-bloom-cone-opacity = Прозрачность конуса св
 ui-options-light-bloom-cone-opacity-tooltip =
     Определяет прозрачность, с которой будет рисоваться конус свечения
 
-ui-options-light-bloom-optimizations = Сниженная нагрузка на видеокарту
+ui-options-light-bloom-optimizations = Сниженная нагрузка на видеокарту от свечения конуса
 ui-options-light-bloom-optimizations-tooltip =
     При включении источники света, которые не видны персонажу, не будут создавать эффект.
     Проверка на видимость потребляет большое количество ресурсов ЦП.
     Это скорее всего даст обратный эффект, если у вас не слабая видеокарта.
     Рекомендуется использовать ТОЛЬКО если у вас ОЧЕНЬ СЛАБАЯ ВИДЕОКАРТА и вы хотите поиграть с эффектом.
-
-ui-options-light-bloom-strength = Яркость свечения
-ui-options-light-bloom-strength-tooltip =
-    Регулирует яркость эффекта свечения. Чем выше значение, тем ярче свечение.
-    Позволяет настроить эффект под свои предпочтения.
 
 ui-options-compatibility-mode-show-warning = Предупреждение о режиме совместимости
 ui-options-compatibility-mode-show-warning-tooltip =

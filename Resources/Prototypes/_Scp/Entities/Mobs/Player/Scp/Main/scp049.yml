@@ -8,6 +8,7 @@
   - MobRespirator
   - InventoryBase
   - StripableInventoryBase
+  - AppearanceScpHands
   components:
   - type: AutoGhostRole
     disconnectDelay: 600
@@ -16,7 +17,17 @@
   - type: Sprite
     drawdepth: Mobs
     sprite: _Scp/Mobs/Scp/scp-049.rsi
-    state: SCP-049
+    layers:
+    - state: SCP-049
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: SCP-049
+      Critical:
+        Base: 049-dead
+      Dead:
+        Base: 049-dead
   - type: Scp
     class: Euclid
   - type: Scp049
@@ -26,6 +37,9 @@
     canPull: true
     canMobCollide: true
   - type: ScpShow049Hud
+  - type: ScpPossibilities
+    canEjectPilotFromMech: false
+    openContainer: false
   - type: FearSource
     uponSeenState: Anxiety
     uponComeCloser: Anxiety
@@ -46,7 +60,6 @@
     angle: 240
   - type: Hands
   - type: Body
-    prototype: Human
   - type: ComplexInteraction
   - type: Buckle
   - type: Stripping
@@ -90,8 +103,5 @@
     - ScpResearch
     - ScpFear
   - type: Appearance
-  - type: RotationVisuals
-    defaultRotation: 90
-    horizontalRotation: 90
   - type: Perishable
   - type: HoldToFace

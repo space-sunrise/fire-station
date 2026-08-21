@@ -11,10 +11,10 @@ public sealed class Scp049ProtectionImplantSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<HumanoidAppearanceComponent, AddImplantAttemptEvent>(OnInsert);
+        SubscribeLocalEvent<HumanoidProfileComponent, AddImplantAttemptEvent>(OnInsert);
     }
 
-    private void OnInsert(Entity<HumanoidAppearanceComponent> ent, ref AddImplantAttemptEvent args)
+    private void OnInsert(Entity<HumanoidProfileComponent> ent, ref AddImplantAttemptEvent args)
     {
         if (args.Cancelled)
             return;

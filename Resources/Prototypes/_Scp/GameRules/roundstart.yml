@@ -16,6 +16,8 @@
     itemBlacklist:
       components:
       - Scp035Mask
+      tags:
+      - Scp019Vase
 
 - type: entity
   id: ScpModeSafe
@@ -32,6 +34,9 @@
       Keter:
         min: 0
         max: 0
+    itemBlacklist:
+      tags:
+      - Scp019Vase
 
 - type: entity
   id: ScpModeEuclid
@@ -48,6 +53,9 @@
       Keter:
         min: 1
         max: 1
+    itemBlacklist:
+      tags:
+      - Scp019Vase
 
 - type: entity
   id: ScpModeKeter
@@ -59,8 +67,8 @@
         min: -1
         max: -1
       Euclid:
-        min: -1
-        max: -1
+        min: 2
+        max: 2
       Keter:
         min: 1
         max: 1
@@ -75,11 +83,225 @@
         min: -1
         max: -1
       Euclid:
-        min: -1
-        max: -1
+        min: 3
+        max: 3
       Keter:
         min: -1
         max: -1
+
+- type: entity
+  abstract: true
+  parent: BaseGameRule
+  id: BaseChaosRaidRule
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesOperationPrefix
+    - NamesOperationSuffix
+    nameFormat: name-format-nuclear-operation
+  - type: RuleGrids
+  - type: AntagSelection
+  - type: AntagLoadProfileRule
+    speciesOverride: Human
+
+- type: entity
+  id: ScpChaosRaid
+  parent: BaseChaosRaidRule
+  components:
+  - type: GameRule
+    minPlayers: 25
+  - type: LoadMapRule
+    mapPath: /Maps/_Scp/Nonstation/ChaosPlanet.yml
+  - type: ChaosRaidRule
+  - type: AntagRandomObjectives
+    sets:
+    - groups: ChaosRaidObjectiveGroups
+      maxPicks: 4
+    maxDifficulty: 3
+  - type: AntagSelection
+    selectionTime: PrePlayerSpawn
+    definitions:
+    - prefRoles: [ ChaosRaiderLeader ]
+      fallbackRoles: [ ChaosRaiderFighter, ChaosRaiderMedic ]
+      spawnerPrototype: SpawnPointChaosRaiderLeader
+      startingGear: ChaosLeaderGear
+      max: 1
+      roleLoadout:
+      - RoleSurvivalNukie
+      components:
+      - type: ShowMessageOnSpawn
+        message: chaos-raid-rules-window
+      - type: GhostPanelAntagonistMarker
+        name: ghost-panel-antagonist-chaos-raider-leader-name
+        description: ghost-panel-antagonist-chaos-raider-leader-description
+        priority: 10
+      - type: MobChaosRaider
+      - type: RandomMetadata
+        nameSegments:
+        - NamesChaosLeader
+        - LastNamesChaos
+        nameFormat: name-format-ert
+      - type: NpcFactionMember
+        factions:
+        - Chaos
+      mindRoles:
+      - MindRoleChaosRaiderLeader
+    - prefRoles: [ ChaosRaiderMedic ]
+      fallbackRoles: [ ChaosRaiderFighter, ChaosRaiderLeader ]
+      spawnerPrototype: SpawnPointChaosRaiderMedic
+      startingGear: ChaosMedicGear
+      min: 1
+      max: 3
+      roleLoadout:
+      - RoleSurvivalNukie
+      components:
+      - type: ShowMessageOnSpawn
+        message: chaos-raid-rules-window
+      - type: GhostPanelAntagonistMarker
+        name: ghost-panel-antagonist-chaos-raider-medic-name
+        description: ghost-panel-antagonist-chaos-raider-medic-description
+        priority: 10
+      - type: MobChaosRaider
+      - type: RandomMetadata
+        nameSegments:
+        - NamesChaosMedic
+        - LastNamesChaos
+        nameFormat: name-format-ert
+      - type: NpcFactionMember
+        factions:
+        - Chaos
+      mindRoles:
+      - MindRoleChaosRaiderMedic
+    - prefRoles: [ ChaosRaiderFighter ]
+      fallbackRoles: [ ChaosRaiderLeader, ChaosRaiderMedic ]
+      spawnerPrototype: SpawnPointChaosRaiderFighter
+      min: 4
+      max: 8
+      playerRatio: 5
+      startingGear: ChaosGear
+      roleLoadout:
+      - RoleSurvivalNukie
+      components:
+      - type: ShowMessageOnSpawn
+        message: chaos-raid-rules-window
+      - type: GhostPanelAntagonistMarker
+        name: ghost-panel-antagonist-chaos-raider-fighter-name
+        description: ghost-panel-antagonist-chaos-raider-fighter-description
+        priority: 10
+      - type: MobChaosRaider
+      - type: RandomMetadata
+        nameSegments:
+        - NamesChaos
+        - LastNamesChaos
+        nameFormat: name-format-ert
+      - type: NpcFactionMember
+        factions:
+        - Chaos
+      mindRoles:
+      - MindRoleChaosRaiderFighter
+  - type: DynamicRuleCost
+    cost: 200
+
+- type: entity
+  parent: BaseGameRule
+  id: ScpChaosSpy
+  components:
+  - type: GameRule
+    minPlayers: 25
+  - type: ChaosSpyRule
+  - type: DynamicRuleCost
+    cost: 100
+
+- type: entity
+  parent: BaseGameRule
+  id: ScpChaosHighSpy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: GameRule
+    minPlayers: 25
+  - type: ChaosSpyRule
+    addSleepSpies: true
+  - type: AntagRandomObjectives
+    sets:
+    - groups: ChaosSpyObjectiveGroups
+      maxPicks: 4
+    maxDifficulty: 4
+  - type: AntagSelection
+    agentName: chaos-spy-round-end-agent-name
+    selectionTime: PostPlayerSpawn
+    definitions:
+    - prefRoles: [ ChaosSpy ]
+      min: 2
+      max: 4
+      playerRatio: 10
+      pickCommandStaff: true
+      ignoreCanBeAntag: true
+      blacklist:
+        components:
+        - AntagImmune
+        - ChaosSpySelectionBlacklist
+      lateJoinAdditional: false
+      mindRoles:
+      - MindRoleChaosSpy
+
+- type: entity
+  parent: BaseGameRule
+  id: ScpChaosLowSpy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: GameRule
+    minPlayers: 25
+  - type: ChaosSpyRule
+    addSleepSpies: true
+  - type: AntagRandomObjectives
+    sets:
+    - groups: ChaosSpyObjectiveGroups
+      maxPicks: 4
+    maxDifficulty: 4
+  - type: AntagSelection
+    agentName: chaos-spy-round-end-agent-name
+    selectionTime: PostPlayerSpawn
+    definitions:
+    - prefRoles: [ ChaosSpy ]
+      min: 3
+      max: 5
+      playerRatio: 10
+      pickCommandStaff: false
+      blacklist:
+        components:
+        - AntagImmune
+        - ChaosSpySelectionBlacklist
+      whitelist:
+        components:
+        - LowPositionStaff
+      lateJoinAdditional: false
+      mindRoles:
+      - MindRoleChaosSpy
+
+- type: entity
+  parent: BaseGameRule
+  id: ScpChaosSleepSpy
+  components:
+  - type: GameRule
+    minPlayers: 25
+  - type: ChaosSleepSpyRule
+  - type: AntagSelection
+    selectionTime: PostPlayerSpawn
+    removeUponFailedSpawn: false
+    definitions:
+    - prefRoles: [ ChaosSleepSpy ]
+      min: 3
+      max: 4
+      playerRatio: 10
+      pickCommandStaff: true
+      ignorePrefCheck: true
+      multiAntagSetting: NotExclusive
+      blacklist:
+        components:
+        - AntagImmune
+        - ChaosSpyRole
+        - ChaosSpySelectionBlacklist
+      lateJoinAdditional: false
 
 - type: entity
   id: ScpMetaGarbageSpawn

@@ -18,7 +18,8 @@
   # Sunrise added end
   # Sunrise-Start
   - type: Sprite
-    sprite: &id-rsi _Sunrise/Objects/Misc/id_cards.rsi # Sunrise-Edit
+    scale: 0.75, 0.75 # Sunrise-Edit
+    sprite: &id-rsi-sunrise _Sunrise/Objects/Misc/id_cards.rsi # Sunrise-Edit
   - type: Clothing
     slots:
     - idcard
@@ -69,7 +70,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: gold
     - state: department-side
@@ -99,7 +100,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: silver
     - state: department-side
@@ -122,7 +123,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: silver
     - state: department-side
@@ -145,7 +146,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: silver
     - state: department-side
@@ -168,7 +169,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: silver
     - state: department-side
@@ -191,7 +192,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: silver
     - state: department-side
@@ -214,7 +215,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: silver
     - state: department-side
@@ -239,7 +240,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -259,7 +260,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -279,7 +280,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -301,7 +302,7 @@
   - type: PresetIdCard
     job: SeniorEngineer
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -321,7 +322,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -341,7 +342,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -361,7 +362,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -381,7 +382,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -401,7 +402,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -423,7 +424,7 @@
   - type: PresetIdCard
     job: SeniorPhysician
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -443,7 +444,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -463,7 +464,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -485,7 +486,7 @@
   - type: PresetIdCard
     job: SeniorResearcher
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -525,7 +526,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -545,7 +546,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -565,7 +566,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -585,7 +586,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -607,7 +608,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -627,7 +628,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -647,7 +648,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: clown-side
@@ -666,7 +667,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -686,7 +687,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -706,7 +707,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -726,7 +727,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -746,7 +747,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -766,7 +767,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -790,7 +791,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -810,7 +811,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -830,7 +831,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -850,7 +851,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -870,7 +871,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -890,7 +891,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - state: department-side
@@ -1031,7 +1032,7 @@
   categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
     - sprite: *icon-rsi
@@ -1098,7 +1099,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: black
     - state: department-side
@@ -1107,6 +1108,8 @@
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Syndicate
+  - type: IdCard
+    jobIcon: JobIconSyndicate
   - type: Item
     heldPrefix: black
   - type: Access
@@ -1122,7 +1125,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: black
     - state: department-side
@@ -1132,6 +1135,8 @@
       offset: *icon-offset
       state: SyndicateOperative
   - type: AgentIDCard
+  - type: IdCard
+    jobIcon: JobIconSyndicateOperative
 
 - type: entity
   parent: [ SyndiOperativeIDCard, BaseSyndicateContraband ]
@@ -1141,7 +1146,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: black
     - state: department-side
@@ -1150,6 +1155,8 @@
     - sprite: *icon-rsi
       offset: *icon-offset
       state: SyndicateCorpsman
+  - type: IdCard
+    jobIcon: JobIconSyndicateCorpsman
 
 - type: entity
   parent: [ SyndiOperativeIDCard, BaseSyndicateContraband ]
@@ -1159,7 +1166,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: black
     - state: department-side
@@ -1168,6 +1175,34 @@
     - sprite: *icon-rsi
       offset: *icon-offset
       state: SyndicateCommander
+  - type: IdCard
+    jobIcon: JobIconSyndicateCommander
+
+- type: entity
+  parent: [ IDCardStandard, BaseHighlyIllegalContraband ]
+  id: NinjaIDCard
+  name: ninja ID card
+  suffix: Ninja
+  components:
+  - type: Sprite
+    sprite: &id-rsi Objects/Misc/id_cards.rsi # Sunrise-Edit
+    layers:
+    - state: ninja
+    - state: stripe_top
+      color: "#38D848"
+    - state: stripe_bottom
+      color: "#309000"
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: Ninja
+  - type: Item
+    heldPrefix: green
+  - type: AgentIDCard
+  - type: IdCard
+    jobIcon: JobIconNinja
+  - type: Access
+    tags:
+    - Maintenance
 
 - type: entity
   parent: [ IDCardStandard, BaseMajorContraband ]
@@ -1176,15 +1211,21 @@
   categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: pirate
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: Pirate
   - type: Item
     heldPrefix: orange #this is close enough to the weird puce color pirate IDs have going on
+  # Sunrise-Start
   - type: Access
     tags:
-    - NuclearOperative
-    - SyndicateAgent
+    - Pirate
+  # Sunrise-End
+  - type: IdCard
+    jobIcon: JobIconPirate
 
 - type: entity
   parent: IDCardStandard
@@ -1193,7 +1234,7 @@
   categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: default
   - type: Access
@@ -1201,13 +1242,13 @@
     - Xenoborg
 
 - type: entity
-  parent: IDCardStandard
+  parent: [ IDCardStandard, BaseMagicalContraband ]
   id: WizardIDCard
   name: wizard ID card
   categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: wizard
     - sprite: *icon-rsi
@@ -1220,6 +1261,8 @@
     - Wizard
     - External
     - Maintenance
+  - type: IdCard
+    jobIcon: JobIconWizard
 
 #ERT/Centcomm
 
@@ -1231,7 +1274,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: blue
     - state: department-side
@@ -1254,7 +1297,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: gold
     - state: department-side
@@ -1276,7 +1319,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: blue
     - state: department-side
@@ -1298,7 +1341,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: blue
     - state: department-side
@@ -1320,7 +1363,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: blue
     - state: department-side
@@ -1342,7 +1385,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: blue
     - state: department-side
@@ -1364,7 +1407,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: blue
     - state: department-side
@@ -1386,7 +1429,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: blue
     - state: department-side
@@ -1407,7 +1450,7 @@
   components:
   # Sunrise-Start
   - type: Sprite
-    sprite: *id-rsi
+    sprite: *id-rsi-sunrise
     layers:
     - state: blue
     - state: department-side
@@ -1455,6 +1498,7 @@
     - SyndicateAgent
     - Wizard
     - Xenoborg
+    - Pirate # Sunrise-Add
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener

@@ -1,0 +1,9 @@
+- type: entity
+  id: SpawnPointChaosRaid
+  parent: MarkerBase
+  name: chaos
+  components:
+  - type: SpawnPoint
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: green

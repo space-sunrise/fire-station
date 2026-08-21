@@ -11,8 +11,18 @@
 # Jumpsuit
 - type: latheRecipe
   parent: BaseJumpsuitRecipe
-  id: ClothingUniformClassD
-  result: ClothingUniformClassD
+  id: ClothingUniformClassDBasic
+  result: ClothingUniformClassDBasic
+
+- type: latheRecipe
+  parent: BaseJumpsuitRecipe
+  id: ClothingUniformClassDLoyal
+  result: ClothingUniformClassDLoyal
+
+- type: latheRecipe
+  parent: BaseJumpsuitRecipe
+  id: ClothingUniformClassDHostile
+  result: ClothingUniformClassDHostile
 
 # Neck
 - type: latheRecipe

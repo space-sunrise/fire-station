@@ -1,0 +1,18 @@
+- type: entity
+  id: ScpRandomVendingSnacks
+  name: random vending machine spawner
+  suffix: Snacks
+  parent: RandomVendingSnacks
+  components:
+  - type: RandomSpawner
+    rarePrototypes:
+    - Scp261
+    rareChance: 0.03
+    prototypes:
+      - ScpVendingMachineDiscount
+      - ScpVendingMachineSnack
+      - ScpVendingMachineSnackBlue
+      - ScpVendingMachineSnackOrange
+      - ScpVendingMachineSnackTeal
+      - ScpVendingMachineChang
+      - ScpVendingMachineDonut

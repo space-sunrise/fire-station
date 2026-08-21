@@ -55,6 +55,11 @@
     price: 800
   - type: ResearchClient
   - type: TechnologyDatabase
+  - type: ApcPowerReceiver
+    powerLoad: 150
+  - type: PowerState
+    idlePowerDraw: 150
+    workingPowerDraw: 1000
 
 # a lathe that can be sped up with space lube / slowed down with glue
 - type: entity
@@ -144,6 +149,7 @@
     emagStaticPacks:
     - SecurityStaticSunrise # Sunrise-Add
     - SyndicateAmmoStatic
+    - SyndicateBorgModulesEmagSunrise # Sunrise-Add
   - type: BlueprintReceiver
     whitelist:
       tags:
@@ -223,6 +229,8 @@
     - NightVisionDevice
     # Sunrise-End
   - type: EmagLatheRecipes
+    emagStaticPacks:
+    - SyndicateBorgModulesEmagSunrise # Sunrise-Add
     emagDynamicPacks:
     # - SecurityAmmo # Sunrise-edit
     - SecurityExplosives
@@ -234,7 +242,7 @@
     - MedicalCyberlimbDynamic # Sunrise-Add
     - MedicalCyberOrgansDynamic # Sunrise-Add
     - MedicalImplantDynamic # Sunrise-Add
-    - SyndicateAmmoSunrise # Sunrise-Add
+    - SyndicateAmmoDynamicSunrise # Sunrise-Add
 
 - type: entity
   id: ProtolatheHyperConvection
@@ -412,6 +420,8 @@
   - type: Lathe
     idleState: icon
     runningState: icon
+    unlitIdleState: unlit
+    unlitRunningState: unlit-building
     staticPacks:
     - SecurityEquipmentStatic
     - SecurityPracticeStatic
@@ -434,6 +444,7 @@
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SyndicateAmmoStatic
+    - SyndicateBorgModulesEmagSunrise # Sunrise-Add
   - type: MaterialStorage
     whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient
@@ -478,6 +489,8 @@
     - type: Lathe
       idleState: icon
       runningState: icon
+      unlitIdleState: unlit
+      unlitRunningState: unlit-building
       staticPacks:
     #  - SecurityAmmoStatic # Sunrise - comment
       - SecurityStaticSunrise # Sunrise-Add
@@ -510,6 +523,8 @@
   - type: Lathe
     idleState: icon
     runningState: icon
+    unlitIdleState: unlit
+    unlitRunningState: unlit-building
     staticPacks:
     - TopicalsStatic
     - ChemistryStatic
@@ -677,7 +692,7 @@
     board: OreProcessorIndustrialMachineCircuitboard
   - type: Lathe
     materialUseMultiplier: 0.75
-    timeMultiplier: 0.5
+    timeMultiplier: 1.25 # Sunrise-Edit
     staticPacks:
     - OreSmelting
     - RGlassSmelting
@@ -741,6 +756,17 @@
     runningState: building
     staticPacks:
     - ScpFloorTilesStatic # Fire Edit
+    #- FloorDarkTilesStatic # Fire edit
+    #- FloorSteelTilesStatic # Fire edit
+    #- FloorWhiteTilesStatic # Fire edit
+    #- FloorMaintsTilesStatic # Fire edit
+    #- FloorWoodTilesStatic # Fire edit
+    #- FloorConcreteTilesStatic # Fire edit
+    #- CircuitFloorsStatic # Fire edit
+    #- FloorMarbleTilesStatic # Fire edit
+    #- SunriseFloorTilesStatic # Sunrise-Edit # Fire edit
+    dynamicPacks:
+    - FauxTiles
   - type: MaterialStorage
     whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient

@@ -24,9 +24,12 @@ public sealed class ChangeLightOnDamageSystem : EntitySystem
         if (!_pointLight.ResolveLight(entity, ref pointLightComponent))
             return;
 
+        if (args.DamageDelta == null)
+            return;
+
         var newColor = GetInterpolatedColor(pointLightComponent.Color,
             entity.Comp.TargetLightColor,
-            args.Damageable.TotalDamage,
+            args.DamageDelta.GetTotal(),
             entity.Comp.MaxDamage);
 
         _pointLight.SetColor(entity, newColor);

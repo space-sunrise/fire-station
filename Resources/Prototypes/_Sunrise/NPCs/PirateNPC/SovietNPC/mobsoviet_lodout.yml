@@ -50,9 +50,10 @@
 - type: startingGear
   id: MobSovietGearRangedSMG
   equipment:
-    gloves: ClothingHandsMp38SovietNoOuter
+    gloves: ClothingHandsPPSHSovietNoOuter
     shoes: ClothingShoesBootsWork
     pocket1: MagazinePistolSubMachineGunEmpty
+    belt: ClothingBeltWebbingSovietTier1PPSHSL
 
 - type: startingGear
   id: MobSovietGearRangedRifleMosin
@@ -103,7 +104,7 @@
   id: MobSovietGearPPSHSL
   equipment:
     gloves: ClothingHandsPPSHMerc
-    belt: ClothingBeltWebbingSovietTier1PPSHSL
+    belt: ClothingBeltWebbingSovietTier1PPSHSLSergeant
     pocket1: ChemistryBottleSaline
     pocket2: MedkitCombatFilled
     shoes: ClothingShoesBootsUSSPFilled

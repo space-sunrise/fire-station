@@ -90,6 +90,7 @@
       - NavigatorCartridge
       - MessengerCartridge
       - PhotoCartridge
+      - CorporateLawCartridge
     # Sunrise-End
     cartridgeSlot:
       priority: -1
@@ -126,7 +127,7 @@
   - type: Input
     context: "human"
   - type: SentienceTarget # sentient PDA = pAI lite
-    flavorKind: station-event-random-sentience-flavor-mechanical
+    flavorKind: scp-station-event-random-sentience-flavor-mechanical # Fire edit
     weight: 0.001 # 1,000 PDAs = as likely to be picked as 1 regular animal
   - type: BlockMovement
     blockInteraction: false # lets the PDA toggle its own flashlight
@@ -172,6 +173,7 @@
     - NavigatorCartridge
     - MessengerCartridge
     - PhotoCartridge
+    - CorporateLawCartridge
     # Sunrise-End
 
 - type: entity
@@ -191,6 +193,7 @@
       - NavigatorCartridge
       - MessengerCartridge
       - PhotoCartridge
+      - CorporateLawCartridge
     # Sunrise-End
 
 - type: entity
@@ -339,8 +342,6 @@
   # Sunrise-End
   - type: Icon
     state: pda-cook
-  - type: ReplacementAccent # for random sentience event
-    accent: italian
 
 - type: entity
   parent: BasePDA
@@ -375,6 +376,7 @@
       - NavigatorCartridge
       - MessengerCartridge
       - PhotoCartridge
+      - CorporateLawCartridge
 # Sunrise-End
 
 - type: entity
@@ -479,6 +481,9 @@
       whitelist:
         components:
         - Cartridge
+    preinstalled:
+    - CrewManifestCartridge
+    - NewsReaderCartridge
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -567,6 +572,7 @@
     - NavigatorCartridge
     - MessengerCartridge
     - PhotoCartridge
+    - CorporateLawCartridge
     # Sunrise-End
 
 - type: entity
@@ -623,6 +629,7 @@
       - NavigatorCartridge
       - MessengerCartridge
       - PhotoCartridge
+      - CorporateLawCartridge
     # Sunrise-End
 
 - type: entity
@@ -1063,6 +1070,7 @@
     - NavigatorCartridge
     - MessengerCartridge
     - PhotoCartridge
+    - CorporateLawCartridge
     # Sunrise-End
 
 - type: entity
@@ -1153,6 +1161,7 @@
       - NavigatorCartridge
       - MessengerCartridge
       - PhotoCartridge
+      - CorporateLawCartridge
     # Sunrise-End
 
 - type: entity
@@ -1204,6 +1213,7 @@
       - WantedListCartridge
       - MedTekCartridge
       - AstroNavCartridge
+      - NavigatorCartridge # Sunrise-Edit
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener
@@ -1468,6 +1478,7 @@
       - NavigatorCartridge
       - MessengerCartridge
       - PhotoCartridge
+      - CorporateLawCartridge
     # Sunrise-End
 
 - type: entity
@@ -1669,6 +1680,7 @@
     - NavigatorCartridge
     - MessengerCartridge
     - PhotoCartridge
+    - CorporateLawCartridge
     # Sunrise-End
 
 - type: entity
@@ -1705,6 +1717,7 @@
     - NavigatorCartridge
     - MessengerCartridge
     - PhotoCartridge
+    - CorporateLawCartridge
     # Sunrise-End
 
 - type: entity
@@ -1853,6 +1866,23 @@
     state: pda-seniorcourier
 
 - type: entity
+  parent: [ BaseHighlyIllegalContraband, BasePDA ]
+  id: NinjaPDA
+  name: ninja PDA
+  description: You stealthy bastard, you!
+  components:
+  - type: Pda
+    id: NinjaIDCard
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-ninja
+  - type: Icon
+    sprite: Objects/Devices/pda.rsi
+    state: pda-ninja
+
+- type: entity
   parent: [ BaseMajorContraband, SyndiPDA ]
   id: PiratePDA
   name: pirate PDA
@@ -1880,6 +1910,7 @@
     - AstroNavCartridge
     - MessengerCartridge
     - PhotoCartridge
+    - CorporateLawCartridge
   # Sunrise-end
 
 - type: entity

@@ -1,0 +1,56 @@
+- type: entity
+  id: BaseChaosStorageCrate
+  parent: BaseStorageItem
+  name: equipment crate
+  description: A heavy wooden box. Contains equipment for CI operatives.
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Storage/loadout_kits.rsi
+    state: closed
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/toolbox_drop.ogg
+  - type: Storage
+    maxItemSize: Ginormous
+    grid:
+    - 0,0,16,13
+    storageOpenSound: /Audio/Effects/closetopen.ogg
+    storageCloseSound: /Audio/Effects/closetclose.ogg
+    blacklist:
+      components:
+      - Scp
+      tags:
+      - ChaosLoadoutCrate
+  - type: Tag
+    tags:
+    - ChaosLoadoutCrate
+  - type: Item
+    size: Ginormous
+  - type: HeldSpeedModifier
+    walkModifier: 0.4
+    sprintModifier: 0.4
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: open }
+          False: { state: closed }
+  - type: Appearance
+  - type: MultiHandedItem
+
+- type: entity
+  parent: BaseChaosStorageCrate
+  id: ChaosStorageCrateMachineGunMG42
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,8,3
+  - type: StorageFill
+    contents:
+      - id: WeaponMachineGunMG42
+      - id: MagazineMachineGunMG42
+      - id: MagazineMachineGunMG42
+      - id: MagazineMachineGunMG42
+      - id: MagazineMachineGunMG42

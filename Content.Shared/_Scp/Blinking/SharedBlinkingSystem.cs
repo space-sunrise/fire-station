@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._Scp.Blinking.ReducedBlinking;
 using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Scp173;
 using Content.Shared._Scp.Watching;
@@ -12,6 +13,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared._Scp.Blinking;
 
+// TODO: Анхардкод: Перенос значений в компоненты
 // TODO: Избавиться от членения на EyeClosing и Blinking.
 // Они слишком сильно переплетаются, чтобы их так разделять.
 // Вместо этого разделить систему на апдейт + обработку ивентов | API + хелперы + ивенты
@@ -23,7 +25,10 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly INetManager _net = default!;
 
+    private const float ReducedBlinkingToleranceDecayPerSecond = 0.05f;
+
     protected EntityQuery<BlinkableComponent> BlinkableQuery;
+    protected EntityQuery<ActiveReducedBlinkingUserComponent> ActiveReducedBlinkingQuery;
 
     public override void Initialize()
     {
@@ -37,6 +42,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         InitializeEyeClosing();
 
         BlinkableQuery = GetEntityQuery<BlinkableComponent>();
+        ActiveReducedBlinkingQuery = GetEntityQuery<ActiveReducedBlinkingUserComponent>();
     }
 
     #region Event handlers
@@ -110,6 +116,19 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         var query = EntityQueryEnumerator<BlinkableComponent>();
         while (query.MoveNext(out var uid, out var blinkableComponent))
         {
+            if (blinkableComponent.ReducedBlinkingTolerance > 0f)
+            {
+                if (!ActiveReducedBlinkingQuery.HasComp(uid))
+                {
+                    blinkableComponent.ReducedBlinkingTolerance = MathF.Max(
+                        0f,
+                        blinkableComponent.ReducedBlinkingTolerance - ReducedBlinkingToleranceDecayPerSecond * frameTime
+                    );
+
+                    DirtyField(uid, blinkableComponent, nameof(BlinkableComponent.ReducedBlinkingTolerance));
+                }
+            }
+
             var blinkableEntity = (uid, blinkableComponent);
 
             if (TryOpenEyes(blinkableEntity))
@@ -156,7 +175,11 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         if (interval < TimeSpan.Zero)
             interval = TimeSpan.Zero;
 
-        ent.Comp.NextBlink = _timing.CurTime + interval + variance.Value + ent.Comp.AdditionalBlinkingTime;
+        var nextBlinkDelay = interval + variance.Value + ent.Comp.BlinkingIntervalBonus + ent.Comp.AdditionalBlinkingTime;
+        if (nextBlinkDelay < TimeSpan.Zero)
+            nextBlinkDelay = TimeSpan.Zero;
+
+        ent.Comp.NextBlink = _timing.CurTime + nextBlinkDelay;
         ent.Comp.AdditionalBlinkingTime = TimeSpan.Zero;
 
         if (!predicted)
