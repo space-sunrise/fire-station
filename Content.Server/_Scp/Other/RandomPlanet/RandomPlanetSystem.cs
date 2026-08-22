@@ -51,7 +51,7 @@ public sealed class RandomPlanetSystem : EntitySystem
 
         var weather = _random.Pick(data.Weather);
         var weatherPrototype = _prototype.Index(weather);
-        _weather.SetWeather(mapId, weatherPrototype, null);
+        _weather.TrySetWeather(mapId, weatherPrototype, out _, null);
 
         return true;
     }

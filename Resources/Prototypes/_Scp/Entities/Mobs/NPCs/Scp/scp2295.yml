@@ -82,8 +82,6 @@
       Alive:
         reagent: Omnizine
         quantity: 5
-        minDamage: 0
-        maxDamage: 80
       Critical:
         reagent: Inaprovaline
         quantity: 15

@@ -14,7 +14,7 @@
   - type: Scp012
     whitelist:
       components:
-      - HumanoidAppearance
+      - HumanoidProfile
       - Bloodstream
       requireAll: true
     blacklist:

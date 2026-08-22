@@ -108,3 +108,21 @@
     guides:
     - ScpResearch
     - ScpFear
+  - type: HTN
+    constantlyReplan: true
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      VisionRadius: !type:Single
+        5
+      AggroVisionRadius: !type:Single
+        2
+      FollowRange: !type:Single
+        1
+      MeleeRange: !type:Single
+        3
+  - type: NpcFactionMember
+    factions:
+      - SCPs
+  - type: InputMover
+  - type: MobMover

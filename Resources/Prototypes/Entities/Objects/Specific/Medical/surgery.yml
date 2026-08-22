@@ -329,8 +329,10 @@
   components:
   - type: MeleeWeapon
     damage:
-      groups:
-        Brute: 15
+      types:
+        Blunt: 5
+        Slash: 5
+        Piercing: 5
   - type: Sprite
     state: advanced-setter
   - type: Item
@@ -398,8 +400,8 @@
     heldPrefix: improv
   - type: MeleeWeapon
     damage:
-      groups:
-        Brute: 10
+      types:
+        Slash: 10
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
   - type: Tool
@@ -422,8 +424,8 @@
     heldPrefix: electric
   - type: MeleeWeapon
     damage:
-      groups:
-        Brute: 15
+      types:
+        Slash: 15
     soundHit:
       path: /Audio/Items/drill_hit.ogg
   - type: Tool

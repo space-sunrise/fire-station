@@ -10,8 +10,8 @@
 
 - type: entity
   id: ClothingBeltBlueShieldWebbingFilled
-  categories: [ HideSpawnMenu ] # Fire edit
   parent: ClothingBeltBlueShieldWebbing
+  categories: [ HideSpawnMenu ] # Fire edit
   suffix: Filled
   components:
   - type: EntityTableContainerFill

@@ -27,7 +27,7 @@ public sealed class NpcAutoOrderSystem : EntitySystem
         var xformQuery = GetEntityQuery<TransformComponent>();
         var xform = xformQuery.GetComponent(npc);
 
-        var mobs = new HashSet<Entity<HumanoidAppearanceComponent>>();
+        var mobs = new HashSet<Entity<HumanoidProfileComponent>>();
         _lookup.GetEntitiesInRange(xform.Coordinates, 1, mobs);
 
         foreach (var entity in mobs)

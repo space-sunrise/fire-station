@@ -1,0 +1,52 @@
+# Перенесено с Санрайза, т.к. там удалено
+
+- type: entity
+  name: ACP-14
+  parent: BaseWeaponPistolSunrise
+  id: WeaponPistolACP14
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Weapons/Guns/Pistols/acp14/big.rsi
+  - type: Item
+    sprite: _Scp/Objects/Weapons/Guns/Pistols/acp14/tiny.rsi
+    storedOffset: 0,-1
+  - type: Gun
+    minAngle: 3.75
+    maxAngle: 16
+    angleIncrease: 2.75
+    angleDecay: 15
+    fireRate: 4
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_RMC14/Weapons/Guns/Gunshots/gun_DE50.ogg
+    soundEmpty:
+      path: /Audio/_Sunrise/Weapons/Guns/Pistols/vp70_empty.ogg
+  - type: ChamberMagazineAmmoProvider
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazineACP14
+        insertSound: /Audio/_Sunrise/Weapons/Guns/Pistols/glock22/glock22_reload.ogg
+        ejectSound: /Audio/_Sunrise/Weapons/Guns/Pistols/glock22/glock22_unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - MagazineACP14
+          - MagazinePistolDP
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgePistol40SP
+        priority: 1
+        whitelist:
+          tags:
+          - CartridgePistolDP
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot

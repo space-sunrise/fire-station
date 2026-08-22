@@ -256,7 +256,7 @@
   - type: AddComponentsInRadius
     whitelist:
       components:
-      - HumanoidAppearance
+      - HumanoidProfile
     components:
     - type: AnomalyAccent
     - type: TimedRemoveComponents
@@ -378,9 +378,14 @@
       components:
       - MobState
     damage:
-      groups:
-        Brute: -300
-        Burn: -300
+      types:
+        Blunt: -300
+        Slash: -300
+        Piercing: -300
+        Heat: -300
+        Shock: -300
+        Cold: -300
+        Caustic: -300
 
 # Scp 173
 

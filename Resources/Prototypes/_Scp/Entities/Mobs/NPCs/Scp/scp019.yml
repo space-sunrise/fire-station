@@ -10,8 +10,6 @@
   components:
     - type: ToggleableNightVision
       effect: ScpEffectNightVision
-    - type: Body
-      prototype: Animal
     - type: Climbing
     - type: Damageable
       damageContainer: Biological
@@ -85,7 +83,6 @@
       allowedStates:
       - Alive
       - Dead
-      damageCap: 0
       damage:
         types:
           Cellular: 0.02

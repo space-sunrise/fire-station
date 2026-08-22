@@ -12,7 +12,7 @@
   meltingPoint: 0.0
   friction: 0.4
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:EyeDamage
         conditions:
@@ -58,8 +58,6 @@
         - !type:MetabolizerTypeCondition
           type: [ Scp096 ]
           inverted: true
-    Drink:
-      effects:
       - !type:SatiateThirst
         factor: 4
   plantMetabolism:
@@ -110,7 +108,7 @@
   recognizable: false
   physicalDesc: reagent-physical-desc-slimy
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:Vomit
         probability: 0.15
@@ -129,8 +127,6 @@
         - !type:MetabolizerTypeCondition
           type: [ Scp096 ]
           inverted: true
-    Medicine:
-      effects:
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition

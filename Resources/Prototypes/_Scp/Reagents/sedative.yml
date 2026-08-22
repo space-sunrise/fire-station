@@ -6,7 +6,7 @@
   flavor: medicine
   color: "#86caf7"
   metabolisms:
-    Food:
+    Bloodstream:
       effects:
       - !type:SatiateHunger
         factor: 0.5
