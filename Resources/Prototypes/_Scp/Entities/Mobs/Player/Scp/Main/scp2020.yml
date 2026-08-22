@@ -6,6 +6,7 @@
   - BaseScpFriendlySapient
   - MobCombat
   - MobBloodstream
+  - AppearanceScpHands
   components:
   - type: SlowOnDamage
     speedModifierThresholds:
@@ -14,7 +15,7 @@
       180: 0.7
   - type: TTS
     voice: meepo_dota_2
-  - type: Blinkable
+#  - type: Blinkable
   - type: AutoGhostRole
     disconnectDelay: 600
     pollDuration: 900
@@ -62,8 +63,6 @@
   - type: Damageable
     damageModifierSet: SCP-2020
   - type: Body
-    prototype: Human
-    requiredLegs: 2
   - type: Paws
     screamInterval: 3
     thresholdDamage: 5

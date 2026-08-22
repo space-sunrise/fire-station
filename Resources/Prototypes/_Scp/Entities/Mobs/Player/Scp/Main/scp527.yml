@@ -8,6 +8,7 @@
   - MobBloodstream
   - InventoryBase
   - StripableInventoryBase
+  - AppearanceScpHands
   components:
   - type: SlowOnDamage
     speedModifierThresholds:
@@ -17,7 +18,7 @@
   - type: TTS
     voice: ChocolateFabricWonka
   - type: Mood
-  - type: Blinkable
+#  - type: Blinkable
   - type: AutoGhostRole
     disconnectDelay: 600
     pollDuration: 900
@@ -65,8 +66,6 @@
   - type: Hunger
   - type: Cuffable
   - type: Body
-    prototype: Human
-    requiredLegs: 2
   - type: Paws
     screamInterval: 3
     thresholdDamage: 5

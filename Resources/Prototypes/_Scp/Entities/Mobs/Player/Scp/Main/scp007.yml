@@ -8,6 +8,7 @@
   - MobBloodstream
   - InventoryBase
   - StripableInventoryBase
+  - AppearanceScpHands
   components:
   - type: SlowOnDamage
     speedModifierThresholds:
@@ -17,7 +18,7 @@
   - type: TTS
     voice: DeathNoteYagami
   - type: Mood
-  - type: Blinkable
+#  - type: Blinkable
   - type: AutoGhostRole
     disconnectDelay: 600
     pollDuration: 900
@@ -70,8 +71,6 @@
     - DoorBumpOpener
     - Scp007
   - type: Body
-    prototype: Human
-    requiredLegs: 2
   - type: Paws
     screamInterval: 3
     thresholdDamage: 5
