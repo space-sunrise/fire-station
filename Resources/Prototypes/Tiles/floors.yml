@@ -22,6 +22,8 @@
   - FloorPlanetGrass
   - FloorSnow
   - FloorDirt
+  - PlatingRCD
+  - FloorHullReinforced
 
 - type: tile
   id: FloorSteel
@@ -156,7 +158,6 @@
   - 1.0
   baseTurf: ScpPlating # Fire edit
   isSubfloor: false
-  deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepTile
   itemDrop: FloorTileItemSteelMono
@@ -214,6 +215,46 @@
   footstepSounds:
     collection: FootstepTile
   itemDrop: FloorTileItemSteelDiagonalMini
+
+- type: tile
+  parent: BaseStationTile
+  id: FloorSteelSlatsContinuous
+  name: tiles-steel-floor-slats-continuous
+  sprite: /Textures/Tiles/steel_slats_continuous.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  itemDrop: FloorTileItemSteelSlatsContinuous
+  allowRotationMirror: true
+
+- type: tile
+  parent: BaseStationTile
+  id: FloorSteelVerticalSlatsBordered
+  name: tiles-steel-floor-vertical-slats-bordered
+  sprite: /Textures/Tiles/steel_vertical_slats_bordered.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  itemDrop: FloorTileItemSteelVerticalSlatsBordered
+
+- type: tile
+  parent: BaseStationTile
+  id: FloorSteelHorizontalSlatsBordered
+  name: tiles-steel-floor-horizontal-slats-bordered
+  sprite: /Textures/Tiles/steel_horizontal_slats_bordered.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  itemDrop: FloorTileItemSteelHorizontalSlatsBordered
 
 - type: tile
   id: FloorBrassFilled
@@ -312,6 +353,46 @@
   footstepSounds:
     collection: FootstepTile
   itemDrop: FloorTileItemWhiteMini
+
+- type: tile
+  parent: BaseStationTile
+  id: FloorWhiteSlatsContinuous
+  name: tiles-white-floor-slats-continuous
+  sprite: /Textures/Tiles/white_slats_continuous.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  itemDrop: FloorTileItemWhiteSlatsContinuous
+  allowRotationMirror: true
+
+- type: tile
+  parent: BaseStationTile
+  id: FloorWhiteVerticalSlatsBordered
+  name: tiles-white-floor-vertical-slats-bordered
+  sprite: /Textures/Tiles/white_vertical_slats_bordered.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  itemDrop: FloorTileItemWhiteVerticalSlatsBordered
+
+- type: tile
+  parent: BaseStationTile
+  id: FloorWhiteHorizontalSlatsBordered
+  name: tiles-white-floor-horizontal-slats-bordered
+  sprite: /Textures/Tiles/white_horizontal_slats_bordered.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  itemDrop: FloorTileItemWhiteHorizontalSlatsBordered
 
 - type: tile
   id: FloorWhitePavement
@@ -486,6 +567,46 @@
   footstepSounds:
     collection: FootstepTile
   itemDrop: FloorTileItemDarkMini
+
+- type: tile
+  parent: BaseStationTile
+  id: FloorDarkSlatsContinuous
+  name: tiles-dark-floor-slats-continuous
+  sprite: /Textures/Tiles/dark_slats_continuous.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  itemDrop: FloorTileItemDarkSlatsContinuous
+  allowRotationMirror: true
+
+- type: tile
+  parent: BaseStationTile
+  id: FloorDarkVerticalSlatsBordered
+  name: tiles-dark-floor-vertical-slats-bordered
+  sprite: /Textures/Tiles/dark_vertical_slats_bordered.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  itemDrop: FloorTileItemDarkVerticalSlatsBordered
+
+- type: tile
+  parent: BaseStationTile
+  id: FloorDarkHorizontalSlatsBordered
+  name: tiles-dark-floor-horizontal-slats-bordered
+  sprite: /Textures/Tiles/dark_horizontal_slats_bordered.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  itemDrop: FloorTileItemDarkHorizontalSlatsBordered
 
 - type: tile
   id: FloorDarkPavement
@@ -1968,19 +2089,6 @@
   itemDrop: FloorTileItemSteel #probably should not be normally obtainable, but the game shits itself and dies when you try to put null here
 
 - type: tile
-  id: FloorHullReinforced
-  parent: BaseStationTile
-  name: tiles-hull-reinforced
-  sprite: /Textures/Tiles/hull_reinforced.png
-  baseTurf: ScpPlating # Fire edit
-  isSubfloor: false
-  footstepSounds:
-    collection: FootstepHull
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 100000 #/tg/ has this set as "INFINITY." I don't know if that exists here so I've just added an extra 0
-  indestructible: true
-
-- type: tile
   id: FloorReinforcedHardened
   parent: BaseStationTile
   name: tiles-super-reinforced-floor
@@ -2024,8 +2132,8 @@
 
 - type: tile
   id: FloorMowedAstroGrass
+  parent: [ BaseStationTile, FloorGrass ]
   name: tiles-mowed-astro-grass
-  parent: FloorGrass
   sprite: /Textures/_Sunrise/Tiles/mowed_grass.png
   variants: 4
   placementVariants:
@@ -2040,8 +2148,8 @@
 
 - type: tile
   id: FloorJungleAstroGrass
+  parent: [ BaseStationTile, FloorGrassJungle ]
   name: tiles-jungle-astro-grass
-  parent: FloorGrassJungle
   baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Cutting ]
@@ -2081,8 +2189,8 @@
 
 - type: tile
   id: FloorAstroSnow
+  parent: [ BaseStationTile, FloorSnow ]
   name: tiles-astro-snow
-  parent: FloorSnow
   baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -2091,8 +2199,8 @@
 # Asteroid Sand
 - type: tile
   id: FloorAstroAsteroidSand
+  parent: [ BaseStationTile, FloorAsteroidSand ]
   name: tiles-astro-asteroid-sand
-  parent: FloorAsteroidSand
   baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]

@@ -6,6 +6,7 @@
   - MobCombat
   - MobBloodstream
   - StripableInventoryBase
+  - AppearanceScp096
   components:
   - type: AutoGhostRole
     disconnectDelay: 600
@@ -74,6 +75,7 @@
     canBeDisarmed: true
     canTakeStaminaDamage: true
     canStandingState: true
+  - type: Body
   - type: FearSource
     uponSeenState: Fear
   - type: WatchingTarget
@@ -119,6 +121,10 @@
   - type: Hands
     showInHands: false
     disableExplosionRecursion: true
+  - type: ScpHoldable
+    holderHandsRequired: 2
+    holderWalkModifier: 0.25
+    holderSprintModifier: 0.25
   - type: GhostPanelAntagonistMarker
     name: ghost-panel-antagonist-scp-name
     description: ghost-panel-antagonist-scp-description
@@ -144,8 +150,6 @@
   - type: MeleeThrowOnHit
     speed: 2
     distance: 0.25
-  - type: Body
-    prototype: Scp096
   - type: Inventory
     templateId: scp096
   - type: Blindable

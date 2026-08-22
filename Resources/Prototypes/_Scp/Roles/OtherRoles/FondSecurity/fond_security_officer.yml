@@ -63,7 +63,7 @@
   id: FondSecurityOfficerGearAltB
   parent: FondSecurityOfficerGear
   equipment:
-    suitstorage: WeaponShotgunSPAS12
+    suitstorage: WeaponShotgunCombat
     pocket2: ScpRadioHandheldSecurity
   storage:
     back:

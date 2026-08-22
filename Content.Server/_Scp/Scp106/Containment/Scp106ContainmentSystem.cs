@@ -33,7 +33,7 @@ public sealed class Scp106ContainmentSystem : SharedScp106ContainmentSystem
 
     private void OnBoneBreakerCollide(Entity<Scp106BoneBreakerCellComponent> ent, ref StartCollideEvent args)
     {
-        if (!HasComp<HumanoidAppearanceComponent>(args.OtherEntity))
+        if (!HasComp<HumanoidProfileComponent>(args.OtherEntity))
             return;
 
         if (_mobState.IsDead(args.OtherEntity))

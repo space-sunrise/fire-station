@@ -17,6 +17,7 @@
       state: base
       loop: false
   - type: Scp
+    name: SCP-106
     class: Keter
   - type: Scp106
   - type: FearSource
@@ -58,7 +59,7 @@
         shape:
           !type:PhysShapeCircle
           radius: 0.35
-        density: 50
+        density: 1000
         mask:
         - SmallMobMask
         layer:

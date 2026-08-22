@@ -1,17 +1,62 @@
 - type: entity
   parent: Paper
+  id: PaperScpLogo
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: paper_scp
+    - state: paper_scp_words
+      map: [ "enum.PaperVisualLayers.Writing" ]
+      visible: false
+    - state: paper_stamp-generic
+      map: [ "enum.PaperVisualLayers.Stamp" ]
+      sprite: Objects/Misc/bureaucracy.rsi
+      visible: false
+  - type: PaperVisuals
+    headerImagePath: "/Textures/_Scp/Interface/Paper/paper_heading_scp_logo.svg.96dpi.png"
+    backgroundImagePath: "/Textures/_Scp/Interface/Paper/paper_background_scp_documents.svg.96dpi.png"
+    backgroundModulate: "#cccccc"
+    contentImageModulate: "#cccccc"
+    backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
+    contentMargin: 16.0, 16.0, 16.0, 16.0
+
+
+- type: entity
+  parent: [BasePaper, BaseImportantItemContraband]
+  id: UnreadableDocument
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: secret_documents
+  - type: StealTarget
+    stealGroup: ScpInfoPapers
+
+
+- type: entity
+  parent: [UnreadableDocument, PaperScpLogo]
   abstract: true
   id: BaseDocumentInfo
   categories: [ HideSpawnMenu ]
   components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: secret_documents
+    - state: secret_documents
+      map: [ "enum.PaperVisualLayers.Writing" ]
+      visible: false
+    - state: paper_stamp-generic
+      map: [ "enum.PaperVisualLayers.Stamp" ]
+      sprite: Objects/Misc/bureaucracy.rsi
+      visible: false
   - type: Paper
-    content: info-paper-scp-035-content
+    editingDisabled: True
     stampState: paper_stamp-hos
     stampedBy:
     - stampedColor: '#cc0000'
       stampedName: stamp-component-stamped-name-regional-command
-  - type: StealTarget
-    stealGroup: ScpInfoPapers
 
 - type: entity
   name: paper

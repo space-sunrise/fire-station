@@ -326,6 +326,7 @@
   description: A sign indicating the xenoarchaeology lab.
   components:
   - type: Sprite
+    sprite: _Scp/Structures/Wallmounts/signs.rsi # Fire edit
     state: xenoarch
 
 - type: entity
@@ -335,6 +336,7 @@
   description: A sign indicating the anomalous research lab.
   components:
   - type: Sprite
+    sprite: _Scp/Structures/Wallmounts/signs.rsi # Fire edit
     state: anomaly
 
 - type: entity
@@ -760,6 +762,7 @@
   description: A sign indicating the research and development lab.
   components:
   - type: Sprite
+    sprite: _Scp/Structures/Wallmounts/signs.rsi # Fire edit
     state: rnd
 
 - type: entity
@@ -769,6 +772,7 @@
   description: A sign indicating the robotics lab.
   components:
   - type: Sprite
+    sprite: _Scp/Structures/Wallmounts/signs.rsi # Fire edit
     state: robo
 
 - type: entity
@@ -787,6 +791,7 @@
   description: A sign indicating the science area.
   components:
   - type: Sprite
+    sprite: _Scp/Structures/Wallmounts/signs.rsi # Fire edit
     state: sci
 
 - type: entity
@@ -796,6 +801,7 @@
   description: Ever heard of Big Data? This is it, chump. The biggest.
   components:
   - type: Sprite
+    sprite: _Scp/Structures/Wallmounts/signs.rsi # Fire edit
     state: data
 
 - type: entity
@@ -813,6 +819,7 @@
   suffix: science
   components:
   - type: Sprite
+    sprite: _Scp/Structures/Wallmounts/signs.rsi # Fire edit
     state: cans_sci
 
 - type: entity

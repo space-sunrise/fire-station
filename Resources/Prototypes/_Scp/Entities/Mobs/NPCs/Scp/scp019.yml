@@ -8,8 +8,8 @@
   name: ???
   abstract: true
   components:
-    - type: Body
-      prototype: Animal
+    - type: ToggleableNightVision
+      effect: ScpEffectNightVision
     - type: Climbing
     - type: Damageable
       damageContainer: Biological
@@ -55,6 +55,7 @@
           amount: 1
     - type: CombatMode
     - type: MeleeWeapon
+      autoAttack: true # ими очень трудно попадать в цель
       hidden: true
       soundHit:
         path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
@@ -64,6 +65,7 @@
         types:
           Slash: 3
           Structural: 25
+      attackRate: 1.5
     - type: ReplacementAccent
       accent: genericAggressive
     - type: Scp
@@ -81,7 +83,6 @@
       allowedStates:
       - Alive
       - Dead
-      damageCap: 0
       damage:
         types:
           Cellular: 0.02

@@ -1,4 +1,5 @@
 ﻿using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mind;
@@ -24,6 +25,7 @@ namespace Content.Shared._Scp.Damage.ExaminableDamage;
 // TODO: Написать больше описаний для различных объектов, вроде SCP-049, SCP-049-2
 public abstract class SharedScpExaminableDamageSystem : EntitySystem
 {
+    [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
     [Dependency] private readonly SharedJobSystem _job = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
@@ -201,7 +203,7 @@ public abstract class SharedScpExaminableDamageSystem : EntitySystem
         if (!Resolve(ent, ref ent.Comp))
             return 0f;
 
-        return (ent.Comp.TotalDamage / damageThreshold).Float();
+        return (_damageable.GetTotalDamage(ent) / damageThreshold).Float();
     }
 
     /// <summary>

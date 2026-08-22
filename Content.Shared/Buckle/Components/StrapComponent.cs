@@ -33,11 +33,6 @@ public sealed partial class StrapComponent : Component
     public Angle MaxAngle = Angle.FromDegrees(80);
     // Fire edit end
 
-    // Sunrise-Start
-    [DataField, AutoNetworkedField]
-    public Dictionary<EntityUid, Vector2> CurrentOffsets { get; set; } = new();
-    // Sunrise-End
-
     /// <summary>
     /// Entities that this strap accepts and can buckle
     /// If null it accepts any entity
@@ -61,13 +56,7 @@ public sealed partial class StrapComponent : Component
     /// The buckled entity will be offset by this amount from the center of the strap object.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public List<Vector2> BuckleOffsets { get; set; } = []; // Sunrise-Edit
-
-    /// <summary>
-    /// The singular buckled entity offset, for backward compatibility with vanilla prototypes.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public Vector2 BuckleOffset { get; set; } = Vector2.Zero; // Sunrise-Edit
+    public Vector2 BuckleOffset = Vector2.Zero;
 
     /// <summary>
     /// The angle to rotate the player by when they get strapped

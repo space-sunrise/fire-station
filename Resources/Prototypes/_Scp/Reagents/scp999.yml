@@ -7,15 +7,22 @@
   flavor: jelly
   color: "#d38323"
   metabolisms:
-    Food:
+    Bloodstream:
       effects:
       - !type:HealthChange # TODO: Моментальный эффект
         damage:
-          groups:
-            Burn: -5
-            Brute: -5
-            Airloss: -5
-            Toxin: -5
+          types:
+            Blunt: -5
+            Slash: -5
+            Piercing: -5
+            Heat: -5
+            Shock: -5
+            Cold: -5
+            Caustic: -5
+            Asphyxiation: -5
+            Bloodloss: -5
+            Poison: -5
+            Radiation: -5
 
 - type: reagent
   id: JellyPizzaReagent
@@ -26,12 +33,19 @@
   flavor: jelly
   color: "#d38323"
   metabolisms:
-    Food:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:
-          groups:
-            Burn: -10
-            Brute: -10
-            Airloss: -10
-            Toxin: -10
+          types:
+            Blunt: -10
+            Slash: -10
+            Piercing: -10
+            Heat: -10
+            Shock: -10
+            Cold: -10
+            Caustic: -10
+            Asphyxiation: -10
+            Bloodloss: -10
+            Poison: -10
+            Radiation: -10

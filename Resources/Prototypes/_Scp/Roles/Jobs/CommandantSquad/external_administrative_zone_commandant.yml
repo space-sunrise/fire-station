@@ -28,6 +28,13 @@
       class: C
     - type: AccessLevel
       level: Three
+    - type: ScpHolder
+      holdableWhitelist:
+        components:
+        - HumanoidProfile
+      holdableBlacklist:
+        components:
+        - Scp
     - type: ScpAnnounceOnSpawn
       text: squad-commander-announce-on-spawn
       channels:
@@ -79,7 +86,7 @@
     gloves: ClothingHandsGlovesColorBlackAlt
     shoes: ClothingShoesBootsSecurityGuard
     back: ClothingBackpackSecurity
-    suitstorage: WeaponSubMachineGunMP7
+    suitstorage: WeaponSubMachineGunMP5
     id: KeyCardLightContainmentZoneSecurityCommandant
     ears: ClothingHeadsetAltExternalAdministrativeZoneSecurityService
     belt: ScpClothingBeltSecurityWebbingFilled

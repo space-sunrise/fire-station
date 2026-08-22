@@ -19,6 +19,7 @@
       Acidic: [ Touch ]
   - type: XenoArtifact
     triggerWeights: ScpDefaultTriggers
+  - type: MobState
 
 - type: entity
   id: BaseScpArtifactMajor

@@ -17,9 +17,9 @@ public sealed partial class AirlockManEaterComponent : Component
     public readonly TimeSpan StunTime = TimeSpan.FromSeconds(5f);
 
     [ViewVariables]
-    public readonly DamageSpecifier CrushDamage = new ()
+    public readonly DamageSpecifier CrushDamage = new()
     {
-        DamageDict = new Dictionary<string, FixedPoint2>
+        DamageDict = new()
         {
             { "Blunt", 30f },
         },

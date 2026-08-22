@@ -127,7 +127,7 @@
   - type: Input
     context: "human"
   - type: SentienceTarget # sentient PDA = pAI lite
-    flavorKind: station-event-random-sentience-flavor-mechanical
+    flavorKind: scp-station-event-random-sentience-flavor-mechanical # Fire edit
     weight: 0.001 # 1,000 PDAs = as likely to be picked as 1 regular animal
   - type: BlockMovement
     blockInteraction: false # lets the PDA toggle its own flashlight
@@ -342,8 +342,6 @@
   # Sunrise-End
   - type: Icon
     state: pda-cook
-  - type: ReplacementAccent # for random sentience event
-    accent: italian
 
 - type: entity
   parent: BasePDA
@@ -483,6 +481,9 @@
       whitelist:
         components:
         - Cartridge
+    preinstalled:
+    - CrewManifestCartridge
+    - NewsReaderCartridge
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1212,6 +1213,7 @@
       - WantedListCartridge
       - MedTekCartridge
       - AstroNavCartridge
+      - NavigatorCartridge # Sunrise-Edit
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener

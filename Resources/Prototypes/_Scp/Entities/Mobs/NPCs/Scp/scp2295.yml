@@ -82,8 +82,6 @@
       Alive:
         reagent: Omnizine
         quantity: 5
-        minDamage: 0
-        maxDamage: 80
       Critical:
         reagent: Inaprovaline
         quantity: 15
@@ -107,21 +105,22 @@
     canStandingState: true
   - type: ActionGrant
     actions:
-    - Scp2295Brutepack
-    - Scp2295RegenerativeMesh
+    - ActionScp2295Fiber
     - ActionOpenStorageImplant
   - type: RotationVisuals
     defaultRotation: 90
     horizontalRotation: 90
   - type: StandingState
   - type: Storage
+    clickInsert: false
+    openOnActivate: false
+    showVerb: false
     whitelist:
       components:
       - Healing
       - SurgeryTool
       tags:
       - PillCanister
-    clickInsert: false
     grid:
     - 0,0,1,3
     maxItemSize: Large
@@ -135,3 +134,9 @@
     interfaces:
       enum.StorageUiKey.Key:
         type: StorageBoundUserInterface
+  - type: Tag
+    tags:
+    - FootstepSound
+    - CannotSuicide
+    - DoorBumpOpener
+    - Scp2295

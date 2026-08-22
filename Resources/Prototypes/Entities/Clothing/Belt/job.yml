@@ -43,6 +43,7 @@
       - TrayScanner
       - GasAnalyzer
       - HandLabeler
+      - LightReplacer # Sunrise-Add
   - type: ItemMapper
     sprite: &BeltOverlay Clothing/Belt/belt_overlay.rsi
     mapLayers:
@@ -118,9 +119,9 @@
   description: A belt used to hold most janitorial supplies.
   components:
   - type: Sprite
-    sprite: Clothing/Belt/janitor.rsi
+    sprite: _Scp/Clothing/Belts/janitor.rsi # Fire edit
   - type: Clothing
-    sprite: Clothing/Belt/janitor.rsi
+    sprite: _Scp/Clothing/Belts/janitor.rsi # Fire edit
   - type: Storage
     maxItemSize: Large
     whitelist:

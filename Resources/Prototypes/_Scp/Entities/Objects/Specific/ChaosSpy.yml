@@ -1,0 +1,42 @@
+- type: entity
+  id: ChaosSpyHypoPenPoision
+  parent: Pen
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      hypospray:
+        maxVol: 10
+        reagents:
+        - ReagentId: Lexorin
+          Quantity: 10
+  - type: ExaminableSolution
+    solution: hypospray
+    heldOnly: true
+    exactVolume: true
+  - type: Injector
+    solutionName: hypospray
+    activeModeProtoId: HyposprayInjectMode
+    allowedModes:
+    - HyposprayInjectMode
+  - type: UseDelay
+    delay: 0.5
+  - type: StaticPrice
+    price: 75
+  - type: EmitSoundOnUse
+    handle: false
+
+- type: entity
+  id: ChaosSpyHypoPenNocturine
+  parent: ChaosSpyHypoPenPoision
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      hypospray:
+        maxVol: 25
+        reagents:
+        - ReagentId: Nocturine
+          Quantity: 25
+  - type: UseDelay
+    delay: 0.25

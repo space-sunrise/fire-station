@@ -14,6 +14,91 @@
   - Security
 
 - type: technology
+  id: SunriseHybridEnergyWeaponry
+  name: research-technology-hybrid-energy-weaponry
+  icon:
+    sprite: _Starlight/Objects/Weapons/Guns/Battery/mini.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - WeaponEnergyGunPistol
+  - WeaponMiniEnergyGun
+  technologyPrerequisites:
+  - NonlethalAmmunition
+  - WeaponizedLaserManipulation
+  radioChannels:
+  - Security
+
+- type: technology
+  id: SunriseFullMetalJacketAmmunition
+  name: research-technology-full-metal-jacket-ammunition
+  icon:
+    sprite: Objects/Weapons/Guns/Ammunition/Magazine/Rifle/rifle_mag.rsi
+    state: base
+  discipline: Arsenal
+  tier: 2
+  cost: 7500
+  recipeUnlocks:
+  - MagazineBoxLightRifleFMJ
+  - MagazineBoxMagnumFMJ
+  - MagazineBoxPistolFMJ
+  - MagazineBoxPistol40FMJ
+  - MagazineBoxRifleFMJ
+  - MagazineBoxHeavyRifleFMJ
+  - BoxShotgunFlechette
+  - MagazineLightRifleBeltBoxFMJ
+  - MagazineLightRifleFMJ
+  - SpeedLoaderMagnumFMJ
+  - SpeedLoaderShotgunFlechette
+  - MagazinePistolFMJ
+  - MagazinePistol40FMJ
+  - MagazinePistolSubMachineGunFMJ
+  - MagazinePistolSubMachineGunTopMounted
+  - MagazineRifleFMJ
+  - MagazineRifleHeavyFMJ
+  technologyPrerequisites:
+  - NonlethalAmmunition
+  radioChannels:
+  - Security
+
+- type: technology
+  id: SunriseBatteryEnergyWeaponry
+  name: research-technology-battery-energy-weaponry
+  icon:
+    sprite: Objects/Weapons/Guns/Battery/svalinn.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 2
+  cost: 7500
+  recipeUnlocks:
+  - WeaponLaserSvalinn
+  - SunriseWeaponLaserCarbineBattery
+  - MagazineBatteryLr30
+  technologyPrerequisites:
+  - WeaponizedLaserManipulation
+  radioChannels:
+  - Security
+
+- type: technology
+  id: SunriseAdvancedBatteryEnergyWeaponry
+  name: research-technology-advanced-battery-energy-weaponry
+  icon:
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/smg_laser.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 3
+  cost: 12500
+  recipeUnlocks:
+  - WeaponLaserLNT620
+  - MagazineBatteryLr60
+  technologyPrerequisites:
+  - SunriseBatteryEnergyWeaponry
+  radioChannels:
+  - Security
+
+- type: technology
   id: ArmorPenetrationMunitions
   name: research-technology-armor-penetration
   icon:
@@ -24,7 +109,7 @@
   cost: 12000
   recipeUnlocks:
   - SpeedLoaderMagnumAP
-  - MagazineMagnumAP
+  #- MagazineMagnumAP
   - MagazinePistolAP
   - MagazinePistol40AP
   - MagazineRifleAP
@@ -40,8 +125,6 @@
   - MagazinePistolHighCapacityAP
   - MagazineBoxHeavyRifleAP
   - MagazineRifleHeavyAP
-  - BoxShotgunFlechette
-  - SpeedLoaderShotgunFlechette
   radioChannels:
   - Security
 
@@ -144,9 +227,6 @@
 #- type: technology
 #  id: ExtendedAmunitions
 #  name: research-technology-extended-amunitions
-#  icon:
-#    sprite: _Sunrise/Objects/Weapons/Guns/Ammunition/Magazines/famas.rsi
-#    state: base
 #  discipline: Arsenal
 #  tier: 2
 #  cost: 12500
@@ -195,6 +275,7 @@
   recipeUnlocks:
   - VestSecUpgradeBulletHeavy
   - VestSecUpgradeWeb
+  - LecterMk3Upgrade
   technologyPrerequisites:
   - CombatEquipment
   radioChannels:

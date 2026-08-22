@@ -14,6 +14,9 @@
     size: Normal
   - type: Soil
     spawnPrototype: Scp124Soil
+  - type: Tag
+    tags:
+    - Scp124
 
 - type: entity
   id: Scp124Soil
@@ -44,3 +47,6 @@
   - type: GuideHelp
     guides:
     - ScpResearch
+  - type: Tag
+    tags:
+    - Scp124
