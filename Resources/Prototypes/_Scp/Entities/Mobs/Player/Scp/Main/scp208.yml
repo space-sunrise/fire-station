@@ -103,9 +103,9 @@
   - type: Scp208
     damage:
       types:
-        Blunt: -4
-        Slash: -4
-        Piercing: -4
+        Blunt: -3.5
+        Slash: -3.5
+        Piercing: -3.5
         Cellular: -4
         Cold: -2
         Radiation: -2
