@@ -356,14 +356,10 @@ public sealed partial class AdminVerbSystem
             Act = () =>
             {
                 _antag.ForceMakeAntag<ChaosSleepSpyRuleComponent>(targetPlayer, DefaultScpSleepChaosSpyRule);
-                if (!TryComp<ActorComponent>(args.User, out var actor))
-                    return;
-
                 if (!_mindSystem.TryGetMind(args.Target, out var targetMindId, out _))
                     return;
 
-                TryComp<MindComponent>(targetMindId, out var targetMind);
-                if (targetMind == null)
+                if (!TryComp<MindComponent>(targetMindId, out var targetMind))
                     return;
 
                 var targetName = targetMind.CharacterName ?? Name(args.Target);
