@@ -48,7 +48,7 @@
         emote: Scream
         probability: 0.5
   metabolisms:
-    Poison:
+    Bloodstream:
       metabolismRate : 3.00
       effects:
       - !type:HealthChange
@@ -72,7 +72,7 @@
   physicalDesc: reagent-physical-desc-bubbling
   color: "#4B0082"
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:

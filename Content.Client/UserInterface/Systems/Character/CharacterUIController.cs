@@ -44,7 +44,6 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
     [Dependency] private readonly ILocalizationManager _loc = default!;
     [UISystemDependency] private readonly EmployeeClassSystem _employeeClass = default!;
     [UISystemDependency] private readonly AccessLevelSystem _accessLevel = default!;
-    [UISystemDependency] private readonly MindSystem _mind = default!;
     [UISystemDependency] private readonly JobSystem _job = default!;
     // Fire added end
 

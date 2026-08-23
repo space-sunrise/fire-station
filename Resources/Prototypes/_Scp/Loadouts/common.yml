@@ -31,19 +31,6 @@
   - ScpLoadoutOffsetCane
   - ScpLoadoutOffsetCaneWood
   - ScpLoadoutCane
-  - ScpLoadoutTowelColorWhite
-  - ScpLoadoutTowelColorGray
-  - ScpLoadoutTowelColorBlack
-  - ScpLoadoutTowelColorRed
-  - ScpLoadoutTowelColorOrange
-  - ScpLoadoutTowelColorLightBrown
-  - ScpLoadoutTowelColorYellow
-  - ScpLoadoutTowelColorDarkGreen
-  - ScpLoadoutTowelColorLightBlue
-  - ScpLoadoutTowelColorDarkBlue
-  - ScpLoadoutTowelColorPurple
-  - ScpLoadoutTowelColorSilver
-  - ScpLoadoutTowelColorGold
 
 - type: loadoutGroup
   id: ScpLoadoutGroupSocks

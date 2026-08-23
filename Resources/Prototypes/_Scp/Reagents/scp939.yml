@@ -7,7 +7,7 @@
   flavor: funny
   color: "#e5ead0"
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:Emote
         conditions:

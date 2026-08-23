@@ -89,6 +89,7 @@
 
 - type: entity
   name: AKMS
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: [BaseWeaponRifle, BaseSecurityContraband]
   id: WeaponRifleAk
   description: A somewhat battered combat rifle of a design originating from old Earth. Favored by criminals, militias, and terrorists due to its famed reliability and easy-to-manufacture design. Feeds from .30 rifle magazines.
@@ -134,6 +135,11 @@
     steps: 1
     zeroVisible: true
   - type: Appearance
+  # Fire edit start
+  - type: Tag
+    tags:
+    - LockerGun6x3
+  # Fire edit end
 
 - type: entity
   name: M90 GL
@@ -277,17 +283,12 @@
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/estocshot.ogg
-    minAngle: 30
-    maxAngle: 43
     shotsPerBurst: 3
     selectedMode: Burst
     availableModes:
     - Burst
     - SemiAuto
     burstFireRate: 14
-  - type: GunWieldBonus
-    minAngle: -28
-    maxAngle: -25
   - type: ItemSlots
     slots:
       gun_magazine:
@@ -307,13 +308,13 @@
         whitelist:
           tags:
           - CartridgeRifle
-  - type: SpeedModifiedOnWield
-    walkModifier: 0.75
-    sprintModifier: 0.75
   - type: CursorOffsetRequiresWield
   - type: EyeCursorOffset
     maxOffset: 7 # Sunrise-Edit
     pvsIncrease: 0.7 # Sunrise-Edit
+  - type: SpeedModifiedOnWield
+    walkModifier: 0.9
+    sprintModifier: 0.9
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot

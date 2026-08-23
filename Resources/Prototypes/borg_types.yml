@@ -17,6 +17,7 @@
     - BorgModuleScience #until sciborgs are added
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleTool
   - BorgModuleInflatable
   - BorgModuleArtifact
@@ -65,6 +66,7 @@
 
   defaultModules:
   - BorgModuleStandart
+  - BorgModulePrying
   - BorgModuleAdvancedTool
   - BorgModuleCable
   - BorgModuleConstruction
@@ -125,6 +127,8 @@
 
   defaultModules:
   - BorgModuleStandart
+  - BorgModulePrying
+  - BorgModuleTool
   - BorgModuleMining
   - BorgModuleTraversal
   - BorgModuleAppraisal
@@ -189,6 +193,7 @@
 
   defaultModules:
   - BorgModuleStandart
+  - BorgModulePrying
   - BorgModuleCleaning
   - BorgModuleCustodial
 
@@ -201,7 +206,7 @@
     collection: FootstepJanitorBorg
     params:
       volume: -5
-  # Sunrise-Start
+  # Sunrise-End
 
   # Visual
   inventoryTemplateId: borgShort
@@ -246,6 +251,7 @@
     - BorgModuleMedical
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleChemical
   - BorgModuleTopicals
   - BorgModuleRescue
@@ -318,6 +324,7 @@
   # Sunrise-Start
   defaultModules:
   - BorgModuleStandart
+  - BorgModulePrying
   - BorgModuleMusique
   - BorgModulePaperwork
   - BorgModuleBartender
