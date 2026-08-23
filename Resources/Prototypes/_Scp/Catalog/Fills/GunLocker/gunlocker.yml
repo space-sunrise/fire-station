@@ -223,8 +223,8 @@
 - type: entity
   id: GunLockerFilledAR18M
   parent: GunLocker5x3
-  name: gun safe AR18 M
-  suffix: Armory, AR18 M
+  name: gun safe AR-18 M
+  suffix: Armory, AR-18 M
   components:
   - type: StorageFill
     contents:
