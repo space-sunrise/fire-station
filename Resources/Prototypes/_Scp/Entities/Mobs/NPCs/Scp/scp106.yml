@@ -328,7 +328,6 @@
     emotes:
     - Scream
     - Pain
-    cooldownVariations: 10
     mode: Random
   - type: Loadout
     prototypes:
@@ -339,6 +338,58 @@
     - AnomarchologyResearcherGear
     - ServicePersonnelGear
     - GeneralTechnicalSpecialistGear
+
+- type: entity
+  parent: Scp106MonsterFakeHuman
+  id: Scp106MonsterFakeCorpse
+  components:
+  - type: EmitEmotesPeriodically
+    emotes:
+    - SevereCough
+    cooldown: 5
+  - type: RotationVisuals
+    verticalRotation: 90
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      25: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 0
+    baseSprintSpeed: 0
+  - type: HTN
+    constantlyReplan: true
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      VisionRadius: !type:Single
+        3
+      AggroVisionRadius: !type:Single
+        3
+      FollowRange: !type:Single
+        0
+      MeleeRange: !type:Single
+        2
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    angle: 0
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Slash: 10
+    attackRate: 1.5
+  - type: MeleeThrowOnHit
+    speed: 5
+    distance: -1
+    stunTime: 0.1
+    activateOnThrown: true
+  - type: UseDelay
+    delay: 5
+  - type: UseDelayOnMeleeHit
+
 
 - type: entity
   parent: BaseMobScp106Monster
