@@ -219,3 +219,14 @@
     contents:
       - id: WeaponRifleAR18
         amount: 4
+
+- type: entity
+  id: GunLockerFilledAR18M
+  parent: GunLocker5x3
+  name: gun safe AR18 M
+  suffix: Armory, AR18 M
+  components:
+  - type: StorageFill
+    contents:
+      - id: WeaponRifleAR18M
+        amount: 4
