@@ -65,7 +65,7 @@ public sealed partial class Scp106System
 
         var target = args.Args.Target.Value;
 
-        if (!HasComp<HumanoidAppearanceComponent>(target))
+        if (!HasComp<HumanoidProfileComponent>(target))
             return;
 
         if (!_mobState.IsDead(target))

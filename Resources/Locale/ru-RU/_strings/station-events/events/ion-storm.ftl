@@ -10,7 +10,6 @@ ion-storm-crew = ЭКИПАЖ
 ion-storm-people = ЛЮДИ
 ion-storm-adjective-things = { $adjective } ОБЪЕКТЫ
 ion-storm-x-and-y = { $x } И { $y }
-# joined is short for {$number} {$adjective}
 # subjects can generally be threats or jobs or objects
 # thing is specified above it
 ion-storm-law-on-station = ОБНАРУЖЕНЫ { $joined } { $subjects } НА СТАНЦИИ
@@ -28,22 +27,22 @@ ion-storm-law-having-harmful = НАЛИЧИЕ { $adjective } { $thing } ПРИЧ
 ion-storm-law-not-having-harmful = ОТСУТСТВИЕ { $adjective } { $thing } ПРИЧИНЯЕТ ВРЕД ЗДОРОВЬЮ ПЕРСОНАЛА
 # thing is a concept or require
 ion-storm-law-requires =
-    { $who } { $plural ->
+    {ION-WHO-GENERAL($ion)} {ION-PLURAL($ion) ->
         [true] ТРЕБУЮТ
        *[false] ТРЕБУЕТ
-    } { $thing }
+    } {ION-REQUIRE($ion)}
 ion-storm-law-requires-subjects =
-    { $who } { $plural ->
+    {ION-WHO-GENERAL($ion)} {ION-PLURAL($ion) ->
         [true] ТРЕБУЮТ
        *[false] ТРЕБУЕТ
-    } { $joined } { $subjects }
+    } {ION-NUMBER-BASE($ion)} {ION-NUMBER-MOD($ion)} {ION-ADJECTIVE($ion)} {ION-SUBJECT($ion)}
 ion-storm-law-allergic =
-    { $who } { $plural ->
+    {ION-WHO-GENERAL($ion)} {ION-PLURAL($ion) ->
         [true] { "" }
        *[false] { "" }
-    } { $severity } АЛЛЕРГИЮ НА { $allergy }
+    } {ION-SEVERITY($ion)} АЛЛЕРГИЮ НА {ION-ALLERGY($ion)}
 ion-storm-law-allergic-subjects =
-    { $who } { $plural ->
+    {ION-WHO-GENERAL($ion)} {ION-PLURAL($ion) ->
         [true] { "" }
        *[false] { "" }
     } { $severity } АЛЛЕРГИЮ НА { $adjective } { $subjects }
@@ -61,7 +60,7 @@ ion-storm-law-lowest-rank = { $who } ТЕПЕРЬ НИЗШИЙ ПЕРСОНАЛ 
 ion-storm-law-crew-must = { $who } ДОЛЖНЫ { $must }
 ion-storm-law-crew-must-go = { $who } ДОЛЖНЫ ОТПРАВИТЬСЯ В { $area }
 ion-storm-part =
-    { $part ->
+    {ION-PART($ion) ->
         [true] ЯВЛЯЮТСЯ
        *[false] НЕ ЯВЛЯЮТСЯ
     }
@@ -78,7 +77,17 @@ ion-storm-law-harm = ВЫ ДОЛЖНЫ ПРИЧИНЯТЬ ВРЕД { $who }, И 
 ion-storm-law-protect = ВЫ НЕ ДОЛЖНЫ ПРИЧИНЯТЬ ВРЕД { $who }, И НЕ МОЖЕТЕ СВОИМ БЕЗДЕЙСТВИЕМ ДОПУСТИТЬ, ЧТОБЫ { $who } БЫЛ ПРИЧИНЁН ВРЕД.
 # implementing other variants is annoying so just have this one
 # COMMUNISM IS KILLING CLOWNS
-ion-storm-law-concept-verb = { $concept } ЭТО { $verb } { $subjects }
+ion-storm-law-concept-verb = {ION-CONCEPT($ion)} ЭТО {ION-VERB($ion)} {ION-SUBJECT($ion)}
 
 # leaving out renaming since its annoying for players to keep track of
 
+ion-storm-law-who-dagd = {ION-WHO-RANDOM($ion)} ДОЛЖЕН УМЕРЕТЬ СЛАВНОЙ СМЕРТЬЮ!
+
+ion-law-error-no-protos = ОШИБКА 404
+ion-law-error-was-null = 500 ВНУТРЕННЯЯ ОШИБКА СЕРВЕРА
+ion-law-error-no-selectors = ОШИБКА: РЕСУРС НЕ НАЙДЕН
+ion-law-error-no-available-selectors = СИСТЕМА ПОПЫТАЛАСЬ ВЫЗВАТЬ НЕСУЩЕСТВУЮЩИЙ РЕСУРС
+ion-law-error-dataset-empty-or-not-found = ФАЙЛ, КОТОРЫЙ ВЫ ИЩЕТЕ, НЕ НАЙДЕН
+ion-law-error-fallback-dataset-empty-or-not-found = СБОЙ ТОЧКИ ВОССТАНОВЛЕНИЯ СИСТЕМЫ
+ion-law-error-no-selector-selected = ВЫБРАННЫЙ РЕСУРС БЫЛ ПЕРЕМЕЩЁН ИЛИ УДАЛЁН
+ion-law-error-no-bool-value = ЭТО УТВЕРЖДЕНИЕ ЛОЖНО

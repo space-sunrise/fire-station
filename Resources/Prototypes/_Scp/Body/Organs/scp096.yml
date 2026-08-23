@@ -4,16 +4,12 @@
   components:
   - type: Metabolizer
     metabolizerTypes: [ Scp096 ]
-    groups:
-    - id: Gas
-      rateModifier: 100.0
 
 - type: entity
   id: OrganScp096Heart
   parent: OrganHumanHeart
   components:
   - type: Metabolizer
-    groups: null
     metabolizerTypes: [ Scp096 ]
 
 - type: entity
@@ -22,7 +18,6 @@
   components:
   - type: Metabolizer
     metabolizerTypes: [ Scp096 ]
-    groups: null
 
 - type: entity
   id: OrganScp096Liver
@@ -30,7 +25,6 @@
   components:
   - type: Metabolizer
     metabolizerTypes: [ Scp096 ]
-    groups: null
 
 - type: entity
   id: OrganScp096Kidneys

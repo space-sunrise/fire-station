@@ -9,7 +9,6 @@ using Content.Server.Mind;
 using Content.Server.Store.Systems;
 using Content.Server.Stunnable;
 using Content.Shared._Scp.Fear;
-using Content.Shared._Scp.Other.BunkerMarker;
 using Content.Shared._Scp.Scp106;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Scp106.Systems;
@@ -19,14 +18,11 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
-using Content.Shared.Physics;
 using Content.Shared.SSDIndicator;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
-using Robust.Shared.Physics;
-using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -73,7 +69,7 @@ public sealed partial class Scp106System : SharedScp106System
         SubscribeLocalEvent((Entity<Scp106BackRoomMapComponent> _, ref AttemptGatewayOpenEvent args) => args.Cancelled = true);
 
         SubscribeLocalEvent<Scp106Component, Scp106TeleportationDelayActionEvent>(OnTeleportationDelay);
-        SubscribeLocalEvent<HumanoidAppearanceComponent, FearCalmDownAttemptEvent>(OnFearCalmDownAttempt);
+        SubscribeLocalEvent<HumanoidProfileComponent, FearCalmDownAttemptEvent>(OnFearCalmDownAttempt);
 
         InitializeAbilities();
         InitializeStore();
@@ -94,7 +90,7 @@ public sealed partial class Scp106System : SharedScp106System
         _defaultOnBackroomsStunTime = ent.Comp.TeleportationDuration;
     }
 
-    private void OnFearCalmDownAttempt(Entity<HumanoidAppearanceComponent> ent, ref FearCalmDownAttemptEvent args)
+    private void OnFearCalmDownAttempt(Entity<HumanoidProfileComponent> ent, ref FearCalmDownAttemptEvent args)
     {
         if (IsInDimension(ent))
             args.Cancel();
@@ -138,7 +134,7 @@ public sealed partial class Scp106System : SharedScp106System
         }
 
         // Телепортировать только людей
-        if (!HasComp<HumanoidAppearanceComponent>(target))
+        if (!HasComp<HumanoidProfileComponent>(target))
             return;
 
         // Не телепортировать трупы
@@ -240,7 +236,7 @@ public sealed partial class Scp106System : SharedScp106System
     {
         var humansInBackrooms = 0;
 
-        var queryHumans = AllEntityQuery<HumanoidAppearanceComponent, MobStateComponent>();
+        var queryHumans = AllEntityQuery<HumanoidProfileComponent, MobStateComponent>();
 
         while (queryHumans.MoveNext(out var humanUid, out _, out var mobStateComponent))
         {

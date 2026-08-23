@@ -13,6 +13,7 @@
   - MobAtmosStandard
   - MobFlammable
   - InventoryBase
+  - AppearanceScpPredator
   components:
   - type: AutoGhostRole
     disconnectDelay: 600
@@ -23,6 +24,10 @@
   - type: Scp082
   - type: ScpHoldable
     minimumHolderCount: 3
+  - type: Stomach
+    specialDigestible:
+      tags:
+      - Meat
   - type: Hands
     showInHands: false
   - type: Appearance
@@ -42,8 +47,6 @@
       Dead:
         Base: 082-dead
         BaseUnshaded: tuxedo-dead # временно, что бы не был голым
-  - type: Body
-    prototype: ScpPredator
   - type: Inventory
     templateId: scp082
   - type: FieldOfView

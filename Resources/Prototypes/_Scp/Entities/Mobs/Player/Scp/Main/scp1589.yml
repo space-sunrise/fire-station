@@ -99,8 +99,6 @@
       reagents:
       - ReagentId: Blood
         Quantity: 5000
-  - type: Body
-    prototype: Animal
   - type: BlurryVision
     magnitude: 2
     correctionPower: 1

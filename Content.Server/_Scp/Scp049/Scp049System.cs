@@ -1,5 +1,6 @@
 ﻿using Content.Server.Actions;
 using Content.Shared._Scp.Scp049;
+using Content.Shared._Sunrise.Humanoid;
 using Content.Shared.Humanoid;
 using Content.Shared.Inventory;
 using Content.Shared.Mobs.Components;
@@ -12,6 +13,7 @@ public sealed partial class Scp049System : SharedScp049System
 {
     [Dependency] private readonly ActionsSystem _actions = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
+    [Dependency] private readonly SunriseHumanoidBodySystem _sunriseBody = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Initialize()
@@ -66,11 +68,9 @@ public sealed partial class Scp049System : SharedScp049System
 
     private ZombieComponent BuildZombieComponent(EntityUid target)
     {
-        var appearanceComponent = Comp<HumanoidAppearanceComponent>(target);
-
         var zombieComponent = new ZombieComponent
         {
-            SkinColor = appearanceComponent.SkinColor,
+            SkinColor = _sunriseBody.GetSkinColor(target),
             EyeColor = Color.Red,
             StatusIcon = Scp049MinionComponent.Icon
         };

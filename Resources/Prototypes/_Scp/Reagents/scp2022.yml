@@ -6,7 +6,7 @@
   flavor: medicine
   color: "#FFCC00"
   metabolisms:
-    Food:
+    Bloodstream:
       metabolismRate: 0.5
       effects:
       - !type:HealthChange
@@ -18,14 +18,12 @@
           types:
             Blunt: -0.5
             Slash: -0.5
-
       - !type:CalmDownEffect
         speedUpBy: 100
         conditions:
         - !type:ReagentCondition
           reagent: Scp2022Reagent
           min: 1
-
       - !type:ModifyStatusEffect
         conditions:
         - !type:ReagentCondition
@@ -34,7 +32,6 @@
         effectProto: StatusEffectDrowsiness
         time: 10
         type: Remove
-
       - !type:PopupMessage
         conditions:
         - !type:ReagentCondition
@@ -44,7 +41,6 @@
         messages: ["reagent-effect-scp2022-warmth"]
         probability: 0.7
         type: Local
-
       - !type:HealthChange
         damage:
           types:
@@ -53,7 +49,6 @@
         - !type:ReagentCondition
           reagent: Scp2022Reagent
           min: 30
-
       - !type:PopupMessage
         conditions:
         - !type:ReagentCondition

@@ -128,8 +128,8 @@
   - type: Destructible
     thresholds:
     - trigger:
-        !type:DamageGroupTrigger # Sunrise-Edit
-        damageGroup: Brute # Sunrise-Edit
+        !type:DamageTypeTrigger
+        damageType: Blunt
         damage: 1000 # Fire edit
       behaviors:
       - !type:GibBehavior { }
@@ -178,6 +178,7 @@
       - ActionCritSuccumb
       - ActionCritFakeDeath
       - ActionCritLastWords
+  - type: StoreDamageTakenOnMind
   - type: Deathgasp
   - type: HealthExaminable
     examinableTypes:
@@ -201,6 +202,8 @@
   - type: LightningTarget
     priority: 2
     lightningExplode: false
+  - type: GhostOnMove
+    mustBeDead: true
 
 # Used for mobs that can enter combat mode and can attack.
 - type: entity
@@ -214,8 +217,8 @@
     soundHit:
       collection: MetalThud
     damage:
-      groups:
-        Brute: 5
+      types:
+        Blunt: 5
 
 # Used for mobs that are affected by atmospherics, pressure, and heat
 - type: entity

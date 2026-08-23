@@ -27,8 +27,8 @@
     data:
     - biome: ScpComplexSnow
       weather:
-      - SnowfallMedium
-      - SnowfallLight
+      - WeatherSnowfallMedium
+      - WeatherSnowfallLight
 
 - type: entity
   id: ScpComplexCompact

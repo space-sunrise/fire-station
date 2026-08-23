@@ -201,7 +201,7 @@
 
 - type: entity
   parent: BaseMtfStorageCrateWeapon
-  id: MtfStorageCrateRifleFamas
+  id: MtfStorageCrateRifleLecter
   categories: [ HideSpawnMenu ]
   components:
   - type: Storage
@@ -210,7 +210,7 @@
     - 0,0,3,3
   - type: StorageFill
     contents:
-      - id: WeaponRifleFamas
+      - id: WeaponRifleLecter
       - id: ClothingBeltMtfAmmoG36
 
 - type: entity
@@ -224,7 +224,7 @@
     - 0,3,3,6
   - type: StorageFill
     contents:
-      - id: WeaponRifleG36
+      - id: WeaponRifleLeikha
       - id: ClothingBeltMtfAmmoG36
 
 - type: entity
@@ -271,7 +271,7 @@
 
 - type: entity
   parent: BaseMtfStorageCrateWeapon
-  id: MtfStorageCrateRifleBR64
+  id: MtfStorageCrateRifleSKM28Nano
   categories: [ HideSpawnMenu ]
   components:
   - type: Storage
@@ -280,7 +280,7 @@
     - 0,3,3,6
   - type: StorageFill
     contents:
-      - id: WeaponRifleBR64
+      - id: WeaponRifleSKM28Nano
       - id: ClothingBeltMtfAmmoBR64
 
 - type: entity
@@ -323,7 +323,7 @@
   - type: StorageFill
     contents:
       - id: WeaponPistolG22
-      - id: MagazineGlock22
+      - id: MagazinePistol
         amount: 3
       - id: MagazineBoxPistolSP
 
@@ -353,21 +353,6 @@
   - type: StorageFill
     contents:
       - id: WeaponRevolverSpearhead
-      - id: SpeedLoaderMagnumSP
-        amount: 3
-      - id: MagazineBoxMagnumSP
-
-- type: entity
-  parent: BaseMtfStorageCrateSmallPistol
-  id: MtfStorageCrateRevolverSpearheadBlack
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Storage
-    grid:
-    - 0,0,5,1
-  - type: StorageFill
-    contents:
-      - id: WeaponRevolverSpearheadBlack
       - id: SpeedLoaderMagnumSP
         amount: 3
       - id: MagazineBoxMagnumSP
