@@ -5511,3 +5511,14 @@
     message: Исправлен несправедливо большой (по отношению к ролям других SCP) приоритет на роль SCP-106
   id: 511
   url: https://github.com/makura-games/project-fire/pull/1125
+- author: timur
+  time: '2026-08-24T10:57:36.0000000+00:00'
+  changes:
+  - type: Add
+    message: Добавлена кофеварка, деревянное окно
+  - type: Tweak
+    message: теперь зубные щётки имеют 4 урона ушибами
+  - type: Tweak
+    message: теперь каждый декоративный объект имеет суффикс Декорация
+  id: 512
+  url: https://github.com/makura-games/project-fire/pull/1128
