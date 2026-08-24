@@ -5522,3 +5522,10 @@
     message: теперь каждый декоративный объект имеет суффикс Декорация
   id: 512
   url: https://github.com/makura-games/project-fire/pull/1128
+- author: timur
+  time: '2026-08-24T11:18:27.0000000+00:00'
+  changes:
+  - type: Add
+    message: Добавлена способность лечения себя для SCP-247
+  id: 513
+  url: https://github.com/makura-games/project-fire/pull/1126
