@@ -193,7 +193,7 @@
 
 - type: entity
   name: AR-18 M
-  description: A large‑caliber rifle used by the SCP Foundation. It uses .308 caliber cartridges.
+  description: The AR-18 large-caliber rifle, upgraded by the SCP Foundation. Uses .308 caliber cartridges.
   parent: BaseWeaponRifleSunrise
   id: WeaponRifleAR18M
   components:
