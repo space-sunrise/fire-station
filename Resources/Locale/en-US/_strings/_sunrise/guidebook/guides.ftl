@@ -8,12 +8,13 @@ guide-entry-disease = Sentient Disease
 guide-entry-expeditions = Expeditions
 guide-entry-expedition-pirates = Pirates
 guide-entry-expedition-soviets = Communists
+guide-entry-expedition-silicons = Rogue Silicons
 guide-entry-expedition-xenos = Xenos
 guide-entry-expedition-carps = Carps
 
 ## SUNRISE Rules
 
-guide-entry-sr-rules = Server Rules: FireStation
+guide-entry-sr-rules = Server Rules: TrenchStation
 guide-entry-sr-rule-0 = Rule 0
 guide-entry-sr-rule-1 = Rule 1
 guide-entry-sr-rule-2 = Rule 2
@@ -26,7 +27,8 @@ guide-entry-sr-rule-3-5 = Rule 3.5
 guide-entry-sr-rule-3-6 = Rule 3.6
 guide-entry-sr-rule-3-7 = Rule 3.7
 guide-entry-sr-rule-3-8 = Rule 3.8
-guide-entry-sr-rule-3-9 = Rule 3.9 guide-entry-sr-rule-4 = Rule 4
+guide-entry-sr-rule-3-9 = Rule 3.9
+guide-entry-sr-rule-4 = Rule 4
 guide-entry-sr-rule-5 = Rule 5
 guide-entry-sr-rule-6 = Rule 6
 guide-entry-sr-rule-7 = Rule 7
@@ -53,5 +55,5 @@ guide-entry-sr-rule-excep-10 = Exception/Precedent 10
 # Additional Rules
 
 guide-entry-sr-rule-cep = Conflict Escalation Policy
-guide-entry-sr-rule-ccp = Creation Policy Characters
-guide-entry-sr-rule-pana = Obstructing the arrest of non-antagonists
+guide-entry-sr-rule-ccp = Character Creation Policy
+guide-entry-sr-rule-pana = Preventing the arrest of non-antagonists

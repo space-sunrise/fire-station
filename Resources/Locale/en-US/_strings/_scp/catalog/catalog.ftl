@@ -6,6 +6,8 @@ scp106-shop-phantom-upgrade-name = Balance Shift
 scp106-shop-phantom-upgrade-desc = Exerts pressure on the widening rifts in reality, which reduces the cooldown for creating a new phantom.
 scp106-shop-blade-name = { ent-Scp106BareBlade }
 scp106-shop-blade-desc = { ent-Scp106BareBlade.desc }
+scp106-shop-puddle-name = { ent-Scp106PuddleSpawnAction }
+scp106-shop-puddle-desc = { ent-Scp106PuddleSpawnAction.desc }
 
 store-currency-display-supplypoint = Supply Points
 

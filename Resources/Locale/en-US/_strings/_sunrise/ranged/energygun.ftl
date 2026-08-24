@@ -4,3 +4,6 @@ energy-gun-disable = disabling
 energy-gun-special = special
 energy-gun-shotgun-spread = wide Laser Spread
 energy-gun-shotgun-spread-narrow = narrow Laser Spread
+lasgun-fire-mode-low = low
+lasgun-fire-mode-standard = standard
+lasgun-fire-mode-overcharge = overcharge
