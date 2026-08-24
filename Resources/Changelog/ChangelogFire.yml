@@ -5529,3 +5529,12 @@
     message: Добавлена способность лечения себя для SCP-247
   id: 513
   url: https://github.com/makura-games/project-fire/pull/1126
+- author: EldarTG
+  time: '2026-08-24T12:46:19.0000000+00:00'
+  changes:
+  - type: Add
+    message: Добавлена винтовка AR-18 M для ОСН.
+  - type: Add
+    message: Добавлен сейф с AR-18 M.
+  id: 514
+  url: https://github.com/makura-games/project-fire/pull/1131
