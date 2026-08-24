@@ -1,0 +1,61 @@
+- type: entity
+  id: Coatrack
+  parent: BaseStructureDynamic
+  name: coatrack
+  description: A tall wooden coat rack to hang your jackets and hats.
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/coatrack.rsi
+    noRot: true
+    snapCardinals: false
+    layers:
+    - state: coatrack
+      map: ["base"]
+    - map: ["enum.StorageFillLayers.Fill"]
+  - type: Appearance
+  - type: StorageFillVisualizer
+    maxFillLevels: 4
+    fillBaseName: clothing
+  - type: Storage
+    grid:
+    - 0,0,3,3
+    maxItemSize: Normal
+    whitelist:
+      components:
+      - Clothing
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: InteractionOutline
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: Damageable
+    damageModifierSet: Wood
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroyHeavy
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          ScpMaterialWoodPlank1:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.10,-0.10,0.15,0.50"
+        density: 500
+        mask:
+          - TabletopMachineMask

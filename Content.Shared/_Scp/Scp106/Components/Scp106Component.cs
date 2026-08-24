@@ -24,7 +24,7 @@ public sealed partial class Scp106Component : Component
     public ProtoId<CurrencyPrototype> LifeEssenceCurrencyPrototype = "LifeEssence";
 
     [DataField]
-    public ProtoId<AlertPrototype> Scp106EssenceAlert= "Scp106LifeEssence";
+    public ProtoId<AlertPrototype> Scp106EssenceAlert = "Scp106LifeEssence";
 
     [DataField, ViewVariables, AutoNetworkedField]
     public FixedPoint2 Essence = 0f;

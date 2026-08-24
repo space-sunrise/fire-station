@@ -18,6 +18,7 @@
     implants: [ MindShieldImplant ]
   - !type:AddComponentSpecial
     components:
+    - type: ChaosSpySelectionBlacklist
     - type: CommandStaff
     - type: EmployeeClass
       class: A

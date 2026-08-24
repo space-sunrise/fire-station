@@ -1,0 +1,103 @@
+- type: entity
+  parent: BaseStructure
+  id: TableSink
+  name: sink counter
+  description: Wide metal counter with a built-in sink.
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/table_sink.rsi
+    offset: 0.5,0
+    state: table
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 125
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 3
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: SolutionContainerManager
+    solutions:
+      drainBuffer:
+        maxVol: 200
+      tank:
+        reagents:
+        - ReagentId: Water
+          Quantity: 500
+  - type: SolutionRegeneration
+    solution: tank
+    generated:
+      reagents:
+      - ReagentId: Water
+        Quantity: 1
+  - type: DrainableSolution
+    solution: tank
+  - type: ReagentTank
+  - type: Drain
+    autoDrain: false
+  - type: DumpableSolution
+    solution: drainBuffer
+  - type: AmbientSound
+    enabled: false
+    volume: -8
+    range: 8
+    sound:
+      path: /Audio/Ambience/Objects/drain.ogg
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepHull
+  - type: Climbable
+  - type: Bonkable
+    bonkDamage:
+      types:
+        Blunt: 4
+  - type: PlaceableSurface
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,1.20,0.25"
+        density: 55
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+  - type: SpriteFade
+  - type: Tag
+    tags:
+    - Table
+    - ForceFixRotations
+  - type: InteractionOutline
+
+- type: entity
+  parent: TableSink
+  id: TableDoubleSink
+  name: double sink counter
+  description: Wide metal counter with a built-in sinks.
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/table_sink.rsi
+    offset: 0.5,0
+    state: double_table
+  - type: SolutionContainerManager
+    solutions:
+      drainBuffer:
+        maxVol: 400 # две раковины
+      tank:
+        reagents:
+        - ReagentId: Water
+          Quantity: 700

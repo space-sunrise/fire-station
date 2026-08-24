@@ -1,0 +1,11 @@
+- type: entity
+  id: AppearanceScpHands
+  name: scp hands appearance
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InitialBody
+    organs:
+      ArmLeft: OrganScpLeftArm
+      ArmRight: OrganScpRightArm
+      HandLeft: OrganScpLeftHand
+      HandRight: OrganScpRightHand

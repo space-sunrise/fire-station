@@ -2,8 +2,8 @@
   name: internal affairs agent's rubber stamp
   parent: RubberStampBase
   id: RubberStampIAA
-  categories: [ DoNotMap, HideSpawnMenu ] # Fire added
   suffix: DO NOT MAP
+  categories: [ DoNotMap, HideSpawnMenu ] # Fire edit
   components:
     - type: Stamp
       stampedName: stamp-component-stamped-name-iaa
@@ -17,11 +17,11 @@
   name: magistrat's rubber stamp
   parent: RubberStampBase
   id: RubberStampMagistrat
-  categories: [ DoNotMap, HideSpawnMenu ] # Fire added
   suffix: DO NOT MAP
+  categories: [ DoNotMap, HideSpawnMenu ] # Fire edit
   components:
   - type: Stamp
-    stampedName: Магистрат
+    stampedName: stamp-component-stamped-name-magistrat
     stampedColor: "#FF5297"
     stampState: "paper_stamp-magistrat"
   - type: Sprite
@@ -32,8 +32,8 @@
   name: NT representative's rubber stamp
   parent: RubberStampBase
   id: RubberStampNtrep
-  categories: [ DoNotMap, HideSpawnMenu ] # Fire added
   suffix: DO NOT MAP
+  categories: [ DoNotMap, HideSpawnMenu ] # Fire edit
   components:
   - type: Stamp
     stampedName: stamp-component-stamped-name-ntrep
@@ -44,11 +44,11 @@
     state: stamp-ntrep
 
 - type: entity
-  name: Pathologist rubber stamp
+  name: pathologist rubber stamp
   parent: RubberStampBase
   id: RubberStampPath
-  categories: [ DoNotMap, HideSpawnMenu ] # Fire added
   suffix: DO NOT MAP
+  categories: [ DoNotMap, HideSpawnMenu ] # Fire edit
   components:
   - type: Stamp
     stampedName: stamp-component-stamped-name-path
@@ -59,11 +59,11 @@
     state: stamp-path
 
 - type: entity
-  name: Adjutant's rubber stamp
+  name: adjutant's rubber stamp
   parent: RubberStampBase
   id: RubberStampAdj
-  categories: [ DoNotMap, HideSpawnMenu ] # Fire added
   suffix: DO NOT MAP
+  categories: [ DoNotMap, HideSpawnMenu ] # Fire edit
   components:
   - type: Stamp
     stampedName: stamp-component-stamped-name-adj
@@ -74,10 +74,10 @@
     state: stamp-adj
 
 - type: entity
-  name: Head of Prison rubber stamp
+  name: head of prison rubber stamp
   parent: RubberStampBase
   id: RubberStampNpt
-  suffix: DO NOT MAP
+  categories: [ DoNotMap ]
   components:
   - type: Stamp
     stampedName: stamp-component-stamped-name-npt
@@ -101,7 +101,7 @@
     state: stamp-veto
 
 - type: entity
-  name: Redo rubber stamp
+  name: redo rubber stamp
   parent: RubberStampBase
   id: RubberStampRedo
   components:
@@ -114,10 +114,10 @@
     state: stamp-redo
 
 - type: entity
-  name: Special Operations rubber stamp
+  name: special operations rubber stamp
   parent: RubberStampBase
   id: RubberStampSpecOps
-  suffix: DO NOT MAP
+  categories: [ DoNotMap ]
   components:
   - type: Stamp
     stampedName: stamp-component-stamped-name-specops
@@ -139,3 +139,17 @@
     - type: Sprite
       sprite: _Sunrise/Objects/Misc/stamps.rsi
       state: stamp-specops
+
+- type: entity
+  name: blue Shield Commander's rubber stamp
+  parent: RubberStampBase
+  id: RubberStampCommanderBlueShield
+  categories: [ DoNotMap ]
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-commander-blueshield
+    stampedColor: "#0069cc"
+    stampState: "paper_stamp-commander-blueshield"
+  - type: Sprite
+    sprite: _Sunrise/Objects/Misc/stamps.rsi
+    state: stamp-commander-blueshield

@@ -2,17 +2,16 @@ using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Chat;
 using Content.Shared.Interaction;
-using Content.Shared.PowerCell;
-using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Radio;
-using Content.Shared._Sunrise.Radio;
 using Content.Shared.Radio.Components;
 using Content.Shared.Radio.EntitySystems;
 using Content.Shared._Sunrise.TTS;
 using Robust.Server.GameObjects;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
+using Robust.Shared.Audio.Systems;
+using Content.Server.Power.EntitySystems;
 
 namespace Content.Server.Radio.EntitySystems;
 
@@ -21,7 +20,6 @@ public sealed partial class HeadsetSystem : SharedHeadsetSystem
     [Dependency] private readonly INetManager _netMan = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
-    [Dependency] private readonly PowerCellSystem _powerCell = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
 
     public override void Initialize()
@@ -31,7 +29,6 @@ public sealed partial class HeadsetSystem : SharedHeadsetSystem
         SubscribeLocalEvent<HeadsetComponent, EncryptionChannelsChangedEvent>(OnKeysChanged);
         // Sunrise-Start
         SubscribeLocalEvent<HeadsetComponent, ActivateInWorldEvent>(OnActivate);
-        SubscribeLocalEvent<HeadsetComponent, ToggleHeadsetActionEvent>(OnToggleAction);
         // Sunrise-End
         SubscribeLocalEvent<WearingHeadsetComponent, EntitySpokeEvent>(OnSpeak);
 
@@ -66,11 +63,6 @@ public sealed partial class HeadsetSystem : SharedHeadsetSystem
             && TryComp(component.Headset, out EncryptionKeyHolderComponent? keys)
             && keys.Channels.Contains(args.Channel.ID))
         {
-            // Sunrise-Start
-            if (TryComp<HeadsetComponent>(component.Headset, out var headset) && !_powerCell.TryUseCharge(component.Headset, headset.SendChargeCost, uid))
-                return;
-            // Sunrise-End
-
             _radio.SendRadioMessage(uid, args.Message, args.Channel, component.Headset);
             args.Channel = null; // prevent duplicate messages from other listeners.
         }
@@ -143,14 +135,15 @@ public sealed partial class HeadsetSystem : SharedHeadsetSystem
         // Sunrise-Start
         if (!ent.Comp.EnabledChannels.GetValueOrDefault(args.Channel.ID, true))
             return;
-
-        if (!_powerCell.TryUseCharge(ent.Owner, ent.Comp.ReceiveChargeCost))
-            return;
         // Sunrise-End
 
         // TODO: change this when a code refactor is done
         // this is currently done this way because receiving radio messages on an entity otherwise requires that entity
         // to have an ActiveRadioComponent
+
+        // Scp added start - custom headset receive sound
+        PlayHeadsetReceiveSound(ent, args);
+        // Scp added end
 
         var parent = Transform(ent).ParentUid;
 

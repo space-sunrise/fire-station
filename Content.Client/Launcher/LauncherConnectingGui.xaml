@@ -11,10 +11,7 @@
                   HorizontalAlignment="Left"
                   VerticalAlignment="Center"
                   Margin="40 0 0 0">
-        <PanelContainer StyleClasses="AngleRect" MinWidth="300">
-            <PanelContainer.PanelOverride>
-                <gfx:StyleBoxFlat BackgroundColor="#171616E5" />
-            </PanelContainer.PanelOverride>
+        <PanelContainer StyleClasses="SocialBox" MinWidth="200">
             <BoxContainer Orientation="Vertical" Margin="0 5">
                 <controls:StripeBack>
                     <BoxContainer Orientation="Vertical" Margin="4 8">
@@ -27,13 +24,13 @@
                     </BoxContainer>
                 </controls:StripeBack>
 
-                <PanelContainer Margin="5 5">
+                <PanelContainer Margin="0 5">
                     <Button Name="Discord"
                             Text="Discord"
                             StyleClasses="SocialButton SocialButtonDiscord"/>
                 </PanelContainer>
 
-                <PanelContainer Margin="5 10">
+                <PanelContainer Margin="0 10">
                     <Button Name="Telegram"
                             Text="Telegram"
                             StyleClasses="SocialButton SocialButtonTelegram"/>

@@ -2,10 +2,10 @@
 # region Rifles
 
 - type: listing
-  id: ChaosUplinkWeaponAK74M
-  productEntity: WeaponRifleAK74
+  id: ChaosUplinkWeaponAK103
+  productEntity: WeaponRifleAK103
   cost:
-    SupplyPoint: 5
+    SupplyPoint: 10
   categories:
   - ChaosWeaponRifle
   conditions:
@@ -13,19 +13,8 @@
     stock: 1
 
 - type: listing
-  id: ChaosUplinkWeaponMP7
-  productEntity: WeaponSubMachineGunMP7
-  cost:
-    SupplyPoint: 5
-  categories:
-  - ChaosWeaponRifle
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 1
-
-- type: listing
-  id: ChaosUplinkWeaponAKMU
-  productEntity: WeaponRifleAKMU
+  id: ChaosUplinkWeaponRifleSKM24
+  productEntity: WeaponRifleSKM24
   cost:
     SupplyPoint: 5
   categories:
@@ -68,8 +57,8 @@
     stock: 1
 
 - type: listing
-  id: ChaosUplinkWeaponFamas
-  productEntity: WeaponRifleFamas
+  id: ChaosUplinkWeaponLecter
+  productEntity: WeaponRifleLecter
   cost:
     SupplyPoint: 15
   categories:
@@ -85,7 +74,7 @@
   description: chaos-catalog-weapon-mg42-description
   icon: { sprite: _Sunrise/Objects/Weapons/Guns/LMGs/mg42/big.rsi, state: base }
   cost:
-    SupplyPoint: 25
+    SupplyPoint: 40
   categories:
   - ChaosWeaponRifle
   conditions:
@@ -149,6 +138,17 @@
   - !type:ListingLimitedStockCondition
     stock: 1
 
+- type: listing
+  id: ChaosUplinkWeaponMP5
+  productEntity: WeaponSubMachineGunMP5
+  cost:
+    SupplyPoint: 5
+  categories:
+  - ChaosWeaponPistol
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
 # region Ammo
 
 - type: listing
@@ -174,8 +174,151 @@
     stock: 5
 
 - type: listing
-  id: ChaosUplinkAmmoMagazineBox556HP
-  productEntity: MagazineBoxRifleHP
+  id: ChaosUplinkAmmoMagazineP90
+  productEntity: MagazineP90
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ChaosWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ChaosUplinkAmmoMagazineP90FMJ
+  productEntity: MagazineP90FMJ
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ChaosWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ChaosUplinkAmmoMagazineBoxMagnumFMJ
+  productEntity: MagazineBoxMagnumFMJ
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ChaosWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ChaosUplinkAmmoMagazineBoxMagnumHP
+  productEntity: MagazineBoxMagnumHP
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ChaosWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ChaosUplinkAmmoMagazineBoxMagnumSP
+  productEntity: MagazineBoxMagnumSP
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ChaosWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ChaosUplinkAmmoMagazineBoxPistol40FMJ
+  productEntity: MagazineBoxPistol40FMJ
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ChaosWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ChaosUplinkAmmoMagazineBoxPistol40HP
+  productEntity: MagazineBoxPistol40HP
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ChaosWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ChaosUplinkAmmoBoxLethalshot
+  productEntity: BoxLethalshot
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ChaosWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ChaosUplinkAmmoMagazineBoxPistol40SP
+  productEntity: MagazineBoxPistol40SP
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ChaosWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ChaosUplinkAmmoMagazineACP14
+  productEntity: MagazineACP14
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ChaosWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ChaosUplinkAmmoMagazinePistol40FMJ
+  productEntity: MagazinePistol40FMJ
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ChaosWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ChaosUplinkAmmoMagazinePistol40SP
+  productEntity: MagazinePistol40SP
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ChaosWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ChaosUplinkAmmoMagazineMagnum
+  productEntity: MagazineMagnum
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ChaosWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ChaosUplinkAmmoMagazineMagnumFMJ
+  productEntity: MagazineMagnumFMJ
   cost:
     SupplyPoint: 1
   categories:
@@ -209,17 +352,6 @@
 - type: listing
   id: ChaosUplinkAmmoMagazineBox762FMJ
   productEntity: MagazineBoxLightRifleFMJ
-  cost:
-    SupplyPoint: 1
-  categories:
-  - ChaosWeaponAmmo
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 5
-
-- type: listing
-  id: ChaosUplinkAmmoMagazineBox762HP
-  productEntity: MagazineBoxLightRifleHP
   cost:
     SupplyPoint: 1
   categories:
@@ -271,7 +403,7 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 5
- 
+
 - type: listing
   id: ChaosUplinkAmmoMagazineDragunovFMJ
   productEntity: MagazineDragunovFMJ
@@ -306,17 +438,6 @@
     stock: 5
 
 - type: listing
-  id: ChaosUplinkAmmoMagazineBoxHeavy308HP
-  productEntity: MagazineBoxHeavyRifleHP
-  cost:
-    SupplyPoint: 1
-  categories:
-  - ChaosWeaponAmmo
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 5
-
-- type: listing
   id: ChaosUplinkAmmoMagazineBoxHeavy308
   productEntity: MagazineBoxHeavyRifleSP
   cost:
@@ -332,6 +453,28 @@
   productEntity: MagazinePistolHighCapacitySP
   cost:
     SupplyPoint: 2
+  categories:
+  - ChaosWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ChaosUplinkAmmoMagazinePistolSubMachineGunSP
+  productEntity: MagazinePistolSubMachineGunSP
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ChaosWeaponAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ChaosUplinkAmmoMagazinePistolSubMachineGunFMJ
+  productEntity: MagazinePistolSubMachineGunFMJ
+  cost:
+    SupplyPoint: 3
   categories:
   - ChaosWeaponAmmo
   conditions:
@@ -372,17 +515,6 @@
     stock: 5
 
 - type: listing
-  id: ChaosUplinkAmmoMagazineDragunov762R
-  productEntity: MagazineDragunovHP
-  cost:
-    SupplyPoint: 2
-  categories:
-  - ChaosWeaponAmmo
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 2
-
-- type: listing
   id: ChaosUplinkAmmoMagazineSpeedLoaderHeavyRFMJ
   productEntity: SpeedLoaderHeavyRifleRFMJ
   cost:
@@ -407,10 +539,10 @@
 # region Equipment
 
 - type: listing
-  id: ChaosUplinkClothingOuterArmorSWAT
-  productEntity: ClothingOuterArmorSWAT
+  id: ChaosUplinkClothingOuterArmorChaosHeavyVest
+  productEntity: ClothingOuterArmorChaosHeavyVest
   cost:
-    SupplyPoint: 40
+    SupplyPoint: 25
   categories:
   - ChaosEquipment
   conditions:

@@ -8,7 +8,6 @@
   - type: ContainerContainer
     containers:
       key_slots: !type:Container
-      cell_slot: !type:ContainerSlot {} # Sunrise-Edit
   - type: ContainerFill
     containers:
       key_slots:
@@ -29,13 +28,6 @@
     guides:
     - Radio
   # Sunrise-Start
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-name
-        startingItem: PowerCellSmall
-  - type: PowerCellSlot
-    cellSlotId: cell_slot
   - type: UserInterface
     interfaces:
       enum.HeadsetUiKey.Key:
@@ -345,4 +337,6 @@
   - type: Sprite
     sprite: _Sunrise/Clothing/Ears/Headsets/ninja.rsi # Sunrise-Edit
   - type: Clothing
-    sprite: _Sunrise/Clothing/Ears/Headsets/ninja.rsi # Sunrise-Edit
+    sprite: Clothing/Ears/Headsets/ninja.rsi
+  - type: EmpResistance
+    strengthMultiplier: 0

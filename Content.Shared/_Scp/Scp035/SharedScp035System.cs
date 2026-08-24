@@ -69,7 +69,7 @@ public abstract class SharedScp035System : EntitySystem
         var maskUserComponent = EnsureComp<Scp035MaskUserComponent>(args.Wearer);
         maskUserComponent.Mask = ent;
 
-        ToggleActions(maskUserComponent, ent.Comp, ent, true);
+        ToggleActions(maskUserComponent, ent.Comp, args.Wearer, true);
         Dirty(args.Wearer, maskUserComponent);
 
         _faction.ClearFactions(args.Wearer);
@@ -107,7 +107,7 @@ public abstract class SharedScp035System : EntitySystem
         if (!_mobState.IsAlive(ent))
             return;
 
-        if (!HasComp<HumanoidAppearanceComponent>(args.Equipee))
+        if (!HasComp<HumanoidProfileComponent>(args.Equipee))
         {
             args.Cancel();
 
@@ -153,7 +153,7 @@ public abstract class SharedScp035System : EntitySystem
         if (args.Handled)
             return;
 
-        if (!HasComp<HumanoidAppearanceComponent>(args.Target))
+        if (!HasComp<HumanoidProfileComponent>(args.Target))
         {
             if (_net.IsServer)
                 _popup.PopupEntity(Loc.GetString("scp-035-reject-target"), args.Performer, args.Performer, PopupType.LargeCaution);

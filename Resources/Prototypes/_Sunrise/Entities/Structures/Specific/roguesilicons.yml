@@ -4,6 +4,11 @@
   name: rogue AI node
   description: "Contains a portion of a rogue AI database."
   components:
+  - type: RadarBlip
+    color: "#3DB83BFF"
+    scale: 2
+    shape: Circle
+    requireInSpace: false
   - type: Sprite
     noRot: true
     sprite: _Sunrise/Structures/Specific/RogueSilicons/ai_node.rsi
@@ -38,9 +43,14 @@
     range: 60
     threshold: 0.9
     damage:
-      groups:
-        Brute: -5
-        Burn: -3
+      types:
+        Blunt: -1.67
+        Slash: -1.67
+        Piercing: -1.66
+        Heat: -0.75
+        Shock: -0.75
+        Cold: -0.75
+        Caustic: -0.75
     whitelist:
       tags:
       - RogueSiliconHealTarget

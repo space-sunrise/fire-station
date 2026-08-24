@@ -1,0 +1,1 @@
+objective-condition-chaos-spy-escape-class-d-title = Тихо вывести сотрудника класса D: { $targetName }, должность: { CAPITALIZE($job) }.

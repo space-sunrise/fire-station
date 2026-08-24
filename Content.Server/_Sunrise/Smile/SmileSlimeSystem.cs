@@ -9,6 +9,7 @@ using Content.Shared.Body.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Zombies;
 using Content.Shared.Damage.Systems;
+using Content.Shared.Body;
 
 namespace Content.Server._Sunrise.Smile;
 
@@ -66,7 +67,7 @@ public sealed class SmileSlimeSystem : EntitySystem
             CancelDuplicate = true,
         };
 
-        if (!TryComp<TransformComponent>(args.Target, out var targetXform))
+        if (!TryComp(args.Target, out TransformComponent? targetXform))
             return;
 
         _audio.PlayPvs(comp.SoundSpecifier, targetXform.Coordinates);
@@ -90,7 +91,7 @@ public sealed class SmileSlimeSystem : EntitySystem
         if (args.Target == null)
             return;
 
-        if (!TryComp<TransformComponent>(args.Target.Value, out var targetXform))
+        if (!TryComp(args.Target.Value, out TransformComponent? targetXform))
             return;
 
         _entMan.SpawnEntity("EffectHearts", targetXform.Coordinates);

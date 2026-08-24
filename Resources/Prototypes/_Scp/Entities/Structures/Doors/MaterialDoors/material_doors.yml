@@ -4,3 +4,32 @@
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/MineralDoors/wood_door.rsi
+
+- type: entity
+  parent: MetalDoor
+  id: ScpMetalDoor
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/MineralDoors/metal_door.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: Door
+    openingAnimationTime: 0
+    closingAnimationTime: 0
+    closeTimeOne: 0.1
+    closeTimeTwo: 0.1
+    openTimeOne: 0.1
+    openTimeTwo: 0.1
+    openSound:
+      path: /Audio/Effects/door_open.ogg
+    closeSound:
+      path: /Audio/Effects/door_close.ogg
+  - type: GenericVisualizer
+    visuals:
+      enum.DoorVisualLayers.Base:
+        enum.DoorVisuals.State:
+          Closed: { state: closed }
+          Opened: { state: opened }
+          Opening: { state: closed }
+          Closing: { state: opened }

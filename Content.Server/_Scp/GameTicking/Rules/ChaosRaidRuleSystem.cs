@@ -1,12 +1,14 @@
 using System.Linq;
 using Content.Server._Scp.GameTicking.Rules.Components;
 using Content.Server.Antag;
+using Content.Server.Antag.Components;
 using Content.Server.Chat.Systems;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
+using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Mind;
 using Content.Server.Objectives;
-using Content.Server.Objectives.Components;
+using Content.Shared.Objectives.Components;
 using Content.Server.Roles;
 using Content.Server.RoundEnd;
 using Content.Server.Station.Components;
@@ -14,6 +16,7 @@ using Content.Server.Station.Systems;
 using Content.Shared._Scp.Chaos;
 using Content.Shared._Scp.Fear.Components;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.Mind;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.NPC.Components;
@@ -68,6 +71,7 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
             return;
 
         component.TargetComplex = eligible[0];
+        AddRaidHelpObjectiveToExistingSpies();
     }
 
     protected override void AppendRoundEndText(EntityUid uid,
@@ -196,12 +200,14 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
         // TODO: Переделать эту систему, что бы она работала иначе, брав точки отдельно на шаттле, а так же базе повстанцев хаоса, а не на всей карте.
         // Все StealArea-точки на этой карте (база повстанец хаоса) пренадлежат Повстанцам Хаоса
         var query = AllEntityQuery<StealAreaComponent, TransformComponent>();
-        while (query.MoveNext(out _, out var stealAreaComp, out var xform))
+        while (query.MoveNext(out var uid, out var stealAreaComp, out var xform))
         {
             if (Transform(args.EntityUid).MapID != xform.MapID)
                 continue;
 
             stealAreaComp.Owners.Add(mindId);
+            stealAreaComp.OwnerCount = stealAreaComp.Owners.Count;
+            Dirty(uid, stealAreaComp);
         }
 
         if (ent.Comp.Objectives != null)
@@ -345,5 +351,20 @@ public sealed class ChaosRaidRuleSystem : GameRuleSystem<ChaosRaidRuleComponent>
     {
         if (!comp.WinConditions.Contains(winCondition))
             comp.WinConditions.Add(winCondition);
+    }
+
+    private void AddRaidHelpObjectiveToExistingSpies()
+    {
+        var spyRuleQuery = EntityQueryEnumerator<ChaosSpyRuleComponent, AntagSelectionComponent>();
+        while (spyRuleQuery.MoveNext(out _, out var spyRule, out var antag))
+        {
+            foreach (var (mindId, _) in antag.AssignedMinds)
+            {
+                if (!TryComp<MindComponent>(mindId, out var mind))
+                    continue;
+
+                _mind.TryAddObjective(mindId, mind, spyRule.ChaosRaidHelpObjectiveProtoId);
+            }
+        }
     }
 }

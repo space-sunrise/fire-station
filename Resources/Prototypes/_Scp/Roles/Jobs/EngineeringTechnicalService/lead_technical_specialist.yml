@@ -21,6 +21,7 @@
   special:
   - !type:AddComponentSpecial
     components:
+    - type: ChaosSpySelectionBlacklist
     - type: EmployeeClass
       class: C
     - type: AccessLevel

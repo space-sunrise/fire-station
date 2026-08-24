@@ -217,3 +217,13 @@
         amount: 5
       - id: MagazineBoxHeavyRifleFMJ
         amount: 5
+
+- type: entity
+  id: ClothingBeltSheathFilledScp3288
+  parent: ClothingBeltSheath
+  suffix: SCP-3288
+  components:
+  - type: ContainerFill
+    containers:
+      item:
+      - CeremonialSabre

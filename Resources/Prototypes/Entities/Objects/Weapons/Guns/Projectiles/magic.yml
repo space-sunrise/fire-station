@@ -59,7 +59,7 @@
     duration: 2
   # Sunrise-End
   - type: Explosive
-    explosionType: FireBomb
+    explosionType: DragonBreathExplosion # Sunrise-Edit
     totalIntensity: 5 # low intensity, the point is to burn attackers not to break open walls, dragons can just eat them
     intensitySlope: 1
     maxIntensity: 3
@@ -112,8 +112,7 @@
     deleteOnCollide: false
     onlyCollideWhenShot: true
     damage:
-      types:
-        Brute: 0
+      types: {}
   - type: Sprite
     noRot: true
     sprite: Structures/Storage/closet.rsi
@@ -252,11 +251,18 @@
       color: white
   - type: Projectile
     damage:
-      groups: # good enough. Maybe make it call the rejuvenate command later.
-        Brute: -900
-        Burn: -900
-        Airloss: -600
-        Toxin: -600
+      types: # good enough. Maybe make it call the rejuvenate command later.
+        Asphyxiation: -200
+        Bloodloss: -200
+        Blunt: -200
+        Caustic: -200
+        Cold: -200
+        Heat: -200
+        Piercing: -200
+        Poison: -200
+        Radiation: -200
+        Shock: -200
+        Slash: -200
     ignoreResistances: true
 
 - type: entity

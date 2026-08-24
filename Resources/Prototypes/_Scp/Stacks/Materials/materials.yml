@@ -4,3 +4,10 @@
   icon: { sprite: /Textures/_Scp/Objects/Materials/concrete.rsi, state: concrete }
   spawn: MaterialConcrete1
   maxCount: 30
+
+- type: stack
+  id: ColorfulFiber
+  name: stack-colorful-fiber
+  icon: { sprite: _Scp/Objects/Research/research_material.rsi, state: scp2295-fiber }
+  spawn: Scp2295Fiber1
+  maxCount: 20

@@ -15,6 +15,10 @@
         reagents:
         - ReagentId: Scp500Reagent
           Quantity: 1
+  - type: Tag
+    tags:
+    - Scp500
+    - Pill
 
 - type: entity
   parent:
@@ -36,3 +40,6 @@
   - type: GuideHelp
     guides:
     - ScpResearch
+  - type: Tag
+    tags:
+    - Scp500

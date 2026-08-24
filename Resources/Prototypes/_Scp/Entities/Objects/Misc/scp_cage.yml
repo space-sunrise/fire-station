@@ -59,7 +59,7 @@
   name: Scp cage
   components:
   - type: ResistLocker
-    resistTime: 300 # 5 минут
+    resistTime: 180 # 3 минут
   - type: EntityStorage
     openSound:
       path: /Audio/_Scp/Effects/door_open.ogg
@@ -73,6 +73,7 @@
       components:
       - Scp
   - type: Lock
+    lockTime: 5
   - type: AccessReader
     access: [["Security"], ["Research"]]
   - type: SuppressArtifactContainer
@@ -85,7 +86,7 @@
   - type: Destructible
     thresholds:
     - trigger: !type:DamageTrigger
-        damage: 2000
+        damage: 500
       behaviors:
       - !type:PlaySoundBehavior
         sound:
@@ -139,3 +140,105 @@
     deployStates:
       false: CrateScpCageFolded
       true: CrateScpCageScp173
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 500
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CrateScpCageDoor173:
+            min: 1
+            max: 1
+          CrateScpBrokenCage173:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: entity
+  parent: BaseItem
+  id: CrateScpCageDoor173
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/scp_cage.rsi
+    state: door
+  - type: Item
+    size: Ginormous
+  - type: MultiHandedItem
+  - type: Tag
+    tags:
+    - ScpCageDoor173
+
+- type: entity
+  parent: BaseStructureDynamic
+  id: CrateScpBrokenCage173
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/scp_cage.rsi
+    layers:
+    - state: open
+    - state: broken
+      map: [ "enum.ConstructionVisuals.Layer" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ConstructionVisuals.Key:
+        enum.ConstructionVisuals.Layer:
+          start: { state: broken }
+          doorInserted: { state: door }
+          doorAnchored: { state: door }
+  - type: Transform
+    noRot: true
+  - type: InteractionOutline
+  - type: Physics
+  - type: Construction
+    graph: ScpCage173
+    node: start
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: constructionGraph
+  id: ScpCage173
+  start: start
+  graph:
+    - node: start
+      actions:
+      - !type:AppearanceChange
+      edges:
+        - to: doorInserted
+          steps:
+            - tag: ScpCageDoor173
+              name: scp-cage-door-insert
+              doAfter: 15
+    - node: doorInserted
+      actions:
+      - !type:AppearanceChange
+      edges:
+        - to: doorAnchored
+          steps:
+            - tool: Anchoring
+              doAfter: 15
+    - node: doorAnchored
+      actions:
+      - !type:AppearanceChange
+      edges:
+        - to: finished
+          steps:
+            - tool: Welding
+              doAfter: 15
+    - node: finished
+      entity: CrateScpCageScp173

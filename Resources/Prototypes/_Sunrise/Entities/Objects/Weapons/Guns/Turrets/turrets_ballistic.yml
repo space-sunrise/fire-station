@@ -190,11 +190,11 @@
     availableModes:
     - Burst
     - FullAuto
-    projectileSpeed: 18
+    projectileSpeed: 16
     fireRate: 12
-    burstFireRate: 25
-    shotsPerBurst: 20
-    burstCooldown: 3
+    burstFireRate: 15
+    shotsPerBurst: 15
+    burstCooldown: 4
     minAngle: 1
     maxAngle: 45
     angleIncrease: 1
@@ -204,7 +204,7 @@
       params:
         pitch: 0.8
   - type: BallisticAmmoProvider
-    proto: CartridgeRifleHeavyArtillery
+    proto: CartridgeRifleHeavySP
     capacity: 160
   - type: Destructible
     thresholds:
@@ -668,11 +668,13 @@
     enabled: true
   - type: BatteryAmmoProvider
     proto: BulletEnergyTurretDisabler
-    fireCost: 100
+    fireCost: 1
   - type: BatteryWeaponFireModes
     fireModes:
     - proto: BulletEnergyTurretDisabler
-      fireCost: 100
+      fireCost: 1
+  - type: BatterySelfRecharger
+    autoRechargeRate: 5
   - type: Destructible
     thresholds:
     - trigger:
@@ -714,133 +716,220 @@
   id: SpawnLootRogueSiliconTurretSquall
   name: rogue silicon turret loot spawner
   parent: MarkerBase
+  categories: [ HideSpawnMenu ]
   components:
-  - type: RandomSpawner
-    chance: 0.95
+  - type: EntityTableSpawner
     offset: 0.0
-    prototypes:
-    - ScrapSteel
-    - ScrapAirlock1
-    - ScrapGlass
-    - CartridgeRifleHeavyArtillery
-    - CartridgeRifleHeavyArtillery
-    - CartridgeRifleHeavyArtillery
-    - CartridgeRifleHeavyArtillery
-    rarePrototypes:
-    - ShuttleGunSquallCircuitboard
-    rareChance: 0.2
+    table: !type:AllSelector
+      children:
+      - id: ScrapSteel
+        prob: 0.25
+      - id: ScrapAirlock1
+        prob: 0.25
+      - id: ScrapGlass
+        prob: 0.25
+      - id: CartridgeRifleHeavySP
+        prob: 0.25
+      - id: CartridgeRifleHeavySP
+        prob: 0.25
+      - id: CartridgeRifleHeavySP
+        prob: 0.25
+      - id: CartridgeRifleHeavySP
+        prob: 0.25
+      - id: CartridgeRifleHeavySP
+        prob: 0.25
+      - id: CartridgeRifleHeavySP
+        prob: 0.25
+      - id: CartridgeRifleHeavySP
+        prob: 0.25
+      - id: CartridgeRifleHeavySP
+        prob: 0.25
+      - id: RifleHeavyMagazineSP
+        prob: 0.25
+      - id: ShuttleGunSquallCircuitboard
+        prob: 0.2
 
 - type: entity
   id: SpawnLootRogueSiliconTurretQuadling
   name: rogue silicon turret loot spawner
   parent: MarkerBase
+  categories: [ HideSpawnMenu ]
   components:
-  - type: RandomSpawner
-    chance: 0.95
+  - type: EntityTableSpawner
     offset: 0.0
-    prototypes:
-    - ScrapSteel
-    - ScrapAirlock1
-    - ScrapAirlock1
-    - ScrapGlass
-    - ScrapGlass
-    - MagazineBoxBelt127Empty
-    - MagazineBoxBelt127Empty
-    rarePrototypes:
-    - ShuttleGunQuadlingCircuitboard
-    rareChance: 0.2
+    table: !type:AllSelector
+      children:
+      - id: SpawnLootMagazineBoxBelt127
+        prob: 0.75
+      - id: ScrapSteel
+        prob: 0.5
+      - id: ScrapAirlock1
+        prob: 0.33
+      - id: ScrapAirlock1
+        prob: 0.15
+      - id: ScrapGlass
+        prob: 0.33
+      - id: ScrapGlass
+        prob: 0.15
+      - id: ShuttleGunQuadlingCircuitboard
+        prob: 0.2
+
+- type: entity
+  id: SpawnLootMagazineBoxBelt127
+  name: 15mm ammo loot spawner
+  parent: MarkerBase
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: _Sunrise/Structures/Storage/Gunsafes/small_lethal.rsi
+          state: base
+        - sprite: _Sunrise/Structures/Storage/Gunsafes/small_lethal.rsi
+          state: pistol
+    - type: EntityTableSpawner
+      table: !type:NestedSelector
+        tableId: BoxBelt127
+
+- type: entityTable
+  id: BoxBelt127
+  table: !type:GroupSelector
+    children:
+    - !type:GroupSelector
+      weight: 50
+      children:
+      - id: MagazineBoxBelt127Empty
+    - !type:GroupSelector
+      weight: 33
+      children:
+      - id: MagazineBoxBelt127Artillery
+      - id: MagazineBoxBelt127
+      - id: MagazineBoxBelt127Emp
+    - !type:GroupSelector
+      weight: 5
+      children:
+      - id: MagazineBoxBelt127Blast
+      - id: MagazineBoxBelt127Frag
 
 - type: entity
   id: SpawnLootRogueSiliconTurretVympel
   name: rogue silicon turret loot spawner
   parent: MarkerBase
+  categories: [ HideSpawnMenu ]
   components:
-  - type: RandomSpawner
-    chance: 0.95
+  - type: EntityTableSpawner
     offset: 0.0
-    prototypes:
-    - ScrapSteel
-    - ScrapAirlock1
-    - ScrapAirlock1
-    - ScrapGlass
-    - MagazineBoxBelt127Empty
-    - MagazineBoxBelt127Empty
-    rarePrototypes:
-    - ShuttleGunVympelCircuitboard
-    rareChance: 0.2
+    table: !type:AllSelector
+      children:
+      - id: ScrapSteel
+        prob: 0.75
+      - id: ScrapAirlock1
+        prob: 0.33
+      - id: ScrapAirlock1
+        prob: 0.33
+      - id: ScrapGlass
+        prob: 0.33
+      - id: SpawnLootMagazineBoxBelt127
+        prob: 0.75
+      - id: ScrapGlass
+        prob: 0.33
+      - id: ShuttleGunVympelCircuitboard
+        prob: 0.2
 
 - type: entity
   id: SpawnLootRogueSiliconTurretLongbow
   name: rogue silicon turret loot spawner
   parent: MarkerBase
+  categories: [ HideSpawnMenu ]
   components:
-  - type: RandomSpawner
-    chance: 0.95
+  - type: EntityTableSpawner
     offset: 0.0
-    prototypes:
-    - ScrapSteel
-    - ScrapAirlock1
-    - ScrapGlass
-    - CartridgeAntiMateriel
-    rarePrototypes:
-    - ShuttleGunLongbowCircuitboard
-    rareChance: 0.2
+    table: !type:AllSelector
+      children:
+      - id: ScrapSteel
+        prob: 0.25
+      - id: ScrapAirlock1
+        prob: 0.25
+      - id: ScrapGlass
+        prob: 0.25
+      - id: CartridgeAntiMateriel
+        prob: 0.25
+      - id: ShuttleGunLongbowCircuitboard
+        prob: 0.2
 
 - type: entity
   id: SpawnLootRogueSiliconTurretBullfrog
   name: rogue silicon turret loot spawner
   parent: MarkerBase
+  categories: [ HideSpawnMenu ]
   components:
-  - type: RandomSpawner
-    chance: 0.95
+  - type: EntityTableSpawner
     offset: 0.0
-    prototypes:
-    - ScrapSteel
-    - ScrapAirlock1
-    - ScrapGlass
-    - MagazineGrenadeEmpty
-    - ShellFragArtillery
-    - ShellFragArtillery
-    rarePrototypes:
-    - ShuttleGunBullfrogCircuitboard
-    rareChance: 0.2
+    table: !type:AllSelector
+      children:
+      - id: ScrapSteel
+        prob: 0.25
+      - id: ScrapAirlock1
+        prob: 0.25
+      - id: ScrapGlass
+        prob: 0.25
+      - id: MagazineGrenadeEmpty
+        prob: 0.25
+      - id: ShellFragArtillery
+        prob: 0.25
+      - id: ShellFragArtillery
+        prob: 0.25
+      - id: ShuttleGunBullfrogCircuitboard
+        prob: 0.2
 
 - type: entity
   id: SpawnLootRogueSiliconTurretAutocannon
   name: rogue silicon turret loot spawner
   parent: MarkerBase
+  categories: [ HideSpawnMenu ]
   components:
-  - type: RandomSpawner
-    chance: 0.95
+  - type: EntityTableSpawner
     offset: 0.0
-    prototypes:
-    - ScrapSteel
-    - ScrapAirlock1
-    - ScrapGlass
-    - CartridgeMinigun
-    - CartridgeMinigun
-    - MagazineChainGun200
-    - MagazineChainGun100
-    rarePrototypes:
-    - WeaponMachineGunLCG
-    - WeaponMechCombatChaingun
-    rareChance: 0.15
+    table: !type:AllSelector
+      children:
+      - id: ScrapSteel
+        prob: 0.25
+      - id: ScrapAirlock1
+        prob: 0.25
+      - id: ScrapGlass
+        prob: 0.25
+      - id: CartridgeMinigun
+        prob: 0.25
+      - id: CartridgeMinigun
+        prob: 0.25
+      - id: MagazineChainGun200
+        prob: 0.25
+      - id: MagazineChainGun100
+        prob: 0.25
+      - !type:GroupSelector
+        prob: 0.15
+        children:
+        - id: WeaponMachineGunLCG
+        - id: WeaponMechCombatChaingun
 
 - type: entity
   id: SpawnLootRogueSiliconTurretEnergy
   name: rogue silicon turret loot spawner
   parent: MarkerBase
+  categories: [ HideSpawnMenu ]
   components:
-  - type: RandomSpawner
-    chance: 0.95
+  - type: EntityTableSpawner
     offset: 0.0
-    prototypes:
-    - ScrapSteel
-    - ScrapAirlock1
-    - ScrapGlass
-    rarePrototypes:
-    - WeaponEnergyTurretAIMachineCircuitboard
-    rareChance: 0.25
+    table: !type:AllSelector
+      children:
+      - id: ScrapSteel
+        prob: 0.25
+      - id: ScrapAirlock1
+        prob: 0.25
+      - id: ScrapGlass
+        prob: 0.25
+      - id: WeaponEnergyTurretAIMachineCircuitboard
+        prob: 0.25
 
 - type: entity
   parent: WeaponEnergyTurretStationBase
@@ -855,11 +944,13 @@
     enabled: true
   - type: BatteryAmmoProvider
     proto: BulletEnergyTurretLaser
-    fireCost: 100
+    fireCost: 1
   - type: BatteryWeaponFireModes
     fireModes:
     - proto: BulletEnergyTurretLaser
-      fireCost: 100
+      fireCost: 1
+  - type: BatterySelfRecharger
+    autoRechargeRate: 5
   - type: Destructible
     thresholds:
     - trigger:

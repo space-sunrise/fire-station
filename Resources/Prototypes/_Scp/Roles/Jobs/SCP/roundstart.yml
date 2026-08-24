@@ -17,38 +17,6 @@
 
 # Euclid
 - type: job
-  id: Scp173
-  name: job-name-scp173
-  description: job-description-scp173
-  playTimeTracker: JobScp173
-  requirements:
-  - !type:OverallPlaytimeRequirement
-    time: 360000 # 100h
-  weight: 975
-  icon: JobIconScp173
-  joinNotifyCrew: false
-  overrideConsoleVisibility: false
-  canBeAntag: false
-  jobEntity: Scp173
-  applyTraits: false
-
-- type: job
-  id: Scp096
-  name: job-name-scp096
-  description: job-description-scp096
-  playTimeTracker: JobScp096
-  requirements:
-  - !type:OverallPlaytimeRequirement
-    time: 360000 # 100h
-  weight: 980
-  icon: JobIconScp096
-  joinNotifyCrew: false
-  overrideConsoleVisibility: false
-  canBeAntag: false
-  jobEntity: Scp096
-  applyTraits: false
-
-- type: job
   id: Scp049
   name: job-name-scp049
   description: job-description-scp049
@@ -71,33 +39,80 @@
   playTimeTracker: JobScp082
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 99999999999 # Временно 120h 432000
+    time: 720000 # 200h
   weight: 990
   icon: JobIconScp082
   joinNotifyCrew: false
   overrideConsoleVisibility: false
   canBeAntag: false
-  jobEntity: Scp082 # TODO: Поменять после добавления каннибала
+  jobEntity: Scp082
   applyTraits: false
-  setPreference: false # TODO: Убрать после добавления каннибала
 
-# Keter
 - type: job
-  id: Scp939
-  name: job-name-scp939
-  description: job-description-scp939
-  playTimeTracker: JobScp939
+  id: Scp096
+  name: job-name-scp096
+  description: job-description-scp096
+  playTimeTracker: JobScp096
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 360000 # 100h
+  weight: 985
+  icon: JobIconScp096
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp096
+  applyTraits: false
+
+- type: job
+  id: Scp173
+  name: job-name-scp173
+  description: job-description-scp173
+  playTimeTracker: JobScp173
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 360000 # 100h
+  weight: 985
+  icon: JobIconScp173
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp173
+  applyTraits: false
+
+- type: job
+  id: Scp247
+  name: job-name-scp247
+  description: job-description-scp247
+  playTimeTracker: JobScp247
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 720000 # 200h
   weight: 995
-  icon: JobIconScp939
+  icon: JobIconScp247
   joinNotifyCrew: false
   overrideConsoleVisibility: false
   canBeAntag: false
-  jobEntity: Scp939
+  jobEntity: Scp247
   applyTraits: false
 
+- type: job
+  id: Scp457
+  name: job-name-scp457
+  description: job-description-scp457
+  playTimeTracker: JobScp457
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 720000 # 200h
+  weight: 995
+  icon: JobIconScp457
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp457
+  applyTraits: false
+
+# Keter
 - type: job
   id: Scp106
   name: job-name-scp106
@@ -106,10 +121,42 @@
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 756000 # 210h
-  weight: 1000
+  weight: 995
   icon: JobIconScp106
   joinNotifyCrew: false
   overrideConsoleVisibility: false
   canBeAntag: false
   jobEntity: Scp106
+  applyTraits: false
+
+- type: job
+  id: Scp939
+  name: job-name-scp939
+  description: job-description-scp939
+  playTimeTracker: JobScp939
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 720000 # 200h
+  weight: 1000
+  icon: JobIconScp939
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp939
+  applyTraits: false
+
+- type: job
+  id: Scp3288Alpha
+  name: job-name-scp3288Alpha
+  description: job-description-scp3288-alpha
+  playTimeTracker: JobScp3288Alpha
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 756000 # 210h
+  weight: 1000
+#  icon: TODO
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp3288
   applyTraits: false

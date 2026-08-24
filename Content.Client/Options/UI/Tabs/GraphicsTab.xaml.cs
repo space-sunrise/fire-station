@@ -143,7 +143,7 @@ public sealed partial class GraphicsTab : Control
                     _cfg.SetCVar(CVars.LightSoftShadows, false);
                     _cfg.SetCVar(CVars.LightBlur, false);
                     // Fire added start
-                    _cfg.SetCVar(ScpCCVars.LightBloomEnable, false);
+                    _cfg.SetCVar(ScpCCVars.LightBloomConeEnable, false);
                     _cfg.SetCVar(ScpCCVars.FieldOfViewBlurScale, 0.25f);
                     // Fire added end
                     break;
@@ -152,7 +152,7 @@ public sealed partial class GraphicsTab : Control
                     _cfg.SetCVar(CVars.LightSoftShadows, false);
                     _cfg.SetCVar(CVars.LightBlur, true);
                     // Fire added start
-                    _cfg.SetCVar(ScpCCVars.LightBloomEnable, false);
+                    _cfg.SetCVar(ScpCCVars.LightBloomConeEnable, false);
                     _cfg.SetCVar(ScpCCVars.FieldOfViewBlurScale, 0.4f);
                     // Fire added end
                     break;
@@ -161,7 +161,7 @@ public sealed partial class GraphicsTab : Control
                     _cfg.SetCVar(CVars.LightSoftShadows, true);
                     _cfg.SetCVar(CVars.LightBlur, true);
                     // Fire added start
-                    _cfg.SetCVar(ScpCCVars.LightBloomEnable, true);
+                    _cfg.SetCVar(ScpCCVars.LightBloomConeEnable, true);
                     _cfg.SetCVar(ScpCCVars.FieldOfViewBlurScale, 0.7f);
                     // Fire added end
                     break;
@@ -170,7 +170,7 @@ public sealed partial class GraphicsTab : Control
                     _cfg.SetCVar(CVars.LightSoftShadows, true);
                     _cfg.SetCVar(CVars.LightBlur, true);
                     // Fire added start
-                    _cfg.SetCVar(ScpCCVars.LightBloomEnable, true);
+                    _cfg.SetCVar(ScpCCVars.LightBloomConeEnable, true);
                     _cfg.SetCVar(ScpCCVars.FieldOfViewBlurScale, 0.9f);
                     // Fire added end
                     break;

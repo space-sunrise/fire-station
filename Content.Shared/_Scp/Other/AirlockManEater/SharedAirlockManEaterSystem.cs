@@ -22,8 +22,8 @@ public abstract class SharedAirlockManEaterSystem : EntitySystem
     private static readonly TimeSpan VictimSearchDelay = TimeSpan.FromSeconds(0.3f);
     private static TimeSpan _nextVictimSearchTime = TimeSpan.Zero;
 
-    private readonly List<Entity<HumanoidAppearanceComponent>> _midRangeEntities = [];
-    private readonly HashSet<Entity<HumanoidAppearanceComponent>> _closeEntities = [];
+    private readonly List<Entity<HumanoidProfileComponent>> _midRangeEntities = [];
+    private readonly HashSet<Entity<HumanoidProfileComponent>> _closeEntities = [];
 
     // Возможно это не самый производительный способ
     // Но зато смешно. Ловушка шлюзера
@@ -49,7 +49,7 @@ public abstract class SharedAirlockManEaterSystem : EntitySystem
         _midRangeEntities.Clear();
         _closeEntities.Clear();
 
-        foreach (var ent in _lookup.GetEntitiesInRange<HumanoidAppearanceComponent>(coords, VictimSearchRadiusOpen))
+        foreach (var ent in _lookup.GetEntitiesInRange<HumanoidProfileComponent>(coords, VictimSearchRadiusOpen))
         {
             if (!IsProperVictim(airlockUid, ent, VictimSearchRadiusOpen))
                 continue;

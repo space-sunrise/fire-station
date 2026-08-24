@@ -8,7 +8,6 @@
   - type: ContainerContainer
     containers:
       key_slots: !type:Container
-      cell_slot: !type:ContainerSlot {}
   - type: Headset
     toggleAction: ActionToggleHeadset
   - type: EncryptionKeyHolder
@@ -21,17 +20,10 @@
     slots:
     - ears
     sprite: Clothing/Ears/Headsets/base.rsi
-  - type: PowerCellSlot
-    cellSlotId: cell_slot
   - type: UserInterface
     interfaces:
       enum.HeadsetUiKey.Key:
         type: HeadsetBoundUserInterface
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-name
-        startingItem: PowerCellSmall
 
 - type: entity
   abstract: true
@@ -44,11 +36,6 @@
     state: icon_alt
   - type: Clothing
     equippedPrefix: alt
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-name
-        startingItem: PowerCellSmall
 
 - type: entity
   parent: ClothingHeadset
@@ -329,7 +316,6 @@
       key_slots:
       - EncryptionKeyERT
       - EncryptionKeyStationMaster
-      - EncryptionKeyLaw
       - EncryptionKeyBlueShield
   - type: Sprite
     sprite: _Sunrise/Clothing/Ears/Headsets/ert.rsi
@@ -349,7 +335,6 @@
       - EncryptionKeyDeathSquad
       - EncryptionKeyERT
       - EncryptionKeyStationMaster
-      - EncryptionKeyLaw
       - EncryptionKeyBlueShield
   - type: Sprite
     sprite: _Sunrise/Clothing/Ears/Headsets/deathsquad.rsi
@@ -371,7 +356,6 @@
       - EncryptionKeyDeathSquad
       - EncryptionKeyERT
       - EncryptionKeyStationMaster
-      - EncryptionKeyLaw
       - EncryptionKeyBlueShield
   - type: Sprite
     sprite: _Sunrise/Clothing/Ears/Headsets/specopsofficer.rsi
@@ -390,7 +374,6 @@
     containers:
       key_slots:
       - EncryptionKeyStationMaster
-      - EncryptionKeyLaw
       - EncryptionKeyBlueShield
   - type: Sprite
     sprite: _Sunrise/Clothing/Ears/Headsets/representative.rsi

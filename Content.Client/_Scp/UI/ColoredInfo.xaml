@@ -15,8 +15,8 @@
             </PanelContainer.PanelOverride>
         </PanelContainer>
         <BoxContainer Orientation="Vertical" Margin="10 0 0 0">
-            <Label Name="Name" StyleClasses="LabelBig"/>
-            <RichTextLabel Name="Description" StyleClasses="LabelSubText"/>
+            <Label Name="LabelName" StyleClasses="LabelBig"/>
+            <RichTextLabel Name="LabelDescription" StyleClasses="LabelSubText"/>
         </BoxContainer>
     </BoxContainer>
 
