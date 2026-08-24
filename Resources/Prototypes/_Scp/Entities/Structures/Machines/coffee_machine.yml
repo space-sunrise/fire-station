@@ -1,0 +1,48 @@
+﻿- type: entity
+  id: CoffeeMachine
+  parent: 
+  - BaseMachinePowered 
+  - SmallConstructibleMachine
+  - ReagentDispenserBase
+  name: coffee machine
+  description: A machine that creates an invigorating drink.
+  suffix: Filled, Decorative
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/coffee_machine.rsi
+    state: icon
+  - type: GuideHelp
+    guides:
+    - Bartender
+    - Drinks
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.17,0,0.20,0.4"
+        mask:
+        - TabletopMachineMask
+        layer:
+        - TabletopMachineLayer
+  - type: Rotatable
+  - type: Storage
+    openOnActivate: false
+    whitelist:
+      tags:
+      - DrinkBottle
+      components:
+      - DrainableSolution
+    blacklist:
+      tags:
+      - Bucket
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: DrinkCoffeeJug
+        - id: DrinkIceJug
+        - id: DrinkSugarJug
+        - id: DrinkMilkCarton
+        - id: DrinkSoyMilkCarton

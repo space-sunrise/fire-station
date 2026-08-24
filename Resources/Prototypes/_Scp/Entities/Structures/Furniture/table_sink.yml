@@ -3,6 +3,7 @@
   id: TableSink
   name: sink counter
   description: Wide metal counter with a built-in sink.
+  suffix: Decorative
   components:
   - type: Sprite
     sprite: _Scp/Structures/Furniture/table_sink.rsi
