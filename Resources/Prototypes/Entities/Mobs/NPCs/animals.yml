@@ -48,7 +48,7 @@
     interactSuccessSound:
       path: /Audio/Animals/fox_squeak.ogg
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-organic
+    flavorKind: scp-station-event-random-sentience-flavor-organic # Fire edit
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:
@@ -287,14 +287,21 @@
   - type: ReplacementAccent
     accent: chicken
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-organic
+    flavorKind: scp-station-event-random-sentience-flavor-organic # Fire edit
   - type: NpcFactionMember
     factions:
     - Passive
   # Sunrise-start
   - type: Body
-    prototype: Chiken
-  - type: Carriable
+  - type: EntityTableContainerFill
+    containers:
+      body_organs: !type:AllSelector
+        children:
+        - id: OrganAnimalLungs
+        - id: OrganManeaterAnimalStomach
+        - id: OrganAnimalLiver
+        - id: OrganChikenHeart
+        - id: OrganAnimalKidneys
   - type: CanEscapeInventory
   - type: AttackOnInteractionFail
     attackMemoryLength: 10
@@ -357,7 +364,6 @@
   parent: FoodEgg
   suffix: Fertilized, Chicken
   components:
-  - type: Timer
   - type: TimedSpawner
     prototypes:
     - MobChicken
@@ -506,7 +512,7 @@
 
 - type: entity
   name: mothroach
-  parent: MobCockroach
+  parent: [ BaseMobMothroach, MobCockroach ]
   id: MobMothroach
   description: This is the adorable by-product of multiple attempts at genetically mixing mothpeople with cockroaches.
   components:
@@ -534,7 +540,7 @@
   - type: Speech
     speechVerb: Moth
     speechSounds: Squeak
-    allowedEmotes: ['Chitter', 'Squeak']
+    allowedEmotes: ['Chitter', 'Squeak', 'Flap']
   - type: FaxableObject
     insertingState: inserting_mothroach
   - type: MothAccent
@@ -610,6 +616,8 @@
       Female: UnisexMoth
       Unsexed: UnisexMoth
     wilhelmProbability: 0.001
+  - type: BodyEmotes
+    soundsId: MothBodyEmotes
   - type: MobPrice
     price: 150
   - type: Tag
@@ -621,8 +629,6 @@
   - type: NpcFactionMember
     factions:
     - Mouse
-  - type: Body
-    prototype: Mothroach
   - type: TypingIndicator
     proto: moth
   - type: Destructible
@@ -748,12 +754,11 @@
   - type: ReplacementAccent
     accent: duck
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-organic
+    flavorKind: scp-station-event-random-sentience-flavor-organic # Fire edit
   - type: NpcFactionMember
     factions:
     - Passive
   # Sunrise-start
-  - type: Carriable
   - type: CanEscapeInventory
   - type: AttackOnInteractionFail
     attackMemoryLength: 10
@@ -804,7 +809,6 @@
   parent: FoodEgg
   suffix: Fertilized, Duck
   components:
-    - type: Timer
     - type: TimedSpawner
       prototypes:
       - MobDuckMallard
@@ -895,7 +899,7 @@
 
 - type: entity
   name: cow
-  parent: SimpleMobBase
+  parent: [ SimpleMobBase, BaseMobRuminant ]
   id: MobCow
   description: Moo.
   components:
@@ -939,13 +943,13 @@
   - type: SolutionContainerManager
     solutions:
       udder:
-        maxVol: 500 #Sunrise-edit
+        maxVol: 500 # Sunrise-edit
         reagents:
         - ReagentId: Milk
           Quantity: 30
   - type: Udder
     reagentId: Milk
-    quantityPerUpdate: 50
+    quantityPerUpdate: 50 # Sunrise-edit
     growthDelay: 30
   - type: ExaminableHunger
   - type: Butcherable
@@ -968,8 +972,6 @@
   - type: NpcFactionMember
     factions:
     - Passive
-  - type: Body
-    prototype: AnimalRuminant
   - type: HTN
     rootTask:
       task: RuminantCompound
@@ -986,7 +988,7 @@
 
 - type: entity
   name: crab
-  parent: SimpleMobBase
+  parent: [ SimpleMobBase, BaseMobHemocyanin ]
   id: MobCrab
   description: A folk legend goes around that his claw snaps spacemen out of existence over distasteful remarks. Be polite and tolerant for your own safety.
   components:
@@ -1052,10 +1054,7 @@
   - type: HTN
     rootTask:
       task: RuminantCompound
-  - type: Body
-    prototype: AnimalHemocyanin
   # Sunrise-start
-  - type: Carriable
   - type: CanEscapeInventory
   - type: AttackOnInteractionFail
     attackMemoryLength: 10
@@ -1065,7 +1064,7 @@
 
 - type: entity
   name: goat
-  parent: SimpleMobBase
+  parent: [ SimpleMobBase, BaseMobRuminant ]
   id: MobGoat
   description: Her spine consists of long sharp segments, no wonder she is so grumpy.
   components:
@@ -1157,8 +1156,6 @@
   - type: NpcFactionMember
     factions:
     - Passive
-  - type: Body
-    prototype: AnimalRuminant
   - type: NPCRetaliation
     attackMemoryLength: 5
   - type: FactionException
@@ -1166,7 +1163,6 @@
     rootTask:
       task: RuminantHostileCompound
   # Sunrise-start
-  - type: Carriable
   - type: CanEscapeInventory
   - type: AttackOnInteractionFail
     attackMemoryLength: 10
@@ -1224,7 +1220,6 @@
     factions:
     - Passive
   # Sunrise-start
-  - type: Carriable
   - type: CanEscapeInventory
   - type: AttackOnInteractionFail
     attackMemoryLength: 10
@@ -1428,7 +1423,7 @@
 - type: entity
   name: genetic ancestor
   id: MobBaseAncestor
-  parent: [SimpleMobBase, StripableInventoryBase, BaseSpeciesPickupable] # Sunrise-Edit
+  parent: [BaseMobAnimal, SimpleMobBase, StripableInventoryBase, BaseSpeciesPickupable] # Sunrise-Edit
   description: The genetic bipedal ancestor of... Uh... Something. Yeah, there's definitely something on the station that descended from whatever this is.
   abstract: true
   components:
@@ -1469,8 +1464,8 @@
       state: body-overlay-2
       visible: false
     - map: [ "ears" ]
-    - map: [ "outerClothing" ] #Sunrise-edit
     - map: [ "id" ]
+    - map: [ "outerClothing" ]
     - map: [ "mask" ]
     - map: [ "head" ]
     - map: [ "clownedon" ]
@@ -1478,6 +1473,10 @@
       state: "creampie_human"
       visible: false
   - type: Hands
+    activeHandId: Hand
+    hands:
+      Hand:
+        location: Left
   - type: ComplexInteraction
   - type: GenericVisualizer
     visuals:
@@ -1485,9 +1484,6 @@
         clownedon:
           True: {visible: true}
           False: {visible: false}
-  - type: Body
-    prototype: Primate
-    requiredLegs: 1 # TODO: More than 1 leg
   - type: CreamPied
   - type: FireVisuals
     sprite: Mobs/Effects/onfire.rsi
@@ -1545,6 +1541,8 @@
       - !type:WashCreamPie
   - type: Crawler
   - type: StatusIcon
+    bounds: -0.5,-0.5,0.5,0.5
+  - type: JobStatus # marks them as crew
   # Sunrise-start
   - type: AttackOnInteractionFail
     attackMemoryLength: 10
@@ -1565,7 +1563,7 @@
     speechVerb: Monkey
   - type: MonkeyAccent
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-primate
+    flavorKind: scp-station-event-random-sentience-flavor-primate # Fire edit
   - type: AlwaysRevolutionaryConvertible
   - type: GhostRole
     prob: 0.05
@@ -1597,7 +1595,7 @@
   - type: NameIdentifier
     group: Monkey
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-primate
+    flavorKind: scp-station-event-random-sentience-flavor-primate # Fire edit
   - type: Speech
     speechSounds: Monkey
     speechVerb: Monkey
@@ -1742,22 +1740,20 @@
   - type: AlwaysRevolutionaryConvertible
   - type: GhostTakeoverAvailable
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-kobold
+    flavorKind: scp-station-event-random-sentience-flavor-kobold # Fire edit
   - type: GhostRole
     prob: 0.05
     makeSentient: true
     name: ghost-role-information-kobold-name
     description: ghost-role-information-kobold-description
     rules: ghost-role-information-nonantagonist-rules
-  # Sunrise Start
-  - type: Body
-    prototype: Kobold
-  # Sunrise-End
 
 - type: entity
   name: kobold
   id: MobKobold
-  parent: MobBaseKobold
+  parent: 
+  - MobBaseKobold
+  - BaseFriendlyScpArtifactMinor # Fire added
   description: Cousins to the sentient race of lizard people, kobolds blend in with their natural habitat and are as nasty as monkeys; ready to pull out your hair and stab you to death.
   components:
   - type: Clumsy
@@ -1815,13 +1811,13 @@
 
 - type: entity
   name: mouse
-  parent: SimpleMobBase
+  parent:
+  - SimpleMobBase
+  - BaseMobAnimal
   id: MobMouse
   description: Squeak!
   components:
   - type: VentCrawler #Sunrise-edit
-  - type: Body
-    prototype: Mouse
   - type: GhostRole
     makeSentient: true
     allowSpeech: true
@@ -1852,8 +1848,6 @@
   - type: Item
     size: Tiny
     heldPrefix: 0
-  - type: ItemRepickupCooldown  # Sunrise-add
-    cooldown: 5                 # Sunrise-add
   - type: Clothing
     quickEquip: false
     sprite: Mobs/Animals/mouse.rsi
@@ -2002,6 +1996,8 @@
       - !type:GibBehavior
         recursive: false
   # Sunrise-Start
+  - type: ItemRepickupCooldown
+    cooldown: 5
   - type: NightVision
   - type: HolidayVisuals
     holidays:
@@ -2105,7 +2101,9 @@
 - type: entity
   name: cancer mouse
   description: Toxic. Squeak!
-  parent: MobMouse
+  parent: 
+  - MobMouse
+  - BaseFriendlyScpArtifactMinor # Fire added
   id: MobMouseCancer
   components:
   - type: GhostRole
@@ -2122,7 +2120,8 @@
     energy: 5
     netsync: false
   - type: RadiationSource
-    intensity: 0.3
+    intensity: 0.5
+    slope: 0.3
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:
@@ -2204,7 +2203,6 @@
     tags:
     - VimPilot
   # Sunrise-start
-  - type: Carriable
   - type: CanEscapeInventory
   - type: AttackOnInteractionFail
     attackMemoryLength: 10
@@ -2504,7 +2502,6 @@
       types:
         Heat : 0.2 #per second, scales with temperature & other constants
   # Sunrise-start
-  - type: Carriable
   - type: CanEscapeInventory
   - type: AttackOnInteractionFail
     attackMemoryLength: 10
@@ -2559,8 +2556,8 @@
     angle: 0
     animation: WeaponArcBite
     damage:
-      groups:
-        Brute: 5
+      types:
+        Piercing: 5
   - type: Item
     size: Normal
     sprite: Mobs/Animals/grenadepenguin.rsi
@@ -2650,7 +2647,7 @@
 # Code unique spider prototypes or combine them all into one spider and get a
 # random sprite state when you spawn it.
 - type: entity
-  parent: [ SimpleMobBase, MobCombat ]
+  parent: [ SimpleMobBase, BaseMobHemocyanin, MobCombat ]
   id: MobSpiderBase
   abstract: true
   components:
@@ -2672,12 +2669,10 @@
     - id: FoodMeatSpider
       amount: 2
   - type: CombatMode
-  - type: Body
-    prototype: AnimalHemocyanin
   - type: MobThresholds
     thresholds:
       0: Alive
-      90: Dead
+      50: Dead # Sunrise-Edit
   - type: SolutionContainerManager
     solutions:
       melee:
@@ -2734,13 +2729,15 @@
   - type: PassiveDamage # Slight passive regen. Assuming one damage type, comes out to about 4 damage a minute from base.yml.
     allowedStates:
     - Alive
-    damageCap: 89
     damage:
       types:
         Poison: -0.07
-      groups:
-        Brute: -0.07
-        Burn: -0.07
+        Blunt: -0.03
+        Slash: -0.03
+        Piercing: -0.03
+        Heat: -0.03
+        Cold: -0.03
+        Shock: -0.03
   # Sunrise-start
   - type: FootstepModifier
     footstepSoundCollection:
@@ -2750,7 +2747,6 @@
   - type: CollectiveMind
     minds:
     - Arachnids
-  - type: Carriable
   - type: CanEscapeInventory
   - type: AttackOnInteractionFail
     attackMemoryLength: 10
@@ -2834,7 +2830,9 @@
 
 - type: entity
   name: clown spider
-  parent: MobSpiderAngryBase
+  parent: 
+  - MobSpiderAngryBase
+  - BaseFriendlyScpArtifactMinor # Fire added
   id: MobClownSpider
   description: Combines the two most terrifying things in existence, spiders and clowns.
   components:
@@ -2865,7 +2863,7 @@
     - type: MobThresholds
       thresholds:
         0: Alive
-        180: Dead
+        90: Dead # Sunrise-Edit
     - type: Spider
       webPrototype: SpiderWebClown
     - type: MeleeWeapon
@@ -2886,7 +2884,7 @@
               Quantity: 50
     - type: MeleeChemicalInjector
       solution: melee
-      transferAmount: 2
+      transferAmount: 5
     # Sunrise edit end
     - type: FootstepModifier
       footstepSoundCollection:
@@ -2962,7 +2960,6 @@
     tags:
     - VimPilot
   # Sunrise-start
-  - type: Carriable
   - type: CanEscapeInventory
   - type: AttackOnInteractionFail
     attackMemoryLength: 10
@@ -3044,7 +3041,6 @@
     tags:
     - VimPilot
   # Sunrise-start
-  - type: Carriable
   - type: CanEscapeInventory
   - type: AttackOnInteractionFail
     attackMemoryLength: 10
@@ -3134,7 +3130,6 @@
     tags:
     - VimPilot
   # Sunrise-start
-  - type: Carriable
   - type: CanEscapeInventory
   # Sunrise-end
 
@@ -3205,7 +3200,6 @@
     tags:
     - VimPilot
   # Sunrise-start
-  - type: Carriable
   - type: CanEscapeInventory
   # Sunrise-end
 
@@ -3381,7 +3375,6 @@
     baseSprintSpeed: 4
   # Sunrise-start
   - type: NightVision
-  - type: Carriable
   - type: CanEscapeInventory
   - type: AttackOnInteractionFail
     attackMemoryLength: 10
@@ -3610,7 +3603,6 @@
     tags:
     - VimPilot
   # Sunrise-start
-  - type: Carriable
   - type: CanEscapeInventory
   # Sunrise-end
 
@@ -3668,7 +3660,6 @@
     tags:
     - VimPilot
   # Sunrise-start
-  - type: Carriable
   - type: CanEscapeInventory
   - type: AttackOnInteractionFail
     attackMemoryLength: 10
@@ -3903,7 +3894,7 @@
   - type: ReplacementAccent
     accent: pig
   - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-organic
+    flavorKind: scp-station-event-random-sentience-flavor-organic # Fire edit
   - type: NpcFactionMember
     factions:
     - Passive
@@ -3912,8 +3903,15 @@
       task: RuminantCompound
     # Sunrise-start
   - type: Body
-    prototype: ManeaterAnimal
-  - type: Carriable
+  - type: EntityTableContainerFill
+    containers:
+      body_organs: !type:AllSelector
+        children:
+        - id: OrganAnimalLungs
+        - id: OrganManeaterAnimalStomach
+        - id: OrganAnimalLiver
+        - id: OrganPigHeart
+        - id: OrganAnimalKidneys
   - type: CanEscapeInventory
   - type: AttackOnInteractionFail
     attackMemoryLength: 10
@@ -3923,7 +3921,7 @@
 
 - type: entity
   name: diona nymph
-  parent: [SimpleMobBase, StripableInventoryBase]
+  parent: [BaseMobAnimal, SimpleMobBase, StripableInventoryBase]
   id: MobDionaNymph
   description: It's like a cat, only.... branch-ier.
   components:
@@ -4011,7 +4009,6 @@
   - type: CollectiveMind
     minds:
     - Dioneas
-  - type: Carriable
   - type: CanEscapeInventory
 
 - type: entity
@@ -4162,14 +4159,18 @@
             sprite: Mobs/Pets/displacements.rsi
             state: corgi_head_displacement
   - type: Hands # HANDS!
+    activeHandId: Right
+    hands:
+      Right:
+        location: Right
+      Left:
+        location: Left
   - type: Puller
   - type: Cuffable # bad dog!
   - type: BlockWriting # dogs can't write, paws unwieldy; mouth-writing is a myth
   - type: Stripping
   - type: ComplexInteraction
   # Implement custom borgi body type
-  - type: Body
-    prototype: SmartCorgi
   - type: RotationVisuals
     defaultRotation: 90
     horizontalRotation: 180
@@ -4182,8 +4183,9 @@
     - VimPilot
     - CanPilot
     - DoorBumpOpener
-  - type: StatusIcon # marks them as crew
+  - type: StatusIcon
     bounds: -0.5,-0.5,0.5,0.5
+  - type: JobStatus # marks them as crew
   - type: NpcFactionMember
     factions:
     - NanoTrasen

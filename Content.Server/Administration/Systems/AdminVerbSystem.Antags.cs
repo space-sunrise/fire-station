@@ -1,6 +1,7 @@
 using Content.Server._Sunrise.AssaultOps;
 using Content.Server._Sunrise.BloodCult.GameRule;
 using Content.Server._Sunrise.FleshCult.GameRule;
+using Content.Server._Sunrise.GameTicking.Rules.Components;
 using Content.Server.Administration.Commands;
 using Content.Server.Antag;
 using Content.Server.GameTicking;
@@ -17,6 +18,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Content.Shared.Roles.Components;
+using Content.Server._Scp.GameTicking.Rules.Components; // Fire edit
 
 namespace Content.Server.Administration.Systems;
 
@@ -35,10 +37,23 @@ public sealed partial class AdminVerbSystem
     private static readonly EntProtoId DefaultChangelingRule = "Changeling";
     private static readonly EntProtoId ParadoxCloneRuleId = "ParadoxCloneSpawn";
     private static readonly EntProtoId DefaultWizardRule = "Wizard";
+    private static readonly EntProtoId DefaultNinjaRule = "NinjaSpawn";
     private static readonly ProtoId<StartingGearPrototype> PirateGearId = "PirateGear";
-    private static readonly EntProtoId DefaultAssaultOpsRule = "AssaultOps";
-    private static readonly EntProtoId DefaultFleshCultRule = "FleshCult";
-    private static readonly EntProtoId DefaultVampireRule = "Vampire";
+
+    // Fire edit start
+    private static readonly EntProtoId DefaultScpChaosRaidRule = "ScpChaosRaid";
+    private static readonly EntProtoId DefaultScpChaosSpyRule = "ScpChaosHighSpy";
+    private static readonly EntProtoId DefaultScpSleepChaosSpyRule = "ScpChaosSleepSpy";
+    // Fire edit end
+
+    // Fire edit start
+    private static readonly SpriteSpecifier ChaosRaiderVerbIcon =
+        new SpriteSpecifier.Rsi(new ResPath("/Textures/_Scp/Clothing/Head/Helmets/chaos.rsi"), "icon");
+    private static readonly SpriteSpecifier ChaosSpyVerbIcon =
+        new SpriteSpecifier.Rsi(new ResPath("/Textures/_Scp/Objects/Devices/chaos_uplink.rsi"), "icon");
+    private static readonly SpriteSpecifier SleepChaosSpyVerbIcon =
+        new SpriteSpecifier.Rsi(new ResPath("Clothing/Head/Hats/pyjamasyndicatered.rsi"), "icon");
+    // Fire edit end
 
     // All antag verbs have names so invokeverb works.
     private void AddAntagVerbs(GetVerbsEvent<Verb> args)
@@ -214,69 +229,68 @@ public sealed partial class AdminVerbSystem
         };
         args.Verbs.Add(wizard);
 
-        if (HasComp<HumanoidAppearanceComponent>(args.Target)) // only humanoids can be cloned
+        var ninjaName = Loc.GetString("admin-verb-text-make-space-ninja");
+        Verb ninja = new()
+        {
+            Text = ninjaName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Weapons/Melee/energykatana.rsi"), "icon"),
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<NinjaRoleComponent>(targetPlayer, DefaultNinjaRule);
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", ninjaName, Loc.GetString("admin-verb-make-space-ninja")),
+        };
+        args.Verbs.Add(ninja);
+
+        if (HasComp<HumanoidProfileComponent>(args.Target)) // only humanoids can be cloned
             args.Verbs.Add(paradox);
 
-        // Sunrise-Start
-
-        Verb vampire = new()
+        // Fire edit start
+        Verb chaosRaider = new()
         {
-            Text = Loc.GetString("admin-verb-text-make-vampire"),
+            Text = Loc.GetString("admin-verb-text-make-chaos-raider"),
             Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/Interface/Actions/actions_vampire.rsi"),
-                "unholystrength"),
+            Icon = ChaosRaiderVerbIcon,
             Act = () =>
             {
-                _antag.ForceMakeAntag<VampireRuleComponent>(targetPlayer, DefaultVampireRule);
+                _antag.ForceMakeAntag<ChaosRaidRuleComponent>(targetPlayer, DefaultScpChaosRaidRule);
             },
             Impact = LogImpact.High,
-            Message = Loc.GetString("admin-verb-make-vampire"),
+            Message = Loc.GetString("admin-verb-make-chaos-raider"),
         };
-        args.Verbs.Add(vampire);
+        args.Verbs.Add(chaosRaider);
 
-        Verb assaultOperative = new()
+        Verb chaosSpy = new()
         {
-            Text = Loc.GetString("admin-verb-text-make-assault-operative"),
+            Text = Loc.GetString("admin-verb-text-make-chaos-spy"),
             Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/Structures/Wallmounts/posters.rsi"),
-                "poster46_contraband"),
+            Icon = ChaosSpyVerbIcon,
             Act = () =>
             {
-                _antag.ForceMakeAntag<AssaultOpsRuleComponent>(targetPlayer, DefaultAssaultOpsRule);
+                _antag.ForceMakeAntag<ChaosSpyRuleComponent>(targetPlayer, DefaultScpChaosSpyRule);
             },
             Impact = LogImpact.High,
-            Message = Loc.GetString("admin-verb-make-assault-operative"),
+            Message = Loc.GetString("admin-verb-make-chaos-spy"),
         };
-        args.Verbs.Add(assaultOperative);
+        args.Verbs.Add(chaosSpy);
 
-        Verb fleshCultist = new()
+        Verb sleepChaosSpy = new()
         {
-            Text = "Make Flesh Cultist",
+            Text = Loc.GetString("admin-verb-text-make-chaos-sleep-spy"),
             Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Texture(
-                new ResPath("_Sunrise/FleshCult/Interface/Actions/fleshCultistFleshHeart.png")),
+            Icon = SleepChaosSpyVerbIcon,
             Act = () =>
             {
-                _antag.ForceMakeAntag<FleshCultRuleComponent>(targetPlayer, DefaultFleshCultRule);
+                _antag.ForceMakeAntag<ChaosSleepSpyRuleComponent>(targetPlayer, DefaultScpSleepChaosSpyRule);
             },
             Impact = LogImpact.High,
-            Message = Loc.GetString("admin-verb-make-flesh-cultist"),
+            Message = Loc.GetString("admin-verb-make-chaos-sleep-spy"),
         };
-        args.Verbs.Add(fleshCultist);
+        args.Verbs.Add(sleepChaosSpy);
+        // Fire edit end
 
-        Verb bloodCultist = new()
-        {
-            Text = Loc.GetString("admin-verb-text-make-cultist"),
-            Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/Objects/Weapons/Melee/cult_dagger.rsi"), "icon"),
-            Act = () =>
-            {
-                _antag.ForceMakeAntag<BloodCultRuleComponent>(targetPlayer, "BloodCult");
-            },
-            Impact = LogImpact.High,
-            Message = Loc.GetString("admin-verb-make-cultist"),
-        };
-        args.Verbs.Add(bloodCultist);
-        // Sunrise-End
+        AddSunriseAntagVerbs(args); // Sunrise-edit
     }
 }

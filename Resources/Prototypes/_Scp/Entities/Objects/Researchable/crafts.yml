@@ -1,4 +1,4 @@
-﻿# Абстракты
+# Абстракты
 # ASF, RAS, ARL это сокращения от названий технологий, которые открывают эти рецепты
 
 - type: latheRecipe
@@ -42,6 +42,11 @@
   result: EyeDroplets
 
 - type: latheRecipe
+  id: SedativeCanister
+  parent: BaseASFRecipe
+  result: PillCanisterSedative
+
+- type: latheRecipe
   id: ClothingHeadBagScp096
   parent: BaseASFRecipe
   result: ClothingHeadBagScp096
@@ -62,6 +67,11 @@
   result: ClothingHeadAwareness
 
 - type: latheRecipe
+  id: ClothingHeadHelmetAiPowered
+  parent: BaseASFRecipe
+  result: ClothingHeadHelmetAiPowered
+
+- type: latheRecipe
   id: ClothingShoesSilent
   parent: BaseRASRecipe
   result: ClothingShoesSilent
@@ -70,11 +80,6 @@
   id: ClothingOuterAntiTeleportation
   parent: BaseRASRecipe
   result: ClothingOuterAntiTeleportation
-
-- type: latheRecipe
-  id: ClothingHeadHelmetAiPowered
-  parent: BaseRASRecipe
-  result: ClothingHeadHelmetAiPowered
 
 # Оружие
 

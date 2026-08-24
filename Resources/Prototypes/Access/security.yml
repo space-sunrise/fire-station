@@ -33,6 +33,14 @@
   - SecurityCommander
   groups:
   - SecurityHeadless
+  #- HeadOfSecurity
+  - Security
+  - Armory
+  #- Brig
+  #- Detective
+  #- Cryogenics
+  #- Brigmedic
+  #- Cadet
   # Fire edit end
 
 - type: accessGroup

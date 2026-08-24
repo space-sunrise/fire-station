@@ -6,6 +6,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client.VoiceMask;
 
+[Virtual] // Fire edit
 public class VoiceMaskBoundUserInterface : BoundUserInterface // Fire station edit
 {
     [Dependency] private readonly IPrototypeManager _protomanager = default!;
@@ -33,12 +34,24 @@ public class VoiceMaskBoundUserInterface : BoundUserInterface // Fire station ed
 
         _window.OnNameChange += OnNameSelected;
         _window.OnVerbChange += verb => SendMessage(new VoiceMaskChangeVerbMessage(verb));
+        _window.OnToggle += OnToggle;
+        _window.OnAccentToggle += OnAccentToggle;
         _window.OnVoiceChange += voice => SendMessage(new VoiceMaskChangeVoiceMessage(voice)); // Sunrise-Edit
     }
 
     private void OnNameSelected(string name)
     {
         SendMessage(new VoiceMaskChangeNameMessage(name));
+    }
+
+    private void OnToggle()
+    {
+        SendMessage(new VoiceMaskToggleMessage());
+    }
+
+    private void OnAccentToggle()
+    {
+        SendMessage(new VoiceMaskAccentToggleMessage());
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)
@@ -48,7 +61,7 @@ public class VoiceMaskBoundUserInterface : BoundUserInterface // Fire station ed
             return;
         }
 
-        _window.UpdateState(cast.Name, cast.Voice, cast.Verb); // Sunrise-Edit
+        _window.UpdateState(cast.Name, cast.Voice, cast.Verb, cast.Active, cast.AccentHide); // Sunrise-Edit
     }
 
     protected override void Dispose(bool disposing)

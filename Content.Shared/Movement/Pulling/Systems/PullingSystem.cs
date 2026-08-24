@@ -1,4 +1,4 @@
-using Content.Shared._Sunrise.Carrying;
+using Content.Shared._Sunrise.Movement.Carrying;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Alert;
@@ -39,7 +39,9 @@ namespace Content.Shared.Movement.Pulling.Systems;
 /// <summary>
 /// Allows one entity to pull another behind them via a physics distance joint.
 /// </summary>
-public sealed class PullingSystem : EntitySystem
+// Fire edit start - enable _Scp partial hook
+public sealed partial class PullingSystem : EntitySystem
+// Fire edit end
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!; // Sunrise-edit
@@ -59,6 +61,10 @@ public sealed class PullingSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+
+        // Fire added start - initialize _Scp hold redirect caches
+        InitializeScpHolding();
+        // Fire added end
 
         UpdatesAfter.Add(typeof(SharedPhysicsSystem));
         UpdatesOutsidePrediction = true;
@@ -302,8 +308,8 @@ public sealed class PullingSystem : EntitySystem
             return;
         }
         // Sunrise-start
-        if (TryComp<CarriableComponent>(component.Pulling, out var carriable) && !_mobState.IsAlive(component.Pulling.Value))
-            args.ModifySpeed(carriable.WalkSpeedModifier, carriable.SprintSpeedModifier);
+        if (TryComp<CanBeCarriedComponent>(component.Pulling, out var canBeCarried) && !_mobState.IsAlive(component.Pulling.Value))
+            args.ModifySpeed(canBeCarried.PullWalkSpeedModifier, canBeCarried.PullSprintSpeedModifier);
         // Sunrise-end
 
         args.ModifySpeed(component.WalkSpeedModifier, component.SprintSpeedModifier);
@@ -522,6 +528,11 @@ public sealed class PullingSystem : EntitySystem
 
         if (pullerComp.Pulling == pullableUid)
             return true;
+
+        // Fire added start - redirect scp-hold-capable pull attempts into the hold flow
+        if (TryRedirectPullToScpHold(pullerUid, pullableUid, pullerComp, pullableComp, out var holdSuccess))
+            return holdSuccess;
+        // Fire added end
 
         if (!CanPull(pullerUid, pullableUid))
             return false;

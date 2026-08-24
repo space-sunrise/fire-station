@@ -1,2 +1,10 @@
 ent-MindRoleScp2054X = SCP-2054-X, двойник
     .desc = { ent-BaseMindRoleAntag.desc }
+ent-MindRoleChaosRaiderFighter = Рейдер Повстанцев Хаоса
+    .desc = { ent-BaseMindRoleAntag.desc }
+ent-MindRoleChaosRaiderMedic = Медик Повстанцев Хаоса
+    .desc = { ent-BaseMindRoleAntag.desc }
+ent-MindRoleChaosRaiderLeader = Командир Повстанцев Хаоса
+    .desc = { ent-BaseMindRoleAntag.desc }
+ent-MindRoleChaosSpy = Шпион Повстанцев Хаоса
+    .desc = { ent-BaseMindRoleAntag.desc }

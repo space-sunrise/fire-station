@@ -39,9 +39,6 @@
       head-reptilian:
       - state: equipped-head-light-reptilian
         shader: unshaded
-      head-dog:
-      - state: equipped-head-light-dog
-        shader: unshaded
   - type: Clothing
     clothingVisuals:
       head:
@@ -60,10 +57,6 @@
       - state: equipped-head-reptilian
       - state: equipped-head-unshaded-reptilian
         shader: unshaded
-      head-dog:
-      - state: equipped-head-dog
-      - state: equipped-head-unshaded-dog
-        shader: unshaded
   - type: PointLight
     color: "#adffe6"
   - type: PressureProtection
@@ -76,7 +69,6 @@
     reduction: 0.2
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
   - type: EyeProtection # Sunrise-Edit
   - type: FlashImmunity # Sunrise-Edit
@@ -115,9 +107,6 @@
       head-reptilian:
       - state: equipped-head-light-reptilian
         shader: unshaded
-      head-dog:
-      - state: equipped-head-light-dog
-        shader: unshaded
   - type: Clothing
     clothingVisuals:
       head:
@@ -136,10 +125,6 @@
       - state: equipped-head-reptilian
       - state: equipped-head-unshaded-reptilian
         shader: unshaded
-      head-dog:
-      - state: equipped-head-dog
-      - state: equipped-head-unshaded-dog
-        shader: unshaded
   - type: PointLight
     color: "#ffdbad"
   - type: PressureProtection
@@ -147,7 +132,6 @@
     lowPressureMultiplier: 1000
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
   - type: EyeProtection
   - type: FlashImmunity
@@ -185,9 +169,6 @@
       head-reptilian:
       - state: equipped-head-light-reptilian
         shader: unshaded
-      head-dog:
-      - state: equipped-head-light-dog
-        shader: unshaded
   - type: Clothing
     clothingVisuals:
       head:
@@ -206,10 +187,6 @@
       - state: equipped-head-reptilian
       - state: equipped-head-unshaded-reptilian
         shader: unshaded
-      head-dog:
-      - state: equipped-head-dog
-      - state: equipped-head-unshaded-dog
-        shader: unshaded
   - type: PointLight
     radius: 6
   - type: PressureProtection
@@ -217,14 +194,13 @@
     lowPressureMultiplier: 1000
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
 
 #Salvage Hardsuit
 - type: entity
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
   id: ClothingHeadHelmetHardsuitSalvage
-  name: salvage hardsuit helmet
+  name: mining hardsuit helmet
   description: A special helmet designed for work in a hazardous, low pressure environment. Has reinforced plating for wildlife encounters and dual floodlights.
   components:
   - type: Sprite
@@ -239,7 +215,6 @@
     energy: 3
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
 
 #Goliath Hardsuit
@@ -270,10 +245,7 @@
       - state: equipped-head-light-vox
         shader: unshaded
       head-reptilian:
-      - state: equipped-head-reptilian
-        shader: unshaded
-      head-dog:
-      - state: equipped-head-light-dog
+      - state: equipped-head-light-reptilian
         shader: unshaded
   - type: Clothing
     clothingVisuals:
@@ -289,10 +261,6 @@
       - state: equipped-head-reptilian
       - state: equipped-head-unshaded-reptilian
         shader: unshaded
-      head-dog:
-      - state: equipped-head-dog
-      - state: equipped-head-unshaded-dog
-        shader: unshaded
   - type: PointLight
     radius: 6
   - type: PressureProtection
@@ -300,7 +268,6 @@
     lowPressureMultiplier: 1000
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
 
 #Maxim Hardsuit
@@ -352,7 +319,6 @@
         Heat: 0.9
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
   - type: FlashImmunity # Sunrise-Edit
 
@@ -424,7 +390,6 @@
     lowPressureMultiplier: 1000
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
 
 #Chief Engineer's Hardsuit
@@ -461,9 +426,6 @@
       head-reptilian:
       - state: equipped-head-light-reptilian
         shader: unshaded
-      head-dog:
-      - state: equipped-head-light-dog
-        shader: unshaded
   - type: Clothing
     clothingVisuals:
       head:
@@ -482,10 +444,6 @@
       - state: equipped-head-reptilian
       - state: equipped-head-unshaded-reptilian
         shader: unshaded
-      head-dog:
-      - state: equipped-head-dog
-      - state: equipped-head-unshaded-dog
-        shader: unshaded
   - type: PointLight
     color: "#e6aa5c" # Sunrise-Edit
   - type: PressureProtection
@@ -495,7 +453,6 @@
     reduction: 0.2
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
   - type: EyeProtection # Sunrise-Edit
   - type: FlashImmunity # Sunrise-Edit
@@ -518,7 +475,6 @@
     lowPressureMultiplier: 1000
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
 
 #Research Director's Hardsuit
@@ -539,7 +495,6 @@
     lowPressureMultiplier: 1000
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
 
 #Head of Security's hardsuit
@@ -589,7 +544,7 @@
 #ANTAG HARDSUITS
 #Blood-red Hardsuit
 - type: entity
-  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, BaseSunriseHardsuitHelmetNVD, SunriseHardsuitHelmetNightVisionGreen ] # Sunrise-Edit
   id: ClothingHeadHelmetHardsuitSyndie
   name: blood-red hardsuit helmet
   description: A heavily armored helmet designed for work in special operations. Property of Gorlex Marauders.
@@ -612,7 +567,6 @@
         Heat: 0.9
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
   - type: HolidayVisuals
     holidays:
@@ -627,7 +581,7 @@
 
 #Blood-red Medic Hardsuit
 - type: entity
-  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, BaseSunriseHardsuitHelmetNVD, SunriseHardsuitHelmetNightVisionGreen ] # Sunrise-Edit
   id: ClothingHeadHelmetHardsuitSyndieMedic
   name: blood-red medic hardsuit helmet
   description: An advanced red hardsuit helmet specifically designed for field medic operations.
@@ -661,7 +615,7 @@
 
 #Syndicate Elite Hardsuit
 - type: entity
-  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, BaseSunriseHardsuitHelmetNVD, SunriseHardsuitHelmetNightVisionSyndie ] # Sunrise-Edit
   id: ClothingHeadHelmetHardsuitSyndieElite
   name: syndicate elite helmet
   description: An elite version of the blood-red hardsuit's helmet, with improved radiation resistance and fireproofing. Property of Gorlex Marauders.
@@ -689,7 +643,6 @@
         Heat: 0.9
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
   - type: HolidayVisuals
     holidays:
@@ -704,7 +657,7 @@
 
 #Syndicate Commander Hardsuit
 - type: entity
-  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, BaseSunriseHardsuitHelmetNVD, SunriseHardsuitHelmetNightVisionGreen ] # Sunrise-Edit
   id: ClothingHeadHelmetHardsuitSyndieCommander
   name: syndicate commander helmet
   description: A bulked up version of the blood-red hardsuit's helmet, purpose-built for the commander of a syndicate operative squad. Has significantly improved armor for those deadly front-lines firefights.
@@ -727,7 +680,6 @@
         Heat: 0.9
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
   - type: HolidayVisuals
     holidays:
@@ -742,7 +694,7 @@
 
 #Cybersun Juggernaut Hardsuit
 - type: entity
-  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase, BaseSunriseHardsuitHelmetNVD, SunriseHardsuitHelmetNightVisionSyndie ] # Sunrise-Edit
   id: ClothingHeadHelmetHardsuitCybersun
   name: cybersun juggernaut helmet
   description: Made of compressed red matter, this helmet was designed in the Tau chromosphere facility.
@@ -765,7 +717,6 @@
         Heat: 0.9
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
 
 #Wizard Hardsuit
@@ -793,7 +744,6 @@
         Heat: 0.9
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
 
 #Organic Space Suit
@@ -881,7 +831,7 @@
 #CENTCOMM / ERT HARDSUITS
 #ERT Leader Hardsuit
 - type: entity
-  parent: [ BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndieCommander ]
+  parent: [ BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndieCommander, SunriseHardsuitHelmetNightVisionCyan ] # Sunrise-Edit
   id: ClothingHeadHelmetHardsuitERTLeader
   name: ERT leader hardsuit helmet
   description: A special hardsuit helmet worn by members of an emergency response team.
@@ -903,7 +853,7 @@
 
 #ERT Chaplain Hardsuit
 - type: entity
-  parent: [ BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndie ]
+  parent: [ BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndie, SunriseHardsuitHelmetNightVisionWhite ] # Sunrise-Edit
   id: ClothingHeadHelmetHardsuitERTChaplain
   name: ERT chaplain hardsuit helmet
   description: A special hardsuit helmet worn by members of an emergency response team.
@@ -918,7 +868,7 @@
 
 #ERT Engineer Hardsuit
 - type: entity
-  parent: [ BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndie ]
+  parent: [ BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndie, SunriseHardsuitHelmetNightVisionCyan ] # Sunrise-Edit
   id: ClothingHeadHelmetHardsuitERTEngineer
   name: ERT engineer hardsuit helmet
   description: A special hardsuit helmet worn by members of an emergency response team.
@@ -943,7 +893,7 @@
 
 #ERT Medical Hardsuit
 - type: entity
-  parent: [ BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndieElite ]
+  parent: [ BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndieElite, SunriseHardsuitHelmetNightVisionMint ] # Sunrise-Edit
   id: ClothingHeadHelmetHardsuitERTMedical
   name: ERT medic hardsuit helmet
   description: A special hardsuit helmet worn by members of an emergency response team.
@@ -958,7 +908,7 @@
 
 #ERT Security Hardsuit
 - type: entity
-  parent: [ BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndie ]
+  parent: [ BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndie, SunriseHardsuitHelmetNightVisionCyan ] # Sunrise-Edit
   id: ClothingHeadHelmetHardsuitERTSecurity
   name: ERT security hardsuit helmet
   description: A special hardsuit helmet worn by members of an emergency response team.
@@ -982,7 +932,7 @@
 
 #ERT Janitor Hardsuit
 - type: entity
-  parent: [ BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndie ]
+  parent: [ BaseCentcommContraband, ClothingHeadHelmetHardsuitSyndie, SunriseHardsuitHelmetNightVisionPurple ] # Sunrise-Edit
   id: ClothingHeadHelmetHardsuitERTJanitor
   name: ERT janitor hardsuit helmet
   description: A special hardsuit helmet worn by members of an emergency response team.

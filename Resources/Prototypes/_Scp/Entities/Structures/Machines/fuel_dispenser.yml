@@ -1,0 +1,69 @@
+﻿- type: entity
+  id: ScpFuelDispenser
+  name: fuel dispenser
+  description: A special fuel dispenser with heat-resistant properties.
+  parent: DisposalUnitBase
+  components:
+  - type: Sprite
+    sprite: Structures/Piping/disposal.rsi # TODO: сделать отдельный спрайт
+    layers:
+    - state: outlet
+      map: [ "enum.DisposalUnitVisualLayers.Unanchored" ]
+    - state: intake
+      map: [ "enum.DisposalUnitVisualLayers.Base" ]
+    - state: outlet
+      map: [ "enum.DisposalUnitVisualLayers.BaseCharging" ]
+    - state: intake-closing
+      map: [ "enum.DisposalUnitVisualLayers.OverlayFlush" ]
+    - state: dispover-handle
+      map: [ "enum.DisposalUnitVisualLayers.OverlayCharging" ]
+    - state: dispover-handle
+      map: [ "enum.DisposalUnitVisualLayers.OverlayReady" ]
+    - state: dispover-handle
+      map: [ "enum.DisposalUnitVisualLayers.OverlayFull" ]
+    - state: dispover-handle
+      map: [ "enum.DisposalUnitVisualLayers.OverlayEngaged" ]
+  - type: DisposalUnit
+    whitelist:
+      components:
+      - Flammable
+      tags:
+      - Paper
+      - Document
+      - Wooden
+      - GlassBeaker
+    blacklist:
+      components:
+      - EntityStorage
+      - MobState
+  - type: UserInterface
+    interfaces:
+      enum.DisposalUnitUiKey.Key:
+        type: DisposalUnitBoundUserInterface
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.10,-0.10,0.10,0.10"
+        density: 500
+        mask:
+          - TabletopMachineMask
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 500
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 1

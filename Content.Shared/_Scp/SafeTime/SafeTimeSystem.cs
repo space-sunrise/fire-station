@@ -36,7 +36,11 @@ public abstract class SharedSafeTimeSystem : EntitySystem
         DebugTools.Assert(ent.Comp.TimeEnd == null);
         DebugTools.Assert(ent.Comp.Time > TimeSpan.Zero);
 
-        ent.Comp.TimeEnd = _gameTicker.RoundStartTimeSpan + ent.Comp.Time;
+        if (ent.Comp.TimeFromRoundStart)
+            ent.Comp.TimeEnd = _gameTicker.RoundStartTimeSpan + ent.Comp.Time;
+        else
+            ent.Comp.TimeEnd = _timing.CurTime + ent.Comp.Time;
+
         Dirty(ent);
     }
 

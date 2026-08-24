@@ -28,6 +28,13 @@
       class: C
     - type: AccessLevel
       level: Three
+    - type: ScpHolder
+      holdableWhitelist:
+        components:
+        - HumanoidProfile
+      holdableBlacklist:
+        components:
+        - Scp
     - type: SpeakOnEyeStateChange # переопределение моргания с другими параметрами для охраны и МОГа
       # Часть фраз уходит, так как более разговорная. А эти парни натренированы.
       phraseOnClose:
@@ -74,7 +81,7 @@
     gloves: ClothingHandsGlovesColorBlack
     shoes: ClothingShoesBootsSecurityGuard
     back: ClothingBackpackSecurity
-    suitstorage: WeaponSubMachineGunMP7
+    suitstorage: WeaponSubMachineGunMP5
     id: KeyCardLightContainmentZoneSecurityOfficer
     ears: ClothingHeadsetExternalAdministrativeZoneSecurityService
     belt: ScpClothingBeltSecurityWebbingFilled

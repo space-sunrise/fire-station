@@ -260,14 +260,13 @@
 
 - type: emoteSounds
   id: UnisexVox
-  # Sunrise-start
-  parent: MaleHuman
-  # Sunrise-end
   sounds:
     Scream:
       path: /Audio/Voice/Vox/shriek1.ogg
     Laugh:
       path: /Audio/Voice/Vox/vox_laugh.ogg
+    Sneeze:
+      path: /Audio/Voice/Vox/vox_sneeze.ogg
     Cough:
       path: /Audio/Voice/Vox/vox_cough.ogg
     Sigh:
@@ -294,14 +293,13 @@
 
 - type: emoteSounds
   id: UnisexDiona
-  # Sunrise-start
-  parent: MaleHuman
-  # Sunrise-end
   sounds:
     Scream:
       path: /Audio/Voice/Diona/diona_scream.ogg
     Laugh:
       collection: DionaLaugh
+    Sneeze:
+      collection: DionaSneeze
     Chirp:
       path: /Audio/Animals/nymph_chirp.ogg
     Honk:
@@ -319,9 +317,6 @@
 
 - type: emoteSounds
   id: UnisexArachnid
-  # Sunrise-start
-  parent: MaleHuman
-  # Sunrise-end
   params:
     variation: 0.125
   sounds:
@@ -333,6 +328,18 @@
       path: /Audio/Voice/Arachnid/arachnid_chitter.ogg
     Click:
       path: /Audio/Voice/Arachnid/arachnid_click.ogg
+    # Sunrise-Start
+    Yawn:
+      path: /Audio/Voice/Arachnid/arachnid_chitter.ogg
+    Sigh:
+      path: /Audio/Voice/Arachnid/arachnid_chitter.ogg
+    Crying:
+      path: /Audio/Voice/Arachnid/arachnid_click.ogg
+    Cough:
+      path: /Audio/Voice/Arachnid/arachnid_click.ogg
+    SevereCough:
+      path: /Audio/Voice/Arachnid/arachnid_click.ogg
+    # Sunrise-End
     Weh:
       collection: Weh
     Hew:
@@ -440,9 +447,6 @@
 
 - type: emoteSounds
   id: UnisexMoth
-  # Sunrise-start
-  parent: MaleHuman
-  # Sunrise-end
   params:
     variation: 0.125
   sounds:
@@ -465,6 +469,14 @@
     Gasp:
       collection: MaleGasp
     # Sunrise-Start
+    Yawn:
+      path: /Audio/Voice/Moth/moth_chitter.ogg
+    Sigh:
+      path: /Audio/Voice/Moth/moth_chitter.ogg
+    Crying:
+      path: /Audio/Voice/Moth/moth_squeak.ogg
+    Cough:
+      path: /Audio/_Sunrise/Voice/Moth/moth_severe_cough.ogg
     SevereCough:
       path: /Audio/_Sunrise/Voice/Moth/moth_severe_cough.ogg
     # Sunrise-End
@@ -547,13 +559,15 @@
     Laugh:
       collection: MaleLaugh
     Sneeze:
-      collection: MaleSneezes
+      collection: VulpkaninSneeze
     Cough:
       collection: MaleCoughs
     Whistle:
       collection: Whistles
     Sigh:
       collection: MaleSigh
+    Yawn:
+      collection: VulpkaninYawns
     Scream:
       collection: VulpkaninScreams
     Growl:
@@ -590,13 +604,15 @@
     Laugh:
       collection: FemaleLaugh
     Sneeze:
-      collection: FemaleSneezes
+      collection: VulpkaninSneeze
     Cough:
       collection: FemaleCoughs
     Whistle:
       collection: Whistles
     Sigh:
       collection: FemaleSigh
+    Yawn:
+      collection: VulpkaninYawns
     Scream:
       collection: VulpkaninScreams
     Growl:
@@ -661,6 +677,22 @@
       path: /Audio/Voice/Reptilian/reptilian_tailthump.ogg
       params:
         variation: 0.125
+    Clap:
+      collection: Claps
+    ClapSingle:
+      collection: ClapSingle
+    Snap:
+      collection: Snaps
+      params:
+        volume: -6
+    Salute:
+      collection: Salutes
+
+- type: emoteSounds
+  id: MothBodyEmotes
+  sounds:
+    Flap:
+      path: /Audio/Voice/Moth/moth_flap.ogg
     Clap:
       collection: Claps
     ClapSingle:

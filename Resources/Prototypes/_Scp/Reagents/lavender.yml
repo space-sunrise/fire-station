@@ -1,0 +1,14 @@
+﻿- type: reagent
+  id: LavenderTea
+  name: reagent-name-lavender-tea
+  parent: GreenTea
+  desc: reagent-desc-lavender-tea
+  physicalDesc: reagent-physical-desc-aromatic
+  flavor: tea
+  color: "#FFFFFF"
+  metamorphicSprite:
+    sprite: Objects/Consumable/Drinks/cognacglass.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 4
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false

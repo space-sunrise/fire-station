@@ -14,10 +14,11 @@
   - type: DamageOverlay
     damagePopupType: SmallFloating
     isStructure: true
+  - type: BloomOverlayVisuals
   # Sunrise end
   # Fire added start
   - type: LightFlicking
-  - type: BloomOverlayVisuals
+  - type: ConeLightingOverlayVisuals
   # Fire added end
   - type: MeleeSound
     soundGroups:

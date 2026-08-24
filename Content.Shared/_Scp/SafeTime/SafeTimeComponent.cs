@@ -17,6 +17,12 @@ public sealed partial class SafeTimeComponent : Component
     public TimeSpan Time = TimeSpan.FromMinutes(15f);
 
     /// <summary>
+    /// Отсчёт должен начинатся от начала раунда или от текущего момента?
+    /// </summary>
+    [DataField]
+    public bool TimeFromRoundStart;
+
+    /// <summary>
     /// Время окончания безопасного времени <see cref="Time"/>
     /// </summary>
     [ViewVariables, AutoNetworkedField, AutoPausedField]

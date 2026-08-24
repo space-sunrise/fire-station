@@ -231,6 +231,15 @@
   - type: Sprite
     state: 2022
 
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp2908
+  name: SCP-2908 sign
+  description: Points in a direction you shouldn't go without a clear understanding of where it leads.
+  components:
+  - type: Sprite
+    state: 2908
+
 # Места в зоне
 
 - type: entity

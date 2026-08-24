@@ -14,7 +14,6 @@ public sealed class RandomSentienceRule : StationEventSystem<RandomSentienceRule
     private static readonly ProtoId<LocalizedDatasetPrototype> DataSourceNames = "RandomSentienceEventData";
     private static readonly ProtoId<LocalizedDatasetPrototype> IntelligenceLevelNames = "RandomSentienceEventStrength";
 
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
     protected override void Started(EntityUid uid, RandomSentienceRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
@@ -60,7 +59,7 @@ public sealed class RandomSentienceRule : StationEventSystem<RandomSentienceRule
             var ghostRole = EnsureComp<GhostRoleComponent>(target);
             EnsureComp<GhostTakeoverAvailableComponent>(target);
             ghostRole.RoleName = MetaData(target).EntityName;
-            ghostRole.RoleDescription = Loc.GetString("station-event-random-sentience-role-description", ("name", ghostRole.RoleName));
+            ghostRole.RoleDescription = Loc.GetString("scp-station-event-random-sentience-role-description", ("name", ghostRole.RoleName)); // Fire edit
             groups.Add(Loc.GetString(target.Comp.FlavorKind));
         }
 

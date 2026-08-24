@@ -1,4 +1,10 @@
 ﻿- type: gamePresetPool
   id: ScpPresetPool
   presets:
-    Secret: [0, 200]
+    Neutralized: { min: 0, max: 30 }
+    Safe: { min: 5, max: 200 }
+    Euclid: { min: 15, max: 200 }
+    Keter: { min: 20, max: 200 }
+    Thaumiel: { min: 20, max: 200 }
+    ScpChaosRaid: { min: 25, max: 200 }
+    ScpChaosSpy: { min: 25, max: 200 }

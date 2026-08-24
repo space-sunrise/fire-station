@@ -1,0 +1,115 @@
+- type: entity
+  id: RightHarmArm0492
+  name: malicious right arm
+  description: A dark steel arm. When replacing the right arm surgically, the patient gains the ability to deliver painful strikes to enemies with it.
+  suffix: SCP-049-2
+  parent: [ OrganBaseArmRight, OrganCyber ]
+  components:
+  - type: Organ
+    category: ArmRight
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/scp049_limbs/limbs.rsi
+    state: "r_harm_arm"
+  - type: Icon
+    sprite: _Scp/Objects/Misc/scp049_limbs/icons.rsi
+    state: "icon_harm_arm"
+  - type: LimbWithItems
+    action: ActionScp0492ToggleHarmHandRight
+  - type: LimbItemStorage
+    items:
+      - HarmArmWeapon0492
+  - type: Tag
+    tags:
+    - LimbScp0492
+
+- type: entity
+  id: LeftTubeArm0492
+  name: tubular left arm
+  description: An elongated copper tube. When replacing the left arm surgically, the patient gains the ability to shoot their bodily waste through the tube.
+  suffix: SCP-049-2
+  parent: [ OrganBaseArmLeft, OrganCyber ]
+  components:
+  - type: Organ
+    category: ArmLeft
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/scp049_limbs/limbs.rsi
+    state: "l_tube_arm"
+  - type: Icon
+    sprite: _Scp/Objects/Misc/scp049_limbs/icons.rsi
+    state: "icon_tube_arm"
+  - type: LimbWithItems
+    action: ActionScp0492ToggleTubeHandLeft
+  - type: LimbItemStorage
+    items:
+      - TubeArmWeapon0492
+  - type: Tag
+    tags:
+    - LimbScp0492
+
+- type: entity
+  id: LeftSpringLeg0492
+  name: springy left leg
+  description: A large silver spring. When replacing the left leg surgically, the patient begins to move faster.
+  suffix: SCP-049-2
+  parent: [ OrganBaseLegLeft, OrganCyber ]
+  components:
+  - type: Organ
+    category:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/scp049_limbs/limbs.rsi
+    state: "l_spring_leg"
+  - type: Icon
+    sprite: _Scp/Objects/Misc/scp049_limbs/icons.rsi
+    state: "icon_spring_leg"
+  - type: Tag
+    tags:
+    - LimbScp0492
+
+- type: entity
+  parent: BaseItem
+  id: HarmArmWeapon0492
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: BloodSplatterer
+    probability: 0.4
+    bloodLineProbability: 0.1
+  - type: Sharp
+  - type: Execution
+    doAfterDuration: 4.0
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Slash: 20
+        Structural: 30
+    attackRate: 0.6
+  - type: MeleeThrowOnHit
+    speed: 2
+    distance: 0.25
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/scp049_limbs/icons.rsi
+    state: "icon_harm_arm"
+
+- type: entity
+  parent: BaseItem
+  id: TubeArmWeapon0492
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/scp049_limbs/icons.rsi
+    state: "icon_tube_arm"
+  - type: Gun
+    fireRate: 3
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    soundGunshot:
+      path: /Audio/_Sunrise/FleshCult/spike_gun_shot.ogg
+  - type: AmmoCounter
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 80
+    rechargeSound: /Audio/_Sunrise/FleshCult/spike_gun_reload.ogg
+  - type: BasicEntityAmmoProvider
+    proto: BulletSplashAcid
+    capacity: 10
+    count: 5

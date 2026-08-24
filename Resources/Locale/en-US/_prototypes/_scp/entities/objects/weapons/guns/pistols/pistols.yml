@@ -1,0 +1,2 @@
+ent-WeaponPistolACP14 = ACP-14
+    .desc = { ent-BaseWeaponPistol.desc }

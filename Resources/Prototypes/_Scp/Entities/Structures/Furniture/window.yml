@@ -1,0 +1,77 @@
+- type: entity
+  id: ScpDecorativeWindow
+  name: wooden window
+  description: A weak and creaky, but truly homely window.
+  suffix: Decorative
+  parent: BaseStructure
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Structures/Furniture/window.rsi
+    layers:
+    - state: closed
+      map: ["enum.StorageVisualLayers.Door"]
+  - type: EntityStorageVisuals
+    stateDoorOpen: open
+    stateDoorClosed: closed
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb {}
+        mask:
+        - FullTileMask
+        layer:
+        - MachineLayer
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WindowShatter
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          ShardGlass:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Anchorable
+  - type: Rotatable
+  - type: Ricochetable
+    chance: 0.7
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection: GlassSmack
+  - type: Appearance
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Glass
+  - type: InteractionOutline
+  - type: Lock
+    locked: false
+    unlockTime: 5
+    lockTime: 5
+  - type: EntityStorage
+    capacity: 0
+    doAfterDelay: 1
+    closeSound:
+      path: /Audio/Effects/door_close.ogg
+      params:
+        volume: -1
+    openSound:
+      path: /Audio/Effects/door_open.ogg
+      params:
+        volume: -1
+  - type: DamageVisuals
+    damageOverlay:
+      sprite: _Scp/Effects/DamageOverlay/cracks.rsi
+    thresholds: [5, 10, 20]
+    damageDivisor: 2
+    trackAllDamage: true

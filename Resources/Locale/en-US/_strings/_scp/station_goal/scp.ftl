@@ -163,3 +163,87 @@ station-goal-scp-8 =
     |   [color=#9c9492]Responsible for the objective: [bold] RESEARCH DEPARTMENT, COMPLEX DIRECTOR, ENGINEERING DEPARTMENT  { $station }[/bold][/color]
         ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
     |   [italic]Place for seals[/italic]
+station-goal-scp-9 =
+    |
+    |   [head=1]SCP[/head]
+    |   [bold]Secure. Contain. Protect.[/bold]
+        ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+    |   [head=3]SHIFT OBJECTIVE { $station }[/head]
+        ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    |   Greetings, esteemed Foundation command!
+    |   The goal of your current shift is [bold]SCP RESEARCH[/bold].
+    |   [bullet/]Conduct a series of tests on the calming effects of SCP-2022.
+    |   [bullet/]Determine the combined effectiveness of SCP-2295 and SCP-427 on personnel in critical condition.
+    |   [bullet/]Study the behavior of SCP-019-2 in an isolation chamber supplied with water and meat as food.
+    |   [bullet/]Conduct a series of interviews with SCP-1508 to assess its cognitive abilities.
+    |   [bullet/]Monitor the activity of SCP-1589 without active orders and outside of its containment chamber.
+    |   [bullet/]Conduct combat effectiveness testing of SCP-2908 under controlled conditions.
+    |   [bullet/]Study the reaction and behavior of SCP-1589 toward corpses of Class-D volunteers.
+    |   [bullet/]Develop a method to extract more than four candies from SCP-330 by a single subject.
+    |   [bullet/]Investigate and study the composition of the water contained within SCP-109.
+        ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    |   [color=#9c9492]Responsible for the objective: [bold] RESEARCH DEPARTMENT, COMPLEX DIRECTOR  { $station }[/bold][/color]
+        ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    |   [italic]Place for seals[/italic]
+station-goal-scp-10 =
+    |
+    |   [head=1]SCP[/head]
+    |   [bold]Secure. Contain. Protect.[/bold]
+        ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+    |   [head=3]SHIFT OBJECTIVE { $station }[/head]
+        ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    |   Greetings, esteemed Foundation command!
+    |   The goal of your current shift is [bold]SCP RESEARCH[/bold].
+    |   [bullet/]Study personnel behavior during visual contact with SCP-012.
+    |   [bullet/]Find out the reaction of SCP-101 when extracting items.
+    |   [bullet/]Determine the capacity limit of the upper space of SCP-101.
+    |   [bullet/]Develop a protocol to suppress the activity of SCP-018 in narrow corridors.
+    |   [bullet/]Assess the consequences and toxic effects of consuming SCP-207.
+    |   [bullet/]Grow a batch of test vegetation samples using SCP-124.
+    |   [bullet/]Study the versatility of SCP-005 on high-security doors and airlocks.
+        ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    |   [color=#9c9492]Responsible for the objective: [bold] RESEARCH DEPARTMENT, COMPLEX DIRECTOR  { $station }[/bold][/color]
+        ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    |   [italic]Place for seals[/italic]
+station-goal-scp-11 =
+    |
+    |   [head=1]SCP[/head]
+    |   [bold]Secure. Contain. Protect.[/bold]
+        ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+    |   [head=3]SHIFT OBJECTIVE { $station }[/head]
+        ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    |   Greetings, esteemed Foundation command!
+    |   The goal of your current shift is [bold]SCP RESEARCH[/bold].
+    |   [bullet/]Conduct an interview with the wearer of SCP-035 to assess the level of its psychological pressure.
+    |   [bullet/]Conduct combat effectiveness testing of SCP-127 under controlled conditions.
+    |   [bullet/]Test the resistance of subjects wearing SCP-714 against mental influences.
+    |   [bullet/]Record side effects from exceeding the standard dosage of SCP-2022 medication.
+    |   [bullet/]Conduct durability tests on SCP-101 when placing explosive objects inside.
+    |   [bullet/]Record changes in subject behavior during simultaneous exposure to SCP-012 and SCP-714.
+    |   [bullet/]Compare the healing effectiveness of SCP-109 and SCP-427 against each other.
+    |   [bullet/]Investigate and study the composition of the liquid contained within SCP-207.
+        ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    |   [color=#9c9492]Responsible for the objective: [bold] RESEARCH DEPARTMENT, COMPLEX DIRECTOR  { $station }[/bold][/color]
+        ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    |   [italic]Place for seals[/italic]
+station-goal-scp-12 =
+    |
+    |   [head=1]SCP[/head]
+    |   [bold]Secure. Contain. Protect.[/bold]
+        ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+    |   [head=3]SHIFT OBJECTIVE { $station }[/head]
+        ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    |   Greetings, esteemed Foundation command!
+    |   The goal of your current shift is [bold]SCP RESEARCH[/bold].
+    |   [bullet/]Conduct a test on the interaction between SCP-049 and SCP-2295.
+    |   [bullet/]Conduct combat effectiveness testing of SCP-1589 under controlled conditions.
+    |   [bullet/]Compare loyalty to commands between SCP-1508 and SCP-1589.
+    |   [bullet/]Record the reaction of SCP-096 to SCP-096-1 wearing SCP-268.
+    |   [bullet/]Develop and test a method to destroy SCP-019.
+    |   [bullet/]Record changes in subject behavior during simultaneous exposure to SCP-035 and SCP-714.
+    |   [bullet/]Compare the soothing effectiveness of SCP-999 and SCP-2022 against each other.
+    |   [bullet/]Investigate and study the composition of the liquid contained within SCP-330 candy.
+        ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    |   [color=#9c9492]Responsible for the objective: [bold] RESEARCH DEPARTMENT, COMPLEX DIRECTOR  { $station }[/bold][/color]
+        ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    |   [italic]Place for seals[/italic]

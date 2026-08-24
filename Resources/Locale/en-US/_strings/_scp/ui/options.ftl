@@ -43,11 +43,6 @@ ui-options-field-of-view-opacity-tooltip =
     Determines the opacity (darkness) of the area behind the character.
     The higher the value, the darker the area will be.
 
-ui-options-light-bloom-enable = Bloom
-ui-options-light-bloom-enable-tooltip =
-    Determines whether the bloom effect will be used.
-    On weak systems, enabling this effect will cause performance loss.
-
 ui-options-light-bloom-cone-enable = Bloom cone
 ui-options-light-bloom-cone-enable-tooltip =
     Determines whether a cone will be drawn from the light source.
@@ -57,17 +52,12 @@ ui-options-light-bloom-cone-opacity = Bloom cone opacity
 ui-options-light-bloom-cone-opacity-tooltip =
     Determines the opacity with which the bloom cone will be drawn.
 
-ui-options-light-bloom-optimizations = Reduced GPU load
+ui-options-light-bloom-optimizations = Reduced GPU load from the cone glow effect
 ui-options-light-bloom-optimizations-tooltip =
     When enabled, light sources not visible to the character will not create the effect.
     Visibility checking consumes a large amount of CPU resources.
     This will likely have the opposite effect unless you have a weak GPU.
     Recommended to use ONLY if you have a VERY WEAK GPU and want to play with the effect.
-
-ui-options-light-bloom-strength = Bloom strength
-ui-options-light-bloom-strength-tooltip =
-    Adjusts the brightness of the bloom effect. The higher the value, the brighter the glow.
-    Allows you to customize the effect to your preferences.
 
 ui-options-compatibility-mode-show-warning = Compatibility mode warning
 ui-options-compatibility-mode-show-warning-tooltip =

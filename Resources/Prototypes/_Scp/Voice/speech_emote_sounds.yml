@@ -24,3 +24,11 @@
     - подкрикивает
     - кричит от боли
     - визжит от боли
+
+- type: emoteSounds
+  id: SCP082
+  sounds:
+    Laugh:
+      path: /Audio/_Scp/Scp082/laugh.ogg
+    Whistle:
+      path: /Audio/_Scp/Scp082/whistle.ogg

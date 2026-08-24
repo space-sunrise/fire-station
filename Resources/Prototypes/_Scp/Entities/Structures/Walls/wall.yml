@@ -463,6 +463,21 @@
     graph: concreteWallLightContainment
     node: concreteWallLightContainmentEnd
 
+- type: entity
+  parent: ScpWallConcreteDiagonal
+  id: ScpWallConcreteLightContainmentDiagonal
+  name: concrete diagonal wall low containment
+  suffix: diagonal
+  components:
+  - type: IconSmooth
+    base: diagonal
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/concrete_low_contaiment.rsi
+    state: diagonal0
+  - type: Icon
+    sprite: _Scp/Structures/Walls/concrete_low_contaiment.rsi
+    state: diagonal0
+
 # Стена Административной Зоны / Научной
 - type: entity
   parent: ScpWallConcreteBase
@@ -479,6 +494,21 @@
   - type: Construction
     graph: concreteWallScience
     node: concreteWallScienceEnd
+
+- type: entity
+  parent: ScpWallConcreteDiagonal
+  id: ScpWallConcreteScienceDiagonal
+  name: concrete diagonal wall science sector
+  suffix: diagonal
+  components:
+  - type: IconSmooth
+    base: diagonal
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/concrete_science.rsi
+    state: diagonal0
+  - type: Icon
+    sprite: _Scp/Structures/Walls/concrete_science.rsi
+    state: diagonal0
 
 # Стена Инженерии
 - type: entity
@@ -497,6 +527,21 @@
     graph: concreteWallEngineer
     node: concreteWallEngineerEnd
 
+- type: entity
+  parent: ScpWallConcreteDiagonal
+  id: ScpWallConcreteEngineerDiagonal
+  name: concrete diagonal wall engineer sector
+  suffix: diagonal
+  components:
+  - type: IconSmooth
+    base: diagonal
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/concrete_engineer.rsi
+    state: diagonal0
+  - type: Icon
+    sprite: _Scp/Structures/Walls/concrete_engineer.rsi
+    state: diagonal0
+
 # Стена Мед отдела
 - type: entity
   parent: ScpWallConcreteBase
@@ -513,6 +558,21 @@
   - type: Construction
     graph: concreteWallMedical
     node: concreteWallMedicalEnd
+
+- type: entity
+  parent: ScpWallConcreteDiagonal
+  id: ScpWallConcreteMedicalDiagonal
+  name: concrete diagonal wall medical sector
+  suffix: diagonal
+  components:
+  - type: IconSmooth
+    base: diagonal
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/concrete_medical.rsi
+    state: diagonal0
+  - type: Icon
+    sprite: _Scp/Structures/Walls/concrete_medical.rsi
+    state: diagonal0
 
 # Стена Сдерживания
 

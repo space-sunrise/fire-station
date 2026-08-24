@@ -1,0 +1,14 @@
+﻿- type: entity
+  parent: BaseMachineCircuitboard
+  id: OvenMachineCircuitboard
+  name: oven machine board
+  description: A machine printed circuit board for an oven.
+  components:
+  - type: Sprite
+    state: service
+  - type: MachineBoard
+    prototype: Oven
+    stackRequirements:
+      Manipulator: 5
+      Glass: 4
+      Cable: 7

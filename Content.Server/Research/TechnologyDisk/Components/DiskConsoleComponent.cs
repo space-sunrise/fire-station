@@ -1,7 +1,6 @@
 ﻿using Content.Shared.Research;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server.Research.TechnologyDisk.Components;
 
@@ -20,18 +19,18 @@ public sealed partial class DiskConsoleComponent : Component
     /// <summary>
     /// The prototype of what's being printed
     /// </summary>
-    [DataField("diskPrototype", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>)), ViewVariables(VVAccess.ReadWrite)]
-    public string DiskPrototype = "TechnologyDisk";
+    [DataField]
+    public EntProtoId DiskPrototype = "TechnologyDisk";
 
     /// <summary>
     /// How long it takes to print <see cref="DiskPrototype"/>
     /// </summary>
-    [DataField("printDuration"), ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public TimeSpan PrintDuration = TimeSpan.FromSeconds(1);
 
     /// <summary>
     /// The sound made when printing occurs
     /// </summary>
-    [DataField("printSound")]
+    [DataField]
     public SoundSpecifier PrintSound = new SoundPathSpecifier("/Audio/Machines/printer.ogg");
 }

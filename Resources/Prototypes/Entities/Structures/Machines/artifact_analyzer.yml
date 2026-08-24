@@ -6,7 +6,7 @@
   components:
   - type: Sprite
     noRot: true
-    sprite: Structures/Machines/artifact_analyzer.rsi
+    sprite: _Scp/Structures/Machines/artifact_analyzer.rsi # Fire edit
     drawdepth: HighFloorObjects
     layers:
     - state: icon

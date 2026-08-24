@@ -48,6 +48,16 @@
     - ActionJumpToCore
     - ActionSurvCameraLights
     - ActionAIViewLaws
+    # Sunrise-AIVoice-Edit-Start
+    - ActionChangeBorgVoice
+  - type: BorgVoice
+    voiceBlacklist:
+      - Mita
+      - MitaDream
+      - MitaGhost
+      - Biden
+      - Trump
+    # Sunrise-AIVoice-Edit-End
   - type: UserInterface
     interfaces:
       enum.RadarConsoleUiKey.Key:
@@ -60,6 +70,8 @@
         type: SiliconLawBoundUserInterface
       enum.CommunicationsConsoleUiKey.Key:
         type: CommunicationsConsoleBoundUserInterface
+      enum.BorgVoiceUiKey.Key:
+        type: BorgVoiceBoundUserInterface # Sunrise-AIVoice-Edit
   - type: IntrinsicUI
     uis:
       enum.RadarConsoleUiKey.Key:
@@ -85,6 +97,7 @@
     announceVoice: SCP079 # Fire-Edit
     sound: /Audio/_Sunrise/Announcements/announce_dig.ogg # Sunrise-Edit
   - type: ShowJobIcons
+  - type: ShowCrewIcons
   - type: DamagedSiliconAccent
     startPowerCorruptionAtCharIdx: 4
     maxPowerCorruptionAtCharIdx: 20
@@ -101,6 +114,7 @@
   # Sunrise-End
   - type: Speech # Sunrise-Edit
     speechVerb: Robotic # Sunrise-Edit
+    speechSounds: Borg # Sunrise-Edit
 
 - type: entity
   id: AiHeldIntellicard
@@ -123,6 +137,7 @@
       enum.SiliconLawsUiKey.Key:
         type: SiliconLawBoundUserInterface
   - type: ShowJobIcons
+  - type: ShowCrewIcons
 
 # Ai
 - type: entity
@@ -650,20 +665,21 @@
     - type: GhostTakeoverAvailable
 
 - type: entity
-  name: syndicate invasion borg spawner
-  id: PlayerBorgSyndicateInvasionGhostRoleSpawner
   parent: MarkerBase
+  id: PlayerBorgSyndicateInvasionGhostRoleSpawner
+  name: syndicate invasion borg spawner
   components:
   - type: Sprite
     layers:
       - state: red
       - sprite: Structures/Decoration/banner.rsi
         state: banner_syndicate
-  - type: RandomSpawner
-    prototypes:
-    - PlayerBorgSyndicateAssaultGhostRole
-    - PlayerBorgSyndicateAssaultGhostRole # Saboteurs are kinda like cyborg medics, we want less.
-    - PlayerBorgSyndicateSaboteurGhostRole
+  - type: EntityTableSpawner
+    table: !type:GroupSelector
+      children:
+      - id: PlayerBorgSyndicateAssaultGhostRole
+      - id: PlayerBorgSyndicateSaboteurGhostRole
+        weight: 0.5 # Saboteurs are kinda like cyborg medics, we want less.
 
 - type: entity
   parent: EngineeringBorgChassisDerelict
@@ -675,6 +691,7 @@
       borg_brain:
       - Boris # Sunrise-Edit
       borg_module:
+      - BorgModulePrying
       - BorgModuleTool
       - BorgModuleFireExtinguisher
       - BorgModuleConstruction
@@ -713,6 +730,7 @@
       borg_brain:
         - Boris # Sunrise-Edit
       borg_module:
+        - BorgModulePrying
         - BorgModuleTool
         - BorgModuleFireExtinguisher
   - type: ItemSlots
@@ -748,6 +766,7 @@
       borg_brain:
       - Boris # Sunrise-Edit
       borg_module:
+      - BorgModulePrying
       - BorgModuleTool
       - BorgModuleFireExtinguisher
       - BorgModuleCleaning
@@ -785,6 +804,7 @@
       borg_brain:
       - Boris # Sunrise-Edit
       borg_module:
+      - BorgModulePrying
       - BorgModuleTool
       - BorgModuleFireExtinguisher
       - BorgModuleChemical
@@ -823,6 +843,7 @@
       borg_brain:
       - Boris # Sunrise-Edit
       borg_module:
+      - BorgModulePrying
       - BorgModuleTool #No fire extinguisher, traversal is better
       - BorgModuleMining
       - BorgModuleTraversal

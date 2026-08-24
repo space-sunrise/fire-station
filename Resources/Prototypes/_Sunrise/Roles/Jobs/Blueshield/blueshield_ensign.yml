@@ -48,15 +48,14 @@
   equipment:
     shoes: ClothingShoesBootsBlueShieldFilled
     eyes: ClothingEyesGlassesBlueShield
-    head: ClothingHeadHatBeretBlueShield
     outerClothing: ClothingOuterArmorBlueShield
     id: BlueShieldEnsignPDA
     ears: ClothingHeadsetBlueShieldEnsign
-    belt: ClothingBeltBlueShieldWebbingFilled
     gloves: ClothingHandsGlovesCombat
   storage:
     back:
     - HandheldBSOCrewMonitor
+    - RubberStampCommanderBlueShield
 
 - type: chameleonOutfit
   id: BlueShieldEnsignChameleonOutfit
@@ -65,7 +64,6 @@
   equipment:
     shoes: ClothingShoesBootsBlueShieldFilled
     eyes: ClothingEyesGlassesBlueShield
-    head: ClothingHeadHatBeretBlueShield
     outerClothing: ClothingOuterArmorBlueShield
     belt: ClothingBeltBlueShieldWebbingFilled
     gloves: ClothingHandsGlovesCombat

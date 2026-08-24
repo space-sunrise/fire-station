@@ -138,9 +138,9 @@
       - EncryptionKeyAdministration
       - EncryptionKeyScientificService
   - type: Sprite
-    sprite: Clothing/Ears/Headsets/science.rsi
+    sprite: _Scp/Clothing/Ears/Headsets/science.rsi
   - type: Clothing
-    sprite: Clothing/Ears/Headsets/science.rsi
+    sprite: _Scp/Clothing/Ears/Headsets/science.rsi
 
 # Медицинский отдел
 

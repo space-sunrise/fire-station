@@ -14,14 +14,22 @@
     size: Normal
   - type: Soil
     spawnPrototype: Scp124Soil
+  - type: Tag
+    tags:
+    - Scp124
 
 - type: entity
   id: Scp124Soil
-  parent: 
+  parent:
   - hydroponicsSoil
-  - BaseItemScp
+  - BaseItem
+  - BaseScpArtifactMinor
   suffix: SCP-124
   components:
+  - type: Damageable
+  - type: DamageOverlay
+    damagePopupType: SmallFloating
+    isStructure: true
   - type: SolutionRegeneration
     solution: soil
     generated:
@@ -39,3 +47,6 @@
   - type: GuideHelp
     guides:
     - ScpResearch
+  - type: Tag
+    tags:
+    - Scp124

@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "license": "CLA",
+  "copyright": "taken from aurora station SS13",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "coatrack"
+    },
+    {
+      "name": "clothing-0"
+    },
+    {
+      "name": "clothing-1"
+    },
+    {
+      "name": "clothing-2"
+    },
+    {
+      "name": "clothing-3"
+    }
+  ]
+}

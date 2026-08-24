@@ -10,8 +10,7 @@
   setPreference: false # Fire added
   # Sunrise-Start
   alternativeTitles:
-  - job-alt-title-custodian
-  - job-alt-title-mop-master
+  - job-alt-title-maid
   # Sunrise-End
   access:
   - Service
