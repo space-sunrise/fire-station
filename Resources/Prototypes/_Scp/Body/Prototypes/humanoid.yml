@@ -1,0 +1,28 @@
+﻿# для гуамноидных СЦП которые могут питаться человеческой едой (049)
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceScpHumanoid
+  name: scp 049 appearance
+  components:
+  - type: InitialBody
+    organs:
+      Torso: OrganHumanTorso
+      Head: OrganHumanHead
+      ArmLeft: OrganHumanArmLeft
+      ArmRight: OrganHumanArmRight
+      HandRight: OrganHumanHandRight
+      HandLeft: OrganHumanHandLeft
+      LegLeft: OrganHumanLegLeft
+      LegRight: OrganHumanLegRight
+      FootLeft: OrganHumanFootLeft
+      FootRight: OrganHumanFootRight
+      Brain: OrganHumanBrain
+      Eyes: OrganHumanEyes
+      Tongue: OrganHumanTongue
+      Appendix: OrganHumanAppendix
+      Ears: OrganHumanEars
+      Lungs: OrganHumanLungs
+      Heart: OrganHumanHeart
+      Stomach: OrganScpHumanoidStomach
+      Liver: OrganHumanLiver
+      Kidneys: OrganHumanKidneys

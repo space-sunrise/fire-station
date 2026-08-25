@@ -8,7 +8,7 @@
   - MobRespirator
   - InventoryBase
   - StripableInventoryBase
-  - AppearanceScpHands
+  - AppearanceScpHumanoid
   components:
   - type: AutoGhostRole
     disconnectDelay: 600
