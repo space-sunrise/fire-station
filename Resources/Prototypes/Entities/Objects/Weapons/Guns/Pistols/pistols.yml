@@ -38,6 +38,10 @@
       - FullAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+  - type: CanDualWield # Sunrise-Edit
+    dualWieldInaccuracyPenalty: 1
+    dualWieldFireRatePenalty: 0.25
+    dualWieldRecoilPenalty: 0.25
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/Weapons/Guns/Cock/pistol_cock.ogg
@@ -52,6 +56,7 @@
         whitelist:
           tags:
             - MagazinePistol
+            - MagazinePistolHighCapacity
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
         name: Chamber
@@ -90,13 +95,20 @@
   id: WeaponPistolViper
   description: A common handgun illegally modified by the Syndicate. The Viper sports a selector switch between semi-auto and ‘rock and roll’. The standard sidearm for any soldier who fights under the three serpents. Feeds from .35 pistol magazines.
   components:
+  # Fire edit start
+  - type: Item
+    sprite: _Scp/Objects/Weapons/Guns/Pistols/viper/tiny.rsi
+  - type: Clothing
+    sprite: _Scp/Objects/Weapons/Guns/Pistols/viper/tiny.rsi
+  # Fire edit end
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Pistols/viper.rsi
+    sprite: _Scp/Objects/Weapons/Guns/Pistols/viper/big.rsi # Fire edit
+    scale: 0.7, 0.7 # Fire edit
   - type: ItemSlots
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: MagazinePistolHighCapacitySP
+        startingItem: MagazinePistolHighCapacity
         insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
         priority: 2
@@ -161,21 +173,28 @@
   id: WeaponPistolCobra
   description: Integrally suppressed semi-automatic pistol used by the Syndicate, firing caseless subsonic rounds. Favored by any agent who likes to keep things quiet and leave no evidence behind. Feeds from .25 pistol magazines.
   components:
+  # Fire edit start
+  - type: Item
+    sprite: _Scp/Objects/Weapons/Guns/Pistols/cobra/tiny.rsi
+  # Fire edit end
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Pistols/cobra.rsi
+    sprite: _Scp/Objects/Weapons/Guns/Pistols/cobra/big.rsi # Fire edit
+    scale: 0.7, 0.7 # Fire edit
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Pistols/cobra.rsi
+    sprite: _Scp/Objects/Weapons/Guns/Pistols/cobra/tiny.rsi # Fire edit
   - type: ChamberMagazineAmmoProvider
     boltClosed: null
   - type: Gun
-    fireRate: 4
+    fireRate: 4.5 # Sunrise-edit
     soundGunshot:
-      collection: usp # Sunrise-Edit
+      path: /Audio/Weapons/Guns/Gunshots/silenced.ogg
+      params:
+        volume: -14
     availableModes:
     - SemiAuto
   - type: ItemSlots

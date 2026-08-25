@@ -20,6 +20,7 @@
   - type: Tag
     tags:
     - DoorBumpOpener
+    - Scp005
   - type: GuideHelp
     guides:
     - ScpResearch

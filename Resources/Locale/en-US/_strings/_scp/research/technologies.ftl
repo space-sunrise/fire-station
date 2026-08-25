@@ -12,3 +12,5 @@ research-technology-rapid-deployment-fiber-synthesis = "Gazelviv-9" Rapid-Deploy
 research-technology-cognitive-screen-protocol = "Ark-11" Cognitive Screen Protocol
 research-technology-conscious-inversion-filter = "Aeon-8" Conscious Inversion Filter
 research-technology-agent-type-solution = "Vigilius" Agent-Type Solution
+research-technology-conscious-inversion = "Ataraxia" Psychochemical Inverter
+

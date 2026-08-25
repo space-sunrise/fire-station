@@ -9,3 +9,4 @@ research-technology-conscious-inversion-filter = Сознательный инв
 research-technology-agent-type-solution = Раствор агентного типа «Вигилий»
 research-technology-anomalous-resonance-laser = Аномальный резонансный лазер
 research-technology-anomalous-optical-destructor = Аномально-оптический деструктор
+research-technology-conscious-inversion = Психохимический инвертор «Атараксия»

@@ -9,6 +9,7 @@
   # Sunrise-Start
   alternativeTitles:
   - job-alt-title-archivist
+  - job-alt-title-game-master
   # Sunrise-End
   setPreference: false # Fire added
   overrideConsoleVisibility: false # Fire added

@@ -138,6 +138,34 @@ public sealed partial class Scp096Component : Component
 
     #endregion
 
+    #region Hold breakout
+
+    /// <summary>
+    /// Урон, который получает каждый удерживающий скромника при успешном вырывании или смене состояния.
+    /// </summary>
+    [DataField]
+    public DamageSpecifier HoldBreakoutDamage = new()
+    {
+        DamageDict = new()
+        {
+            { "Blunt", 20 },
+        },
+    };
+
+    /// <summary>
+    /// Время паралича удерживающих после вырывания.
+    /// </summary>
+    [DataField]
+    public TimeSpan HoldBreakoutParalyzeTime = TimeSpan.FromSeconds(5f);
+
+    /// <summary>
+    /// Сила отталкивания удерживающих после вырывания.
+    /// </summary>
+    [DataField]
+    public float HoldBreakoutImpulse = 40f;
+
+    #endregion
+
     #region Face skin rip
 
     /// <summary>

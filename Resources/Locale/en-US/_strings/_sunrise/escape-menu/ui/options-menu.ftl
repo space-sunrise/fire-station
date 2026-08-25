@@ -36,3 +36,4 @@ hitscan will then stop displaying the smoke texture trailing the bullet.
 ui-options-tts-enabled = TTS Integration
 ui-options-tts-queue = Use queue for radio TTS?
 ui-options-tts-radio-ghost-enabled = Radio TTS while in ghost mode
+ui-options-function-open-messenger = Open Messenger

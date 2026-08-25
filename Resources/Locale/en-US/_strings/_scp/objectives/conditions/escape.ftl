@@ -1,0 +1,1 @@
+objective-condition-chaos-spy-escape-class-d-title = Quietly extract Class D employee {$targetName}, {CAPITALIZE($job)}.

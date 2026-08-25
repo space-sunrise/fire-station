@@ -41,11 +41,16 @@ public partial class SharedInteractionSystem
 
     private void OnMoveAttempt(EntityUid uid, BlockMovementComponent component, UpdateCanMoveEvent args)
     {
+        // Fire edit start - do not let a blocker cancel its own shutdown refresh
+        if (component.LifeStage > ComponentLifeStage.Running)
+            return;
+
         // If we're relaying then don't cancel.
         if (HasComp<RelayInputMoverComponent>(uid))
             return;
 
         args.Cancel(); // no more scurrying around
+        // Fire edit end
     }
 
     private void CancellableInteractEvent(EntityUid uid, BlockMovementComponent component, CancellableEntityEventArgs args)

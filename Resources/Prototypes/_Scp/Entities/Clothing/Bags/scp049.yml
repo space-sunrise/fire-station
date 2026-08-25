@@ -27,6 +27,8 @@
       - PillCanister
       - Pen
       - Bottle
+      - LimbScp0492
+      - LavenderFlower
   - type: StorageFill
     contents:
     - id: BookScp049Diary
@@ -40,3 +42,10 @@
     - id: BoneSetter
     - id: BoneGel
     - id: Scp049Contract
+    - id: LeftSpringLeg0492
+      prob: 0.5
+    - id: LeftTubeArm0492
+      prob: 0.5
+    - id: RightHarmArm0492
+      prob: 0.6
+      amount: 2

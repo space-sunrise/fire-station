@@ -6,8 +6,8 @@
   suffix: Autolink, Ext1
   categories: [ HideSpawnMenu ] # Fire added
   components:
-    - type: AutoLinkReceiver
-      channel: Ext1
+  - type: AutoLinkReceiver
+    channel: Ext1
 
 
 - type: entity
@@ -16,8 +16,8 @@
   suffix: Open, Autolink, Ext1
   categories: [ HideSpawnMenu ] # Fire added
   components:
-    - type: AutoLinkReceiver
-      channel: Ext1
+  - type: AutoLinkReceiver
+    channel: Ext1
 
 - type: entity
   id: BlastDoorExterior2
@@ -25,8 +25,8 @@
   suffix: Autolink, Ext2
   categories: [ HideSpawnMenu ] # Fire added
   components:
-    - type: AutoLinkReceiver
-      channel: Ext2
+  - type: AutoLinkReceiver
+    channel: Ext2
 
 
 - type: entity
@@ -35,8 +35,8 @@
   suffix: Open, Autolink, Ext2
   categories: [ HideSpawnMenu ] # Fire added
   components:
-    - type: AutoLinkReceiver
-      channel: Ext2
+  - type: AutoLinkReceiver
+    channel: Ext2
 
 - type: entity
   id: BlastDoorExterior3
@@ -44,8 +44,8 @@
   suffix: Autolink, Ext3
   categories: [ HideSpawnMenu ] # Fire added
   components:
-    - type: AutoLinkReceiver
-      channel: Ext3
+  - type: AutoLinkReceiver
+    channel: Ext3
 
 
 - type: entity
@@ -54,8 +54,8 @@
   suffix: Open, Autolink, Ext3
   categories: [ HideSpawnMenu ] # Fire added
   components:
-    - type: AutoLinkReceiver
-      channel: Ext3
+  - type: AutoLinkReceiver
+    channel: Ext3
 
 - type: entity
   id: BlastDoorBridge
@@ -165,8 +165,8 @@
   suffix: Autolink, Windows
   categories: [ HideSpawnMenu ] # Fire added
   components:
-    - type: AutoLinkReceiver
-      channel: Windows
+  - type: AutoLinkReceiver
+    channel: Windows
 
 - type: entity
   id: BlastDoorWindowsOpen
@@ -174,5 +174,5 @@
   suffix: Open, Autolink, Windows
   categories: [ HideSpawnMenu ] # Fire added
   components:
-    - type: AutoLinkReceiver
-      channel: Windows
+  - type: AutoLinkReceiver
+    channel: Windows

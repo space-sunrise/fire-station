@@ -18,6 +18,10 @@
 	{
       "name": "inhand-right",
       "directions": 4
+    },
+	{
+      "name": "equipped-MASK",
+      "directions": 4
         }
     ]
 }

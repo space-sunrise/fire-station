@@ -41,6 +41,7 @@ mentor-help-status-unknown = Unknown
 mentor-help-unassigned = Unassigned
 
 mentor-help-unknown-user = Unknown
+mentor-help-teleport = Teleport
 
 # Ticket info
 mentor-help-ticket-info = Status: {$status} | Assigned: {$assigned} | Created: {$created}

@@ -64,6 +64,9 @@
   - type: GuideHelp
     guides:
     - ScpResearch
+  - type: Tag
+    tags:
+    - Scp127
 
 - type: entity
   parent: BaseBullet

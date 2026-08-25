@@ -74,3 +74,5 @@ ent-ScpEffectServantSpawn035 = { ent-BaseScpArtifactEffect }
     .desc = artifact-effect-hint-data-deleted
 ent-ScpEffectSpawnEvilTwin = { ent-BaseScpArtifactEffect }
     .desc = artifact-effect-hint-data-deleted
+ent-ScpEffectMonsterSpawn019 = { ent-BaseScpArtifactEffect }
+    .desc = artifact-effect-hint-data-deleted

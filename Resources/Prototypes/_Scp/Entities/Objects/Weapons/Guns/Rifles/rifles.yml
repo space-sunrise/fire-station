@@ -60,33 +60,32 @@
     tags:
     - LockerGun5x3
 
-# Санрайз опять удалил оружие, которое мы используем
 - type: entity
-  name: AKMS
+  name: AK-103
+  description: A classic Kalashnikov assault rifle in a modern design chambered for 7.62x39mm cartridges.
   parent: BaseWeaponRifle
-  id: WeaponRifleAKM
-  categories: [ HideSpawnMenu ] # Fire edit
+  id: WeaponRifleAK103
   components:
   - type: Sprite
-    sprite: _Sunrise/Objects/Weapons/Guns/Rifles/akms/big.rsi
+    sprite: _Scp/Objects/Weapons/ak_74/big.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
   - type: Clothing
-    sprite: _Sunrise/Objects/Weapons/Guns/Rifles/akms/tiny.rsi
+    sprite: _Scp/Objects/Weapons/ak_74/tiny.rsi
   - type: Item
     size: Huge
     shape:
     - 0,0,3,2
-    sprite: _Sunrise/Objects/Weapons/Guns/Rifles/akms/tiny.rsi
+    sprite: _Scp/Objects/Weapons/ak_74/tiny.rsi
   - type: Gun
-    minAngle: 2.9
-    maxAngle: 22
+    minAngle: 2.7
+    maxAngle: 18
     angleIncrease: 2
     angleDecay: 12
-    fireRate: 5
+    fireRate: 5.50
     soundGunshot:
       collection: ak47
   - type: ItemSlots
@@ -122,6 +121,134 @@
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/_Sunrise/Weapons/Guns/Rifles/AK/ak_cocked.ogg
+  - type: Tag
+    tags:
+    - LockerGun6x3
+
+- type: entity
+  name: M4A1
+  description: The Colt M4 automatic carbine is based on the M16A2. It uses 5.56 mm cartridges.
+  parent: BaseWeaponRifle
+  id: WeaponRifleM4A1
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Weapons/M4/big.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Scp/Objects/Weapons/M4/tiny.rsi
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,3,2
+    sprite: _Scp/Objects/Weapons/M4/tiny.rsi
+  - type: Gun
+    minAngle: 1.7
+    maxAngle: 12
+    angleIncrease: 2
+    angleDecay: 12
+    fireRate: 5.6
+    soundGunshot:
+      path: /Audio/_Sunrise/Weapons/Guns/Rifles/g36/g36_shot.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazineRifleSP
+        insertSound: /Audio/_Sunrise/Weapons/Guns/Snipers/Different/reload.ogg
+        ejectSound: /Audio/_Sunrise/Weapons/Guns/Snipers/Different/unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazineRifle
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgeRifleSP
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeRifle
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: Wieldable
+  - type: UseDelay
+    delay: 0.75
+  - type: CursorOffsetRequiresWield
+  - type: EyeCursorOffset
+    maxOffset: 7
+    pvsIncrease: 0.7
   - type: Tag # Fire Edit
     tags:
     - LockerGun6x3
+
+- type: entity
+  name: AR-18 M
+  description: The AR-18 large-caliber rifle, upgraded by the SCP Foundation. Uses .308 caliber cartridges.
+  parent: BaseWeaponRifleSunrise
+  id: WeaponRifleAR18M
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Weapons/ar18m/big.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Scp/Objects/Weapons/ar18m/tiny.rsi
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,4,2
+    sprite: _Scp/Objects/Weapons/ar18m/tiny.rsi
+  - type: Gun
+    minAngle: 1.8
+    maxAngle: 20
+    angleIncrease: 1.1
+    angleDecay: 8
+    fireRate: 4.5
+    soundGunshot:
+      path: /Audio/_Sunrise/Weapons/Guns/Rifles/ar18/ar18_shot.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazineRifleHeavySP
+        insertSound: /Audio/_Sunrise/Weapons/Guns/Snipers/Different/reload.ogg
+        ejectSound: /Audio/_Sunrise/Weapons/Guns/Snipers/Different/unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - MagazineHeavyRifle
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgeRifleHeavySP
+        priority: 1
+        whitelist:
+          tags:
+          - CartridgeHeavyRifle
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: Wieldable
+  - type: UseDelay
+    delay: 0.5
+  - type: Tag
+    tags:
+    - LockerGun5x3

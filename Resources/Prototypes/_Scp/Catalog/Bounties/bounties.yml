@@ -774,7 +774,7 @@
 
 - type: cargoBounty
   id: BountyClothingHeadHelmetAiPowered
-  reward: 5000
+  reward: 12000
   description: scp-bounty-description-scp-096-helmet-ai
   entries:
   - name: scp-bounty-item-scp-096-helmet-ai

@@ -1,4 +1,4 @@
-﻿ent-BaseHealingItem = { ent-BaseItem }
+ent-BaseHealingItem = { ent-BaseItem }
     .desc = { ent-BaseItem.desc }
 ent-Ointment = мазь
     .desc = Используется для лечения этих неприятных ожогов. Менее эффективна при кислотных ожогах.

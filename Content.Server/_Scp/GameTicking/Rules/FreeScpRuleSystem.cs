@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using Content.Server._Scp.BodyTakeover;
-using Content.Server.EUI;
 using Content.Server.Fax;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Mind;
@@ -12,8 +11,6 @@ using Content.Shared.Fax.Components;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Mind.Components;
 using Content.Shared.Roles;
-using Robust.Server.Player;
-using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -23,7 +20,6 @@ namespace Content.Server._Scp.GameTicking.Rules;
 public sealed class FreeScpRuleSystem : GameRuleSystem<FreeScpRuleComponent>
 {
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly BodyTakeoverPollSystem _bodyTakeover = default!;
     [Dependency] private readonly MindSystem _mind = default!;

@@ -1,0 +1,25 @@
+﻿- type: entity
+  id: BaseWorldAlert
+  abstract: true
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    offset: 0, 1
+    noRot: true
+  - type: Transform
+    noRot: true
+  - type: TimedDespawn
+    lifetime: 0.8
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+- type: entity
+  id: WorldAlertHandcuffs
+  parent: BaseWorldAlert
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/handcuffs.rsi
+    state: handcuff

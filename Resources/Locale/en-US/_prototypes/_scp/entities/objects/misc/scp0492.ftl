@@ -1,0 +1,9 @@
+ent-RightHarmArm0492 = malicious right arm
+    .desc = A dark steel arm. When replacing the right arm surgically, the patient gains the ability to deliver painful strikes to enemies with it.
+    .suffix = SCP-049-2
+ent-LeftTubeArm0492 = tubular left arm
+    .desc = An elongated copper tube. When replacing the left arm surgically, the patient gains the ability to shoot their bodily waste through the tube.
+    .suffix = SCP-049-2
+ent-LeftSpringLeg0492 = springy left leg
+    .desc = A large silver spring. When replacing the left leg surgically, the patient begins to move faster.
+    .suffix = SCP-049-2

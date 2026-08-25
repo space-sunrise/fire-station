@@ -15,7 +15,6 @@
   setPreference: false # Fire added
   # Sunrise-Start
   alternativeTitles:
-  - job-alt-title-prospector
   - job-alt-title-forwarder
   # Sunrise-End
   access:

@@ -39,6 +39,18 @@
                 max: 6
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.46,-0.46,0.46,0.46"
+        density: 100
+        mask:
+        - Impassable
+        - HighImpassable
+        layer:
+        - HighImpassable
 
 - type: entity
   id: ScpDoubleBlastDoorOpen

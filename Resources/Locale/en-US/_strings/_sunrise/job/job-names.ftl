@@ -1,8 +1,8 @@
 job-name-magistrat = Magistrate
 job-name-centcomop = CentCom Operator
-job-name-blueshield-officer = Blue Shield Officer
-job-name-blueshield-operative = Blue Shield Operative
-job-name-blueshield-ensign = Blue Shield Commander
+job-name-blueshield-officer = Blueshield Officer
+job-name-blueshield-operative = Blueshield Operative
+job-name-blueshield-ensign = Blueshield Commander
 job-name-iaa = Internal Affairs Agent
 job-name-senior-engineer = Senior Engineer
 job-name-senior-researcher = Senior Researcher
@@ -41,6 +41,7 @@ job-name-usspcrew = USSP Crew
 job-name-usspguard = USSP Guard
 job-name-usspsoldier = USSP Soldier
 job-name-usspofficer = USSP Officer
+job-name-usspcaptain = USSP Captain
 # NTR
 job-name-ntrguard = NTR Operative
 job-name-ntrleader = NTR Commander
@@ -84,7 +85,6 @@ JobUSSPOfficer = USSP Officer
 JobNtrGuard = NTR Operative
 JobNtrLeadGuard = NTR Commander
 JobNtrOfficer = NTR Officer
-JobUSSPCaptain = USSP Captain
 JobClownBorg = Clown Cyborg
 JobBarber = Barber
 JobAdjutant = Adjutant

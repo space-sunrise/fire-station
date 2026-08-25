@@ -42,3 +42,5 @@ ghost-panel-antagonist-soviet-name = SSSP Soldier
 ghost-panel-antagonist-soviet-description = A soldier of the SSSP Armed Forces.
 ghost-panel-antagonist-infiltrator-name = Syndicate Infiltrator
 ghost-panel-antagonist-infiltrator-description = A Syndicate operative, ready to start a firefight.
+ghost-panel-antagonist-silicon-name = Rogue Silicon
+ghost-panel-antagonist-silicon-description = A hostile autonomous unit controlled by a rogue AI.

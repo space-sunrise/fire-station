@@ -1,9 +1,8 @@
 - type: marking
   id: CatEars
   bodyPart: Special
-  markingCategory: Special
-  speciesRestriction: [Felinid] # Fire edit
-  sponsorOnly: false
+  groupWhitelist: [ Dwarf, Felinid ] # Fire edit
+  sponsorOnly: false # Sunrise edit
   coloring:
     default:
       type:
@@ -25,9 +24,8 @@
 - type: marking
   id: CatTail
   bodyPart: Tail
-  markingCategory: Tail
-  sponsorOnly: false
-  speciesRestriction: [Felinid] # Fire edit
+  groupWhitelist: [ Dwarf, Felinid ] # Fire edit
+  sponsorOnly: false # Sunrise edit
   coloring:
     default:
       type:

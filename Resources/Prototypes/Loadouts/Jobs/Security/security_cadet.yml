@@ -59,13 +59,6 @@
   # Fire edit end
 
 - type: loadout
-  id: CadetWeaponACP14Box
-  startingGear: ACP14Box
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: MasterCadet20h
-
-- type: loadout
   id: CadetWeaponGlockBox
   startingGear: GlockBox
   effects:

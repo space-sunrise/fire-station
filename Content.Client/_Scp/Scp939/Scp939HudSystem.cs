@@ -16,6 +16,7 @@ namespace Content.Client._Scp.Scp939;
 
 public sealed partial class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
 {
+    [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
 
@@ -128,7 +129,7 @@ public sealed partial class Scp939HudSystem : EquipmentHudSystem<Scp939Component
     {
         foreach (var (ent, baseAlpha) in CachedBaseAlphas)
         {
-            if (!EntityManager.EntityExists(ent))
+            if (!_entityManager.EntityExists(ent))
                 continue;
 
             _sprite.SetColor(ent.AsNullable(), ent.Comp.Color.WithAlpha(baseAlpha));
