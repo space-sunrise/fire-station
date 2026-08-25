@@ -72,7 +72,7 @@
 - type: radioChannel
   id: Chaos
   name: chat-radio-chaos
-  keycode: 'х'
+  keycode: 'x'
   frequency: 0251
   color: "#40826d"
   longRange: true
