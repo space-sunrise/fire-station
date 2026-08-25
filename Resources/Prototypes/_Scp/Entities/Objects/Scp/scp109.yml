@@ -19,9 +19,9 @@
     generated:
       reagents:
       - ReagentId: Water
-        Quantity: 2
+        Quantity: 2.5
       - ReagentId: Omnizine
-        Quantity: 1
+        Quantity: 0.5
   - type: GuideHelp
     guides:
     - ScpResearch

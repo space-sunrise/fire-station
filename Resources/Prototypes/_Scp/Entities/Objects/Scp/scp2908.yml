@@ -25,6 +25,13 @@
   - type: Tag
     tags:
     - Scp2908
+  - type: RandomChanceTriggerCondition
+    successChance: 0.25
+  - type: TriggerOnEmptyGunshot
+  - type: ExplosionOnTrigger
+    intensitySlope: 6
+  - type: EmpOnTrigger
+    range: 5
 
 - type: entity
   id: MagazineScp2908
@@ -33,6 +40,7 @@
   parent: MagazinePistolSubMachineGunPPSH
   components:
   - type: BallisticAmmoProvider
+    capacity: 20
     whitelist:
       components:
       - CartridgeAmmo
