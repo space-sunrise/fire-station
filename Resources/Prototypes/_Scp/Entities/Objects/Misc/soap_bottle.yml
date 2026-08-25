@@ -5,6 +5,7 @@
   - DrinkBaseMaterialPlastic
   name: soap bottle
   description: A plastic bottle with liquid soap inside.
+  suffix: Decorative
   components:
   - type: Sprite
     sprite: _Scp/Objects/Misc/soap_bottle.rsi

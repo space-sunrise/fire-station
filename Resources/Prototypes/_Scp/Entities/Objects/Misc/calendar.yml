@@ -3,6 +3,7 @@
   parent: BaseItem
   name: wall calendar
   description: A paper calendar with a few dates marked.
+  suffix: Decorative
   components:
   - type: Sprite
     sprite: _Scp/Objects/Misc/calendar.rsi
