@@ -285,13 +285,10 @@ public sealed partial class AdminVerbSystem
             Act = () =>
             {
                 _antag.ForceMakeAntag<ChaosSleepSpyRuleComponent>(targetPlayer, DefaultScpSleepChaosSpyRule);
-                if (!_mindSystem.TryGetMind(args.Target, out var targetMindId, out _))
+                if (!_mindSystem.TryGetMind(args.Target, out _, out var mindComp))
                     return;
 
-                if (!TryComp<MindComponent>(targetMindId, out var targetMind))
-                    return;
-
-                var targetName = targetMind.CharacterName ?? Name(args.Target);
+                var targetName = mindComp.CharacterName ?? Name(args.Target);
                 _chatManager.DispatchServerMessage(actor.PlayerSession,
                     Loc.GetString("admin-verb-result-make-chaos-sleep-spy",
                         ("targetName", targetName)));

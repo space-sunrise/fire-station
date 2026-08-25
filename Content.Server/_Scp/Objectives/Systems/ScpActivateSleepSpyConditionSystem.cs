@@ -60,7 +60,7 @@ public sealed class ScpActivateSleepSpyConditionSystem : EntitySystem
     private void OnAfterAssign(Entity<ScpActivateSleepSpyConditionComponent> ent, ref ObjectiveAfterAssignEvent args)
     {
 
-        if (ent.Comp.Target is not { } target || Deleted(target))
+        if (ent.Comp.Target is not { } target)
             return;
 
         if (!_mind.TryGetMind(target, out var mindId, out _))
