@@ -8,7 +8,7 @@
 - type: radioChannel
   id: BlueShield
   name: chat-radio-blue-shield
-  keycode: 'Z' # Fire edit - чтобы не конфликтовало
+  keycode: 'z' # Fire edit - чтобы не конфликтовало
   frequency: 1781
   color: "#005bfb"
   longRange: false
@@ -16,7 +16,7 @@
 - type: radioChannel
   id: USSP
   name: chat-radio-ussp
-  keycode: 'Ё' # Fire edit - чтобы не конфликтовало
+  keycode: '`' # Fire edit - чтобы не конфликтовало
   frequency: 1945
   color: "#CC0000"
   longRange: false
@@ -24,7 +24,7 @@
 - type: radioChannel
   id: USSPSec
   name: chat-radio-ussp-sec
-  keycode: 'ё' # Fire edit - чтобы не конфликтовало
+  keycode: '~' # Fire edit - чтобы не конфликтовало
   frequency: 1984
   color: "#B00000"
   longRange: false
@@ -40,7 +40,7 @@
 - type: radioChannel
   id: TSF
   name: chat-radio-tsf
-  keycode: "ы"
+  keycode: "y"
   frequency: 1922
   color: "#22a7ff"
   longRange: true
