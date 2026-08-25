@@ -5558,3 +5558,12 @@
     message: Генерация жидкости в SCP-109 изменена с 2 воды и 1 омнизина до 2.5 воды и 0.5 омнизина
   id: 516
   url: https://github.com/makura-games/project-fire/pull/1130
+- author: EngineerLND
+  time: '2026-08-25T18:23:22.0000000+00:00'
+  changes:
+  - type: Add
+    message: 'Добавлена цель для ШПХ: Активация спящего агента.'
+  - type: Add
+    message: Изменение для администрации. Теперь создание спящего агента вручную выводит сообщение в чат.
+  id: 517
+  url: https://github.com/makura-games/project-fire/pull/1123
