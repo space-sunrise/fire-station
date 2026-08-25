@@ -6,6 +6,7 @@
   - KitchenElectricGrill
   name: oven
   description: It's a grill and microwave - all in one!
+  suffix: Decorative
   components:
   - type: Sprite
     sprite: _Scp/Structures/Machines/oven.rsi

@@ -3,6 +3,7 @@
   parent: BaseStructureDynamic
   name: coatrack
   description: A tall wooden coat rack to hang your jackets and hats.
+  suffix: Decorative
   components:
   - type: Sprite
     sprite: _Scp/Structures/Furniture/coatrack.rsi

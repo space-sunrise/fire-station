@@ -3,6 +3,7 @@
   parent: BaseItem
   name: red toothbrush
   description: A simple red toothbrush for personal hygiene.
+  suffix: Decorative
   components:
   - type: Sprite
     sprite: _Scp/Objects/Misc/toothbrush.rsi
@@ -10,3 +11,8 @@
   - type: Tag
     tags:
     - Toothbrush
+  - type: MeleeWeapon
+    wideAnimationRotation: -45
+    damage:
+      types:
+        Blunt: 4

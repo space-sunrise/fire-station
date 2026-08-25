@@ -3,6 +3,7 @@
   name: yellow pencil
   description: A classic pencil with a yellow wooden barrel and a small red eraser.
   parent: BaseItem
+  suffix: Decorative
   components:
   - type: Sprite
     sprite: _Scp/Objects/Misc/pencil.rsi

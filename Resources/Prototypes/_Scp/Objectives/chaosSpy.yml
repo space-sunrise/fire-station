@@ -147,6 +147,19 @@
         - HelpProgressCondition
 
 - type: entity
+  parent: [BaseChaosSpyObjective, BaseCodeObjective]
+  id: ChaosSpyActivateSleepSpyObjective
+  name: activate "sleeper" cells
+  description: Activate "sleeper" cells of the Chaos Insurgency.
+  components:
+  - type: Objective
+    difficulty: 1.1
+    icon:
+      sprite: _Scp/Interface/Misc/chaos_objectives_icons.rsi
+      state: StealItemScp
+  - type: ScpActivateSleepSpyCondition
+
+- type: entity
   parent: BaseChaosSpyStealObjective
   id: ChaosSpyStealItemScpsObjective
   components:
