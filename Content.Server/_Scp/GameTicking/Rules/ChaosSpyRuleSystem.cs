@@ -174,7 +174,7 @@ public sealed class ChaosSpyRuleSystem : GameRuleSystem<ChaosSpyRuleComponent>
             args.Text += "\n" + Loc.GetString("chaos-spy-round-end-codewords", ("codewords", string.Join(", ", ent.Comp.CodeWords)));
     }
 
-    private string GenerateBriefing(string[]? codewords, Note[]? uplinkCode,bool isSleepSpy , string? objectiveIssuer = null)
+    private string GenerateBriefing(string[]? codewords, Note[]? uplinkCode, bool isSleepSpy, string? objectiveIssuer = null)
     {
         var sb = new StringBuilder();
 
