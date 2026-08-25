@@ -1,0 +1,145 @@
+- type: entity
+  id: ScpCableMVInvisible
+  parent: CablePhysBase
+  suffix: Invisible, DEBUG
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Power/Cables/mv_cable.rsi
+    state: mvcable_15
+  - type: NodeContainer
+    nodes:
+      power:
+        !type:CableNode
+        nodeGroupID: MVPower
+  - type: Cable
+    cableDroppedOnCutPrototype: CableMVStack1
+    cableType: MediumVoltage
+  - type: Visibility
+    layer: 2
+
+- type: entity
+  id: ScpCableApcExtensionInvisible
+  parent: CablePhysBase
+  suffix: Invisible, DEBUG
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Power/Cables/lv_cable.rsi
+    state: lvcable_15
+  - type: NodeContainer
+    nodes:
+      power:
+        !type:CableNode
+        nodeGroupID: Apc
+  - type: PowerProvider
+    voltage: Apc
+  - type: ExtensionCableProvider
+  - type: Cable
+    cableDroppedOnCutPrototype: CableApcStack1
+    cableType: Apc
+  - type: Visibility
+    layer: 2
+
+- type: entity
+  parent: CablePhysBase
+  id: ScpCableHVInvisible
+  suffix: Invisible, DEBUG
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Power/Cables/hv_cable.rsi
+    state: hvcable_15
+  - type: NodeContainer
+    nodes:
+      power:
+        !type:CableNode
+        nodeGroupID: HVPower
+  - type: Cable
+    cableDroppedOnCutPrototype: CableHVStack1
+    cableType: HighVoltage
+  - type: Visibility
+    layer: 2
+
+- type: entity
+  id: ScpDebugInvisibleGenerator
+  parent: BaseGenerator
+  suffix: Invisible, DEBUG
+  components:
+  - type: PowerSupplier
+    supplyRate: 300000
+    supplyRampRate: 50000
+    supplyRampTolerance: 500
+  - type: Visibility
+    layer: 2
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - GhostImpassable
+        layer:
+        - GhostImpassable
+
+- type: entity
+  parent: BaseSMES
+  id: ScpDebugInvisibleSMESRecharging
+  suffix: DEBUG, AutoRecharge, Invisible
+  components:
+  - type: BatterySelfRecharger
+    autoRechargeRate: 50000
+  - type: Visibility
+    layer: 2
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - GhostImpassable
+        layer:
+        - GhostImpassable
+
+- type: entity
+  parent: BaseSubstation
+  id: ScpDebugInvisibleSubstationRecharging
+  suffix: DEBUG, AutoRecharge, Invisible
+  components:
+  - type: BatterySelfRecharger
+    autoRechargeRate: 50000
+  - type: Visibility
+    layer: 2
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - GhostImpassable
+        layer:
+        - GhostImpassable
+
+- type: entity
+  parent: BaseAPC
+  id: ScpDebugInvisibleAPCRecharging
+  suffix: DEBUG, AutoRecharge, Invisible
+  components:
+  - type: BatterySelfRecharger
+    autoRechargeRate: 50000
+  - type: Visibility
+    layer: 2
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - GhostImpassable
+        layer:
+        - GhostImpassable
