@@ -26,10 +26,10 @@ With many new objects, research mechanics, new dimensions, roles, and maps, SCP:
 
 ## 🚨 Features of our build 🚨
 
-📢 Full redesign with replacement of all vanilla content — everything is our own; <br>
-╰ 🕯️ Gloom, tension, steel walls — we have put real effort into the horror vibe;
+📢 Full redesign with replacement of all vanilla content. <br>
+╰ 🕯️ Gloom, tension, steel walls. The main things you'll notice here.
 
->🔗 Playable objects implemented: SCP-106, SCP-939, SCP-173, SCP-049, SCP-096, SCP-999! <br>
+>🔗 Playable objects implemented: SCP-106, SCP-939, SCP-173, SCP-049, SCP-096, SCP-999, and more! <br>
 >🛡️ Completely new lore-friendly roles. No more Passengers! <br>
 >🗺️ Uses custom maps of SCP facilities on a planet, no space! <br>
 >🔊 Unique audio effect system for immersion into the facility's atmosphere. We have echo! <br>
@@ -39,7 +39,7 @@ With many new objects, research mechanics, new dimensions, roles, and maps, SCP:
 ## 💛 Contributing to the project 💛
 
 Anyone has the right to help with server development and suggest their own changes by creating a PR. <br>
-The Fire Station Maintainers team can work with developers in **Russian and English**. Those wishing to help the project are welcome to open PRs or issues in either of these languages.
+The Trench Station maintainers, at the moment, can only really speak English! However, we will try our best to understand other languages (the point of this project :3)
 
 For additional help familiarizing yourself with the project, join our Discord: <br>
 
@@ -57,7 +57,7 @@ A: Still not a question. You likely ran one of the two commands wrong. Try reclo
 
 ## 📄 Documentation 📄
 
-We have our own documentation, including design documents for mechanics -> [read here](https://github.com/space-sunrise/fire-station/discussions/categories/%D0%B3%D0%B5%D0%B9%D0%BC%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD)
+We're piggybacking off of Fire Station, including design documents for mechanics -> [read here](https://github.com/space-sunrise/fire-station/discussions/categories/%D0%B3%D0%B5%D0%B9%D0%BC%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD)
 
 ## 📉 Project Activity 📉
 
@@ -67,7 +67,7 @@ We have our own documentation, including design documents for mechanics -> [read
 
 <div class="header" align="center">
 
-[![Discord](https://img.shields.io/discord/1051873590301184031?label=Discord&logo=discord&logoColor=white)](https://discord.gg/m4xAE2rxQx)
+[![Discord](https://img.shields.io/discord/1051873590301184031?label=Discord&logo=discord&logoColor=white)](https://discord.gg/YZdj4RddWg)
 [![Wiki](https://img.shields.io/badge/Wiki-Fire%20Station%20Wiki-red)](https://fire.station.wiki.shizainc.com/) <br>
 [![GitHub](https://img.shields.io/github/stars/space-sunrise/fire-station?style=social)](https://github.com/space-sunrise/fire-station)
 ![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/space-sunrise/fire-station?utm_source=oss&utm_medium=github&utm_campaign=space-sunrise%2Ffire-station&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
