@@ -468,7 +468,7 @@
   parent: ScpWallConcreteDiagonal
   id: ScpWallConcreteLightContainmentDiagonal
   name: diagonal LCZ concrete wall
-  description: Diagonal concrete wall used in the Light Containment zone to keep the bad in.
+  description: Diagonal concrete wall used in the Light Containment Zone to keep the bad in.
   suffix: diagonal
   components:
   - type: IconSmooth
