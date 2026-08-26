@@ -6,7 +6,7 @@
   flavor: medicine
   color: "#00008b"
   metabolisms:
-    Food:
+    Bloodstream:
       metabolismRate: 0.5
       effects:
       - !type:HealthChange

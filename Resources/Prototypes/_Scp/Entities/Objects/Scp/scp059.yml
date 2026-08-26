@@ -45,7 +45,7 @@
     userWhitelist:
       components:
       - MobState
-      - HumanoidAppearance
+      - HumanoidProfile
       requireAll: true
     userBlacklist:
       components:
