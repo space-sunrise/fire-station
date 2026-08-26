@@ -1,0 +1,17 @@
+﻿- type: entity
+  id: Scp059Crystal
+  name: infect tile
+  description: You leave a piece of mineral on the floor.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 180
+    icon:
+      sprite: _Scp/Objects/Scp/scp-059/crystal.rsi
+      state: kudzu_21
+    itemIconStyle: BigAction
+    raiseOnUser: true
+  - type: InstantAction
+    event: !type:InstantSpawnSpellEvent
+      prototype: Scp059CrystalStructure
+      posData: !type:TargetCasterPos

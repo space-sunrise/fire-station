@@ -1,0 +1,14 @@
+- type: entity
+  id: ChemistryBottleGriseofulvin
+  suffix: griseofulvin
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-griseofulvin
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Griseofulvin
+          Quantity: 30
