@@ -94,5 +94,5 @@
   - type: Damageable
     damageModifierSet: SCP-059
   - type: RadiationSource
-    Intensity: 0.3
-    Slope: 0.2
+    intensity: 0.3
+    slope: 0.2

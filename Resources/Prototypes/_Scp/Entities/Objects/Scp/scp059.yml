@@ -8,8 +8,8 @@
       - Wall
   components:
   - type: RadiationSource
-    Intensity: 0.1
-    Slope: 0.1
+    intensity: 0.1
+    slope: 0.1
   - type: Temperature
   - type: TemperatureDamage
     heatDamage:
@@ -162,8 +162,8 @@
         density: 200
   - type: SpriteFade
   - type: RadiationSource
-    Intensity: 0.3
-    Slope: 0.2
+    intensity: 0.3
+    slope: 0.2
 
 - type: entity
   id: Scp059CrystalItem
