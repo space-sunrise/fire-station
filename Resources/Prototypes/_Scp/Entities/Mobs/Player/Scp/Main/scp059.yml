@@ -91,3 +91,8 @@
     radius: 2
     energy: 4
     netsync: false
+  - type: Damageable
+    damageModifierSet: SCP059
+  - type: RadiationSource
+    Intensity: 0.3
+    Slope: 0.2

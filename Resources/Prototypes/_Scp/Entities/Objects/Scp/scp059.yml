@@ -7,6 +7,28 @@
     snap:
       - Wall
   components:
+  - type: RadiationSource
+    Intensity: 0.1
+    Slope: 0.1
+  - type: Temperature
+  - type: TemperatureDamage
+    heatDamage:
+      types:
+        Heat: 5
+    coldDamage: {}
+    coldDamageThreshold: 0
+  - type: Reactive
+    groups:
+      Flammable: [Touch]
+      Extinguish: [Touch]
+    reactions:
+    - reagents: [Griseofulvin]
+      methods: [Touch]
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Heat: 10
   - type: MeleeSound
     soundGroups:
       Brute:
@@ -29,6 +51,7 @@
   - type: Clickable
   - type: InteractionOutline
   - type: Damageable
+    damageModifierSet: SCP059
   - type: DamageOverlay
     damagePopupType: SmallFloating
     isStructure: true
@@ -133,11 +156,14 @@
           !type:PhysShapeAabb
           bounds: "-0.25,-0.45,0.25,0.45"
         mask:
-        - TabletopMask
+        - MachineMask
         layer:
         - MachineLayer
         density: 200
   - type: SpriteFade
+  - type: RadiationSource
+    Intensity: 0.3
+    Slope: 0.2
 
 - type: entity
   id: Scp059CrystalItem
