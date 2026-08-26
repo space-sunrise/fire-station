@@ -31,6 +31,17 @@
       emergencyLightColor: DodgerBlue
       shuttleTime: 600
 
+    scpLime:
+      announcement: alert-level-scpLime-announcement
+      sound:
+        path: /Audio/Misc/bluealert.ogg
+        params:
+          volume: -1
+      color: Lime
+      emergencyLightColor: Lime
+      forceEnableEmergencyLights: true
+      shuttleTime: 1200
+
     scpOrange:
       announcement: alert-level-scpOrange-announcement
       sound:

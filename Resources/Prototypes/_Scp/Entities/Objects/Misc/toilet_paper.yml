@@ -3,6 +3,7 @@
   parent: BaseItem
   name: toilet paper
   description: A roll of soft tissue paper.
+  suffix: Decorative
   components:
   - type: Sprite
     sprite: _Scp/Objects/Misc/toilet_paper.rsi

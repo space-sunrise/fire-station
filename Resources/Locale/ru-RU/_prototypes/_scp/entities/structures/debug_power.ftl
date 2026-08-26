@@ -1,0 +1,22 @@
+ent-ScpDebugInvisibleGenerator = { ent-BaseGenerator }
+    .suffix = ДЕБАГ, Невидимость
+    .desc = { ent-BaseGenerator.desc }
+ent-ScpDebugInvisibleSMESRecharging = { ent-BaseSMES }
+    .suffix = ДЕБАГ, Невидимость, автоматическая перезарядка
+    .desc = { ent-BaseSMES.desc }
+ent-ScpDebugInvisibleSubstationRecharging = { ent-BaseSubstation }
+    .suffix = ДЕБАГ, Невидимость, автоматическая перезарядка
+    .desc = { ent-BaseSubstation.desc }
+ent-ScpDebugInvisibleAPCRecharging = { ent-BaseAPC }
+    .suffix = ДЕБАГ, Невидимость, Автоматическая перезарядка
+    .desc = { ent-BaseAPC.desc }
+
+ent-ScpCableHVInvisible = { ent-CableHV }
+    .suffix = ДЕБАГ, Невидимость
+    .desc = { ent-CableHV.desc }
+ent-ScpCableMVInvisible = { ent-CableMV }
+    .suffix = ДЕБАГ, Невидимость
+    .desc = { ent-CableMV.desc }
+ent-ScpCableApcExtensionInvisible = { ent-CableApcExtension }
+    .suffix = ДЕБАГ, Невидимость
+    .desc = { ent-CableApcExtension.desc }

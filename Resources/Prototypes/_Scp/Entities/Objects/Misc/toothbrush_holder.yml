@@ -3,6 +3,7 @@
   parent: BaseItem
   name: toothbrush holder
   description: A small holder for your bathroom essentials.
+  suffix: Decorative
   components:
   - type: Sprite
     sprite: _Scp/Objects/Misc/toothbrush_holder.rsi

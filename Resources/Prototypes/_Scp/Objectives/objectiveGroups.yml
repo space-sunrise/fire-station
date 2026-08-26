@@ -30,9 +30,9 @@
   weights:
     ChaosSpyObjectiveGroupSteal: 1
     #ChaosSpyObjectiveGroupDestroy: 0.6 # временно вырезано из пула тасков
-    ChaosSpyObjectiveGroupClassD: 0.8
+    ChaosSpyObjectiveGroupClassD: 0.5
     ChaosSpyObjectiveGroupKill: 0.8
-    ChaosSpyObjectiveGroupSabotage: 0.8
+    ChaosSpyObjectiveGroupSabotage: 0.5
     ChaosSpyObjectiveGroupSocial: 0.5
 
 - type: weightedRandom
