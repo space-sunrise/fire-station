@@ -51,7 +51,7 @@
   - type: Clickable
   - type: InteractionOutline
   - type: Damageable
-    damageModifierSet: SCP059
+    damageModifierSet: SCP-059
   - type: DamageOverlay
     damagePopupType: SmallFloating
     isStructure: true
@@ -204,6 +204,9 @@
     radius: 2
     energy: 4
     netsync: false
+  - type: Tag
+    tags:
+    - Trash
 
 - type: entity
   id: Scp059CrystalProjectile
