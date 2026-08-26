@@ -1,0 +1,28 @@
+- type: reagent
+  id: Griseofulvin
+  name: reagent-name-griseofulvin
+  group: Medicine
+  desc: reagent-desc-griseofulvin
+  physicalDesc: reagent-physical-desc-acrid
+  flavor: medicine
+  color: "#c5ff59"
+  metabolisms:
+    Bloodstream:
+      metabolismRate: 0.5
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Cellular: -0.15
+            Caustic: -0.2
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: Griseofulvin
+          min: 11
+        damage:
+          types:
+            Asphyxiation: 0.2
+      - !type:AdjustReagent
+        reagent: Scp059Reagent
+        amount: -5
