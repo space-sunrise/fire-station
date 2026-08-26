@@ -5538,3 +5538,53 @@
     message: Добавлен сейф с AR-18 M.
   id: 514
   url: https://github.com/makura-games/project-fire/pull/1131
+- author: timur
+  time: '2026-08-25T15:09:21.0000000+00:00'
+  changes:
+  - type: Add
+    message: добавлены дебаг невидимые кабели, подстанции, лкп, смэс и генераторы
+  id: 515
+  url: https://github.com/makura-games/project-fire/pull/1116
+- author: timur
+  time: '2026-08-25T15:04:23.0000000+00:00'
+  changes:
+  - type: Tweak
+    message: Характеристики SWAT изменены с 60 ударных до 50, 60 режущих до 50, 70 колотых до 50
+  - type: Tweak
+    message: Теперь SCP-2908 с небольшим шансом может взорваться при стрельбе
+  - type: Tweak
+    message: Вместимость патронов в магазине SCP-2908 изменена с 35 до 20 единиц
+  - type: Tweak
+    message: Генерация жидкости в SCP-109 изменена с 2 воды и 1 омнизина до 2.5 воды и 0.5 омнизина
+  id: 516
+  url: https://github.com/makura-games/project-fire/pull/1130
+- author: EngineerLND
+  time: '2026-08-25T18:23:22.0000000+00:00'
+  changes:
+  - type: Add
+    message: 'Добавлена цель для ШПХ: Активация спящего агента.'
+  - type: Add
+    message: Изменение для администрации. Теперь создание спящего агента вручную выводит сообщение в чат.
+  id: 517
+  url: https://github.com/makura-games/project-fire/pull/1123
+- author: timur
+  time: '2026-08-26T11:09:24.0000000+00:00'
+  changes:
+  - type: Add
+    message: Добавлен SCP-059
+  id: 518
+  url: https://github.com/makura-games/project-fire/pull/1076
+- author: Wardex
+  time: '2026-08-25T18:55:24.0000000+00:00'
+  changes:
+  - type: Add
+    message: Добавлен уровень угрозы "Лаймовый"
+  id: 519
+  url: https://github.com/makura-games/project-fire/pull/1132
+- author: timur
+  time: '2026-08-25T18:47:45.0000000+00:00'
+  changes:
+  - type: Fix
+    message: исправлен баг с лёгкими SCP-049
+  id: 520
+  url: https://github.com/makura-games/project-fire/pull/1134

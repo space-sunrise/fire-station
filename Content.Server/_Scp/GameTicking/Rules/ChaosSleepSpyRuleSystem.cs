@@ -5,9 +5,12 @@ using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Mind;
+using Content.Server.Objectives;
 using Content.Server.Roles.RoleCodeword;
 using Content.Shared._Scp.Chaos;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.Mind;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Roles.RoleCodeword;
 using Content.Shared.Speech;
 using Content.Shared.Speech.Components;
@@ -19,8 +22,10 @@ public sealed class ChaosSleepSpyRuleSystem : GameRuleSystem<ChaosSleepSpyRuleCo
 {
     [Dependency] private readonly RoleCodewordSystem _roleCodeword = default!;
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
+    [Dependency] private readonly ObjectivesSystem _objectives = default!;
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
 
     public override void Initialize()
     {
@@ -59,6 +64,37 @@ public sealed class ChaosSleepSpyRuleSystem : GameRuleSystem<ChaosSleepSpyRuleCo
 
         var sleepSpyMobComp = EnsureComp<ChaosSleepSpyMobComponent>(args.EntityUid);
         sleepSpyMobComp.CodeWords = ent.Comp.CodeWords;
+
+
+        EntityUid? selectedMindId = null;
+        MindComponent? selectedMindComp = null;
+        int minObjectives = int.MaxValue;
+
+        var query = EntityQueryEnumerator<ChaosSpyMobComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (!_mind.TryGetMind(uid, out var thisMindId, out var mindComp))
+                continue;
+
+            if(_mobState.IsDead(uid))
+                continue;
+
+            var count = mindComp.Objectives.Count;
+            if (count < minObjectives)
+            {
+                minObjectives = count;
+                selectedMindId = thisMindId;
+                selectedMindComp = mindComp;
+            }
+        }
+
+        if (selectedMindId.HasValue && selectedMindComp != null)
+        {
+            if (_objectives.TryCreateObjective(selectedMindId.Value, selectedMindComp, "ChaosSpyActivateSleepSpyObjective") is not { } objectiveUid)
+                return;
+
+            _mind.AddObjective(selectedMindId.Value, selectedMindComp, objectiveUid);
+        }
     }
 
     private void OnListen(Entity<ChaosSleepSpyMobComponent> ent, ref ListenEvent args)
@@ -82,6 +118,7 @@ public sealed class ChaosSleepSpyRuleSystem : GameRuleSystem<ChaosSleepSpyRuleCo
             return;
 
         _antag.ForceMakeAntag<ChaosSpyRuleComponent>(actorComp.PlayerSession, ent.Comp.DefaultChaosSpyRule);
+        EnsureComp<ChaosSpyMobComponent>(ent);
         RemCompDeferred<ActiveListenerComponent>(ent);
         RemCompDeferred<ChaosSleepSpyMobComponent>(ent);
     }

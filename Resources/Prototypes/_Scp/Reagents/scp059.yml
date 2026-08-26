@@ -1,0 +1,53 @@
+﻿- type: reagent
+  id: Scp059Reagent
+  name: reagent-name-scp059
+  desc: reagent-desc-scp059
+  physicalDesc: reagent-physical-desc-glowing
+  flavor: medicine
+  color: "#00008b"
+  metabolisms:
+    Bloodstream:
+      metabolismRate: 0.5
+      effects:
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: Scp059Reagent
+          min: 15
+        damage:
+          types:
+            Radiation: 0.5
+
+      - !type:AdjustReagent
+        conditions:
+        - !type:ReagentCondition
+          reagent: Scp059Reagent
+          min: 0.1
+        reagent: Scp059Reagent
+        amount: 1.2
+
+      - !type:ModifyStatusEffect
+        conditions:
+        - !type:ReagentCondition
+          reagent: Scp059Reagent
+          min: 90
+        effectProto: StatusEffectDrowsiness
+        time: 10
+        type: Add
+
+      - !type:PopupMessage
+        conditions:
+        - !type:ReagentCondition
+          reagent: Scp059Reagent
+          min: 5
+        visualType: Large
+        messages: ["reagent-effect-scp059-infect"]
+        probability: 0.2
+        type: Local
+
+      - !type:Polymorph
+        prototype: Scp059Polymorph
+        conditions:
+        - !type:ReagentCondition
+          reagent: Scp059Reagent
+          min: 100

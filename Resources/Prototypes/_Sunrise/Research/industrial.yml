@@ -27,10 +27,6 @@
   recipeUnlocks:
   - RipleyMKIIHarness
   - RipleyUpgradeKit
-  - PaintRipleyAluminizer
-  - PaintRipleyFirestarter
-  - PaintRipleyHauler
-  - PaintRipleyZairjah
   technologyPrerequisites:
   - RipleyAPLU
 
@@ -51,7 +47,6 @@
   - ClarkeTreads
   - ClarkeCentralElectronics
   - ClarkePeripheralsElectronics
-  - PaintClarkeOrangey
   - PowerCageMedium
   technologyPrerequisites:
   - Ripley2

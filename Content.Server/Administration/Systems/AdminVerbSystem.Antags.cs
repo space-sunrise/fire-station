@@ -19,6 +19,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Content.Shared.Roles.Components;
 using Content.Server._Scp.GameTicking.Rules.Components; // Fire edit
+using Content.Shared.Mind; // Fire edit
 
 namespace Content.Server.Administration.Systems;
 
@@ -284,6 +285,13 @@ public sealed partial class AdminVerbSystem
             Act = () =>
             {
                 _antag.ForceMakeAntag<ChaosSleepSpyRuleComponent>(targetPlayer, DefaultScpSleepChaosSpyRule);
+                if (!_mindSystem.TryGetMind(args.Target, out _, out var mindComp))
+                    return;
+
+                var targetName = mindComp.CharacterName ?? Name(args.Target);
+                _chatManager.DispatchServerMessage(actor.PlayerSession,
+                    Loc.GetString("admin-verb-result-make-chaos-sleep-spy",
+                        ("targetName", targetName)));
             },
             Impact = LogImpact.High,
             Message = Loc.GetString("admin-verb-make-chaos-sleep-spy"),
