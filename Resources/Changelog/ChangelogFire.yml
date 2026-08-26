@@ -5567,3 +5567,24 @@
     message: Изменение для администрации. Теперь создание спящего агента вручную выводит сообщение в чат.
   id: 517
   url: https://github.com/makura-games/project-fire/pull/1123
+- author: timur
+  time: '2026-08-26T11:09:24.0000000+00:00'
+  changes:
+  - type: Add
+    message: Добавлен SCP-059
+  id: 518
+  url: https://github.com/makura-games/project-fire/pull/1076
+- author: Wardex
+  time: '2026-08-25T18:55:24.0000000+00:00'
+  changes:
+  - type: Add
+    message: Добавлен уровень угрозы "Лаймовый"
+  id: 519
+  url: https://github.com/makura-games/project-fire/pull/1132
+- author: timur
+  time: '2026-08-25T18:47:45.0000000+00:00'
+  changes:
+  - type: Fix
+    message: исправлен баг с лёгкими SCP-049
+  id: 520
+  url: https://github.com/makura-games/project-fire/pull/1134
