@@ -383,6 +383,8 @@
   parent: ScpWallConcreteBase
   id: ScpWallConcrete
   name: concrete wall
+  description: An unpainted concrete wall.
+  suffix: Generic Wall
   components:
   - type: Sprite
     sprite: _Scp/Structures/Walls/concrete.rsi
@@ -399,6 +401,8 @@
   parent: ScpWallSolidDiagonal
   id: ScpWallConcreteDiagonal
   name: concrete wall
+  description: An unpainted diagonal concrete wall.
+  suffix: Generic Wall, Diagonal
   components:
   - type: Sprite
     drawdepth: Walls
@@ -452,6 +456,7 @@
   id: ScpWallConcreteLightContainment
   name: LCZ concrete wall
   description: Concrete wall used in the Light Containment Zone to keep the bad in.
+  suffix: Light Containment Zone
   components:
   - type: Sprite
     sprite: _Scp/Structures/Walls/concrete_low_contaiment.rsi
@@ -469,7 +474,7 @@
   id: ScpWallConcreteLightContainmentDiagonal
   name: diagonal LCZ concrete wall
   description: Diagonal concrete wall used in the Light Containment Zone to keep the bad in.
-  suffix: diagonal
+  suffix: Light Containment Zone, Diagonal
   components:
   - type: IconSmooth
     base: diagonal
@@ -484,7 +489,9 @@
 - type: entity
   parent: ScpWallConcreteBase
   id: ScpWallConcreteScience
-  name: concrete wall science sector
+  name: EZ concrete wall
+  description: A relatively bland looking wall used in the Entrance Zone, where all the amenities for site staff are.
+  suffix: Entrance Zone
   components:
   - type: Sprite
     sprite: _Scp/Structures/Walls/concrete_science.rsi
@@ -500,8 +507,9 @@
 - type: entity
   parent: ScpWallConcreteDiagonal
   id: ScpWallConcreteScienceDiagonal
-  name: concrete diagonal wall science sector
-  suffix: diagonal
+  name: diagonal EZ concrete wall
+  description: A relatively bland looking diagonal wall used in the Entrance Zone, where all the amenities for site staff are.
+  suffix: Entrance Zone, Diagonal
   components:
   - type: IconSmooth
     base: diagonal
@@ -516,7 +524,9 @@
 - type: entity
   parent: ScpWallConcreteBase
   id: ScpWallConcreteEngineer
-  name: concrete wall engineer sector
+  name: concrete engineering wall
+  description: A largely unpainted concrete wall bearing an Engineering stripe.
+  suffix: Engineering
   components:
   - type: Sprite
     sprite: _Scp/Structures/Walls/concrete_engineer.rsi
@@ -532,8 +542,9 @@
 - type: entity
   parent: ScpWallConcreteDiagonal
   id: ScpWallConcreteEngineerDiagonal
-  name: concrete diagonal wall engineer sector
-  suffix: diagonal
+  name: diagonal concrete engineering wall
+  description: A largely unpainted diagonal concrete wall bearing an Engineering stripe.
+  suffix: Engineering, Diagonal
   components:
   - type: IconSmooth
     base: diagonal
@@ -548,7 +559,9 @@
 - type: entity
   parent: ScpWallConcreteBase
   id: ScpWallConcreteMedical
-  name: concrete wall medical sector
+  name: concrete medical wall
+  description: A white painted concrete wall with a Medical stripe. Hopefully sterile.
+  suffix: Medical
   components:
   - type: Sprite
     sprite: _Scp/Structures/Walls/concrete_medical.rsi
@@ -565,7 +578,8 @@
   parent: ScpWallConcreteDiagonal
   id: ScpWallConcreteMedicalDiagonal
   name: concrete diagonal wall medical sector
-  suffix: diagonal
+  description:
+  suffix: Medical, Diagonal
   components:
   - type: IconSmooth
     base: diagonal
