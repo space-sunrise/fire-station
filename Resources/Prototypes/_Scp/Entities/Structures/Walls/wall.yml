@@ -450,7 +450,8 @@
 - type: entity
   parent: ScpWallConcreteBase
   id: ScpWallConcreteLightContainment
-  name: concrete wall low containment
+  name: LCZ concrete wall
+  description: Concrete wall used in the Light Containment Zone to keep the bad in.
   components:
   - type: Sprite
     sprite: _Scp/Structures/Walls/concrete_low_contaiment.rsi
@@ -466,7 +467,8 @@
 - type: entity
   parent: ScpWallConcreteDiagonal
   id: ScpWallConcreteLightContainmentDiagonal
-  name: concrete diagonal wall low containment
+  name: diagonal LCZ concrete wall
+  description: Diagonal concrete wall used in the Light Containment zone to keep the bad in.
   suffix: diagonal
   components:
   - type: IconSmooth
