@@ -122,9 +122,6 @@
     proto: Scp059CrystalStructure
   - type: Scp
     class: Keter
-  - type: HeldSpeedModifier
-    walkModifier: 0.3
-    sprintModifier: 0.3
   - type: Physics
     bodyType: Static
   - type: Transform
@@ -136,10 +133,11 @@
           !type:PhysShapeAabb
           bounds: "-0.25,-0.45,0.25,0.45"
         mask:
-        - MachineMask
+        - TabletopMask
         layer:
         - MachineLayer
         density: 200
+  - type: SpriteFade
 
 - type: entity
   id: Scp059CrystalItem
@@ -162,7 +160,7 @@
     userWhitelist:
       components:
       - MobState
-      - HumanoidAppearance
+      - HumanoidProfile
       requireAll: true
     userBlacklist:
       components:
@@ -201,7 +199,7 @@
     userWhitelist:
       components:
       - MobState
-      - HumanoidAppearance
+      - HumanoidProfile
       requireAll: true
     userBlacklist:
       components:
