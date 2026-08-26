@@ -333,3 +333,11 @@
     back:
     - TowelColorWhite
   groupBy: "towels"
+
+# We don't want your money
+- type: loadout
+  id: FireStationUplink20
+  storage:
+    back:
+    - FireStationUplink20
+  groupBy: "towels"

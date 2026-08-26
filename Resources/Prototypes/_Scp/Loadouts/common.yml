@@ -10,7 +10,7 @@
   id: ScpLoadoutGroupTrinkets
   name: loadout-group-common-trinkets
   minLimit: 0
-  maxLimit: 3
+  maxLimit: 5
   loadouts:
   - ScpLoadoutClothingHeadHatFlowerWreath
   - ScpLoadoutClothingHeadHatHairflower
@@ -31,6 +31,7 @@
   - ScpLoadoutOffsetCane
   - ScpLoadoutOffsetCaneWood
   - ScpLoadoutCane
+  - FireStationUplink20
 
 - type: loadoutGroup
   id: ScpLoadoutGroupSocks
