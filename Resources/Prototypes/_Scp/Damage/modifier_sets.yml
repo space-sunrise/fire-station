@@ -51,6 +51,7 @@
     Mangleness: 0.0
     Shock: 0.0
 
+- type: damageModifierSet
   id: SCP-059
   coefficients:
     Blunt: 1.3
