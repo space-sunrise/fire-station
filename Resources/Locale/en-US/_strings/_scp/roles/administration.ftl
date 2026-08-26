@@ -1,6 +1,6 @@
 job-name-director = Site Director
 job-description-director = Direct supervisor of the Site and its' administration staff, with full access. Class A
-job-name-scientific-service-director = Research and Development Director
+job-name-scientific-service-director = Research Director
 job-description-scientific-service-director = Head of the site's Research and Development division, regulating its work and often responsible for completing goals set by regional administration staff. The second most important person in the site. CLASS A
 job-name-security-commander = Security Commander
 job-description-security-commander = The Head of Security. Directly responsible for the safety and security of all Zones - EZ and HCS. He has full access throughout the site, as well as special equipment to assist in his work. The third most important person in the site. CLASS B
