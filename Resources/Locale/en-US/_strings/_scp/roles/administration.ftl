@@ -1,5 +1,5 @@
 job-name-director = Site Director
-job-description-director = Direct supervisor of the Site and its' administration staff, with full access. to ensure the speedy completion of the tasks set by the regional administration. Class A
+job-description-director = Direct supervisor of the Site and its' administration staff, with full access. Class A
 job-name-scientific-service-director = Research and Development Director
 job-description-scientific-service-director = Head of the site's Research and Development division, regulating its work and often responsible for completing goals set by regional administration staff. The second most important person in the site. CLASS A
 job-name-security-commander = Security Commander
