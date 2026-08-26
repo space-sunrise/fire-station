@@ -1,6 +1,6 @@
 job-name-lead-researcher = Lead Researcher
 job-description-lead-researcher = Senior scientific specialist responsible for training junior researchers. Manages research teams and participates in the study of objects. CLASS C
-job-name-anomarchology-researcher = Anomarchology Researcher
+job-name-anomarchology-researcher = Researcher
 job-description-anomarchology-researcher = Researcher with an archaeological qualification. Responsible for researching and documenting experiments with artifacts. CLASS C
 job-name-production-specialist = Manufacturer
 job-description-production-specialist = Researcher with an engineering background. Produces materials and items on autolathes/protolathes, and also creates new robot models. CLASS C
