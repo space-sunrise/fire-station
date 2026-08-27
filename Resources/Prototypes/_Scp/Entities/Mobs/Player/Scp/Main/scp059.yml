@@ -18,7 +18,6 @@
     canBeDisarmed: true
     canStandingState: true
     canPull: true
-    CanBePulled: true
     canMobCollide: true
   - type: Stripping
   - type: Inventory
