@@ -5588,3 +5588,20 @@
     message: исправлен баг с лёгкими SCP-049
   id: 520
   url: https://github.com/makura-games/project-fire/pull/1134
+- author: timur
+  time: '2026-08-27T16:45:24.0000000+00:00'
+  changes:
+  - type: Add
+    message: Добавлены руки и инвентарь человека для SCP-059-1
+  - type: Remove
+    message: Убран пацифизм с SCP-059-1
+  - type: Tweak
+    message: Рецепт гризеофульвина был упрощён до 1 фалангимина и 4 субстанции SCP-059
+  - type: Fix
+    message: Осколки SCP-059 больше не сохраняются между раундами
+  - type: Fix
+    message: Огромный кристалл SCP-059 больше нельзя взять в руки как предмет
+  - type: Fix
+    message: Исправлен баг с нерабочим биологическим костюмом СБ от SCP-059
+  id: 521
+  url: https://github.com/makura-games/project-fire/pull/1138
