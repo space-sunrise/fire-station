@@ -135,6 +135,10 @@
     snap:
       - Wall
   components:
+  - type: GhostPanelAntagonistMarker
+    name: ghost-panel-antagonist-scp-name
+    description: ghost-panel-antagonist-scp-description
+    priority: 0
   - type: Sprite
     sprite: _Scp/Objects/Scp/scp-059/mineral.rsi
     state: mineral
