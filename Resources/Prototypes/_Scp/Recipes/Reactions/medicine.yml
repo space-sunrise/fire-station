@@ -4,9 +4,7 @@
   reactants:
     Phalanximine:
       amount: 1
-    Arithrazine:
-      amount: 1
     Scp059Reagent:
-      amount: 6 # три кристалла
+      amount: 4 # два кристалла
   products:
-    Griseofulvin: 3
+    Griseofulvin: 5

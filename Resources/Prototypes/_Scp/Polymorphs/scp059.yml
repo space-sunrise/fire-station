@@ -4,7 +4,7 @@
     entity: Scp059Mob
     forced: true
     transferDamage: true
-    inventory: Drop
+    inventory: Transfer
     revertOnDeath: false
     revertOnCrit: false
     revertOnDelete: false
