@@ -14,7 +14,7 @@
   - type: TemperatureDamage
     heatDamage:
       types:
-        Heat: 5
+        Heat: 10
     coldDamage: {}
     coldDamageThreshold: 0
   - type: Reactive
@@ -172,6 +172,8 @@
   suffix: SCP-059-1
   parent: BaseItem
   components:
+  - type: Item
+    size: Tiny
   - type: Scp
     class: Keter
   - type: Sprite
