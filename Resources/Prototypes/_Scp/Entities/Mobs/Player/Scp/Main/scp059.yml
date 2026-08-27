@@ -10,6 +10,16 @@
   - StripableInventoryBase
   - AppearanceScpHands
   components:
+  - type: Pullable
+  - type: Puller
+    needsHands: true
+  - type: StandingState
+  - type: ScpRestriction
+    canBeDisarmed: true
+    canStandingState: true
+    canPull: true
+    CanBePulled: true
+    canMobCollide: true
   - type: Stripping
   - type: Inventory
     templateId: human
