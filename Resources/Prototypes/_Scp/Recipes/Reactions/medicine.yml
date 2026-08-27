@@ -5,6 +5,6 @@
     Phalanximine:
       amount: 1
     Scp059Reagent:
-      amount: 6 # три кристалла
+      amount: 4 # два кристалла
   products:
     Griseofulvin: 5
