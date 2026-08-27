@@ -127,7 +127,9 @@
 - type: entity
   id: Scp059Rock
   suffix: SCP-059
-  parent: BaseItemScp
+  parent:
+  - BaseStructure
+  - BaseScpArtifactMinor
   placement:
     mode: SnapgridCenter
     snap:
@@ -168,7 +170,7 @@
 - type: entity
   id: Scp059CrystalItem
   suffix: SCP-059-1
-  parent: BaseItemScp
+  parent: BaseItem
   components:
   - type: Scp
     class: Keter
@@ -204,9 +206,9 @@
     radius: 2
     energy: 4
     netsync: false
-  - type: Tag
-    tags:
-    - Trash
+#  - type: Tag мешком для мусора удобно собирать эти осколки, но тогда игра спавнит их на карте в следующем раунде :(
+#    tags:
+#    - Trash
 
 - type: entity
   id: Scp059CrystalProjectile
