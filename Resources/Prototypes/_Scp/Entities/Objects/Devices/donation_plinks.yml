@@ -39,6 +39,9 @@
   id: FireStationUplink40
   components:
   - type: Store
+    categories:
+      - General
+      - Music
     balance:
       Suntick: 40
 
@@ -47,6 +50,9 @@
   id: FireStationUplink60
   components:
   - type: Store
+    categories:
+      - General
+      - Music
     balance:
       Suntick: 60
 
@@ -55,6 +61,9 @@
   id: FireStationUplink80
   components:
   - type: Store
+    categories:
+      - General
+      - Music
     balance:
       Suntick: 80
 
@@ -63,5 +72,8 @@
   id: FireStationUplink100
   components:
   - type: Store
+    categories:
+      - General
+      - Music
     balance:
       Suntick: 100
