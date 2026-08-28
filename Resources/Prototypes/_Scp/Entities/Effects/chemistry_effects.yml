@@ -9,10 +9,10 @@
   - type: SolutionContainerManager
     solutions:
       solutionArea:
-        maxVol: 6
+        maxVol: 10
         reagents:
         - ReagentId: Omnizine
-          Quantity: 1
+          Quantity: 5
         - ReagentId: Pax
           Quantity: 5
   - type: Tag
