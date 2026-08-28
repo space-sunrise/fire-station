@@ -1,7 +1,7 @@
 - type: marking
   id: FoxEars
   bodyPart: HeadTop
-  groupWhitelist: [Human]
+  groupWhitelist: [ Dwarf, Felinid, Vulpkanin ] # Fire edit
   sponsorOnly: false
   sprites:
   - sprite: _Sunrise/Mobs/Customization/fox_parts.rsi
@@ -12,7 +12,7 @@
 - type: marking
   id: RabbitEars
   bodyPart: HeadTop
-  groupWhitelist: [Human]
+  groupWhitelist: [ Dwarf, Felinid, Vulpkanin ] # Fire edit
   sponsorOnly: false
   coloring:
     default:
@@ -35,7 +35,7 @@
 - type: marking
   id: RabbitEarsMirror
   bodyPart: HeadTop
-  groupWhitelist: [Human]
+  groupWhitelist: [ Dwarf, Felinid, Vulpkanin ] # Fire edit
   sponsorOnly: false
   coloring:
     default:
@@ -59,7 +59,7 @@
   id: RabbitEarsUp
   bodyPart: HeadTop
   sponsorOnly: false
-  groupWhitelist: [Human]
+  groupWhitelist: [ Dwarf, Felinid, Vulpkanin ] # Fire edit
   coloring:
     default:
       type:
@@ -82,7 +82,7 @@
   id: RabbitEarsUpMirror
   bodyPart: HeadTop
   sponsorOnly: false
-  groupWhitelist: [Human]
+  groupWhitelist: [ Dwarf, Felinid, Vulpkanin ] # Fire edit
   coloring:
     default:
       type:

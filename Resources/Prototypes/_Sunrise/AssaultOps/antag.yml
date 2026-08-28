@@ -2,7 +2,7 @@
   id: AssaultOperative
   name: roles-antag-assault-operative-name
   antagonist: true
-  setPreference: true
+  setPreference: false # Fire edit
   objective: roles-antag-assault-operative-objective
   playTimeTracker: AntagAssaultOperative
   requirements:
@@ -20,7 +20,7 @@
   id: AssaultCommander
   name: roles-antag-assault-commander-name
   antagonist: true
-  setPreference: true
+  setPreference: false # Fire edit
   objective: roles-antag-assault-commander-objective
   playTimeTracker: AntagAssaultCommander
   requirements:

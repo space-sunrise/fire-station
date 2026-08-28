@@ -2,7 +2,7 @@
   id: InitialInfected
   name: roles-antag-initial-infected-name
   antagonist: true
-  setPreference: true
+  setPreference: false # Fire edit
   playTimeTracker: AntagInitialInfected # Sunrise-Edit
   objective: roles-antag-initial-infected-objective
   guides: [ Zombies ]

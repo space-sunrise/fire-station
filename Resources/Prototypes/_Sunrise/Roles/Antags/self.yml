@@ -2,7 +2,7 @@
   id: SELFAgent
   name: roles-antag-selfagent-name
   antagonist: true
-  setPreference: true
+  setPreference: false # Fire edit
   objective: roles-antag-selfagent-description
   guides: [ SELFAgent ]
   requirements:

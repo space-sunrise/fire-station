@@ -2,7 +2,7 @@
   id: HeadRev
   name: roles-antag-rev-head-name
   antagonist: true
-  setPreference: true
+  setPreference: false # Fire edit
   playTimeTracker: AntagHeadRevolutionary # Sunrise-Edit
   objective: roles-antag-rev-head-objective
   guides: [ Revolutionaries ]
@@ -19,7 +19,7 @@
   id: Rev
   name: roles-antag-rev-name
   antagonist: true
-  setPreference: true # Sunrise-Edit
+  setPreference: false # Fire edit
   playTimeTracker: AntagRevolutionary # Sunrise-Edit
   objective: roles-antag-rev-objective
   guides: [ Revolutionaries ]

@@ -2,7 +2,7 @@
   id: FleshCultist
   name: roles-antag-flesh-cultist-name
   antagonist: true
-  setPreference: true
+  setPreference: false # Fire edit
   objective: roles-antag-flesh-cultist-objective
   playTimeTracker: AntagFleshCultist
   requirements:
@@ -17,7 +17,7 @@
   id: FleshCultistLeader
   name: roles-antag-flesh-cultist-leader-name
   antagonist: true
-  setPreference: true
+  setPreference: false # Fire edit
   objective: roles-antag-flesh-cultist-leader-objective
   playTimeTracker: AntagFleshCultistLeader
   requirements:
