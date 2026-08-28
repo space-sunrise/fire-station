@@ -6,3 +6,8 @@
 #
 # - /Prototypes/Guidebook
 # - /Prototypes/Catalog/uplink_catalog.yml
+  - /Prototypes/Roles/Antags
+  - /Prototypes/_Sunrise/Roles/Antags
+  - /Prototypes/_Sunrise/BloodCult/Entities/antag.yml
+  - /Prototypes/_Sunrise/FleshCult/antag.yml
+  - /Prototypes/_Sunrise/AssaultOps/antag.yml
