@@ -2,7 +2,7 @@
   id: MothershipCore
   name: roles-antag-mothership-core-name
   antagonist: true
-  setPreference: true
+  setPreference: false # Fire edit
   playTimeTracker: MothershipCore # Sunrise
   objective: roles-antag-mothership-core-objective
   requirements:
@@ -18,7 +18,7 @@
   id: Xenoborg
   name: roles-antag-xenoborg-name
   antagonist: true
-  setPreference: true
+  setPreference: false # Fire edit
   playTimeTracker: Xenoborg # Sunrise
   objective: roles-antag-xenoborg-objective
   requirements:
