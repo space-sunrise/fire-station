@@ -5605,3 +5605,22 @@
     message: Исправлен баг с нерабочим биологическим костюмом СБ от SCP-059
   id: 521
   url: https://github.com/makura-games/project-fire/pull/1138
+- author: timur
+  time: '2026-08-28T10:08:19.0000000+00:00'
+  changes:
+  - type: Tweak
+    message: Теперь гермозатворы нельзя вскрыть ломом
+  - type: Tweak
+    message: Шанс открытия шлюзов способностью "Осквернить" SCP-173 повышен с 35% до 50%
+  - type: Tweak
+    message: Шейдер экрана РИИ был ослаблен
+  - type: Tweak
+    message: Уменьшен размер SCP-005 в инвентаре
+  - type: Tweak
+    message: Из аплинка было убрано множество ЛРП вещей и категорий
+  - type: Remove
+    message: Ванильные антагонисты убраны из меню персонализации
+  - type: Remove
+    message: уши, хвосты и рога убраны из меню персонализации
+  id: 522
+  url: https://github.com/makura-games/project-fire/pull/1135
