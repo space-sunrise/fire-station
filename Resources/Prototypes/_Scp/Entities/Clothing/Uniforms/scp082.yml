@@ -55,6 +55,11 @@
     clothingVisuals:
       jumpsuit:
       - state: clown
+  - type: EmitSoundOnWearerMove
+    sound:
+      collection: FootstepClown
+      params:
+        variation: 0.17
 
 - type: entity
   parent: ClothingUniformBaseScp082
