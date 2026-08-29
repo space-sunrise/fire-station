@@ -6,11 +6,20 @@
     Laugh:
       path: /Audio/_Scp/Scp106/laugh.ogg
 
+- type: emoteSounds
+  id: SCP082
+  sounds:
+    Laugh:
+      path: /Audio/_Scp/Scp082/laugh.ogg
+    Whistle:
+      path: /Audio/_Scp/Scp082/whistle.ogg
+
+
 - type: emote
   id: Pain
   name: chat-emote-name-pain
   category: Vocal
-  icon: Interface/Emotes/scream.png
+  icon: _Scp/Interface/Emotes/pain.png
   whitelist:
     components:
     - Vocal
@@ -25,10 +34,15 @@
     - кричит от боли
     - визжит от боли
 
-- type: emoteSounds
-  id: SCP082
-  sounds:
-    Laugh:
-      path: /Audio/_Scp/Scp082/laugh.ogg
-    Whistle:
-      path: /Audio/_Scp/Scp082/whistle.ogg
+- type: emote
+  id: SqueezeTeeth
+  name: chat-emote-name-squeeze-teeth
+  category: Vocal
+  icon: _Scp/Interface/Emotes/squeeze_teeth.png
+  whitelist:
+    components:
+    - Scp082
+  chatMessages: ["chat-emote-msg-squeeze-teeth"]
+  chatTriggers:
+    - сжимает зубы
+    - стиснул зубы

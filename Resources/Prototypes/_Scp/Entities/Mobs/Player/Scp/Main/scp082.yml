@@ -148,3 +148,10 @@
       Male: SCP082
       Female: SCP082
       Unsexed: SCP082
+  - type: Loadout
+    prototypes: [ Scp082Gear ]
+
+- type: startingGear
+  id: Scp082Gear
+  equipment:
+    pocket2: Scp082Knife
