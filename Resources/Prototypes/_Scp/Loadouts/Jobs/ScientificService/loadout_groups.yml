@@ -53,7 +53,8 @@
   name: loadout-group-neck
   minLimit: 0
   loadouts:
-  - ScpLoadoutClothingNeckTieSci
+  - ScpLoadoutClothingNeckTieDet
+  - ScpLoadoutClothingNeckTieRed
 
 - type: loadoutGroup
   id: ScpLoadoutGroupScientistOuterClothing
