@@ -17,5 +17,5 @@ public sealed partial class ItemEquipWhitelistComponent : Component
     public SlotFlags TargetSlots = SlotFlags.All & ~SlotFlags.POCKET;
 
     [DataField, AutoNetworkedField]
-    public LocId Reason = "item-equip-whitelist-failed";
+    public LocId Reason = "inventory-component-can-equip-does-not-fit";
 }
