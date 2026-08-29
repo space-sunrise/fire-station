@@ -162,4 +162,5 @@
 - type: startingGear
   id: Scp082Gear
   equipment:
+    jumpsuit: ClothingUniformFrenchScp082
     pocket2: Scp082Knife
