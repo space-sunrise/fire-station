@@ -5624,3 +5624,20 @@
     message: уши, хвосты и рога убраны из меню персонализации
   id: 522
   url: https://github.com/makura-games/project-fire/pull/1135
+- author: timur
+  time: '2026-08-29T21:56:41.0000000+00:00'
+  changes:
+  - type: Tweak
+    message: респрайт одежды научного отдела
+  - type: Tweak
+    message: белые кеды были заменены на шнурованные туфли в снаряжении научного отдела
+  - type: Tweak
+    message: фиолетовый галстук был удален из снаряжения научного отдела
+  - type: Tweak
+    message: красный и черный галстуки были добавлены в снаряжение научного отдела
+  - type: Tweak
+    message: чёрная водолазка была добавлена в снаряжение научного отдела
+  - type: Tweak
+    message: фиолетовые перчатки были заменены на чёрные в снаряжении научного отдела
+  id: 523
+  url: https://github.com/makura-games/project-fire/pull/1141
