@@ -5648,3 +5648,18 @@
     message: Добавлен биом для карты сектор No02
   id: 524
   url: https://github.com/makura-games/project-fire/pull/1142
+- author: timur
+  time: '2026-08-30T10:19:41.0000000+00:00'
+  changes:
+  - type: Add
+    message: Добавлен личный нож для SCP-082, которым он сможет вырезать органы
+  - type: Add
+    message: Добавлен новая эмоция "стиснуть зубы" для SCP-082
+  - type: Add
+    message: Добавлено множество новых костюмов для SCP-082 в его лодаут
+  - type: Tweak
+    message: Добавлен спрайт к эмоции крика от боли
+  - type: Tweak
+    message: Теперь SCP-082 может выбрать костюм в лодауте
+  id: 525
+  url: https://github.com/makura-games/project-fire/pull/1140
