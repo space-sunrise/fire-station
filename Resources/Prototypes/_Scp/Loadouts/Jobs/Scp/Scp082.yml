@@ -1,5 +1,5 @@
 - type: loadoutGroup
-  id: Scp082Loadout
+  id: ScpLoadoutGroupJumpsuitScp082
   name: loadout-group-jumpsuit
   loadouts:
   - ScpLoadoutClothingUniformFrenchScp082

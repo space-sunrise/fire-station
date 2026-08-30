@@ -811,6 +811,6 @@
 # Scp
 
 - type: roleLoadout
-  id: Scp082
+  id: JobScp082
   groups:
-  - Scp082Loadout
+  - ScpLoadoutGroupJumpsuitScp082
