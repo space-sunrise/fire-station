@@ -74,8 +74,6 @@
       Starving: 25
       Dead: 0
   - type: Devourer
-    foodPreference: All
-    shouldStoreDevoured: true
     devourTime: 10
     healRate: 20
     chemical: Vitamin
@@ -97,14 +95,11 @@
   - type: PassiveDamage
     allowedStates:
     - Alive
-    damageCap: 0
     damage:
       types:
         Poison: -10 # чтобы могли кушать кровь и другую отраву без урона
   - type: AmbientSound
     enabled: true
-    variation: 0.2
-    pitch: 1.5
     volume: -8
     range: 8
     sound:
@@ -153,15 +148,12 @@
   - type: FearSource
     uponSeenState: Fear
   - type: EggLayer
-    eggLayTime: 180
     eggSpawn:
     - id: Scp3199EggFirst
     hungerUsage: 55
     eggLaySound:
       path: /Audio/_Sunrise/FleshCult/devour_flesh_cultist.ogg
   - type: ComplexInteraction
-  - type: Body
-    prototype: Animal
   - type: ReplacementAccent
     accent: xeno
   - type: Speech
@@ -204,8 +196,6 @@
       Starving: 25
       Dead: 0
   - type: Devourer
-    foodPreference: All
-    shouldStoreDevoured: true
     devourTime: 15
     healRate: 20
     chemical: Vitamin
@@ -218,7 +208,6 @@
   - type: PassiveDamage
     allowedStates:
     - Alive
-    damageCap: 0
     damage:
       types:
         Poison: -10 # чтобы могли кушать кровь и другую отраву без урона
