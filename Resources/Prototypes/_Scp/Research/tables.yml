@@ -16,8 +16,8 @@
       weight: 3
     - id: ScpEffectTeslaDischarge
       weight: 1
-    - id: ScpEffectSpawn2054X
-      weight: 1
+#    - id: ScpEffectSpawn2054X
+#      weight: 1
 
 - type: entityTable
   id: ScpArtifactEffectsUltraFunnyTable
@@ -142,8 +142,8 @@
       weight: 3
     - id: ScpEffectTeslaDischarge
       weight: 0.02
-    - id: ScpEffectSpawn2054X
-      weight: 0.05
+#    - id: ScpEffectSpawn2054X
+#      weight: 0.05
 
 - type: entityTable
   id: ScpArtifactEffectsUltraFunnyFriendlyTable
