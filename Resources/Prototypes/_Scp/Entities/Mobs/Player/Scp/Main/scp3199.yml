@@ -64,6 +64,9 @@
           Scp3199EggFirst:
             min: 0
             max: 1
+          FoodMeatAnomaly:
+            min: 0
+            max: 2
   - type: Hunger
     baseDecayRate: 0.01
     lastAuthoritativeHungerValue: 150
@@ -186,6 +189,9 @@
           Scp3199EggFirst:
             min: 1
             max: 1
+          FoodMeatAnomaly:
+            min: 1
+            max: 3
   - type: Hunger
     baseDecayRate: 0.01
     lastAuthoritativeHungerValue: 150
