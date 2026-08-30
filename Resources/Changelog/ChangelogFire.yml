@@ -5641,3 +5641,10 @@
     message: фиолетовые перчатки были заменены на чёрные в снаряжении научного отдела
   id: 523
   url: https://github.com/makura-games/project-fire/pull/1141
+- author: timur
+  time: '2026-08-30T10:05:46.0000000+00:00'
+  changes:
+  - type: Add
+    message: Добавлен биом для карты сектор No02
+  id: 524
+  url: https://github.com/makura-games/project-fire/pull/1142
