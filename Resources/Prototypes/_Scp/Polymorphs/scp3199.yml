@@ -1,0 +1,64 @@
+- type: polymorph
+  id: Egg2Scp3199
+  configuration:
+    entity: Scp3199EggSecond
+    forced: true
+    inventory: None
+    transferName: false
+    transferDamage: false
+    revertOnCrit: false
+    revertOnDeath: false
+    revertOnDelete: false
+    ignoreAllowRepeatedMorphs: true
+
+- type: polymorph
+  id: Egg3Scp3199
+  configuration:
+    entity: Scp3199EggThird
+    forced: true
+    inventory: None
+    transferName: false
+    transferDamage: false
+    revertOnCrit: false
+    revertOnDeath: false
+    revertOnDelete: false
+    ignoreAllowRepeatedMorphs: true
+
+- type: polymorph
+  id: Egg4Scp3199
+  configuration:
+    entity: Scp3199EggFourth
+    forced: true
+    inventory: None
+    transferName: false
+    transferDamage: false
+    revertOnCrit: false
+    revertOnDeath: false
+    revertOnDelete: false
+    ignoreAllowRepeatedMorphs: true
+
+- type: polymorph
+  id: ChildScp3199
+  configuration:
+    entity: Scp3199Child
+    forced: true
+    inventory: None
+    transferName: false
+    transferDamage: false
+    revertOnCrit: false
+    revertOnDeath: false
+    revertOnDelete: false
+    ignoreAllowRepeatedMorphs: true
+
+- type: polymorph
+  id: AdultScp3199
+  configuration:
+    entity: Scp3199Adult
+    forced: true
+    inventory: None
+    transferName: false
+    transferDamage: false
+    revertOnCrit: false
+    revertOnDeath: false
+    revertOnDelete: false
+    ignoreAllowRepeatedMorphs: true
