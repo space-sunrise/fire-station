@@ -111,7 +111,6 @@
       allowedTiles:
         - FloorAsteroidSand
       threshold: -1.0
-      divisions: 1
       noise:
         seed: 0
         frequency: 0.01
