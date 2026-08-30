@@ -61,7 +61,7 @@
       - !type:GibBehavior { }
       - !type:SpawnEntitiesBehavior
         spawn:
-          EggScp3199Stage1slowed:
+          Scp3199EggFirst:
             min: 0
             max: 1
   - type: Hunger
