@@ -14,7 +14,7 @@
   - type: TemperatureDamage
     heatDamage:
       types:
-        Heat: 5
+        Heat: 10
     coldDamage: {}
     coldDamageThreshold: 0
   - type: Reactive
@@ -127,12 +127,18 @@
 - type: entity
   id: Scp059Rock
   suffix: SCP-059
-  parent: BaseItemScp
+  parent:
+  - BaseStructure
+  - BaseScpArtifactMinor
   placement:
     mode: SnapgridCenter
     snap:
       - Wall
   components:
+  - type: GhostPanelAntagonistMarker
+    name: ghost-panel-antagonist-scp-name
+    description: ghost-panel-antagonist-scp-description
+    priority: 0
   - type: Sprite
     sprite: _Scp/Objects/Scp/scp-059/mineral.rsi
     state: mineral
@@ -168,8 +174,10 @@
 - type: entity
   id: Scp059CrystalItem
   suffix: SCP-059-1
-  parent: BaseItemScp
+  parent: BaseItem
   components:
+  - type: Item
+    size: Tiny
   - type: Scp
     class: Keter
   - type: Sprite
@@ -204,9 +212,9 @@
     radius: 2
     energy: 4
     netsync: false
-  - type: Tag
-    tags:
-    - Trash
+#  - type: Tag мешком для мусора удобно собирать эти осколки, но тогда игра спавнит их на карте в следующем раунде :(
+#    tags:
+#    - Trash
 
 - type: entity
   id: Scp059CrystalProjectile

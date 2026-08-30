@@ -2,7 +2,7 @@
   id: Traitor
   name: roles-antag-syndicate-agent-name
   antagonist: true
-  setPreference: true
+  setPreference: false # Fire edit
   objective: roles-antag-syndicate-agent-objective
   guides: [ Traitors ]
   requirements:
@@ -19,7 +19,7 @@
   id: TraitorSleeper
   name: roles-antag-syndicate-agent-sleeper-name
   antagonist: true
-  setPreference: true
+  setPreference: false # Fire edit
   objective: roles-antag-syndicate-agent-sleeper-objective
   playTimeTracker: AntagSyndicateSleeperAgent # Sunrise-Edit
   guides: [ Traitors ]

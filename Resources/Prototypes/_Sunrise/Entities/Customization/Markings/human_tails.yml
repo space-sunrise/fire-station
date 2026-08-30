@@ -54,7 +54,7 @@
 - type: marking
   id: RabbitTail
   bodyPart: Tail
-  groupWhitelist: [ Human ]
+  groupWhitelist: [ Dwarf, Felinid, Vulpkanin ] # Fire edit
   sponsorOnly: false
   sprites:
   - sprite: _Sunrise/Mobs/Customization/rabbit_markings_parts.rsi

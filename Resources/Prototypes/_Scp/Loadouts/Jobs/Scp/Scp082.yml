@@ -1,0 +1,52 @@
+- type: loadoutGroup
+  id: ScpLoadoutGroupJumpsuitScp082
+  name: loadout-group-jumpsuit
+  loadouts:
+  - ScpLoadoutClothingUniformFrenchScp082
+  - ScpLoadoutClothingUniformArmstrongScp082
+  - ScpLoadoutClothingUniformClownScp082
+  - ScpLoadoutClothingUniformDClassScp082
+  - ScpLoadoutClothingUniformMayorScp082
+  - ScpLoadoutClothingUniformMimeScp082
+  - ScpLoadoutClothingUniformMonroeScp082
+  - ScpLoadoutClothingUniformTuxedoScp082
+
+- type: loadout
+  id: ScpLoadoutClothingUniformFrenchScp082
+  equipment:
+    jumpsuit: ClothingUniformFrenchScp082
+
+- type: loadout
+  id: ScpLoadoutClothingUniformArmstrongScp082
+  equipment:
+    jumpsuit: ClothingUniformArmstrongScp082
+
+- type: loadout
+  id: ScpLoadoutClothingUniformClownScp082
+  equipment:
+    jumpsuit: ClothingUniformClownScp082
+
+- type: loadout
+  id: ScpLoadoutClothingUniformDClassScp082
+  equipment:
+    jumpsuit: ClothingUniformDClassScp082
+
+- type: loadout
+  id: ScpLoadoutClothingUniformMayorScp082
+  equipment:
+    jumpsuit: ClothingUniformMayorScp082
+
+- type: loadout
+  id: ScpLoadoutClothingUniformMimeScp082
+  equipment:
+    jumpsuit: ClothingUniformMimeScp082
+
+- type: loadout
+  id: ScpLoadoutClothingUniformMonroeScp082
+  equipment:
+    jumpsuit: ClothingUniformMonroeScp082
+
+- type: loadout
+  id: ScpLoadoutClothingUniformTuxedoScp082
+  equipment:
+    jumpsuit: ClothingUniformTuxedoScp082

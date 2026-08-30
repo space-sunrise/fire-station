@@ -15,6 +15,10 @@
   - InventoryBase
   - AppearanceScpPredator
   components:
+  - type: RestrictedEquipment
+    whitelist:
+      tags:
+      - Scp082Clothing
   - type: AutoGhostRole
     disconnectDelay: 600
     pollDuration: 900
@@ -36,17 +40,17 @@
       0: Alive
       1800: Critical
       2000: Dead
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: 082_fullbody
-        BaseUnshaded: tuxedo # временно, что бы не был голым
-      Critical:
-        Base: 082-dead
-        BaseUnshaded: tuxedo-dead # временно, что бы не был голым
-      Dead:
-        Base: 082-dead
-        BaseUnshaded: tuxedo-dead # временно, что бы не был голым
+#  - type: DamageStateVisuals временно, пока нет нужного компонента
+#    states:
+#      Alive:
+#        Base: 082_fullbody
+#        BaseUnshaded: tuxedo # временно, что бы не был голым
+#      Critical:
+#        Base: 082-dead
+#        BaseUnshaded: tuxedo-dead # временно, что бы не был голым
+#      Dead:
+#        Base: 082-dead
+#        BaseUnshaded: tuxedo-dead # временно, что бы не был голым
   - type: Inventory
     templateId: scp082
   - type: FieldOfView
@@ -61,10 +65,9 @@
     drawdepth: Mobs
     sprite: _Scp/Mobs/Scp/scp-082.rsi
     layers:
-    - map: [ "enum.DamageStateVisualLayers.Base" ]
+    - map: ["base"] 
       state: 082_fullbody
-    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
-      state: tuxedo
+    - map: ["jumpsuit"]
   - type: ComplexInteraction
   - type: Buckle
   - type: ZombieImmune
@@ -81,6 +84,7 @@
     baseSprintSpeed: 2.5
   - type: ScpRestriction
     canPull: true
+    canStandingState: true
   - type: Pullable
   - type: Puller
     needsHands: true
@@ -148,3 +152,14 @@
       Male: SCP082
       Female: SCP082
       Unsexed: SCP082
+  - type: Loadout
+    prototypes: [ Scp082Gear ]
+  - type: StandingState
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+
+- type: startingGear
+  id: Scp082Gear
+  equipment:
+    pocket2: Scp082Knife

@@ -8,7 +8,7 @@
   minLimit: 0
   loadouts:
   - ScpLoadoutClothingHandsGlovesLatex
-  - ScpLoadoutScientificServicePurpleGloves
+  - ScpLoadoutClothingHandsGlovesColorBlack
 
 - type: loadoutGroup
   id: ScpLoadoutGroupScientistBackpack
@@ -35,13 +35,14 @@
   name: loadout-group-jumpsuit
   loadouts:
   - ScpLoadoutLeadResearcherSeniorResearcher
+  - ScpLoadoutClothingUniformTurleneckBlack
   - ScpLoadoutLeadResearcherSeniorResearcherSeniorResearcher
 
 - type: loadoutGroup
   id: ScpLoadoutGroupScientistShoes
   name: loadout-group-shoes
   loadouts:
-  - ScpLoadoutClothingShoesColorWhite
+  - ScpLoadoutClothingShoesBootsLaceup
   - ScpLoadoutClothingShoesColorBlack
   - ScpLoadoutClothingShoesBootsWinterSci
 
@@ -52,7 +53,8 @@
   name: loadout-group-neck
   minLimit: 0
   loadouts:
-  - ScpLoadoutClothingNeckTieSci
+  - ScpLoadoutClothingNeckTieDet
+  - ScpLoadoutClothingNeckTieRed
 
 - type: loadoutGroup
   id: ScpLoadoutGroupScientistOuterClothing
@@ -68,7 +70,7 @@
   name: loadout-group-jumpsuit
   loadouts:
   - ScpLoadoutClothingUniformJumpsuitScientist
-  - ScpLoadoutClothingUniformJumpskirtScientist
+  - ScpLoadoutClothingUniformTurleneckBlack
 
 # Production Specialist
 
@@ -93,6 +95,7 @@
   name: loadout-group-jumpsuit
   loadouts:
   - ScpLoadoutClothingUniformJumpsuitRoboticist
+  - ScpLoadoutClothingUniformTurleneckBlack
   - ScpLoadoutClothingUniformJumpskirtRoboticist
 
 # Junior Researcher

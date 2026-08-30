@@ -58,7 +58,7 @@ public sealed partial class Scp173System : SharedScp173System
     private readonly SoundSpecifier _storageOpenSound = new SoundCollectionSpecifier("MetalBreak");
     private readonly SoundSpecifier _clogSound = new SoundPathSpecifier("/Audio/_Scp/Scp173/clog.ogg");
 
-    private const float ToggleDoorStuffChance = 0.35f;
+    private const float ToggleDoorStuffChance = 0.5f;
 
     private TimeSpan _nextReagentCheck;
 

@@ -43,7 +43,9 @@
     - type: Sprite
       drawdepth: Mobs
       sprite: _Scp/Mobs/scp-3288-servant.rsi
-      state: aristocrat
+      layers:
+      - map: [ "enum.DamageStateVisualLayers.Base" ]
+        state: aristocrat
     - type: MovementSpeedModifier
       baseWalkSpeed: 3
       baseSprintSpeed: 4
@@ -105,7 +107,9 @@
   components:
     - type: Sprite
       sprite: _Scp/Mobs/scp-3288-servant.rsi
-      state: knight
+      layers:
+      - map: [ "enum.DamageStateVisualLayers.Base" ]
+        state: knight
     - type: Armor
       modifiers:
         coefficients:
@@ -136,7 +140,9 @@
   components:
     - type: Sprite
       sprite: _Scp/Mobs/scp-3288-servant.rsi
-      state: servant
+      layers:
+      - map: [ "enum.DamageStateVisualLayers.Base" ]
+        state: servant
     - type: GhostRole
       makeSentient: true
       name: ghost-role-information-scp3288-name

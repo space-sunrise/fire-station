@@ -6,13 +6,31 @@
   - BaseScp
   - SimpleMobBase
   - MobCombat
+  - InventoryBase
+  - StripableInventoryBase
+  - AppearanceScpHands
   components:
+  - type: Pullable
+  - type: Puller
+    needsHands: true
+  - type: StandingState
+  - type: ScpRestriction
+    canBeDisarmed: true
+    canStandingState: true
+    canPull: true
+    canMobCollide: true
+  - type: Stripping
+  - type: Inventory
+    templateId: human
+  - type: FieldOfView
+    angle: 240
+  - type: Hands
+  - type: Body
   - type: ComplexInteraction
   - type: Sprite
     sprite: _Scp/Mobs/Scp/scp-059.rsi
     drawdepth: Mobs
     state: scp-059
-  - type: Pacified # нужно чтобы больше заражали чем убивали
   - type: Scp
     class: Keter
   - type: Fixtures
@@ -37,7 +55,9 @@
       path: /Audio/Effects/bite.ogg
     damage:
       types:
-        Piercing: 6
+        Piercing: 2
+        Structural: 25
+        Radiation: 2
   - type: Scp059Protection
   - type: GuideHelp
     guides:

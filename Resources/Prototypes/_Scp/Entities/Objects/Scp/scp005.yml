@@ -9,7 +9,7 @@
   - type: Scp
     class: Safe
   - type: Item
-    size: Normal
+    size: Tiny
   - type: Access
     groups:
     - AllAccess
