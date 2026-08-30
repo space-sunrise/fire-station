@@ -1,0 +1,20 @@
+- type: entity
+  name: greasy knife
+  parent: BaseKnife
+  id: Scp082Knife
+  description: A large, foul-smelling kitchen knife. Blood, pieces of bread, and someone's hair are visible on it... Disgusting.
+  suffix: SCP-082
+  components:
+  - type: Retractor # чтобы мог вырезать органы
+  - type: Hemostat # чтобы мог вырезать органы
+  - type: BoneSaw # чтобы мог вырезать органы
+  - type: Sprite
+    sprite: _Scp/Objects/Weapons/Melee/082_knife.rsi
+    state: icon
+  - type: UseDelay
+    delay: 0.5
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/_Sunrise/Medical/Surgery/scalpel1.ogg
+      params:
+        variation: 0.125

@@ -1,0 +1,128 @@
+﻿- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformBaseScp082
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Scp/Mobs/Scp//scp-082.rsi
+    state: clothing
+  - type: Clothing
+    sprite: _Scp/Mobs/Scp/scp-082.rsi
+  - type: Tag
+    tags:
+    - Scp082Clothing
+  - type: ItemEquipWhitelist
+    whitelist:
+      components:
+      - Scp082
+  - type: Item
+    size: Ginormous
+  - type: MultiHandedItem
+  - type: ItemSlots
+    slots:
+      storagebase:
+        insertSound:
+          collection: EquipSounds
+          params:
+            maxDistance: 3
+        whitelist:
+          sizes:
+          - Tiny
+          - Small
+          - Normal
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:ContainerSlot
+
+- type: entity
+  parent: ClothingUniformBaseScp082
+  id: ClothingUniformArmstrongScp082
+  components:
+  - type: Sprite
+    color: "#dbd9d7"
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: armstrong
+
+- type: entity
+  parent: ClothingUniformBaseScp082
+  id: ClothingUniformClownScp082
+  components:
+  - type: Sprite
+    color: "#bf0f0f"
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: clown
+  - type: EmitSoundOnWearerMove
+    sound:
+      collection: FootstepClown
+      params:
+        variation: 0.17
+
+- type: entity
+  parent: ClothingUniformBaseScp082
+  id: ClothingUniformDClassScp082
+  components:
+  - type: Sprite
+    color: "#c25a00"
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: d_class
+
+- type: entity
+  parent: ClothingUniformBaseScp082
+  id: ClothingUniformFrenchScp082
+  components:
+  - type: Sprite
+    color: "#2a6aeb"
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: french_revolution
+
+- type: entity
+  parent: ClothingUniformBaseScp082
+  id: ClothingUniformMayorScp082
+  components:
+  - type: Sprite
+    color: "#4a3624"
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: mayor
+
+- type: entity
+  parent: ClothingUniformBaseScp082
+  id: ClothingUniformMimeScp082
+  components:
+  - type: Sprite
+    color: "#694e4e"
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: mime
+
+- type: entity
+  parent: ClothingUniformBaseScp082
+  id: ClothingUniformMonroeScp082
+  components:
+  - type: Sprite
+    color: "#c934cf"
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: monroe
+
+- type: entity
+  parent: ClothingUniformBaseScp082
+  id: ClothingUniformTuxedoScp082
+  components:
+  - type: Sprite
+    color: "#525561"
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: tuxedo
