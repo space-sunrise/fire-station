@@ -276,7 +276,7 @@
       0: Alive
       50: Dead
   - type: Inventory
-    templateId: Human
+    templateId: human
   - type: GuideHelp
     guides:
     - ScpFear
