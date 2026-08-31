@@ -2352,3 +2352,13 @@
     - HDLeader # Ню-7
     - HDSpecialist
     - HDCadet
+
+- type: listing
+  id: ScpUplinkScpFireExtinguisherMini
+  icon: { sprite: Objects/Misc/fire_extinguisher_mini.rsi, state: fire_extinguisher_open }
+  productEntity: FireExtinguisherMini
+  categories:
+  - ScpRecontainment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
