@@ -25,3 +25,6 @@ ent-GunLockerFilledAK103 = gun safe AK-103
 ent-GunLockerFilledM4A1 = gun safe M4A1
     .suffix = Armory, M4A1
     .desc = { ent-GunLocker6x3.desc }
+ent-GunLockerFilledAR18M = gun safe AR-18 M
+    .suffix = Armory, AR-18 M
+    .desc = { ent-GunLocker5x3.desc }

@@ -5511,3 +5511,164 @@
     message: Исправлен несправедливо большой (по отношению к ролям других SCP) приоритет на роль SCP-106
   id: 511
   url: https://github.com/makura-games/project-fire/pull/1125
+- author: timur
+  time: '2026-08-24T10:57:36.0000000+00:00'
+  changes:
+  - type: Add
+    message: Добавлена кофеварка, деревянное окно
+  - type: Tweak
+    message: теперь зубные щётки имеют 4 урона ушибами
+  - type: Tweak
+    message: теперь каждый декоративный объект имеет суффикс Декорация
+  id: 512
+  url: https://github.com/makura-games/project-fire/pull/1128
+- author: timur
+  time: '2026-08-24T11:18:27.0000000+00:00'
+  changes:
+  - type: Add
+    message: Добавлена способность лечения себя для SCP-247
+  id: 513
+  url: https://github.com/makura-games/project-fire/pull/1126
+- author: EldarTG
+  time: '2026-08-24T12:46:19.0000000+00:00'
+  changes:
+  - type: Add
+    message: Добавлена винтовка AR-18 M для ОСН.
+  - type: Add
+    message: Добавлен сейф с AR-18 M.
+  id: 514
+  url: https://github.com/makura-games/project-fire/pull/1131
+- author: timur
+  time: '2026-08-25T15:09:21.0000000+00:00'
+  changes:
+  - type: Add
+    message: добавлены дебаг невидимые кабели, подстанции, лкп, смэс и генераторы
+  id: 515
+  url: https://github.com/makura-games/project-fire/pull/1116
+- author: timur
+  time: '2026-08-25T15:04:23.0000000+00:00'
+  changes:
+  - type: Tweak
+    message: Характеристики SWAT изменены с 60 ударных до 50, 60 режущих до 50, 70 колотых до 50
+  - type: Tweak
+    message: Теперь SCP-2908 с небольшим шансом может взорваться при стрельбе
+  - type: Tweak
+    message: Вместимость патронов в магазине SCP-2908 изменена с 35 до 20 единиц
+  - type: Tweak
+    message: Генерация жидкости в SCP-109 изменена с 2 воды и 1 омнизина до 2.5 воды и 0.5 омнизина
+  id: 516
+  url: https://github.com/makura-games/project-fire/pull/1130
+- author: EngineerLND
+  time: '2026-08-25T18:23:22.0000000+00:00'
+  changes:
+  - type: Add
+    message: 'Добавлена цель для ШПХ: Активация спящего агента.'
+  - type: Add
+    message: Изменение для администрации. Теперь создание спящего агента вручную выводит сообщение в чат.
+  id: 517
+  url: https://github.com/makura-games/project-fire/pull/1123
+- author: timur
+  time: '2026-08-26T11:09:24.0000000+00:00'
+  changes:
+  - type: Add
+    message: Добавлен SCP-059
+  id: 518
+  url: https://github.com/makura-games/project-fire/pull/1076
+- author: Wardex
+  time: '2026-08-25T18:55:24.0000000+00:00'
+  changes:
+  - type: Add
+    message: Добавлен уровень угрозы "Лаймовый"
+  id: 519
+  url: https://github.com/makura-games/project-fire/pull/1132
+- author: timur
+  time: '2026-08-25T18:47:45.0000000+00:00'
+  changes:
+  - type: Fix
+    message: исправлен баг с лёгкими SCP-049
+  id: 520
+  url: https://github.com/makura-games/project-fire/pull/1134
+- author: timur
+  time: '2026-08-27T16:45:24.0000000+00:00'
+  changes:
+  - type: Add
+    message: Добавлены руки и инвентарь человека для SCP-059-1
+  - type: Remove
+    message: Убран пацифизм с SCP-059-1
+  - type: Tweak
+    message: Рецепт гризеофульвина был упрощён до 1 фалангимина и 4 субстанции SCP-059
+  - type: Fix
+    message: Осколки SCP-059 больше не сохраняются между раундами
+  - type: Fix
+    message: Огромный кристалл SCP-059 больше нельзя взять в руки как предмет
+  - type: Fix
+    message: Исправлен баг с нерабочим биологическим костюмом СБ от SCP-059
+  id: 521
+  url: https://github.com/makura-games/project-fire/pull/1138
+- author: timur
+  time: '2026-08-28T10:08:19.0000000+00:00'
+  changes:
+  - type: Tweak
+    message: Теперь гермозатворы нельзя вскрыть ломом
+  - type: Tweak
+    message: Шанс открытия шлюзов способностью "Осквернить" SCP-173 повышен с 35% до 50%
+  - type: Tweak
+    message: Шейдер экрана РИИ был ослаблен
+  - type: Tweak
+    message: Уменьшен размер SCP-005 в инвентаре
+  - type: Tweak
+    message: Из аплинка было убрано множество ЛРП вещей и категорий
+  - type: Remove
+    message: Ванильные антагонисты убраны из меню персонализации
+  - type: Remove
+    message: уши, хвосты и рога убраны из меню персонализации
+  id: 522
+  url: https://github.com/makura-games/project-fire/pull/1135
+- author: timur
+  time: '2026-08-29T21:56:41.0000000+00:00'
+  changes:
+  - type: Tweak
+    message: респрайт одежды научного отдела
+  - type: Tweak
+    message: белые кеды были заменены на шнурованные туфли в снаряжении научного отдела
+  - type: Tweak
+    message: фиолетовый галстук был удален из снаряжения научного отдела
+  - type: Tweak
+    message: красный и черный галстуки были добавлены в снаряжение научного отдела
+  - type: Tweak
+    message: чёрная водолазка была добавлена в снаряжение научного отдела
+  - type: Tweak
+    message: фиолетовые перчатки были заменены на чёрные в снаряжении научного отдела
+  id: 523
+  url: https://github.com/makura-games/project-fire/pull/1141
+- author: timur
+  time: '2026-08-30T10:05:46.0000000+00:00'
+  changes:
+  - type: Add
+    message: Добавлен биом для карты сектор No02
+  id: 524
+  url: https://github.com/makura-games/project-fire/pull/1142
+- author: timur
+  time: '2026-08-30T10:19:41.0000000+00:00'
+  changes:
+  - type: Add
+    message: Добавлен личный нож для SCP-082, которым он сможет вырезать органы
+  - type: Add
+    message: Добавлен новая эмоция "стиснуть зубы" для SCP-082
+  - type: Add
+    message: Добавлено множество новых костюмов для SCP-082 в его лодаут
+  - type: Tweak
+    message: Добавлен спрайт к эмоции крика от боли
+  - type: Tweak
+    message: Теперь SCP-082 может выбрать костюм в лодауте
+  id: 525
+  url: https://github.com/makura-games/project-fire/pull/1140
+- author: timur
+  time: '2026-08-30T17:48:29.0000000+00:00'
+  changes:
+  - type: Add
+    message: Добавлен SCP-3199
+  - type: Remove
+    message: SCP-2054 был убран из геймрула и эффектов от узла
+  id: 526
+  url: https://github.com/makura-games/project-fire/pull/1143

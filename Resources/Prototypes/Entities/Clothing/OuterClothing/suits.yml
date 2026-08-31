@@ -164,6 +164,11 @@
     - FullBodyOuter
     - WhitelistChameleon
   # Sunrise-End
+  # Fire start
+  - type: ClothingAddComponents
+    components:
+    - type: Scp059Protection
+  # Fire end
 
 - type: entity
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseToggleClothing, BaseHighlyIllegalContraband]

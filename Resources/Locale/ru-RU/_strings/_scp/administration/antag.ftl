@@ -6,3 +6,4 @@ admin-verb-text-make-chaos-spy = Сделать шпионом Повстанц�
 
 admin-verb-make-chaos-sleep-spy = Сделать цель спящим агентом Повстанцев Хаоса
 admin-verb-text-make-chaos-sleep-spy = Сделать спящим агентом Повстанцев Хаоса
+admin-verb-result-make-chaos-sleep-spy = Игрок "{$targetName}" теперь спящий агент Повстанцев Хаоса. Цель на его активацию будет отправлена случайному активному шпиону.

@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   parent: [AllowSuitStorageClothing, ClothingOuterStorageBase]
   id: MtfVest
   name: armor vest
@@ -256,6 +256,9 @@
   - type: Construction
     graph: MtfBiohazard
     node: start
+  - type: ClothingAddComponents
+    components:
+    - type: Scp059Protection
 
 - type: entity
   parent: MtfVest

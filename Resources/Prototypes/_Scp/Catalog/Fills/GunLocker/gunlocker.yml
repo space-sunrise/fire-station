@@ -194,3 +194,28 @@
     contents:
       - id: WeaponRifleAR18
         amount: 4
+
+- type: entity
+  id: GunLockerFilledAR18M
+  parent: GunLocker5x3
+  name: gun safe AR-18 M
+  suffix: Armory, AR-18 M
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Storage/GunLocker/gunlocker/base.rsi
+    noRot: true
+    layers:
+    - state: locker
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: gun-0
+      sprite: _Scp/Structures/Storage/GunLocker/gunlocker/ar18m.rsi
+      map: ["enum.StorageFillLayers.Fill"]
+    - state: locker_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+  - type: StorageFill
+    contents:
+      - id: WeaponRifleAR18M
+        amount: 4

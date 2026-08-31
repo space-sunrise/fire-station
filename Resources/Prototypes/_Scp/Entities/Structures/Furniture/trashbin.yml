@@ -3,6 +3,7 @@
   parent: BaseStructureDynamic
   name: trash bin
   description: A small metal trash bin. Designed to dispose of waste.
+  suffix: Decorative
   components:
   - type: Sprite
     drawdepth: SmallObjects

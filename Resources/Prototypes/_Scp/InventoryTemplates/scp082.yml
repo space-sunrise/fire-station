@@ -21,3 +21,10 @@
     strippingWindowPos: 1,4
     displayName: Pocket 2
     stripHidden: true
+  - name: jumpsuit
+    slotTexture: uniform
+    slotFlags: INNERCLOTHING
+    stripTime: 6
+    uiWindowPos: 1,0
+    strippingWindowPos: 0,2
+    displayName: Jumpsuit

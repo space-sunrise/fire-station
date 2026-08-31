@@ -39,3 +39,60 @@
     handID: left
     data:
       location: Left
+
+- type: entity
+  id: OrganScpRightLeg
+  parent: OrganBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Organ
+    category: LegRight
+
+- type: entity
+  id: OrganScpLeftLeg
+  parent: OrganBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Organ
+    category: LegLeft
+
+- type: entity
+  id: OrganScpRightFoot
+  parent: OrganBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Organ
+    category: FootRight
+
+- type: entity
+  id: OrganScpLeftFoot
+  parent: OrganBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Organ
+    category: FootLeft
+
+- type: entity
+  id: OrganScpEyes
+  parent: OrganBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Organ
+    category: Eyes
+  - type: OrganEyes
+
+- type: entity
+  id: OrganScpHead
+  parent: OrganBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Organ
+    category: Head
+
+- type: entity
+  id: OrganScpTorso
+  parent: OrganBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Organ
+    category: Torso

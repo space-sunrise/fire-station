@@ -119,3 +119,73 @@
   parent:
   - ScpBaseDresserComponents
   - DresserWardenFilled
+
+- type: entity # TODO: спрайт шкафа
+  id: ScpDresserScp082Filled
+  parent: ScpDresser
+  suffix: Filled
+  components:
+  - type: Storage
+    whitelist:
+      tags:
+      - Scp082Clothing
+    grid:
+    - 0,0,17,5
+    maxItemSize: Ginormous
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - !type:NestedSelector
+          tableId: DresserScp082BasicEntityTable
+        - !type:NestedSelector
+          tableId: DresserScp082FunnyEntityTable
+        - !type:NestedSelector
+          tableId: DresserScp082RandomEntityTable
+
+- type: entityTable
+  id: DresserScp082BasicEntityTable
+  table: !type:GroupSelector
+    children:
+    - id: ClothingUniformFrenchScp082
+      weight: 0.06
+    - id: ClothingUniformArmstrongScp082
+      weight: 0.05
+    - id: ClothingUniformMayorScp082
+      weight: 0.05
+    - id: ClothingUniformTuxedoScp082
+      weight: 0.04
+
+- type: entityTable
+  id: DresserScp082FunnyEntityTable
+  table: !type:GroupSelector
+    children:
+    - id: ClothingUniformClownScp082
+      weight: 0.06
+    - id: ClothingUniformDClassScp082
+      weight: 0.05
+    - id: ClothingUniformMimeScp082
+      weight: 0.05
+    - id: ClothingUniformMonroeScp082
+      weight: 0.04
+
+- type: entityTable
+  id: DresserScp082RandomEntityTable
+  table: !type:GroupSelector
+    children:
+    - id: ClothingUniformFrenchScp082
+      weight: 0.05
+    - id: ClothingUniformArmstrongScp082
+      weight: 0.05
+    - id: ClothingUniformMayorScp082
+      weight: 0.05
+    - id: ClothingUniformTuxedoScp082
+      weight: 0.05
+    - id: ClothingUniformClownScp082
+      weight: 0.05
+    - id: ClothingUniformDClassScp082
+      weight: 0.05
+    - id: ClothingUniformMimeScp082
+      weight: 0.05
+    - id: ClothingUniformMonroeScp082
+      weight: 0.04

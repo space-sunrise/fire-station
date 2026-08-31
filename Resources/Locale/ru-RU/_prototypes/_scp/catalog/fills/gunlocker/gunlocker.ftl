@@ -25,3 +25,6 @@ ent-GunLockerFilledAK103 = оружейный сейф АК-103
 ent-GunLockerFilledM4A1 = оружейный сейф М4А1
     .suffix = Заполненный, М4А1, Комендатура
     .desc = { ent-GunLocker6x3.desc }
+ent-GunLockerFilledAR18M = { ent-GunLockerBase } AR-18 M
+    .suffix = Заполненный, AR-18 M, ОСН
+    .desc = { ent-GunLocker5x3.desc }

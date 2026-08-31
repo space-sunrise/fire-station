@@ -1,7 +1,7 @@
 - type: marking
   id: HumanTopHorns
   bodyPart: HeadTop
-  groupWhitelist: [ Human, Dwarf ]
+  groupWhitelist: [ Dwarf, Felinid, Vulpkanin ] # Fire edit
   forcedColoring: true
   coloring:
     default:

@@ -59,6 +59,17 @@
     - id: PaperScp133
 
 - type: entity
+  id: SpawnScp3199Egg
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    weight: 2
+  - type: SpawnInEntityStorageRule
+    probability: 0.001
+    entities:
+    - id: Scp3199EggFirst
+
+- type: entity
   id: AirlockManEater
   parent: BaseStationEventZeroDelay
   components:
@@ -126,3 +137,4 @@
     - id: SpawnScp096Photo
     - id: AirlockManEater
     - id: SpawnScp133Paper
+    - id: SpawnScp3199Egg

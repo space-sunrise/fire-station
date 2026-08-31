@@ -1,0 +1,118 @@
+﻿- type: entity
+  id: Scp059Mob
+  name: ???
+  suffix: SCP-059-1
+  parent:
+  - BaseScp
+  - SimpleMobBase
+  - MobCombat
+  - InventoryBase
+  - StripableInventoryBase
+  - AppearanceScpHands
+  components:
+  - type: Pullable
+  - type: Puller
+    needsHands: true
+  - type: StandingState
+  - type: ScpRestriction
+    canBeDisarmed: true
+    canStandingState: true
+    canPull: true
+    canMobCollide: true
+  - type: Stripping
+  - type: Inventory
+    templateId: human
+  - type: FieldOfView
+    angle: 240
+  - type: Hands
+  - type: Body
+  - type: ComplexInteraction
+  - type: Sprite
+    sprite: _Scp/Mobs/Scp/scp-059.rsi
+    drawdepth: Mobs
+    state: scp-059
+  - type: Scp
+    class: Keter
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.3
+        density: 80
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    damage:
+      types:
+        Piercing: 2
+        Structural: 25
+        Radiation: 2
+  - type: Scp059Protection
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+    - ScpFear
+  - type: ActionGrant
+    actions:
+    - Scp059Crystal
+  - type: TriggerOnInteractHand
+  - type: TriggerOnCollide
+    fixtureID: fix1
+    ignoreOtherNonHard: false
+  - type: WhitelistTriggerCondition
+    userWhitelist:
+      components:
+      - MobState
+      - HumanoidProfile
+      requireAll: true
+    userBlacklist:
+      components:
+      - Scp
+      - Scp059Protection
+  - type: AddSolutionOnTrigger
+    targetUser: true
+    solution: bloodstream
+    addedSolution:
+      reagents:
+      - ReagentId: Scp059Reagent
+        Quantity: 2
+  - type: DeleteOnTrigger
+    keysIn:
+    - timer
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:TriggerBehavior
+        keyOut: timer
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Scp059CrystalItem:
+            min: 1
+            max: 1
+  - type: ProjectileGrenade
+    fillPrototype: Scp059CrystalProjectile
+    capacity: 20
+  - type: PointLight
+    color: LightBlue
+    radius: 2
+    energy: 4
+    netsync: false
+  - type: Damageable
+    damageModifierSet: SCP-059
+  - type: RadiationSource
+    intensity: 0.3
+    slope: 0.2

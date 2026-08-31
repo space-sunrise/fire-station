@@ -9,3 +9,13 @@
       ArmRight: OrganScpRightArm
       HandLeft: OrganScpLeftHand
       HandRight: OrganScpRightHand
+      LegRight: OrganScpRightLeg
+      LegLeft: OrganScpLeftLeg
+      FootLeft: OrganScpLeftFoot
+      FootRight: OrganScpRightFoot
+      Brain: OrganHumanBrain
+      Tongue: OrganHumanTongue
+      Appendix: OrganHumanAppendix
+      Ears: OrganHumanEars
+      Lungs: OrganHumanLungs
+      Eyes: OrganScpEyes
