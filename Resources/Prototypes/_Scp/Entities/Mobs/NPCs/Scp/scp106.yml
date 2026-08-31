@@ -11,8 +11,6 @@
   components:
   - type: ToggleableNightVision
     effect: ScpEffectNightVision
-  - type: Body
-    prototype: Animal
   - type: Climbing
   - type: Damageable
     damageContainer: Biological
@@ -278,7 +276,7 @@
       0: Alive
       50: Dead
   - type: Inventory
-    prototype: Human
+    templateId: Human
   - type: GuideHelp
     guides:
     - ScpFear
