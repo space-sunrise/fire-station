@@ -2518,3 +2518,37 @@
     blacklist:
     - MHCadet
     - NTFCadet
+
+- type: listing
+  id: ScpUplinkMagazineLightRifleSP
+  productEntity: MagazineLightRifleSP
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineAsh12Slug
+  productEntity: MagazineAsh12Slug
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazinePistolSubMachineGunSP
+  productEntity: MagazinePistolSubMachineGunSP
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
