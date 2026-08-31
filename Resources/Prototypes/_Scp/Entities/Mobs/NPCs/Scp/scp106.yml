@@ -55,7 +55,7 @@
     animation: WeaponArcClaw
     damage:
       types:
-        Slash: 4
+        Slash: 3
         Structural: 20
   - type: Scp
     class: Keter
@@ -122,7 +122,7 @@
   - type: MeleeWeapon
     damage:
       types:
-        Slash: 35
+        Slash: 10
         Structural: 20
 
 - type: entity
@@ -298,8 +298,8 @@
   - type: InputMover
   - type: MobMover
   - type: MovementSpeedModifier
-    baseWalkSpeed: 4
-    baseSprintSpeed: 4
+    baseWalkSpeed: 3
+    baseSprintSpeed: 3
   - type: RotationVisuals
     defaultRotation: 90
     horizontalRotation: 90
