@@ -29,7 +29,6 @@
   - type: VentCrawler
   - type: ActionGrant
     actions:
-    - Scp457Absorb
     - Scp457Fire
   - type: FearSource
     uponSeenState: None
