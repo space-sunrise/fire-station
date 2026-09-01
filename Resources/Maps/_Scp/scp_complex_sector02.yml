@@ -106,8 +106,10 @@ entities:
   entities:
   - uid: 1
     components:
+    - type: BecomesStation
+      id: ScpComplexSector02
     - type: LightCycle
-      duration: 180
+      duration: 600
     - type: MetaData
       name: Scp Map
     - type: Transform
@@ -134,12 +136,10 @@ entities:
           Nitrogen: 82.10312
   - uid: 2
     components:
-    - type: BecomesStation
-      id: ScpComplexSector02
     - type: LightCycle
-      duration: 180
+      duration: 600
     - type: MetaData
-      name: ScpCompleSector02
+      name: ???
     - type: Transform
       pos: 238.92061,-64.96143
       parent: 1
@@ -272,10 +272,12 @@ entities:
       container: 3
   - uid: 304
     components:
+    - type: LightCycle
+      duration: 600
     - type: BecomesStation
       id: ScpComplexSector02
     - type: MetaData
-      name: ScpCompleSector02
+      name: ScpComplexSector02
     - type: Transform
       pos: -0.53125,3.426829
       parent: 1
@@ -7877,7 +7879,7 @@ entities:
   - uid: 33954
     components:
     - type: MetaData
-      name: grid
+      name: ???
     - type: Transform
       pos: 91.93533,38.91302
       parent: 1
@@ -8293,7 +8295,7 @@ entities:
   - uid: 34012
     components:
     - type: MetaData
-      name: grid
+      name: ???
     - type: Transform
       pos: -73.88718,63.3626
       parent: 1
@@ -8912,7 +8914,7 @@ entities:
   - uid: 34836
     components:
     - type: MetaData
-      name: grid
+      name: ???
     - type: Transform
       pos: 106.374016,-24.165812
       parent: 1
