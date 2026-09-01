@@ -136,6 +136,8 @@ entities:
     components:
     - type: BecomesStation
       id: ScpComplexSector02
+    - type: LightCycle
+      duration: 180
     - type: MetaData
       name: ScpCompleSector02
     - type: Transform
@@ -270,8 +272,10 @@ entities:
       container: 3
   - uid: 304
     components:
+    - type: BecomesStation
+      id: ScpComplexSector02
     - type: MetaData
-      name: grid
+      name: ScpCompleSector02
     - type: Transform
       pos: -0.53125,3.426829
       parent: 1
