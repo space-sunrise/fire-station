@@ -139,7 +139,7 @@ entities:
       maxLightLevel: 2
       minLightLevel: 0.2
       offset: 720
-      duration: 10
+      duration: 1200
       originalColor: '#E0A0C0FF'
   - uid: 2
     components:
@@ -10962,14 +10962,6 @@ entities:
     - type: TechnologyDatabase
       supportedDisciplines:
       - SCP
-- proto: AmnesiacAGasGrenade
-  entities:
-  - uid: 34014
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -17.582008,-18.318554
-      parent: 34012
 - proto: APCBasic
   entities:
   - uid: 5
@@ -36957,18 +36949,6 @@ entities:
     - type: Transform
       pos: 7.9267673,1.5348604
       parent: 304
-- proto: ChemistryBottleUnstableMutagen
-  entities:
-  - uid: 5475
-    components:
-    - type: Transform
-      pos: 39.29947,62.423397
-      parent: 304
-  - uid: 5476
-    components:
-    - type: Transform
-      pos: 39.70572,62.439022
-      parent: 304
 - proto: ChemistryEmptyVial
   entities:
   - uid: 20
@@ -37433,11 +37413,6 @@ entities:
     - type: Transform
       pos: 1.3751974,108.59454
       parent: 304
-  - uid: 5583
-    components:
-    - type: Transform
-      pos: 1.8126974,108.57892
-      parent: 304
 - proto: ClothingHeadBagScp096
   entities:
   - uid: 5584
@@ -37449,16 +37424,6 @@ entities:
     components:
     - type: Transform
       pos: 52.76561,126.61593
-      parent: 304
-  - uid: 5586
-    components:
-    - type: Transform
-      pos: 52.76561,127.06905
-      parent: 304
-  - uid: 5587
-    components:
-    - type: Transform
-      pos: 52.29686,127.11593
       parent: 304
 - proto: ClothingHeadBandBlack
   entities:
@@ -37848,7 +37813,7 @@ entities:
       inSlotFlag: HEAD
     - type: Physics
       canCollide: False
-- proto: ClothingHeadHelmetSwatSyndicate
+- proto: ClothingHeadHelmetSecurityRiot
   entities:
   - uid: 5632
     components:
@@ -38081,7 +38046,7 @@ entities:
       inSlotFlag: OUTERCLOTHING
     - type: Physics
       canCollide: False
-- proto: ClothingOuterArmorHeavyRed
+- proto: ClothingOuterArmorSWAT
   entities:
   - uid: 5634
     components:
@@ -41016,19 +40981,6 @@ entities:
       parent: 304
     - type: Fixtures
       fixtures: {}
-- proto: EyeDroplets
-  entities:
-  - uid: 5973
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -23.188395,96.04174
-      parent: 304
-  - uid: 5974
-    components:
-    - type: Transform
-      pos: -23.45402,96.401115
-      parent: 304
 - proto: FaxMachineBase
   entities:
   - uid: 5975
@@ -66849,12 +66801,6 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 28.425777,63.805386
-      parent: 304
-  - uid: 9301
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 28.128902,63.50851
       parent: 304
 - proto: KitchenMicrowave
   entities:
@@ -203221,7 +203167,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 43.5,2.5
       parent: 304
-- proto: ScpAnomalyDiamond
+- proto: MaterialDiamond1
   entities:
   - uid: 23676
     components:
@@ -207861,45 +207807,6 @@ entities:
       parent: 304
     - type: Physics
       bodyType: Static
-- proto: ScpLockerChaosInsurgency
-  entities:
-  - uid: 5451
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 49.5,77.5
-      parent: 304
-    - type: EntityStorage
-      air:
-        volume: 200
-        immutable: False
-        temperature: 293.14673
-        moles:
-          Oxygen: 1.7459903
-          Nitrogen: 6.568249
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 5457
-          - 5459
-          - 5460
-          - 5452
-          - 5458
-          - 5454
-          - 5464
-          - 5462
-          - 5453
-          - 5463
-          - 5456
-          - 5455
-          - 5461
-        paper_label: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
 - proto: ScpLockerChiefTechnicalSpecialistFilled
   entities:
   - uid: 24350
@@ -212231,14 +212138,6 @@ entities:
     - type: TechnologyDatabase
       supportedDisciplines:
       - SCP
-  - uid: 25049
-    components:
-    - type: Transform
-      pos: 68.5,103.5
-      parent: 304
-    - type: TechnologyDatabase
-      supportedDisciplines:
-      - SCP
 - proto: ScpTintedWindow
   entities:
   - uid: 25050
@@ -212333,13 +212232,6 @@ entities:
     - type: Transform
       pos: 55.5,107.5
       parent: 304
-- proto: ScpVendingMachineJaniDrobeClassD
-  entities:
-  - uid: 25065
-    components:
-    - type: Transform
-      pos: 38.5,59.5
-      parent: 304
 - proto: ScpVendingMachineLaboratoryDrobe
   entities:
   - uid: 25066
@@ -212389,13 +212281,6 @@ entities:
     components:
     - type: Transform
       pos: 20.5,-19.5
-      parent: 304
-- proto: ScpVendingMachineTheater
-  entities:
-  - uid: 25073
-    components:
-    - type: Transform
-      pos: 71.5,-24.5
       parent: 304
 - proto: ScpWallConcrete
   entities:
@@ -260094,23 +259979,6 @@ entities:
     - type: Transform
       pos: 33.5,130.5
       parent: 304
-- proto: SpawnMobCatKitten
-  entities:
-  - uid: 32703
-    components:
-    - type: Transform
-      pos: 38.5,49.5
-      parent: 304
-  - uid: 32704
-    components:
-    - type: Transform
-      pos: 37.5,49.5
-      parent: 304
-  - uid: 32705
-    components:
-    - type: Transform
-      pos: 39.5,49.5
-      parent: 304
 - proto: SpawnMobFrog
   entities:
   - uid: 32706
@@ -263013,7 +262881,7 @@ entities:
     - type: Transform
       pos: 27.5,68.5
       parent: 304
-- proto: VendingMachineChefvend
+- proto: VendingMachineChefvendDClass
   entities:
   - uid: 33161
     components:
