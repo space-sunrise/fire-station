@@ -106,10 +106,6 @@ entities:
   entities:
   - uid: 1
     components:
-    - type: BecomesStation
-      id: ScpComplexSector02
-    - type: LightCycle
-      duration: 600
     - type: MetaData
       name: Scp Map
     - type: Transform
@@ -134,10 +130,19 @@ entities:
         moles:
           Oxygen: 21.824879
           Nitrogen: 82.10312
+    - type: MapLight
+      ambientLightColor: '#E0A0C0FF'
+    - type: LightCycle
+      originalColor: '#E0A0C0FF'
+      offset: 720
+      minLightLevel: 0.2
+      minLevel: '#506050FF'
+      maxLightLevel: 2
+      maxLevel: '#F0FFF0FF'
+      duration: 20
+      clipLevel: '#E0C090FF'
   - uid: 2
     components:
-    - type: LightCycle
-      duration: 600
     - type: MetaData
       name: ???
     - type: Transform
@@ -272,8 +277,6 @@ entities:
       container: 3
   - uid: 304
     components:
-    - type: LightCycle
-      duration: 600
     - type: BecomesStation
       id: ScpComplexSector02
     - type: MetaData
