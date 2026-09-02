@@ -139,7 +139,7 @@ entities:
       minLevel: '#506050FF'
       maxLightLevel: 2
       maxLevel: '#F0FFF0FF'
-      duration: 20
+      duration: 1200
       clipLevel: '#E0C090FF'
   - uid: 2
     components:
