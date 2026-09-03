@@ -6,7 +6,6 @@ using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Mobs.Components;
 using Content.Shared._Scp.Other.Events;
 using Content.Shared._Scp.SafeTime;
-using Content.Shared._Scp.Scp457;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
@@ -59,7 +58,6 @@ public sealed class Scp457System : EntitySystem
         _scpQuery = GetEntityQuery<ScpComponent>();
 
         SubscribeLocalEvent<Scp457Component, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<Scp457Component, Scp457AbsorbActionEvent>(OnAbsorbAction);
         SubscribeLocalEvent<Scp457Component, ScpIngestionConsumedEvent>(OnConsumed);
         SubscribeLocalEvent<Scp457Component, HitByWaterEvent>(OnHitByWater);
         SubscribeLocalEvent<Scp457Component, VentCrawlAttemptEvent>(OnVentCrawlAttempt);
@@ -73,6 +71,12 @@ public sealed class Scp457System : EntitySystem
         var query = EntityQueryEnumerator<Scp457Component>();
         while (query.MoveNext(out var uid, out var scp457))
         {
+            if (scp457.NextAutoAbsorb < _timing.CurTime)
+            {
+                TryAbsorbNearby((uid, scp457));
+                scp457.NextAutoAbsorb = _timing.CurTime + scp457.AutoAbsorbInterval;
+            }
+
             if (scp457.NextChangeObjectSize > _timing.CurTime)
                 continue;
 
@@ -86,6 +90,7 @@ public sealed class Scp457System : EntitySystem
     {
         ent.Comp.AppliedObjectSize = ent.Comp.ObjectSize;
         ent.Comp.NextChangeObjectSize = _timing.CurTime + DecayInterval;
+        ent.Comp.NextAutoAbsorb = _timing.CurTime + ent.Comp.AutoAbsorbInterval;
 
         if (TryComp<PassiveDamageComponent>(ent, out var passiveDamage))
             ent.Comp.BasePassiveDamage = new DamageSpecifier(passiveDamage.Damage);
@@ -100,14 +105,6 @@ public sealed class Scp457System : EntitySystem
             return;
 
         TryChangeSize(ent, ent.Comp.ObjectSizeFlammableAdd);
-    }
-
-    private void OnAbsorbAction(Entity<Scp457Component> ent, ref Scp457AbsorbActionEvent args)
-    {
-        if (args.Handled)
-            return;
-
-        args.Handled = TryAbsorbNearby(ent);
     }
 
     public bool TryAbsorbNearby(Entity<Scp457Component> ent)
