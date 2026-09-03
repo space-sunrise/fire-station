@@ -5663,3 +5663,26 @@
     message: Теперь SCP-082 может выбрать костюм в лодауте
   id: 525
   url: https://github.com/makura-games/project-fire/pull/1140
+- author: timur
+  time: '2026-08-30T17:48:29.0000000+00:00'
+  changes:
+  - type: Add
+    message: Добавлен SCP-3199
+  - type: Remove
+    message: SCP-2054 был убран из геймрула и эффектов от узла
+  id: 526
+  url: https://github.com/makura-games/project-fire/pull/1143
+- author: timur
+  time: '2026-08-31T07:09:32.0000000+00:00'
+  changes:
+  - type: Tweak
+    message: Измерение SCP-106 переработано
+  id: 527
+  url: https://github.com/makura-games/project-fire/pull/1145
+- author: Wardex
+  time: '2026-09-01T11:37:32.0000000+00:00'
+  changes:
+  - type: Tweak
+    message: SCP-457 теперь каждые 5 секунд всасывает ближайшие сущности поблизости, которые могут гореть
+  id: 528
+  url: https://github.com/makura-games/project-fire/pull/1146

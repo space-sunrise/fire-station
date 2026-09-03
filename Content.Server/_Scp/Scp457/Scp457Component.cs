@@ -38,7 +38,7 @@ public sealed partial class Scp457Component : Component
     [DataField]
     public float DamageModifierFlammableAdd = 0.1f;
 
-	[DataField]
+    [DataField]
     public float ObjectWaterSizeDecrease = 0.01f;
 
     [DataField]
@@ -59,6 +59,9 @@ public sealed partial class Scp457Component : Component
     [DataField]
     public HashSet<string> FlammableMaterialsWhitelist = ["Wood", "Paper", "Cardboard", "Cloth", "Carpet"];
 
+    [DataField]
+    public TimeSpan AutoAbsorbInterval = TimeSpan.FromSeconds(5);
+
     [ViewVariables]
     public float AppliedObjectSize = 1f;
 
@@ -67,4 +70,7 @@ public sealed partial class Scp457Component : Component
 
     [ViewVariables]
     public TimeSpan? NextChangeObjectSize;
+
+    [ViewVariables]
+    public TimeSpan? NextAutoAbsorb;
 }

@@ -1,0 +1,36 @@
+- type: entity
+  parent: SalvageHumanCorpse
+  id: ScpMobRandomCommandantCorpse
+  suffix: Dead, Commandant
+  components:
+  - type: Loadout
+    prototypes:
+    - JuniorExternalAdministrativeZoneOfficerGear
+    - SeniorExternalAdministrativeZoneOfficerGear
+    - ExternalAdministrativeZoneOfficerGear
+#    - FieldMedicalSpecialistGear у них в кармане бесплатный амнезиак поэтому хзхз
+    - ExternalAdministrativeZoneCommandantGear
+
+- type: entity
+  parent: SalvageHumanCorpse
+  id: ScpMobRandomSPSCorpse
+  suffix: Dead, Special Purpose Squad
+  components:
+  - type: Loadout
+    prototypes:
+    - HeavyContainmentZoneCommandantGear
+    - HeavyContainmentZoneOfficerGear
+    - JuniorHeavyContainmentZoneOfficerGear
+    - SeniorHeavyContainmentZoneOfficerGear
+
+- type: entity
+  parent: SalvageHumanCorpse
+  id: ScpMobRandomClassDCorpse
+  suffix: Dead, Scp class-D
+  components:
+  - type: Loadout
+    prototypes:
+    - ClassDGear
+    - ClassDBotanistGear
+    - ClassDCookGear
+    - ClassDJanitorGear
