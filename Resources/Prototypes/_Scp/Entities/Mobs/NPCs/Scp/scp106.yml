@@ -1,0 +1,484 @@
+﻿- type: entity
+  parent:
+  - BaseSimpleMob
+  - MobAtmosExposed
+  - MobCombat
+  - MobBloodstream
+  id: BaseMobScp106Monster
+  name: ???
+  abstract: true
+  suffix: SCP-106 mob
+  components:
+  - type: ToggleableNightVision
+    effect: ScpEffectNightVision
+  - type: Climbing
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: FleshMob
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+      - SCPs
+  - type: Tag
+    tags:
+      - DoorBumpOpener
+      - CannotSuicide
+      - FootstepSound
+  - type: Sprite
+    drawdepth: Mobs
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 5
+  - type: MobState
+    allowedStates:
+      - Alive
+      - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Dead
+  - type: Appearance
+  - type: Butcherable
+    spawned:
+      - id: FoodMeat
+        amount: 1
+  - type: CombatMode
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    angle: 0
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Slash: 3
+        Structural: 20
+  - type: Scp
+    class: Keter
+
+- type: entity
+  parent: BaseMobScp106Monster
+  id: Scp106MonsterRespirator
+  components:
+  - type: Sprite
+    sprite: _Scp/Mobs/Scp106Servants/respirator.rsi
+    state: icon
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Dead
+  - type: GuideHelp
+    guides:
+    - ScpFear
+  - type: HTN
+    constantlyReplan: true
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      VisionRadius: !type:Single
+        12
+      AggroVisionRadius: !type:Single
+        12
+      FollowRange: !type:Single
+        4
+      MeleeRange: !type:Single
+        4
+  - type: InputMover
+  - type: MobMover
+  - type: MovementSpeedModifier # убегает от игрока
+    baseWalkSpeed: -6
+    baseSprintSpeed: -6
+  - type: JumpAbility
+    jumpThrowSpeed: 100
+    jumpDistance: -8
+    jumpSound: /Audio/_Scp/Scp035/Equip/sound2.ogg
+  - type: NPCUseActionWhenTargetInRange
+    actions:
+    - actionId: ActionGravityJump
+      minRange: 0
+      maxRange: 2.5
+  - type: AmbientSound
+    enabled: true
+    volume: -5
+    range: 6
+    sound:
+      path: /Audio/_Scp/Scp106/breath.ogg
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: StandingState
+  - type: ScpRestriction
+    canStandingState: true
+  - type: Butcherable
+    spawned:
+      - id: ClothingMaskGasSwat
+        amount: 1
+      - id: Scp106Cloth
+        amount: 1
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 10
+        Structural: 20
+
+- type: entity
+  parent: BaseMobScp106Monster
+  id: Scp106MonsterBehemoth
+  components:
+  - type: Sprite
+    sprite: _Scp/Mobs/Scp106Servants/behemoth.rsi
+    state: icon
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      70: Dead
+  - type: GuideHelp
+    guides:
+    - ScpFear
+  - type: HTN
+    constantlyReplan: true
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      VisionRadius: !type:Single
+        10
+      AggroVisionRadius: !type:Single
+        5
+      FollowRange: !type:Single
+        5
+      MeleeRange: !type:Single
+        1
+  - type: InputMover
+  - type: MobMover
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 2
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: StandingState
+  - type: ScpRestriction
+    canStandingState: true
+  - type: Butcherable
+    spawned:
+      - id: Scp106Cloth
+        amount: 2
+
+- type: entity
+  parent: BaseMobScp106Monster
+  id: Scp106MonsterLiar
+  components:
+  - type: Sprite
+    sprite: _Scp/Mobs/Scp106Servants/liar.rsi
+    state: icon
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      50: Dead
+  - type: GuideHelp
+    guides:
+    - ScpFear
+  - type: HTN
+    constantlyReplan: true
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      VisionRadius: !type:Single
+        5
+      AggroVisionRadius: !type:Single
+        5
+      FollowRange: !type:Single
+        3
+      MeleeRange: !type:Single
+        6
+  - type: InputMover
+  - type: MobMover
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 8
+    baseSprintSpeed: 8
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: StandingState
+  - type: ScpRestriction
+    canStandingState: true
+  - type: Butcherable
+    spawned:
+      - id: Scp106Cloth
+        amount: 2
+      - id: FoodMeatRotten
+        amount: 1
+
+- type: entity
+  parent: BaseMobScp106Monster
+  id: Scp106MonsterLimbless
+  components:
+  - type: Sprite
+    sprite: _Scp/Mobs/Scp106Servants/limbless.rsi
+    state: icon
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      50: Dead
+  - type: GuideHelp
+    guides:
+    - ScpFear
+  - type: HTN
+    constantlyReplan: true
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      VisionRadius: !type:Single
+        8
+      AggroVisionRadius: !type:Single
+        6
+      FollowRange: !type:Single
+        5
+      MeleeRange: !type:Single
+        1
+  - type: InputMover
+  - type: MobMover
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 3
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: StandingState
+  - type: ScpRestriction
+    canStandingState: true
+  - type: Butcherable
+    spawned:
+      - id: Scp106Cloth
+        amount: 2
+      - id: FoodMeatRotten
+        amount: 1
+  - type: NPCUseActionWhenTargetInRange
+    actions:
+    - actionId: Scp106PuddleSpawnAction
+      minRange: 0
+      maxRange: 6
+
+- type: entity
+  parent: 
+  - BaseMobScp106Monster
+  - InventoryBase
+  - StripableInventoryBase
+  id: Scp106MonsterFakeHuman
+  components:
+  - type: Sprite
+    sprite: _Scp/Mobs/Scp106Servants/humanoid.rsi
+    state: icon
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      50: Dead
+  - type: Inventory
+    templateId: human
+  - type: GuideHelp
+    guides:
+    - ScpFear
+  - type: HTN
+    constantlyReplan: true
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      VisionRadius: !type:Single
+        8
+      AggroVisionRadius: !type:Single
+        6
+      FollowRange: !type:Single
+        5
+      MeleeRange: !type:Single
+        1
+  - type: InputMover
+  - type: MobMover
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 3
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: StandingState
+  - type: ScpRestriction
+    canStandingState: true
+  - type: Butcherable
+    spawned:
+      - id: Scp106Cloth
+        amount: 2
+      - id: FoodMeatRotten
+        amount: 1
+  - type: RandomMetadata
+    nameSegments:
+    - NamesFirst
+    - NamesLast
+    nameFormat: name-format-standard
+  - type: Speech
+  - type: Vocal
+    sounds:
+      Male: MaleHuman
+      Female: FemaleHuman
+      Unsexed: MaleHuman
+  - type: Emoting
+  - type: EmitEmotesPeriodically
+    emotes:
+    - Scream
+    - Pain
+    mode: Random
+  - type: Loadout
+    prototypes:
+    - ClassDGear
+    - JuniorExternalAdministrativeZoneOfficerGear
+    - ElectricalTechnicalSpecialistGear
+    - MedicalSpecialistGear
+    - AnomarchologyResearcherGear
+    - ServicePersonnelGear
+    - GeneralTechnicalSpecialistGear
+
+- type: entity
+  parent: Scp106MonsterFakeHuman
+  id: Scp106MonsterFakeCorpse
+  components:
+  - type: EmitEmotesPeriodically
+    emotes:
+    - SevereCough
+    cooldown: 5
+  - type: RotationVisuals
+    verticalRotation: 90
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      25: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 0
+    baseSprintSpeed: 0
+  - type: HTN
+    constantlyReplan: true
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      VisionRadius: !type:Single
+        3
+      AggroVisionRadius: !type:Single
+        3
+      FollowRange: !type:Single
+        0
+      MeleeRange: !type:Single
+        2
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    angle: 0
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Slash: 10
+    attackRate: 1.5
+  - type: MeleeThrowOnHit
+    speed: 5
+    distance: -1
+    stunTime: 0.1
+    activateOnThrown: true
+  - type: UseDelay
+    delay: 5
+  - type: UseDelayOnMeleeHit
+
+
+- type: entity
+  parent: BaseMobScp106Monster
+  id: Scp106MonsterFakeOldMan
+  categories: [HideSpawnMenu] # хммм
+  components:
+  - type: Sprite
+    sprite: _Scp/Mobs/Scp/scp-106.rsi
+    state: base
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+  - type: AmbientSound
+    enabled: true
+    volume: -10
+    range: 3
+    sound:
+      path: /Audio/_Scp/Scp106/breath.ogg
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+    - ScpFear
+  - type: HTN
+    constantlyReplan: true
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      VisionRadius: !type:Single
+        99
+      AggroVisionRadius: !type:Single
+        99
+      FollowRange: !type:Single
+        99
+      MeleeRange: !type:Single
+        1
+  - type: InputMover
+  - type: MobMover
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 2
+  - type: ScpRestriction
+    canStandingState: true
+  - type: Speech
+  - type: Vocal
+    sounds:
+      Male: SCP106
+      Female: SCP106
+      Unsexed: SCP106
+  - type: Emoting
+  - type: EmitEmotesPeriodically
+    emotes:
+    - Laugh
+    cooldownVariations: 10
+    mode: Random
+  - type: FearSource
+    uponSeenState: Fear
+    uponComeCloser: Fear
+    grainShaderStrength:
+      min: 0
+      max: 1000
+    vignetteShaderStrength:
+      min: 0
+      max: 400
+  - type: MeleeWeapon
+    bluntStaminaDamageFactor: 1.0
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcPunch
+    soundHit: /Audio/_Scp/Scp106/hit.ogg
+    damage:
+      types:
+        Cellular: 10
+  - type: AnyDamageSound
+    sound:
+      collection: HurtScp106
+      params:
+        maxDistance: 8
+  - type: SpeedModifierContactCapClothing
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 1000
+        mask:
+        - SmallMobMask
+        layer:
+        - MobLayer
+  - type: NPCUseActionWhenTargetInRange
+    actions:
+    - actionId: Scp106PuddleSpawnAction
+      minRange: 0
+      maxRange: 6

@@ -20,13 +20,123 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
 
+- type: entity
+  parent: BaseItem
+  id: FakeItemScp106
+  categories: [HideSpawnMenu]
+  components:
+  - type: Sprite
+    sprite: _Sunrise/Objects/Weapons/Guns/SMGs/p90.rsi
+    layers:
+    - state: base
+    - state: mag-5
+  - type: TriggerOnGotEquippedHand
+  - type: FlashOnTrigger
+  - type: DeleteOnTrigger
+  - type: KnockdownOnTrigger
+    knockdownAmount: 2
+    targetUser: true
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/_Scp/Scp106/laugh.ogg
+    positional: true
+    targetUser: false
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+
+- type: entity
+  parent: BaseStructure
+  id: FakeStairsScp106
+  categories: [HideSpawnMenu]
+  components:
+  - type: Sprite
+    sprite: Structures/stairs.rsi
+    state: stairs_steel
+    drawdepth: FloorObjects
+    offset: 0,0.25
+  - type: Physics
+    bodyType: Static
+  - type: InteractionOutline
+  - type: Fixtures
+    fixtures:
+      fix1:
+        hard: false
+        shape:
+          !type:PhysShapeCircle
+          radius: 5
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+  - type: TriggerOnInteractHand
+  - type: KnockdownOnTrigger
+    knockdownAmount: 2
+    targetUser: true
+  - type: DeleteOnTrigger
+  - type: RepulseAttractOnTrigger
+    speed: 50
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/_Scp/Scp106/laugh.ogg
+    positional: true
+    targetUser: false
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+
 - type: entityTable
   id: BackroomsEntrance
   table: !type:GroupSelector
     children:
     - id: CableApcExtension
       amount: 1
-    - id: ScpAirlockGlass
+    - id: ScpWoodDoor
+      amount: 1
+    - id: ScpMetalDoor
+      amount: 1
+    - id: ScpAirlockLogotype
+      amount: 1
+
+- type: entityTable
+  id: BackroomsCorridorEntities
+  table: !type:GroupSelector
+    children:
+    - id: ScpChairWood
+      amount: 1
+    - id: ScpMobRandomClassDCorpse
+      amount: 1
+    - id: PuddleScp106Reagent200
+      amount: 1
+    - id: Shiv
+      amount: 1
+    - id: FakeItemScp106
+      amount: 1
+    - id: Scp106MonsterFakeCorpse
+      amount: 1
+    - id: LootSpawnerRandomAnomalyItem
+      amount: 1
+
+- type: entityTable
+  id: BackroomsFloorLights
+  table: !type:GroupSelector
+    children:
+    - id: CultTorch
+      amount: 1
+    - id: Torch
+      amount: 1
+    - id: CableApcExtension
+      amount: 1
+
+- type: entityTable
+  id: BackroomsLights
+  table: !type:GroupSelector
+    children:
+    - id: AlwaysPoweredlightRed
+      amount: 1
+    - id: CableApcExtension
+      amount: 1
+    - id: PuddleScp106Reagent200
       amount: 1
 
 - type: entityTable
@@ -39,17 +149,20 @@
     - id: RandomPainting
       amount: 1
       prob: 0.05
-    - id: IntercomCommon
-      amount: 1
-      prob: 0.05
 
 - type: entityTable
   id: BackroomsMobs
   table: !type:GroupSelector
     children:
-    - id: MobScp106Monster
-      amount: 2
-    - id: MobScp106BigMonster
+    - id: Scp106MonsterFakeHuman
+      amount: 1
+    - id: Scp106MonsterLimbless
+      amount: 1
+    - id: Scp106MonsterLiar
+      amount: 1
+    - id: Scp106MonsterBehemoth
+      amount: 1
+    - id: Scp106MonsterRespirator
       amount: 1
 
 - type: entityTable
@@ -57,43 +170,59 @@
   table: !type:GroupSelector
     children:
     - id: CableApcExtension
-    - id: ScpAirlockMaint
 
 - type: dungeonConfig
   id: BackroomsBase
+#  minCount: 2 не работает как мне нужно :(
+#  maxCount: 3
   layers:
   - !type:PrefabDunGen
     presets:
-    - Bucket
-    - Wow
-    - SpaceShip
     - Tall
-    fallbackTile: FloorConcreteSmooth
+    fallbackTile: ScpFloorFlesh106
     roomWhitelist:
       tags:
-      - SnowyLabs
       - BackroomsMineshaft
 
-  - !type:CorridorDunGen
+#  - !type:CorridorDunGen
+#    width: 3
+#    tile: ScpFloorFlesh106
+
+  - !type:WormCorridorDunGen
     width: 3
-    tile: FloorConcreteSmooth
+    tile: ScpFloorFlesh106
+    maxAngleChange: 0
+    count: 1
+    length: 3
+
+  - !type:CorridorClutterDunGen
+    contents: BackroomsCorridorEntities
+    chance: 0.01
+
+  - !type:CorridorClutterDunGen
+    contents: BackroomsFloorLights
+    chance: 0.01
 
   - !type:RoomEntranceDunGen
-    tile: FloorConcreteSmooth
+    tile: ScpFloorFlesh106
     contents: BackroomsEntrance
+
+  - !type:EntranceFlankDunGen
+    tile: ScpFloorFlesh106
+    contents: BackroomsLights
 
   - !type:WallMountDunGen
     contents: BackroomsWalls
-    tile: FloorConcreteSmooth
+    tile: ScpFloorFlesh106
 
   - !type:BoundaryWallDunGen
-    wall: WallBrick106
-    cornerWall: WallBrick106
-    tile: FloorConcreteSmooth
+    wall: ScpWallFlesh106
+    cornerWall: ScpWallFlesh106
+    tile: ScpFloorFlesh106
 
   - !type:JunctionDunGen
     width: 1
-    tile: FloorConcreteSmooth
+    tile: ScpFloorFlesh106
     contents: BaseAirlockScp
 
   - !type:AutoCablingDunGen
@@ -107,15 +236,38 @@
     limit: 4
 
   - !type:LimitedEntityDunGen
+    entity: FakeStairsScp106
+    limit: 2
+
+  - !type:LimitedEntityDunGen
     entity: StairsUp106
 
   - !type:LimitedEntityDunGen
     entity: StairsDown106
 
+#  - !type:LimitedEntityDunGen
+#    entity: Scp106MonsterFakeOldMan
+#    limit: 1
+
+  - !type:LimitedEntityDunGen
+    entity: PuddleScp106Reagent200
+
+  - !type:LimitedEntityDunGen
+    entity: ScpMobRandomCommandantCorpseSpawner
+    limit: 2
+
+  - !type:LimitedEntityDunGen
+    entity: ScpMobRandomSPSCorpse
+    limit: 2
+
+  - !type:LimitedEntityDunGen
+    entity: ScpMobRandomClassDCorpse
+    limit: 1
+
   - !type:MobsDunGen
-    minCount: 4
-    maxCount: 9
-    contents: VGRoidExteriorDungeonsMobs
+    minCount: 5
+    maxCount: 8
+    contents: BackroomsMobs
 
   # TODO: Add Mobs/Items.
   # For items -> LimitedEntityDunGen

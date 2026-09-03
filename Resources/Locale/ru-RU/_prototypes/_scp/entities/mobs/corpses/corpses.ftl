@@ -1,0 +1,9 @@
+ent-ScpMobRandomCommandantCorpse = { ent-SalvageHumanCorpse }
+    .desc = { ent-SalvageHumanCorpse.desc }
+    .suffix = Мёртвый, Комендантский отряд
+ent-ScpMobRandomSPSCorpse = { ent-SalvageHumanCorpse }
+    .suffix = Мёртвый, ОСН
+    .desc = { ent-SalvageHumanCorpse.desc }
+ent-ScpMobRandomClassDCorpse = { ent-SalvageHumanCorpse }
+    .suffix = Мёртвый, Класс-Д
+    .desc = { ent-SalvageHumanCorpse.desc }

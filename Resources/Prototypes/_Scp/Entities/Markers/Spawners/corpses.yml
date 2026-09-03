@@ -1,0 +1,38 @@
+- type: entity
+  name: Random Commandant Corpse Spawner
+  id: ScpMobRandomCommandantCorpseSpawner
+  parent: SalvageHumanCorpseSpawner
+  components:
+  - type: Sprite
+    layers:
+      - state: security_officer # TODO: сделать визуальный спрайт
+      - state: green
+  - type: ConditionalSpawner
+    prototypes:
+      - ScpMobRandomCommandantCorpse
+
+- type: entity
+  name: Random Special Purpose Squad Corpse Spawner
+  id: ScpMobRandomSPSCorpseSpawner
+  parent: SalvageHumanCorpseSpawner
+  components:
+  - type: Sprite
+    layers:
+      - state: security_officer # TODO: сделать визуальный спрайт
+      - state: green
+  - type: ConditionalSpawner
+    prototypes:
+      - ScpMobRandomSPSCorpse
+
+- type: entity
+  name: Random Class-D Corpse Spawner
+  id: ScpMobRandomClassDCorpseSpawner
+  parent: SalvageHumanCorpseSpawner
+  components:
+  - type: Sprite
+    layers:
+      - state: security_officer # TODO: сделать визуальный спрайт
+      - state: green
+  - type: ConditionalSpawner
+    prototypes:
+      - ScpMobRandomClassDCorpse
