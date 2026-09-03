@@ -687,11 +687,6 @@
     - ScpUplinkMtfStorageCrateWeaponRifleAR18M
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArms
-  - !type:BuyerJobCondition
-    blacklist:
-    - MHLeader # Б-7
-    - MHSpecialist
-    - MHCadet
 
 - type: listing
   id: ScpUplinkMtfStorageCrateShotgunBulldog
@@ -752,6 +747,9 @@
     - ScpUplinkMtfUnlockPrimaryArms
   - !type:BuyerJobCondition
     blacklist:
+    - HDLeader # Ню-7
+    - HDSpecialist
+    - HDCadet
     - MHLeader # Б-7
     - MHSpecialist
     - MHCadet
@@ -787,6 +785,9 @@
     - ScpUplinkMtfUnlockPrimaryArms
   - !type:BuyerJobCondition
     blacklist:
+    - HDLeader # Ню-7
+    - HDSpecialist
+    - HDCadet
     - MHLeader # Б-7
     - MHSpecialist
     - MHCadet
