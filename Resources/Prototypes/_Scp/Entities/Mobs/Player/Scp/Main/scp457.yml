@@ -29,7 +29,6 @@
   - type: VentCrawler
   - type: ActionGrant
     actions:
-    - Scp457Absorb
     - Scp457Fire
   - type: FearSource
     uponSeenState: None
@@ -100,9 +99,6 @@
           messages: [ "scp-457-extinguished" ]
           probability: 0.25
         - !type:HitByWater
-  - type: Body
-    prototype: Human
-    requiredLegs: 2
   - type: MeleeWeapon
     altDisarm: false
     soundHit:
@@ -122,7 +118,6 @@
     allowedStates:
     - Alive
     - Critical
-    damageCap: 0
     damage:
       types:
         Cold: -3

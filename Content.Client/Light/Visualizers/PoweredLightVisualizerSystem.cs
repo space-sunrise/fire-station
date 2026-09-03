@@ -10,7 +10,7 @@ namespace Content.Client.Light.Visualizers;
 public sealed class PoweredLightVisualizerSystem : VisualizerSystem<PoweredLightVisualsComponent>
 {
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    // [Dependency] private readonly SharedAudioSystem _audio = default!; // Fire edit
 
     public override void Initialize()
     {

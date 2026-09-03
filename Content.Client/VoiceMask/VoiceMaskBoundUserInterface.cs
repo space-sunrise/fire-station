@@ -6,6 +6,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client.VoiceMask;
 
+[Virtual] // Fire edit
 public class VoiceMaskBoundUserInterface : BoundUserInterface // Fire station edit
 {
     [Dependency] private readonly IPrototypeManager _protomanager = default!;

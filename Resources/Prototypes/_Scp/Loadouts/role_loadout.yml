@@ -807,3 +807,10 @@
   - ScpLoadoutGroupSocks
   - ScpLoadoutGroupPants
   - ScpLoadoutGroupBra
+
+# Scp
+
+- type: roleLoadout
+  id: JobScp082
+  groups:
+  - ScpLoadoutGroupJumpsuitScp082

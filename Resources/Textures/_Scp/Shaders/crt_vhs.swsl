@@ -1,18 +1,18 @@
-﻿const lowp float SCANLINES_OPACITY = 0.9;
+﻿const lowp float SCANLINES_OPACITY = 0.5;
 const lowp float SCANLINES_WIDTH = 0.8;
-const lowp float GRILLE_OPACITY = 0.3;
+const lowp float GRILLE_OPACITY = 0.15;
 const lowp vec2 RESOLUTION = vec2(640.0, 480.0);
-const bool PIXELATE = true;
+const bool PIXELATE = false;                   
 
-const lowp float NOISE_OPACITY = 0.4;
+const lowp float NOISE_OPACITY = 0.2;
 const lowp float NOISE_SPEED = 5.0;
-const lowp float STATIC_NOISE_INTENSITY = 0.02;
-const lowp float ABERRATION = 0.02;
-const lowp float BRIGHTNESS = 1.0;
+const lowp float STATIC_NOISE_INTENSITY = 0.012;
+const lowp float ABERRATION = 0.008;
+const lowp float BRIGHTNESS = 1.05;          
 
-const lowp float WARP_AMOUNT = 1.0;
-const lowp float VIGNETTE_INTENSITY = 0.2;
-const lowp float VIGNETTE_OPACITY = 7.0;
+const lowp float WARP_AMOUNT = 0.3;
+const lowp float VIGNETTE_INTENSITY = 0.12;
+const lowp float VIGNETTE_OPACITY = 4.5;
 
 uniform sampler2D SCREEN_TEXTURE;
 const lowp float PI = 3.14159265359;

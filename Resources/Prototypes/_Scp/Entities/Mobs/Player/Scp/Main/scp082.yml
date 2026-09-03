@@ -13,7 +13,12 @@
   - MobAtmosStandard
   - MobFlammable
   - InventoryBase
+  - AppearanceScpPredator
   components:
+  - type: RestrictedEquipment
+    whitelist:
+      tags:
+      - Scp082Clothing
   - type: AutoGhostRole
     disconnectDelay: 600
     pollDuration: 900
@@ -23,15 +28,29 @@
   - type: Scp082
   - type: ScpHoldable
     minimumHolderCount: 3
+  - type: Stomach
+    specialDigestible:
+      tags:
+      - Meat
   - type: Hands
     showInHands: false
+  - type: Appearance
   - type: MobThresholds
     thresholds:
       0: Alive
       1800: Critical
       2000: Dead
-  - type: Body
-    prototype: ScpPredator
+#  - type: DamageStateVisuals временно, пока нет нужного компонента
+#    states:
+#      Alive:
+#        Base: 082_fullbody
+#        BaseUnshaded: tuxedo # временно, что бы не был голым
+#      Critical:
+#        Base: 082-dead
+#        BaseUnshaded: tuxedo-dead # временно, что бы не был голым
+#      Dead:
+#        Base: 082-dead
+#        BaseUnshaded: tuxedo-dead # временно, что бы не был голым
   - type: Inventory
     templateId: scp082
   - type: FieldOfView
@@ -46,8 +65,9 @@
     drawdepth: Mobs
     sprite: _Scp/Mobs/Scp/scp-082.rsi
     layers:
-    - state: 082_fullbody
-    - state: tuxedo # временно чтобы он не был голым
+    - map: ["base"] 
+      state: 082_fullbody
+    - map: ["jumpsuit"]
   - type: ComplexInteraction
   - type: Buckle
   - type: ZombieImmune
@@ -64,6 +84,7 @@
     baseSprintSpeed: 2.5
   - type: ScpRestriction
     canPull: true
+    canStandingState: true
   - type: Pullable
   - type: Puller
     needsHands: true
@@ -131,3 +152,14 @@
       Male: SCP082
       Female: SCP082
       Unsexed: SCP082
+  - type: Loadout
+    prototypes: [ Scp082Gear ]
+  - type: StandingState
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+
+- type: startingGear
+  id: Scp082Gear
+  equipment:
+    pocket2: Scp082Knife

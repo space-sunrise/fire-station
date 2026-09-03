@@ -126,9 +126,9 @@
 
 # Пистолет-пулемет
 - type: loadout
-  id: ScpLoadoutWeaponSubMachineGunMP7
+  id: ScpLoadoutWeaponSubMachineGunMP5
   equipment:
-    suitstorage: WeaponSubMachineGunMP7
+    suitstorage: WeaponSubMachineGunMP5
 
 # Дробовик
 - type: loadout

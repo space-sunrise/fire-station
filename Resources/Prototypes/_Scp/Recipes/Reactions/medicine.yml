@@ -1,0 +1,10 @@
+- type: reaction
+  id: GriseofulvinRecipe
+  impact: Medium
+  reactants:
+    Phalanximine:
+      amount: 1
+    Scp059Reagent:
+      amount: 4 # два кристалла
+  products:
+    Griseofulvin: 5

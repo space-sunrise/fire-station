@@ -6,9 +6,9 @@
   description: A suit that protects against biological contamination.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Bio/general.rsi
+    sprite: _Sunrise/Clothing/OuterClothing/Bio/general.rsi # Sunrise-Edit
   - type: Clothing
-    sprite: Clothing/OuterClothing/Bio/general.rsi
+    sprite: _Sunrise/Clothing/OuterClothing/Bio/general.rsi # Sunrise-Edit
   - type: HideLayerClothing
     slots:
     - Tail
@@ -30,6 +30,11 @@
     - FullBodyOuter
     - WhitelistChameleon
   # Sunrise-End
+  # Fire start
+  - type: ClothingAddComponents
+    components:
+    - type: Scp059Protection
+  # Fire end
 
 - type: entity
   parent: ClothingOuterBioGeneral
@@ -82,6 +87,9 @@
     sprite: _Scp/Clothing/OuterClothing/Bio/security.rsi #Fire Edit
   - type: Clothing
     sprite: _Scp/Clothing/OuterClothing/Bio/security.rsi #Fire Edit
+  - type: HideLayerClothing
+    slots:
+    - Tail
   - type: Armor
     modifiers:
       coefficients:
@@ -94,6 +102,11 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.95
     sprintModifier: 0.95
+  # Fire start почему не сделан парент э
+  - type: ClothingAddComponents
+    components:
+    - type: Scp059Protection
+  # Fire end
 
 - type: entity
   parent: ClothingOuterBioGeneral

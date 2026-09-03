@@ -1,0 +1,225 @@
+﻿- type: entity
+  id: Scp3199Child
+  parent:
+  - BaseScp
+  - MobCombat
+  - SimpleMobBase
+  suffix: SCP-3199
+  components:
+  - type: AutoGhostRole
+    disconnectDelay: 600
+    pollDuration: 900
+    transferDelay: 180
+  - type: RepeatingTrigger
+    delay: 600 # 10 min
+  - type: PolymorphOnTrigger
+    polymorph: AdultScp3199
+  - type: Sprite
+    sprite: _Scp/Mobs/Scp/scp-3199.rsi
+    state: baby
+  - type: Pullable
+  - type: Puller
+    needsHands: false
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+      - SCPs
+  - type: FearSource
+    uponSeenState: Fear
+  - type: ComplexInteraction
+  - type: ReplacementAccent
+    accent: xeno
+  - type: Speech
+    speechSounds: Lizard
+    speechVerb: Reptilian
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      150: Dead
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    attackRate: 1.5
+    damage:
+      types:
+        Blunt: 10
+        Structural: 20
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:GibBehavior { }
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Scp3199EggFirst:
+            min: 0
+            max: 1
+          FoodMeatAnomaly:
+            min: 0
+            max: 2
+  - type: Hunger
+    baseDecayRate: 0.01
+    lastAuthoritativeHungerValue: 150
+    thresholds:
+      Overfed: 150
+      Okay: 100
+      Peckish: 50
+      Starving: 25
+      Dead: 0
+  - type: Devourer
+    devourTime: 10
+    healRate: 20
+    chemical: Vitamin
+  - type: GhostTakeoverAvailable
+  - type: GhostRole
+    job: Scp3199
+    makeSentient: true
+    name: ghost-role-information-scp3199-name
+    description: ghost-role-information-scp3199-baby-description
+    raffle:
+      settings: short
+  - type: ScpRestriction
+    canPull: true
+    canBePulled: true
+  - type: ScaleAnimation
+    animationKey: scp3199_child_growth
+    duration: 600.0
+    initialSize: 0.4, 0.4
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    damage:
+      types:
+        Poison: -10 # чтобы могли кушать кровь и другую отраву без урона
+  - type: AmbientSound
+    enabled: true
+    volume: -8
+    range: 8
+    sound:
+      path: /Audio/_Scp/Scp3199/breath.ogg
+
+
+- type: entity
+  id: Scp3199Adult
+  parent:
+  - BaseScp
+  - MobCombat
+  - SimpleMobBase
+  suffix: SCP-3199
+  components:
+  - type: AutoGhostRole
+    disconnectDelay: 600
+    pollDuration: 900
+    transferDelay: 180
+  - type: ScaleAnimation
+    animationKey: scp3199_adult_growth
+    duration: 15.0
+    initialSize: 0.7, 0.7
+  - type: GhostTakeoverAvailable
+  - type: GhostRole
+    job: Scp3199
+    makeSentient: true
+    name: ghost-role-information-scp3199-name
+    description: ghost-role-information-scp3199-adult-description
+    raffle:
+      settings: short
+  - type: Sprite
+    sprite: _Scp/Mobs/Scp/scp-3199.rsi
+    state: adult
+  - type: Pullable
+  - type: Puller
+    needsHands: false
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+      - SCPs
+  - type: FearSource
+    uponSeenState: Fear
+  - type: EggLayer
+    eggSpawn:
+    - id: Scp3199EggFirst
+    hungerUsage: 55
+    eggLaySound:
+      path: /Audio/_Sunrise/FleshCult/devour_flesh_cultist.ogg
+  - type: ComplexInteraction
+  - type: ReplacementAccent
+    accent: xeno
+  - type: Speech
+    speechSounds: Lizard
+    speechVerb: Reptilian
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    attackRate: 1.5
+    damage:
+      types:
+        Blunt: 20
+        Structural: 35
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:GibBehavior { }
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Scp3199EggFirst:
+            min: 1
+            max: 1
+          FoodMeatAnomaly:
+            min: 1
+            max: 3
+  - type: Hunger
+    baseDecayRate: 0.01
+    lastAuthoritativeHungerValue: 150
+    thresholds:
+      Overfed: 150
+      Okay: 100
+      Peckish: 50
+      Starving: 25
+      Dead: 0
+  - type: Devourer
+    devourTime: 15
+    healRate: 20
+    chemical: Vitamin
+  - type: ScpRestriction
+    canPull: true
+    canBePulled: true
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 5
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    damage:
+      types:
+        Poison: -10 # чтобы могли кушать кровь и другую отраву без урона
+  - type: AmbientSound
+    enabled: true
+    volume: -8
+    range: 8
+    sound:
+      path: /Audio/_Scp/Scp3199/breath.ogg

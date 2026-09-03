@@ -1,13 +1,10 @@
 ﻿using System.Numerics;
 using Content.Shared.Damage;
 using Content.Shared.Popups;
-using Content.Shared.Body.Components;
-using Content.Server.Body.Systems;
 using Content.Server.Hands.Systems;
 using Content.Server.Popups;
 using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Scp330;
-using Content.Shared.Body.Part;
 using Content.Shared.Containers;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Hands.Components;
@@ -18,7 +15,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Random;
-using Content.Shared.Gibbing;
+using Content.Shared.Body;
 
 namespace Content.Server._Scp.Scp330;
 
@@ -29,16 +26,13 @@ public sealed partial class Scp330System : SharedScp330System
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
-    [Dependency] private readonly BodySystem _body = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly ProximitySystem _proximity = default!;
-    [Dependency] private readonly GibbingSystem _gibbing = default!;
     [Dependency] private readonly HandsSystem _hands = default!;
     [Dependency] private readonly ContainerSystem _container = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
     private readonly HashSet<Entity<HandsComponent>> _cachedEntities = [];
-    private HashSet<EntityUid> _gibCachedEntities = [];
 
     public override void Initialize()
     {
@@ -136,18 +130,7 @@ public sealed partial class Scp330System : SharedScp330System
         if (!TryComp<BodyComponent>(target, out var body))
             return;
 
-        var parts = _body.GetBodyChildren(target, body);
-        _gibCachedEntities.Clear();
-
-        foreach (var part in parts)
-        {
-            if (part.Component.PartType != BodyPartType.Hand)
-                continue;
-
-            // Отрезаем руку
-            _gibbing.Gib(part.Id);
-        }
-
+        _hands.RemoveHands(target);
         _popup.PopupEntity(Loc.GetString("scp330-removed-hands"), target, target, PopupType.LargeCaution);
 
         var selfEvent = new Scp330SelfPunishmentEvent(target);

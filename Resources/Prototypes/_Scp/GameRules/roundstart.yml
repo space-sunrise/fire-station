@@ -236,6 +236,8 @@
       playerRatio: 10
       pickCommandStaff: true
       ignoreCanBeAntag: true
+      components:
+      - type: ChaosSpyMob
       blacklist:
         components:
         - AntagImmune
@@ -267,6 +269,8 @@
       max: 5
       playerRatio: 10
       pickCommandStaff: false
+      components:
+      - type: ChaosSpyMob
       blacklist:
         components:
         - AntagImmune

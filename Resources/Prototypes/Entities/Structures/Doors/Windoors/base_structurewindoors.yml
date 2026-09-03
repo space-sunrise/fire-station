@@ -175,11 +175,11 @@
   - type: StaticPrice
     price: 150
   - type: PryUnpowered
-  # Fire edit start
   - type: Tag
     tags:
-    - Windoor
-  # Fire edit end
+      - DoorRemoteWhitelist
+      # This tag is used by door remotes to allow or not a door remote to normally be able to interact with a door
+      - Windoor # Fire edit
 
 - type: entity
   id: BaseSecureWindoor
@@ -254,6 +254,8 @@
     tags:
       - SecureWindoor
       # This tag is used to nagivate the Airlock construction graph. It's needed because the construction graph is shared between Airlock, AirlockGlass, and HighSecDoor
+      - DoorRemoteWhitelist
+      # This tag is used by door remotes to allow or not a door remote to normally be able to interact with a door
 
 
 #Plasma Windoors
@@ -399,6 +401,8 @@
     tags:
       - SecurePlasmaWindoor
       # This tag is used to nagivate the Airlock construction graph. It's needed because the construction graph is shared between Airlock, AirlockGlass, and HighSecDoor
+      - DoorRemoteWhitelist
+      # This tag is used by door remotes to allow or not a door remote to normally be able to interact with a door
 
 
 #Uranium Windoors
@@ -544,3 +548,5 @@
     tags:
       - SecureUraniumWindoor
       # This tag is used to nagivate the Airlock construction graph. It's needed because the construction graph is shared between Airlock, AirlockGlass, and HighSecDoor
+      - DoorRemoteWhitelist
+      # This tag is used by door remotes to allow or not a door remote to normally be able to interact with a door

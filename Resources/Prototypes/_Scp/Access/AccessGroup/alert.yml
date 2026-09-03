@@ -13,6 +13,14 @@
   - Security
 
 - type: accessGroup
+  id: ScpLimeAlertAccesses
+  tags:
+  - SecurityCommander
+  - Security
+  - Research
+  - Administration
+
+- type: accessGroup
   id: ScpOrangeAlertAccesses
   tags:
   - SecurityCommander

@@ -1,5 +1,5 @@
 using Content.Client.Chat.Managers;
-using Content.Client.Message;
+using Content.Client.RichText;
 using Content.Shared.Chat;
 using Content.Shared.Radio;
 using Content.Shared.Silicons.Laws;
@@ -20,7 +20,7 @@ public sealed partial class LawDisplay : Control
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IChatManager _chatManager = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly EntityManager _entityManager = default!;
+    // [Dependency] private readonly EntityManager _entityManager = default!; // Fire edit
 
     private static readonly TimeSpan PressCooldown = TimeSpan.FromSeconds(3);
 
@@ -37,8 +37,8 @@ public sealed partial class LawDisplay : Control
         var lawIdentifierPlaintext = FormattedMessage.RemoveMarkupPermissive(lawIdentifier);
         var lawDescriptionPlaintext = FormattedMessage.RemoveMarkupPermissive(lawDescription);
 
-        LawNumberLabel.SetMarkup(lawIdentifier);
-        LawLabel.SetMessage(lawDescription);
+        LawNumberLabel.SetMessage(FormattedMessage.FromMarkupPermissive(lawIdentifier), UserFormattableTags.SiliconAllowedTags);
+        LawLabel.SetMessage(FormattedMessage.FromMarkupPermissive(lawDescription), UserFormattableTags.SiliconAllowedTags);
 
         /* Fire edit - по какой-то причине speech.SpeechSounds отсутствует в игре, но есть в прототипе. Поэтому это идет нахуй. Фикс законов ИИ
         // If you can't talk, you can't state your laws...

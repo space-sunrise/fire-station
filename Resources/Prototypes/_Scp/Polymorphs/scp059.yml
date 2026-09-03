@@ -1,0 +1,11 @@
+- type: polymorph
+  id: Scp059Polymorph
+  configuration:
+    entity: Scp059Mob
+    forced: true
+    transferDamage: true
+    inventory: Transfer
+    revertOnDeath: false
+    revertOnCrit: false
+    revertOnDelete: false
+    polymorphSound: /Audio/Effects/glass_crack4.ogg
