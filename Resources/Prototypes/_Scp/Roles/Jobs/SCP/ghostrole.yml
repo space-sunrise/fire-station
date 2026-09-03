@@ -113,6 +113,24 @@
   applyTraits: false
 
 - type: job
+  id: Scp3199
+  name: job-name-scp3199
+  description: job-description-scp3199
+  playTimeTracker: JobScp3199
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 432000 # 120h
+  weight: 965
+  #icon: TODO
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp3199Adult
+  alwaysShowInBanPanel: true
+  setPreference: false
+  applyTraits: false
+
+- type: job
   id: Scp3288Servant
   name: job-name-scp3288
   description: job-description-scp3288-servant

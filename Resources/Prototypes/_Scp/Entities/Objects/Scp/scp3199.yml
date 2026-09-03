@@ -1,0 +1,104 @@
+﻿- type: entity
+  id: Scp3199EggBase
+  parent: BaseItem
+  abstract: true
+  components:
+  - type: AutoGhostRole
+    disconnectDelay: 600
+    pollDuration: 900
+    transferDelay: 180
+  - type: Sprite
+    sprite: _Scp/Objects/Scp/scp-3199.rsi
+  - type: Item
+    size: Normal
+  - type: Muted
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 0
+    baseSprintSpeed: 0
+  - type: GhostTakeoverAvailable
+  - type: ToggleableNightVision
+    effect: ScpEffectNightVision
+  - type: JumpAbility # чо бы и нет
+    action: ActionScp3199Jump
+    collideKnockdown: 0
+    jumpDistance: 0.2
+    jumpThrowSpeed: 20
+    jumpSound: /Audio/Effects/Footsteps/wood3.ogg
+  - type: GhostRole
+    job: Scp3199
+    makeSentient: true
+    name: ghost-role-information-scp3199-name
+    description: ghost-role-information-scp3199-egg-description
+    raffle:
+      settings: short
+
+- type: entity
+  id: Scp3199EggFirst
+  parent: Scp3199EggBase
+  components:
+  - type: Sprite
+    state: egg_1
+  - type: RepeatingTrigger
+    delay: 120
+  - type: PolymorphOnTrigger
+    polymorph: Egg2Scp3199
+
+- type: entity
+  id: Scp3199EggSecond
+  parent: Scp3199EggBase
+  components:
+  - type: Sprite
+    state: egg_2
+  - type: RepeatingTrigger
+    delay: 90
+  - type: PolymorphOnTrigger
+    polymorph: Egg3Scp3199
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: entity
+  id: Scp3199EggThird
+  parent: Scp3199EggBase
+  components:
+  - type: Sprite
+    state: egg_3
+  - type: RepeatingTrigger
+    delay: 90
+  - type: PolymorphOnTrigger
+    polymorph: Egg4Scp3199
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: entity
+  id: Scp3199EggFourth
+  parent: Scp3199EggBase
+  components:
+  - type: Sprite
+    state: egg_4
+  - type: RepeatingTrigger
+    delay: 60
+  - type: PolymorphOnTrigger
+    polymorph: ChildScp3199
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]

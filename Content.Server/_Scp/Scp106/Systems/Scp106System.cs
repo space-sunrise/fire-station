@@ -144,7 +144,7 @@ public sealed partial class Scp106System : SharedScp106System
         await TeleportToBackroomsInternal(target);
 
         _stun.TryAddParalyzeDuration(target, _defaultOnBackroomsStunTime);
-        _fear.TrySetFearLevel(target, FearState.Terror);
+        _fear.TrySetFearLevel(target, FearState.Fear);
 
         _audio.PlayGlobal(SendBackroomsSound, target);
 
