@@ -5717,3 +5717,10 @@
     message: Добавлена новая карта Sector No02
   id: 531
   url: https://github.com/makura-games/project-fire/pull/1144
+- author: Wardex
+  time: '2026-09-04T15:33:45.0000000+00:00'
+  changes:
+  - type: Tweak
+    message: 'Карты обновлены до последней версии: Compact, Standard, Modular'
+  id: 532
+  url: https://github.com/makura-games/project-fire/pull/1151
