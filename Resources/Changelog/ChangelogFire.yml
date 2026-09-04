@@ -5686,3 +5686,20 @@
     message: SCP-457 теперь каждые 5 секунд всасывает ближайшие сущности поблизости, которые могут гореть
   id: 528
   url: https://github.com/makura-games/project-fire/pull/1146
+- author: Data_deleted
+  time: '2026-09-03T18:27:42.0000000+00:00'
+  changes:
+  - type: Add
+    message: Добавлены огнетушители в терминал Эпсилон-11
+  - type: Add
+    message: 'Добавлены: АК-103, AR 18 M в терминал Эпсилон-11'
+  - type: Add
+    message: 'Добавлены: АШ-12, АК-103, AR18 M в терминал Ню-7'
+  - type: Add
+    message: Добавлены дробовики в терминал Бета-7
+  - type: Add
+    message: Всем Мобильным Оперативный Группам в терминал добавлены Векторы
+  - type: Add
+    message: Лазерное оружие удалено из терминалов всех МОГ, за исключением Альфа-1
+  id: 529
+  url: https://github.com/makura-games/project-fire/pull/1149
