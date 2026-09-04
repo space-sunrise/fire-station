@@ -5703,3 +5703,10 @@
     message: Лазерное оружие удалено из терминалов всех МОГ, за исключением Альфа-1
   id: 529
   url: https://github.com/makura-games/project-fire/pull/1149
+- author: timur
+  time: '2026-09-04T14:25:43.0000000+00:00'
+  changes:
+  - type: Tweak
+    message: Респрайт обычного противогаза и противопульного щита
+  id: 530
+  url: https://github.com/makura-games/project-fire/pull/1150
