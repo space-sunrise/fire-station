@@ -5710,3 +5710,10 @@
     message: Респрайт обычного противогаза и противопульного щита
   id: 530
   url: https://github.com/makura-games/project-fire/pull/1150
+- author: timur
+  time: '2026-09-04T14:59:31.0000000+00:00'
+  changes:
+  - type: Add
+    message: Добавлена новая карта Sector No02
+  id: 531
+  url: https://github.com/makura-games/project-fire/pull/1144
