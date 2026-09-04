@@ -4,8 +4,8 @@
   components:
   - type: WeatherStatusEffect
     sprite:
-      sprite: /Textures/Effects/weather.rsi
-      state: ashfall_light
+      sprite: /Textures/_Scp/Structures/Furniture/bookshelf.rsi
+      state: book-0 # пустая текстурка
     sound:
       path: /Audio/_Scp/Effects/Weather/birds.ogg
       params:
