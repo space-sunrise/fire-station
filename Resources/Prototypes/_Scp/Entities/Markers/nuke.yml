@@ -1,7 +1,0 @@
-- type: entity
-  id: ScpNukeLockDoorMarker
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    state: red
-  - type: ScpNukeLockDoor
