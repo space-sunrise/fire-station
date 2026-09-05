@@ -23,6 +23,12 @@
     reagentSaveModifiers:
       Scp173Reagent: 0.1
       Blood: 0.1
+
+- type: entity
+  id: ScpComplexCompact
+  parent: StandardScpStation
+  categories: [ HideSpawnMenu ]
+  components:
   - type: RandomPlanet
     data:
     - biome: ScpComplexSnow
@@ -31,27 +37,30 @@
       - WeatherSnowfallLight
 
 - type: entity
-  id: ScpComplexCompact
-  parent: StandardScpStation
-  categories: [ HideSpawnMenu ]
-
-- type: entity
   id: ScpComplexSector02
   parent: StandardScpStation
   categories: [ HideSpawnMenu ]
-  components:
-  - type: RandomPlanet
-    data:
-    - biome: ScpComplexWater
-      weather:
-      - ScpWeatherSunny
 
 - type: entity
   id: ScpComplexStandard
   parent: StandardScpStation
   categories: [ HideSpawnMenu ]
+  components:
+  - type: RandomPlanet
+    data:
+    - biome: ScpComplexSnow
+      weather:
+      - WeatherSnowfallMedium
+      - WeatherSnowfallLight
 
 - type: entity
   id: ScpComplexModular
   parent: StandardScpStation
   categories: [ HideSpawnMenu ]
+  components:
+  - type: RandomPlanet
+    data:
+    - biome: ScpComplexSnow
+      weather:
+      - WeatherSnowfallMedium
+      - WeatherSnowfallLight
