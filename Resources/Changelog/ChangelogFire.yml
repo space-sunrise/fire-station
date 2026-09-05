@@ -5724,3 +5724,18 @@
     message: 'Карты обновлены до последней версии: Compact, Standard, Modular'
   id: 532
   url: https://github.com/makura-games/project-fire/pull/1151
+- author: timur
+  time: '2026-09-05T13:38:28.0000000+00:00'
+  changes:
+  - type: Tweak
+    message: Изменён шанс спавна яйца SCP-3199 с 0.001% до 0.005%
+  - type: Tweak
+    message: Карта Sector-02 обновлена
+  - type: Fix
+    message: Исправлено отображение одежды SCP-082
+  - type: Fix
+    message: Исправлен баг с возможностью вскрыть гермозатвор
+  - type: Fix
+    message: Исправлен баг со спавном клонов в раунде
+  id: 533
+  url: https://github.com/makura-games/project-fire/pull/1152
